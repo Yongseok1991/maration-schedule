@@ -1,23 +1,24 @@
 import { useEffect, useMemo, useState } from "react";
 
-const TXT = {
-  unknownDate: "\uc77c\uc815 \ubbf8\uc815",
-  title: "\ub9c8\ub77c\ud1a4 \uc77c\uc815 \uc544\uce74\uc774\ube0c",
-  updated: "\ub9c8\uc9c0\ub9c9 \uc5c5\ub370\uc774\ud2b8",
-  total: "\uc804\uccb4",
-  upcoming: "\ub2e4\uac00\uc624\ub294 \uc77c\uc815",
-  searchPlaceholder: "\ub300\ud68c\uba85, \uc7a5\uc18c, \uc8fc\ucd5c \uac80\uc0c9",
-  allRegion: "\uc804\uccb4 \uc9c0\uc5ed",
-  allMonth: "\uc804\uccb4 \uc6d4",
-  openOnly: "\uc811\uc218\uc911 \uc77c\uc815\ub9cc",
-  distance: "\uc885\ubaa9",
-  region: "\uc9c0\uc5ed",
-  place: "\uc7a5\uc18c",
-  organizer: "\uc8fc\ucd5c",
-  contact: "\ubb38\uc758",
-  reg: "\uc811\uc218\uae30\uac04",
-  raceHomepage: "\ub300\ud68c \ud648\ud398\uc774\uc9c0 \ubc14\ub85c\uac00\uae30",
-  noResult: "\uc870\uac74\uc5d0 \ub9de\ub294 \uc77c\uc815\uc774 \uc5c6\uc2b5\ub2c8\ub2e4."
+const LABEL = {
+  unknownDate: "일정 미정",
+  title: "마라톤 일정",
+  subtitle: "휴대폰에서 바로 보기 좋게 정리한 일정 뷰",
+  updated: "업데이트",
+  total: "전체",
+  upcoming: "예정",
+  searchPlaceholder: "대회명, 장소, 주최 검색",
+  allRegion: "전체 지역",
+  allMonth: "전체 월",
+  openOnly: "접수중만",
+  distance: "종목",
+  region: "지역",
+  place: "장소",
+  organizer: "주최",
+  contact: "문의",
+  reg: "접수기간",
+  raceHomepage: "대회 홈페이지",
+  noResult: "조건에 맞는 일정이 없습니다."
 };
 
 const toDate = (race) => (race.date_iso ? new Date(`${race.date_iso}T00:00:00+09:00`) : null);
@@ -25,16 +26,16 @@ const toDate = (race) => (race.date_iso ? new Date(`${race.date_iso}T00:00:00+09
 const formatDay = (race) => {
   if (race.date_display) return race.date_display;
   const d = toDate(race);
-  if (!d || Number.isNaN(d.getTime())) return TXT.unknownDate;
+  if (!d || Number.isNaN(d.getTime())) return LABEL.unknownDate;
   return d.toLocaleDateString("ko-KR", { year: "numeric", month: "2-digit", day: "2-digit" });
 };
 
 const unique = (arr) => [...new Set(arr.filter(Boolean))];
 
 const statusBadgeClass = (status) => {
-  if (status === "\uc811\uc218\uc911") return "bg-emerald-400/20 text-emerald-300 border-emerald-400/40";
-  if (status === "\uc2e0\uaddc") return "bg-amber-400/20 text-amber-300 border-amber-400/40";
-  return "bg-slate-500/20 text-slate-200 border-slate-500/40";
+  if (status === "접수중") return "border-emerald-400/35 bg-emerald-400/15 text-emerald-200";
+  if (status === "신규") return "border-amber-400/35 bg-amber-400/15 text-amber-200";
+  return "border-zinc-500/35 bg-zinc-500/20 text-zinc-200";
 };
 
 export default function App() {
@@ -54,16 +55,20 @@ export default function App() {
   const regions = useMemo(() => unique(data.races.map((r) => r.region)).sort(), [data.races]);
   const months = useMemo(() => unique(data.races.map((r) => (r.date_iso || "").slice(0, 7))).sort(), [data.races]);
 
-  const now = new Date();
+  const today = new Date(new Date().toDateString());
 
   const filtered = useMemo(() => {
     return data.races
       .filter((race) => {
+        const d = toDate(race);
+        if (d && d < today) return false;
+
         const text = `${race.name} ${race.place} ${race.organizer} ${race.distances}`.toLowerCase();
         const hitQuery = query.trim() ? text.includes(query.trim().toLowerCase()) : true;
         const hitRegion = region === "all" ? true : race.region === region;
         const hitMonth = month === "all" ? true : (race.date_iso || "").startsWith(month);
-        const hitOpen = openOnly ? race.status === "\uc811\uc218\uc911" : true;
+        const hitOpen = openOnly ? race.status === "접수중" : true;
+
         return hitQuery && hitRegion && hitMonth && hitOpen;
       })
       .sort((a, b) => {
@@ -74,90 +79,101 @@ export default function App() {
         if (!bd) return -1;
         return ad - bd;
       });
-  }, [data.races, month, openOnly, query, region]);
+  }, [data.races, month, openOnly, query, region, today]);
 
-  const upcoming = filtered.filter((race) => {
-    const d = toDate(race);
-    return d && d >= new Date(now.toDateString());
-  });
+  const upcomingCount = filtered.length;
 
   return (
-    <main className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
-      <section className="rounded-3xl border border-slate-700/50 bg-slate-900/55 p-5 shadow-glow backdrop-blur md:p-8">
-        <p className="text-xs uppercase tracking-[0.22em] text-slate-300">Maraton Calendar</p>
-        <h1 className="mt-2 text-3xl font-black leading-tight text-white md:text-5xl">{TXT.title}</h1>
-        <p className="mt-3 text-sm text-slate-300 md:text-base">
-          {TXT.updated} {data.updatedAt ? new Date(data.updatedAt).toLocaleString("ko-KR") : "-"} | {TXT.total} {data.races.length}\uac74 | {TXT.upcoming} {upcoming.length}\uac74
-        </p>
+    <main className="mx-auto w-full max-w-xl px-3 pb-20 pt-4 sm:px-4">
+      <section className="hero-panel rounded-2xl p-4">
+        <p className="text-[10px] uppercase tracking-[0.22em] text-zinc-400">Maraton Mobile</p>
+        <h1 className="mt-2 text-2xl font-black text-zinc-100">{LABEL.title}</h1>
+        <p className="mt-1 text-xs text-zinc-400">{LABEL.subtitle}</p>
 
-        <div className="mt-6 grid gap-3 md:grid-cols-4">
+        <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
+          <span className="stat-chip">
+            {LABEL.updated} {data.updatedAt ? new Date(data.updatedAt).toLocaleString("ko-KR") : "-"}
+          </span>
+          <span className="stat-chip">{LABEL.total} {data.races.length}건</span>
+          <span className="stat-chip stat-chip-strong">{LABEL.upcoming} {upcomingCount}건</span>
+        </div>
+      </section>
+
+      <section className="sticky top-2 z-20 mt-3 rounded-2xl border border-zinc-700/70 bg-zinc-950/90 p-3 backdrop-blur">
+        <div className="grid grid-cols-1 gap-2">
           <input
-            className="rounded-xl border border-slate-600 bg-slate-950/70 px-4 py-3 text-sm text-white outline-none ring-accent transition focus:ring"
-            placeholder={TXT.searchPlaceholder}
+            className="h-11 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100 outline-none transition focus:border-amber-300"
+            placeholder={LABEL.searchPlaceholder}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <select
-            className="rounded-xl border border-slate-600 bg-slate-950/70 px-4 py-3 text-sm text-white outline-none ring-accent transition focus:ring"
-            value={region}
-            onChange={(e) => setRegion(e.target.value)}
-          >
-            <option value="all">{TXT.allRegion}</option>
-            {regions.map((r) => (
-              <option key={r} value={r}>{r}</option>
-            ))}
-          </select>
-          <select
-            className="rounded-xl border border-slate-600 bg-slate-950/70 px-4 py-3 text-sm text-white outline-none ring-accent transition focus:ring"
-            value={month}
-            onChange={(e) => setMonth(e.target.value)}
-          >
-            <option value="all">{TXT.allMonth}</option>
-            {months.map((m) => (
-              <option key={m} value={m}>{m}</option>
-            ))}
-          </select>
-          <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-slate-600 bg-slate-950/70 px-4 py-3 text-sm text-white">
+
+          <div className="grid grid-cols-2 gap-2">
+            <select
+              className="h-11 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100 outline-none transition focus:border-amber-300"
+              value={region}
+              onChange={(e) => setRegion(e.target.value)}
+            >
+              <option value="all">{LABEL.allRegion}</option>
+              {regions.map((r) => (
+                <option key={r} value={r}>{r}</option>
+              ))}
+            </select>
+            <select
+              className="h-11 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100 outline-none transition focus:border-amber-300"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+            >
+              <option value="all">{LABEL.allMonth}</option>
+              {months.map((m) => (
+                <option key={m} value={m}>{m}</option>
+              ))}
+            </select>
+          </div>
+
+          <label className="flex h-11 cursor-pointer items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100">
             <input type="checkbox" checked={openOnly} onChange={(e) => setOpenOnly(e.target.checked)} />
-            {TXT.openOnly}
+            {LABEL.openOnly}
           </label>
         </div>
       </section>
 
-      <section className="mt-6 grid gap-4">
+      <section className="mt-3 grid gap-3">
         {filtered.map((race) => (
-          <article key={race.id} className="rounded-2xl border border-slate-700/60 bg-panel/80 p-5 shadow-[0_8px_26px_rgba(0,0,0,0.35)] backdrop-blur">
-            <div className="flex flex-wrap items-start justify-between gap-3">
+          <article key={race.id} className="rounded-2xl border border-zinc-800 bg-zinc-900/70 p-4 shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
+            <div className="flex items-start justify-between gap-2">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">{formatDay(race)}</p>
-                <h2 className="mt-1 text-xl font-bold text-white">{race.name}</h2>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-amber-300">{formatDay(race)}</p>
+                <h2 className="mt-1 text-lg font-bold leading-snug text-zinc-100">{race.name}</h2>
               </div>
               {race.status && (
-                <span className={`rounded-full border px-3 py-1 text-xs font-bold ${statusBadgeClass(race.status)}`}>
+                <span className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold ${statusBadgeClass(race.status)}`}>
                   {race.status}
                 </span>
               )}
             </div>
 
-            <div className="mt-4 grid gap-2 text-sm text-slate-200 md:grid-cols-2">
-              <p>{TXT.distance}: {race.distances || "-"}</p>
-              <p>{TXT.region}: {race.region || "-"}</p>
-              <p>{TXT.place}: {race.place || "-"}</p>
-              <p>{TXT.organizer}: {race.organizer || "-"}</p>
-              <p>{TXT.contact}: {race.contact || "-"}</p>
-              <p>{TXT.reg}: {race.registration_period || "-"}</p>
+            <div className="mt-3 grid grid-cols-1 gap-1.5 text-sm text-zinc-300">
+              <p>{LABEL.distance}: {race.distances || "-"}</p>
+              <p>{LABEL.region}: {race.region || "-"}</p>
+              <p>{LABEL.place}: {race.place || "-"}</p>
+              <p>{LABEL.organizer}: {race.organizer || "-"}</p>
+              <p>{LABEL.contact}: {race.contact || "-"}</p>
+              <p>{LABEL.reg}: {race.registration_period || "-"}</p>
             </div>
 
             {race.homepage && (
-              <a className="mt-4 inline-block break-all text-sm font-semibold text-warm hover:underline" href={race.homepage} target="_blank" rel="noreferrer">
-                {TXT.raceHomepage}
+              <a className="mt-3 inline-block text-sm font-semibold text-amber-300 hover:text-amber-200" href={race.homepage} target="_blank" rel="noreferrer">
+                {LABEL.raceHomepage}
               </a>
             )}
           </article>
         ))}
 
         {filtered.length === 0 && (
-          <p className="rounded-xl border border-slate-700 bg-panel/60 p-6 text-center text-slate-300">{TXT.noResult}</p>
+          <p className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-5 text-center text-sm text-zinc-400">
+            {LABEL.noResult}
+          </p>
         )}
       </section>
     </main>

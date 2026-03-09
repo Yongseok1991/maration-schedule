@@ -8,14 +8,37 @@
 
 body {
   margin: 0;
-  color: #e8edf8;
+  color: #e4e4e7;
   background:
-    radial-gradient(circle at 8% 10%, #1f315d 0%, rgba(31, 49, 93, 0) 38%),
-    radial-gradient(circle at 94% 90%, #2d173f 0%, rgba(45, 23, 63, 0) 42%),
-    linear-gradient(160deg, #060c1b 0%, #0b1324 45%, #111a2b 100%);
+    radial-gradient(circle at 18% -10%, rgba(245, 158, 11, 0.08), transparent 32%),
+    radial-gradient(circle at 100% 100%, rgba(113, 113, 122, 0.12), transparent 28%),
+    linear-gradient(180deg, #070708 0%, #0a0a0b 50%, #09090b 100%);
   min-height: 100vh;
 }
 
 #root {
   min-height: 100vh;
+}
+
+.hero-panel {
+  border: 1px solid rgba(63, 63, 70, 0.85);
+  background:
+    linear-gradient(180deg, rgba(24, 24, 27, 0.9), rgba(17, 17, 19, 0.88)),
+    radial-gradient(circle at 100% 0, rgba(245, 158, 11, 0.08), transparent 36%);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(8px);
+}
+
+.stat-chip {
+  border: 1px solid rgba(63, 63, 70, 0.9);
+  background: rgba(24, 24, 27, 0.85);
+  color: #d4d4d8;
+  border-radius: 9999px;
+  padding: 0.3rem 0.65rem;
+}
+
+.stat-chip-strong {
+  border-color: rgba(251, 191, 36, 0.45);
+  background: rgba(245, 158, 11, 0.13);
+  color: #fde68a;
 }
