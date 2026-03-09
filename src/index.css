@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Pretendard", "SUIT", "Noto Sans KR", sans-serif;
+}
+
+body {
+  margin: 0;
+  color: #e8edf8;
+  background:
+    radial-gradient(circle at 8% 10%, #1f315d 0%, rgba(31, 49, 93, 0) 38%),
+    radial-gradient(circle at 94% 90%, #2d173f 0%, rgba(45, 23, 63, 0) 42%),
+    linear-gradient(160deg, #060c1b 0%, #0b1324 45%, #111a2b 100%);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
