@@ -2,8 +2,13 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
+const repoFull = process.env.GITHUB_REPOSITORY || "";
+const repoName = repoFull.split("/")[1] || "";
+const isUserSiteRepo = repoName.toLowerCase().endsWith(".github.io");
+const basePath = process.env.BASE_PATH || (process.env.GITHUB_ACTIONS ? (isUserSiteRepo ? "/" : `/${repoName}/`) : "/");
+
 export default defineConfig({
-  base: process.env.BASE_PATH || "/",
+  base: basePath,
   plugins: [
     react(),
     VitePWA({
@@ -16,7 +21,7 @@ export default defineConfig({
         theme_color: "#0a1022",
         background_color: "#0a1022",
         display: "standalone",
-        start_url: "/",
+        start_url: "./",
         icons: [
           {
             src: "icon.svg",
