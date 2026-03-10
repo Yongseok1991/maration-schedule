@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-10T08:41:46.680Z",
+  "updatedAt": "2026-03-10T16:58:54.009Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 213,
+  "count": 214,
   "races": [
     {
       "id": "41381",
@@ -1410,7 +1410,7 @@
       "contact": "02-776-4288",
       "registration_period": "2025년12월5일~2026년3월10일",
       "homepage": "http://surally2406.webmaker21.kr/competition/outline?ca_id=01&wm_id=19",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41221"
     },
     {
@@ -1515,7 +1515,7 @@
       "contact": "02-3496-7805",
       "registration_period": "2026년3월11일~2026년3월12일",
       "homepage": "http://www.lwt.co.kr/ko/2026skyrun.do",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41435"
     },
     {
@@ -1954,6 +1954,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41396"
     },
     {
+      "id": "41462",
+      "name": "제3회 남해다랑논마라톤",
+      "date_display": "2026년5월2일",
+      "date_iso": "2026-05-02",
+      "distances": "10km,5km",
+      "region": "경남",
+      "place": "서면 회룡농촌 체험마을",
+      "organizer": "바래협동조합",
+      "contact": "010-9314-1000",
+      "registration_period": "2026년3월9일~2026년3월31일",
+      "homepage": "http://2026darangrun.org",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41462"
+    },
+    {
       "id": "41366",
       "name": "제21회 보성 녹차 마라톤",
       "date_display": "2026년5월2일",
@@ -2250,7 +2265,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년3월11일~2026년4월3일",
       "homepage": "http://incheonafcup.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41445"
     },
     {
