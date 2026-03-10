@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-10T02:16:04.161Z",
+  "updatedAt": "2026-03-10T08:41:46.680Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 213,
   "races": [
@@ -366,18 +366,17 @@
     {
       "id": "41301",
       "name": "2026 입춘대길 제1회 춘천 소양강마라톤",
-      "date_display": "3/21(토)",
+      "date_display": "2026년3월21일",
       "date_iso": "2026-03-21",
       "distances": "10km,5km",
-      "region": "",
+      "region": "강원",
       "place": "춘천 소양강댐 하류주차장",
       "organizer": "강원도민일보",
       "contact": "010-6328-4600",
-      "registration_period": "",
-      "homepage": "",
+      "registration_period": "2026년1월5일~2026년3월6일",
+      "homepage": "http://www.ccpmarathon.kr/spring/index.php",
       "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41301",
-      "error": "detail_fetch_failed"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41301"
     },
     {
       "id": "41324",
@@ -733,10 +732,10 @@
       "region": "인천",
       "place": "인천로봇랜드인근",
       "organizer": "서울신문",
-      "contact": "0000-0000",
-      "registration_period": "2026년1월28일~2026년3월2일",
+      "contact": "031-821-9950",
+      "registration_period": "2026년1월28일~2026년3월11일",
       "homepage": "http://cnrun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41361"
     },
     {
@@ -1565,21 +1564,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41393"
     },
     {
-      "id": "41423",
-      "name": "2026 송도 WALK & RUN",
-      "date_display": "2026년4월19일",
-      "date_iso": "2026-04-19",
-      "distances": "하프,10km,5km,트레일런15km,WALK5,10,20km댕댕런3km",
-      "region": "인천",
-      "place": "인천광역시 송도 달빛축제공원",
-      "organizer": "인천광역시걷기협회",
-      "contact": "070-4098-1114",
-      "registration_period": "2026년2월25일~2026년3월20일",
-      "homepage": "http://blog.naver.com/npa2023/224157041339",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41423"
-    },
-    {
       "id": "41373",
       "name": "2026 THE RACE BUSAN",
       "date_display": "2026년4월19일",
@@ -1773,6 +1757,21 @@
       "homepage": "http://mara1080.com/event/8921cdef-67fc-4e1c-9237-763520b90c80",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41248"
+    },
+    {
+      "id": "41423",
+      "name": "2026 송도 WALK & RUN",
+      "date_display": "2026년4월26일",
+      "date_iso": "2026-04-26",
+      "distances": "하프,10km,5km,트레일런15km,WALK5,10,20km댕댕런3km",
+      "region": "인천",
+      "place": "인천광역시 송도 달빛축제공원",
+      "organizer": "인천광역시걷기협회",
+      "contact": "070-4098-1114",
+      "registration_period": "2026년2월25일~2026년3월31일",
+      "homepage": "http://https://blog.naver.com/npa2023/224157041339",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41423"
     },
     {
       "id": "41369",
@@ -1971,7 +1970,7 @@
     },
     {
       "id": "41449",
-      "name": "2026 하트시그널 러닝 페스타",
+      "name": "하트시그널 러닝 페스타",
       "date_display": "2026년5월3일",
       "date_iso": "2026-05-03",
       "distances": "10km",
