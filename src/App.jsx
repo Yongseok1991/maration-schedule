@@ -82,8 +82,8 @@ const STORAGE_KEYS = {
 };
 
 const DEFAULT_SYNC = {
-  owner: "",
-  repo: "",
+  owner: "yongseok1991",
+  repo: "maration-schedule",
   branch: "master",
   path: "user-data/my-marathons.json",
   token: "",
