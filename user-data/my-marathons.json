@@ -1,7 +1,24 @@
 {
   "version": 1,
-  "updatedAt": "2026-03-10T02:03:32.832Z",
+  "updatedAt": "2026-03-10T02:10:50.874Z",
   "entries": [
+    {
+      "entryId": "a7a60698-da59-4e7c-8bc0-d15ed65af028",
+      "raceId": "41145",
+      "name": "2026 고양특례시 하프마라톤",
+      "dateIso": "2026-03-08",
+      "dateDisplay": "2026년3월8일",
+      "place": "고양종합운동장",
+      "distances": "하프,10km,5km",
+      "status": "registered",
+      "goalTime": "",
+      "goalPace": "",
+      "memo": "",
+      "resultTime": "",
+      "resultNote": "",
+      "certificateDataUrl": "",
+      "updatedAt": "2026-03-10T02:10:49.917Z"
+    },
     {
       "entryId": "018b22d3-d281-4e61-aa7a-419256090038",
       "raceId": "41238",
