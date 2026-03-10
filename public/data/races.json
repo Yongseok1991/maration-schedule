@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-10T01:57:08.011Z",
+  "updatedAt": "2026-03-10T02:16:04.161Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 213,
   "races": [
@@ -366,17 +366,18 @@
     {
       "id": "41301",
       "name": "2026 입춘대길 제1회 춘천 소양강마라톤",
-      "date_display": "2026년3월21일",
+      "date_display": "3/21(토)",
       "date_iso": "2026-03-21",
       "distances": "10km,5km",
-      "region": "강원",
+      "region": "",
       "place": "춘천 소양강댐 하류주차장",
       "organizer": "강원도민일보",
       "contact": "010-6328-4600",
-      "registration_period": "2026년1월5일~2026년3월6일",
-      "homepage": "http://www.ccpmarathon.kr/spring/index.php",
+      "registration_period": "",
+      "homepage": "",
       "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41301"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41301",
+      "error": "detail_fetch_failed"
     },
     {
       "id": "41324",
