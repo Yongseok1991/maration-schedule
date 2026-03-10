@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-09T08:11:48.882Z",
+  "updatedAt": "2026-03-10T02:16:04.161Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 211,
+  "count": 213,
   "races": [
     {
       "id": "41381",
@@ -366,17 +366,18 @@
     {
       "id": "41301",
       "name": "2026 입춘대길 제1회 춘천 소양강마라톤",
-      "date_display": "2026년3월21일",
+      "date_display": "3/21(토)",
       "date_iso": "2026-03-21",
       "distances": "10km,5km",
-      "region": "강원",
+      "region": "",
       "place": "춘천 소양강댐 하류주차장",
       "organizer": "강원도민일보",
       "contact": "010-6328-4600",
-      "registration_period": "2026년1월5일~2026년3월6일",
-      "homepage": "http://www.ccpmarathon.kr/spring/index.php",
+      "registration_period": "",
+      "homepage": "",
       "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41301"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41301",
+      "error": "detail_fetch_failed"
     },
     {
       "id": "41324",
@@ -465,7 +466,7 @@
       "contact": "031-821-9950",
       "registration_period": "2026년2월19일~2026년3월9일",
       "homepage": "http://시흥시육상연맹.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41408"
     },
     {
@@ -538,7 +539,7 @@
       "place": "남산 동국대 정문",
       "organizer": "(사)한국산악마라톤연맹",
       "contact": "02-424-2195",
-      "registration_period": "2025년10월1일~2026년3월9일",
+      "registration_period": "2025년10월1일~2026년3월16일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250511200816&csno=20220129141659#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41102"
@@ -1020,7 +1021,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년2월9일~2026년3월9일",
       "homepage": "http://xn--vk1b28fn4bg9oswgdukrjf16d.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41394"
     },
     {
@@ -2404,6 +2405,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41246"
     },
     {
+      "id": "41459",
+      "name": "제4회 여의도 밤섬 마라톤",
+      "date_display": "2026년5월31일",
+      "date_iso": "2026-05-31",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "(사)대한생활체육연맹",
+      "contact": "02-569-5551",
+      "registration_period": "2026년3월9일~2026년5월20일",
+      "homepage": "http://bamseom.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41459"
+    },
+    {
       "id": "41432",
       "name": "2026 고래마라톤",
       "date_display": "2026년5월31일",
@@ -2524,6 +2540,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41160"
     },
     {
+      "id": "41458",
+      "name": "제30회 제주관광마라톤 축제",
+      "date_display": "2026년6월7일",
+      "date_iso": "2026-06-07",
+      "distances": "풀,하프,10km",
+      "region": "제주",
+      "place": "구좌종합운동장",
+      "organizer": "제주관광협회",
+      "contact": "064-741-8738",
+      "registration_period": "2026년3월9일~2026년3월9일",
+      "homepage": "http://jejumarathon.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41458"
+    },
+    {
       "id": "41032",
       "name": "희망드림 제23회 새벽강변 국제마라톤",
       "date_display": "2026년6월7일",
@@ -2580,7 +2611,7 @@
       "contact": "062-655-0518",
       "registration_period": "2026년1월2일~2026년3월9일",
       "homepage": "http://www.mudolgil518.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41292"
     },
     {

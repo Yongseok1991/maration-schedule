@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-10T02:12:39.984Z",
+  "entries": [
+    {
+      "entryId": "41fd6e09-f177-41e0-b45e-048cff259c06",
+      "raceId": "41145",
+      "name": "2026 고양특례시 하프마라톤",
+      "dateIso": "2026-03-08",
+      "dateDisplay": "2026년3월8일",
+      "place": "고양종합운동장",
+      "distances": "하프,10km,5km",
+      "status": "registered",
+      "goalTime": "01:45:00",
+      "goalPace": "5:00",
+      "memo": "홈그라운드 8시 출발",
+      "resultTime": "01:42:11",
+      "resultNote": "18K부터 여지없이 퍼졌다 장거리 지속주 필요",
+      "certificateDataUrl": "",
+      "updatedAt": "2026-03-10T02:12:34.014Z"
+    },
+    {
+      "entryId": "018b22d3-d281-4e61-aa7a-419256090038",
+      "raceId": "41238",
+      "name": "제26회 인천국제하프마라톤",
+      "dateIso": "2026-03-22",
+      "dateDisplay": "2026년3월22일",
+      "place": "인천문학경기장",
+      "distances": "하프,10km,5km",
+      "status": "registered",
+      "goalTime": "01:45:00",
+      "goalPace": "5:00",
+      "memo": "8시 30분 출발",
+      "resultTime": "",
+      "resultNote": "",
+      "certificateDataUrl": "",
+      "updatedAt": "2026-03-10T01:50:50.227Z"
+    },
+    {
+      "entryId": "f64f1587-2f9c-4a56-8369-5bd767f1a005",
+      "raceId": "41374",
+      "name": "2026 THE RACE SEOUL 21K",
+      "dateIso": "2026-04-05",
+      "dateDisplay": "2026년4월5일",
+      "place": "광화문광장(예정)",
+      "distances": "하프,10km",
+      "status": "registered",
+      "goalTime": "01:39:59",
+      "goalPace": "4:44",
+      "memo": "7시 30분 출발\n가보자 올림픽공원 코스\n",
+      "resultTime": "",
+      "resultNote": "",
+      "certificateDataUrl": "",
+      "updatedAt": "2026-03-10T01:53:31.635Z"
+    }
+  ]
+}
