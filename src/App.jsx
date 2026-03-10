@@ -196,6 +196,7 @@ export default function App() {
   const regions = useMemo(() => [...new Set(racesData.races.map((r) => r.region).filter(Boolean))].sort(), [racesData.races]);
   const months = useMemo(() => [...new Set(racesData.races.map((r) => monthKeyOf(r.date_iso)).filter(Boolean))].sort(), [racesData.races]);
   const raceIdSet = useMemo(() => new Set(racesData.races.map((r) => r.id).filter(Boolean)), [racesData.races]);
+  const raceById = useMemo(() => new Map(racesData.races.map((r) => [r.id, r])), [racesData.races]);
 
   const browseRaces = useMemo(() => {
     return racesData.races
@@ -390,6 +391,7 @@ export default function App() {
     <section className="mt-3 grid grid-cols-1 gap-3">
       {myEntries.map((entry) => {
         const missingFromSource = entry.raceId && !raceIdSet.has(entry.raceId);
+        const fallbackHomepage = entry.homepage || (entry.raceId ? raceById.get(entry.raceId)?.homepage || "" : "");
         return (
         <article key={entry.entryId} className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
           <div className="flex items-start justify-between gap-2">
@@ -408,7 +410,7 @@ export default function App() {
           </div>
           <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300"><span>{TEXT.memo}</span><textarea className="min-h-[72px] rounded-lg border border-zinc-700 bg-zinc-900 p-2" value={entry.memo} onChange={(e) => updateEntry(entry.entryId, { memo: e.target.value })} placeholder={TEXT.memoPlaceholder} /></label>
           <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300"><span>{TEXT.resultNote}</span><textarea className="min-h-[64px] rounded-lg border border-zinc-700 bg-zinc-900 p-2" value={entry.resultNote} onChange={(e) => updateEntry(entry.entryId, { resultNote: e.target.value })} placeholder={TEXT.resultPlaceholder} /></label>
-          <div className="mt-2 flex items-center gap-2 text-[13px] text-zinc-300">{entry.homepage && <a className="h-8 rounded-lg border border-zinc-700 px-3 text-sm font-semibold text-zinc-100 inline-flex items-center" href={entry.homepage} target="_blank" rel="noreferrer">{TEXT.homepage}</a>}</div>
+          <div className="mt-2 flex items-center gap-2 text-[13px] text-zinc-300">{fallbackHomepage && <a className="h-8 rounded-lg border border-zinc-700 px-3 text-sm font-semibold text-zinc-100 inline-flex items-center" href={fallbackHomepage} target="_blank" rel="noreferrer">{TEXT.homepage}</a>}</div>
           <div className="mt-2 text-[13px] text-zinc-300"><p>{TEXT.cert}</p><input className="mt-1 block w-full text-sm text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-zinc-700 file:px-2 file:py-1 file:text-zinc-100" type="file" accept="image/*" onChange={(e) => onCertificateChange(entry.entryId, e.target.files?.[0])} />{entry.certificateDataUrl && <img alt="certificate" src={entry.certificateDataUrl} className="mt-2 max-h-40 w-full rounded-lg border border-zinc-700 object-contain bg-zinc-950" />}</div>
         </article>
       );})}
