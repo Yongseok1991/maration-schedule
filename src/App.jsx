@@ -139,6 +139,7 @@ const makeEntry = (race) => ({
   dateDisplay: race.date_display || "",
   place: race.place || "",
   distances: race.distances || "",
+  homepage: race.homepage || "",
   status: "registered",
   goalTime: "",
   goalPace: "",
@@ -217,7 +218,7 @@ export default function App() {
   }, [racesData.races, openOnly, query, region, month]);
 
   const myEntries = useMemo(() => {
-    return entries
+    return [...entries]
       .sort((a, b) => {
         const ad = toDate(a.dateIso);
         const bd = toDate(b.dateIso);
@@ -357,16 +358,27 @@ export default function App() {
               <p className="text-xs font-semibold text-amber-300">{race.date_display || formatDate(race.date_iso)}</p>
               {race.status && <span className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${statusBadgeClass(race.status)}`}>{STATUS_LABEL[race.status] || race.status}</span>}
             </div>
-            <h2 className="mt-1 text-[16px] font-bold leading-snug text-zinc-100">{race.name}</h2>
+            <div className="mt-1 flex items-center justify-between gap-2">
+              <h2 className="text-[16px] font-bold leading-snug text-zinc-100">{race.name}</h2>
+              <button
+                className="h-7 w-7 rounded-md border border-amber-300/40 bg-amber-400/15 text-base font-bold leading-none text-amber-200 disabled:cursor-not-allowed disabled:opacity-45"
+                onClick={() => addRaceToMyEntries(race)}
+                disabled={alreadyAdded}
+                aria-label={alreadyAdded ? TEXT.added : TEXT.add}
+                title={alreadyAdded ? TEXT.added : TEXT.add}
+              >
+                {alreadyAdded ? "v" : "+"}
+              </button>
+            </div>
             <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-[13px] text-zinc-300">
               <p className="truncate">{TEXT.dist}: {race.distances || "-"}</p>
               <p className="truncate">{TEXT.place}: {race.place || "-"}</p>
               <p className="col-span-2">{TEXT.reg}: {formatRegPeriod(race.registration_period)}</p>
               <p className="truncate">{TEXT.org}: {race.organizer || "-"}</p>
             </div>
-            <button className="mt-2 h-9 rounded-lg border border-amber-300/35 bg-amber-400/15 px-3 text-sm font-semibold text-amber-200 disabled:cursor-not-allowed disabled:opacity-50" onClick={() => addRaceToMyEntries(race)} disabled={alreadyAdded}>
-              {alreadyAdded ? TEXT.added : TEXT.add}
-            </button>
+            <div className="mt-2 flex items-center gap-2">
+              {race.homepage && <a className="h-9 rounded-lg border border-zinc-700 px-3 text-sm font-semibold text-zinc-100 inline-flex items-center" href={race.homepage} target="_blank" rel="noreferrer">{TEXT.homepage}</a>}
+            </div>
           </article>
         );
       })}
@@ -396,6 +408,7 @@ export default function App() {
           </div>
           <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300"><span>{TEXT.memo}</span><textarea className="min-h-[72px] rounded-lg border border-zinc-700 bg-zinc-900 p-2" value={entry.memo} onChange={(e) => updateEntry(entry.entryId, { memo: e.target.value })} placeholder={TEXT.memoPlaceholder} /></label>
           <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300"><span>{TEXT.resultNote}</span><textarea className="min-h-[64px] rounded-lg border border-zinc-700 bg-zinc-900 p-2" value={entry.resultNote} onChange={(e) => updateEntry(entry.entryId, { resultNote: e.target.value })} placeholder={TEXT.resultPlaceholder} /></label>
+          <div className="mt-2 flex items-center gap-2 text-[13px] text-zinc-300">{entry.homepage && <a className="h-8 rounded-lg border border-zinc-700 px-3 text-sm font-semibold text-zinc-100 inline-flex items-center" href={entry.homepage} target="_blank" rel="noreferrer">{TEXT.homepage}</a>}</div>
           <div className="mt-2 text-[13px] text-zinc-300"><p>{TEXT.cert}</p><input className="mt-1 block w-full text-sm text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-zinc-700 file:px-2 file:py-1 file:text-zinc-100" type="file" accept="image/*" onChange={(e) => onCertificateChange(entry.entryId, e.target.files?.[0])} />{entry.certificateDataUrl && <img alt="certificate" src={entry.certificateDataUrl} className="mt-2 max-h-40 w-full rounded-lg border border-zinc-700 object-contain bg-zinc-950" />}</div>
         </article>
       );})}
