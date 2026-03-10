@@ -42,3 +42,10 @@ body {
   background: rgba(245, 158, 11, 0.13);
   color: #fde68a;
 }
+
+
+/* Improve contrast in dark UI for mobile readability */
+.text-zinc-300 { color: #f4f4f5 !important; }
+.text-zinc-400 { color: #e4e4e7 !important; }
+input::placeholder,
+textarea::placeholder { color: #a1a1aa; opacity: 1; }
