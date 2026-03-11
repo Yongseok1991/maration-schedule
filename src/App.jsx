@@ -470,7 +470,7 @@ export default function App() {
             <input className="mt-1 block w-full text-sm text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-zinc-700 file:px-2 file:py-1 file:text-zinc-100" type="file" accept="image/*" multiple onChange={(e) => onRacePhotosChange(entry.entryId, e.target.files)} />
             {(entry.racePhotoDataUrls || []).length > 0 && <div className="mt-2 grid grid-cols-3 gap-2">{(entry.racePhotoDataUrls || []).map((photo, idx) => <div key={idx} className="relative"><img alt="race-photo" src={photo} className="h-28 w-full cursor-zoom-in rounded-lg border border-zinc-700 object-contain bg-zinc-950 p-1" onClick={() => setPhotoViewer(photo)} /><button type="button" className="absolute right-1 top-1 rounded-md border border-black/40 bg-black/60 px-1.5 py-0.5 text-[10px] font-semibold text-white" onClick={() => removeRacePhoto(entry.entryId, idx)}>{TEXT.removePhoto}</button></div>)}</div>}
           </div>
-          <div className="mt-2 text-[13px] text-zinc-300"><p>{TEXT.cert}</p><input className="mt-1 block w-full text-sm text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-zinc-700 file:px-2 file:py-1 file:text-zinc-100" type="file" accept="image/*" onChange={(e) => onCertificateChange(entry.entryId, e.target.files?.[0])} />{entry.certificateDataUrl && <img alt="certificate" src={entry.certificateDataUrl} className="mt-2 max-h-40 w-full rounded-lg border border-zinc-700 object-contain bg-zinc-950" />}</div>
+          <div className="mt-2 text-[13px] text-zinc-300"><p>{TEXT.cert}</p><input className="mt-1 block w-full text-sm text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-zinc-700 file:px-2 file:py-1 file:text-zinc-100" type="file" accept="image/*" onChange={(e) => onCertificateChange(entry.entryId, e.target.files?.[0])} />{entry.certificateDataUrl && <img alt="certificate" src={entry.certificateDataUrl} className="mt-2 max-h-40 w-full cursor-zoom-in rounded-lg border border-zinc-700 object-contain bg-zinc-950" onClick={() => setPhotoViewer(entry.certificateDataUrl)} />}</div>
         </article>
       );})}
       {myEntries.length === 0 && <p className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-4 text-center text-sm text-zinc-400">{TEXT.noEntries}</p>}
@@ -575,14 +575,14 @@ export default function App() {
               alt="race-photo-full"
               src={photoViewer}
               className="max-h-[86vh] max-w-[94vw] rounded-xl border border-zinc-700 bg-zinc-950 object-contain"
-              onClick={(e) => e.stopPropagation()}
+              onClick={() => setPhotoViewer("")}
             />
             <button
               type="button"
               className="absolute right-5 top-5 rounded-md border border-zinc-500 bg-zinc-900/90 px-3 py-1.5 text-sm font-semibold text-white"
               onClick={() => setPhotoViewer("")}
             >
-              ??
+              X
             </button>
           </div>
         </div>
