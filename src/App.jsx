@@ -123,6 +123,27 @@ const dataUrlBytes = (dataUrl) => {
   return Math.ceil((b64.length * 3) / 4);
 };
 
+const isHeicFile = (file) => {
+  const t = String(file?.type || "").toLowerCase();
+  const n = String(file?.name || "").toLowerCase();
+  return t === "image/heic" || t === "image/heif" || n.endsWith(".heic") || n.endsWith(".heif");
+};
+
+const isSupportedImageFile = (file) => {
+  if (!file) return false;
+  const t = String(file.type || "").toLowerCase();
+  return t.startsWith("image/") || isHeicFile(file);
+};
+
+let heicModulePromise;
+const convertHeicToJpegBlob = async (file) => {
+  if (!heicModulePromise) heicModulePromise = import("heic2any");
+  const mod = await heicModulePromise;
+  const heic2anyFn = mod?.default || mod;
+  const converted = await heic2anyFn({ blob: file, toType: "image/jpeg", quality: 0.92 });
+  return Array.isArray(converted) ? converted[0] : converted;
+};
+
 const readFileAsDataUrl = (file) =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -140,13 +161,26 @@ const loadImageElement = (src) =>
   });
 
 const optimizeImageFile = async (file, { maxSide = 1800, maxBytes = 900 * 1024 } = {}) => {
-  if (!file.type.startsWith("image/")) throw new Error("not-image");
-  if (file.type === "image/gif" || file.type === "image/svg+xml") return readFileAsDataUrl(file);
+  if (!isSupportedImageFile(file)) throw new Error("not-image");
 
-  const objectUrl = URL.createObjectURL(file);
+  let sourceBlob = file;
+  let sourceType = String(file.type || "").toLowerCase();
+
+  if (isHeicFile(file)) {
+    try {
+      sourceBlob = await convertHeicToJpegBlob(file);
+      sourceType = "image/jpeg";
+    } catch {
+      throw new Error("heic-convert-failed");
+    }
+  }
+
+  if (sourceType === "image/gif" || sourceType === "image/svg+xml") return readFileAsDataUrl(sourceBlob);
+
+  const objectUrl = URL.createObjectURL(sourceBlob);
   try {
     const img = await loadImageElement(objectUrl);
-    const mimeType = file.type === "image/png" ? "image/png" : "image/jpeg";
+    const mimeType = sourceType === "image/png" ? "image/png" : "image/jpeg";
     const minSide = 900;
     let side = maxSide;
     let quality = 0.9;
@@ -174,7 +208,7 @@ const optimizeImageFile = async (file, { maxSide = 1800, maxBytes = 900 * 1024 }
       }
     }
 
-    return best || readFileAsDataUrl(file);
+    return best || readFileAsDataUrl(sourceBlob);
   } finally {
     URL.revokeObjectURL(objectUrl);
   }
@@ -416,7 +450,7 @@ export default function App() {
 
   const onCertificateChange = async (entryId, file) => {
     if (!file) return;
-    if (!file.type.startsWith("image/")) {
+    if (!isSupportedImageFile(file)) {
       setSyncState({ kind: "error", message: TEXT.certOnlyImage });
       return;
     }
@@ -443,7 +477,7 @@ export default function App() {
     if (!files.length) return;
 
     for (const file of files) {
-      if (!file.type.startsWith("image/")) {
+      if (!isSupportedImageFile(file)) {
         setSyncState({ kind: "error", message: TEXT.photoOnlyImage });
         return;
       }
@@ -774,5 +808,6 @@ export default function App() {
     </main>
   );
 }
+
 
 
