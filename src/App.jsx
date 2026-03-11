@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+﻿import { useEffect, useMemo, useRef, useState } from "react";
 
 const TEXT = {
   tabs: {
@@ -40,6 +40,10 @@ const TEXT = {
   racePhotosTip: "\uac24\ub7ec\ub9ac\ub85c \ubcf4\uace0 \uc2f6\uc740 \ub300\ud68c \uc0ac\uc9c4\uc744 \ucd94\uac00\ud558\uc138\uc694.",
   photoOnlyImage: "\ub300\ud68c \uc0ac\uc9c4\uc740 \uc774\ubbf8\uc9c0 \ud30c\uc77c\ub9cc \uc5c5\ub85c\ub4dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
   photoMaxSize: "\ub300\ud68c \uc0ac\uc9c4 \ud30c\uc77c\uc740 \ucd5c\ub300 4MB\uae4c\uc9c0 \ud5c8\uc6a9\ub429\ub2c8\ub2e4.",
+  photoTooLargeAfterCompress: "\ub300\ud68c \uc0ac\uc9c4 \uc6a9\ub7c9\uc774 \ud06c\uc11c \uc800\uc7a5\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ub2e4\ub978 \uc0ac\uc9c4\uc744 \uc120\ud0dd\ud574\uc8fc\uc138\uc694.",
+  certTooLargeAfterCompress: "\uae30\ub85d\uc99d \uc6a9\ub7c9\uc774 \ud06c\uc11c \uc800\uc7a5\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ub2e4\ub978 \uc774\ubbf8\uc9c0\ub97c \uc120\ud0dd\ud574\uc8fc\uc138\uc694.",
+  imageProcessFailed: "\uc774\ubbf8\uc9c0 \ucc98\ub9ac \uc911 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4. \ub2e4\uc2dc \uc2dc\ub3c4\ud574\uc8fc\uc138\uc694.",
+  storageFull: "\uc800\uc7a5 \uacf5\uac04\uc774 \ubd80\uc871\ud569\ub2c8\ub2e4. \uc77c\ubd80 \uc0ac\uc9c4\uc744 \uc0ad\uc81c\ud55c \ub4a4 \ub2e4\uc2dc \uc2dc\ub3c4\ud574\uc8fc\uc138\uc694.",
   removePhoto: "\uc0ad\uc81c",
   homepage: "\ud648\ud398\uc774\uc9c0",
   prev: "\uc774\uc804",
@@ -104,7 +108,76 @@ const readJSON = (key, fallback) => {
   }
 };
 
-const writeJSON = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+const writeJSON = (key, value) => {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const dataUrlBytes = (dataUrl) => {
+  const b64 = String(dataUrl || "").split(",")[1] || "";
+  return Math.ceil((b64.length * 3) / 4);
+};
+
+const readFileAsDataUrl = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("read-failed"));
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.readAsDataURL(file);
+  });
+
+const loadImageElement = (src) =>
+  new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error("image-load-failed"));
+    img.src = src;
+  });
+
+const optimizeImageFile = async (file, { maxSide = 1800, maxBytes = 900 * 1024 } = {}) => {
+  if (!file.type.startsWith("image/")) throw new Error("not-image");
+  if (file.type === "image/gif" || file.type === "image/svg+xml") return readFileAsDataUrl(file);
+
+  const objectUrl = URL.createObjectURL(file);
+  try {
+    const img = await loadImageElement(objectUrl);
+    const mimeType = file.type === "image/png" ? "image/png" : "image/jpeg";
+    const minSide = 900;
+    let side = maxSide;
+    let quality = 0.9;
+    let best = "";
+
+    for (let i = 0; i < 7; i += 1) {
+      const scale = Math.min(1, side / Math.max(img.naturalWidth || 1, img.naturalHeight || 1));
+      const width = Math.max(1, Math.round((img.naturalWidth || 1) * scale));
+      const height = Math.max(1, Math.round((img.naturalHeight || 1) * scale));
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("canvas-context-failed");
+      ctx.drawImage(img, 0, 0, width, height);
+      const out = canvas.toDataURL(mimeType, quality);
+      best = out;
+      if (dataUrlBytes(out) <= maxBytes) return out;
+      if (quality > 0.55) {
+        quality -= 0.1;
+      } else if (side > minSide) {
+        side = Math.max(minSide, Math.floor(side * 0.85));
+      } else {
+        break;
+      }
+    }
+
+    return best || readFileAsDataUrl(file);
+  } finally {
+    URL.revokeObjectURL(objectUrl);
+  }
+};
 
 const toDate = (dateIso) => {
   if (!dateIso) return null;
@@ -197,7 +270,11 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    writeJSON(STORAGE_KEYS.entries, entries);
+    const saved = writeJSON(STORAGE_KEYS.entries, entries);
+    if (!saved) {
+      setSyncState((prev) => (prev.kind === "error" && prev.message === TEXT.storageFull ? prev : { kind: "error", message: TEXT.storageFull }));
+      return;
+    }
     if (firstRef.current) {
       firstRef.current = false;
       return;
@@ -211,7 +288,10 @@ export default function App() {
   }, [entries, syncConfig.autoSync, syncConfig.owner, syncConfig.repo, syncConfig.token, syncConfig.branch, syncConfig.path]);
 
   useEffect(() => {
-    writeJSON(STORAGE_KEYS.syncConfig, syncConfig);
+    const saved = writeJSON(STORAGE_KEYS.syncConfig, syncConfig);
+    if (!saved) {
+      setSyncState((prev) => (prev.kind === "error" && prev.message === TEXT.storageFull ? prev : { kind: "error", message: TEXT.storageFull }));
+    }
   }, [syncConfig]);
 
   const regions = useMemo(() => [...new Set(racesData.races.map((r) => r.region).filter(Boolean))].sort(), [racesData.races]);
@@ -292,7 +372,7 @@ export default function App() {
 
   const removeEntry = (entryId) => setEntries((prev) => prev.filter((e) => e.entryId !== entryId));
 
-  const onCertificateChange = (entryId, file) => {
+  const onCertificateChange = async (entryId, file) => {
     if (!file) return;
     if (!file.type.startsWith("image/")) {
       setSyncState({ kind: "error", message: TEXT.certOnlyImage });
@@ -302,13 +382,22 @@ export default function App() {
       setSyncState({ kind: "error", message: TEXT.certMaxSize });
       return;
     }
-    const reader = new FileReader();
-    reader.onload = () => updateEntry(entryId, { certificateDataUrl: String(reader.result || "") });
-    reader.readAsDataURL(file);
+    try {
+      const optimized = await optimizeImageFile(file, { maxSide: 2200, maxBytes: 1400 * 1024 });
+      if (dataUrlBytes(optimized) > 1400 * 1024) {
+        setSyncState({ kind: "error", message: TEXT.certTooLargeAfterCompress });
+        return;
+      }
+      updateEntry(entryId, { certificateDataUrl: optimized });
+    } catch {
+      setSyncState({ kind: "error", message: TEXT.imageProcessFailed });
+    }
   };
 
-  const onRacePhotosChange = (entryId, fileList) => {
-    const files = Array.from(fileList || []).slice(0, 6);
+  const onRacePhotosChange = async (entryId, fileList) => {
+    const currentCount = entries.find((e) => e.entryId === entryId)?.racePhotoDataUrls?.length || 0;
+    const available = Math.max(0, 6 - currentCount);
+    const files = Array.from(fileList || []).slice(0, available);
     if (!files.length) return;
 
     for (const file of files) {
@@ -322,16 +411,13 @@ export default function App() {
       }
     }
 
-    Promise.all(
-      files.map(
-        (file) =>
-          new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(String(reader.result || ""));
-            reader.readAsDataURL(file);
-          })
-      )
-    ).then((urls) => {
+    try {
+      const urls = await Promise.all(files.map((file) => optimizeImageFile(file, { maxSide: 1800, maxBytes: 900 * 1024 })));
+      const tooLarge = urls.some((u) => dataUrlBytes(u) > 900 * 1024);
+      if (tooLarge) {
+        setSyncState({ kind: "error", message: TEXT.photoTooLargeAfterCompress });
+        return;
+      }
       setEntries((prev) =>
         prev.map((e) => {
           if (e.entryId !== entryId) return e;
@@ -339,7 +425,9 @@ export default function App() {
           return { ...e, racePhotoDataUrls: nextPhotos, updatedAt: new Date().toISOString() };
         })
       );
-    });
+    } catch {
+      setSyncState({ kind: "error", message: TEXT.imageProcessFailed });
+    }
   };
 
   const removeRacePhoto = (entryId, index) => {
@@ -595,7 +683,7 @@ export default function App() {
                     className={month === todayMonth ? "h-9 rounded-lg border border-emerald-300 bg-emerald-400/15 px-3 text-sm font-semibold text-emerald-200" : "h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-3 text-sm font-semibold text-zinc-200"}
                     onClick={() => setMonth(todayMonth)}
                   >
-                    ??
+                    {"\uc624\ub298"}
                   </button>
                   {monthOptions.map((m) => (
                     <button
@@ -644,3 +732,5 @@ export default function App() {
     </main>
   );
 }
+
+
