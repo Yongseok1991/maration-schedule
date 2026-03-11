@@ -1,4 +1,5 @@
 ﻿import { useEffect, useMemo, useRef, useState } from "react";
+import { getEntriesFromDb, saveEntriesToDb } from "./lib/entriesDb";
 
 const TEXT = {
   tabs: {
@@ -86,7 +87,7 @@ const STATUS_LABEL = {
 };
 
 const STORAGE_KEYS = {
-  entries: "maraton.my_entries.v1",
+  legacyEntries: "maraton.my_entries.v1",
   syncConfig: "maraton.sync_config.v1"
 };
 
@@ -246,7 +247,8 @@ const formatMonthLabel = (m) => (m || "").replace("-", ".");
 export default function App() {
   const [tab, setTab] = useState("browse");
   const [racesData, setRacesData] = useState({ updatedAt: null, races: [] });
-  const [entries, setEntries] = useState(() => readJSON(STORAGE_KEYS.entries, []));
+  const [entries, setEntries] = useState([]);
+  const [entriesReady, setEntriesReady] = useState(false);
   const [syncConfig, setSyncConfig] = useState(() => ({ ...DEFAULT_SYNC, ...readJSON(STORAGE_KEYS.syncConfig, {}) }));
   const [query, setQuery] = useState("");
   const [region, setRegion] = useState("all");
@@ -258,6 +260,7 @@ export default function App() {
   const [photoViewer, setPhotoViewer] = useState("");
 
   const syncTimerRef = useRef(null);
+  const saveTimerRef = useRef(null);
   const firstRef = useRef(true);
   const monthScrollerRef = useRef(null);
   const monthChipRefs = useRef({});
@@ -270,11 +273,50 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const saved = writeJSON(STORAGE_KEYS.entries, entries);
-    if (!saved) {
-      setSyncState((prev) => (prev.kind === "error" && prev.message === TEXT.storageFull ? prev : { kind: "error", message: TEXT.storageFull }));
-      return;
-    }
+    let mounted = true;
+    const loadEntries = async () => {
+      try {
+        const fromDb = await getEntriesFromDb();
+        if (mounted && Array.isArray(fromDb) && fromDb.length > 0) {
+          setEntries(fromDb);
+          return;
+        }
+        const legacy = readJSON(STORAGE_KEYS.legacyEntries, []);
+        if (mounted && Array.isArray(legacy) && legacy.length > 0) {
+          setEntries(legacy);
+          try {
+            await saveEntriesToDb(legacy);
+            localStorage.removeItem(STORAGE_KEYS.legacyEntries);
+          } catch {
+            // Ignore migration failure and keep in-memory data.
+          }
+        }
+      } catch {
+        const legacy = readJSON(STORAGE_KEYS.legacyEntries, []);
+        if (mounted && Array.isArray(legacy)) setEntries(legacy);
+      } finally {
+        if (mounted) setEntriesReady(true);
+      }
+    };
+    loadEntries();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!entriesReady) return;
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => {
+      saveEntriesToDb(entries).catch(() => {
+        setSyncState((prev) => (prev.kind === "error" && prev.message === TEXT.storageFull ? prev : { kind: "error", message: TEXT.storageFull }));
+      });
+    }, 350);
+    return () => saveTimerRef.current && clearTimeout(saveTimerRef.current);
+  }, [entries, entriesReady]);
+
+  useEffect(() => {
+    if (!entriesReady) return;
     if (firstRef.current) {
       firstRef.current = false;
       return;
@@ -285,7 +327,7 @@ export default function App() {
       pushToGitHub().catch((err) => setSyncState({ kind: "error", message: String(err?.message || err) }));
     }, 900);
     return () => syncTimerRef.current && clearTimeout(syncTimerRef.current);
-  }, [entries, syncConfig.autoSync, syncConfig.owner, syncConfig.repo, syncConfig.token, syncConfig.branch, syncConfig.path]);
+  }, [entries, entriesReady, syncConfig.autoSync, syncConfig.owner, syncConfig.repo, syncConfig.token, syncConfig.branch, syncConfig.path]);
 
   useEffect(() => {
     const saved = writeJSON(STORAGE_KEYS.syncConfig, syncConfig);
