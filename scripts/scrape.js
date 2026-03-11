@@ -1,4 +1,4 @@
-import fs from "node:fs/promises";
+﻿import fs from "node:fs/promises";
 import path from "node:path";
 import axios from "axios";
 import iconv from "iconv-lite";
@@ -8,6 +8,8 @@ const LIST_URL = "http://www.roadrun.co.kr/schedule/list.php";
 const BASE_URL = "http://www.roadrun.co.kr/schedule/";
 const OUT_FILE = path.resolve("public/data/races.json");
 const MAX_DETAILS = Number.parseInt(process.env.MAX_DETAILS || "0", 10);
+const ONE_TIME_YEAR = (process.env.ONE_TIME_YEAR || "").trim();
+const ONE_TIME_MONTH = (process.env.ONE_TIME_MONTH || "").trim();
 
 const clean = (v = "") =>
   v
@@ -28,8 +30,17 @@ const parseIsoDate = (text) => {
   return `${y}-${mo}-${d}`;
 };
 
-const parseDateFromMonthDay = (mmdd) => {
-  const m = mmdd.match(/(\d{1,2})\/(\d{1,2})/);
+const parseDateFromMonthDay = (text) => {
+  const s = clean(text).replace(/\s+/g, "");
+  const withYear = s.match(/^(20\d{2})(\d{1,2})\/(\d{1,2})/);
+  if (withYear) {
+    const year = withYear[1];
+    const month = withYear[2].padStart(2, "0");
+    const day = withYear[3].padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  const m = s.match(/(\d{1,2})\/(\d{1,2})/);
   if (!m) return null;
   const year = new Date().getFullYear();
   const month = m[1].padStart(2, "0");
@@ -80,7 +91,7 @@ const parseListRows = (html) => {
     if (cells.length < 4) return;
 
     const dateDisplay = cells[0].replace(/\s+/g, "");
-    if (!/^\d{1,2}\/\d{1,2}\([^)]+\)$/.test(dateDisplay)) return;
+    if (!/^(?:20\d{2})?\d{1,2}\/\d{1,2}\([^)]+\)$/.test(dateDisplay)) return;
 
     const id = idMatch[1];
     const status = parseStatusFromCell($, tds[0]);
@@ -123,8 +134,8 @@ const parseDetail = (html) => {
     "\ud648\ud398\uc774\uc9c0"
   ]);
 
-  const normalizeLabel = (s) =>
-    clean(s)
+  const normalizeLabel = (text) =>
+    clean(text)
       .replace(/[:\uFF1A]/g, "")
       .replace(/\s+/g, "");
 
@@ -158,21 +169,95 @@ const parseDetail = (html) => {
   };
 };
 
+const defaultHeaders = {
+  "User-Agent": "Mozilla/5.0 (compatible; MaratonBot/1.0)",
+  Referer: LIST_URL
+};
+
 const fetchEucKr = async (url) => {
   const res = await axios.get(url, {
     responseType: "arraybuffer",
     timeout: 30000,
+    headers: defaultHeaders
+  });
+  return decodeEucKr(res.data);
+};
+
+const fetchPostEucKr = async (url, form = {}) => {
+  const res = await axios.post(url, new URLSearchParams(form).toString(), {
+    responseType: "arraybuffer",
+    timeout: 30000,
     headers: {
-      "User-Agent": "Mozilla/5.0 (compatible; MaratonBot/1.0)",
-      Referer: LIST_URL
+      ...defaultHeaders,
+      "Content-Type": "application/x-www-form-urlencoded"
     }
   });
   return decodeEucKr(res.data);
 };
 
+const readExistingRaces = async () => {
+  try {
+    const raw = await fs.readFile(OUT_FILE, "utf8");
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed?.races) ? parsed.races : [];
+  } catch {
+    return [];
+  }
+};
+
+const raceKey = (race = {}) => {
+  if (race.id) return `id:${race.id}`;
+  if (race.detail_url) return `url:${race.detail_url}`;
+  return `name:${race.name || ""}|date:${race.date_iso || race.date_display || ""}`;
+};
+
+const dateForFilter = (race = {}) => race.date_iso || parseIsoDate(race.date_display || "") || null;
+
+const keepRace = (race = {}) => {
+  const iso = dateForFilter(race);
+  if (!iso) return true;
+  if (!iso.startsWith("2025-")) return true;
+  const month = Number.parseInt(iso.slice(5, 7), 10);
+  return Number.isFinite(month) && month >= 9;
+};
+
+const sortByDateIso = (a, b) => {
+  const ad = a?.date_iso || "";
+  const bd = b?.date_iso || "";
+  if (!ad && !bd) return 0;
+  if (!ad) return 1;
+  if (!bd) return -1;
+  return ad.localeCompare(bd);
+};
+
 const run = async () => {
-  const listHtml = await fetchEucKr(LIST_URL);
-  const allRows = parseListRows(listHtml);
+  const listSources = [{ type: "default", url: LIST_URL }];
+
+  if (ONE_TIME_YEAR) {
+    listSources.push({
+      type: "one-time-year",
+      url: LIST_URL,
+      form: {
+        course1_key: "",
+        syoil_key: "",
+        take_key: "",
+        area_key: "",
+        syear_key: ONE_TIME_YEAR,
+        smonth_key: ONE_TIME_MONTH,
+        search_f: "",
+        search_k: ""
+      }
+    });
+  }
+
+  const rowMap = new Map();
+  for (const source of listSources) {
+    const listHtml = source.form ? await fetchPostEucKr(source.url, source.form) : await fetchEucKr(source.url);
+    const rows = parseListRows(listHtml);
+    for (const row of rows) rowMap.set(row.id, row);
+  }
+
+  const allRows = [...rowMap.values()];
   const listRows = Number.isFinite(MAX_DETAILS) && MAX_DETAILS > 0 ? allRows.slice(0, MAX_DETAILS) : allRows;
 
   const races = [];
@@ -215,16 +300,27 @@ const run = async () => {
     }
   }
 
+  const existingRaces = await readExistingRaces();
+  const mergedMap = new Map();
+  for (const race of existingRaces) mergedMap.set(raceKey(race), race);
+  for (const race of races) mergedMap.set(raceKey(race), race);
+  const mergedRaces = [...mergedMap.values()].filter(keepRace).sort(sortByDateIso);
+
+  if (ONE_TIME_YEAR) {
+    const monthLabel = ONE_TIME_MONTH ? `${ONE_TIME_MONTH}월` : "전체월";
+    console.log(`One-time year source used: ${ONE_TIME_YEAR}년 (${monthLabel})`);
+  }
+
   const payload = {
     updatedAt: new Date().toISOString(),
-    source: LIST_URL,
-    count: races.length,
-    races
+    source: listSources.map((s) => (s.form ? `${s.url}#year=${s.form.syear_key}&month=${s.form.smonth_key || "all"}` : s.url)).join(","),
+    count: mergedRaces.length,
+    races: mergedRaces
   };
 
   await fs.mkdir(path.dirname(OUT_FILE), { recursive: true });
   await fs.writeFile(OUT_FILE, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
-  console.log(`Saved ${races.length} races to ${OUT_FILE}`);
+  console.log(`Saved ${mergedRaces.length} merged races to ${OUT_FILE}`);
 };
 
 run().catch((error) => {

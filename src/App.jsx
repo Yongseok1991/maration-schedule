@@ -157,6 +157,17 @@ const makeEntry = (race) => ({
 });
 
 const monthKeyOf = (dateIso) => (dateIso ? dateIso.slice(0, 7) : "");
+const MIN_FILTER_MONTH = "2025-09";
+const currentMonthKey = () => new Date().toISOString().slice(0, 7);
+const clampMonthFromMin = (monthKey) => {
+  const normalized = /^\d{4}-\d{2}$/.test(monthKey || "") ? monthKey : currentMonthKey();
+  return normalized < MIN_FILTER_MONTH ? MIN_FILTER_MONTH : normalized;
+};
+const shiftMonth = (monthKey, delta) => {
+  const [y, m] = String(monthKey || currentMonthKey()).split("-").map(Number);
+  const d = new Date(y, (m || 1) - 1 + delta, 1);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+};
 
 export default function App() {
   const [tab, setTab] = useState("browse");
@@ -165,9 +176,9 @@ export default function App() {
   const [syncConfig, setSyncConfig] = useState(() => ({ ...DEFAULT_SYNC, ...readJSON(STORAGE_KEYS.syncConfig, {}) }));
   const [query, setQuery] = useState("");
   const [region, setRegion] = useState("all");
-  const [month, setMonth] = useState("all");
+  const [month, setMonth] = useState(() => clampMonthFromMin(currentMonthKey()));
   const [openOnly, setOpenOnly] = useState(false);
-  const [calendarMonth, setCalendarMonth] = useState(() => new Date().toISOString().slice(0, 7));
+  const [calendarMonth, setCalendarMonth] = useState(() => clampMonthFromMin(currentMonthKey()));
   const [selectedDate, setSelectedDate] = useState("");
   const [syncState, setSyncState] = useState({ kind: "idle", message: "" });
   const [photoViewer, setPhotoViewer] = useState("");
@@ -201,7 +212,8 @@ export default function App() {
   }, [syncConfig]);
 
   const regions = useMemo(() => [...new Set(racesData.races.map((r) => r.region).filter(Boolean))].sort(), [racesData.races]);
-  const months = useMemo(() => [...new Set(racesData.races.map((r) => monthKeyOf(r.date_iso)).filter(Boolean))].sort(), [racesData.races]);
+  const months = useMemo(() => [...new Set(racesData.races.map((r) => monthKeyOf(r.date_iso)).filter((m) => m && m >= MIN_FILTER_MONTH))].sort(), [racesData.races]);
+  const monthOptions = useMemo(() => (months.includes(month) ? months : [...new Set([month, ...months])].sort()), [months, month]);
   const raceIdSet = useMemo(() => new Set(racesData.races.map((r) => r.id).filter(Boolean)), [racesData.races]);
   const raceById = useMemo(() => new Map(racesData.races.map((r) => [r.id, r])), [racesData.races]);
 
@@ -212,7 +224,8 @@ export default function App() {
         const text = `${race.name || ""} ${race.place || ""} ${race.organizer || ""} ${race.distances || ""}`.toLowerCase();
         const hitQuery = query.trim() ? text.includes(query.trim().toLowerCase()) : true;
         const hitRegion = region === "all" ? true : race.region === region;
-        const hitMonth = month === "all" ? true : monthKeyOf(race.date_iso) === month;
+        const raceMonth = monthKeyOf(race.date_iso);
+        const hitMonth = !raceMonth ? true : raceMonth >= month;
         return hitOpen && hitQuery && hitRegion && hitMonth;
       })
       .sort((a, b) => {
@@ -479,6 +492,7 @@ export default function App() {
 
   const renderCalendar = () => {
     const [year, monthNum] = calendarMonth.split("-").map(Number);
+    const canGoPrev = calendarMonth > MIN_FILTER_MONTH;
     const first = new Date(year, monthNum - 1, 1);
     const last = new Date(year, monthNum, 0);
     const startWeekday = first.getDay();
@@ -490,10 +504,10 @@ export default function App() {
     return (
       <section className="mt-3">
         <div className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3">
-          <div className="mb-2 flex items-center justify-between">
-            <button className="rounded-md border border-zinc-700 px-2 py-1 text-sm text-zinc-200" onClick={() => { const d = new Date(year, monthNum - 2, 1); setCalendarMonth(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`); }}>{TEXT.prev}</button>
-            <p className="font-semibold text-zinc-100">{calendarMonth}</p>
-            <button className="rounded-md border border-zinc-700 px-2 py-1 text-sm text-zinc-200" onClick={() => { const d = new Date(year, monthNum, 1); setCalendarMonth(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`); }}>{TEXT.next}</button>
+          <div className="mb-2 flex items-center justify-between gap-2">
+            <button className="rounded-md border border-zinc-700 px-2 py-1 text-sm text-zinc-200 disabled:opacity-40" onClick={() => canGoPrev && setCalendarMonth(shiftMonth(calendarMonth, -1))} disabled={!canGoPrev}>{TEXT.prev}</button>
+            <input className="h-9 rounded-md border border-zinc-700 bg-zinc-900 px-2 text-sm text-zinc-100" type="month" min={MIN_FILTER_MONTH} value={calendarMonth} onChange={(e) => setCalendarMonth(clampMonthFromMin(e.target.value))} />
+            <button className="rounded-md border border-zinc-700 px-2 py-1 text-sm text-zinc-200" onClick={() => setCalendarMonth(shiftMonth(calendarMonth, 1))}>{TEXT.next}</button>
           </div>
           <div className="grid grid-cols-7 gap-1 text-center text-[11px] text-zinc-400">{["S","M","T","W","T","F","S"].map((w) => <div key={w}>{w}</div>)}</div>
           <div className="mt-1 grid grid-cols-7 gap-1">
@@ -556,7 +570,7 @@ export default function App() {
             <input className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100 outline-none transition focus:border-amber-300" placeholder={TEXT.searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} />
             <div className="grid grid-cols-2 gap-2">
               <select className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-2 text-sm text-zinc-100" value={region} onChange={(e) => setRegion(e.target.value)}><option value="all">{TEXT.allRegions}</option>{regions.map((r) => <option key={r} value={r}>{r}</option>)}</select>
-              <select className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-2 text-sm text-zinc-100" value={month} onChange={(e) => setMonth(e.target.value)}><option value="all">{TEXT.allMonths}</option>{months.map((m) => <option key={m} value={m}>{m}</option>)}</select>
+              <select className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-2 text-sm text-zinc-100" value={month} onChange={(e) => setMonth(clampMonthFromMin(e.target.value))}>{monthOptions.map((m) => <option key={m} value={m}>{m}</option>)}</select>
             </div>
             <label className="flex h-10 items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100"><input type="checkbox" checked={openOnly} onChange={(e) => setOpenOnly(e.target.checked)} />{TEXT.openOnly}</label>
           </div>
