@@ -36,6 +36,11 @@ const TEXT = {
   cert: "\uae30\ub85d\uc99d (\uc774\ubbf8\uc9c0 1\uc7a5)",
   certOnlyImage: "\uae30\ub85d\uc99d\uc740 \uc774\ubbf8\uc9c0 \ud30c\uc77c\ub9cc \uc5c5\ub85c\ub4dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
   certMaxSize: "\uae30\ub85d\uc99d \ud30c\uc77c\uc740 \ucd5c\ub300 4MB\uae4c\uc9c0 \ud5c8\uc6a9\ub429\ub2c8\ub2e4.",
+  racePhotos: "\ub300\ud68c \uc0ac\uc9c4 (\ucd5c\ub300 6\uc7a5)",
+  racePhotosTip: "\uac24\ub7ec\ub9ac\ub85c \ubcf4\uace0 \uc2f6\uc740 \ub300\ud68c \uc0ac\uc9c4\uc744 \ucd94\uac00\ud558\uc138\uc694.",
+  photoOnlyImage: "\ub300\ud68c \uc0ac\uc9c4\uc740 \uc774\ubbf8\uc9c0 \ud30c\uc77c\ub9cc \uc5c5\ub85c\ub4dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+  photoMaxSize: "\ub300\ud68c \uc0ac\uc9c4 \ud30c\uc77c\uc740 \ucd5c\ub300 4MB\uae4c\uc9c0 \ud5c8\uc6a9\ub429\ub2c8\ub2e4.",
+  removePhoto: "\uc0ad\uc81c",
   homepage: "\ud648\ud398\uc774\uc9c0",
   prev: "\uc774\uc804",
   next: "\ub2e4\uc74c",
@@ -147,6 +152,7 @@ const makeEntry = (race) => ({
   resultTime: "",
   resultNote: "",
   certificateDataUrl: "",
+  racePhotoDataUrls: [],
   updatedAt: new Date().toISOString()
 });
 
@@ -164,6 +170,7 @@ export default function App() {
   const [calendarMonth, setCalendarMonth] = useState(() => new Date().toISOString().slice(0, 7));
   const [selectedDate, setSelectedDate] = useState("");
   const [syncState, setSyncState] = useState({ kind: "idle", message: "" });
+  const [photoViewer, setPhotoViewer] = useState("");
 
   const syncTimerRef = useRef(null);
   const firstRef = useRef(true);
@@ -267,6 +274,52 @@ export default function App() {
     const reader = new FileReader();
     reader.onload = () => updateEntry(entryId, { certificateDataUrl: String(reader.result || "") });
     reader.readAsDataURL(file);
+  };
+
+  const onRacePhotosChange = (entryId, fileList) => {
+    const files = Array.from(fileList || []).slice(0, 6);
+    if (!files.length) return;
+
+    for (const file of files) {
+      if (!file.type.startsWith("image/")) {
+        setSyncState({ kind: "error", message: TEXT.photoOnlyImage });
+        return;
+      }
+      if (file.size > 4 * 1024 * 1024) {
+        setSyncState({ kind: "error", message: TEXT.photoMaxSize });
+        return;
+      }
+    }
+
+    Promise.all(
+      files.map(
+        (file) =>
+          new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(String(reader.result || ""));
+            reader.readAsDataURL(file);
+          })
+      )
+    ).then((urls) => {
+      setEntries((prev) =>
+        prev.map((e) => {
+          if (e.entryId !== entryId) return e;
+          const nextPhotos = [...(e.racePhotoDataUrls || []), ...urls].slice(0, 6);
+          return { ...e, racePhotoDataUrls: nextPhotos, updatedAt: new Date().toISOString() };
+        })
+      );
+    });
+  };
+
+  const removeRacePhoto = (entryId, index) => {
+    setEntries((prev) =>
+      prev.map((e) => {
+        if (e.entryId !== entryId) return e;
+        const nextPhotos = [...(e.racePhotoDataUrls || [])];
+        nextPhotos.splice(index, 1);
+        return { ...e, racePhotoDataUrls: nextPhotos, updatedAt: new Date().toISOString() };
+      })
+    );
   };
 
   const githubApi = async (path, options = {}) => {
@@ -411,6 +464,12 @@ export default function App() {
           <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300"><span>{TEXT.memo}</span><textarea className="min-h-[72px] rounded-lg border border-zinc-700 bg-zinc-900 p-2" value={entry.memo} onChange={(e) => updateEntry(entry.entryId, { memo: e.target.value })} placeholder={TEXT.memoPlaceholder} /></label>
           <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300"><span>{TEXT.resultNote}</span><textarea className="min-h-[64px] rounded-lg border border-zinc-700 bg-zinc-900 p-2" value={entry.resultNote} onChange={(e) => updateEntry(entry.entryId, { resultNote: e.target.value })} placeholder={TEXT.resultPlaceholder} /></label>
           <div className="mt-2 flex items-center gap-2 text-[13px] text-zinc-300">{fallbackHomepage && <a className="h-8 rounded-lg border border-zinc-700 px-3 text-sm font-semibold text-zinc-100 inline-flex items-center" href={fallbackHomepage} target="_blank" rel="noreferrer">{TEXT.homepage}</a>}</div>
+          <div className="mt-2 text-[13px] text-zinc-300">
+            <p>{TEXT.racePhotos}</p>
+            <p className="mt-1 text-xs text-zinc-400">{TEXT.racePhotosTip}</p>
+            <input className="mt-1 block w-full text-sm text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-zinc-700 file:px-2 file:py-1 file:text-zinc-100" type="file" accept="image/*" multiple onChange={(e) => onRacePhotosChange(entry.entryId, e.target.files)} />
+            {(entry.racePhotoDataUrls || []).length > 0 && <div className="mt-2 grid grid-cols-3 gap-2">{(entry.racePhotoDataUrls || []).map((photo, idx) => <div key={idx} className="relative"><img alt="race-photo" src={photo} className="h-28 w-full cursor-zoom-in rounded-lg border border-zinc-700 object-contain bg-zinc-950 p-1" onClick={() => setPhotoViewer(photo)} /><button type="button" className="absolute right-1 top-1 rounded-md border border-black/40 bg-black/60 px-1.5 py-0.5 text-[10px] font-semibold text-white" onClick={() => removeRacePhoto(entry.entryId, idx)}>{TEXT.removePhoto}</button></div>)}</div>}
+          </div>
           <div className="mt-2 text-[13px] text-zinc-300"><p>{TEXT.cert}</p><input className="mt-1 block w-full text-sm text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-zinc-700 file:px-2 file:py-1 file:text-zinc-100" type="file" accept="image/*" onChange={(e) => onCertificateChange(entry.entryId, e.target.files?.[0])} />{entry.certificateDataUrl && <img alt="certificate" src={entry.certificateDataUrl} className="mt-2 max-h-40 w-full rounded-lg border border-zinc-700 object-contain bg-zinc-950" />}</div>
         </article>
       );})}
@@ -508,6 +567,26 @@ export default function App() {
       {tab === "mine" && renderMine()}
       {tab === "calendar" && renderCalendar()}
       {tab === "sync" && renderSync()}
+
+      {photoViewer && (
+        <div className="fixed inset-0 z-50 bg-black/75 p-4" onClick={() => setPhotoViewer("")}>
+          <div className="mx-auto flex h-full w-full max-w-4xl items-center justify-center">
+            <img
+              alt="race-photo-full"
+              src={photoViewer}
+              className="max-h-[86vh] max-w-[94vw] rounded-xl border border-zinc-700 bg-zinc-950 object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button
+              type="button"
+              className="absolute right-5 top-5 rounded-md border border-zinc-500 bg-zinc-900/90 px-3 py-1.5 text-sm font-semibold text-white"
+              onClick={() => setPhotoViewer("")}
+            >
+              ??
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
