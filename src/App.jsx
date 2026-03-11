@@ -186,6 +186,8 @@ export default function App() {
 
   const syncTimerRef = useRef(null);
   const firstRef = useRef(true);
+  const monthScrollerRef = useRef(null);
+  const monthChipRefs = useRef({});
 
   useEffect(() => {
     fetch("./data/races.json")
@@ -215,6 +217,7 @@ export default function App() {
   const regions = useMemo(() => [...new Set(racesData.races.map((r) => r.region).filter(Boolean))].sort(), [racesData.races]);
   const months = useMemo(() => [...new Set(racesData.races.map((r) => monthKeyOf(r.date_iso)).filter((m) => m && m >= MIN_FILTER_MONTH))].sort(), [racesData.races]);
   const monthOptions = useMemo(() => (months.includes(month) ? months : [...new Set([month, ...months])].sort()), [months, month]);
+  const todayMonth = clampMonthFromMin(currentMonthKey());
   const raceIdSet = useMemo(() => new Set(racesData.races.map((r) => r.id).filter(Boolean)), [racesData.races]);
   const raceById = useMemo(() => new Map(racesData.races.map((r) => [r.id, r])), [racesData.races]);
 
@@ -262,6 +265,20 @@ export default function App() {
   }, [entries]);
 
   const selectedDateEntries = selectedDate ? entriesByDate.get(selectedDate) || [] : [];
+
+  const scrollMonthChipToStart = (targetMonth) => {
+    const container = monthScrollerRef.current;
+    const chip = monthChipRefs.current[targetMonth];
+    if (!container || !chip) return;
+    const left = Math.max(0, chip.offsetLeft - container.offsetLeft);
+    container.scrollTo({ left, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (tab !== "browse") return;
+    const t = setTimeout(() => scrollMonthChipToStart(month), 30);
+    return () => clearTimeout(t);
+  }, [month, tab]);
 
   const addRaceToMyEntries = (race) => {
     if (entries.some((e) => e.raceId && e.raceId === race.id)) return;
@@ -571,14 +588,23 @@ export default function App() {
             <input className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100 outline-none transition focus:border-amber-300" placeholder={TEXT.searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} />
             <div className="grid grid-cols-1 gap-2">
               <select className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-2 text-sm text-zinc-100" value={region} onChange={(e) => setRegion(e.target.value)}><option value="all">{TEXT.allRegions}</option>{regions.map((r) => <option key={r} value={r}>{r}</option>)}</select>
-              <div className="overflow-x-auto pb-1">
+              <div className="overflow-x-auto pb-1" ref={monthScrollerRef}>
                 <div className="flex min-w-max gap-2">
+                  <button
+                    type="button"
+                    className={month === todayMonth ? "h-9 rounded-lg border border-emerald-300 bg-emerald-400/15 px-3 text-sm font-semibold text-emerald-200" : "h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-3 text-sm font-semibold text-zinc-200"}
+                    onClick={() => setMonth(todayMonth)}
+                  >
+                    ??
+                  </button>
                   {monthOptions.map((m) => (
                     <button
                       key={m}
+                      ref={(el) => { monthChipRefs.current[m] = el; }}
                       type="button"
                       className={month === m ? "h-9 rounded-lg border border-amber-300 bg-amber-400/15 px-3 text-sm font-semibold text-amber-200" : "h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-3 text-sm font-semibold text-zinc-200"}
                       onClick={() => setMonth(m)}
+                      onFocus={() => scrollMonthChipToStart(m)}
                     >
                       {formatMonthLabel(m)}
                     </button>
