@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-11T08:41:15.691Z",
+  "updatedAt": "2026-03-11T16:52:27.748Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 541,
   "races": [
@@ -5580,7 +5580,7 @@
       "contact": "031-821-9950",
       "registration_period": "2026년1월28일~2026년3월11일",
       "homepage": "http://cnrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41361"
     },
     {
@@ -6148,9 +6148,9 @@
       "place": "신정교 하부 영롱이 억새구장",
       "organizer": "(사)대한생활체육연맹",
       "contact": "02-2636-7775",
-      "registration_period": "2026년1월27일~2026년4월5일",
+      "registration_period": "2026년1월27일~2026년3월11일",
       "homepage": "http://www.flowerrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41360"
     },
     {
@@ -6270,7 +6270,7 @@
       "contact": "070-4350-5663",
       "registration_period": "2026년3월12일~2026년3월22일",
       "homepage": "http://kiwoomrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41452"
     },
     {
