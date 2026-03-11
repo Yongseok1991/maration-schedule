@@ -64,7 +64,18 @@ const TEXT = {
   syncPulling: "GitHub\uc5d0\uc11c \uac00\uc838\uc624\ub294 \uc911...",
   syncPushing: "GitHub\ub85c \uc800\uc7a5 \uc911...",
   syncDone: "\ub3d9\uae30\ud654\uac00 \uc644\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
-  sourceMissing: "\uc6d0\ubcf8 \uc77c\uc815 \uc5c6\uc74c"
+  sourceMissing: "\uc6d0\ubcf8 \uc77c\uc815 \uc5c6\uc74c",
+  manualAdd: "\uc9c1\uc811 \ucd94\uac00",
+  manualName: "\ub300\ud68c\uba85",
+  manualDate: "\ub300\ud68c\uc77c",
+  manualPlace: "\uc7a5\uc18c",
+  manualDistances: "\uc885\ubaa9",
+  manualHomepage: "\ud648\ud398\uc774\uc9c0",
+  manualNameRequired: "\ub300\ud68c\uba85\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694.",
+  manualNamePlaceholder: "\uc11c\uc6b8 \ud558\ud504 \ub9c8\ub77c\ud1a4",
+  manualPlacePlaceholder: "\uc11c\uc6b8 \uc5ec\uc758\ub3c4",
+  saveEntry: "\uc800\uc7a5",
+  manualSaved: "\ub0b4 \uc77c\uc815\uc5d0 \ucd94\uac00\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
 };
 
 const TABS = [
@@ -235,7 +246,11 @@ const formatRegPeriod = (value) => {
 };
 
 const encodeBase64Utf8 = (text) => btoa(unescape(encodeURIComponent(text)));
-const decodeBase64Utf8 = (base64) => decodeURIComponent(escape(atob(base64)));
+const decodeBase64Utf8 = (base64) => {
+  const bin = atob(base64);
+  const bytes = Uint8Array.from(bin, (ch) => ch.charCodeAt(0));
+  return new TextDecoder("utf-8").decode(bytes);
+};
 
 const statusBadgeClass = (status) => {
   if (status === "\uc811\uc218\uc911" || status === "registered") return "border-emerald-400/35 bg-emerald-400/15 text-emerald-200";
@@ -292,6 +307,7 @@ export default function App() {
   const [selectedDate, setSelectedDate] = useState("");
   const [syncState, setSyncState] = useState({ kind: "idle", message: "" });
   const [photoViewer, setPhotoViewer] = useState("");
+  const [manualForm, setManualForm] = useState({ name: "", dateIso: "", place: "", distances: "", homepage: "" });
 
   const syncTimerRef = useRef(null);
   const saveTimerRef = useRef(null);
@@ -448,6 +464,28 @@ export default function App() {
 
   const removeEntry = (entryId) => setEntries((prev) => prev.filter((e) => e.entryId !== entryId));
 
+  const addManualEntry = () => {
+    const name = manualForm.name.trim();
+    if (!name) {
+      setSyncState({ kind: "error", message: TEXT.manualNameRequired });
+      return;
+    }
+
+    const nextEntry = makeEntry({
+      id: null,
+      name,
+      date_iso: manualForm.dateIso || "",
+      date_display: manualForm.dateIso || "",
+      place: manualForm.place.trim(),
+      distances: manualForm.distances.trim(),
+      homepage: manualForm.homepage.trim()
+    });
+
+    setEntries((prev) => [...prev, nextEntry]);
+    setManualForm({ name: "", dateIso: "", place: "", distances: "", homepage: "" });
+    setSyncState({ kind: "success", message: TEXT.manualSaved });
+  };
+
   const onCertificateChange = async (entryId, file) => {
     if (!file) return;
     if (!isSupportedImageFile(file)) {
@@ -540,11 +578,31 @@ export default function App() {
     }
     setSyncState({ kind: "syncing", message: TEXT.syncPulling });
     try {
-      const path = `/repos/${syncConfig.owner}/${syncConfig.repo}/contents/${encodeURIComponent(syncConfig.path)}?ref=${encodeURIComponent(syncConfig.branch || "master")}`;
-      const file = await githubApi(path, { method: "GET" });
-      const decoded = decodeBase64Utf8((file.content || "").replace(/\n/g, ""));
-      const parsed = JSON.parse(decoded);
-      const nextEntries = Array.isArray(parsed.entries) ? parsed.entries : [];
+      const branch = syncConfig.branch || "master";
+      const contentPath = `/repos/${syncConfig.owner}/${syncConfig.repo}/contents/${encodeURIComponent(syncConfig.path)}?ref=${encodeURIComponent(branch)}`;
+      const file = await githubApi(contentPath, { method: "GET" });
+
+      let decoded = "";
+      const encodedContent = String(file?.content || "").replace(/\n/g, "");
+      if (encodedContent && !file?.truncated) {
+        decoded = decodeBase64Utf8(encodedContent);
+      } else if (file?.sha) {
+        const blobPath = `/repos/${syncConfig.owner}/${syncConfig.repo}/git/blobs/${file.sha}`;
+        const blob = await githubApi(blobPath, { method: "GET" });
+        const blobContent = String(blob?.content || "").replace(/\n/g, "");
+        decoded = decodeBase64Utf8(blobContent);
+      } else {
+        throw new Error("GitHub 파일 내용을 읽을 수 없습니다.");
+      }
+
+      let parsed;
+      try {
+        parsed = JSON.parse(decoded);
+      } catch {
+        throw new Error("동기화 파일 JSON이 깨졌거나 일부만 내려왔습니다. 다시 가져오기를 시도하세요.");
+      }
+
+      const nextEntries = Array.isArray(parsed?.entries) ? parsed.entries : [];
       setEntries(nextEntries);
       setSyncState({ kind: "success", message: `${nextEntries.length}\uac1c \uc77c\uc815\uc744 \uac00\uc838\uc654\uc2b5\ub2c8\ub2e4.` });
     } catch (err) {
@@ -637,6 +695,18 @@ export default function App() {
 
   const renderMine = () => (
     <section className="mt-3 grid grid-cols-1 gap-3">
+      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+        <p className="text-sm font-semibold text-zinc-100">{TEXT.manualAdd}</p>
+        <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
+          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualName}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.name} onChange={(e) => setManualForm((p) => ({ ...p, name: e.target.value }))} placeholder={TEXT.manualNamePlaceholder} /></label>
+          <label className="flex flex-col gap-1"><span>{TEXT.manualDate}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" type="date" value={manualForm.dateIso} onChange={(e) => setManualForm((p) => ({ ...p, dateIso: e.target.value }))} /></label>
+          <label className="flex flex-col gap-1"><span>{TEXT.manualDistances}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.distances} onChange={(e) => setManualForm((p) => ({ ...p, distances: e.target.value }))} placeholder="Half, 10K" /></label>
+          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualPlace}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.place} onChange={(e) => setManualForm((p) => ({ ...p, place: e.target.value }))} placeholder={TEXT.manualPlacePlaceholder} /></label>
+          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualHomepage}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.homepage} onChange={(e) => setManualForm((p) => ({ ...p, homepage: e.target.value }))} placeholder="https://..." /></label>
+        </div>
+        <div className="mt-2 flex justify-end"><button className="h-9 rounded-lg border border-amber-300/40 bg-amber-400/15 px-3 text-sm font-semibold text-amber-200" onClick={addManualEntry}>{TEXT.saveEntry}</button></div>
+      </article>
+
       {myEntries.map((entry) => {
         const missingFromSource = entry.raceId && !raceIdSet.has(entry.raceId);
         const fallbackHomepage = entry.homepage || (entry.raceId ? raceById.get(entry.raceId)?.homepage || "" : "");
@@ -808,6 +878,7 @@ export default function App() {
     </main>
   );
 }
+
 
 
 
