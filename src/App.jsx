@@ -168,6 +168,7 @@ const shiftMonth = (monthKey, delta) => {
   const d = new Date(y, (m || 1) - 1 + delta, 1);
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
 };
+const formatMonthLabel = (m) => (m || "").replace("-", ".");
 
 export default function App() {
   const [tab, setTab] = useState("browse");
@@ -568,9 +569,22 @@ export default function App() {
         {tab === "browse" && (
           <div className="mt-2 grid grid-cols-1 gap-2">
             <input className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100 outline-none transition focus:border-amber-300" placeholder={TEXT.searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} />
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 gap-2">
               <select className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-2 text-sm text-zinc-100" value={region} onChange={(e) => setRegion(e.target.value)}><option value="all">{TEXT.allRegions}</option>{regions.map((r) => <option key={r} value={r}>{r}</option>)}</select>
-              <select className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-2 text-sm text-zinc-100" value={month} onChange={(e) => setMonth(clampMonthFromMin(e.target.value))}>{monthOptions.map((m) => <option key={m} value={m}>{m}</option>)}</select>
+              <div className="overflow-x-auto pb-1">
+                <div className="flex min-w-max gap-2">
+                  {monthOptions.map((m) => (
+                    <button
+                      key={m}
+                      type="button"
+                      className={month === m ? "h-9 rounded-lg border border-amber-300 bg-amber-400/15 px-3 text-sm font-semibold text-amber-200" : "h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-3 text-sm font-semibold text-zinc-200"}
+                      onClick={() => setMonth(m)}
+                    >
+                      {formatMonthLabel(m)}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
             <label className="flex h-10 items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100"><input type="checkbox" checked={openOnly} onChange={(e) => setOpenOnly(e.target.checked)} />{TEXT.openOnly}</label>
           </div>
