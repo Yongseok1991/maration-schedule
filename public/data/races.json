@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-12T08:41:59.459Z",
+  "updatedAt": "2026-03-12T16:58:42.141Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 542,
   "races": [
@@ -6360,7 +6360,7 @@
       "contact": "02-3496-7805",
       "registration_period": "2026년3월11일~2026년3월12일",
       "homepage": "http://www.lwt.co.kr/ko/2026skyrun.do",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41435"
     },
     {
@@ -7545,7 +7545,7 @@
       "contact": "010-6391-1626",
       "registration_period": "2026년3월13일~2026년5월20일",
       "homepage": "http://www.nhlp.or.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41464"
     },
     {
