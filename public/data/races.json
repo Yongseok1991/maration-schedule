@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-11T16:52:27.748Z",
+  "updatedAt": "2026-03-12T02:02:50.355Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 541,
+  "count": 542,
   "races": [
     {
       "id": "40976",
@@ -7622,6 +7622,21 @@
       "homepage": "http://cjapplemarathon.com/index.asp",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41383"
+    },
+    {
+      "id": "41467",
+      "name": "제2회 희망 서울 마라톤",
+      "date_display": "2026년6월20일",
+      "date_iso": "2026-06-20",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "대한민국육군학사장교강남지구회",
+      "contact": "02-888-8875",
+      "registration_period": "2026년3월11일~2026년6월11일",
+      "homepage": "http://hoperun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41467"
     },
     {
       "id": "41443",
