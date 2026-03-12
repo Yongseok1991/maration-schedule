@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-12T02:02:50.355Z",
+  "updatedAt": "2026-03-12T08:41:59.459Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 542,
   "races": [
@@ -6905,7 +6905,7 @@
     },
     {
       "id": "41105",
-      "name": "제24회 불.수.사.도.북 Trail Run",
+      "name": "제24회 불.수.사.도.북 UTMB",
       "date_display": "2026년5월3일",
       "date_iso": "2026-05-03",
       "distances": "풀,13km",
@@ -7205,7 +7205,7 @@
     },
     {
       "id": "41106",
-      "name": "제37회 지리산 화대종주",
+      "name": "제37회 지리산 화대종주UTMB",
       "date_display": "2026년5월24일",
       "date_iso": "2026-05-24",
       "distances": "48km,40km",
@@ -7790,7 +7790,7 @@
     },
     {
       "id": "41223",
-      "name": "제38회 지리산화대종주 Trail Run",
+      "name": "제38회 지리산화대종주 UTMB",
       "date_display": "2026년8월15일",
       "date_iso": "2026-08-15",
       "distances": "48km,40km",
@@ -7925,7 +7925,7 @@
     },
     {
       "id": "41192",
-      "name": "제14회설악산공룡능선CLIMBATHON",
+      "name": "제14회설악산공룡능선UTMB",
       "date_display": "2026년9월13일",
       "date_iso": "2026-09-13",
       "distances": "27km",
