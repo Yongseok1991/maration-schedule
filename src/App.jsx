@@ -75,7 +75,13 @@ const TEXT = {
   manualNamePlaceholder: "\uc11c\uc6b8 \ud558\ud504 \ub9c8\ub77c\ud1a4",
   manualPlacePlaceholder: "\uc11c\uc6b8 \uc5ec\uc758\ub3c4",
   saveEntry: "\uc800\uc7a5",
-  manualSaved: "\ub0b4 \uc77c\uc815\uc5d0 \ucd94\uac00\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+  manualSaved: "\ub0b4 \uc77c\uc815\uc5d0 \ucd94\uac00\ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
+  backupExport: "\ubc31\uc5c5 \ub0b4\ubcf4\ub0b4\uae30",
+  backupImport: "\ubc31\uc5c5 \uac00\uc838\uc624\uae30",
+  backupExportDone: "\ubc31\uc5c5 \ud30c\uc77c\uc744 \ub2e4\uc6b4\ub85c\ub4dc\ud588\uc2b5\ub2c8\ub2e4.",
+  backupImportDone: "\ubc31\uc5c5\uc5d0\uc11c \ub0b4 \uc77c\uc815\uc744 \ubcf5\uc6d0\ud588\uc2b5\ub2c8\ub2e4.",
+  backupImportInvalid: "\ubc31\uc5c5 \ud30c\uc77c \ud615\uc2dd\uc774 \uc62c\ubc14\ub974\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+  backupImportConfirm: "\ud604\uc7ac \ub0b4 \uc77c\uc815\uc744 \ubc31\uc5c5 \ub0b4\uc6a9\uc73c\ub85c \ub36e\uc5b4\uc4f0\uaca0\uc2b5\ub2c8\uae4c?"
 };
 
 const TABS = [
@@ -314,6 +320,7 @@ export default function App() {
   const firstRef = useRef(true);
   const monthScrollerRef = useRef(null);
   const monthChipRefs = useRef({});
+  const backupInputRef = useRef(null);
 
   useEffect(() => {
     fetch("./data/races.json")
@@ -655,6 +662,48 @@ export default function App() {
     }
   };
 
+  const exportBackup = () => {
+    try {
+      const payload = {
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        entries
+      };
+      const blob = new Blob([`${JSON.stringify(payload, null, 2)}\n`], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(".", "_").slice(0, 15);
+      a.href = url;
+      a.download = `maraton-backup-${stamp}.json`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      setSyncState({ kind: "success", message: TEXT.backupExportDone });
+    } catch (err) {
+      setSyncState({ kind: "error", message: String(err?.message || err) });
+    }
+  };
+
+  const importBackup = async (file) => {
+    if (!file) return;
+    const ok = window.confirm(TEXT.backupImportConfirm);
+    if (!ok) return;
+    try {
+      const raw = await file.text();
+      const parsed = JSON.parse(raw);
+      const nextEntries = Array.isArray(parsed?.entries) ? parsed.entries : Array.isArray(parsed) ? parsed : null;
+      if (!nextEntries) {
+        setSyncState({ kind: "error", message: TEXT.backupImportInvalid });
+        return;
+      }
+      setEntries(nextEntries);
+      setSyncState({ kind: "success", message: TEXT.backupImportDone });
+    } catch {
+      setSyncState({ kind: "error", message: TEXT.backupImportInvalid });
+    }
+  };
+
   const renderBrowse = () => (
     <section className="mt-3 grid grid-cols-1 gap-3">
       {browseRaces.map((race) => {
@@ -797,6 +846,7 @@ export default function App() {
         <input className="h-10 rounded-lg border border-zinc-700 bg-zinc-900 px-3" type="password" placeholder={TEXT.tokenPlaceholder} value={syncConfig.token} onChange={(e) => setSyncConfig((p) => ({ ...p, token: e.target.value.trim() }))} />
         <label className="flex items-center gap-2"><input type="checkbox" checked={syncConfig.autoSync} onChange={(e) => setSyncConfig((p) => ({ ...p, autoSync: e.target.checked }))} />{TEXT.autoSync}</label>
         <div className="flex gap-2"><button className="h-10 rounded-lg border border-zinc-700 px-3" onClick={() => pullFromGitHub()}>{TEXT.pull}</button><button className="h-10 rounded-lg border border-amber-300/40 bg-amber-400/15 px-3 text-amber-200" onClick={() => pushToGitHub()}>{TEXT.push}</button></div>
+        <div className="flex gap-2"><button className="h-10 rounded-lg border border-zinc-700 px-3" onClick={exportBackup}>{TEXT.backupExport}</button><button className="h-10 rounded-lg border border-zinc-700 px-3" onClick={() => backupInputRef.current?.click()}>{TEXT.backupImport}</button><input ref={backupInputRef} type="file" accept="application/json,.json" className="hidden" onChange={(e) => { importBackup(e.target.files?.[0]); e.target.value = ""; }} /></div>
         {syncState.kind !== "idle" && <p className={`rounded-md p-2 text-xs ${syncState.kind === "error" ? "bg-red-500/15 text-red-200" : syncState.kind === "success" ? "bg-emerald-500/15 text-emerald-200" : "bg-zinc-700/40 text-zinc-200"}`}>{syncState.message}</p>}
       </div>
     </section>
@@ -878,6 +928,7 @@ export default function App() {
     </main>
   );
 }
+
 
 
 
