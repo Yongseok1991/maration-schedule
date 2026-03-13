@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-13T02:00:33.090Z",
+  "updatedAt": "2026-03-13T08:39:31.499Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 542,
+  "count": 545,
   "races": [
     {
       "id": "40976",
@@ -5809,6 +5809,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41228"
     },
     {
+      "id": "41469",
+      "name": "2026 글로컬 건양대학교 K-국방 마라톤",
+      "date_display": "2026년4월4일",
+      "date_iso": "2026-04-04",
+      "distances": "하프,10km,5km",
+      "region": "충남",
+      "place": "건양대학교 글로컬캠퍼스 대운동",
+      "organizer": "건양대학교",
+      "contact": "1600-3962",
+      "registration_period": "2026년3월13일~2026년3월18일",
+      "homepage": "http://kyrun.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41469"
+    },
+    {
       "id": "41242",
       "name": "2026 영주소백산마라톤",
       "date_display": "2026년4월5일",
@@ -7114,6 +7129,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41190"
     },
     {
+      "id": "41470",
+      "name": "2026 서천한산모시마라톤",
+      "date_display": "2026년5월16일",
+      "date_iso": "2026-05-16",
+      "distances": "10km,5km,5km 가족런",
+      "region": "충남",
+      "place": "한산모시체육관",
+      "organizer": "서천군육상연맹",
+      "contact": "070-8224-6363",
+      "registration_period": "2026년3월13일~2026년5월1일",
+      "homepage": "http://mosirun.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41470"
+    },
+    {
       "id": "41445",
       "name": "2026 인천시육상연맹배 마라톤",
       "date_display": "2026년5월17일",
@@ -7292,6 +7322,21 @@
       "homepage": "http://samsamis.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41246"
+    },
+    {
+      "id": "41471",
+      "name": "제주 김녕 빵빵런 2026",
+      "date_display": "2026년5월30일",
+      "date_iso": "2026-05-30",
+      "distances": "10km,5km",
+      "region": "제주",
+      "place": "제주 구좌체육공원",
+      "organizer": "1986 프로덕션",
+      "contact": "02-364-1986",
+      "registration_period": "2026년3월13일~2026년5월29일",
+      "homepage": "http://jejubbangrun.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41471"
     },
     {
       "id": "41459",
