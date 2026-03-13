@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-13T08:39:31.499Z",
+  "updatedAt": "2026-03-13T16:39:46.513Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 545,
   "races": [
@@ -5445,7 +5445,7 @@
       "contact": "070-7727-1755",
       "registration_period": "2026년3월6일~2026년3월13일",
       "homepage": "http://teamkleaguerun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41444"
     },
     {
@@ -5925,7 +5925,7 @@
       "contact": "055-213-2674",
       "registration_period": "2026년2월11일~2026년3월13일",
       "homepage": "http://run.cwnu.ac.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41362"
     },
     {
@@ -6255,7 +6255,7 @@
       "contact": "02-515-9031",
       "registration_period": "2026년3월5일~2026년3월13일",
       "homepage": "http://www.xn--q20bs0p1sfu9bvwfi4bzw1c.kr/s2p1",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41436"
     },
     {
@@ -6855,7 +6855,7 @@
       "contact": "010-7302-5824",
       "registration_period": "2026년3월14일~2026년4월19일",
       "homepage": "http://heartsignalrunfesta.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41449"
     },
     {
