@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-13T16:39:46.513Z",
+  "updatedAt": "2026-03-14T01:58:15.301Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 545,
   "races": [
@@ -5389,21 +5389,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41102"
     },
     {
-      "id": "40317",
-      "name": "전주 모악산8자트레일런",
-      "date_display": "2026년3월22일",
-      "date_iso": "2026-03-22",
-      "distances": "20km",
-      "region": "전북",
-      "place": "모악산관광단지/표지석",
-      "organizer": "명품트레일",
-      "contact": "010-3526-9120",
-      "registration_period": "2025년11월11일~2026년3월21일",
-      "homepage": "http://www.mtrailrun.kr",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
-    },
-    {
       "id": "41290",
       "name": "2026 금강울트라마라톤",
       "date_display": "2026년3월28일",
@@ -5732,6 +5717,21 @@
       "homepage": "http://rocknrun.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41278"
+    },
+    {
+      "id": "40317",
+      "name": "수원 광교산트레일런",
+      "date_display": "2026년4월4일",
+      "date_iso": "2026-04-04",
+      "distances": "16km",
+      "region": "경기",
+      "place": "하광교동 반딧불이화장실 아래",
+      "organizer": "명품트레일",
+      "contact": "010-3526-9120",
+      "registration_period": "2025년11월11일~2026년4월3일",
+      "homepage": "http://www.mtrailrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
     },
     {
       "id": "41455",
