@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-15T08:41:50.159Z",
+  "updatedAt": "2026-03-15T16:32:39.534Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 545,
   "races": [
@@ -5325,7 +5325,7 @@
       "contact": "02-569-5551",
       "registration_period": "2026년1월2일~2026년3월15일",
       "homepage": "http://bulpaerun.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41295"
     },
     {
@@ -5640,7 +5640,7 @@
       "contact": "010-3378-6337",
       "registration_period": "2025년12월22일~2026년3월15일",
       "homepage": "http://www.jeongnamjin.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41264"
     },
     {
@@ -5850,7 +5850,7 @@
       "contact": "010-4613-2809",
       "registration_period": "2026년3월3일~2026년3월15일",
       "homepage": "http://event-us.kr/wiperth/event/121590",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41433"
     },
     {
@@ -7365,7 +7365,7 @@
       "contact": "010-9360-0113",
       "registration_period": "2026년3월16일~2026년4월31일",
       "homepage": "http://modern-infinity-9e6.notion.site/2026-317918810cc2809f8ca2d834ac9b549f?source=copy_link",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41432"
     },
     {
