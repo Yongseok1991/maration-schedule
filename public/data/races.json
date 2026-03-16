@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-16T02:24:25.137Z",
+  "updatedAt": "2026-03-16T08:56:41.528Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 545,
   "races": [
@@ -6064,21 +6064,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41339"
     },
     {
-      "id": "41298",
-      "name": "2026 성남마라톤",
-      "date_display": "2026년4월11일",
-      "date_iso": "2026-04-11",
-      "distances": "하프,10km,5km",
-      "region": "경기",
-      "place": "성남 탄천종합운동장",
-      "organizer": "(사)대한트레일런협회",
-      "contact": "031-747-8886",
-      "registration_period": "2026년2월2일~2026년2월9일",
-      "homepage": "http://ktra.kr",
-      "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41298"
-    },
-    {
       "id": "41244",
       "name": "2026 MBN 선셋마라톤 영종",
       "date_display": "2026년4월11일",
@@ -7340,7 +7325,7 @@
     },
     {
       "id": "41459",
-      "name": "제4회 여의도 밤섬 마라톤",
+      "name": "제4회 밤섬 마라톤",
       "date_display": "2026년5월31일",
       "date_iso": "2026-05-31",
       "distances": "하프,10km,5km",
@@ -7502,6 +7487,21 @@
       "homepage": "http://www.imrun.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
+    },
+    {
+      "id": "41298",
+      "name": "2026 성남마라톤",
+      "date_display": "2026년6월13일",
+      "date_iso": "2026-06-13",
+      "distances": "하프,10km,5km",
+      "region": "경기",
+      "place": "성남 탄천종합운동장",
+      "organizer": "(사)대한트레일런협회",
+      "contact": "031-747-8886",
+      "registration_period": "2026년3월20일~2026년3월25일",
+      "homepage": "http://ktra.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41298"
     },
     {
       "id": "41404",
@@ -7898,12 +7898,12 @@
       "name": "2026 샌드런 IN 영덕",
       "date_display": "2026년9월6일",
       "date_iso": "2026-09-06",
-      "distances": "4km",
+      "distances": "4km, 8km",
       "region": "경북",
-      "place": "영덕 고래불해수욕장 일대",
-      "organizer": "(주)메이드인피플",
+      "place": "영덕 대진해수욕장",
+      "organizer": "(주)메이드인피플, LG HelloVision",
       "contact": "010-2584-0474",
-      "registration_period": "2026년3월3일~2026년5월3일",
+      "registration_period": "2026년3월16일~2026년7월6일",
       "homepage": "http://sandrun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41402"
