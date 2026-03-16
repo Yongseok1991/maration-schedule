@@ -5,6 +5,7 @@ const TEXT = {
   tabs: {
     browse: "\ud0d0\uc0c9",
     mine: "\ub0b4 \uc77c\uc815",
+    mypage: "\ub9c8\uc774",
     calendar: "\uce98\ub9b0\ub354",
     sync: "\ub3d9\uae30\ud654"
   },
@@ -30,6 +31,7 @@ const TEXT = {
   goalTime: "\ubaa9\ud45c \uc2dc\uac04",
   goalPace: "\ubaa9\ud45c \ud398\uc774\uc2a4",
   resultTime: "\uc2e4\uc81c \uae30\ub85d",
+  entryFee: "\ucc38\uac00\ube44",
   memo: "\uba54\ubaa8",
   memoPlaceholder: "\ud6c8\ub828 \uba54\ubaa8, \uc900\ube44\ubb3c, \uc804\ub7b5 \ub4f1\uc744 \uc801\uc5b4\ub450\uc138\uc694.",
   resultNote: "\ub300\ud68c \ud6c4 \uba54\ubaa8",
@@ -71,11 +73,33 @@ const TEXT = {
   manualPlace: "\uc7a5\uc18c",
   manualDistances: "\uc885\ubaa9",
   manualHomepage: "\ud648\ud398\uc774\uc9c0",
+  manualFee: "\ucc38\uac00\ube44",
   manualNameRequired: "\ub300\ud68c\uba85\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694.",
   manualNamePlaceholder: "\uc11c\uc6b8 \ud558\ud504 \ub9c8\ub77c\ud1a4",
   manualPlacePlaceholder: "\uc11c\uc6b8 \uc5ec\uc758\ub3c4",
   saveEntry: "\uc800\uc7a5",
   manualSaved: "\ub0b4 \uc77c\uc815\uc5d0 \ucd94\uac00\ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
+  totalEntryFee: "\ucc38\uac00\ube44 \ud569\uacc4",
+  yearlyEntryFee: "\uc5f0\ub3c4\ubcc4",
+  pbTitle: "PB",
+  statsTitle: "\ud1b5\uacc4",
+  totalRaces: "\ub4f1\ub85d \ub300\ud68c",
+  finishedRaces: "\uae30\ub85d \uc785\ub825",
+  pb10k: "10K PB",
+  pbHalf: "\ud558\ud504 PB",
+  pbFull: "\ud480\ucf54\uc2a4 PB",
+  noPb: "\uae30\ub85d \uc5c6\uc74c",
+  shoesTitle: "\ub7ec\ub2dd\ud654",
+  shoesCount: "\ub4f1\ub85d \ud654",
+  shoeName: "\ud654 \uc774\ub984",
+  shoeDistance: "\ub204\uc801 km",
+  shoeMemo: "\uba54\ubaa8",
+  addShoe: "\ud654 \ucd94\uac00",
+  shoeNameRequired: "\ub7ec\ub2dd\ud654 \uc774\ub984\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694.",
+  shoeNamePlaceholder: "\uc54c\ud30c\ud50c\ub77c\uc774 3",
+  shoeDistancePlaceholder: "120",
+  shoeMemoPlaceholder: "\ud6c8\ub828\uc6a9, \ub300\ud68c\uc6a9 \ub4f1",
+  currencyWon: "\uc6d0",
   backupExport: "\ubc31\uc5c5 \ub0b4\ubcf4\ub0b4\uae30",
   backupImport: "\ubc31\uc5c5 \uac00\uc838\uc624\uae30",
   backupExportDone: "\ubc31\uc5c5 \ud30c\uc77c\uc744 \ub2e4\uc6b4\ub85c\ub4dc\ud588\uc2b5\ub2c8\ub2e4.",
@@ -87,6 +111,7 @@ const TEXT = {
 const TABS = [
   { id: "browse", label: TEXT.tabs.browse },
   { id: "mine", label: TEXT.tabs.mine },
+  { id: "mypage", label: TEXT.tabs.mypage },
   { id: "calendar", label: TEXT.tabs.calendar },
   { id: "sync", label: TEXT.tabs.sync }
 ];
@@ -105,7 +130,8 @@ const STATUS_LABEL = {
 
 const STORAGE_KEYS = {
   legacyEntries: "maraton.my_entries.v1",
-  syncConfig: "maraton.sync_config.v1"
+  syncConfig: "maraton.sync_config.v1",
+  shoes: "maraton.shoes.v1"
 };
 
 const DEFAULT_SYNC = {
@@ -265,6 +291,56 @@ const statusBadgeClass = (status) => {
   return "border-zinc-500/35 bg-zinc-500/20 text-zinc-200";
 };
 
+const parseEntryFee = (value) => {
+  const digits = String(value || "").replace(/[^\d]/g, "");
+  return digits ? Number.parseInt(digits, 10) : 0;
+};
+
+const formatEntryFee = (value) => {
+  const amount = typeof value === "number" ? value : parseEntryFee(value);
+  return amount > 0 ? `${amount.toLocaleString("ko-KR")}\uc6d0` : "-";
+};
+
+const parseResultSeconds = (value) => {
+  const cleanValue = String(value || "").trim();
+  if (!cleanValue) return null;
+  const parts = cleanValue.split(":").map((part) => Number.parseInt(part, 10));
+  if (parts.some((part) => Number.isNaN(part))) return null;
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  return null;
+};
+
+const formatResultSeconds = (seconds) => {
+  if (!Number.isFinite(seconds) || seconds <= 0) return TEXT.noPb;
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = seconds % 60;
+  if (hours > 0) return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+  return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+};
+
+const detectDistanceCategory = (value) => {
+  const text = String(value || "").toLowerCase().replace(/\s+/g, "");
+  if (!text) return "";
+  if (text.includes("42.195") || text.includes("\ud480\ucf54\uc2a4") || /(^|[^0-9])42k/.test(text) || text.includes("\ud480")) return "full";
+  if (text.includes("\ud558\ud504") || text.includes("21.0975") || /(^|[^0-9])21k/.test(text)) return "half";
+  if (text.includes("10km") || /(^|[^0-9])10k/.test(text)) return "10k";
+  return "";
+};
+
+const normalizeEntry = (entry = {}) => ({
+  ...entry,
+  entryFee: typeof entry.entryFee === "string" ? entry.entryFee : ""
+});
+
+const normalizeShoe = (shoe = {}) => ({
+  shoeId: shoe.shoeId || (typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`),
+  name: shoe.name || "",
+  distanceKm: typeof shoe.distanceKm === "string" ? shoe.distanceKm : "",
+  memo: shoe.memo || ""
+});
+
 const makeEntry = (race) => ({
   entryId: typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
   raceId: race.id || null,
@@ -275,6 +351,7 @@ const makeEntry = (race) => ({
   distances: race.distances || "",
   homepage: race.homepage || "",
   status: "registered",
+  entryFee: "",
   goalTime: "",
   goalPace: "",
   memo: "",
@@ -313,7 +390,9 @@ export default function App() {
   const [selectedDate, setSelectedDate] = useState("");
   const [syncState, setSyncState] = useState({ kind: "idle", message: "" });
   const [photoViewer, setPhotoViewer] = useState("");
-  const [manualForm, setManualForm] = useState({ name: "", dateIso: "", place: "", distances: "", homepage: "" });
+  const [manualForm, setManualForm] = useState({ name: "", dateIso: "", place: "", distances: "", homepage: "", entryFee: "" });
+  const [shoes, setShoes] = useState(() => readJSON(STORAGE_KEYS.shoes, []).map(normalizeShoe));
+  const [shoeForm, setShoeForm] = useState({ name: "", distanceKm: "", memo: "" });
 
   const syncTimerRef = useRef(null);
   const saveTimerRef = useRef(null);
@@ -335,14 +414,14 @@ export default function App() {
       try {
         const fromDb = await getEntriesFromDb();
         if (mounted && Array.isArray(fromDb) && fromDb.length > 0) {
-          setEntries(fromDb);
+          setEntries(fromDb.map(normalizeEntry));
           return;
         }
         const legacy = readJSON(STORAGE_KEYS.legacyEntries, []);
         if (mounted && Array.isArray(legacy) && legacy.length > 0) {
-          setEntries(legacy);
+          setEntries(legacy.map(normalizeEntry));
           try {
-            await saveEntriesToDb(legacy);
+            await saveEntriesToDb(legacy.map(normalizeEntry));
             localStorage.removeItem(STORAGE_KEYS.legacyEntries);
           } catch {
             // Ignore migration failure and keep in-memory data.
@@ -350,7 +429,7 @@ export default function App() {
         }
       } catch {
         const legacy = readJSON(STORAGE_KEYS.legacyEntries, []);
-        if (mounted && Array.isArray(legacy)) setEntries(legacy);
+        if (mounted && Array.isArray(legacy)) setEntries(legacy.map(normalizeEntry));
       } finally {
         if (mounted) setEntriesReady(true);
       }
@@ -393,6 +472,13 @@ export default function App() {
     }
   }, [syncConfig]);
 
+  useEffect(() => {
+    const saved = writeJSON(STORAGE_KEYS.shoes, shoes);
+    if (!saved) {
+      setSyncState((prev) => (prev.kind === "error" && prev.message === TEXT.storageFull ? prev : { kind: "error", message: TEXT.storageFull }));
+    }
+  }, [shoes]);
+
   const regions = useMemo(() => [...new Set(racesData.races.map((r) => r.region).filter(Boolean))].sort(), [racesData.races]);
   const months = useMemo(() => [...new Set(racesData.races.map((r) => monthKeyOf(r.date_iso)).filter((m) => m && m >= MIN_FILTER_MONTH))].sort(), [racesData.races]);
   const monthOptions = useMemo(() => (months.includes(month) ? months : [...new Set([month, ...months])].sort()), [months, month]);
@@ -433,6 +519,41 @@ export default function App() {
       });
   }, [entries]);
 
+  const totalEntryFee = useMemo(() => entries.reduce((sum, entry) => sum + parseEntryFee(entry.entryFee), 0), [entries]);
+
+  const yearlyEntryFees = useMemo(() => {
+    const map = new Map();
+    entries.forEach((entry) => {
+      const year = /^\d{4}-\d{2}-\d{2}$/.test(entry.dateIso || "") ? entry.dateIso.slice(0, 4) : "\ubbf8\uc815";
+      map.set(year, (map.get(year) || 0) + parseEntryFee(entry.entryFee));
+    });
+    return [...map.entries()].sort((a, b) => {
+      if (a[0] === "\ubbf8\uc815") return 1;
+      if (b[0] === "\ubbf8\uc815") return -1;
+      return a[0].localeCompare(b[0]);
+    });
+  }, [entries]);
+
+  const pbSummary = useMemo(() => {
+    const best = { "10k": null, half: null, full: null };
+    entries.forEach((entry) => {
+      const category = detectDistanceCategory(entry.distances);
+      const seconds = parseResultSeconds(entry.resultTime);
+      if (!category || !seconds) return;
+      const current = best[category];
+      if (!current || seconds < current.seconds) {
+        best[category] = { seconds, name: entry.name, dateIso: entry.dateIso || "" };
+      }
+    });
+    return best;
+  }, [entries]);
+
+  const statsSummary = useMemo(() => ({
+    totalRaces: entries.length,
+    finishedRaces: entries.filter((entry) => parseResultSeconds(entry.resultTime)).length,
+    shoesCount: shoes.length
+  }), [entries, shoes]);
+
   const entriesByDate = useMemo(() => {
     const map = new Map();
     entries.forEach((e) => {
@@ -471,6 +592,22 @@ export default function App() {
 
   const removeEntry = (entryId) => setEntries((prev) => prev.filter((e) => e.entryId !== entryId));
 
+  const addShoe = () => {
+    const name = shoeForm.name.trim();
+    if (!name) {
+      setSyncState({ kind: "error", message: TEXT.shoeNameRequired });
+      return;
+    }
+    setShoes((prev) => [...prev, normalizeShoe({ ...shoeForm, name })]);
+    setShoeForm({ name: "", distanceKm: "", memo: "" });
+  };
+
+  const updateShoe = (shoeId, patch) => {
+    setShoes((prev) => prev.map((shoe) => (shoe.shoeId === shoeId ? { ...shoe, ...patch } : shoe)));
+  };
+
+  const removeShoe = (shoeId) => setShoes((prev) => prev.filter((shoe) => shoe.shoeId !== shoeId));
+
   const addManualEntry = () => {
     const name = manualForm.name.trim();
     if (!name) {
@@ -488,8 +625,10 @@ export default function App() {
       homepage: manualForm.homepage.trim()
     });
 
+    nextEntry.entryFee = manualForm.entryFee.trim();
+
     setEntries((prev) => [...prev, nextEntry]);
-    setManualForm({ name: "", dateIso: "", place: "", distances: "", homepage: "" });
+    setManualForm({ name: "", dateIso: "", place: "", distances: "", homepage: "", entryFee: "" });
     setSyncState({ kind: "success", message: TEXT.manualSaved });
   };
 
@@ -610,7 +749,9 @@ export default function App() {
       }
 
       const nextEntries = Array.isArray(parsed?.entries) ? parsed.entries : [];
-      setEntries(nextEntries);
+      const nextShoes = Array.isArray(parsed?.shoes) ? parsed.shoes : [];
+      setEntries(nextEntries.map(normalizeEntry));
+      setShoes(nextShoes.map(normalizeShoe));
       setSyncState({ kind: "success", message: `${nextEntries.length}\uac1c \uc77c\uc815\uc744 \uac00\uc838\uc654\uc2b5\ub2c8\ub2e4.` });
     } catch (err) {
       setSyncState({ kind: "error", message: String(err?.message || err) });
@@ -623,7 +764,7 @@ export default function App() {
       return;
     }
     setSyncState({ kind: "syncing", message: TEXT.syncPushing });
-    const payload = { version: 1, updatedAt: new Date().toISOString(), entries };
+    const payload = { version: 1, updatedAt: new Date().toISOString(), entries, shoes };
     const content = encodeBase64Utf8(`${JSON.stringify(payload, null, 2)}\n`);
     const branch = syncConfig.branch || "master";
     const filePath = `/repos/${syncConfig.owner}/${syncConfig.repo}/contents/${encodeURIComponent(syncConfig.path)}`;
@@ -667,7 +808,8 @@ export default function App() {
       const payload = {
         version: 1,
         exportedAt: new Date().toISOString(),
-        entries
+        entries,
+        shoes
       };
       const blob = new Blob([`${JSON.stringify(payload, null, 2)}\n`], { type: "application/json" });
       const url = URL.createObjectURL(blob);
@@ -693,11 +835,13 @@ export default function App() {
       const raw = await file.text();
       const parsed = JSON.parse(raw);
       const nextEntries = Array.isArray(parsed?.entries) ? parsed.entries : Array.isArray(parsed) ? parsed : null;
+      const nextShoes = Array.isArray(parsed?.shoes) ? parsed.shoes : [];
       if (!nextEntries) {
         setSyncState({ kind: "error", message: TEXT.backupImportInvalid });
         return;
       }
-      setEntries(nextEntries);
+      setEntries(nextEntries.map(normalizeEntry));
+      setShoes(nextShoes.map(normalizeShoe));
       setSyncState({ kind: "success", message: TEXT.backupImportDone });
     } catch {
       setSyncState({ kind: "error", message: TEXT.backupImportInvalid });
@@ -742,6 +886,89 @@ export default function App() {
     </section>
   );
 
+  const renderMyPage = () => (
+    <section className="mt-3 grid grid-cols-1 gap-3">
+      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+        <p className="text-sm font-semibold text-zinc-100">{TEXT.statsTitle}</p>
+        <div className="mt-2 grid grid-cols-3 gap-2">
+          <div className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
+            <p className="text-[11px] text-zinc-400">{TEXT.totalRaces}</p>
+            <p className="mt-1 text-lg font-black text-zinc-100">{statsSummary.totalRaces}</p>
+          </div>
+          <div className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
+            <p className="text-[11px] text-zinc-400">{TEXT.finishedRaces}</p>
+            <p className="mt-1 text-lg font-black text-zinc-100">{statsSummary.finishedRaces}</p>
+          </div>
+          <div className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
+            <p className="text-[11px] text-zinc-400">{TEXT.shoesCount}</p>
+            <p className="mt-1 text-lg font-black text-zinc-100">{statsSummary.shoesCount}</p>
+          </div>
+        </div>
+      </article>
+
+      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-sm font-semibold text-zinc-100">{TEXT.totalEntryFee}</p>
+          <p className="text-base font-black text-amber-200">{formatEntryFee(totalEntryFee)}</p>
+        </div>
+        {yearlyEntryFees.length > 0 && (
+          <div className="mt-3 border-t border-zinc-800 pt-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">{TEXT.yearlyEntryFee}</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {yearlyEntryFees.map(([year, amount]) => (
+                <span key={year} className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-xs font-semibold text-zinc-200">
+                  {year}: {formatEntryFee(amount)}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </article>
+
+      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+        <p className="text-sm font-semibold text-zinc-100">{TEXT.pbTitle}</p>
+        <div className="mt-2 grid grid-cols-1 gap-2">
+          {[["10k", TEXT.pb10k], ["half", TEXT.pbHalf], ["full", TEXT.pbFull]].map(([key, label]) => {
+            const pb = pbSummary[key];
+            return (
+              <div key={key} className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-sm font-semibold text-zinc-100">{label}</p>
+                  <p className="text-base font-black text-emerald-200">{pb ? formatResultSeconds(pb.seconds) : TEXT.noPb}</p>
+                </div>
+                {pb && <p className="mt-1 text-xs text-zinc-400">{pb.name}{pb.dateIso ? ` · ${pb.dateIso}` : ""}</p>}
+              </div>
+            );
+          })}
+        </div>
+      </article>
+
+      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+        <p className="text-sm font-semibold text-zinc-100">{TEXT.shoesTitle}</p>
+        <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
+          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.shoeName}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoeForm.name} onChange={(e) => setShoeForm((prev) => ({ ...prev, name: e.target.value }))} placeholder={TEXT.shoeNamePlaceholder} /></label>
+          <label className="flex flex-col gap-1"><span>{TEXT.shoeDistance}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="decimal" value={shoeForm.distanceKm} onChange={(e) => setShoeForm((prev) => ({ ...prev, distanceKm: e.target.value }))} placeholder={TEXT.shoeDistancePlaceholder} /></label>
+          <label className="flex flex-col gap-1"><span>{TEXT.shoeMemo}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoeForm.memo} onChange={(e) => setShoeForm((prev) => ({ ...prev, memo: e.target.value }))} placeholder={TEXT.shoeMemoPlaceholder} /></label>
+        </div>
+        <div className="mt-2 flex justify-end"><button className="h-9 rounded-lg border border-amber-300/40 bg-amber-400/15 px-3 text-sm font-semibold text-amber-200" onClick={addShoe}>{TEXT.addShoe}</button></div>
+        <div className="mt-3 grid grid-cols-1 gap-2">
+          {shoes.map((shoe) => (
+            <div key={shoe.shoeId} className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
+              <div className="flex items-start justify-between gap-2">
+                <p className="text-sm font-semibold text-zinc-100">{shoe.name || "-"}</p>
+                <button className="text-[11px] font-semibold text-zinc-400 hover:text-red-300" onClick={() => removeShoe(shoe.shoeId)}>{TEXT.remove}</button>
+              </div>
+              <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
+                <label className="flex flex-col gap-1"><span>{TEXT.shoeDistance}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="decimal" value={shoe.distanceKm} onChange={(e) => updateShoe(shoe.shoeId, { distanceKm: e.target.value })} /></label>
+                <label className="flex flex-col gap-1"><span>{TEXT.shoeMemo}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoe.memo} onChange={(e) => updateShoe(shoe.shoeId, { memo: e.target.value })} /></label>
+              </div>
+            </div>
+          ))}
+        </div>
+      </article>
+    </section>
+  );
+
   const renderMine = () => (
     <section className="mt-3 grid grid-cols-1 gap-3">
       <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
@@ -750,6 +977,7 @@ export default function App() {
           <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualName}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.name} onChange={(e) => setManualForm((p) => ({ ...p, name: e.target.value }))} placeholder={TEXT.manualNamePlaceholder} /></label>
           <label className="flex flex-col gap-1"><span>{TEXT.manualDate}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" type="date" value={manualForm.dateIso} onChange={(e) => setManualForm((p) => ({ ...p, dateIso: e.target.value }))} /></label>
           <label className="flex flex-col gap-1"><span>{TEXT.manualDistances}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.distances} onChange={(e) => setManualForm((p) => ({ ...p, distances: e.target.value }))} placeholder="Half, 10K" /></label>
+          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualFee}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={manualForm.entryFee} onChange={(e) => setManualForm((p) => ({ ...p, entryFee: e.target.value }))} placeholder="50000" /></label>
           <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualPlace}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.place} onChange={(e) => setManualForm((p) => ({ ...p, place: e.target.value }))} placeholder={TEXT.manualPlacePlaceholder} /></label>
           <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualHomepage}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.homepage} onChange={(e) => setManualForm((p) => ({ ...p, homepage: e.target.value }))} placeholder="https://..." /></label>
         </div>
@@ -771,6 +999,7 @@ export default function App() {
           </div>
           <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
             <label className="flex flex-col gap-1"><span>{TEXT.status}</span><select className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.status} onChange={(e) => updateEntry(entry.entryId, { status: e.target.value })}>{STATUS_OPTIONS.map((s) => <option key={s} value={s}>{STATUS_LABEL[s] || s}</option>)}</select></label>
+            <label className="flex flex-col gap-1"><span>{TEXT.entryFee}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={entry.entryFee || ""} onChange={(e) => updateEntry(entry.entryId, { entryFee: e.target.value })} placeholder="50000" /></label>
             <label className="flex flex-col gap-1"><span>{TEXT.goalTime}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.goalTime} onChange={(e) => updateEntry(entry.entryId, { goalTime: e.target.value })} placeholder="03:45:00" /></label>
             <label className="flex flex-col gap-1"><span>{TEXT.goalPace}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.goalPace} onChange={(e) => updateEntry(entry.entryId, { goalPace: e.target.value })} placeholder="5:20/km" /></label>
             <label className="flex flex-col gap-1"><span>{TEXT.resultTime}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.resultTime} onChange={(e) => updateEntry(entry.entryId, { resultTime: e.target.value })} placeholder="03:51:10" /></label>
@@ -866,7 +1095,7 @@ export default function App() {
       </section>
 
       <section className="sticky top-2 z-20 mt-3 rounded-2xl border border-zinc-700/70 bg-zinc-950/90 p-2 backdrop-blur">
-        <div className="grid grid-cols-4 gap-1">{TABS.map((t) => <button key={t.id} className={`h-9 rounded-lg text-xs font-semibold ${tab === t.id ? "bg-amber-400/20 text-amber-200" : "bg-zinc-900 text-zinc-300"}`} onClick={() => setTab(t.id)}>{t.label}</button>)}</div>
+        <div className="grid grid-cols-5 gap-1">{TABS.map((t) => <button key={t.id} className={`h-9 rounded-lg text-xs font-semibold ${tab === t.id ? "bg-amber-400/20 text-amber-200" : "bg-zinc-900 text-zinc-300"}`} onClick={() => setTab(t.id)}>{t.label}</button>)}</div>
         {tab === "browse" && (
           <div className="mt-2 grid grid-cols-1 gap-2">
             <input className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100 outline-none transition focus:border-amber-300" placeholder={TEXT.searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} />
@@ -903,6 +1132,7 @@ export default function App() {
 
       {tab === "browse" && renderBrowse()}
       {tab === "mine" && renderMine()}
+      {tab === "mypage" && renderMyPage()}
       {tab === "calendar" && renderCalendar()}
       {tab === "sync" && renderSync()}
 
