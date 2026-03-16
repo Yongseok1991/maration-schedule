@@ -96,7 +96,7 @@ const TEXT = {
   shoesCount: "\ub4f1\ub85d \uc6b4\ub3d9\ud654",
   totalShoePrice: "\ub7ec\ub2dd\ud654 \ud569\uacc4",
   yearlyShoePrice: "\uc5f0\ub3c4\ubcc4",
-  shoeName: "\ud654 \uc774\ub984",
+  shoeName: "\uc6b4\ub3d9\ud654 \uc774\ub984",
   shoePrice: "\uad6c\ub9e4\uac00\uaca9",
   shoePurchaseDate: "\uad6c\ub9e4\uc77c",
   shoeDistance: "\ub204\uc801 km",
