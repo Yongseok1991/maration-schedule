@@ -93,13 +93,19 @@ const TEXT = {
   pbFull: "\ud480\ucf54\uc2a4 PB",
   noPb: "\uae30\ub85d \uc5c6\uc74c",
   shoesTitle: "\ub7ec\ub2dd\ud654",
-  shoesCount: "\ub4f1\ub85d \ud654",
+  shoesCount: "\ub4f1\ub85d \uc6b4\ub3d9\ud654",
+  totalShoePrice: "\ub7ec\ub2dd\ud654 \ud569\uacc4",
+  yearlyShoePrice: "\uc5f0\ub3c4\ubcc4",
   shoeName: "\ud654 \uc774\ub984",
+  shoePrice: "\uad6c\ub9e4\uac00\uaca9",
+  shoePurchaseDate: "\uad6c\ub9e4\uc77c",
   shoeDistance: "\ub204\uc801 km",
   shoeMemo: "\uba54\ubaa8",
   addShoe: "\ub7ec\ub2dd\ud654 \ucd94\uac00",
   shoeNameRequired: "\ub7ec\ub2dd\ud654 \uc774\ub984\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694.",
   shoeNamePlaceholder: "\uc54c\ud30c\ud50c\ub77c\uc774 3",
+  shoePricePlaceholder: "289000",
+  shoePurchaseDatePlaceholder: "2026-03-16",
   shoeDistancePlaceholder: "120",
   shoeMemoPlaceholder: "\ud6c8\ub828\uc6a9, \ub300\ud68c\uc6a9 \ub4f1",
   currencyWon: "\uc6d0",
@@ -351,6 +357,8 @@ const normalizeEntry = (entry = {}) => ({
 const normalizeShoe = (shoe = {}) => ({
   shoeId: shoe.shoeId || (typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`),
   name: shoe.name || "",
+  price: typeof shoe.price === "string" ? shoe.price : "",
+  purchaseDate: typeof shoe.purchaseDate === "string" ? shoe.purchaseDate : "",
   distanceKm: typeof shoe.distanceKm === "string" ? shoe.distanceKm : "",
   memo: shoe.memo || ""
 });
@@ -407,7 +415,7 @@ export default function App() {
   const [photoViewer, setPhotoViewer] = useState("");
   const [manualForm, setManualForm] = useState({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
   const [shoes, setShoes] = useState(() => readJSON(STORAGE_KEYS.shoes, []).map(normalizeShoe));
-  const [shoeForm, setShoeForm] = useState({ name: "", distanceKm: "", memo: "" });
+  const [shoeForm, setShoeForm] = useState({ name: "", price: "", purchaseDate: "", distanceKm: "", memo: "" });
 
   const syncTimerRef = useRef(null);
   const saveTimerRef = useRef(null);
@@ -569,6 +577,21 @@ export default function App() {
     shoesCount: shoes.length
   }), [entries, shoes]);
 
+  const totalShoePrice = useMemo(() => shoes.reduce((sum, shoe) => sum + parseEntryFee(shoe.price), 0), [shoes]);
+
+  const yearlyShoePrices = useMemo(() => {
+    const map = new Map();
+    shoes.forEach((shoe) => {
+      const year = /^\d{4}-\d{2}-\d{2}$/.test(shoe.purchaseDate || "") ? shoe.purchaseDate.slice(0, 4) : "\ubbf8\uc815";
+      map.set(year, (map.get(year) || 0) + parseEntryFee(shoe.price));
+    });
+    return [...map.entries()].sort((a, b) => {
+      if (a[0] === "\ubbf8\uc815") return 1;
+      if (b[0] === "\ubbf8\uc815") return -1;
+      return a[0].localeCompare(b[0]);
+    });
+  }, [shoes]);
+
   const entriesByDate = useMemo(() => {
     const map = new Map();
     entries.forEach((e) => {
@@ -616,7 +639,7 @@ export default function App() {
       return;
     }
     setShoes((prev) => [...prev, normalizeShoe({ ...shoeForm, name })]);
-    setShoeForm({ name: "", distanceKm: "", memo: "" });
+    setShoeForm({ name: "", price: "", purchaseDate: "", distanceKm: "", memo: "" });
   };
 
   const updateShoe = (shoeId, patch) => {
@@ -944,6 +967,25 @@ export default function App() {
       </article>
 
       <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-sm font-semibold text-zinc-100">{TEXT.totalShoePrice}</p>
+          <p className="text-base font-black text-amber-200">{formatEntryFee(totalShoePrice)}</p>
+        </div>
+        {yearlyShoePrices.length > 0 && (
+          <div className="mt-3 border-t border-zinc-800 pt-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">{TEXT.yearlyShoePrice}</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {yearlyShoePrices.map(([year, amount]) => (
+                <span key={year} className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-xs font-semibold text-zinc-200">
+                  {year}: {formatEntryFee(amount)}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </article>
+
+      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
         <p className="text-sm font-semibold text-zinc-100">{TEXT.pbTitle}</p>
         <div className="mt-2 grid grid-cols-1 gap-2">
           {[["5k", TEXT.pb5k], ["10k", TEXT.pb10k], ["half", TEXT.pbHalf], ["full", TEXT.pbFull]].map(([key, label]) => {
@@ -965,20 +1007,27 @@ export default function App() {
         <p className="text-sm font-semibold text-zinc-100">{TEXT.shoesTitle}</p>
         <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
           <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.shoeName}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoeForm.name} onChange={(e) => setShoeForm((prev) => ({ ...prev, name: e.target.value }))} placeholder={TEXT.shoeNamePlaceholder} /></label>
+          <label className="flex flex-col gap-1"><span>{TEXT.shoePrice}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={shoeForm.price} onChange={(e) => setShoeForm((prev) => ({ ...prev, price: e.target.value }))} placeholder={TEXT.shoePricePlaceholder} /></label>
+          <label className="flex flex-col gap-1"><span>{TEXT.shoePurchaseDate}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" type="date" value={shoeForm.purchaseDate} onChange={(e) => setShoeForm((prev) => ({ ...prev, purchaseDate: e.target.value }))} placeholder={TEXT.shoePurchaseDatePlaceholder} /></label>
           <label className="flex flex-col gap-1"><span>{TEXT.shoeDistance}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="decimal" value={shoeForm.distanceKm} onChange={(e) => setShoeForm((prev) => ({ ...prev, distanceKm: e.target.value }))} placeholder={TEXT.shoeDistancePlaceholder} /></label>
-          <label className="flex flex-col gap-1"><span>{TEXT.shoeMemo}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoeForm.memo} onChange={(e) => setShoeForm((prev) => ({ ...prev, memo: e.target.value }))} placeholder={TEXT.shoeMemoPlaceholder} /></label>
+          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.shoeMemo}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoeForm.memo} onChange={(e) => setShoeForm((prev) => ({ ...prev, memo: e.target.value }))} placeholder={TEXT.shoeMemoPlaceholder} /></label>
         </div>
         <div className="mt-2 flex justify-end"><button className="h-9 rounded-lg border border-amber-300/40 bg-amber-400/15 px-3 text-sm font-semibold text-amber-200" onClick={addShoe}>{TEXT.addShoe}</button></div>
         <div className="mt-3 grid grid-cols-1 gap-2">
           {shoes.map((shoe) => (
             <div key={shoe.shoeId} className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
               <div className="flex items-start justify-between gap-2">
-                <p className="text-sm font-semibold text-zinc-100">{shoe.name || "-"}</p>
+                <div>
+                  <p className="text-sm font-semibold text-zinc-100">{shoe.name || "-"}</p>
+                  <p className="mt-1 text-xs text-zinc-400">{formatEntryFee(shoe.price)}{shoe.purchaseDate ? ` · ${shoe.purchaseDate}` : ""}</p>
+                </div>
                 <button className="text-[11px] font-semibold text-zinc-400 hover:text-red-300" onClick={() => removeShoe(shoe.shoeId)}>{TEXT.remove}</button>
               </div>
               <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
+                <label className="flex flex-col gap-1"><span>{TEXT.shoePrice}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={shoe.price} onChange={(e) => updateShoe(shoe.shoeId, { price: e.target.value })} /></label>
+                <label className="flex flex-col gap-1"><span>{TEXT.shoePurchaseDate}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" type="date" value={shoe.purchaseDate} onChange={(e) => updateShoe(shoe.shoeId, { purchaseDate: e.target.value })} /></label>
                 <label className="flex flex-col gap-1"><span>{TEXT.shoeDistance}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="decimal" value={shoe.distanceKm} onChange={(e) => updateShoe(shoe.shoeId, { distanceKm: e.target.value })} /></label>
-                <label className="flex flex-col gap-1"><span>{TEXT.shoeMemo}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoe.memo} onChange={(e) => updateShoe(shoe.shoeId, { memo: e.target.value })} /></label>
+                <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.shoeMemo}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoe.memo} onChange={(e) => updateShoe(shoe.shoeId, { memo: e.target.value })} /></label>
               </div>
             </div>
           ))}
