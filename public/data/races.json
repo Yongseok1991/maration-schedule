@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-16T08:56:41.528Z",
+  "updatedAt": "2026-03-16T17:01:18.979Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 545,
+  "count": 547,
   "races": [
     {
       "id": "40976",
@@ -5385,7 +5385,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년10월1일~2026년3월16일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250511200816&csno=20220129141659#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41102"
     },
     {
@@ -5580,7 +5580,7 @@
       "contact": "070-7719-5788",
       "registration_period": "2026년1월9일~2026년3월16일",
       "homepage": "http://cafe.naver.com/sblovemarathon/?viewType=pc",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41308"
     },
     {
@@ -5955,7 +5955,7 @@
       "contact": "02-2632-0912",
       "registration_period": "2026년1월21일~2026년3월16일",
       "homepage": "http://tterun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41333"
     },
     {
@@ -6724,6 +6724,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41281"
     },
     {
+      "id": "41478",
+      "name": "패밀리 런 페스타",
+      "date_display": "2026년4월26일",
+      "date_iso": "2026-04-26",
+      "distances": "하프,10km,5km,하프마니아,10km마니아",
+      "region": "서울",
+      "place": "서울 뚝섬한강공원 수변광장",
+      "organizer": "컬처런",
+      "contact": "02-3210-1666",
+      "registration_period": "2026년3월16일~2026년4월9일",
+      "homepage": "http://www.irunman.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41478"
+    },
+    {
       "id": "41450",
       "name": "2026 저스트런텐 남양주",
       "date_display": "2026년5월2일",
@@ -7457,6 +7472,21 @@
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250911090719&csno=20220731195207#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41160"
+    },
+    {
+      "id": "41476",
+      "name": "2026 춘천봄내마라톤",
+      "date_display": "2026년6월6일",
+      "date_iso": "2026-06-06",
+      "distances": "하프,10km,5km",
+      "region": "강원",
+      "place": "춘천시청 호반광장 일원",
+      "organizer": "강원도민일보",
+      "contact": "010-6328-4600",
+      "registration_period": "2026년3월12일~2026년5월22일",
+      "homepage": "http://ccpmarathon.kr/math/index.php",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41476"
     },
     {
       "id": "41458",
