@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-15T16:32:39.534Z",
+  "updatedAt": "2026-03-16T02:24:25.137Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 545,
   "races": [
@@ -6629,7 +6629,7 @@
       "organizer": "인천광역시걷기협회",
       "contact": "070-4098-1114",
       "registration_period": "2026년2월25일~2026년3월31일",
-      "homepage": "http://https://blog.naver.com/npa2023/224157041339",
+      "homepage": "http://blog.naver.com/npa2023/224157041339",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41423"
     },
@@ -6995,7 +6995,7 @@
     },
     {
       "id": "41461",
-      "name": "2026 솔로런",
+      "name": "2026 나는 솔로런",
       "date_display": "2026년5월9일",
       "date_iso": "2026-05-09",
       "distances": "10km",
@@ -7003,8 +7003,8 @@
       "place": "여의도공원 문화의마당",
       "organizer": "KT ENA 런코리아",
       "contact": "1566-1936",
-      "registration_period": "2026년3월20일~2026년4월15일",
-      "homepage": "http://ktena.co.kr/",
+      "registration_period": "2026년3월18일~2026년4월15일",
+      "homepage": "http://www.solorun.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41461"
     },
@@ -7490,16 +7490,16 @@
     },
     {
       "id": "41460",
-      "name": "2026 코리아 오픈 마라톤",
+      "name": "2026 im뱅크 코리아 오픈 마라톤",
       "date_display": "2026년6월7일",
       "date_iso": "2026-06-07",
       "distances": "하프,10km,5km",
       "region": "서울",
       "place": "여의도공원 문화의마당",
-      "organizer": "런코리아",
+      "organizer": "런코리아/im뱅크",
       "contact": "1566-1936",
-      "registration_period": "2026년4월15일~2026년5월10일",
-      "homepage": "http://www.runko.kr",
+      "registration_period": "2026년3월23일~2026년5월10일",
+      "homepage": "http://www.imrun.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
     },
@@ -7885,7 +7885,7 @@
       "date_iso": "2026-09-06",
       "distances": "하프,10km,5km",
       "region": "서울",
-      "place": "여의도 물빛광장（예정）",
+      "place": "(양천구)목동운동장",
       "organizer": "(사)한국마라톤협회",
       "contact": "02-2647-4488",
       "registration_period": "2026년5월12일~2026년6월30일",
