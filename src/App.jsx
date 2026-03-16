@@ -28,6 +28,7 @@ const TEXT = {
   reg: "\uc811\uc218\uae30\uac04",
   org: "\uc8fc\ucd5c",
   status: "\uc0c1\ud0dc",
+  raceType: "\ucc38\uac00\uc720\ud615",
   goalTime: "\ubaa9\ud45c \uc2dc\uac04",
   goalPace: "\ubaa9\ud45c \ud398\uc774\uc2a4",
   resultTime: "\uc2e4\uc81c \uae30\ub85d",
@@ -70,6 +71,7 @@ const TEXT = {
   manualAdd: "\uc9c1\uc811 \ucd94\uac00",
   manualName: "\ub300\ud68c\uba85",
   manualDate: "\ub300\ud68c\uc77c",
+  manualRaceType: "\ucc38\uac00\uc720\ud615",
   manualPlace: "\uc7a5\uc18c",
   manualDistances: "\uc885\ubaa9",
   manualHomepage: "\ud648\ud398\uc774\uc9c0",
@@ -85,6 +87,7 @@ const TEXT = {
   statsTitle: "\ud1b5\uacc4",
   totalRaces: "\ub4f1\ub85d \ub300\ud68c",
   finishedRaces: "\uae30\ub85d \uc785\ub825",
+  pb5k: "5K PB",
   pb10k: "10K PB",
   pbHalf: "\ud558\ud504 PB",
   pbFull: "\ud480\ucf54\uc2a4 PB",
@@ -94,7 +97,7 @@ const TEXT = {
   shoeName: "\ud654 \uc774\ub984",
   shoeDistance: "\ub204\uc801 km",
   shoeMemo: "\uba54\ubaa8",
-  addShoe: "\ud654 \ucd94\uac00",
+  addShoe: "\ub7ec\ub2dd\ud654 \ucd94\uac00",
   shoeNameRequired: "\ub7ec\ub2dd\ud654 \uc774\ub984\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694.",
   shoeNamePlaceholder: "\uc54c\ud30c\ud50c\ub77c\uc774 3",
   shoeDistancePlaceholder: "120",
@@ -117,6 +120,7 @@ const TABS = [
 ];
 
 const STATUS_OPTIONS = ["interested", "registered", "training", "finished", "dns"];
+const RACE_TYPE_OPTIONS = ["", "5k", "10k", "half", "full"];
 
 const STATUS_LABEL = {
   interested: "\uad00\uc2ec",
@@ -126,6 +130,14 @@ const STATUS_LABEL = {
   dns: "\ubd88\ucc38",
   "\uc811\uc218\uc911": "\uc811\uc218\uc911",
   "\uc2e0\uaddc": "\uc2e0\uaddc"
+};
+
+const RACE_TYPE_LABEL = {
+  "": "\uc120\ud0dd \uc548 \ud568",
+  "5k": "5K",
+  "10k": "10K",
+  "half": "\ud558\ud504",
+  "full": "\ud480"
 };
 
 const STORAGE_KEYS = {
@@ -323,6 +335,7 @@ const formatResultSeconds = (seconds) => {
 const detectDistanceCategory = (value) => {
   const text = String(value || "").toLowerCase().replace(/\s+/g, "");
   if (!text) return "";
+  if (text.includes("5km") || /(^|[^0-9])5k/.test(text)) return "5k";
   if (text.includes("42.195") || text.includes("\ud480\ucf54\uc2a4") || /(^|[^0-9])42k/.test(text) || text.includes("\ud480")) return "full";
   if (text.includes("\ud558\ud504") || text.includes("21.0975") || /(^|[^0-9])21k/.test(text)) return "half";
   if (text.includes("10km") || /(^|[^0-9])10k/.test(text)) return "10k";
@@ -331,7 +344,8 @@ const detectDistanceCategory = (value) => {
 
 const normalizeEntry = (entry = {}) => ({
   ...entry,
-  entryFee: typeof entry.entryFee === "string" ? entry.entryFee : ""
+  entryFee: typeof entry.entryFee === "string" ? entry.entryFee : "",
+  raceType: typeof entry.raceType === "string" ? entry.raceType : ""
 });
 
 const normalizeShoe = (shoe = {}) => ({
@@ -351,6 +365,7 @@ const makeEntry = (race) => ({
   distances: race.distances || "",
   homepage: race.homepage || "",
   status: "registered",
+  raceType: "",
   entryFee: "",
   goalTime: "",
   goalPace: "",
@@ -390,7 +405,7 @@ export default function App() {
   const [selectedDate, setSelectedDate] = useState("");
   const [syncState, setSyncState] = useState({ kind: "idle", message: "" });
   const [photoViewer, setPhotoViewer] = useState("");
-  const [manualForm, setManualForm] = useState({ name: "", dateIso: "", place: "", distances: "", homepage: "", entryFee: "" });
+  const [manualForm, setManualForm] = useState({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
   const [shoes, setShoes] = useState(() => readJSON(STORAGE_KEYS.shoes, []).map(normalizeShoe));
   const [shoeForm, setShoeForm] = useState({ name: "", distanceKm: "", memo: "" });
 
@@ -535,9 +550,9 @@ export default function App() {
   }, [entries]);
 
   const pbSummary = useMemo(() => {
-    const best = { "10k": null, half: null, full: null };
+    const best = { "5k": null, "10k": null, half: null, full: null };
     entries.forEach((entry) => {
-      const category = detectDistanceCategory(entry.distances);
+      const category = entry.raceType || detectDistanceCategory(entry.distances);
       const seconds = parseResultSeconds(entry.resultTime);
       if (!category || !seconds) return;
       const current = best[category];
@@ -582,7 +597,9 @@ export default function App() {
 
   const addRaceToMyEntries = (race) => {
     if (entries.some((e) => e.raceId && e.raceId === race.id)) return;
-    setEntries((prev) => [...prev, makeEntry(race)]);
+    const nextEntry = makeEntry(race);
+    nextEntry.raceType = detectDistanceCategory(race.distances);
+    setEntries((prev) => [...prev, nextEntry]);
     setTab("mine");
   };
 
@@ -626,9 +643,10 @@ export default function App() {
     });
 
     nextEntry.entryFee = manualForm.entryFee.trim();
+    nextEntry.raceType = manualForm.raceType;
 
     setEntries((prev) => [...prev, nextEntry]);
-    setManualForm({ name: "", dateIso: "", place: "", distances: "", homepage: "", entryFee: "" });
+    setManualForm({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
     setSyncState({ kind: "success", message: TEXT.manualSaved });
   };
 
@@ -928,7 +946,7 @@ export default function App() {
       <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
         <p className="text-sm font-semibold text-zinc-100">{TEXT.pbTitle}</p>
         <div className="mt-2 grid grid-cols-1 gap-2">
-          {[["10k", TEXT.pb10k], ["half", TEXT.pbHalf], ["full", TEXT.pbFull]].map(([key, label]) => {
+          {[["5k", TEXT.pb5k], ["10k", TEXT.pb10k], ["half", TEXT.pbHalf], ["full", TEXT.pbFull]].map(([key, label]) => {
             const pb = pbSummary[key];
             return (
               <div key={key} className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
@@ -976,6 +994,7 @@ export default function App() {
         <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
           <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualName}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.name} onChange={(e) => setManualForm((p) => ({ ...p, name: e.target.value }))} placeholder={TEXT.manualNamePlaceholder} /></label>
           <label className="flex flex-col gap-1"><span>{TEXT.manualDate}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" type="date" value={manualForm.dateIso} onChange={(e) => setManualForm((p) => ({ ...p, dateIso: e.target.value }))} /></label>
+          <label className="flex flex-col gap-1"><span>{TEXT.manualRaceType}</span><select className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.raceType} onChange={(e) => setManualForm((p) => ({ ...p, raceType: e.target.value }))}>{RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}</select></label>
           <label className="flex flex-col gap-1"><span>{TEXT.manualDistances}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.distances} onChange={(e) => setManualForm((p) => ({ ...p, distances: e.target.value }))} placeholder="Half, 10K" /></label>
           <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualFee}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={manualForm.entryFee} onChange={(e) => setManualForm((p) => ({ ...p, entryFee: e.target.value }))} placeholder="50000" /></label>
           <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualPlace}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.place} onChange={(e) => setManualForm((p) => ({ ...p, place: e.target.value }))} placeholder={TEXT.manualPlacePlaceholder} /></label>
@@ -999,6 +1018,7 @@ export default function App() {
           </div>
           <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
             <label className="flex flex-col gap-1"><span>{TEXT.status}</span><select className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.status} onChange={(e) => updateEntry(entry.entryId, { status: e.target.value })}>{STATUS_OPTIONS.map((s) => <option key={s} value={s}>{STATUS_LABEL[s] || s}</option>)}</select></label>
+            <label className="flex flex-col gap-1"><span>{TEXT.raceType}</span><select className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.raceType || ""} onChange={(e) => updateEntry(entry.entryId, { raceType: e.target.value })}>{RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}</select></label>
             <label className="flex flex-col gap-1"><span>{TEXT.entryFee}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={entry.entryFee || ""} onChange={(e) => updateEntry(entry.entryId, { entryFee: e.target.value })} placeholder="50000" /></label>
             <label className="flex flex-col gap-1"><span>{TEXT.goalTime}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.goalTime} onChange={(e) => updateEntry(entry.entryId, { goalTime: e.target.value })} placeholder="03:45:00" /></label>
             <label className="flex flex-col gap-1"><span>{TEXT.goalPace}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.goalPace} onChange={(e) => updateEntry(entry.entryId, { goalPace: e.target.value })} placeholder="5:20/km" /></label>
