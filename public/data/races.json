@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-17T08:54:00.173Z",
+  "updatedAt": "2026-03-17T17:03:52.252Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 547,
+  "count": 551,
   "races": [
     {
       "id": "40976",
@@ -6608,7 +6608,7 @@
       "name": "2026 송도 WALK & RUN",
       "date_display": "2026년4월26일",
       "date_iso": "2026-04-26",
-      "distances": "하프,10km,5km,트레일런15km,WALK5,10,20km댕댕런3km",
+      "distances": "하프,10km,5km,트레일런18km,WALK5,10,20km댕댕런3km",
       "region": "인천",
       "place": "인천광역시 송도 달빛축제공원",
       "organizer": "인천광역시걷기협회",
@@ -7005,7 +7005,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년3월18일~2026년4월15일",
       "homepage": "http://www.solorun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41461"
     },
     {
@@ -7339,6 +7339,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41471"
     },
     {
+      "id": "41482",
+      "name": "제2회 한밭 런앤워크",
+      "date_display": "2026년5월30일",
+      "date_iso": "2026-05-30",
+      "distances": "10km,5km",
+      "region": "대전",
+      "place": "대전 엑스포 시민광장",
+      "organizer": "레거시바통",
+      "contact": "042-540-1750",
+      "registration_period": "2026년3월17일~2026년3월17일",
+      "homepage": "http://hrun.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41482"
+    },
+    {
       "id": "41459",
       "name": "제4회 밤섬 마라톤",
       "date_display": "2026년5월31일",
@@ -7667,6 +7682,36 @@
       "homepage": "http://www.runmp.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41136"
+    },
+    {
+      "id": "41481",
+      "name": "전마협창단25주년 2026 대전월드런마라톤축제",
+      "date_display": "2026년6월14일",
+      "date_iso": "2026-06-14",
+      "distances": "하프,10km,5km",
+      "region": "대전",
+      "place": "대전엑스포시민광장",
+      "organizer": "전국마라톤협회, 월드런",
+      "contact": "042-638-1080",
+      "registration_period": "2026년3월17일~2026년5월31일",
+      "homepage": "http://mara1080.com/event/cc73d8d1-a3d1-410c-9246-5d2eb76dd95e",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41481"
+    },
+    {
+      "id": "41480",
+      "name": "2026 김해숲길마라톤",
+      "date_display": "2026년6월14일",
+      "date_iso": "2026-06-14",
+      "distances": "하프,10km,5km",
+      "region": "경남",
+      "place": "김해종합운동장 및 숲길 일원",
+      "organizer": "김해시육상연맹",
+      "contact": "055-762-1793",
+      "registration_period": "2026년3월18일~2026년5월20일",
+      "homepage": "http://www.supgil.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41480"
     },
     {
       "id": "41406",
@@ -8192,6 +8237,21 @@
       "homepage": "http://asiarun.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41303"
+    },
+    {
+      "id": "41477",
+      "name": "2026 청송사과트레일런",
+      "date_display": "2026년10월25일",
+      "date_iso": "2026-10-25",
+      "distances": "하프,10km,5km",
+      "region": "경북",
+      "place": "청송군민운동장",
+      "organizer": "청송군, 매일신문",
+      "contact": "031-575-7243",
+      "registration_period": "2026년3월16일~2026년8월30일",
+      "homepage": "http://csmarathon.co.kr/csmarathon/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41477"
     },
     {
       "id": "41259",
