@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-17T02:03:51.176Z",
+  "updatedAt": "2026-03-17T08:54:00.173Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 547,
   "races": [
@@ -5953,9 +5953,9 @@
       "place": "뚝섬한강공원 수변무대",
       "organizer": "사)대한구강보건협회,초록우산",
       "contact": "02-2632-0912",
-      "registration_period": "2026년1월21일~2026년3월16일",
+      "registration_period": "2026년1월21일~2026년3월25일",
       "homepage": "http://tterun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41333"
     },
     {
@@ -6838,7 +6838,7 @@
       "place": "보성공설운동장",
       "organizer": "보성군체육회",
       "contact": "042-638-1080",
-      "registration_period": "2026년1월30일~2026년3월30일",
+      "registration_period": "2026년1월30일~2026년3월18일",
       "homepage": "http://mara1080.com/event/6c02d9f8-cbe9-4a7b-ba9d-6e1f93a18b1a",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41366"
