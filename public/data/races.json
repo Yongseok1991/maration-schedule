@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-18T02:07:36.005Z",
+  "updatedAt": "2026-03-18T08:50:45.333Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 551,
   "races": [
@@ -6163,7 +6163,7 @@
       "place": "서울 가든파이브라이프 중앙광장",
       "organizer": "(주)스포테인",
       "contact": "02-3210-1666",
-      "registration_period": "2026년1월23일~2026년3월20일",
+      "registration_period": "2026년1월23일~2026년3월25일",
       "homepage": "http://www.irunman.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41340"
@@ -6728,7 +6728,7 @@
       "name": "패밀리 런 페스타",
       "date_display": "2026년4월26일",
       "date_iso": "2026-04-26",
-      "distances": "하프,10km,5km,하프마니아,10km마니아",
+      "distances": "하프,10km,5km,마니아",
       "region": "서울",
       "place": "서울 뚝섬한강공원 수변광장",
       "organizer": "컬처런",
@@ -7348,9 +7348,9 @@
       "place": "대전 엑스포 시민광장",
       "organizer": "레거시바통",
       "contact": "042-540-1750",
-      "registration_period": "2026년3월17일~2026년3월17일",
+      "registration_period": "2026년3월17일~2026년4월29일",
       "homepage": "http://hrun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41482"
     },
     {
@@ -7558,7 +7558,7 @@
       "place": "강릉 옥계면 금진솔밭길",
       "organizer": "(주)강원도민일보",
       "contact": "033-651-0112",
-      "registration_period": "2026년3월3일~2026년3월24일",
+      "registration_period": "2026년3월3일~2026년3월31일",
       "homepage": "http://www.강릉헌화로11k.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41404"
@@ -7958,7 +7958,7 @@
       "name": "희망드림 제23회 새벽강변 국제마라톤",
       "date_display": "2026년9월6일",
       "date_iso": "2026-09-06",
-      "distances": "하프,10km,5km",
+      "distances": "하프,10km,5km,3km가족런",
       "region": "서울",
       "place": "(양천구)목동운동장",
       "organizer": "(사)한국마라톤협회",
