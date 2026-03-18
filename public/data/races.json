@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-18T08:50:45.333Z",
+  "updatedAt": "2026-03-18T16:59:54.552Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 551,
   "races": [
@@ -5820,7 +5820,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년3월13일~2026년3월18일",
       "homepage": "http://kyrun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41469"
     },
     {
@@ -5865,7 +5865,7 @@
       "contact": "02-785-0582",
       "registration_period": "2026년2월24일~2026년3월18일",
       "homepage": "http://yesanmarathon.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41416"
     },
     {
@@ -6840,7 +6840,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년1월30일~2026년3월18일",
       "homepage": "http://mara1080.com/event/6c02d9f8-cbe9-4a7b-ba9d-6e1f93a18b1a",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41366"
     },
     {
