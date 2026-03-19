@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-19T08:41:41.812Z",
+  "updatedAt": "2026-03-19T16:58:07.292Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 551,
+  "count": 554,
   "races": [
     {
       "id": "40976",
@@ -7144,6 +7144,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41470"
     },
     {
+      "id": "41488",
+      "name": "2026 JUST RUN10 양산 10k 러닝",
+      "date_display": "2026년5월16일",
+      "date_iso": "2026-05-16",
+      "distances": "10km,5km",
+      "region": "경남",
+      "place": "가산수변공원 잔디밭 일원",
+      "organizer": "주)러닝브레이커, 전국러닝협회",
+      "contact": "042-710-2058",
+      "registration_period": "2026년3월19일~2026년4월30일",
+      "homepage": "http://runten.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41488"
+    },
+    {
       "id": "41445",
       "name": "2026 인천시육상연맹배 마라톤",
       "date_display": "2026년5월17일",
@@ -7232,6 +7247,21 @@
       "homepage": "http://www.harurun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41465"
+    },
+    {
+      "id": "41483",
+      "name": "제1회 회동호 트레일런",
+      "date_display": "2026년5월23일",
+      "date_iso": "2026-05-23",
+      "distances": "25km",
+      "region": "부산",
+      "place": "스포원",
+      "organizer": "korearun 조직위",
+      "contact": "010-3878-1159",
+      "registration_period": "2026년4월1일~2026년4월30일",
+      "homepage": "http://korearun01.imweb.me/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41483"
     },
     {
       "id": "41106",
@@ -7545,7 +7575,7 @@
       "contact": "031-747-8886",
       "registration_period": "2026년3월20일~2026년3월25일",
       "homepage": "http://ktra.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41298"
     },
     {
@@ -7834,6 +7864,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41440"
     },
     {
+      "id": "41487",
+      "name": "2026 서울런",
+      "date_display": "2026년6월28일",
+      "date_iso": "2026-06-28",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "서울런(주)",
+      "contact": "02-2636-6543",
+      "registration_period": "2026년3월18일~2026년6월17일",
+      "homepage": "http://seoulrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41487"
+    },
+    {
       "id": "41277",
       "name": "제10회 노원구청장배 겸 회장배마라톤",
       "date_display": "2026년7월5일",
@@ -8085,7 +8130,7 @@
       "contact": "063-352-2025",
       "registration_period": "2026년3월20일~2026년6월10일",
       "homepage": "http://rocknrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41349"
     },
     {
