@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-20T02:02:09.259Z",
+  "updatedAt": "2026-03-20T08:40:08.714Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 554,
+  "count": 555,
   "races": [
     {
       "id": "40976",
@@ -7157,6 +7157,21 @@
       "homepage": "http://runten.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41488"
+    },
+    {
+      "id": "41489",
+      "name": "2026 철강마라톤",
+      "date_display": "2026년5월16일",
+      "date_iso": "2026-05-16",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "하남미사경정공원",
+      "organizer": "한국철강협회",
+      "contact": "02-559-3539",
+      "registration_period": "2026년3월8일~2026년3월27일",
+      "homepage": "http://www.kosa.or.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41489"
     },
     {
       "id": "41445",
