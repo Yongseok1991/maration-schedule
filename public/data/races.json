@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-20T08:40:08.714Z",
+  "updatedAt": "2026-03-20T16:42:57.288Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 555,
+  "count": 559,
   "races": [
     {
       "id": "40976",
@@ -5535,7 +5535,7 @@
       "contact": "010-8017-1833",
       "registration_period": "2026년1월10일~2026년3월20일",
       "homepage": "http://urfesta.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41267"
     },
     {
@@ -5985,7 +5985,7 @@
       "contact": "062-385-4601",
       "registration_period": "2025년12월22일~2026년3월20일",
       "homepage": "http://www.najurun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41263"
     },
     {
@@ -6195,7 +6195,7 @@
       "contact": "055-210-6103",
       "registration_period": "2026년2월10일~2026년3월20일",
       "homepage": "http://www.kcmarathon.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41321"
     },
     {
@@ -6740,7 +6740,7 @@
     },
     {
       "id": "41450",
-      "name": "2026 저스트런텐 남양주",
+      "name": "2026 JUST RUN10 남양주",
       "date_display": "2026년5월2일",
       "date_iso": "2026-05-02",
       "distances": "10km,5km",
@@ -7150,8 +7150,8 @@
       "date_iso": "2026-05-16",
       "distances": "10km,5km",
       "region": "경남",
-      "place": "가산수변공원 잔디밭 일원",
-      "organizer": "주)러닝브레이커, 전국러닝협회",
+      "place": "양산 가산수변공원 일원",
+      "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
       "registration_period": "2026년3월19일~2026년4월30일",
       "homepage": "http://runten.co.kr",
@@ -7399,6 +7399,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41482"
     },
     {
+      "id": "41486",
+      "name": "2026 JUST RUN10 대구 10k 러닝",
+      "date_display": "2026년5월30일",
+      "date_iso": "2026-05-30",
+      "distances": "10km,5km",
+      "region": "대구",
+      "place": "노원체육공원 축구장",
+      "organizer": "주)러닝브레이커, 전국러닝협회",
+      "contact": "042-710-2058",
+      "registration_period": "2026년4월1일~2026년4월31일",
+      "homepage": "http://runten.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41486"
+    },
+    {
       "id": "41459",
       "name": "제4회 밤섬 마라톤",
       "date_display": "2026년5월31일",
@@ -7487,6 +7502,21 @@
       "homepage": "http://경주시육상연맹.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41309"
+    },
+    {
+      "id": "41490",
+      "name": "제22회 영등포구연맹회장배 육상대회",
+      "date_display": "2026년5월31일",
+      "date_iso": "2026-05-31",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "신정교하부육상트랙구장",
+      "organizer": "서울특별시영등포구체육회",
+      "contact": "010-3794-7297",
+      "registration_period": "2026년3월20일~2026년5월16일",
+      "homepage": "http://cafe.naver.com/ydprun1/614",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41490"
     },
     {
       "id": "41409",
@@ -7665,7 +7695,7 @@
       "contact": "02-2092-0011",
       "registration_period": "2026년2월19일~2026년3월20일",
       "homepage": "http://www.sbsa.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41305"
     },
     {
@@ -7682,6 +7712,21 @@
       "homepage": "http://www.nhlp.or.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41464"
+    },
+    {
+      "id": "41485",
+      "name": "2026 JUST RUN10 대전 대회",
+      "date_display": "2026년6월13일",
+      "date_iso": "2026-06-13",
+      "distances": "10km,5km",
+      "region": "대전",
+      "place": "대전 엑스포 시민광장",
+      "organizer": "(주)러닝브레이커,전국러닝협회",
+      "contact": "042-710-2058",
+      "registration_period": "2026년4월1일~2026년4월30일",
+      "homepage": "http://runten.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41485"
     },
     {
       "id": "41431",
@@ -8085,7 +8130,7 @@
       "contact": "033-248-5019",
       "registration_period": "2026년2월27일~2026년3월20일",
       "homepage": "http://yrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41420"
     },
     {
@@ -8177,6 +8222,21 @@
       "homepage": "http://isunshintrail.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41316"
+    },
+    {
+      "id": "41491",
+      "name": "2026 서산 코스모스 황금들녘 마라톤 대회",
+      "date_display": "2026년10월3일",
+      "date_iso": "2026-10-03",
+      "distances": "하프,10km,5km",
+      "region": "충남",
+      "place": "서산스포츠테마파크",
+      "organizer": "서산시체육회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년3월20일~2026년9월3일",
+      "homepage": "http://mara1080.com/event/fcaa0bc8-1489-47c3-8fec-8e5a5c17284e",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41491"
     },
     {
       "id": "41332",
