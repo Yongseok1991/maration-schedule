@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-22T08:34:09.155Z",
+  "updatedAt": "2026-03-22T16:30:22.757Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 559,
   "races": [
@@ -5415,7 +5415,7 @@
       "contact": "055-359-4582",
       "registration_period": "2026년2월25일~2026년3월22일",
       "homepage": "http://www.mywalk.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41429"
     },
     {
@@ -5550,7 +5550,7 @@
       "contact": "02-888-8805",
       "registration_period": "2026년2월10일~2026년3월22일",
       "homepage": "http://springrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41401"
     },
     {
@@ -5595,7 +5595,7 @@
       "contact": "02-888-8805",
       "registration_period": "2026년2월10일~2026년3월22일",
       "homepage": "http://springrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41363"
     },
     {
@@ -6270,7 +6270,7 @@
       "contact": "070-4350-5663",
       "registration_period": "2026년3월12일~2026년3월22일",
       "homepage": "http://kiwoomrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41452"
     },
     {
@@ -6315,7 +6315,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년2월21일~2026년3월22일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41410"
     },
     {
@@ -6885,7 +6885,7 @@
       "contact": "070-7613-6119",
       "registration_period": "2026년3월23일~2026년4월23일",
       "homepage": "http://goobne-ovenrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41411"
     },
     {
@@ -7319,7 +7319,7 @@
       "organizer": "사단법인 피스런",
       "contact": "070-8095-5768",
       "registration_period": "2026년2월25일~2026년4월30일",
-      "homepage": "http://earthrun.kr",
+      "homepage": "http://www.sixshop.com/z9run/index",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41417"
     },
@@ -7406,7 +7406,7 @@
       "distances": "10km,5km",
       "region": "대구",
       "place": "노원체육공원 축구장",
-      "organizer": "주)러닝브레이커, 전국러닝협회",
+      "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
       "registration_period": "2026년4월1일~2026년4월31일",
       "homepage": "http://runten.co.kr",
@@ -7605,7 +7605,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년3월23일~2026년5월10일",
       "homepage": "http://www.imrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
     },
     {
