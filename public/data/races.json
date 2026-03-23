@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-23T08:55:40.308Z",
+  "updatedAt": "2026-03-23T16:56:23.530Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 559,
   "races": [
@@ -6673,9 +6673,9 @@
       "place": "포항종합운동장",
       "organizer": "포항시육상연맹",
       "contact": "054-241-0855",
-      "registration_period": "2025년12월15일~2026년3월31일",
+      "registration_period": "2025년12월15일~2026년2월28일",
       "homepage": "http://phrun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41206"
     },
     {
@@ -7415,7 +7415,7 @@
     },
     {
       "id": "41459",
-      "name": "제4회 밤섬 마라톤",
+      "name": "제4회 여의도 밤섬 마라톤",
       "date_display": "2026년5월31일",
       "date_iso": "2026-05-31",
       "distances": "하프,10km,5km",
