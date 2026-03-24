@@ -241,7 +241,8 @@ const optimizeImageFile = async (file, { maxSide = 1800, maxBytes = 900 * 1024 }
   const objectUrl = URL.createObjectURL(sourceBlob);
   try {
     const img = await loadImageElement(objectUrl);
-    const mimeType = sourceType === "image/png" ? "image/png" : "image/jpeg";
+    // Re-encode PNG uploads as JPEG too so large screenshots/photos compress reliably.
+    const mimeType = "image/jpeg";
     const minSide = 900;
     let side = maxSide;
     let quality = 0.9;
