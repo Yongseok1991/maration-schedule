@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-24T02:01:20.048Z",
+  "updatedAt": "2026-03-24T08:53:32.501Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 559,
   "races": [
@@ -6869,7 +6869,7 @@
       "organizer": "국민은행, 런코리아",
       "contact": "1566-1936",
       "registration_period": "2026년3월6일~2026년3월25일",
-      "homepage": "http://my.kbstar.com/lpB731R",
+      "homepage": "http://www.kbstarrun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41446"
     },
@@ -6884,7 +6884,7 @@
       "organizer": "(주)KNN,(주)지앤푸드",
       "contact": "070-7613-6119",
       "registration_period": "2026년3월23일~2026년4월23일",
-      "homepage": "http://goobne-ovenrun.com",
+      "homepage": "http://goobne-ovenrun.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41411"
     },
@@ -7408,9 +7408,9 @@
       "place": "노원체육공원 축구장",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년4월1일~2026년4월31일",
+      "registration_period": "2026년3월24일~2026년4월31일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41486"
     },
     {
