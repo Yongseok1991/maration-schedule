@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-24T08:53:32.501Z",
+  "updatedAt": "2026-03-24T16:59:32.367Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 559,
   "races": [
@@ -8265,7 +8265,7 @@
       "contact": "02-2647-4488",
       "registration_period": "2026년3월25일~2026년7월31일",
       "homepage": "http://amarunhs.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41352"
     },
     {
