@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-25T08:51:59.339Z",
+  "updatedAt": "2026-03-25T17:02:03.275Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 559,
   "races": [
@@ -5955,7 +5955,7 @@
       "contact": "02-2632-0912",
       "registration_period": "2026년1월21일~2026년3월25일",
       "homepage": "http://tterun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41333"
     },
     {
@@ -6165,7 +6165,7 @@
       "contact": "02-3210-1666",
       "registration_period": "2026년1월23일~2026년3월25일",
       "homepage": "http://www.irunman.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41340"
     },
     {
@@ -6870,7 +6870,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년3월6일~2026년3월25일",
       "homepage": "http://www.kbstarrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41446"
     },
     {
@@ -7620,7 +7620,7 @@
       "contact": "031-747-8886",
       "registration_period": "2026년3월20일~2026년3월25일",
       "homepage": "http://ktra.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41298"
     },
     {
