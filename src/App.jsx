@@ -193,7 +193,8 @@ const isHeicFile = (file) => {
 const isSupportedImageFile = (file) => {
   if (!file) return false;
   const t = String(file.type || "").toLowerCase();
-  return t.startsWith("image/") || isHeicFile(file);
+  const n = String(file.name || "").toLowerCase();
+  return t.startsWith("image/") || isHeicFile(file) || [".png", ".jpg", ".jpeg", ".webp", ".gif"].some((ext) => n.endsWith(ext));
 };
 
 let heicModulePromise;
@@ -257,6 +258,8 @@ const optimizeImageFile = async (file, { maxSide = 1800, maxBytes = 900 * 1024 }
       canvas.height = height;
       const ctx = canvas.getContext("2d");
       if (!ctx) throw new Error("canvas-context-failed");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, width, height);
       ctx.drawImage(img, 0, 0, width, height);
       const out = canvas.toDataURL(mimeType, quality);
       best = out;
