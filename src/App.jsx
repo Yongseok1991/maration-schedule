@@ -39,11 +39,11 @@ const TEXT = {
   resultPlaceholder: "\ub300\ud68c \uacb0\uacfc\uc640 \ud68c\uace0\ub97c \uc801\uc5b4\ub450\uc138\uc694.",
   cert: "\uae30\ub85d\uc99d (\uc774\ubbf8\uc9c0 1\uc7a5)",
   certOnlyImage: "\uae30\ub85d\uc99d\uc740 \uc774\ubbf8\uc9c0 \ud30c\uc77c\ub9cc \uc5c5\ub85c\ub4dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
-  certMaxSize: "\uae30\ub85d\uc99d \ud30c\uc77c\uc740 \ucd5c\ub300 4MB\uae4c\uc9c0 \ud5c8\uc6a9\ub429\ub2c8\ub2e4.",
+  certMaxSize: "\uae30\ub85d\uc99d \ud30c\uc77c\uc740 \ucd5c\ub300 8MB\uae4c\uc9c0 \ud5c8\uc6a9\ub429\ub2c8\ub2e4.",
   racePhotos: "\ub300\ud68c \uc0ac\uc9c4 (\ucd5c\ub300 6\uc7a5)",
   racePhotosTip: "\uac24\ub7ec\ub9ac\ub85c \ubcf4\uace0 \uc2f6\uc740 \ub300\ud68c \uc0ac\uc9c4\uc744 \ucd94\uac00\ud558\uc138\uc694.",
   photoOnlyImage: "\ub300\ud68c \uc0ac\uc9c4\uc740 \uc774\ubbf8\uc9c0 \ud30c\uc77c\ub9cc \uc5c5\ub85c\ub4dc\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
-  photoMaxSize: "\ub300\ud68c \uc0ac\uc9c4 \ud30c\uc77c\uc740 \ucd5c\ub300 4MB\uae4c\uc9c0 \ud5c8\uc6a9\ub429\ub2c8\ub2e4.",
+  photoMaxSize: "\ub300\ud68c \uc0ac\uc9c4 \ud30c\uc77c\uc740 \ucd5c\ub300 8MB\uae4c\uc9c0 \ud5c8\uc6a9\ub429\ub2c8\ub2e4.",
   photoTooLargeAfterCompress: "\ub300\ud68c \uc0ac\uc9c4 \uc6a9\ub7c9\uc774 \ud06c\uc11c \uc800\uc7a5\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ub2e4\ub978 \uc0ac\uc9c4\uc744 \uc120\ud0dd\ud574\uc8fc\uc138\uc694.",
   certTooLargeAfterCompress: "\uae30\ub85d\uc99d \uc6a9\ub7c9\uc774 \ud06c\uc11c \uc800\uc7a5\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ub2e4\ub978 \uc774\ubbf8\uc9c0\ub97c \uc120\ud0dd\ud574\uc8fc\uc138\uc694.",
   imageProcessFailed: "\uc774\ubbf8\uc9c0 \ucc98\ub9ac \uc911 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4. \ub2e4\uc2dc \uc2dc\ub3c4\ud574\uc8fc\uc138\uc694.",
@@ -683,7 +683,7 @@ export default function App() {
       setSyncState({ kind: "error", message: TEXT.certOnlyImage });
       return;
     }
-    if (file.size > 4 * 1024 * 1024) {
+    if (file.size > 8 * 1024 * 1024) {
       setSyncState({ kind: "error", message: TEXT.certMaxSize });
       return;
     }
@@ -710,7 +710,7 @@ export default function App() {
         setSyncState({ kind: "error", message: TEXT.photoOnlyImage });
         return;
       }
-      if (file.size > 4 * 1024 * 1024) {
+      if (file.size > 8 * 1024 * 1024) {
         setSyncState({ kind: "error", message: TEXT.photoMaxSize });
         return;
       }
