@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-26T08:56:01.549Z",
+  "updatedAt": "2026-03-26T17:01:04.555Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 559,
+  "count": 562,
   "races": [
     {
       "id": "40976",
@@ -6411,17 +6411,18 @@
     {
       "id": "41373",
       "name": "2026 THE RACE BUSAN",
-      "date_display": "2026년4월19일",
+      "date_display": "4/19(일)",
       "date_iso": "2026-04-19",
       "distances": "10km",
-      "region": "부산",
+      "region": "",
       "place": "부산항북항 친수공원(예정)",
       "organizer": "헤럴드경제",
       "contact": "070-7727-1755",
-      "registration_period": "2026년2월9일~2026년3월6일",
-      "homepage": "http://busan.therace.co.kr",
+      "registration_period": "",
+      "homepage": "",
       "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41373"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41373",
+      "error": "detail_fetch_failed"
     },
     {
       "id": "41356",
@@ -7260,7 +7261,7 @@
       "contact": "02-508-1102",
       "registration_period": "2026년3월9일~2026년3월26일",
       "homepage": "http://www.harurun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41465"
     },
     {
@@ -7412,6 +7413,21 @@
       "homepage": "http://runten.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41486"
+    },
+    {
+      "id": "41494",
+      "name": "2026 강남 하프레이스",
+      "date_display": "2026년5월30일",
+      "date_iso": "2026-05-30",
+      "distances": "하프,10km",
+      "region": "서울",
+      "place": "대치유수지체육공원",
+      "organizer": "강남육상연맹",
+      "contact": "010-6364-4749",
+      "registration_period": "2026년3월30일~2026년5월19일",
+      "homepage": "http://gangnam-marathon.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41494"
     },
     {
       "id": "41459",
@@ -7729,6 +7745,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41485"
     },
     {
+      "id": "41495",
+      "name": "2026 컬처런",
+      "date_display": "2026년6월13일",
+      "date_iso": "2026-06-13",
+      "distances": "하프,10km,커플런,가족런",
+      "region": "인천",
+      "place": "인천 영종도 씨사이드파크 일",
+      "organizer": "기호일보, 로드스포",
+      "contact": "1600-3962",
+      "registration_period": "2026년3월26일~2026년3월26일",
+      "homepage": "http://culturerun.net/index.php",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41495"
+    },
+    {
       "id": "41431",
       "name": "2026 제21회 울릉도전국마라톤",
       "date_display": "2026년6월14일",
@@ -7939,6 +7970,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41487"
     },
     {
+      "id": "41497",
+      "name": "IRON RUN 2026",
+      "date_display": "2026년7월4일",
+      "date_iso": "2026-07-04",
+      "distances": "15.38km",
+      "region": "경북",
+      "place": "포항 영일대해수욕장 장미광장",
+      "organizer": "포스코노동조합",
+      "contact": "070-7718-7577",
+      "registration_period": "2026년4월1일~2026년5월31일",
+      "homepage": "http://www.ironrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41497"
+    },
+    {
       "id": "41277",
       "name": "제10회 노원구청장배 겸 회장배마라톤",
       "date_display": "2026년7월5일",
@@ -8128,9 +8174,9 @@
       "place": "강원도 양양군 웰컴센터",
       "organizer": "G1방송, 양양군",
       "contact": "033-248-5019",
-      "registration_period": "2026년2월27일~2026년3월20일",
+      "registration_period": "2026년2월27일~2026년4월15일",
       "homepage": "http://yrun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41420"
     },
     {
