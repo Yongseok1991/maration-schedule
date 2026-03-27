@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-27T02:14:38.104Z",
+  "updatedAt": "2026-03-27T08:53:22.531Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 562,
   "races": [
@@ -6163,9 +6163,9 @@
       "place": "서울 가든파이브라이프 중앙광장",
       "organizer": "(주)스포테인",
       "contact": "02-3210-1666",
-      "registration_period": "2026년1월23일~2026년3월25일",
+      "registration_period": "2026년1월23일~2026년4월1일",
       "homepage": "http://www.irunman.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41340"
     },
     {
@@ -6388,7 +6388,7 @@
       "place": "상암동 월드컵공원 평화광장",
       "organizer": "마포구체육회, 숭문고총동문회",
       "contact": "02-2647-4488",
-      "registration_period": "2026년2월8일~2026년4월13일",
+      "registration_period": "2026년2월8일~2026년4월10일",
       "homepage": "http://sybrun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41392"
@@ -6725,7 +6725,7 @@
     },
     {
       "id": "41478",
-      "name": "패밀리 런 페스타",
+      "name": "패밀리 런 페스타(연기/통합)",
       "date_display": "2026년4월26일",
       "date_iso": "2026-04-26",
       "distances": "하프,10km,5km,마니아",
@@ -6733,7 +6733,7 @@
       "place": "서울 뚝섬한강공원 수변광장",
       "organizer": "컬처런",
       "contact": "02-3210-1666",
-      "registration_period": "2026년3월16일~2026년4월9일",
+      "registration_period": "2026년3월16일~2026년3월27일",
       "homepage": "http://www.irunman.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41478"
@@ -7750,7 +7750,7 @@
       "date_iso": "2026-06-13",
       "distances": "하프,10km,커플런,가족런",
       "region": "인천",
-      "place": "인천 영종도 씨사이드파크 일",
+      "place": "영종도 씨사이드파크 일원",
       "organizer": "기호일보, 로드스포",
       "contact": "1600-3962",
       "registration_period": "2026년3월26일~2026년3월26일",
@@ -8075,10 +8075,10 @@
     },
     {
       "id": "41353",
-      "name": "2026 대구세계마스터즈육상경기대회",
+      "name": "2026 대구세계마스터즈 하프마라톤대회",
       "date_display": "2026년8월30일",
       "date_iso": "2026-08-30",
-      "distances": "하프,10km,트랙,필드 등 34개 종목(35세 이상)",
+      "distances": "하프",
       "region": "대구",
       "place": "신천동로 일원",
       "organizer": "대구광역시, 세계마스터즈육상연맹(WMA)",
