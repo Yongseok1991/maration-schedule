@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-26T17:01:04.555Z",
+  "updatedAt": "2026-03-27T02:14:38.104Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 562,
   "races": [
@@ -6411,18 +6411,17 @@
     {
       "id": "41373",
       "name": "2026 THE RACE BUSAN",
-      "date_display": "4/19(일)",
+      "date_display": "2026년4월19일",
       "date_iso": "2026-04-19",
       "distances": "10km",
-      "region": "",
+      "region": "부산",
       "place": "부산항북항 친수공원(예정)",
       "organizer": "헤럴드경제",
       "contact": "070-7727-1755",
-      "registration_period": "",
-      "homepage": "",
+      "registration_period": "2026년2월9일~2026년3월6일",
+      "homepage": "http://busan.therace.co.kr",
       "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41373",
-      "error": "detail_fetch_failed"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41373"
     },
     {
       "id": "41356",
@@ -6614,7 +6613,7 @@
       "place": "인천광역시 송도 달빛축제공원",
       "organizer": "인천광역시걷기협회",
       "contact": "070-4098-1114",
-      "registration_period": "2026년2월25일~2026년3월31일",
+      "registration_period": "2026년2월25일~2026년4월20일",
       "homepage": "http://blog.naver.com/npa2023/224157041339",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41423"
