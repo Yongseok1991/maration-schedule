@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-27T08:53:22.531Z",
+  "updatedAt": "2026-03-27T16:55:01.024Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 562,
   "races": [
@@ -6135,7 +6135,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년3월3일~2026년3월27일",
       "homepage": "http://xn--zl2bt5ac3ce9g95id2ah6ab60d.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41427"
     },
     {
@@ -6210,7 +6210,7 @@
       "contact": "061-921-5500",
       "registration_period": "2026년2월5일~2026년3월27일",
       "homepage": "http://mbcrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41328"
     },
     {
@@ -6375,7 +6375,7 @@
       "contact": "010-5648-0116",
       "registration_period": "2026년2월9일~2026년3월27일",
       "homepage": "http://forms.gle/GeBVXxtYZGn4xS877",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41399"
     },
     {
@@ -6735,7 +6735,7 @@
       "contact": "02-3210-1666",
       "registration_period": "2026년3월16일~2026년3월27일",
       "homepage": "http://www.irunman.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41478"
     },
     {
@@ -7170,7 +7170,7 @@
       "contact": "02-559-3539",
       "registration_period": "2026년3월8일~2026년3월27일",
       "homepage": "http://www.kosa.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41489"
     },
     {
