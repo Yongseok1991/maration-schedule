@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-29T02:24:40.998Z",
+  "updatedAt": "2026-03-29T08:39:49.242Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 562,
+  "count": 565,
   "races": [
     {
       "id": "40976",
@@ -7174,6 +7174,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41489"
     },
     {
+      "id": "41499",
+      "name": "유플러스와 함께하는 레고랜드런",
+      "date_display": "2026년5월16일",
+      "date_iso": "2026-05-16",
+      "distances": "5km",
+      "region": "강원",
+      "place": "강원도 춘천시 하중도길 128",
+      "organizer": "레고랜드코리아리조트, LGU+",
+      "contact": "1661-2670",
+      "registration_period": "2026년3월27일~2026년4월5일",
+      "homepage": "http://upluslegolandrun.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41499"
+    },
+    {
       "id": "41445",
       "name": "2026 인천시육상연맹배 마라톤",
       "date_display": "2026년5월17일",
@@ -7984,6 +7999,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41497"
     },
     {
+      "id": "41498",
+      "name": "2026 전마협 하계 무료 훈련 마라톤",
+      "date_display": "2026년7월4일",
+      "date_iso": "2026-07-04",
+      "distances": "10km,5km",
+      "region": "충남",
+      "place": "금산인삼엑스포주차장",
+      "organizer": "전국마라톤협회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년3월27일~2026년6월30일",
+      "homepage": "http://mara1080.com/event/3c31740e-986e-4cb8-a7e5-850a80d2a5fd",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41498"
+    },
+    {
       "id": "41277",
       "name": "제10회 노원구청장배 겸 회장배마라톤",
       "date_display": "2026년7월5일",
@@ -8072,6 +8102,21 @@
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250820150217&csno=20191209143330#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41223"
+    },
+    {
+      "id": "41500",
+      "name": "2026 대구세계마스터즈 10km마라톤",
+      "date_display": "2026년8월23일",
+      "date_iso": "2026-08-23",
+      "distances": "10km",
+      "region": "대구",
+      "place": "대구스타디움 일원",
+      "organizer": "대구광역시, 세계마스터즈육상연",
+      "contact": "053-803-1834",
+      "registration_period": "2025년12월23일~2026년6월23일",
+      "homepage": "http://www.wmac2026.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41500"
     },
     {
       "id": "41353",
