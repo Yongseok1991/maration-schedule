@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-29T08:39:49.242Z",
+  "updatedAt": "2026-03-29T16:35:08.798Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 565,
   "races": [
@@ -7440,7 +7440,7 @@
       "contact": "010-6364-4749",
       "registration_period": "2026년3월30일~2026년5월19일",
       "homepage": "http://gangnam-marathon.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41494"
     },
     {
