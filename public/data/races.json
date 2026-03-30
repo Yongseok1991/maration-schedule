@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-03-30T02:27:30.702Z",
+  "updatedAt": "2026-03-30T09:12:04.029Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 565,
+  "count": 570,
   "races": [
     {
       "id": "40976",
@@ -5704,6 +5704,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41202"
     },
     {
+      "id": "41505",
+      "name": "2026 은평 불광천벚꽃마라톤",
+      "date_display": "2026년3월29일",
+      "date_iso": "2026-03-29",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "불광천 수상무대(응암역)",
+      "organizer": "은평구청",
+      "contact": "02-3445-2018",
+      "registration_period": "2026년3월3일~2026년3월5일",
+      "homepage": "http://epmarathon.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41505"
+    },
+    {
       "id": "41278",
       "name": "2026 장수트레일레이스 Spring",
       "date_display": "2026년4월3일",
@@ -7234,6 +7249,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41376"
     },
     {
+      "id": "41503",
+      "name": "2026 GOLD RUSH RACE",
+      "date_display": "2026년5월17일",
+      "date_iso": "2026-05-17",
+      "distances": "10km",
+      "region": "경기",
+      "place": "미사경정공원",
+      "organizer": "러너블",
+      "contact": "02-2031-1935",
+      "registration_period": "2026년4월2일~2026년4월24일",
+      "homepage": "http://runable.me/comp/3735",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41503"
+    },
+    {
       "id": "41419",
       "name": "2026 안양천 장미꽃 축제 마라톤",
       "date_display": "2026년5월23일",
@@ -7292,6 +7322,21 @@
       "homepage": "http://korearun01.imweb.me/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41483"
+    },
+    {
+      "id": "41502",
+      "name": "2026 GOLD RUSH RACE",
+      "date_display": "2026년5월23일",
+      "date_iso": "2026-05-23",
+      "distances": "10km,08:00,11:00",
+      "region": "경기",
+      "place": "미사경정공원",
+      "organizer": "러너블",
+      "contact": "02-000-0000",
+      "registration_period": "2026년3월23일~2026년3월31일",
+      "homepage": "http://runable.me/comp/3735",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41502"
     },
     {
       "id": "41106",
@@ -7442,6 +7487,21 @@
       "homepage": "http://gangnam-marathon.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41494"
+    },
+    {
+      "id": "41501",
+      "name": "서울유아차레이스 with 신한 20+ 뛰어요",
+      "date_display": "2026년5월30일",
+      "date_iso": "2026-05-30",
+      "distances": "5km,걷기,달리기",
+      "region": "서울",
+      "place": "서울어린이대공원",
+      "organizer": "러너블",
+      "contact": "02-0000-0000",
+      "registration_period": "2026년2월19일~2026년4월30일",
+      "homepage": "http://seoulstrollerrace.imweb.me/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41501"
     },
     {
       "id": "41459",
@@ -7663,7 +7723,7 @@
       "place": "강릉 옥계면 금진솔밭길",
       "organizer": "(주)강원도민일보",
       "contact": "033-651-0112",
-      "registration_period": "2026년3월3일~2026년3월31일",
+      "registration_period": "2026년3월3일~2026년4월8일",
       "homepage": "http://www.강릉헌화로11k.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41404"
@@ -8087,6 +8147,21 @@
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821130406&csno=20190812093657#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41140"
+    },
+    {
+      "id": "41504",
+      "name": "2026 인사이더런 S",
+      "date_display": "2026년8월1일",
+      "date_iso": "2026-08-01",
+      "distances": "10km",
+      "region": "서울",
+      "place": "일산 킨텍스 제2전시장 7,8",
+      "organizer": "러너블",
+      "contact": "02-2031-1935",
+      "registration_period": "2026년3월26일~2026년7월30일",
+      "homepage": "http://insiderun.me",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41504"
     },
     {
       "id": "41223",
