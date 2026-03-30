@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-30T09:12:04.029Z",
+  "updatedAt": "2026-03-30T16:55:36.519Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 570,
   "races": [
@@ -5760,7 +5760,7 @@
       "contact": "010-8566-8705",
       "registration_period": "2026년3월9일~2026년3월30일",
       "homepage": "http://cltoo.com/ko/product/115",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41455"
     },
     {
@@ -6075,7 +6075,7 @@
       "contact": "070-8098-1833",
       "registration_period": "2026년1월27일~2026년3월30일",
       "homepage": "http://2026seoulcleanbeautyrun.sixshop.site/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41339"
     },
     {
@@ -8310,7 +8310,7 @@
       "contact": "02-364-1986",
       "registration_period": "2026년3월31일~2026년9월12일",
       "homepage": "http://bbangtrailrun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41354"
     },
     {
