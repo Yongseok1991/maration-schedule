@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-31T08:59:37.056Z",
+  "updatedAt": "2026-03-31T16:57:01.861Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 571,
   "races": [
@@ -6195,7 +6195,7 @@
       "contact": "02-741-4094",
       "registration_period": "2026년2월1일~2026년3월31일",
       "homepage": "http://runtoharmony.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41289"
     },
     {
@@ -6420,7 +6420,7 @@
       "contact": "042-471-0419",
       "registration_period": "2026년2월6일~2026년3월31일",
       "homepage": "http://todagmarathon.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41393"
     },
     {
@@ -6465,7 +6465,7 @@
       "contact": "02-338-0344",
       "registration_period": "2026년1월23일~2026년3월31일",
       "homepage": "http://dmzmarathon.newstomato.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41338"
     },
     {
@@ -6585,7 +6585,7 @@
       "contact": "010-6263-9357",
       "registration_period": "2026년1월10일~2026년3월31일",
       "homepage": "http://cprun222k.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41237"
     },
     {
@@ -6765,7 +6765,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년3월5일~2026년3월31일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41450"
     },
     {
@@ -6780,7 +6780,7 @@
       "contact": "02-2036-9274",
       "registration_period": "2026년1월15일~2026년3월31일",
       "homepage": "http://www.womenmarathon.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41425"
     },
     {
@@ -6840,7 +6840,7 @@
       "contact": "010-9314-1000",
       "registration_period": "2026년3월9일~2026년3월31일",
       "homepage": "http://2026darangrun.org",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41462"
     },
     {
@@ -7305,7 +7305,7 @@
       "contact": "031-821-9950",
       "registration_period": "2026년2월25일~2026년3월31일",
       "homepage": "http://badamarathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41302"
     },
     {
@@ -7335,7 +7335,7 @@
       "contact": "010-3878-1159",
       "registration_period": "2026년4월1일~2026년4월30일",
       "homepage": "http://korearun01.imweb.me/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41483"
     },
     {
@@ -7350,7 +7350,7 @@
       "contact": "02-000-0000",
       "registration_period": "2026년3월23일~2026년3월31일",
       "homepage": "http://runable.me/comp/3735",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41502"
     },
     {
@@ -7425,7 +7425,7 @@
       "contact": "010-6449-5073",
       "registration_period": "2026년1월6일~2026년3월31일",
       "homepage": "http://geoje100.creatorlink.net/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41325"
     },
     {
@@ -7710,7 +7710,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년4월1일~2026년5월10일",
       "homepage": "http://www.imrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
     },
     {
@@ -7830,7 +7830,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년4월1일~2026년4월30일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41485"
     },
     {
@@ -8070,7 +8070,7 @@
       "contact": "070-7718-7577",
       "registration_period": "2026년4월1일~2026년5월31일",
       "homepage": "http://www.ironrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41497"
     },
     {
