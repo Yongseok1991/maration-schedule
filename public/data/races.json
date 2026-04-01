@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-01T09:04:07.668Z",
+  "updatedAt": "2026-04-01T16:54:29.042Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 575,
   "races": [
@@ -6180,7 +6180,7 @@
       "contact": "02-3210-1666",
       "registration_period": "2026년1월23일~2026년4월1일",
       "homepage": "http://www.irunman.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41340"
     },
     {
@@ -7275,7 +7275,7 @@
       "contact": "02-2031-1935",
       "registration_period": "2026년4월2일~2026년4월24일",
       "homepage": "http://runable.me/comp/3735",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41503"
     },
     {
