@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-01T02:31:56.124Z",
+  "updatedAt": "2026-04-01T09:04:07.668Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 571,
+  "count": 575,
   "races": [
     {
       "id": "40976",
@@ -7243,9 +7243,9 @@
       "place": "대전엑스포시민광장",
       "organizer": "식품의약품안전처",
       "contact": "042-638-1080",
-      "registration_period": "2026년2월20일~2026년4월15일",
+      "registration_period": "2026년2월20일~2026년3월31일",
       "homepage": "http://mara1080.com/event/29a34ee9-32a9-4a3b-b92f-37b3772cc183",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41384"
     },
     {
@@ -7255,7 +7255,7 @@
       "date_iso": "2026-05-17",
       "distances": "10km",
       "region": "대전",
-      "place": "대전 엑스포 과학공원 (예정)",
+      "place": "미정",
       "organizer": "헤럴드경제",
       "contact": "070-7727-1755",
       "registration_period": "2026년2월9일~2026년3월6일",
@@ -7684,6 +7684,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41476"
     },
     {
+      "id": "41507",
+      "name": "2026 한라산 트레일러닝",
+      "date_display": "2026년6월6일",
+      "date_iso": "2026-06-06",
+      "distances": "100km,100마일,50km,36km, 10km",
+      "region": "제주",
+      "place": "서귀포 돈내코 야영장",
+      "organizer": "(사)대한트레일런협회",
+      "contact": "031-734-8889",
+      "registration_period": "2026년3월24일~2026년4월31일",
+      "homepage": "http://ktra.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41507"
+    },
+    {
       "id": "41458",
       "name": "제30회 제주관광마라톤 축제",
       "date_display": "2026년6월7일",
@@ -7712,6 +7727,21 @@
       "homepage": "http://www.imrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
+    },
+    {
+      "id": "41509",
+      "name": "제11회 너릿재마라톤",
+      "date_display": "2026년6월7일",
+      "date_iso": "2026-06-07",
+      "distances": "8km,16km,24km",
+      "region": "광주",
+      "place": "화순 셀레브 카페 입구",
+      "organizer": "광주일보,마라톤세상",
+      "contact": "061-375-1201",
+      "registration_period": "2026년4월8일~2026년5월6일",
+      "homepage": "http://marathonworld.kr/?utm_source=marathongo&utm_medium=referral",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41509"
     },
     {
       "id": "41298",
@@ -8194,6 +8224,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41223"
     },
     {
+      "id": "41508",
+      "name": "영남알프스9봉 트레일 레이스",
+      "date_display": "2026년8월15일",
+      "date_iso": "2026-08-15",
+      "distances": "9봉 85k",
+      "region": "경남",
+      "place": "울주군 등억알프스온천호텔(복합센터부근)",
+      "organizer": "JYD자연을달린다",
+      "contact": "010-4539-6887",
+      "registration_period": "2026년4월1일~2026년7월15일",
+      "homepage": "http://jyd.creatorlink.net",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41508"
+    },
+    {
       "id": "41500",
       "name": "2026 대구세계마스터즈 10km마라톤",
       "date_display": "2026년8월23일",
@@ -8477,6 +8522,21 @@
       "homepage": "http://www.chultra.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41236"
+    },
+    {
+      "id": "41510",
+      "name": "제5회 무등산지오마라톤",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "하프,10km,5km,30km",
+      "region": "전남",
+      "place": "화순 금호스파리조트",
+      "organizer": "광주,전라남도,담양군,화순군",
+      "contact": "061-375-1201",
+      "registration_period": "2026년5월18일~2026년6월18일",
+      "homepage": "http://georun.kr/ko/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41510"
     },
     {
       "id": "41434",
