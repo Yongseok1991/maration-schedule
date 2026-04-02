@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-02T08:56:10.356Z",
+  "updatedAt": "2026-04-02T16:56:07.052Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 575,
   "races": [
@@ -6045,7 +6045,7 @@
       "contact": "02-888-8875",
       "registration_period": "2026년2월12일~2026년4월2일",
       "homepage": "http://www.kksports.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41407"
     },
     {
@@ -6060,7 +6060,7 @@
       "contact": "02-888-8875",
       "registration_period": "2026년2월12일~2026년4월2일",
       "homepage": "http://www.kksports.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41370"
     },
     {
@@ -6763,9 +6763,9 @@
       "place": "다산 도농체육공원 일원",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년3월5일~2026년3월31일",
+      "registration_period": "2026년3월5일~2026년4월12일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41450"
     },
     {
