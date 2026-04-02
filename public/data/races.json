@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-02T02:11:03.967Z",
+  "updatedAt": "2026-04-02T08:56:10.356Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 575,
   "races": [
@@ -7723,9 +7723,9 @@
       "place": "여의도공원 문화의마당",
       "organizer": "런코리아/im뱅크",
       "contact": "1566-1936",
-      "registration_period": "2026년4월1일~2026년5월10일",
+      "registration_period": "2026년4월14일~2026년5월10일",
       "homepage": "http://www.imrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
     },
     {
