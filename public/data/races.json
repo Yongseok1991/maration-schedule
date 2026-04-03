@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-03T02:12:30.428Z",
+  "updatedAt": "2026-04-03T08:53:52.601Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 576,
   "races": [
@@ -5734,21 +5734,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41278"
     },
     {
-      "id": "40317",
-      "name": "수원 광교산트레일런",
-      "date_display": "2026년4월4일",
-      "date_iso": "2026-04-04",
-      "distances": "16km",
-      "region": "경기",
-      "place": "하광교동 반딧불이화장실 아래",
-      "organizer": "명품트레일",
-      "contact": "010-3526-9120",
-      "registration_period": "2025년11월11일~2026년4월3일",
-      "homepage": "http://www.mtrailrun.kr",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
-    },
-    {
       "id": "41455",
       "name": "오크밸리 힐스 나이트 레이스",
       "date_display": "2026년4월4일",
@@ -6272,6 +6257,21 @@
       "homepage": "http://surally2406.webmaker21.kr/competition/outline?ca_id=01&wm_id=19",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41221"
+    },
+    {
+      "id": "40317",
+      "name": "부산 이기대트레일런",
+      "date_display": "2026년4월18일",
+      "date_iso": "2026-04-18",
+      "distances": "10km",
+      "region": "부산",
+      "place": "이기대수변공원입구",
+      "organizer": "명품트레일",
+      "contact": "010-3526-9120",
+      "registration_period": "2025년11월11일~2026년4월17일",
+      "homepage": "http://www.mtrailrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
     },
     {
       "id": "41452",
