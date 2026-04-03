@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-03T08:53:52.601Z",
+  "updatedAt": "2026-04-03T16:39:54.643Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 576,
   "races": [
@@ -7230,7 +7230,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년3월11일~2026년4월3일",
       "homepage": "http://incheonafcup.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41445"
     },
     {
