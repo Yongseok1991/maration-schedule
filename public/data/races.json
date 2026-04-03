@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-02T16:56:07.052Z",
+  "updatedAt": "2026-04-03T02:12:30.428Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 575,
+  "count": 576,
   "races": [
     {
       "id": "40976",
@@ -7543,9 +7543,9 @@
       "place": "울산태화강 둔치(태화교밑)",
       "organizer": "울산 남구 육상연맹",
       "contact": "010-9360-0113",
-      "registration_period": "2026년3월16일~2026년4월31일",
+      "registration_period": "2026년3월16일~2026년4월2일",
       "homepage": "http://modern-infinity-9e6.notion.site/2026-317918810cc2809f8ca2d834ac9b549f?source=copy_link",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41432"
     },
     {
@@ -8252,6 +8252,21 @@
       "homepage": "http://www.wmac2026.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41500"
+    },
+    {
+      "id": "41512",
+      "name": "2026 금수산트레일러닝대회",
+      "date_display": "2026년8월23일",
+      "date_iso": "2026-08-23",
+      "distances": "22km",
+      "region": "충북",
+      "place": "청풍리조트",
+      "organizer": "제천시산악연맹",
+      "contact": "010-9359-0302",
+      "registration_period": "2026년4월7일~2026년5월31일",
+      "homepage": "http://www.runnerking.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41512"
     },
     {
       "id": "41353",
