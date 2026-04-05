@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-04T16:35:47.213Z",
+  "updatedAt": "2026-04-05T02:26:38.674Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 576,
+  "count": 577,
   "races": [
     {
       "id": "40976",
@@ -7217,6 +7217,21 @@
       "homepage": "http://upluslegolandrun.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41499"
+    },
+    {
+      "id": "41513",
+      "name": "오클리 커뮤니티 러닝 with 스타벅스",
+      "date_display": "2026년5월16일",
+      "date_iso": "2026-05-16",
+      "distances": "8km",
+      "region": "서울",
+      "place": "스타벅스 여의도한강공원점",
+      "organizer": "스타벅스",
+      "contact": "1522-3232",
+      "registration_period": "2026년4월1일~2026년4월15일",
+      "homepage": "http://www.starbucks.co.kr/whats_new/campaign_view.do?pro_seq=3358",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41513"
     },
     {
       "id": "41445",
