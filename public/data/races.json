@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-05T08:42:11.977Z",
+  "updatedAt": "2026-04-05T16:36:07.996Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 577,
   "races": [
@@ -6300,7 +6300,7 @@
       "contact": "010-5165-0803",
       "registration_period": "2026년3월1일~2026년4월5일",
       "homepage": "http://runable.me/product/3590?comp=3586",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41456"
     },
     {
@@ -6510,7 +6510,7 @@
       "contact": "1899-8610",
       "registration_period": "2025년12월22일~2026년4월5일",
       "homepage": "http://www.cuk-sports.co.kr/apply/mudeugnsan_2026/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41261"
     },
     {
@@ -7215,7 +7215,7 @@
       "contact": "1661-2670",
       "registration_period": "2026년3월27일~2026년4월5일",
       "homepage": "http://upluslegolandrun.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41499"
     },
     {
@@ -8310,7 +8310,7 @@
       "contact": "031-821-9902",
       "registration_period": "2026년2월2일~2026년4월5일",
       "homepage": "http://dmzrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41365"
     },
     {
