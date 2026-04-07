@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-07T09:02:04.167Z",
+  "updatedAt": "2026-04-07T16:58:17.151Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 577,
+  "count": 584,
   "races": [
     {
       "id": "40976",
@@ -6360,7 +6360,7 @@
       "contact": "010-2412-5294",
       "registration_period": "2026년1월5일~2026년4월7일",
       "homepage": "http://xn--oi2bn8o9vb5vdh8b21cw84a0mg.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41287"
     },
     {
@@ -7099,6 +7099,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41026"
     },
     {
+      "id": "41515",
+      "name": "제22회 3대하천마라톤",
+      "date_display": "2026년5월10일",
+      "date_iso": "2026-05-10",
+      "distances": "하프,10km,5km,가족코스(5km)",
+      "region": "대전",
+      "place": "대전엑스포시민광장",
+      "organizer": "대전일보/대전광역시체육회",
+      "contact": "042-251-3801",
+      "registration_period": "2026년4월6일~2026년4월10일",
+      "homepage": "http://www.tjrace.net",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41515"
+    },
+    {
       "id": "41424",
       "name": "2026 제 1회 경기신문 씨사이드 마라톤대회",
       "date_display": "2026년5월16일",
@@ -7714,6 +7729,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41507"
     },
     {
+      "id": "41517",
+      "name": "제28회 양평이봉주마라톤",
+      "date_display": "2026년6월6일",
+      "date_iso": "2026-06-06",
+      "distances": "하프,10km,4km,10km 커플런",
+      "region": "경기",
+      "place": "양평강상체육공원",
+      "organizer": "경인일",
+      "contact": "1600-3962",
+      "registration_period": "2026년4월15일~2026년5월4일",
+      "homepage": "http://www.hangangmarathon.net",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41517"
+    },
+    {
+      "id": "41519",
+      "name": "2026 도시가스 트레일 온 런 강원",
+      "date_display": "2026년6월6일",
+      "date_iso": "2026-06-06",
+      "distances": "트레일러닝(4.4K, 12K, 24K)",
+      "region": "강원",
+      "place": "강릉경포호수광장",
+      "organizer": "한국도시가스협회, 동아일보",
+      "contact": "02-3012-0187",
+      "registration_period": "2026년4월6일~2026년5월31일",
+      "homepage": "http://citygasonrun.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41519"
+    },
+    {
       "id": "41458",
       "name": "제30회 제주관광마라톤 축제",
       "date_display": "2026년6월7일",
@@ -7755,7 +7800,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년4월8일~2026년5월6일",
       "homepage": "http://marathonworld.kr/?utm_source=marathongo&utm_medium=referral",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41509"
     },
     {
@@ -7894,6 +7939,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41495"
     },
     {
+      "id": "41520",
+      "name": "2026 지중해마을 라이트런",
+      "date_display": "2026년6월13일",
+      "date_iso": "2026-06-13",
+      "distances": "10km,5km,1.2KM",
+      "region": "충남",
+      "place": "아산시 지중해 마을 광장",
+      "organizer": "주식회사 오소컴퍼니",
+      "contact": "010-7604-5878",
+      "registration_period": "2026년5월1일~2026년6월5일",
+      "homepage": "http://lightrun2026.imweb.me",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41520"
+    },
+    {
       "id": "41431",
       "name": "2026 제21회 울릉도전국마라톤",
       "date_display": "2026년6월14일",
@@ -7967,6 +8027,21 @@
       "homepage": "http://www.supgil.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41480"
+    },
+    {
+      "id": "41518",
+      "name": "제21회 광진구연맹회장배 육상대회",
+      "date_display": "2026년6월14일",
+      "date_iso": "2026-06-14",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "중곡동 중랑천 물놀이장 옆",
+      "organizer": "광진구체육회(광진구육상연맹)",
+      "contact": "02-457-0121",
+      "registration_period": "2026년4월6일~2026년5월29일",
+      "homepage": "http://ksgaaf.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41518"
     },
     {
       "id": "41406",
@@ -8207,6 +8282,21 @@
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821130406&csno=20190812093657#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41140"
+    },
+    {
+      "id": "41521",
+      "name": "제16회 태종대혹서기전국마라톤",
+      "date_display": "2026년7월19일",
+      "date_iso": "2026-07-19",
+      "distances": "하프,10km,7km",
+      "region": "부산",
+      "place": "태종대공원",
+      "organizer": "(사)부산아마추어마라톤클럽연맹",
+      "contact": "010-6710-2023",
+      "registration_period": "2026년4월20일~2026년6월14일",
+      "homepage": "http://www.bsama.co.kr/index.asp",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41521"
     },
     {
       "id": "41504",
@@ -8507,6 +8597,21 @@
       "homepage": "http://www.달서하프마라톤.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41332"
+    },
+    {
+      "id": "41516",
+      "name": "2026 안동마라톤",
+      "date_display": "2026년10월4일",
+      "date_iso": "2026-10-04",
+      "distances": "풀,하프,10km,5km",
+      "region": "경북",
+      "place": "안동시민운동장",
+      "organizer": "안동시, 매일신문사",
+      "contact": "031-575-7243",
+      "registration_period": "2026년4월13일~2026년5월31일",
+      "homepage": "http://www.admarathon.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
     },
     {
       "id": "41352",
