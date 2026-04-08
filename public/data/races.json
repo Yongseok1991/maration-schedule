@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-08T02:24:21.609Z",
+  "updatedAt": "2026-04-08T09:00:41.789Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 584,
   "races": [
@@ -7828,7 +7828,7 @@
       "place": "강릉 옥계면 금진솔밭길",
       "organizer": "(주)강원도민일보",
       "contact": "033-651-0112",
-      "registration_period": "2026년3월3일~2026년4월8일",
+      "registration_period": "2026년3월3일~2026년4월13일",
       "homepage": "http://www.강릉헌화로11k.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41404"
@@ -8023,7 +8023,7 @@
       "place": "김해종합운동장 및 숲길 일원",
       "organizer": "김해시육상연맹",
       "contact": "055-762-1793",
-      "registration_period": "2026년3월18일~2026년5월20일",
+      "registration_period": "2026년3월18일~2026년4월8일",
       "homepage": "http://www.supgil.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41480"
@@ -8543,12 +8543,12 @@
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
       "date_iso": "2026-09-20",
-      "distances": "하프,10km,5km,5km가족런",
+      "distances": "하프,10km,5km,10Km커플런,4.2Km 패미리런",
       "region": "경기",
       "place": "가평종합운동장(경기)",
       "organizer": "가평군체육회, 세계일보",
       "contact": "02-2647-4488",
-      "registration_period": "2026년5월14일~2026년5월30일",
+      "registration_period": "2026년4월14일~2026년5월30일",
       "homepage": "http://gprun.com/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41351"
@@ -8691,17 +8691,18 @@
     {
       "id": "41422",
       "name": "제10회 가을철 산불조심마라톤",
-      "date_display": "2026년10월11일",
+      "date_display": "10/11(일)",
       "date_iso": "2026-10-11",
       "distances": "풀,하프,10km,5km,31km",
-      "region": "서울",
+      "region": "",
       "place": "광평교운동장",
       "organizer": "한국트레일러너연맹(사)한국산악마라톤연맹",
       "contact": "02-424-2195",
-      "registration_period": "2026년2월23일~2026년9월15일",
-      "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&csno=20190605121808&opp=20260203121910#baseline",
+      "registration_period": "",
+      "homepage": "",
       "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41422"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41422",
+      "error": "detail_fetch_failed"
     },
     {
       "id": "41255",
