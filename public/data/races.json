@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-08T09:00:41.789Z",
+  "updatedAt": "2026-04-08T17:01:51.893Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 584,
   "races": [
@@ -6345,7 +6345,7 @@
       "contact": "033-264-1365",
       "registration_period": "2026년2월4일~2026년4월8일",
       "homepage": "http://kw-marathon.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41367"
     },
     {
@@ -6786,17 +6786,18 @@
     {
       "id": "41403",
       "name": "제26회 5.18마라톤대회",
-      "date_display": "2026년5월2일",
+      "date_display": "5/2(토)",
       "date_iso": "2026-05-02",
       "distances": "10km,5km",
-      "region": "광주",
+      "region": "",
       "place": "국립5·18민주묘지 일원",
       "organizer": "5.18기념재단_전남매일",
       "contact": "062-720-1011",
-      "registration_period": "2026년2월24일~2026년2월25일",
-      "homepage": "http://518run.com",
+      "registration_period": "",
+      "homepage": "",
       "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41403"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41403",
+      "error": "detail_fetch_failed"
     },
     {
       "id": "41390",
@@ -8025,7 +8026,7 @@
       "contact": "055-762-1793",
       "registration_period": "2026년3월18일~2026년4월8일",
       "homepage": "http://www.supgil.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41480"
     },
     {
@@ -8691,18 +8692,17 @@
     {
       "id": "41422",
       "name": "제10회 가을철 산불조심마라톤",
-      "date_display": "10/11(일)",
+      "date_display": "2026년10월11일",
       "date_iso": "2026-10-11",
       "distances": "풀,하프,10km,5km,31km",
-      "region": "",
+      "region": "서울",
       "place": "광평교운동장",
       "organizer": "한국트레일러너연맹(사)한국산악마라톤연맹",
       "contact": "02-424-2195",
-      "registration_period": "",
-      "homepage": "",
+      "registration_period": "2026년2월23일~2026년9월15일",
+      "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&csno=20190605121808&opp=20260203121910#baseline",
       "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41422",
-      "error": "detail_fetch_failed"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41422"
     },
     {
       "id": "41255",
