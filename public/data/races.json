@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-09T09:07:15.631Z",
+  "updatedAt": "2026-04-09T17:07:24.641Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 584,
+  "count": 589,
   "races": [
     {
       "id": "40976",
@@ -7050,7 +7050,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년3월5일~2026년4월9일",
       "homepage": "http://yonginmarathon.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41418"
     },
     {
@@ -7140,7 +7140,7 @@
       "contact": "02-739-8091",
       "registration_period": "2025년12월2일~2026년4월9일",
       "homepage": "http://www.oxfamtrailwalker.or.kr/ko/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41235"
     },
     {
@@ -7384,6 +7384,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41502"
     },
     {
+      "id": "41525",
+      "name": "2026 분노의질주런 용인스피드웨이",
+      "date_display": "2026년5월23일",
+      "date_iso": "2026-05-23",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "에버랜드 스피드웨이",
+      "organizer": "블루모라",
+      "contact": "031-778-6960",
+      "registration_period": "2026년4월21일~2026년4월23일",
+      "homepage": "http://thefast.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41525"
+    },
+    {
       "id": "41106",
       "name": "제37회 지리산 화대종주UTMB",
       "date_display": "2026년5월24일",
@@ -7547,6 +7562,21 @@
       "homepage": "http://seoulstrollerrace.imweb.me/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41501"
+    },
+    {
+      "id": "41526",
+      "name": "2026 야반도주 in Busan",
+      "date_display": "2026년5월30일",
+      "date_iso": "2026-05-30",
+      "distances": "10km",
+      "region": "부산",
+      "place": "북항 친수공원 잔디마당",
+      "organizer": "부산일보",
+      "contact": "031-821-9949",
+      "registration_period": "2026년4월9일~2026년4월20일",
+      "homepage": "http://nightrun.busan.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41526"
     },
     {
       "id": "41459",
@@ -8179,6 +8209,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41487"
     },
     {
+      "id": "41527",
+      "name": "제1회 송도 이봉주 마라톤",
+      "date_display": "2026년6월28일",
+      "date_iso": "2026-06-28",
+      "distances": "10km,5km",
+      "region": "인천",
+      "place": "인천대학교 송도캠퍼스",
+      "organizer": "인천광역시육상연맹",
+      "contact": "1866-1718",
+      "registration_period": "2026년4월20일~2026년5월15일",
+      "homepage": "http://runsongdo.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41527"
+    },
+    {
+      "id": "41523",
+      "name": "2026 전국블루베리마라톤축제",
+      "date_display": "2026년6월28일",
+      "date_iso": "2026-06-28",
+      "distances": "10km,5km,5km가족부(2인1조),10km 단체전(3인1조)",
+      "region": "전북",
+      "place": "정읍 대흥무지개센터",
+      "organizer": "대흥리마을공동체, 정읍시육상연",
+      "contact": "010-4654-0495",
+      "registration_period": "2026년4월10일~2026년6월10일",
+      "homepage": "http://dhrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41523"
+    },
+    {
       "id": "41497",
       "name": "IRON RUN 2026",
       "date_display": "2026년7월4일",
@@ -8762,6 +8822,21 @@
       "homepage": "http://marathon.jtbc.com/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41259"
+    },
+    {
+      "id": "41522",
+      "name": "제24회 대모산,구룡산 트레일런",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "10km",
+      "region": "서울",
+      "place": "수서역 7번출구광장",
+      "organizer": "(사)한국산악마라톤연맹",
+      "contact": "02-424-2195",
+      "registration_period": "2026년4월1일~2026년10월30일",
+      "homepage": "http://koreatrail.net",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41522"
     }
   ]
 }
