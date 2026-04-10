@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-10T09:08:41.060Z",
+  "updatedAt": "2026-04-10T16:50:46.910Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 589,
   "races": [
@@ -6405,7 +6405,7 @@
       "contact": "02-2647-4488",
       "registration_period": "2026년2월8일~2026년4월10일",
       "homepage": "http://sybrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41392"
     },
     {
@@ -6600,7 +6600,7 @@
       "contact": "061-921-9902",
       "registration_period": "2026년2월23일~2026년4월10일",
       "homepage": "http://giverun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41421"
     },
     {
@@ -6975,7 +6975,7 @@
       "contact": "02-785-0583",
       "registration_period": "2026년2월23일~2026년4월10일",
       "homepage": "http://brrun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41415"
     },
     {
