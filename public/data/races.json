@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-12T08:47:27.652Z",
+  "updatedAt": "2026-04-12T16:38:43.891Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 591,
   "races": [
@@ -6765,7 +6765,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년3월5일~2026년4월12일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41450"
     },
     {
@@ -7065,7 +7065,7 @@
       "contact": "1644-4219",
       "registration_period": "2026년2월2일~2026년4월12일",
       "homepage": "http://www.xn--o39a84ke5dgxc710an6as16b.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41357"
     },
     {
@@ -8685,7 +8685,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년4월13일~2026년5월31일",
       "homepage": "http://www.admarathon.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
     },
     {
@@ -8850,7 +8850,7 @@
       "contact": "054-1600-4525",
       "registration_period": "2026년4월13일~2026년6월31일",
       "homepage": "http://pohangmarathon.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41528"
     },
     {
