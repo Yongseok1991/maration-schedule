@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-13T02:36:34.749Z",
+  "updatedAt": "2026-04-13T09:54:46.137Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 591,
+  "count": 592,
   "races": [
     {
       "id": "40976",
@@ -7423,9 +7423,9 @@
       "place": "한강공원 여의도 물빛광장",
       "organizer": "(주)비즈한국, 런앤런",
       "contact": "070-7706-1011",
-      "registration_period": "2026년1월15일~2026년4월29일",
+      "registration_period": "2026년1월15일~2026년4월12일",
       "homepage": "http://www.burningrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41397"
     },
     {
@@ -7847,6 +7847,21 @@
       "homepage": "http://mindmarathon.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41529"
+    },
+    {
+      "id": "41533",
+      "name": "2026 마인드마라톤",
+      "date_display": "2026년6월7일",
+      "date_iso": "2026-06-07",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "서울광장",
+      "organizer": "한국수력원자력(주) 더버터",
+      "contact": "02-3789-7861",
+      "registration_period": "2026년4월13일~2026년4월30일",
+      "homepage": "http://mindmarathon.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41533"
     },
     {
       "id": "41298",
@@ -8548,7 +8563,7 @@
       "place": "강원도 양양군 웰컴센터",
       "organizer": "G1방송, 양양군",
       "contact": "033-248-5019",
-      "registration_period": "2026년2월27일~2026년4월15일",
+      "registration_period": "2026년2월27일~2026년5월31일",
       "homepage": "http://yrun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41420"
