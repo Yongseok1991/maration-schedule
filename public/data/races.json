@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-13T09:54:46.137Z",
+  "updatedAt": "2026-04-13T17:03:07.951Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 592,
+  "count": 594,
   "races": [
     {
       "id": "40976",
@@ -7165,12 +7165,12 @@
       "date_iso": "2026-05-16",
       "distances": "100km,50km",
       "region": "서울",
-      "place": "석관동 우이천 다목적광장",
+      "place": "장안1수변공원",
       "organizer": "서울한강울트라마라톤대회조직위",
       "contact": "010-3844-5211",
-      "registration_period": "2025년12월1일~2026년4월30일",
+      "registration_period": "2025년12월1일~2026년3월31일",
       "homepage": "http://www.seoul-hangang.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41190"
     },
     {
@@ -7397,6 +7397,21 @@
       "homepage": "http://thefast.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41525"
+    },
+    {
+      "id": "41530",
+      "name": "달려용,인 RUN FESTA",
+      "date_display": "2026년5월23일",
+      "date_iso": "2026-05-23",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "(구)용인종합운동장",
+      "organizer": "한국외대 글로벌스포츠산업학부",
+      "contact": "010-4623-0845",
+      "registration_period": "2026년3월25일~2026년4월25일",
+      "homepage": "http://yonginrunfesta.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41530"
     },
     {
       "id": "41106",
@@ -7815,7 +7830,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년4월14일~2026년5월10일",
       "homepage": "http://www.imrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
     },
     {
@@ -7890,7 +7905,7 @@
       "contact": "033-651-0112",
       "registration_period": "2026년3월3일~2026년4월13일",
       "homepage": "http://www.강릉헌화로11k.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41404"
     },
     {
@@ -8584,6 +8599,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41354"
     },
     {
+      "id": "41532",
+      "name": "제2회 초록우산 런웨이 마라톤",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "하프,10km,5km,3km 걷기,3km 걷기(어린이)",
+      "region": "대전",
+      "place": "대전엑스포시민광장",
+      "organizer": "초록우산 대전세종지역본부",
+      "contact": "042-638-1080",
+      "registration_period": "2026년4월13일~2026년8월1일",
+      "homepage": "http://mara1080.com/event/9443583f-6577-466c-ab2f-43d1dbd820d4",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41532"
+    },
+    {
       "id": "41192",
       "name": "제14회설악산공룡능선UTMB",
       "date_display": "2026년9월13일",
@@ -8640,7 +8670,7 @@
       "contact": "02-2647-4488",
       "registration_period": "2026년4월14일~2026년5월30일",
       "homepage": "http://gprun.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41351"
     },
     {
