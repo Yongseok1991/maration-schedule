@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-14T02:29:55.155Z",
+  "updatedAt": "2026-04-14T09:17:46.788Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 594,
   "races": [
@@ -7820,15 +7820,15 @@
     },
     {
       "id": "41460",
-      "name": "2026 im뱅크 코리아 오픈 마라톤",
+      "name": "2026 iM뱅크 코리아 오픈 마라톤",
       "date_display": "2026년6월7일",
       "date_iso": "2026-06-07",
       "distances": "하프,10km,5km",
       "region": "서울",
       "place": "여의도공원 문화의마당",
-      "organizer": "런코리아/im뱅크",
+      "organizer": "런코리아/iM뱅크",
       "contact": "1566-1936",
-      "registration_period": "2026년4월14일~2026년5월10일",
+      "registration_period": "2026년4월14일~2026년5월3일",
       "homepage": "http://www.imrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
