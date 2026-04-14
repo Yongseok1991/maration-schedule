@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-14T09:17:46.788Z",
+  "updatedAt": "2026-04-14T17:06:24.073Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 594,
   "races": [
@@ -8818,7 +8818,7 @@
       "place": "광평교운동장",
       "organizer": "한국트레일러너연맹(사)한국산악마라톤연맹",
       "contact": "02-424-2195",
-      "registration_period": "2026년2월23일~2026년9월15일",
+      "registration_period": "2026년2월23일~2026년9월10일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&csno=20190605121808&opp=20260203121910#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41422"
@@ -8909,7 +8909,7 @@
       "organizer": "(사)한국산악마라톤연맹",
       "contact": "02-424-2195",
       "registration_period": "2026년4월1일~2026년10월30일",
-      "homepage": "http://koreatrail.net",
+      "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20241014202801&csno=20200702232740#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41522"
     }
