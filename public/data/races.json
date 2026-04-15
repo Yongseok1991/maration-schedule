@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-15T09:19:20.280Z",
+  "updatedAt": "2026-04-15T17:03:37.259Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 597,
   "races": [
@@ -7050,7 +7050,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년3월18일~2026년4월15일",
       "homepage": "http://www.solorun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41461"
     },
     {
@@ -7125,7 +7125,7 @@
       "contact": "042-251-3801",
       "registration_period": "2026년4월6일~2026년4월15일",
       "homepage": "http://www.tjrace.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41515"
     },
     {
@@ -7275,7 +7275,7 @@
       "contact": "1522-3232",
       "registration_period": "2026년4월1일~2026년4월15일",
       "homepage": "http://www.starbucks.co.kr/whats_new/campaign_view.do?pro_seq=3358",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41513"
     },
     {
@@ -8925,7 +8925,7 @@
       "contact": "02-2031-1935",
       "registration_period": "2026년4월13일~2026년4월15일",
       "homepage": "http://marathon.jtbc.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41259"
     },
     {
