@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-14T17:06:24.073Z",
+  "updatedAt": "2026-04-15T02:28:32.526Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 594,
+  "count": 597,
   "races": [
     {
       "id": "40976",
@@ -6574,6 +6574,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41073"
     },
     {
+      "id": "41536",
+      "name": "제24회 경기마라톤대회",
+      "date_display": "2026년4월19일",
+      "date_iso": "2026-04-19",
+      "distances": "풀,하프,10km,5km",
+      "region": "경기",
+      "place": "수원종합운동장",
+      "organizer": "경기일보",
+      "contact": "1577-3998",
+      "registration_period": "2026년1월26일~2026년2월15일",
+      "homepage": "http://www.kgmarathon.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41536"
+    },
+    {
       "id": "41237",
       "name": "제17회 성지순례222KM울트라마라톤",
       "date_display": "2026년4월24일",
@@ -7114,6 +7129,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41515"
     },
     {
+      "id": "41535",
+      "name": "2026 선양마사이 마라톤",
+      "date_display": "2026년5월10일",
+      "date_iso": "2026-05-10",
+      "distances": "13km",
+      "region": "대전",
+      "place": "장동산림욕장 계족산황톳길 일원",
+      "organizer": "(주)선양소주",
+      "contact": "042-580-1827",
+      "registration_period": "2026년4월6일~2026년4월30일",
+      "homepage": "http://www.barefootfesta.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41535"
+    },
+    {
       "id": "41424",
       "name": "2026 제 1회 경기신문 씨사이드 마라톤대회",
       "date_display": "2026년5월16일",
@@ -7412,6 +7442,21 @@
       "homepage": "http://yonginrunfesta.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41530"
+    },
+    {
+      "id": "41534",
+      "name": "2026 세이브더칠드런 국제어린이마라톤(나주)",
+      "date_display": "2026년5월23일",
+      "date_iso": "2026-05-23",
+      "distances": "약 4km",
+      "region": "전남",
+      "place": "나주 빛가람호수공원",
+      "organizer": "세이브더칠드런",
+      "contact": "02-6900-4400",
+      "registration_period": "2026년4월8일~2026년4월24일",
+      "homepage": "http://www.sc.or.kr/marathon/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41534"
     },
     {
       "id": "41106",
@@ -8398,9 +8443,9 @@
       "place": "태종대공원",
       "organizer": "(사)부산아마추어마라톤클럽연맹",
       "contact": "010-6710-2023",
-      "registration_period": "2026년4월20일~2026년6월14일",
+      "registration_period": "2026년4월15일~2026년6월14일",
       "homepage": "http://www.bsama.co.kr/index.asp",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41521"
     },
     {
