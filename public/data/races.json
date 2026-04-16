@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-16T09:18:58.591Z",
+  "updatedAt": "2026-04-16T17:14:09.435Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 597,
+  "count": 600,
   "races": [
     {
       "id": "40976",
@@ -7144,6 +7144,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41535"
     },
     {
+      "id": "41537",
+      "name": "윙스 포 라이프 월드런 2026",
+      "date_display": "2026년5월10일",
+      "date_iso": "2026-05-10",
+      "distances": "기부 마라톤",
+      "region": "경기",
+      "place": "부천종합운동장",
+      "organizer": "레드불",
+      "contact": "02-3670-7000",
+      "registration_period": "2026년1월1일~2026년5월10일",
+      "homepage": "http://www.redbull.com/kr-ko/events/wings-for-life-world-run-2026",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41537"
+    },
+    {
       "id": "41424",
       "name": "2026 제 1회 경기신문 씨사이드 마라톤대회",
       "date_display": "2026년5월16일",
@@ -8209,6 +8224,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41467"
     },
     {
+      "id": "41538",
+      "name": "2026 웰메이드런",
+      "date_display": "2026년6월20일",
+      "date_iso": "2026-06-20",
+      "distances": "하프,10km,5km,하프 7인1조 단체전,10k 커플런",
+      "region": "경기",
+      "place": "남양주한강공원 삼패지구",
+      "organizer": "유러닝페스타 운영위원회",
+      "contact": "010-8017-1833",
+      "registration_period": "2026년4월18일~2026년5월31일",
+      "homepage": "http://wellmaderun.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41538"
+    },
+    {
       "id": "41443",
       "name": "2026 보은 속리산 말티재 힐링 알몸 마라톤",
       "date_display": "2026년6월21일",
@@ -8942,6 +8972,21 @@
       "homepage": "http://pohangmarathon.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41528"
+    },
+    {
+      "id": "41539",
+      "name": "2026 영천댐 마라톤",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "하프,10km,5km",
+      "region": "경북",
+      "place": "영천댐 하류공원",
+      "organizer": "영천시육상연맹, 채널경북",
+      "contact": "054-331-6029",
+      "registration_period": "2026년9월1일~2026년9월30일",
+      "homepage": "http://runyc.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41539"
     },
     {
       "id": "41522",
