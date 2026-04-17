@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-16T17:14:09.435Z",
+  "updatedAt": "2026-04-17T02:31:25.022Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 600,
   "races": [
@@ -8078,7 +8078,7 @@
       "name": "2026 지중해마을 라이트런",
       "date_display": "2026년6월13일",
       "date_iso": "2026-06-13",
-      "distances": "10km,5km,1.2KM",
+      "distances": "5km,1.2KM",
       "region": "충남",
       "place": "아산시 지중해 마을 광장",
       "organizer": "주식회사 오소컴퍼니",
@@ -8330,7 +8330,7 @@
     },
     {
       "id": "41527",
-      "name": "제1회 송도 이봉주 마라톤",
+      "name": "송도 이봉주 마라톤",
       "date_display": "2026년6월28일",
       "date_iso": "2026-06-28",
       "distances": "10km,5km",
@@ -8346,17 +8346,18 @@
     {
       "id": "41523",
       "name": "2026 전국블루베리마라톤축제",
-      "date_display": "2026년6월28일",
+      "date_display": "6/28(일)",
       "date_iso": "2026-06-28",
       "distances": "10km,5km,5km가족부(2인1조),10km 단체전(3인1조)",
-      "region": "전북",
+      "region": "",
       "place": "정읍 대흥무지개센터",
       "organizer": "대흥리마을공동체, 정읍시육상연",
       "contact": "010-4654-0495",
-      "registration_period": "2026년4월10일~2026년6월10일",
-      "homepage": "http://dhrun.kr",
+      "registration_period": "",
+      "homepage": "",
       "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41523"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41523",
+      "error": "detail_fetch_failed"
     },
     {
       "id": "41497",
@@ -8593,9 +8594,9 @@
       "place": "(양천구)목동운동장",
       "organizer": "(사)한국마라톤협회",
       "contact": "02-2647-4488",
-      "registration_period": "2026년5월12일~2026년6월30일",
+      "registration_period": "2026년4월13일~2026년6월30일",
       "homepage": "http://amarunsb.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41032"
     },
     {
@@ -8818,9 +8819,9 @@
       "place": "홍주 종합경기장",
       "organizer": "홍성군체육회",
       "contact": "02-2647-4488",
-      "registration_period": "2026년3월25일~2026년7월31일",
+      "registration_period": "2026년3월25일~2026년4월14일",
       "homepage": "http://amarunhs.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41352"
     },
     {
@@ -8918,14 +8919,14 @@
       "name": "2026 아시아 오픈 마라톤",
       "date_display": "2026년10월18일",
       "date_iso": "2026-10-18",
-      "distances": "하프,10km,엘리트선수10km",
+      "distances": "하프,10km",
       "region": "서울",
       "place": "광화문 광장(예정)",
       "organizer": "아시아투데이",
       "contact": "02-2647-4488",
-      "registration_period": "2026년4월21일~2026년5월18일",
+      "registration_period": "2026년4월14일~2026년5월18일",
       "homepage": "http://asiarun.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41303"
     },
     {
