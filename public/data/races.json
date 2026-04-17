@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-17T09:17:25.415Z",
+  "updatedAt": "2026-04-17T16:54:40.679Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 600,
   "races": [
@@ -7200,7 +7200,7 @@
       "contact": "02-785-1915",
       "registration_period": "2026년3월9일~2026년4월17일",
       "homepage": "http://run.seoul.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41437"
     },
     {
@@ -8235,7 +8235,7 @@
       "contact": "010-8017-1833",
       "registration_period": "2026년4월18일~2026년5월31일",
       "homepage": "http://wellmaderun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41538"
     },
     {
