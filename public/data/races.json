@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-17T02:31:25.022Z",
+  "updatedAt": "2026-04-17T09:17:25.415Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 600,
   "races": [
@@ -6259,21 +6259,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41221"
     },
     {
-      "id": "40317",
-      "name": "부산 이기대트레일런",
-      "date_display": "2026년4월18일",
-      "date_iso": "2026-04-18",
-      "distances": "10km",
-      "region": "부산",
-      "place": "이기대수변공원입구",
-      "organizer": "명품트레일",
-      "contact": "010-3526-9120",
-      "registration_period": "2025년11월11일~2026년4월17일",
-      "homepage": "http://www.mtrailrun.kr",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
-    },
-    {
       "id": "41452",
       "name": "키움런 2026",
       "date_display": "2026년4월18일",
@@ -6872,6 +6857,21 @@
       "homepage": "http://mara1080.com/event/6c02d9f8-cbe9-4a7b-ba9d-6e1f93a18b1a",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41366"
+    },
+    {
+      "id": "40317",
+      "name": "남한산성 트레일런",
+      "date_display": "2026년5월3일",
+      "date_iso": "2026-05-03",
+      "distances": "20km",
+      "region": "서울",
+      "place": "산성로타리(남한산성로792번길7)",
+      "organizer": "명품트레일",
+      "contact": "010-3526-9120",
+      "registration_period": "2025년11월11일~2026년5월2일",
+      "homepage": "http://www.mtrailrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
     },
     {
       "id": "41449",
@@ -7886,7 +7886,7 @@
       "distances": "하프,10km,5km",
       "region": "서울",
       "place": "여의도공원 문화의마당",
-      "organizer": "런코리아/iM뱅크",
+      "organizer": "iM뱅크/런코리아",
       "contact": "1566-1936",
       "registration_period": "2026년4월14일~2026년5월3일",
       "homepage": "http://www.imrun.kr",
@@ -8022,10 +8022,10 @@
       "region": "서울",
       "place": "상암월드컵경기장 평화광장",
       "organizer": "서울시각장애인스포츠연맹",
-      "contact": "02-2092-0011",
-      "registration_period": "2026년2월19일~2026년3월20일",
+      "contact": "02-780-0432",
+      "registration_period": "2026년2월19일~2026년4월31일",
       "homepage": "http://www.sbsa.or.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41305"
     },
     {
@@ -8346,18 +8346,17 @@
     {
       "id": "41523",
       "name": "2026 전국블루베리마라톤축제",
-      "date_display": "6/28(일)",
+      "date_display": "2026년6월28일",
       "date_iso": "2026-06-28",
       "distances": "10km,5km,5km가족부(2인1조),10km 단체전(3인1조)",
-      "region": "",
+      "region": "전북",
       "place": "정읍 대흥무지개센터",
       "organizer": "대흥리마을공동체, 정읍시육상연",
       "contact": "010-4654-0495",
-      "registration_period": "",
-      "homepage": "",
+      "registration_period": "2026년4월10일~2026년6월10일",
+      "homepage": "http://dhrun.kr",
       "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41523",
-      "error": "detail_fetch_failed"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41523"
     },
     {
       "id": "41497",
