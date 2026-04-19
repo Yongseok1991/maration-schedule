@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-19T08:54:13.427Z",
+  "updatedAt": "2026-04-19T16:39:43.481Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 600,
+  "count": 605,
   "races": [
     {
       "id": "40976",
@@ -6885,7 +6885,7 @@
       "contact": "010-6213-6207",
       "registration_period": "2026년3월14일~2026년4월19일",
       "homepage": "http://heartsignalrunfesta.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41449"
     },
     {
@@ -7125,7 +7125,7 @@
       "contact": "042-251-3801",
       "registration_period": "2026년4월6일~2026년4월19일",
       "homepage": "http://www.tjrace.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41515"
     },
     {
@@ -7292,6 +7292,36 @@
       "homepage": "http://www.starbucks.co.kr/whats_new/campaign_view.do?pro_seq=3358",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41513"
+    },
+    {
+      "id": "41544",
+      "name": "RUN 518 도청가는길",
+      "date_display": "2026년5월16일",
+      "date_iso": "2026-05-16",
+      "distances": "5.18km",
+      "region": "광주",
+      "place": "전남대 대운동장",
+      "organizer": "광주광역시 외",
+      "contact": "010-4071-0518",
+      "registration_period": "2026년4월19일~2026년4월24일",
+      "homepage": "http://www.run518.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41544"
+    },
+    {
+      "id": "41540",
+      "name": "시골스런 - 양주 꿀런",
+      "date_display": "2026년5월16일",
+      "date_iso": "2026-05-16",
+      "distances": "5km,3km",
+      "region": "경기",
+      "place": "경기도 양주 나리농원",
+      "organizer": "스파인더",
+      "contact": "070-8637-6173",
+      "registration_period": "2026년4월2일~2026년5월8일",
+      "homepage": "http://www.sfinder.co.kr/contest/contest_info/390",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41540"
     },
     {
       "id": "41445",
@@ -7864,6 +7894,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41519"
     },
     {
+      "id": "41543",
+      "name": "2026 백산수 심심런",
+      "date_display": "2026년6월6일",
+      "date_iso": "2026-06-06",
+      "distances": "10km,5km,3km코스",
+      "region": "서울",
+      "place": "여의도한강공원 물빛무대앞광장",
+      "organizer": "사단법인 한국백혈병소아암협회",
+      "contact": "070-4350-5663",
+      "registration_period": "2026년4월20일~2026년5월22일",
+      "homepage": "http://simsimrun.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41543"
+    },
+    {
       "id": "41458",
       "name": "제30회 제주관광마라톤 축제",
       "date_display": "2026년6월7일",
@@ -8340,7 +8385,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년4월20일~2026년5월15일",
       "homepage": "http://runsongdo.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41527"
     },
     {
@@ -8357,6 +8402,21 @@
       "homepage": "http://dhrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41523"
+    },
+    {
+      "id": "41542",
+      "name": "제20회 강북구청장배 마라톤",
+      "date_display": "2026년6월28일",
+      "date_iso": "2026-06-28",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "강북구 도봉로 102길21",
+      "organizer": "강북구육상연맹",
+      "contact": "010-5449-1676",
+      "registration_period": "2026년4월20일~2026년5월31일",
+      "homepage": "http://cafe.daum.net/Kangmaclub/IZkA",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41542"
     },
     {
       "id": "41497",
@@ -8732,6 +8792,21 @@
       "homepage": "http://rocknrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41349"
+    },
+    {
+      "id": "41541",
+      "name": "2026 금산인삼축제 마라톤",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "하프,10km,4km",
+      "region": "충남",
+      "place": "금산세계인삼엑스포주차장",
+      "organizer": "전마협",
+      "contact": "042-638-1080",
+      "registration_period": "2026년4월17일~2026년8월19일",
+      "homepage": "http://mara1080.com/event/2044eb82-fcdb-4e56-b79b-f3543a6a360d",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41541"
     },
     {
       "id": "41351",
