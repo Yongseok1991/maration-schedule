@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-20T09:58:29.710Z",
+  "updatedAt": "2026-04-20T17:03:28.715Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 605,
   "races": [
@@ -6628,7 +6628,7 @@
       "place": "인천광역시 송도 달빛축제공원",
       "organizer": "인천광역시걷기협회",
       "contact": "070-4098-1114",
-      "registration_period": "2026년2월25일~2026년4월20일",
+      "registration_period": "2026년2월25일~2026년4월24일",
       "homepage": "http://blog.naver.com/npa2023/224157041339",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41423"
@@ -7470,7 +7470,7 @@
       "contact": "031-778-6960",
       "registration_period": "2026년4월21일~2026년4월23일",
       "homepage": "http://thefast.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41525"
     },
     {
@@ -7680,7 +7680,7 @@
       "contact": "031-821-9949",
       "registration_period": "2026년4월9일~2026년4월20일",
       "homepage": "http://nightrun.busan.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41526"
     },
     {
