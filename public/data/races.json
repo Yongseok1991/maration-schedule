@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-20T02:37:03.414Z",
+  "updatedAt": "2026-04-20T09:58:29.710Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 605,
   "races": [
@@ -7123,9 +7123,9 @@
       "place": "대전엑스포시민광장",
       "organizer": "대전일보/대전광역시체육회",
       "contact": "042-251-3801",
-      "registration_period": "2026년4월6일~2026년4월19일",
+      "registration_period": "2026년4월6일~2026년4월22일",
       "homepage": "http://www.tjrace.net",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41515"
     },
     {
@@ -7168,7 +7168,7 @@
       "place": "인천 중구 씨사이드파크 일원",
       "organizer": "경기신문",
       "contact": "1588-2341",
-      "registration_period": "2026년2월23일~2026년4월20일",
+      "registration_period": "2026년2월23일~2026년5월6일",
       "homepage": "http://kgseasiderun.co.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41424"
@@ -8140,7 +8140,7 @@
       "date_iso": "2026-06-14",
       "distances": "풀,하프,10km,5km",
       "region": "경북",
-      "place": "사동항 여객터미널 주차장",
+      "place": "울릉예술문화체험장",
       "organizer": "세계일보",
       "contact": "1644-4219",
       "registration_period": "2026년3월3일~2026년4월30일",
