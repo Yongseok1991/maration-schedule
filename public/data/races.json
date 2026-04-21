@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-20T17:03:28.715Z",
+  "updatedAt": "2026-04-21T02:32:29.916Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 605,
   "races": [
@@ -7678,9 +7678,9 @@
       "place": "북항 친수공원 잔디마당",
       "organizer": "부산일보",
       "contact": "031-821-9949",
-      "registration_period": "2026년4월9일~2026년4월20일",
+      "registration_period": "2026년4월9일~2026년4월30일",
       "homepage": "http://nightrun.busan.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41526"
     },
     {
