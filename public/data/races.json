@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-21T17:00:54.635Z",
+  "updatedAt": "2026-04-22T02:30:17.554Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 605,
+  "count": 607,
   "races": [
     {
       "id": "40976",
@@ -7909,6 +7909,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41543"
     },
     {
+      "id": "41545",
+      "name": "NAMHAE 250K - RUN TO SEA",
+      "date_display": "2026년6월6일",
+      "date_iso": "2026-06-06",
+      "distances": "10km,20km",
+      "region": "경남",
+      "place": "남해 송정 송바람해수욕장",
+      "organizer": "팜프라(FARMFRA)",
+      "contact": "070-7755-5532",
+      "registration_period": "2026년4월6일~2026년5월6일",
+      "homepage": "http://namhae250k.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41545"
+    },
+    {
       "id": "41458",
       "name": "제30회 제주관광마라톤 축제",
       "date_display": "2026년6월7일",
@@ -8972,6 +8987,21 @@
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&csno=20190605121808&opp=20260203121910#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41422"
+    },
+    {
+      "id": "41546",
+      "name": "2026 서울레이스",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "하프,10km",
+      "region": "서울",
+      "place": "서울광장",
+      "organizer": "동아일보",
+      "contact": "02-312-1998",
+      "registration_period": "2026년5월11일~2026년5월27일",
+      "homepage": "http://www.seoul-race.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41546"
     },
     {
       "id": "41255",
