@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-22T02:30:17.554Z",
+  "updatedAt": "2026-04-22T09:20:05.869Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 607,
+  "count": 609,
   "races": [
     {
       "id": "40976",
@@ -7504,6 +7504,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41534"
     },
     {
+      "id": "41547",
+      "name": "2026 한화생명 시그니처 63 RUN",
+      "date_display": "2026년5월23일",
+      "date_iso": "2026-05-23",
+      "distances": "63빌딩",
+      "region": "서울",
+      "place": "63빌딩",
+      "organizer": "한화생명",
+      "contact": "070-5154-0390",
+      "registration_period": "2026년5월6일~2026년5월7일",
+      "homepage": "http://www.ticketlink.co.kr/product/62816",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41547"
+    },
+    {
       "id": "41106",
       "name": "제37회 지리산 화대종주UTMB",
       "date_display": "2026년5월24일",
@@ -9032,6 +9047,21 @@
       "homepage": "http://asiarun.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41303"
+    },
+    {
+      "id": "41548",
+      "name": "그린스텝 2026",
+      "date_display": "2026년10월18일",
+      "date_iso": "2026-10-18",
+      "distances": "하프,10km,5km",
+      "region": "전남",
+      "place": "전라남도 해남군 솔라시도",
+      "organizer": "목포MBC / 마라톤세상",
+      "contact": "061-270-9212",
+      "registration_period": "2026년7월1일~2026년7월24일",
+      "homepage": "http://www.greenstep.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41548"
     },
     {
       "id": "41477",
