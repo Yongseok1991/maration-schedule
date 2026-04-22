@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-22T09:20:05.869Z",
+  "updatedAt": "2026-04-22T17:00:05.517Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 609,
   "races": [
@@ -7125,7 +7125,7 @@
       "contact": "042-251-3801",
       "registration_period": "2026년4월6일~2026년4월22일",
       "homepage": "http://www.tjrace.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41515"
     },
     {
