@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T09:28:03.672Z",
+  "updatedAt": "2026-04-23T17:20:06.030Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 609,
   "races": [
@@ -6915,7 +6915,7 @@
       "contact": "070-7613-6119",
       "registration_period": "2026년3월23일~2026년4월23일",
       "homepage": "http://goobne-ovenrun.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41411"
     },
     {
@@ -7470,7 +7470,7 @@
       "contact": "031-778-6960",
       "registration_period": "2026년4월21일~2026년4월23일",
       "homepage": "http://thefast.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41525"
     },
     {
