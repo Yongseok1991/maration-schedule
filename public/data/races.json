@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-23T02:34:03.997Z",
+  "updatedAt": "2026-04-23T09:28:03.672Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 609,
   "races": [
@@ -7243,9 +7243,9 @@
       "place": "양산 가산수변공원 일원",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년3월19일~2026년4월30일",
+      "registration_period": "2026년3월19일~2026년4월21일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41488"
     },
     {
@@ -7648,9 +7648,9 @@
       "place": "노원체육공원 축구장",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년3월24일~2026년4월31일",
+      "registration_period": "2026년3월24일~2026년4월21일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41486"
     },
     {
