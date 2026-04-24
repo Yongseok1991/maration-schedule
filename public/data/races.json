@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-24T09:44:54.810Z",
+  "updatedAt": "2026-04-24T16:55:52.788Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 609,
   "races": [
@@ -6630,7 +6630,7 @@
       "contact": "070-4098-1114",
       "registration_period": "2026년2월25일~2026년4월24일",
       "homepage": "http://blog.naver.com/npa2023/224157041339",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41423"
     },
     {
@@ -7290,7 +7290,7 @@
       "contact": "010-4071-0518",
       "registration_period": "2026년4월19일~2026년4월24일",
       "homepage": "http://www.run518.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41544"
     },
     {
@@ -7365,7 +7365,7 @@
       "contact": "02-2031-1935",
       "registration_period": "2026년4월2일~2026년4월24일",
       "homepage": "http://runable.me/comp/3735",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41503"
     },
     {
@@ -7485,7 +7485,7 @@
       "contact": "02-6900-4400",
       "registration_period": "2026년4월8일~2026년4월24일",
       "homepage": "http://www.sc.or.kr/marathon/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41534"
     },
     {
@@ -8330,7 +8330,7 @@
     },
     {
       "id": "41439",
-      "name": "2026 참행복 마라톤",
+      "name": "2026 참행복나눔 마라톤",
       "date_display": "2026년6월21일",
       "date_iso": "2026-06-21",
       "distances": "하프,10km,5km",
