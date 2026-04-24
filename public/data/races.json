@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-24T02:34:32.023Z",
+  "updatedAt": "2026-04-24T09:44:54.810Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 609,
   "races": [
@@ -6919,21 +6919,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41411"
     },
     {
-      "id": "41375",
-      "name": "2026 THE RACE DAEGU 10K",
-      "date_display": "2026년5월3일",
-      "date_iso": "2026-05-03",
-      "distances": "10km",
-      "region": "대구",
-      "place": "대구 스타디움 광장 (예정)",
-      "organizer": "헤럴드경제",
-      "contact": "070-7727-1755",
-      "registration_period": "2026년2월9일~2026년3월6일",
-      "homepage": "http://daegu.therace.co.kr",
-      "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41375"
-    },
-    {
       "id": "41359",
       "name": "2026 전국의병 마라톤",
       "date_display": "2026년5월3일",
@@ -7573,7 +7558,7 @@
       "place": "서울 뚝섬한강공원 수변광장",
       "organizer": "(주)스포테인",
       "contact": "02-3210-1666",
-      "registration_period": "2026년1월27일~2026년4월24일",
+      "registration_period": "2026년1월27일~2026년4월30일",
       "homepage": "http://www.dawnmarathon.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41358"
@@ -7937,6 +7922,21 @@
       "homepage": "http://namhae250k.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41545"
+    },
+    {
+      "id": "41375",
+      "name": "2026 THE RACE DAEGU 10K",
+      "date_display": "2026년6월7일",
+      "date_iso": "2026-06-07",
+      "distances": "10km",
+      "region": "대구",
+      "place": "대구 스타디움 동편광장",
+      "organizer": "헤럴드경제",
+      "contact": "070-7727-1755",
+      "registration_period": "2026년2월9일~2026년3월6일",
+      "homepage": "http://daegu.therace.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41375"
     },
     {
       "id": "41458",
