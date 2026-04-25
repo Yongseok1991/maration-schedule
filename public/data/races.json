@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-25T08:52:27.820Z",
+  "updatedAt": "2026-04-25T16:41:02.149Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 609,
   "races": [
@@ -6720,7 +6720,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년10월5일~2026년4월25일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250626115011&csno=20201120111538#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41104"
     },
     {
@@ -6945,7 +6945,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년10월5일~2026년4월25일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250511195054&csno=20170613133750#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41105"
     },
     {
@@ -7470,7 +7470,7 @@
       "contact": "010-4623-0845",
       "registration_period": "2026년3월25일~2026년4월25일",
       "homepage": "http://yonginrunfesta.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41530"
     },
     {
