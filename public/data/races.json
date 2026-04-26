@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-26T09:00:27.626Z",
+  "updatedAt": "2026-04-26T16:41:53.221Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 609,
   "races": [
@@ -7005,7 +7005,7 @@
       "contact": "010-7353-8966",
       "registration_period": "2025년12월25일~2026년4월26일",
       "homepage": "http://dhultra.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41234"
     },
     {
