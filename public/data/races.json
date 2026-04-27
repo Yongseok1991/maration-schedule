@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-27T10:14:28.125Z",
+  "updatedAt": "2026-04-27T17:22:01.744Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 615,
   "races": [
@@ -7790,7 +7790,7 @@
     },
     {
       "id": "41490",
-      "name": "제22회 영등포구연맹회장배 육상대회",
+      "name": "제22회 영등포구연맹회장배 육상대회 (마감)",
       "date_display": "2026년5월31일",
       "date_iso": "2026-05-31",
       "distances": "10km,5km",
