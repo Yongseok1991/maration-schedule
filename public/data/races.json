@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-26T16:41:53.221Z",
+  "updatedAt": "2026-04-27T02:41:49.660Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 609,
   "races": [
@@ -8218,9 +8218,9 @@
       "place": "대전엑스포시민광장",
       "organizer": "전국마라톤협회, 월드런",
       "contact": "042-638-1080",
-      "registration_period": "2026년3월17일~2026년5월31일",
+      "registration_period": "2026년3월17일~2026년4월26일",
       "homepage": "http://mara1080.com/event/cc73d8d1-a3d1-410c-9246-5d2eb76dd95e",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41481"
     },
     {
@@ -8473,9 +8473,9 @@
       "place": "금산인삼엑스포주차장",
       "organizer": "전국마라톤협회",
       "contact": "042-638-1080",
-      "registration_period": "2026년3월27일~2026년6월30일",
+      "registration_period": "2026년3월27일~2026년4월26일",
       "homepage": "http://mara1080.com/event/3c31740e-986e-4cb8-a7e5-850a80d2a5fd",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41498"
     },
     {
@@ -8533,9 +8533,9 @@
       "place": "장수종합경기장",
       "organizer": "(주)락앤런",
       "contact": "063-353-2025",
-      "registration_period": "2026년5월11일~2026년7월10일",
+      "registration_period": "2026년4월27일~2026년6월31일",
       "homepage": "http://rocknrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41348"
     },
     {
