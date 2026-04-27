@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-04-27T02:41:49.660Z",
+  "updatedAt": "2026-04-27T10:14:28.125Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 609,
+  "count": 615,
   "races": [
     {
       "id": "40976",
@@ -7684,6 +7684,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41526"
     },
     {
+      "id": "41550",
+      "name": "제1회 광주대학교 수직마라톤",
+      "date_display": "2026년5월30일",
+      "date_iso": "2026-05-30",
+      "distances": "2.1km+21floors",
+      "region": "광주",
+      "place": "광주대학교 운동장",
+      "organizer": "광주대학교, RISE사업단",
+      "contact": "062-670-2902",
+      "registration_period": "2026년4월23일~2026년5월20일",
+      "homepage": "http://forms.gle/g4tCvGWSMtg7CSZF8",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41550"
+    },
+    {
       "id": "41459",
       "name": "제4회 여의도 밤섬 마라톤",
       "date_display": "2026년5월31일",
@@ -8254,6 +8269,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41518"
     },
     {
+      "id": "41553",
+      "name": "제22회 인천광역시장기 건강달리기",
+      "date_display": "2026년6월14일",
+      "date_iso": "2026-06-14",
+      "distances": "10km",
+      "region": "인천",
+      "place": "인천대공원 문화마당",
+      "organizer": "인천광역시육상연맹",
+      "contact": "1866-1718",
+      "registration_period": "2026년4월29일~2026년5월31일",
+      "homepage": "http://healthyrun.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41553"
+    },
+    {
       "id": "41406",
       "name": "제16회 국민행복마라톤",
       "date_display": "2026년6월20일",
@@ -8569,6 +8599,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41521"
     },
     {
+      "id": "41554",
+      "name": "2026 쿨밸리트레일레이스",
+      "date_display": "2026년7월19일",
+      "date_iso": "2026-07-19",
+      "distances": "18K",
+      "region": "전북",
+      "place": "장수종합경기장, 방화동휴양림",
+      "organizer": "(주)락앤런",
+      "contact": "063-353-2025",
+      "registration_period": "2026년4월27일~2026년5월31일",
+      "homepage": "http://rocknrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41554"
+    },
+    {
       "id": "41504",
       "name": "2026 인사이더런 S",
       "date_display": "2026년8월1일",
@@ -8779,6 +8824,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41532"
     },
     {
+      "id": "41549",
+      "name": "제2회 화이트런 생리대 기부마라톤",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "10km,5km,걷기",
+      "region": "서울",
+      "place": "영등포구 신정교하부 육상트랙구",
+      "organizer": "청년일보, (주)소풍",
+      "contact": "02-556-8879",
+      "registration_period": "2026년4월27일~2026년8월14일",
+      "homepage": "http://whiterun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41549"
+    },
+    {
       "id": "41192",
       "name": "제14회설악산공룡능선UTMB",
       "date_display": "2026년9월13일",
@@ -8912,6 +8972,21 @@
       "homepage": "http://www.admarathon.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
+    },
+    {
+      "id": "41551",
+      "name": "2026서울오픈마라톤",
+      "date_display": "2026년10월5일",
+      "date_iso": "2026-10-05",
+      "distances": "하프,10km",
+      "region": "서울",
+      "place": "광화문광장(예정)",
+      "organizer": "(사)한국체육개발원 등",
+      "contact": "070-7766-1238",
+      "registration_period": "2026년4월24일~2026년5월10일",
+      "homepage": "http://seoulopen.or.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41551"
     },
     {
       "id": "41352",
@@ -9092,6 +9167,21 @@
       "homepage": "http://marathon.jtbc.com/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41259"
+    },
+    {
+      "id": "41552",
+      "name": "제21회 울산인권마라톤",
+      "date_display": "2026년11월1일",
+      "date_iso": "2026-11-01",
+      "distances": "하프,10km,5km",
+      "region": "울산",
+      "place": "태화강 둔치",
+      "organizer": "울산인권마라톤대회 조직위원회",
+      "contact": "052-242-1119",
+      "registration_period": "2026년8월18일~2026년9월18일",
+      "homepage": "http://www.humanrun.org",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41552"
     },
     {
       "id": "41528",
