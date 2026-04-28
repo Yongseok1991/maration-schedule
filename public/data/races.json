@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-28T02:49:18.138Z",
+  "updatedAt": "2026-04-28T10:13:16.754Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 615,
   "races": [
@@ -8210,7 +8210,7 @@
     },
     {
       "id": "41136",
-      "name": "제22회 영덕해변전국마라톤",
+      "name": "제22회 영덕해변전국마라톤(조기마감)",
       "date_display": "2026년6월14일",
       "date_iso": "2026-06-14",
       "distances": "하프,10km,5km",
