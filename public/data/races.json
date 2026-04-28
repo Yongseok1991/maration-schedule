@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-28T10:13:16.754Z",
+  "updatedAt": "2026-04-28T17:46:15.100Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 615,
   "races": [
@@ -6859,21 +6859,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41366"
     },
     {
-      "id": "40317",
-      "name": "남한산성 트레일런",
-      "date_display": "2026년5월3일",
-      "date_iso": "2026-05-03",
-      "distances": "20km",
-      "region": "서울",
-      "place": "산성로타리(남한산성로792번길7)",
-      "organizer": "명품트레일",
-      "contact": "010-3526-9120",
-      "registration_period": "2025년11월11일~2026년5월2일",
-      "homepage": "http://www.mtrailrun.kr",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
-    },
-    {
       "id": "41449",
       "name": "하트시그널 러닝 페스타",
       "date_display": "2026년5월3일",
@@ -7307,6 +7292,21 @@
       "homepage": "http://www.sfinder.co.kr/contest/contest_info/390",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41540"
+    },
+    {
+      "id": "40317",
+      "name": "밀양아리랑트레일런",
+      "date_display": "2026년5월17일",
+      "date_iso": "2026-05-17",
+      "distances": "20km",
+      "region": "경남",
+      "place": "밀양보트장",
+      "organizer": "명품트레일",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년3월11일~2026년5월16일",
+      "homepage": "http://www.mtrailrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
     },
     {
       "id": "41445",
@@ -8280,7 +8280,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년4월29일~2026년5월31일",
       "homepage": "http://healthyrun.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41553"
     },
     {
