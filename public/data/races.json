@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-29T10:05:26.619Z",
+  "updatedAt": "2026-04-29T17:28:08.702Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 615,
   "races": [
@@ -7470,7 +7470,7 @@
       "contact": "010-4623-0845",
       "registration_period": "2026년3월25일~2026년4월29일",
       "homepage": "http://yonginrunfesta.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41530"
     },
     {
@@ -7620,7 +7620,7 @@
       "contact": "042-540-1750",
       "registration_period": "2026년3월17일~2026년4월29일",
       "homepage": "http://hrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41482"
     },
     {
@@ -8660,13 +8660,13 @@
     },
     {
       "id": "41500",
-      "name": "2026 대구세계마스터즈 10km마라톤",
+      "name": "2026대구세계마스터즈 10km대회",
       "date_display": "2026년8월23일",
       "date_iso": "2026-08-23",
-      "distances": "10km",
+      "distances": "10km, 35세이상일반인,3000명",
       "region": "대구",
       "place": "대구스타디움 일원",
-      "organizer": "대구광역시, 세계마스터즈육상연",
+      "organizer": "대구광역시,세계마스터즈육상연맹",
       "contact": "053-803-1834",
       "registration_period": "2025년12월23일~2026년6월23일",
       "homepage": "http://www.wmac2026.com",
@@ -8690,10 +8690,10 @@
     },
     {
       "id": "41353",
-      "name": "2026 대구세계마스터즈 하프마라톤대회",
+      "name": "2026대구세계마스터즈 하프마라톤대회",
       "date_display": "2026년8월30일",
       "date_iso": "2026-08-30",
-      "distances": "하프",
+      "distances": "하프,35세이상일반인,5000명",
       "region": "대구",
       "place": "신천동로 일원",
       "organizer": "대구광역시, 세계마스터즈육상연맹(WMA)",
