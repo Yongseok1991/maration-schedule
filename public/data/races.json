@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-29T02:48:23.575Z",
+  "updatedAt": "2026-04-29T10:05:26.619Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 615,
   "races": [
@@ -7783,9 +7783,9 @@
       "place": "경주시 서천체육광장",
       "organizer": "경주시육상연맹",
       "contact": "054-777-0577",
-      "registration_period": "2026년1월12일~2026년5월6일",
+      "registration_period": "2026년1월12일~2026년4월21일",
       "homepage": "http://경주시육상연맹.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41309"
     },
     {
@@ -8308,7 +8308,7 @@
       "place": "충주종합운동장",
       "organizer": "충주시체육회",
       "contact": "043-851-7330",
-      "registration_period": "2026년3월2일~2026년6월3일",
+      "registration_period": "2026년3월2일~2026년5월1일",
       "homepage": "http://cjapplemarathon.com/index.asp",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41383"
