@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-30T10:06:05.379Z",
+  "updatedAt": "2026-04-30T17:20:44.374Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 615,
   "races": [
@@ -7110,7 +7110,7 @@
       "contact": "042-580-1827",
       "registration_period": "2026년4월6일~2026년4월30일",
       "homepage": "http://www.barefootfesta.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41535"
     },
     {
@@ -7425,7 +7425,7 @@
       "contact": "010-3878-1159",
       "registration_period": "2026년4월1일~2026년4월30일",
       "homepage": "http://korearun01.imweb.me/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41483"
     },
     {
@@ -7545,7 +7545,7 @@
       "contact": "070-8095-5768",
       "registration_period": "2026년2월25일~2026년4월30일",
       "homepage": "http://earthrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41417"
     },
     {
@@ -7590,7 +7590,7 @@
       "contact": "010-2116-0148",
       "registration_period": "2025년12월9일~2026년4월30일",
       "homepage": "http://samsamis.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41246"
     },
     {
@@ -7665,7 +7665,7 @@
       "contact": "02-0000-0000",
       "registration_period": "2026년2월19일~2026년4월30일",
       "homepage": "http://seoulstrollerrace.imweb.me/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41501"
     },
     {
@@ -7680,7 +7680,7 @@
       "contact": "031-821-9949",
       "registration_period": "2026년4월9일~2026년4월30일",
       "homepage": "http://nightrun.busan.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41526"
     },
     {
@@ -7755,7 +7755,7 @@
       "contact": "010-6710-2023",
       "registration_period": "2026년1월19일~2026년4월30일",
       "homepage": "http://www.bsama.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41317"
     },
     {
@@ -7815,7 +7815,7 @@
       "contact": "010-3878-1159",
       "registration_period": "2026년2월3일~2026년4월30일",
       "homepage": "http://www.ndru200.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41409"
     },
     {
@@ -8025,7 +8025,7 @@
       "contact": "02-3789-7861",
       "registration_period": "2026년4월13일~2026년4월30일",
       "homepage": "http://mindmarathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41533"
     },
     {
@@ -8100,7 +8100,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년2월2일~2026년4월30일",
       "homepage": "http://phsteelrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41275"
     },
     {
@@ -8145,7 +8145,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년4월1일~2026년4월30일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41485"
     },
     {
@@ -8175,7 +8175,7 @@
       "contact": "010-7604-5878",
       "registration_period": "2026년5월1일~2026년6월5일",
       "homepage": "http://bluecrystalmarathon.imweb.me",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41520"
     },
     {
@@ -8190,7 +8190,7 @@
       "contact": "1644-4219",
       "registration_period": "2026년3월3일~2026년4월30일",
       "homepage": "http://ulmarathon.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41431"
     },
     {
