@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-30T02:49:56.634Z",
+  "updatedAt": "2026-04-30T10:06:05.379Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 615,
   "races": [
@@ -7558,7 +7558,7 @@
       "place": "서울 뚝섬한강공원 수변광장",
       "organizer": "(주)스포테인",
       "contact": "02-3210-1666",
-      "registration_period": "2026년1월27일~2026년4월30일",
+      "registration_period": "2026년1월27일~2026년5월11일",
       "homepage": "http://www.dawnmarathon.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41358"
@@ -8158,9 +8158,9 @@
       "place": "영종도 씨사이드파크 일원",
       "organizer": "기호일보, 로드스포",
       "contact": "1600-3962",
-      "registration_period": "2026년3월26일~2026년3월26일",
+      "registration_period": "2026년3월26일~2026년5월1일",
       "homepage": "http://culturerun.net/index.php",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41495"
     },
     {
