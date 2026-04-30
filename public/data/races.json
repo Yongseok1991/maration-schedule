@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-29T17:28:08.702Z",
+  "updatedAt": "2026-04-30T02:49:56.634Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 615,
   "races": [
@@ -8165,16 +8165,16 @@
     },
     {
       "id": "41520",
-      "name": "2026 지중해마을 라이트런",
+      "name": "2026 지중해마을 마라톤",
       "date_display": "2026년6월13일",
       "date_iso": "2026-06-13",
-      "distances": "5km,1.2KM",
+      "distances": "5km",
       "region": "충남",
       "place": "아산시 지중해 마을 광장",
       "organizer": "주식회사 오소컴퍼니",
       "contact": "010-7604-5878",
       "registration_period": "2026년5월1일~2026년6월5일",
-      "homepage": "http://lightrun2026.imweb.me",
+      "homepage": "http://bluecrystalmarathon.imweb.me",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41520"
     },
