@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-01T09:45:10.132Z",
+  "updatedAt": "2026-05-01T16:57:08.550Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 615,
   "races": [
@@ -6825,7 +6825,7 @@
       "contact": "02-364-1986",
       "registration_period": "2026년2월10일~2026년5월1일",
       "homepage": "http://lifemarathon.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41396"
     },
     {
@@ -7200,7 +7200,7 @@
       "contact": "070-8224-6363",
       "registration_period": "2026년3월13일~2026년5월1일",
       "homepage": "http://mosirun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41470"
     },
     {
@@ -7770,7 +7770,7 @@
       "contact": "042-638-1080",
       "registration_period": "2025년12월24일~2026년4월31일",
       "homepage": "http://mara1080.com/event/d9909060-99e2-49ff-9112-0dc6c7c4d1db",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41270"
     },
     {
@@ -7875,7 +7875,7 @@
       "contact": "031-734-8889",
       "registration_period": "2026년3월24일~2026년4월31일",
       "homepage": "http://ktra.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41507"
     },
     {
@@ -8115,7 +8115,7 @@
       "contact": "02-780-0432",
       "registration_period": "2026년2월19일~2026년4월31일",
       "homepage": "http://www.sbsa.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41305"
     },
     {
@@ -8160,7 +8160,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년3월26일~2026년5월1일",
       "homepage": "http://culturerun.net/index.php",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41495"
     },
     {
@@ -8310,7 +8310,7 @@
       "contact": "043-851-7330",
       "registration_period": "2026년3월2일~2026년5월1일",
       "homepage": "http://cjapplemarathon.com/index.asp",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41383"
     },
     {
