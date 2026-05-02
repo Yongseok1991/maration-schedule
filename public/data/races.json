@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-01T16:57:08.550Z",
+  "updatedAt": "2026-05-02T02:37:35.285Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 615,
+  "count": 617,
   "races": [
     {
       "id": "40976",
@@ -8479,6 +8479,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41542"
     },
     {
+      "id": "41555",
+      "name": "제1회 리프레시런",
+      "date_display": "2026년6월28일",
+      "date_iso": "2026-06-28",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "하남 미사경정공원",
+      "organizer": "시사저널",
+      "contact": "02-3141-7745",
+      "registration_period": "2026년4월29일~2026년6월20일",
+      "homepage": "http://refreshrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41555"
+    },
+    {
       "id": "41497",
       "name": "IRON RUN 2026",
       "date_display": "2026년7월4일",
@@ -8972,6 +8987,21 @@
       "homepage": "http://www.admarathon.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
+    },
+    {
+      "id": "41556",
+      "name": "2026 YTN 서울투어마라톤",
+      "date_display": "2026년10월4일",
+      "date_iso": "2026-10-04",
+      "distances": "하프,10km",
+      "region": "서울",
+      "place": "서울광장 (예정)",
+      "organizer": "YTN",
+      "contact": "070-7725-6258",
+      "registration_period": "2026년4월30일~2026년4월30일",
+      "homepage": "http://run.ytn.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41556"
     },
     {
       "id": "41551",
