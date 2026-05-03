@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-03T09:21:43.094Z",
+  "updatedAt": "2026-05-03T16:50:16.347Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 617,
   "races": [
@@ -7980,7 +7980,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년4월14일~2026년5월3일",
       "homepage": "http://www.imrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
     },
     {
@@ -9135,7 +9135,7 @@
       "contact": "043-279-8073",
       "registration_period": "2026년5월4일~2026년6월12일",
       "homepage": "http://race.cjsports.or.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41255"
     },
     {
