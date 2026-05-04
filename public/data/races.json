@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-04T10:13:09.096Z",
+  "updatedAt": "2026-05-04T17:28:35.307Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 617,
   "races": [
@@ -7890,7 +7890,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년4월10일~2026년5월4일",
       "homepage": "http://www.hangangmarathon.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41517"
     },
     {
