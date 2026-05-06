@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-06T10:17:28.116Z",
+  "updatedAt": "2026-05-06T17:28:48.089Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 623,
   "races": [
@@ -7140,7 +7140,7 @@
       "contact": "1588-2341",
       "registration_period": "2026년2월23일~2026년5월6일",
       "homepage": "http://kgseasiderun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41424"
     },
     {
@@ -7515,7 +7515,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년10월5일~2026년5월6일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250519153230&csno=20150930092416#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41106"
     },
     {
@@ -7935,7 +7935,7 @@
       "contact": "070-7755-5532",
       "registration_period": "2026년4월6일~2026년5월6일",
       "homepage": "http://namhae250k.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41545"
     },
     {
@@ -7995,7 +7995,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년4월8일~2026년5월6일",
       "homepage": "http://marathonworld.kr/?utm_source=marathongo&utm_medium=referral",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41509"
     },
     {
@@ -8405,14 +8405,14 @@
     },
     {
       "id": "41561",
-      "name": "2026 대전 마라톤 대축제 THE PACER",
+      "name": "THE PACER SERIES",
       "date_display": "2026년6월21일",
       "date_iso": "2026-06-21",
       "distances": "10km,5km",
       "region": "대전",
       "place": "대전 대덕구 미호동 57-1",
-      "organizer": "런코드 주식회사",
-      "contact": "010-7715-1481",
+      "organizer": "런코드 코리아",
+      "contact": "010-7734-1481",
       "registration_period": "2026년5월4일~2026년6월7일",
       "homepage": "http://thepacerseries.com",
       "status": "접수중",
