@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-06T02:44:31.429Z",
+  "updatedAt": "2026-05-06T10:17:28.116Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 617,
+  "count": 623,
   "races": [
     {
       "id": "40976",
@@ -7648,9 +7648,9 @@
       "place": "대치유수지체육공원",
       "organizer": "강남육상연맹",
       "contact": "010-6364-4749",
-      "registration_period": "2026년3월30일~2026년5월19일",
+      "registration_period": "2026년3월30일~2026년5월5일",
       "homepage": "http://gangnam-marathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41494"
     },
     {
@@ -8404,6 +8404,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41218"
     },
     {
+      "id": "41561",
+      "name": "2026 대전 마라톤 대축제 THE PACER",
+      "date_display": "2026년6월21일",
+      "date_iso": "2026-06-21",
+      "distances": "10km,5km",
+      "region": "대전",
+      "place": "대전 대덕구 미호동 57-1",
+      "organizer": "런코드 주식회사",
+      "contact": "010-7715-1481",
+      "registration_period": "2026년5월4일~2026년6월7일",
+      "homepage": "http://thepacerseries.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41561"
+    },
+    {
       "id": "41440",
       "name": "2026 큰별 하프 마라톤",
       "date_display": "2026년6월27일",
@@ -8734,6 +8749,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41365"
     },
     {
+      "id": "41559",
+      "name": "제20회 순천만울트라마라톤대회",
+      "date_display": "2026년9월5일",
+      "date_iso": "2026-09-05",
+      "distances": "100km",
+      "region": "전남",
+      "place": "순천동천천변공원",
+      "organizer": "순천만울트라조직위",
+      "contact": "010-9887-0071",
+      "registration_period": "2026년4월1일~2026년8월24일",
+      "homepage": "http://www.scultra100.net",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41559"
+    },
+    {
+      "id": "41564",
+      "name": "2026 다이나핏 태백 트레일",
+      "date_display": "2026년9월5일",
+      "date_iso": "2026-09-05",
+      "distances": "50k,32k-T, 32k-U",
+      "region": "강원",
+      "place": "태백 소원지 오토캠핑장",
+      "organizer": "태백시, 태백시 철인3종 협회",
+      "contact": "010-5605-9059",
+      "registration_period": "2026년5월11일~2026년5월11일",
+      "homepage": "http://taebaektrail.com/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41564"
+    },
+    {
       "id": "41032",
       "name": "희망드림 제23회 새벽강변 국제마라톤",
       "date_display": "2026년9월6일",
@@ -9004,6 +9049,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41556"
     },
     {
+      "id": "41560",
+      "name": "2026 파주북시티마라톤",
+      "date_display": "2026년10월4일",
+      "date_iso": "2026-10-04",
+      "distances": "10km,5km,3Km(거북이마라톤)",
+      "region": "경기",
+      "place": "파주출판도시",
+      "organizer": "(사)파주출판도시입주기업체협의",
+      "contact": "031-955-0025",
+      "registration_period": "2026년5월4일~2026년8월10일",
+      "homepage": "http://runbookcity.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41560"
+    },
+    {
       "id": "41551",
       "name": "2026서울오픈마라톤",
       "date_display": "2026년10월5일",
@@ -9257,6 +9317,36 @@
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20241014202801&csno=20200702232740#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41522"
+    },
+    {
+      "id": "41563",
+      "name": "제24회 상주 곶감 마라톤 대회",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "풀,하프,10km,4.4km",
+      "region": "경북",
+      "place": "상주시민운동장",
+      "organizer": "전국마라톤협회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년5월6일~2026년10월15일",
+      "homepage": "http://www.mara1080.com/event/c8dc2c22-a83a-4743-9e34-c884e9809dbb",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41563"
+    },
+    {
+      "id": "41558",
+      "name": "제3회 무등산더블하트국제트레일런대회",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "16km/36km",
+      "region": "광주",
+      "place": "조선대학교",
+      "organizer": "한국백혈병소아암협회/시유케이컴",
+      "contact": "1899-8610",
+      "registration_period": "2026년5월4일~2026년10월15일",
+      "homepage": "http://www.cuk-sports.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41558"
     }
   ]
 }
