@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-07T10:23:51.771Z",
+  "updatedAt": "2026-05-07T17:47:24.634Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 623,
   "races": [
@@ -7500,7 +7500,7 @@
       "contact": "070-5154-0390",
       "registration_period": "2026년5월6일~2026년5월7일",
       "homepage": "http://www.ticketlink.co.kr/product/62816",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41547"
     },
     {
@@ -9274,21 +9274,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41552"
     },
     {
-      "id": "41528",
-      "name": "2026 포항마라톤챔피언십",
-      "date_display": "2026년11월7일",
-      "date_iso": "2026-11-07",
-      "distances": "10km,5km",
-      "region": "경북",
-      "place": "영일대해상누각",
-      "organizer": "kthcn",
-      "contact": "054-1600-4525",
-      "registration_period": "2026년4월13일~2026년6월31일",
-      "homepage": "http://pohangmarathon.com/",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41528"
-    },
-    {
       "id": "41539",
       "name": "2026 영천댐 마라톤",
       "date_display": "2026년11월7일",
@@ -9302,6 +9287,21 @@
       "homepage": "http://runyc.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41539"
+    },
+    {
+      "id": "41528",
+      "name": "2026 포항마라톤챔피언십",
+      "date_display": "2026년11월14일",
+      "date_iso": "2026-11-14",
+      "distances": "10km,5km",
+      "region": "경북",
+      "place": "영일대해상누각",
+      "organizer": "kthcn",
+      "contact": "054-1600-4525",
+      "registration_period": "2026년4월13일~2026년6월31일",
+      "homepage": "http://pohangmarathon.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41528"
     },
     {
       "id": "41522",
