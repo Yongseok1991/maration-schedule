@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-08T09:19:46.985Z",
+  "updatedAt": "2026-05-08T17:16:41.178Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 623,
   "races": [
@@ -6975,7 +6975,7 @@
       "contact": "02-0000-0000",
       "registration_period": "2026년2월10일~2026년5월8일",
       "homepage": "http://coffeebbangrun.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41389"
     },
     {
@@ -7290,7 +7290,7 @@
       "contact": "070-8637-6173",
       "registration_period": "2026년4월2일~2026년5월8일",
       "homepage": "http://www.sfinder.co.kr/contest/contest_info/390",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41540"
     },
     {
