@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-09T02:44:58.600Z",
+  "updatedAt": "2026-05-09T09:19:03.682Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 623,
+  "count": 626,
   "races": [
     {
       "id": "40976",
@@ -7024,6 +7024,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41461"
     },
     {
+      "id": "41568",
+      "name": "제23회 전기사랑마라톤",
+      "date_display": "2026년5월9일",
+      "date_iso": "2026-05-09",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "하남 미사리경정공원",
+      "organizer": "전기신문",
+      "contact": "02-338-0344",
+      "registration_period": "2026년2월9일~2026년3월20일",
+      "homepage": "http://www.e-powermarathon.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41568"
+    },
+    {
       "id": "41418",
       "name": "2026 용인마라톤",
       "date_display": "2026년5월10일",
@@ -9139,6 +9154,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41510"
     },
     {
+      "id": "41567",
+      "name": "제9회 거제시장배 섬꽃 전국 마라톤",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "하프,10km,4km",
+      "region": "경남",
+      "place": "거제스포츠파크",
+      "organizer": "거제시, 거제시체육회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년5월8일~2026년9월10일",
+      "homepage": "http://mara1080.com/event/b43655f0-60be-4c97-ad62-d377f6586ae0",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41567"
+    },
+    {
       "id": "41434",
       "name": "2026 MBN 전국 나주 마라톤대회",
       "date_display": "2026년10월11일",
@@ -9347,6 +9377,21 @@
       "homepage": "http://www.cuk-sports.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41558"
+    },
+    {
+      "id": "41565",
+      "name": "제4회 영남알프스 전국 하프마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "하프,10km,5km",
+      "region": "울산",
+      "place": "울주군 영남알프스 일원",
+      "organizer": "울산광역시 울주군육상연맹",
+      "contact": "010-4741-5959",
+      "registration_period": "2026년9월1일~2026년9월31일",
+      "homepage": "http://영남알프스마라톤.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41565"
     }
   ]
 }
