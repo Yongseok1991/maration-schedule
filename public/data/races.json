@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-10T09:27:35.831Z",
+  "updatedAt": "2026-05-10T16:55:12.763Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 627,
   "races": [
@@ -7140,7 +7140,7 @@
       "contact": "02-3670-7000",
       "registration_period": "2026년1월1일~2026년5월10일",
       "homepage": "http://www.redbull.com/kr-ko/events/wings-for-life-world-run-2026",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41537"
     },
     {
@@ -8535,7 +8535,7 @@
       "contact": "010-9360-0113",
       "registration_period": "2026년5월11일~2026년5월20일",
       "homepage": "http://modern-infinity-9e6.notion.site/2026-359918810cc280958531fd2261f990d6",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41569"
     },
     {
@@ -8805,7 +8805,7 @@
       "contact": "010-5605-9059",
       "registration_period": "2026년5월11일~2026년5월11일",
       "homepage": "http://taebaektrail.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41564"
     },
     {
@@ -9105,7 +9105,7 @@
       "contact": "070-7766-1238",
       "registration_period": "2026년4월24일~2026년5월10일",
       "homepage": "http://seoulopen.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41551"
     },
     {
@@ -9225,7 +9225,7 @@
       "contact": "02-312-1998",
       "registration_period": "2026년5월11일~2026년5월27일",
       "homepage": "http://www.seoul-race.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41546"
     },
     {
