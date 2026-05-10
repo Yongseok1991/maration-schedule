@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-10T02:51:07.463Z",
+  "updatedAt": "2026-05-10T09:27:35.831Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 626,
+  "count": 627,
   "races": [
     {
       "id": "40976",
@@ -8522,6 +8522,21 @@
       "homepage": "http://refreshrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41555"
+    },
+    {
+      "id": "41569",
+      "name": "2026 울산남구청장배 육상대회",
+      "date_display": "2026년6월28일",
+      "date_iso": "2026-06-28",
+      "distances": "10km,5km",
+      "region": "울산",
+      "place": "태화강둔치 (태화다리 밑)",
+      "organizer": "울산광역시 남구체육회",
+      "contact": "010-9360-0113",
+      "registration_period": "2026년5월11일~2026년5월20일",
+      "homepage": "http://modern-infinity-9e6.notion.site/2026-359918810cc280958531fd2261f990d6",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41569"
     },
     {
       "id": "41497",
