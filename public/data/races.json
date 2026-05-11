@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-11T11:18:30.918Z",
+  "updatedAt": "2026-05-11T17:54:01.693Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 627,
   "races": [
@@ -7575,7 +7575,7 @@
       "contact": "02-3210-1666",
       "registration_period": "2026년1월27일~2026년5월11일",
       "homepage": "http://www.dawnmarathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41358"
     },
     {
@@ -8805,7 +8805,7 @@
       "contact": "010-5605-9059",
       "registration_period": "2026년5월11일~2026년5월11일",
       "homepage": "http://taebaektrail.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41564"
     },
     {
