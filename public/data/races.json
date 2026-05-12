@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-12T02:52:12.048Z",
+  "updatedAt": "2026-05-12T10:31:09.326Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 627,
   "races": [
@@ -7993,9 +7993,9 @@
       "place": "여의도공원 문화의마당",
       "organizer": "iM뱅크/런코리아",
       "contact": "1566-1936",
-      "registration_period": "2026년4월14일~2026년5월3일",
+      "registration_period": "2026년4월14일~2026년5월22일",
       "homepage": "http://www.imrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41460"
     },
     {
@@ -8993,7 +8993,7 @@
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
       "date_iso": "2026-09-20",
-      "distances": "하프,10km,5km,10Km커플런,4.2Km 패미리런",
+      "distances": "하프,10km,5km,10Km커플런,4.2Km 가족런",
       "region": "경기",
       "place": "가평종합운동장(경기)",
       "organizer": "가평군체육회, 세계일보",
