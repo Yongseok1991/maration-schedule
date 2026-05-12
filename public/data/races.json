@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-12T10:31:09.326Z",
+  "updatedAt": "2026-05-12T17:58:26.479Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 627,
   "races": [
@@ -8085,7 +8085,7 @@
       "contact": "010-8837-4931",
       "registration_period": "2026년1월1일~2026년5월12일",
       "homepage": "http://gj100k.org",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41288"
     },
     {
