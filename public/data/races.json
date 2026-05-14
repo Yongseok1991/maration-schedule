@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-14T03:22:01.762Z",
+  "updatedAt": "2026-05-14T10:13:58.907Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 627,
+  "count": 640,
   "races": [
     {
       "id": "40976",
@@ -7714,6 +7714,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41550"
     },
     {
+      "id": "41579",
+      "name": "2026 부천의장배 20km릴레이마라톤",
+      "date_display": "2026년5월30일",
+      "date_iso": "2026-05-30",
+      "distances": "20km",
+      "region": "경기",
+      "place": "부천종합운동장 2층트랙",
+      "organizer": "부천시육상연맹",
+      "contact": "032-613-7525",
+      "registration_period": "2026년5월12일~2026년5월23일",
+      "homepage": "http://cafe.naver.com/bskrun?iframe_url_utf8=%2FArticleRead.nhn%253Fclubid%3D31146576%2526articleid%3D15%2526menuid%3D1%2526boardtype%3DL",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41579"
+    },
+    {
       "id": "41459",
       "name": "제4회 여의도 밤섬 마라톤",
       "date_display": "2026년5월31일",
@@ -7952,6 +7967,21 @@
       "homepage": "http://namhae250k.com",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41545"
+    },
+    {
+      "id": "41573",
+      "name": "2026 명품-FAAB 한강 브릿지런",
+      "date_display": "2026년6월6일",
+      "date_iso": "2026-06-06",
+      "distances": "60km",
+      "region": "경기",
+      "place": "구리 한강 시민공원",
+      "organizer": "파브코리아",
+      "contact": "070-4507-4474",
+      "registration_period": "2026년5월11일~2026년5월11일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41573"
     },
     {
       "id": "41375",
@@ -8194,6 +8224,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41520"
     },
     {
+      "id": "41586",
+      "name": "제1회 모두런",
+      "date_display": "2026년6월13일",
+      "date_iso": "2026-06-13",
+      "distances": "5km",
+      "region": "세종",
+      "place": "세종중앙공원, 국립세종수목원",
+      "organizer": "세종시장애인단체연합회",
+      "contact": "044-715-5636",
+      "registration_period": "2026년5월14일~2026년5월20일",
+      "homepage": "http://www.sfinder.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41586"
+    },
+    {
       "id": "41431",
       "name": "2026 제21회 울릉도전국마라톤",
       "date_display": "2026년6월14일",
@@ -8434,6 +8479,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41561"
     },
     {
+      "id": "41578",
+      "name": "월리를 찾아라런 in 서울 2026",
+      "date_display": "2026년6월21일",
+      "date_iso": "2026-06-21",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "베니카",
+      "contact": "1644-2525",
+      "registration_period": "2026년5월18일~2026년5월27일",
+      "homepage": "http://wallyrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41578"
+    },
+    {
       "id": "41440",
       "name": "2026 큰별 하프 마라톤",
       "date_display": "2026년6월27일",
@@ -8447,6 +8507,36 @@
       "homepage": "http://bigstarrun.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41440"
+    },
+    {
+      "id": "41583",
+      "name": "2026 순천 치유 미식 트레일런",
+      "date_display": "2026년6월27일",
+      "date_iso": "2026-06-27",
+      "distances": "14km",
+      "region": "전남",
+      "place": "순천 선암사",
+      "organizer": "프로젝트 런트립",
+      "contact": "070-5088-1180",
+      "registration_period": "2026년5월13일~2026년6월17일",
+      "homepage": "http://projectruntrip.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41583"
+    },
+    {
+      "id": "41580",
+      "name": "2026 전마협 10km 연대별 최강전",
+      "date_display": "2026년6월27일",
+      "date_iso": "2026-06-27",
+      "distances": "10km,5km",
+      "region": "충남",
+      "place": "금산인삼엑스포주차장",
+      "organizer": "전국마라톤협회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년5월13일~2026년6월13일",
+      "homepage": "http://mara1080.com/event/5baeed50-d91c-4453-bf68-48ab19911d58",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41580"
     },
     {
       "id": "41487",
@@ -8689,6 +8779,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41504"
     },
     {
+      "id": "41584",
+      "name": "제1회 테마임도 트레일런",
+      "date_display": "2026년8월8일",
+      "date_iso": "2026-08-08",
+      "distances": "50km",
+      "region": "부산",
+      "place": "부산스포원",
+      "organizer": "코리안런조직위",
+      "contact": "010-3878-1159",
+      "registration_period": "2026년6월1일~2026년6월30일",
+      "homepage": "http://korearun01.imweb.me/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41584"
+    },
+    {
       "id": "41223",
       "name": "제38회 지리산화대종주 UTMB",
       "date_display": "2026년8월15일",
@@ -8717,6 +8822,21 @@
       "homepage": "http://jyd.creatorlink.net",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41508"
+    },
+    {
+      "id": "41576",
+      "name": "2026 장수 나이트 트레일",
+      "date_display": "2026년8월15일",
+      "date_iso": "2026-08-15",
+      "distances": "38K-P",
+      "region": "전북",
+      "place": "장수종합경기장",
+      "organizer": "(주)락앤런",
+      "contact": "063-353-2025",
+      "registration_period": "2026년5월15일~2026년7월31일",
+      "homepage": "http://rocknrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41576"
     },
     {
       "id": "41500",
@@ -8762,6 +8882,21 @@
       "homepage": "http://www.wmac2026.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41353"
+    },
+    {
+      "id": "41581",
+      "name": "제3회 한강 서울 하프 마라톤",
+      "date_display": "2026년8월30일",
+      "date_iso": "2026-08-30",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "여의도 한강공원 물빛광장",
+      "organizer": "(사)국민성공시대",
+      "contact": "02-888-8805",
+      "registration_period": "2026년5월13일~2026년8월23일",
+      "homepage": "http://seoulhalfrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41581"
     },
     {
       "id": "41365",
@@ -8867,6 +9002,21 @@
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250626120820&csno=20191016122754#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41254"
+    },
+    {
+      "id": "41582",
+      "name": "제11회 김대중 평화 마라톤 대회",
+      "date_display": "2026년9월6일",
+      "date_iso": "2026-09-06",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "뚝섬 한강공원 수변무대",
+      "organizer": "김대중재단",
+      "contact": "02-569-5551",
+      "registration_period": "2026년5월13일~2026년8월30일",
+      "homepage": "http://kdjrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41582"
     },
     {
       "id": "41420",
@@ -9034,6 +9184,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41491"
     },
     {
+      "id": "41574",
+      "name": "제25회 김제새만금 지평선 전국마라톤",
+      "date_display": "2026년10월3일",
+      "date_iso": "2026-10-03",
+      "distances": "하프,10km,5km",
+      "region": "전북",
+      "place": "김제시민운동장 일원",
+      "organizer": "김제스포츠클럽",
+      "contact": "063-548-0095",
+      "registration_period": "2026년5월20일~2026년6월20일",
+      "homepage": "http://gimjesm.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41574"
+    },
+    {
       "id": "41332",
       "name": "제20회 달서하프마라톤",
       "date_display": "2026년10월4일",
@@ -9092,6 +9257,21 @@
       "homepage": "http://runbookcity.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41560"
+    },
+    {
+      "id": "41571",
+      "name": "2026 홍천사랑마라톤",
+      "date_display": "2026년10월4일",
+      "date_iso": "2026-10-04",
+      "distances": "하프,10km,5km",
+      "region": "강원",
+      "place": "홍천종합운동장",
+      "organizer": "홍천시체육회, 홍천육상연맹",
+      "contact": "1866-1718",
+      "registration_period": "2026년5월19일~2026년8월31일",
+      "homepage": "http://www.hongcheonrun.net/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41571"
     },
     {
       "id": "41551",
@@ -9407,6 +9587,21 @@
       "homepage": "http://영남알프스마라톤.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41565"
+    },
+    {
+      "id": "41585",
+      "name": "제17회 행복트레일런 축제",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "29km",
+      "region": "서울",
+      "place": "수서역 6번출구 광장",
+      "organizer": "{사}소아암환우돕기 조직위",
+      "contact": "02-2647-4488",
+      "registration_period": "2026년6월8일~2026년8월31일",
+      "homepage": "http://happytrailrun.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41585"
     }
   ]
 }
