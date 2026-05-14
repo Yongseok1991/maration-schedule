@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-14T10:13:58.907Z",
+  "updatedAt": "2026-05-14T17:49:15.745Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 640,
+  "count": 642,
   "races": [
     {
       "id": "40976",
@@ -7395,7 +7395,7 @@
       "contact": "02-2636-7775",
       "registration_period": "2026년2월20일~2026년5월14일",
       "homepage": "http://roserun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41419"
     },
     {
@@ -8835,7 +8835,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년5월15일~2026년7월31일",
       "homepage": "http://rocknrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41576"
     },
     {
@@ -9154,6 +9154,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41351"
     },
     {
+      "id": "41588",
+      "name": "2026 공주마라톤",
+      "date_display": "2026년9월20일",
+      "date_iso": "2026-09-20",
+      "distances": "풀,하프,10km,32km",
+      "region": "충남",
+      "place": "공주시민운동장",
+      "organizer": "동아일보",
+      "contact": "02-361-1425",
+      "registration_period": "2026년5월14일~2026년5월21일",
+      "homepage": "http://www.gongjumarathon.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41588"
+    },
+    {
       "id": "41316",
       "name": "제 2회 아산이순신 트레일",
       "date_display": "2026년10월3일",
@@ -9375,7 +9390,7 @@
       "contact": "031-821-9949",
       "registration_period": "2026년5월15일~2026년7월19일",
       "homepage": "http://najumarathon.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41434"
     },
     {
@@ -9422,6 +9437,21 @@
       "homepage": "http://race.cjsports.or.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41255"
+    },
+    {
+      "id": "41587",
+      "name": "2026 경주마라톤",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "풀,하프,10km",
+      "region": "경북",
+      "place": "경주시민운동장",
+      "organizer": "동아일보,경북도,KAAF",
+      "contact": "02-361-1425",
+      "registration_period": "2026년5월26일~2026년5월28일",
+      "homepage": "http://www.gyeongjumarathon.com/home",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41587"
     },
     {
       "id": "41303",
