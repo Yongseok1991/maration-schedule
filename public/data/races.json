@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-15T03:25:00.537Z",
+  "updatedAt": "2026-05-15T10:22:43.254Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 642,
   "races": [
@@ -8464,21 +8464,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41218"
     },
     {
-      "id": "41561",
-      "name": "THE PACER SERIES",
-      "date_display": "2026년6월21일",
-      "date_iso": "2026-06-21",
-      "distances": "10km,5km",
-      "region": "대전",
-      "place": "대전 대덕구 미호동 57-1",
-      "organizer": "런코드 코리아",
-      "contact": "010-7734-1481",
-      "registration_period": "2026년5월4일~2026년6월7일",
-      "homepage": "http://thepacerseries.com",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41561"
-    },
-    {
       "id": "41578",
       "name": "월리를 찾아라런 in 서울 2026",
       "date_display": "2026년6월21일",
@@ -8537,6 +8522,21 @@
       "homepage": "http://mara1080.com/event/5baeed50-d91c-4453-bf68-48ab19911d58",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41580"
+    },
+    {
+      "id": "41561",
+      "name": "THE PACER SERIES",
+      "date_display": "2026년6월28일",
+      "date_iso": "2026-06-28",
+      "distances": "10km,5km",
+      "region": "충북",
+      "place": "충청북도 청주시 상당구 문의면 청남대길 646",
+      "organizer": "런코드 코리아",
+      "contact": "010-7734-1481",
+      "registration_period": "2026년5월4일~2026년6월7일",
+      "homepage": "http://thepacerseries.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41561"
     },
     {
       "id": "41487",
