@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-15T17:26:49.983Z",
+  "updatedAt": "2026-05-16T02:49:12.771Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 642,
   "races": [
@@ -7309,21 +7309,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41540"
     },
     {
-      "id": "40317",
-      "name": "밀양아리랑트레일런",
-      "date_display": "2026년5월17일",
-      "date_iso": "2026-05-17",
-      "distances": "20km",
-      "region": "경남",
-      "place": "밀양보트장",
-      "organizer": "명품트레일",
-      "contact": "010-3526-9120",
-      "registration_period": "2026년3월11일~2026년5월16일",
-      "homepage": "http://www.mtrailrun.kr",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
-    },
-    {
       "id": "41445",
       "name": "2026 인천시육상연맹배 마라톤",
       "date_display": "2026년5월17일",
@@ -8072,6 +8057,21 @@
       "homepage": "http://mindmarathon.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41533"
+    },
+    {
+      "id": "40317",
+      "name": "부산 송도해안트레일런",
+      "date_display": "2026년6월13일",
+      "date_iso": "2026-06-13",
+      "distances": "13km",
+      "region": "부산",
+      "place": "남항대교 수변야외공연장",
+      "organizer": "명품트레일",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년3월11일~2026년6월12일",
+      "homepage": "http://www.mtrailrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
     },
     {
       "id": "41298",
