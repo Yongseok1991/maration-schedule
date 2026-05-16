@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-16T09:40:16.876Z",
+  "updatedAt": "2026-05-16T16:58:02.893Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 642,
   "races": [
@@ -7815,7 +7815,7 @@
       "contact": "010-3794-7297",
       "registration_period": "2026년3월20일~2026년5월16일",
       "homepage": "http://cafe.naver.com/ydprun1/614",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41490"
     },
     {
