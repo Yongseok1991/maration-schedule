@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-17T09:46:29.883Z",
+  "updatedAt": "2026-05-17T16:56:34.711Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 642,
   "races": [
@@ -8475,7 +8475,7 @@
       "contact": "1644-2525",
       "registration_period": "2026년5월18일~2026년5월27일",
       "homepage": "http://wallyrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41578"
     },
     {
@@ -9330,7 +9330,7 @@
       "contact": "033-651-0112",
       "registration_period": "2026년5월18일~2026년6월23일",
       "homepage": "http://www.경포마라톤.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41300"
     },
     {
@@ -9360,7 +9360,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년5월18일~2026년6월18일",
       "homepage": "http://georun.kr/ko/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41510"
     },
     {
