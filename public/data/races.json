@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-18T11:43:34.533Z",
+  "updatedAt": "2026-05-18T18:00:20.895Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 642,
   "races": [
@@ -9285,7 +9285,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년5월19일~2026년8월31일",
       "homepage": "http://www.hongcheonrun.net/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41571"
     },
     {
@@ -9465,7 +9465,7 @@
       "contact": "02-2647-4488",
       "registration_period": "2026년4월14일~2026년5월18일",
       "homepage": "http://asiarun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41303"
     },
     {
