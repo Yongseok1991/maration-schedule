@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-19T11:16:27.455Z",
+  "updatedAt": "2026-05-19T18:05:07.719Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 642,
   "races": [
@@ -9210,7 +9210,7 @@
       "contact": "063-548-0095",
       "registration_period": "2026년5월20일~2026년6월20일",
       "homepage": "http://gimjesm.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41574"
     },
     {
@@ -9225,7 +9225,7 @@
       "contact": "053-635-8683",
       "registration_period": "2026년5월20일~2026년6월30일",
       "homepage": "http://www.달서하프마라톤.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41332"
     },
     {
