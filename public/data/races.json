@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-20T03:29:51.952Z",
+  "updatedAt": "2026-05-20T10:49:14.268Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 642,
   "races": [
@@ -9019,6 +9019,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41582"
     },
     {
+      "id": "41556",
+      "name": "2026 YTN 서울투어마라톤",
+      "date_display": "2026년9월6일",
+      "date_iso": "2026-09-06",
+      "distances": "하프,10km",
+      "region": "서울",
+      "place": "서울광장 (예정)",
+      "organizer": "YTN",
+      "contact": "070-7725-6258",
+      "registration_period": "2026년4월30일~2026년4월30일",
+      "homepage": "http://run.ytn.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41556"
+    },
+    {
       "id": "41420",
       "name": "2026 양양 강변 전국 마라톤",
       "date_display": "2026년9월12일",
@@ -9242,21 +9257,6 @@
       "homepage": "http://www.admarathon.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
-    },
-    {
-      "id": "41556",
-      "name": "2026 YTN 서울투어마라톤",
-      "date_display": "2026년10월4일",
-      "date_iso": "2026-10-04",
-      "distances": "하프,10km",
-      "region": "서울",
-      "place": "서울광장 (예정)",
-      "organizer": "YTN",
-      "contact": "070-7725-6258",
-      "registration_period": "2026년4월30일~2026년4월30일",
-      "homepage": "http://run.ytn.co.kr",
-      "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41556"
     },
     {
       "id": "41560",
