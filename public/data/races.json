@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-20T10:49:14.268Z",
+  "updatedAt": "2026-05-20T18:15:26.709Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 642,
+  "count": 648,
   "races": [
     {
       "id": "40976",
@@ -7695,7 +7695,7 @@
       "contact": "062-670-2902",
       "registration_period": "2026년4월23일~2026년5월20일",
       "homepage": "http://forms.gle/g4tCvGWSMtg7CSZF8",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41550"
     },
     {
@@ -7712,6 +7712,21 @@
       "homepage": "http://cafe.naver.com/bskrun?iframe_url_utf8=%2FArticleRead.nhn%253Fclubid%3D31146576%2526articleid%3D15%2526menuid%3D1%2526boardtype%3DL",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41579"
+    },
+    {
+      "id": "41592",
+      "name": "6.10만세운동 메모리얼로드(무료)",
+      "date_display": "2026년5월30일",
+      "date_iso": "2026-05-30",
+      "distances": "6.1km내외",
+      "region": "서울",
+      "place": "청계광장",
+      "organizer": "서울북부보훈지청",
+      "contact": "010-3554-2391",
+      "registration_period": "2026년5월18일~2026년5월30일",
+      "homepage": "http://s2s2.co.kr/sites/610manse",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41592"
     },
     {
       "id": "41459",
@@ -8235,8 +8250,23 @@
       "contact": "044-715-5636",
       "registration_period": "2026년5월14일~2026년5월20일",
       "homepage": "http://www.sfinder.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41586"
+    },
+    {
+      "id": "41589",
+      "name": "DC SUPER HERO RUN",
+      "date_display": "2026년6월13일",
+      "date_iso": "2026-06-13",
+      "distances": "10km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "MBN",
+      "contact": "070-7727-1754",
+      "registration_period": "2026년5월16일~2026년6월3일",
+      "homepage": "http://kko.to/ZKJ0jsV6GV",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41589"
     },
     {
       "id": "41431",
@@ -8625,7 +8655,7 @@
       "contact": "010-9360-0113",
       "registration_period": "2026년5월11일~2026년5월20일",
       "homepage": "http://modern-infinity-9e6.notion.site/2026-359918810cc280958531fd2261f990d6",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41569"
     },
     {
@@ -8717,6 +8747,21 @@
       "homepage": "http://rocknrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41348"
+    },
+    {
+      "id": "41593",
+      "name": "2026 코리아 나이트 런 태백",
+      "date_display": "2026년7월18일",
+      "date_iso": "2026-07-18",
+      "distances": "28K, 17K, 7K",
+      "region": "강원",
+      "place": "O2 리조트",
+      "organizer": "태백시, 태백시 철인3종 협회",
+      "contact": "010-5605-9059",
+      "registration_period": "2026년5월22일~2026년5월22일",
+      "homepage": "http://koreanightrun.imweb.me/main",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41593"
     },
     {
       "id": "41140",
@@ -8897,6 +8942,21 @@
       "homepage": "http://seoulhalfrun.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41581"
+    },
+    {
+      "id": "41590",
+      "name": "제3회 GO대관령 국제 트레일런",
+      "date_display": "2026년8월30일",
+      "date_iso": "2026-08-30",
+      "distances": "10km,20.18km,44km",
+      "region": "강원",
+      "place": "평창동계올림픽기념공원",
+      "organizer": "국대레포츠, 대관령면체육회",
+      "contact": "010-2828-9226",
+      "registration_period": "2026년5월22일~2026년7월31일",
+      "homepage": "http://daegwallyeongrun.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41590"
     },
     {
       "id": "41365",
@@ -9124,6 +9184,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41137"
     },
     {
+      "id": "41591",
+      "name": "제 16회 스마일 런 페스티벌(예정)",
+      "date_display": "2026년9월13일",
+      "date_iso": "2026-09-13",
+      "distances": "하프,10km,5km,걷기",
+      "region": "서울",
+      "place": "상암동 평화의공원 평화광장",
+      "organizer": "(사)대한치과의사협회",
+      "contact": "02-2632-0912",
+      "registration_period": "2026년7월1일~2026년8월1일",
+      "homepage": "http://www.smilerun.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41591"
+    },
+    {
       "id": "41349",
       "name": "2026 장수트레일레이스 Fall",
       "date_display": "2026년9월19일",
@@ -9182,6 +9257,21 @@
       "homepage": "http://www.gongjumarathon.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41588"
+    },
+    {
+      "id": "41594",
+      "name": "2026(20회) 선사마라톤 축제",
+      "date_display": "2026년9월20일",
+      "date_iso": "2026-09-20",
+      "distances": "하프,10km,5km,5km 걷기",
+      "region": "서울",
+      "place": "서울 암사동 유적앞 특설무대",
+      "organizer": "강동구 육상연맹",
+      "contact": "02-476-7330",
+      "registration_period": "2026년6월8일~2026년6월11일",
+      "homepage": "http://www.gomarathon.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41594"
     },
     {
       "id": "41316",
@@ -9298,7 +9388,7 @@
       "place": "광화문광장(예정)",
       "organizer": "(사)한국체육개발원 등",
       "contact": "070-7766-1238",
-      "registration_period": "2026년4월24일~2026년5월10일",
+      "registration_period": "2026년5월26일~2026년5월10일",
       "homepage": "http://seoulopen.or.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41551"
