@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-21T03:35:58.090Z",
+  "updatedAt": "2026-05-21T11:23:01.352Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 648,
+  "count": 649,
   "races": [
     {
       "id": "40976",
@@ -7715,7 +7715,7 @@
     },
     {
       "id": "41592",
-      "name": "6.10만세운동 메모리얼로드(무료)",
+      "name": "6.10만세운동 무료 걷기대회(상품권 증정)",
       "date_display": "2026년5월30일",
       "date_iso": "2026-05-30",
       "distances": "6.1km내외",
@@ -9004,6 +9004,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41564"
     },
     {
+      "id": "41595",
+      "name": "제2회 2026 Vrun",
+      "date_display": "2026년9월5일",
+      "date_iso": "2026-09-05",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "신정교하부육상트랙구장",
+      "organizer": "(사)대한생활체육마라톤협회",
+      "contact": "1644-4219",
+      "registration_period": "2026년5월26일~2026년8월12일",
+      "homepage": "http://vrun.kr/index.asp",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41595"
+    },
+    {
       "id": "41032",
       "name": "희망드림 제23회 새벽강변 국제마라톤",
       "date_display": "2026년9월6일",
@@ -9380,7 +9395,7 @@
     },
     {
       "id": "41551",
-      "name": "2026서울오픈마라톤",
+      "name": "2026 서울오픈마라톤",
       "date_display": "2026년10월5일",
       "date_iso": "2026-10-05",
       "distances": "하프,10km",
@@ -9388,9 +9403,9 @@
       "place": "광화문광장(예정)",
       "organizer": "(사)한국체육개발원 등",
       "contact": "070-7766-1238",
-      "registration_period": "2026년5월26일~2026년5월10일",
+      "registration_period": "2026년4월26일~2026년5월26일",
       "homepage": "http://seoulopen.or.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41551"
     },
     {
