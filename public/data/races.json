@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-21T11:23:01.352Z",
+  "updatedAt": "2026-05-21T17:57:53.525Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 649,
   "races": [
@@ -8760,7 +8760,7 @@
       "contact": "010-5605-9059",
       "registration_period": "2026년5월22일~2026년5월22일",
       "homepage": "http://koreanightrun.imweb.me/main",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41593"
     },
     {
@@ -8955,7 +8955,7 @@
       "contact": "010-2828-9226",
       "registration_period": "2026년5월22일~2026년7월31일",
       "homepage": "http://daegwallyeongrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41590"
     },
     {
@@ -9270,7 +9270,7 @@
       "contact": "02-361-1425",
       "registration_period": "2026년5월14일~2026년5월21일",
       "homepage": "http://www.gongjumarathon.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41588"
     },
     {
