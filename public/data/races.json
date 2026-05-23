@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-23T09:52:16.261Z",
+  "updatedAt": "2026-05-23T16:58:19.748Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 649,
   "races": [
@@ -7710,7 +7710,7 @@
       "contact": "032-613-7525",
       "registration_period": "2026년5월12일~2026년5월23일",
       "homepage": "http://cafe.naver.com/bskrun?iframe_url_utf8=%2FArticleRead.nhn%253Fclubid%3D31146576%2526articleid%3D15%2526menuid%3D1%2526boardtype%3DL",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41579"
     },
     {
@@ -8698,7 +8698,7 @@
       "place": "창동교 나눔의 광장",
       "organizer": "노원구 노원구육상경기연맹",
       "contact": "010-2040-8710",
-      "registration_period": "2026년1월25일~2026년6월15일",
+      "registration_period": "2026년1월25일~2026년5월31일",
       "homepage": "http://www.nowonmarathon.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41277"
