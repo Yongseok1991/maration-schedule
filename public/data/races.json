@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-24T17:00:22.437Z",
+  "updatedAt": "2026-05-25T03:42:02.237Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 649,
   "races": [
@@ -7633,9 +7633,9 @@
       "place": "대구 화랑교 하부 잔디밭 일원",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년3월24일~2026년4월21일",
+      "registration_period": "2026년3월24일~2026년5월25일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41486"
     },
     {
@@ -7978,9 +7978,9 @@
       "place": "구리 한강 시민공원",
       "organizer": "파브코리아",
       "contact": "070-4507-4474",
-      "registration_period": "2026년5월11일~2026년5월11일",
+      "registration_period": "2026년5월11일~2026년6월5일",
       "homepage": "http://www.mtrailrun.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41573"
     },
     {
