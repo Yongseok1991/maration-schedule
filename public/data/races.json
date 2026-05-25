@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-25T11:52:51.821Z",
+  "updatedAt": "2026-05-25T17:43:03.848Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 649,
   "races": [
@@ -7635,7 +7635,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년3월24일~2026년5월25일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41486"
     },
     {
@@ -7875,7 +7875,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년10월25일~2026년5월25일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250911090719&csno=20220731195207#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41160"
     },
     {
@@ -9015,7 +9015,7 @@
       "contact": "1644-4219",
       "registration_period": "2026년5월26일~2026년8월12일",
       "homepage": "http://vrun.kr/index.asp",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41595"
     },
     {
@@ -9555,7 +9555,7 @@
       "contact": "02-361-1425",
       "registration_period": "2026년5월26일~2026년5월28일",
       "homepage": "http://www.gyeongjumarathon.com/home",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41587"
     },
     {
