@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-26T03:27:36.888Z",
+  "updatedAt": "2026-05-26T18:25:10.494Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 649,
   "races": [
@@ -8608,9 +8608,9 @@
       "place": "정읍 대흥무지개센터",
       "organizer": "대흥리마을공동체, 정읍시육상연",
       "contact": "010-4654-0495",
-      "registration_period": "2026년4월10일~2026년6월10일",
+      "registration_period": "2026년4월10일~2026년5월25일",
       "homepage": "http://dhrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41523"
     },
     {
@@ -9405,7 +9405,7 @@
       "contact": "070-7766-1238",
       "registration_period": "2026년4월26일~2026년5월26일",
       "homepage": "http://seoulopen.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41551"
     },
     {
