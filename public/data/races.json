@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-26T18:25:10.494Z",
+  "updatedAt": "2026-05-27T03:41:23.998Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 649,
+  "count": 651,
   "races": [
     {
       "id": "40976",
@@ -8509,6 +8509,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41578"
     },
     {
+      "id": "41597",
+      "name": "SPINDLE TRAIL RUN 2026",
+      "date_display": "2026년6월21일",
+      "date_iso": "2026-06-21",
+      "distances": "12K",
+      "region": "강원",
+      "place": "삼양라운드힐",
+      "organizer": "스핀들, 프립",
+      "contact": "02-512-3662",
+      "registration_period": "2026년5월15일~2026년6월5일",
+      "homepage": "http://sqnc.global/spindle-trail-run",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41597"
+    },
+    {
       "id": "41440",
       "name": "2026 큰별 하프 마라톤",
       "date_display": "2026년6월27일",
@@ -9587,6 +9602,21 @@
       "homepage": "http://www.greenstep.co.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41548"
+    },
+    {
+      "id": "41596",
+      "name": "제22회 대구 북구사랑 마라톤",
+      "date_display": "2026년10월18일",
+      "date_iso": "2026-10-18",
+      "distances": "10km,5km",
+      "region": "대구",
+      "place": "금호강 산격야영장",
+      "organizer": "대구광역시북구체육회",
+      "contact": "053-958-0660",
+      "registration_period": "2026년8월3일~2026년8월24일",
+      "homepage": "http://maraton.dbsfa365.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41596"
     },
     {
       "id": "41477",
