@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-27T03:41:23.998Z",
+  "updatedAt": "2026-05-27T18:26:41.091Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 651,
   "races": [
@@ -8505,7 +8505,7 @@
       "contact": "1644-2525",
       "registration_period": "2026년5월18일~2026년5월27일",
       "homepage": "http://wallyrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41578"
     },
     {
@@ -9540,7 +9540,7 @@
       "contact": "02-312-1998",
       "registration_period": "2026년5월11일~2026년5월27일",
       "homepage": "http://www.seoul-race.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41546"
     },
     {
