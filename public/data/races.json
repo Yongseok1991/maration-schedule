@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-28T11:38:07.076Z",
+  "updatedAt": "2026-05-28T18:35:41.224Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 651,
   "races": [
@@ -7860,7 +7860,7 @@
       "contact": "02-2606-8187",
       "registration_period": "2026년3월5일~2026년5월28일",
       "homepage": "http://blueskyrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41438"
     },
     {
@@ -9570,7 +9570,7 @@
       "contact": "02-361-1425",
       "registration_period": "2026년5월26일~2026년5월28일",
       "homepage": "http://www.gyeongjumarathon.com/home",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41587"
     },
     {
