@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-29T11:28:34.448Z",
+  "updatedAt": "2026-05-29T18:31:57.013Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 651,
   "races": [
@@ -7605,7 +7605,7 @@
       "contact": "02-364-1986",
       "registration_period": "2026년3월13일~2026년5월29일",
       "homepage": "http://jejubbangrun.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41471"
     },
     {
@@ -8340,7 +8340,7 @@
       "contact": "02-457-0121",
       "registration_period": "2026년4월6일~2026년5월29일",
       "homepage": "http://ksgaaf.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41518"
     },
     {
