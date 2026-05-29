@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-28T18:35:41.224Z",
+  "updatedAt": "2026-05-29T03:30:51.650Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 651,
   "races": [
@@ -8346,17 +8346,18 @@
     {
       "id": "41553",
       "name": "제22회 인천광역시장기 건강달리기",
-      "date_display": "2026년6월14일",
+      "date_display": "6/14(일)",
       "date_iso": "2026-06-14",
       "distances": "10km",
-      "region": "인천",
+      "region": "",
       "place": "인천대공원 문화마당",
       "organizer": "인천광역시육상연맹",
-      "contact": "1866-1718",
-      "registration_period": "2026년4월29일~2026년5월31일",
-      "homepage": "http://healthyrun.co.kr/",
+      "contact": "00-1866-1718",
+      "registration_period": "",
+      "homepage": "",
       "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41553"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41553",
+      "error": "detail_fetch_failed"
     },
     {
       "id": "40317",
