@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-30T10:00:16.050Z",
+  "updatedAt": "2026-05-30T17:03:09.316Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 651,
   "races": [
@@ -7725,7 +7725,7 @@
       "contact": "010-3554-2391",
       "registration_period": "2026년5월18일~2026년5월30일",
       "homepage": "http://s2s2.co.kr/sites/610manse",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41592"
     },
     {
@@ -8745,7 +8745,7 @@
       "contact": "070-8239-8815",
       "registration_period": "2025년8월4일~2026년5월30일",
       "homepage": "http://osk.run/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41094"
     },
     {
@@ -9270,7 +9270,7 @@
       "contact": "02-2647-4488",
       "registration_period": "2026년4월14일~2026년5월30일",
       "homepage": "http://gprun.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41351"
     },
     {
