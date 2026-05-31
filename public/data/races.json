@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-31T10:15:23.473Z",
+  "updatedAt": "2026-05-31T17:04:49.434Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 651,
   "races": [
@@ -7935,7 +7935,7 @@
       "contact": "02-3012-0187",
       "registration_period": "2026년4월6일~2026년5월31일",
       "homepage": "http://citygasonrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41519"
     },
     {
@@ -8355,7 +8355,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년4월29일~2026년5월31일",
       "homepage": "http://healthyrun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41553"
     },
     {
@@ -8430,7 +8430,7 @@
       "contact": "010-8017-1833",
       "registration_period": "2026년4월18일~2026년5월31일",
       "homepage": "http://wellmaderun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41538"
     },
     {
@@ -8640,7 +8640,7 @@
       "contact": "010-5449-1676",
       "registration_period": "2026년4월20일~2026년5월31일",
       "homepage": "http://cafe.daum.net/Kangmaclub/IZkA",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41542"
     },
     {
@@ -8685,7 +8685,7 @@
       "contact": "070-7718-7577",
       "registration_period": "2026년4월1일~2026년5월31일",
       "homepage": "http://www.ironrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41497"
     },
     {
@@ -8715,7 +8715,7 @@
       "contact": "010-2040-8710",
       "registration_period": "2026년1월25일~2026년5월31일",
       "homepage": "http://www.nowonmarathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41277"
     },
     {
@@ -8820,7 +8820,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년4월27일~2026년5월31일",
       "homepage": "http://rocknrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41554"
     },
     {
@@ -8850,7 +8850,7 @@
       "contact": "010-3878-1159",
       "registration_period": "2026년6월1일~2026년6월30일",
       "homepage": "http://korearun01.imweb.me/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41584"
     },
     {
@@ -8925,7 +8925,7 @@
       "contact": "010-9359-0302",
       "registration_period": "2026년4월7일~2026년5월31일",
       "homepage": "http://www.runnerking.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41512"
     },
     {
@@ -9135,7 +9135,7 @@
       "contact": "033-248-5019",
       "registration_period": "2026년2월27일~2026년5월31일",
       "homepage": "http://yrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41420"
     },
     {
@@ -9208,7 +9208,7 @@
       "place": "울진종합운동장",
       "organizer": "울진군",
       "contact": "010-9853-2686",
-      "registration_period": "2026년1월1일~2026년5월31일",
+      "registration_period": "2026년1월1일~2026년6월30일",
       "homepage": "http://www.ujrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41137"
@@ -9375,7 +9375,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년4월13일~2026년5월31일",
       "homepage": "http://www.admarathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
     },
     {
