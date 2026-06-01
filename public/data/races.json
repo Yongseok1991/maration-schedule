@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-01T03:57:35.248Z",
+  "updatedAt": "2026-06-01T13:35:22.490Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 655,
+  "count": 659,
   "races": [
     {
       "id": "40976",
@@ -8779,6 +8779,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41593"
     },
     {
+      "id": "41607",
+      "name": "제2회 울릉나이트런",
+      "date_display": "2026년7월18일",
+      "date_iso": "2026-07-18",
+      "distances": "10km",
+      "region": "경북",
+      "place": "울릉군 현포항",
+      "organizer": "대저투어",
+      "contact": "1899-4607",
+      "registration_period": "2026년5월18일~2026년6월21일",
+      "homepage": "http://forms.gle/wZenaiNwaS7MtRYa6",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41607"
+    },
+    {
       "id": "41140",
       "name": "2026 청계산.인릉산TrailRunn",
       "date_display": "2026년7월19일",
@@ -9229,6 +9244,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41591"
     },
     {
+      "id": "41606",
+      "name": "제26회 강화해변마라톤대회",
+      "date_display": "2026년9월13일",
+      "date_iso": "2026-09-13",
+      "distances": "하프,10km,5km",
+      "region": "인천",
+      "place": "강화함상공원",
+      "organizer": "인천일보,(사)인천마라톤조직위",
+      "contact": "1866-1718",
+      "registration_period": "2026년6월8일~2026년7월31일",
+      "homepage": "http://www.ganghwamarathon.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41606"
+    },
+    {
       "id": "41349",
       "name": "2026 장수트레일레이스 Fall",
       "date_display": "2026년9월19일",
@@ -9304,6 +9334,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41594"
     },
     {
+      "id": "41605",
+      "name": "2026 동대문마라톤",
+      "date_display": "2026년9월20일",
+      "date_iso": "2026-09-20",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "중랑천 제1수변공원",
+      "organizer": "동대문구육상연맹",
+      "contact": "010-4899-8421",
+      "registration_period": "2026년6월10일~2026년8월10일",
+      "homepage": "http://www.runddm.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41605"
+    },
+    {
       "id": "41316",
       "name": "제 2회 아산이순신 트레일",
       "date_display": "2026년10월3일",
@@ -9347,6 +9392,21 @@
       "homepage": "http://gimjesm.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41574"
+    },
+    {
+      "id": "41608",
+      "name": "2026 천사데이기념 동두천천사마라톤",
+      "date_display": "2026년10월3일",
+      "date_iso": "2026-10-03",
+      "distances": "10km,5km,걷기 2Km",
+      "region": "경기",
+      "place": "경기도 동두천시 캠프보산",
+      "organizer": "(사)희망지킴이 천사운동본부",
+      "contact": "031-861-1004",
+      "registration_period": "2026년6월4일~2026년9월30일",
+      "homepage": "http://hope1004.org",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41608"
     },
     {
       "id": "41332",
@@ -9807,9 +9867,9 @@
       "region": "세종",
       "place": "세종시민운동장",
       "organizer": "세종특별자치시육상연맹",
-      "contact": "044-862-8601",
+      "contact": "041-862-8601",
       "registration_period": "2026년6월20일~2026년7월29일",
-      "homepage": "http://sejongrun.kr",
+      "homepage": "http://sjrun.com",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41602"
     },
