@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-05-31T17:04:49.434Z",
+  "updatedAt": "2026-06-01T03:57:35.248Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 651,
+  "count": 655,
   "races": [
     {
       "id": "40976",
@@ -9343,9 +9343,9 @@
       "place": "김제시민운동장 일원",
       "organizer": "김제스포츠클럽",
       "contact": "063-548-0095",
-      "registration_period": "2026년5월20일~2026년6월20일",
+      "registration_period": "2026년5월20일~2026년5월20일",
       "homepage": "http://gimjesm.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41574"
     },
     {
@@ -9499,6 +9499,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41567"
     },
     {
+      "id": "41601",
+      "name": "제5회 구미시장배 금오산트레일 레이스",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "10km,18k, 23k",
+      "region": "경북",
+      "place": "금오산 공영 대주차장",
+      "organizer": "구미시산악연맹, 구미트레일런",
+      "contact": "010-3504-1206",
+      "registration_period": "2026년6월1일~2026년7월31일",
+      "homepage": "http://cafe.naver.com/gumitrailrunnerclub",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41601"
+    },
+    {
       "id": "41434",
       "name": "2026 MBN 전국 나주 마라톤대회",
       "date_display": "2026년10월11일",
@@ -9617,6 +9632,21 @@
       "homepage": "http://maraton.dbsfa365.co.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41596"
+    },
+    {
+      "id": "41603",
+      "name": "제25회 대청호마라톤",
+      "date_display": "2026년10월18일",
+      "date_iso": "2026-10-18",
+      "distances": "하프,10km,5km",
+      "region": "대전",
+      "place": "대청공원",
+      "organizer": "대덕구",
+      "contact": "042-934-8890",
+      "registration_period": "2026년6월10일~2026년7월13일",
+      "homepage": "http://www.dcmarathon.or.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41603"
     },
     {
       "id": "41477",
@@ -9767,6 +9797,36 @@
       "homepage": "http://happytrailrun.com",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41585"
+    },
+    {
+      "id": "41602",
+      "name": "제2회 세종특별자치시 전국 마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "10km,5km,학생부5km 초등부,학생부5km중.고등부",
+      "region": "세종",
+      "place": "세종시민운동장",
+      "organizer": "세종특별자치시육상연맹",
+      "contact": "044-862-8601",
+      "registration_period": "2026년6월20일~2026년7월29일",
+      "homepage": "http://sejongrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41602"
+    },
+    {
+      "id": "41600",
+      "name": "2026 MBN 서울마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "하프,10km",
+      "region": "서울",
+      "place": "광화문 광장, 잠실종합운동장",
+      "organizer": "MBN, 매일경제",
+      "contact": "02-6052-0221",
+      "registration_period": "2026년6월22일~2026년6월25일",
+      "homepage": "http://mbn-seoulmarathon.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41600"
     }
   ]
 }
