@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-05T03:39:10.650Z",
+  "updatedAt": "2026-06-05T11:28:05.496Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 664,
+  "count": 666,
   "races": [
     {
       "id": "40976",
@@ -8681,7 +8681,7 @@
       "distances": "10km,5km",
       "region": "울산",
       "place": "태화강둔치 (태화다리 밑)",
-      "organizer": "울산광역시 남구체육회",
+      "organizer": "울산광역시 남구육상연맹",
       "contact": "010-9360-0113",
       "registration_period": "2026년5월11일~2026년5월20일",
       "homepage": "http://modern-infinity-9e6.notion.site/2026-359918810cc280958531fd2261f990d6",
@@ -8697,7 +8697,7 @@
       "region": "서울",
       "place": "석촌 호수 인근",
       "organizer": "사우나런",
-      "contact": "070-8723-8122",
+      "contact": "070-4571-8805",
       "registration_period": "2026년6월2일~2026년6월31일",
       "homepage": "http://saunarun.com",
       "status": "접수중",
@@ -8792,6 +8792,21 @@
       "homepage": "http://osk.run/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41094"
+    },
+    {
+      "id": "41619",
+      "name": "2026 광제산 트레일 런",
+      "date_display": "2026년7월12일",
+      "date_iso": "2026-07-12",
+      "distances": "하프,10km,5km",
+      "region": "경남",
+      "place": "홍지소류지(진주 명석면 계원리",
+      "organizer": "진주시육상연맹",
+      "contact": "070-4443-4392",
+      "registration_period": "2026년6월8일~2026년6월25일",
+      "homepage": "http://www.trailrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41619"
     },
     {
       "id": "41348",
@@ -8957,6 +8972,21 @@
       "homepage": "http://rocknrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41576"
+    },
+    {
+      "id": "41617",
+      "name": "2026 안양천 달빛 나이트런",
+      "date_display": "2026년8월15일",
+      "date_iso": "2026-08-15",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "신정교 하부 영롱이 억새구장",
+      "organizer": "(사)대한이에스지협회",
+      "contact": "02-2606-8187",
+      "registration_period": "2026년6월5일~2026년8월6일",
+      "homepage": "http://moonnightrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41617"
     },
     {
       "id": "41500",
@@ -9313,7 +9343,7 @@
       "place": "장수종합경기장",
       "organizer": "(주)락앤런",
       "contact": "063-352-2025",
-      "registration_period": "2026년6월20일~2026년8월20일",
+      "registration_period": "2026년6월10일~2026년8월10일",
       "homepage": "http://rocknrun.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41349"
