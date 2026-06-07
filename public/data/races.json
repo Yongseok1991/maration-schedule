@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-07T10:28:30.222Z",
+  "updatedAt": "2026-06-07T17:15:24.467Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 666,
   "races": [
@@ -8595,7 +8595,7 @@
       "contact": "010-7734-1481",
       "registration_period": "2026년5월4일~2026년6월7일",
       "homepage": "http://thepacerseries.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41561"
     },
     {
@@ -8805,7 +8805,7 @@
       "contact": "070-4443-4392",
       "registration_period": "2026년6월8일~2026년6월25일",
       "homepage": "http://www.trailrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41619"
     },
     {
@@ -9330,7 +9330,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년6월8일~2026년7월31일",
       "homepage": "http://www.ganghwamarathon.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41606"
     },
     {
@@ -9405,7 +9405,7 @@
       "contact": "02-476-7330",
       "registration_period": "2026년6월8일~2026년6월11일",
       "homepage": "http://www.gomarathon.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41594"
     },
     {
@@ -9945,7 +9945,7 @@
       "contact": "02-2647-4488",
       "registration_period": "2026년6월8일~2026년8월31일",
       "homepage": "http://happytrailrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41585"
     },
     {
