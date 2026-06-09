@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-09T11:14:07.994Z",
+  "updatedAt": "2026-06-09T18:03:55.888Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 671,
   "races": [
@@ -9075,7 +9075,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년6월10일~2026년7월17일",
       "homepage": "http://danyangmarathon.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41620"
     },
     {
@@ -9405,7 +9405,7 @@
       "contact": "063-352-2025",
       "registration_period": "2026년6월10일~2026년8월10일",
       "homepage": "http://rocknrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41349"
     },
     {
@@ -9480,7 +9480,7 @@
       "contact": "010-4899-8421",
       "registration_period": "2026년6월10일~2026년8월10일",
       "homepage": "http://www.runddm.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41605"
     },
     {
@@ -9840,7 +9840,7 @@
       "contact": "042-934-8890",
       "registration_period": "2026년6월10일~2026년7월13일",
       "homepage": "http://www.dcmarathon.or.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41603"
     },
     {
