@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-09T18:03:55.888Z",
+  "updatedAt": "2026-06-10T03:37:01.107Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 671,
+  "count": 674,
   "races": [
     {
       "id": "40976",
@@ -9274,6 +9274,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41556"
     },
     {
+      "id": "41628",
+      "name": "제9회 인천 서구청장배 단축마라톤",
+      "date_display": "2026년9월6일",
+      "date_iso": "2026-09-06",
+      "distances": "10km,4.3km",
+      "region": "인천",
+      "place": "청라호수공원 멀티프라자 트랙",
+      "organizer": "인천광역시 체육회",
+      "contact": "010-2082-0138",
+      "registration_period": "2026년6월10일~2026년8월10일",
+      "homepage": "http://www.sgicaaf.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41628"
+    },
+    {
       "id": "41420",
       "name": "2026 양양 강변 전국 마라톤",
       "date_display": "2026년9월12일",
@@ -9424,6 +9439,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41541"
     },
     {
+      "id": "41629",
+      "name": "제18회 사이버 영토 수호 마라톤",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "하프,10km,5km,걷기3km",
+      "region": "서울",
+      "place": "여의도 물빛무대 앞 광",
+      "organizer": "(사)21세기경제사회연구원",
+      "contact": "070-7706-1011",
+      "registration_period": "2026년6월17일~2026년8월3일",
+      "homepage": "http://www.cyber-run.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41629"
+    },
+    {
       "id": "41351",
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
@@ -9482,6 +9512,21 @@
       "homepage": "http://www.runddm.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41605"
+    },
+    {
+      "id": "41630",
+      "name": "2026 한돈런",
+      "date_display": "2026년9월20일",
+      "date_iso": "2026-09-20",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "미사 조정경기장",
+      "organizer": "한돈자조금위원회, 런코리아",
+      "contact": "070-1566-1936",
+      "registration_period": "2026년6월26일~2026년8월30일",
+      "homepage": "http://handonrun.com/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41630"
     },
     {
       "id": "41316",
