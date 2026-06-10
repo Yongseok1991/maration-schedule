@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-10T03:37:01.107Z",
+  "updatedAt": "2026-06-10T11:38:09.350Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 674,
   "races": [
@@ -7865,7 +7865,7 @@
     },
     {
       "id": "41160",
-      "name": "제9회남한산성TRAILRUNNING",
+      "name": "제9회남한산성 TRAILRUNNING",
       "date_display": "2026년6월6일",
       "date_iso": "2026-06-06",
       "distances": "15km",
@@ -9748,9 +9748,9 @@
       "place": "금오산 공영 대주차장",
       "organizer": "구미시산악연맹, 구미트레일런",
       "contact": "010-3504-1206",
-      "registration_period": "2026년6월1일~2026년7월31일",
+      "registration_period": "2026년6월15일~2026년7월31일",
       "homepage": "http://cafe.naver.com/gumitrailrunnerclub",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41601"
     },
     {
