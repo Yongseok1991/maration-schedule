@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-11T12:09:11.415Z",
+  "updatedAt": "2026-06-11T18:45:54.204Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 677,
   "races": [
@@ -8415,7 +8415,7 @@
       "contact": "02-888-8875",
       "registration_period": "2026년3월11일~2026년6월11일",
       "homepage": "http://hoperun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41467"
     },
     {
@@ -8805,7 +8805,7 @@
       "contact": "070-4443-4392",
       "registration_period": "2026년6월12일~2026년6월25일",
       "homepage": "http://www.trailrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41619"
     },
     {
@@ -8910,7 +8910,7 @@
       "contact": "070-4571-8805",
       "registration_period": "2026년6월12일~2026년7월31일",
       "homepage": "http://saunarun.com/category/?idx=119",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41625"
     },
     {
@@ -9510,7 +9510,7 @@
       "contact": "02-476-7330",
       "registration_period": "2026년6월8일~2026년6월11일",
       "homepage": "http://www.gomarathon.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41594"
     },
     {
