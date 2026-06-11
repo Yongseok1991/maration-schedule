@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-11T03:53:30.339Z",
+  "updatedAt": "2026-06-11T12:09:11.415Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 674,
+  "count": 677,
   "races": [
     {
       "id": "40976",
@@ -9289,6 +9289,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41628"
     },
     {
+      "id": "41635",
+      "name": "2026 전마협회장배 청주마라톤",
+      "date_display": "2026년9월6일",
+      "date_iso": "2026-09-06",
+      "distances": "10km,5km",
+      "region": "충북",
+      "place": "청주 무심천 체육공원",
+      "organizer": "전국마라톤협회",
+      "contact": "042-638-108",
+      "registration_period": "2026년6월10일~2026년8월6일",
+      "homepage": "http://mara1080.com/event/a9780087-8fc3-4849-a234-7659978f6792",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41635"
+    },
+    {
       "id": "41420",
       "name": "2026 양양 강변 전국 마라톤",
       "date_display": "2026년9월12일",
@@ -9934,6 +9949,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41621"
     },
     {
+      "id": "41636",
+      "name": "2026 춘천마라톤",
+      "date_display": "2026년10월25일",
+      "date_iso": "2026-10-25",
+      "distances": "풀,10km",
+      "region": "강원",
+      "place": "춘천 공지천공원",
+      "organizer": "조선일보",
+      "contact": "02-724-6333",
+      "registration_period": "2026년6월16일~2026년7월23일",
+      "homepage": "http://www.chuncheonmarathon.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41636"
+    },
+    {
       "id": "41259",
       "name": "2026 jtbc 마라톤",
       "date_display": "2026년11월1일",
@@ -9977,6 +10007,21 @@
       "homepage": "http://runyc.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41539"
+    },
+    {
+      "id": "41634",
+      "name": "2026 양산 배내골 애플 런",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "10km,5km",
+      "region": "경남",
+      "place": "장선마을 회관 앞 운동장",
+      "organizer": "배내골 주민자치위원회",
+      "contact": "070-7766-1238",
+      "registration_period": "2026년6월15일~2026년7월15일",
+      "homepage": "http://k-marathon.or.kr/main.php",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41634"
     },
     {
       "id": "41528",
