@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-12T03:52:06.899Z",
+  "updatedAt": "2026-06-12T11:42:44.699Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 677,
   "races": [
@@ -9628,9 +9628,9 @@
       "place": "안동시민운동장",
       "organizer": "안동시, 매일신문사",
       "contact": "031-575-7243",
-      "registration_period": "2026년4월13일~2026년5월31일",
+      "registration_period": "2026년4월13일~2026년7월31일",
       "homepage": "http://www.admarathon.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
     },
     {
