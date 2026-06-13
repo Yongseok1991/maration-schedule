@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-13T10:27:47.389Z",
+  "updatedAt": "2026-06-13T17:21:37.152Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 677,
   "races": [
@@ -8565,7 +8565,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년5월13일~2026년6월13일",
       "homepage": "http://mara1080.com/event/5baeed50-d91c-4453-bf68-48ab19911d58",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41580"
     },
     {
