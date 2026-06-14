@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-14T10:48:19.883Z",
+  "updatedAt": "2026-06-14T17:20:21.147Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 678,
   "races": [
@@ -8460,7 +8460,7 @@
       "contact": "02-3285-5556",
       "registration_period": "2026년3월5일~2026년6월14일",
       "homepage": "http://realhappyrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41439"
     },
     {
@@ -8595,7 +8595,7 @@
       "contact": "010-7734-1481",
       "registration_period": "2026년5월4일~2026년6월14일",
       "homepage": "http://thepacerseries.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41561"
     },
     {
@@ -8880,7 +8880,7 @@
       "contact": "010-6710-2023",
       "registration_period": "2026년4월15일~2026년6월14일",
       "homepage": "http://www.bsama.co.kr/index.asp",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41521"
     },
     {
@@ -9765,7 +9765,7 @@
       "contact": "010-3504-1206",
       "registration_period": "2026년6월15일~2026년7월31일",
       "homepage": "http://cafe.naver.com/gumitrailrunnerclub",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41601"
     },
     {
@@ -10035,7 +10035,7 @@
       "contact": "070-7766-1238",
       "registration_period": "2026년6월15일~2026년7월15일",
       "homepage": "http://k-marathon.or.kr/main.php",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41634"
     },
     {
