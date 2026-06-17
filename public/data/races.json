@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-17T12:15:27.201Z",
+  "updatedAt": "2026-06-17T18:15:01.188Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 678,
+  "count": 686,
   "races": [
     {
       "id": "40976",
@@ -8490,7 +8490,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년12월1일~2026년6월17일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&opp=20250626115011&csno=20201120111538#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41218"
     },
     {
@@ -8550,7 +8550,7 @@
       "contact": "070-5088-1180",
       "registration_period": "2026년5월13일~2026년6월17일",
       "homepage": "http://projectruntrip.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41583"
     },
     {
@@ -8610,7 +8610,7 @@
       "contact": "02-2636-6543",
       "registration_period": "2026년3월18일~2026년6월17일",
       "homepage": "http://seoulrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41487"
     },
     {
@@ -8854,6 +8854,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41607"
     },
     {
+      "id": "41645",
+      "name": "2026 전마협 청주 무료 초청 훈련 마라톤",
+      "date_display": "2026년7월18일",
+      "date_iso": "2026-07-18",
+      "distances": "10km",
+      "region": "충북",
+      "place": "청주 무심천 롤러스케이트장",
+      "organizer": "전국마라톤협회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년6월17일~2026년6월31일",
+      "homepage": "http://mara1080.com/event/e320ef81-c1ba-4939-bc1d-c398e514e920",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41645"
+    },
+    {
       "id": "41140",
       "name": "2026 청계산.인릉산TrailRunn",
       "date_display": "2026년7월19일",
@@ -9019,6 +9034,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41617"
     },
     {
+      "id": "41641",
+      "name": "2026 전마협 광복절 무료 초청 마라톤",
+      "date_display": "2026년8월15일",
+      "date_iso": "2026-08-15",
+      "distances": "10km,5km",
+      "region": "대전",
+      "place": "대전엑스포다리 밑",
+      "organizer": "전국마라톤협회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년6월15일~2026년7월31일",
+      "homepage": "http://mara1080.com/event/9e568eef-64ff-4548-881f-3a420689dece",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41641"
+    },
+    {
+      "id": "41642",
+      "name": "제2회 한양도성길 트레일런",
+      "date_display": "2026년8월22일",
+      "date_iso": "2026-08-22",
+      "distances": "20km",
+      "region": "서울",
+      "place": "낙산공원중앙광장(낙산길54)",
+      "organizer": "파브코리아",
+      "contact": "070-4507-4474",
+      "registration_period": "2026년6월15일~2026년8월20일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41642"
+    },
+    {
       "id": "41500",
       "name": "2026대구세계마스터즈 10km대회",
       "date_display": "2026년8월23일",
@@ -9182,6 +9227,21 @@
       "homepage": "http://vrun.kr/index.asp",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41595"
+    },
+    {
+      "id": "41639",
+      "name": "제12회 I LOVE 방송대 마라톤",
+      "date_display": "2026년9월5일",
+      "date_iso": "2026-09-05",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "상암동 평화광장",
+      "organizer": "한국방송통신대학교 전국 총동문",
+      "contact": "02-707-2050",
+      "registration_period": "2026년6월30일~2026년7월31일",
+      "homepage": "http://runbs.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41639"
     },
     {
       "id": "41032",
@@ -9422,6 +9482,21 @@
       "homepage": "http://www.ganghwamarathon.co.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41606"
+    },
+    {
+      "id": "41643",
+      "name": "2026 런서울런",
+      "date_display": "2026년9월13일",
+      "date_iso": "2026-09-13",
+      "distances": "하프,10km",
+      "region": "서울",
+      "place": "서울 광장",
+      "organizer": "일간스포츠",
+      "contact": "02-338-0344",
+      "registration_period": "2026년6월29일~2026년7월29일",
+      "homepage": "http://runseoulrun.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41643"
     },
     {
       "id": "41349",
@@ -9814,6 +9889,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41546"
     },
     {
+      "id": "41640",
+      "name": "2026 평택항마라톤",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "하프,10km,5km",
+      "region": "경기",
+      "place": "평택항 엠에스로지스틱 일원",
+      "organizer": "평택시체육회, 경인일보",
+      "contact": "1600-3962",
+      "registration_period": "2026년6월15일~2026년7월15일",
+      "homepage": "http://www.ptportmarathon.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41640"
+    },
+    {
       "id": "41255",
       "name": "제24회 청원생명쌀대청호마라톤",
       "date_display": "2026년10월17일",
@@ -9930,7 +10020,7 @@
       "contact": "1644-4219",
       "registration_period": "2026년6월18일~2026년9월7일",
       "homepage": "http://xn--439a68tboh.kr/index.asp",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41637"
     },
     {
@@ -10007,6 +10097,21 @@
       "homepage": "http://www.humanrun.org",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41552"
+    },
+    {
+      "id": "41638",
+      "name": "2026 무안 해안 노을길 걷기 및 마라톤",
+      "date_display": "2026년11월1일",
+      "date_iso": "2026-11-01",
+      "distances": "10km,5km",
+      "region": "전남",
+      "place": "무안낙지공원",
+      "organizer": "무안군체육회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년6월15일~2026년10월1일",
+      "homepage": "http://mara1080.com/event/d596615e-cf32-4f20-bdbe-13b633f51c4e",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41638"
     },
     {
       "id": "41539",
@@ -10172,6 +10277,21 @@
       "homepage": "http://runable.me/product/18977?comp=18962",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41614"
+    },
+    {
+      "id": "41644",
+      "name": "제24회 고창고인돌마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "하프,10km,5km",
+      "region": "전북",
+      "place": "고창공설운동장",
+      "organizer": "고창군체육회",
+      "contact": "063-561-5211",
+      "registration_period": "2026년7월1일~2026년8월31일",
+      "homepage": "http://www.gcrun.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41644"
     }
   ]
 }
