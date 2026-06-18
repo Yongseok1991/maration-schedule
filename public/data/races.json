@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-17T18:15:01.188Z",
+  "updatedAt": "2026-06-18T03:52:43.249Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 686,
   "races": [
@@ -9325,12 +9325,12 @@
       "date_iso": "2026-09-06",
       "distances": "하프,10km",
       "region": "서울",
-      "place": "서울광장 (예정)",
+      "place": "서울광장",
       "organizer": "YTN",
       "contact": "070-7725-6258",
-      "registration_period": "2026년4월30일~2026년4월30일",
+      "registration_period": "2026년6월17일~2026년7월15일",
       "homepage": "http://run.ytn.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41556"
     },
     {
@@ -9343,9 +9343,9 @@
       "place": "청라호수공원 멀티프라자 트랙",
       "organizer": "인천광역시 체육회",
       "contact": "010-2082-0138",
-      "registration_period": "2026년6월10일~2026년8월10일",
+      "registration_period": "2026년6월10일~2026년6월16일",
       "homepage": "http://www.sgicaaf.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41628"
     },
     {
@@ -9890,7 +9890,7 @@
     },
     {
       "id": "41640",
-      "name": "2026 평택항마라톤",
+      "name": "2026 평택항마라톤[마감]",
       "date_display": "2026년10월11일",
       "date_iso": "2026-10-11",
       "distances": "하프,10km,5km",
@@ -9898,9 +9898,9 @@
       "place": "평택항 엠에스로지스틱 일원",
       "organizer": "평택시체육회, 경인일보",
       "contact": "1600-3962",
-      "registration_period": "2026년6월15일~2026년7월15일",
+      "registration_period": "2026년6월15일~2026년6월13일",
       "homepage": "http://www.ptportmarathon.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41640"
     },
     {
