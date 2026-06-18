@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-18T11:50:21.131Z",
+  "updatedAt": "2026-06-18T18:25:22.416Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 686,
   "races": [
@@ -8535,7 +8535,7 @@
       "contact": "02-336-1588",
       "registration_period": "2026년3월5일~2026년6월18일",
       "homepage": "http://bigstarrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41440"
     },
     {
@@ -9810,7 +9810,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년5월18일~2026년6월18일",
       "homepage": "http://georun.kr/ko/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41510"
     },
     {
