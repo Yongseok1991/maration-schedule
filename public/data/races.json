@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-19T12:05:27.237Z",
+  "updatedAt": "2026-06-19T17:56:35.301Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 686,
   "races": [
@@ -8370,7 +8370,7 @@
       "contact": "010-3526-9120",
       "registration_period": "2026년3월11일~2026년6월19일",
       "homepage": "http://www.mtrailrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=40317"
     },
     {
@@ -8580,7 +8580,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년6월1일~2026년6월19일",
       "homepage": "http://rocknrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41609"
     },
     {
@@ -9675,7 +9675,7 @@
       "contact": "031-861-1004",
       "registration_period": "2026년6월20일~2026년9월30일",
       "homepage": "http://hope1004.org",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41608"
     },
     {
@@ -10245,7 +10245,7 @@
       "contact": "010-3448-0990",
       "registration_period": "2026년6월20일~2026년7월29일",
       "homepage": "http://sjrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41602"
     },
     {
