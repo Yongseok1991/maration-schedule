@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-20T10:31:44.960Z",
+  "updatedAt": "2026-06-20T17:26:00.336Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 686,
   "races": [
@@ -8670,7 +8670,7 @@
       "contact": "02-3141-7745",
       "registration_period": "2026년4월29일~2026년6월20일",
       "homepage": "http://refreshrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41555"
     },
     {
