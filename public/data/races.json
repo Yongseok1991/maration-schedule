@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-20T17:26:00.336Z",
+  "updatedAt": "2026-06-21T04:06:44.965Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 686,
+  "count": 691,
   "races": [
     {
       "id": "40976",
@@ -9244,6 +9244,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41639"
     },
     {
+      "id": "41650",
+      "name": "2026 JUST RUN10 하반기 세종",
+      "date_display": "2026년9월5일",
+      "date_iso": "2026-09-05",
+      "distances": "10km,5km",
+      "region": "세종",
+      "place": "세종마루공원 밑 금강변",
+      "organizer": "(주)러닝브레이커, 전국러닝협회",
+      "contact": "042-710-2058",
+      "registration_period": "2026년6월19일~2026년7월15일",
+      "homepage": "http://runten.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41650"
+    },
+    {
       "id": "41032",
       "name": "희망드림 제23회 새벽강변 국제마라톤",
       "date_display": "2026년9월6일",
@@ -9499,6 +9514,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41643"
     },
     {
+      "id": "41648",
+      "name": "2026 포항 이차전지 마라톤",
+      "date_display": "2026년9월13일",
+      "date_iso": "2026-09-13",
+      "distances": "하프,10km,5km",
+      "region": "경북",
+      "place": "포항운하",
+      "organizer": "매일신사",
+      "contact": "054-1600-4525",
+      "registration_period": "2026년6월29일~2026년7월20일",
+      "homepage": "http://energyrun.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41648"
+    },
+    {
       "id": "41349",
       "name": "2026 장수트레일레이스 Fall",
       "date_display": "2026년9월19일",
@@ -9677,6 +9707,21 @@
       "homepage": "http://hope1004.org",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41608"
+    },
+    {
+      "id": "41649",
+      "name": "2026 완주트레일런",
+      "date_display": "2026년10월3일",
+      "date_iso": "2026-10-03",
+      "distances": "36K",
+      "region": "전북",
+      "place": "완주군 고산자연휴양림",
+      "organizer": "완주군",
+      "contact": "010-2116-0148",
+      "registration_period": "2026년6월19일~2026년8월31일",
+      "homepage": "http://samsamis.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41649"
     },
     {
       "id": "41332",
@@ -9934,6 +9979,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41587"
     },
     {
+      "id": "41646",
+      "name": "2026 대전 Dtrail 레이스",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "50km",
+      "region": "지역",
+      "place": "보문산 숲속공연장, 은행동",
+      "organizer": "대전광역시 중구체육회",
+      "contact": "042-544-3809",
+      "registration_period": "2026년6월17일~2026년9월17일",
+      "homepage": "http://dtrail.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41646"
+    },
+    {
       "id": "41303",
       "name": "2026 아시아 오픈 마라톤",
       "date_display": "2026년10월18일",
@@ -10142,6 +10202,21 @@
       "homepage": "http://k-marathon.or.kr/main.php",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41634"
+    },
+    {
+      "id": "41647",
+      "name": "제11회 송파구청장배 마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "송파구 여성축구장",
+      "organizer": "송파구육상연맹",
+      "contact": "010-5071-3432",
+      "registration_period": "2026년7월1일~2026년10월5일",
+      "homepage": "http://www.songparunsportal.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41647"
     },
     {
       "id": "41528",
