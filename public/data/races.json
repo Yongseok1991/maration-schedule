@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-21T17:26:46.543Z",
+  "updatedAt": "2026-06-22T04:06:48.400Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 691,
   "races": [
@@ -9515,13 +9515,13 @@
     },
     {
       "id": "41648",
-      "name": "2026 포항 이차전지 마라톤",
+      "name": "2026포항이차전지전국마라톤",
       "date_display": "2026년9월13일",
       "date_iso": "2026-09-13",
       "distances": "하프,10km,5km",
       "region": "경북",
-      "place": "포항운하",
-      "organizer": "매일신사",
+      "place": "포항운하관주차장",
+      "organizer": "매일신문사",
       "contact": "054-1600-4525",
       "registration_period": "2026년6월29일~2026년7월20일",
       "homepage": "http://energyrun.co.kr/",
@@ -9717,7 +9717,7 @@
       "region": "전북",
       "place": "완주군 고산자연휴양림",
       "organizer": "완주군",
-      "contact": "010-2116-0148",
+      "contact": "010-7469-1526",
       "registration_period": "2026년6월19일~2026년8월31일",
       "homepage": "http://samsamis.com",
       "status": "접수중",
