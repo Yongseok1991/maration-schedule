@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-23T11:15:28.377Z",
+  "updatedAt": "2026-06-23T17:53:02.635Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 691,
   "races": [
@@ -9075,7 +9075,7 @@
       "contact": "053-803-1834",
       "registration_period": "2025년12월23일~2026년6월23일",
       "homepage": "http://www.wmac2026.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41500"
     },
     {
@@ -9135,7 +9135,7 @@
       "contact": "053-803-1834",
       "registration_period": "2025년12월23일~2026년6월23일",
       "homepage": "http://www.wmac2026.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41353"
     },
     {
@@ -9825,7 +9825,7 @@
       "contact": "033-651-0112",
       "registration_period": "2026년5월18일~2026년6월23일",
       "homepage": "http://www.경포마라톤.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41300"
     },
     {
