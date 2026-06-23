@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-22T19:25:14.956Z",
+  "updatedAt": "2026-06-23T03:28:22.875Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 691,
   "races": [
@@ -9533,7 +9533,7 @@
       "name": "2026 장수트레일레이스 Fall",
       "date_display": "2026년9월19일",
       "date_iso": "2026-09-19",
-      "distances": "100km,100Miles,38K-J",
+      "distances": "100km,JTR Miler,JTR 40J",
       "region": "전북",
       "place": "장수종합경기장",
       "organizer": "(주)락앤런",
