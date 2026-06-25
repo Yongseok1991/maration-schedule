@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-25T10:41:00.981Z",
+  "updatedAt": "2026-06-25T18:08:56.359Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 698,
   "races": [
@@ -8805,7 +8805,7 @@
       "contact": "070-4443-4392",
       "registration_period": "2026년6월12일~2026년6월25일",
       "homepage": "http://www.trailrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41619"
     },
     {
@@ -9660,7 +9660,7 @@
       "contact": "070-1566-1936",
       "registration_period": "2026년6월26일~2026년8월30일",
       "homepage": "http://handonrun.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41630"
     },
     {
