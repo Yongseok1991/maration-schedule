@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-26T03:35:41.005Z",
+  "updatedAt": "2026-06-26T10:50:21.257Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 698,
   "races": [
@@ -9470,7 +9470,7 @@
     },
     {
       "id": "41591",
-      "name": "제 16회 스마일 런 페스티벌(예정)",
+      "name": "제 16회 스마일 런 페스티벌",
       "date_display": "2026년9월13일",
       "date_iso": "2026-09-13",
       "distances": "하프,10km,5km,걷기",
