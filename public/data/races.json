@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-27T10:07:25.271Z",
+  "updatedAt": "2026-06-27T17:08:59.667Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 698,
   "races": [
@@ -8595,7 +8595,7 @@
       "contact": "010-7734-1481",
       "registration_period": "2026년5월4일~2026년6월27일",
       "homepage": "http://thepacerseries.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41561"
     },
     {
@@ -8760,7 +8760,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년11월13일~2026년6월27일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821124548&csno=20220326200847#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41191"
     },
     {
