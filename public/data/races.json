@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-28T10:27:00.194Z",
+  "updatedAt": "2026-06-28T17:10:17.285Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 699,
   "races": [
@@ -9510,7 +9510,7 @@
       "contact": "02-338-0344",
       "registration_period": "2026년6월29일~2026년7월29일",
       "homepage": "http://runseoulrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41643"
     },
     {
@@ -9525,7 +9525,7 @@
       "contact": "054-1600-4525",
       "registration_period": "2026년6월29일~2026년7월20일",
       "homepage": "http://energyrun.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41648"
     },
     {
@@ -9540,7 +9540,7 @@
       "contact": "054-1600-4525",
       "registration_period": "2026년6월29일~2026년7월20일",
       "homepage": "http://energyrun.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41652"
     },
     {
