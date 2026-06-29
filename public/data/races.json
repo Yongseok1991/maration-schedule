@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-29T03:47:04.710Z",
+  "updatedAt": "2026-06-29T12:31:58.126Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 699,
   "races": [
@@ -9155,18 +9155,19 @@
     },
     {
       "id": "41590",
-      "name": "제3회 GO대관령 국제 트레일런",
-      "date_display": "2026년8월30일",
+      "name": "제3회 GO대관령 국제",
+      "date_display": "8/30(일)",
       "date_iso": "2026-08-30",
-      "distances": "10km,20.18km,44km",
-      "region": "강원",
+      "distances": "트레일런10km,20.18km,44km",
+      "region": "",
       "place": "평창동계올림픽기념공원",
       "organizer": "국대레포츠, 대관령면체육회",
       "contact": "010-2828-9226",
-      "registration_period": "2026년5월22일~2026년7월31일",
-      "homepage": "http://daegwallyeongrun.com",
+      "registration_period": "",
+      "homepage": "",
       "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41590"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41590",
+      "error": "detail_fetch_failed"
     },
     {
       "id": "41365",
