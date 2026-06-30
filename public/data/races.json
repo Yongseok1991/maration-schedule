@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-30T10:56:11.635Z",
+  "updatedAt": "2026-06-30T17:52:12.801Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 703,
   "races": [
@@ -8955,7 +8955,7 @@
       "contact": "010-3878-1159",
       "registration_period": "2026년6월1일~2026년6월30일",
       "homepage": "http://korearun01.imweb.me/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41584"
     },
     {
@@ -9480,7 +9480,7 @@
       "contact": "010-9853-2686",
       "registration_period": "2026년1월1일~2026년6월30일",
       "homepage": "http://www.ujrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41137"
     },
     {
@@ -9761,7 +9761,7 @@
       "distances": "36K",
       "region": "전북",
       "place": "완주군 고산자연휴양림",
-      "organizer": "완주군",
+      "organizer": "완주군/삼삼이즈",
       "contact": "010-7469-1526",
       "registration_period": "2026년6월19일~2026년8월31일",
       "homepage": "http://samsamis.com",
@@ -10110,7 +10110,7 @@
       "contact": "061-270-9212",
       "registration_period": "2026년7월1일~2026년7월24일",
       "homepage": "http://www.greenstep.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41548"
     },
     {
@@ -10200,7 +10200,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년7월1일~2026년8월28일",
       "homepage": "http://청도반시마라톤.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41621"
     },
     {
@@ -10245,7 +10245,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년7월1일~2026년7월13일",
       "homepage": "http://gmrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41661"
     },
     {
@@ -10380,7 +10380,7 @@
       "contact": "010-5071-3432",
       "registration_period": "2026년7월1일~2026년10월5일",
       "homepage": "http://www.songparunsportal.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41647"
     },
     {
@@ -10530,7 +10530,7 @@
       "contact": "02-2031-1935",
       "registration_period": "2026년7월1일~2026년7월3일",
       "homepage": "http://runable.me/product/18977?comp=18962",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41614"
     },
     {
@@ -10545,7 +10545,7 @@
       "contact": "063-561-5211",
       "registration_period": "2026년7월1일~2026년8월31일",
       "homepage": "http://www.gcrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41644"
     }
   ]
