@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-30T03:33:45.287Z",
+  "updatedAt": "2026-06-30T10:56:11.635Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 701,
+  "count": 703,
   "races": [
     {
       "id": "40976",
@@ -9049,6 +9049,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41641"
     },
     {
+      "id": "41663",
+      "name": "2026Happy700평창대관령전국하프마라톤",
+      "date_display": "2026년8월16일",
+      "date_iso": "2026-08-16",
+      "distances": "하프,10km",
+      "region": "강원",
+      "place": "2018 평창동계올림픽 기념관",
+      "organizer": "한국실업육상연맹",
+      "contact": "1600-3949",
+      "registration_period": "2026년6월10일~2026년7월25일",
+      "homepage": "http://www.ifunrunkorea.co.kr/sub0102",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41663"
+    },
+    {
       "id": "41642",
       "name": "제2회 한양도성길 트레일런",
       "date_display": "2026년8월22일",
@@ -10138,9 +10153,9 @@
       "place": "여주 현암지구공원",
       "organizer": "여주시육상연맹",
       "contact": "042-638-1080",
-      "registration_period": "2026년6월2일~2026년9월18일",
+      "registration_period": "2026년6월2일~2026년6월29일",
       "homepage": "http://mara1080.com/event/edaee6e1-0d92-4248-9927-06ed3b0abfd0",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41610"
     },
     {
@@ -10322,6 +10337,21 @@
       "homepage": "http://runyc.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41539"
+    },
+    {
+      "id": "41662",
+      "name": "제15회 부여 굿뜨래 마라톤 대회",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "풀,하프,10km,5km",
+      "region": "충남",
+      "place": "부여 구드래나루터 선착장",
+      "organizer": "부여군마라톤연합회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년6월30일~2026년10월7일",
+      "homepage": "http://mara1080.com/event/ffc023fc-7a54-4610-bdd6-2bb9a1028122",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41662"
     },
     {
       "id": "41634",
