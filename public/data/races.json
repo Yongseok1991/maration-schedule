@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-29T18:11:53.423Z",
+  "updatedAt": "2026-06-30T03:33:45.287Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 699,
+  "count": 701,
   "races": [
     {
       "id": "40976",
@@ -9268,7 +9268,7 @@
       "place": "(양천구)목동운동장",
       "organizer": "(사)한국마라톤협회",
       "contact": "02-2647-4488",
-      "registration_period": "2026년4월13일~2026년6월30일",
+      "registration_period": "2026년4월13일~2026년7월22일",
       "homepage": "http://amarunsb.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41032"
@@ -9814,6 +9814,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41571"
     },
     {
+      "id": "41660",
+      "name": "제23회 경남마라톤",
+      "date_display": "2026년10월4일",
+      "date_iso": "2026-10-04",
+      "distances": "10km,3km",
+      "region": "경남",
+      "place": "창원종합운동장 보조경기장",
+      "organizer": "(주)경남신문사",
+      "contact": "055-210-6104",
+      "registration_period": "2026년7월13일~2026년8월29일",
+      "homepage": "http://www.knmarathon.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41660"
+    },
+    {
       "id": "41551",
       "name": "2026 서울오픈마라톤",
       "date_display": "2026년10월5일",
@@ -10202,6 +10217,21 @@
       "homepage": "http://www.irunman.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41653"
+    },
+    {
+      "id": "41661",
+      "name": "2026 광명평화마라톤",
+      "date_display": "2026년10월25일",
+      "date_iso": "2026-10-25",
+      "distances": "하프,10km,5km,가족런 2~5인,5km 커플런",
+      "region": "경기",
+      "place": "광명역 일원",
+      "organizer": "광명시체육회",
+      "contact": "1600-3962",
+      "registration_period": "2026년7월1일~2026년7월13일",
+      "homepage": "http://gmrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41661"
     },
     {
       "id": "41259",
