@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T11:22:13.486Z",
+  "updatedAt": "2026-07-01T17:54:00.125Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 704,
   "races": [
@@ -8700,7 +8700,7 @@
       "contact": "070-4571-8805",
       "registration_period": "2026년6월2일~2026년6월31일",
       "homepage": "http://saunarun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41611"
     },
     {
@@ -8820,7 +8820,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년4월27일~2026년6월31일",
       "homepage": "http://rocknrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41348"
     },
     {
@@ -10425,7 +10425,7 @@
       "contact": "054-1600-4525",
       "registration_period": "2026년4월13일~2026년6월31일",
       "homepage": "http://pohangmarathon.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41528"
     },
     {
