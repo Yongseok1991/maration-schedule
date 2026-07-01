@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-01T03:42:29.512Z",
+  "updatedAt": "2026-07-01T11:22:13.486Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 703,
+  "count": 704,
   "races": [
     {
       "id": "40976",
@@ -9887,6 +9887,21 @@
       "homepage": "http://cafe.naver.com/browna6seu",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41656"
+    },
+    {
+      "id": "41664",
+      "name": "2026 한글런",
+      "date_display": "2026년10월9일",
+      "date_iso": "2026-10-09",
+      "distances": "5.15km",
+      "region": "세종",
+      "place": "세종중앙공원 도시축제마당",
+      "organizer": "헤럴드경제",
+      "contact": "02-338-6564",
+      "registration_period": "2026년7월1일~2026년8월30일",
+      "homepage": "http://hangeulrun.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41664"
     },
     {
       "id": "41300",
