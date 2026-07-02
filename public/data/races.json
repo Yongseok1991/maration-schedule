@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-01T17:54:00.125Z",
+  "updatedAt": "2026-07-02T03:28:40.776Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 704,
   "races": [
@@ -8691,8 +8691,8 @@
     {
       "id": "41611",
       "name": "사우나런 in 석촌호수",
-      "date_display": "2026년6월31일",
-      "date_iso": "2026-06-31",
+      "date_display": "2026년7월1일",
+      "date_iso": "2026-07-01",
       "distances": "10km,5km",
       "region": "서울",
       "place": "석촌 호수 인근",
