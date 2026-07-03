@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T10:34:11.303Z",
+  "updatedAt": "2026-07-03T17:24:33.135Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 707,
   "races": [
@@ -10575,7 +10575,7 @@
       "contact": "070-7727-1751",
       "registration_period": "2026년6월22일~2026년7월3일",
       "homepage": "http://mbn-seoulmarathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41600"
     },
     {
@@ -10590,7 +10590,7 @@
       "contact": "02-2031-1935",
       "registration_period": "2026년7월1일~2026년7월3일",
       "homepage": "http://runable.me/product/18977?comp=18962",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41614"
     },
     {
