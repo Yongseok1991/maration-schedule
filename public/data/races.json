@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-02T17:46:01.379Z",
+  "updatedAt": "2026-07-03T02:51:19.978Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 704,
+  "count": 707,
   "races": [
     {
       "id": "40976",
@@ -9694,6 +9694,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41657"
     },
     {
+      "id": "41666",
+      "name": "2026 안산마라톤",
+      "date_display": "2026년9월20일",
+      "date_iso": "2026-09-20",
+      "distances": "하프,10km,5km",
+      "region": "경기",
+      "place": "대부향기테마파크",
+      "organizer": "안산시체육",
+      "contact": "1600-3962",
+      "registration_period": "2026년7월6일~2026년7월20일",
+      "homepage": "http://ansanrun.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41666"
+    },
+    {
       "id": "41316",
       "name": "제 2회 아산이순신 트레일",
       "date_display": "2026년10월3일",
@@ -9977,6 +9992,21 @@
       "homepage": "http://cafe.naver.com/gumitrailrunnerclub",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41601"
+    },
+    {
+      "id": "41665",
+      "name": "제3회 성동구연맹회장기 마라톤",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "살곶이대운동장(축구장)",
+      "organizer": "성동구체육회 / 성동구육상연맹",
+      "contact": "010-2116-0148",
+      "registration_period": "2026년7월10일~2026년8월30일",
+      "homepage": "http://samsamis.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41665"
     },
     {
       "id": "41434",
@@ -10412,6 +10442,21 @@
       "homepage": "http://www.거제앵산트레일레이스.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41658"
+    },
+    {
+      "id": "41667",
+      "name": "2026 서울구석구석 국제 트레일런",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "트레일런 14km",
+      "region": "서울",
+      "place": "광화문 서울마당(서울신문)",
+      "organizer": "서울신문, 한국익스트림앤스포츠",
+      "contact": "070-7719-5788",
+      "registration_period": "2026년7월2일~2026년9월30일",
+      "homepage": "http://cafe.naver.com/seoultrailrun/?viewType=pc",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41667"
     },
     {
       "id": "41528",
