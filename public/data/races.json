@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-03T02:51:19.978Z",
+  "updatedAt": "2026-07-03T10:34:11.303Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 707,
   "races": [
@@ -9668,7 +9668,7 @@
       "name": "2026 한돈런",
       "date_display": "2026년9월20일",
       "date_iso": "2026-09-20",
-      "distances": "10km,5km",
+      "distances": "10km,6km코스",
       "region": "경기",
       "place": "미사 조정경기장",
       "organizer": "한돈자조금위원회, 런코리아",
@@ -10002,7 +10002,7 @@
       "region": "서울",
       "place": "살곶이대운동장(축구장)",
       "organizer": "성동구체육회 / 성동구육상연맹",
-      "contact": "010-2116-0148",
+      "contact": "010-7469-1526",
       "registration_period": "2026년7월10일~2026년8월30일",
       "homepage": "http://samsamis.com",
       "status": "",
@@ -10450,7 +10450,7 @@
       "date_iso": "2026-11-08",
       "distances": "트레일런 14km",
       "region": "서울",
-      "place": "광화문 서울마당(서울신문)",
+      "place": "서울마당(지하철1호선 시청역 4번출구)",
       "organizer": "서울신문, 한국익스트림앤스포츠",
       "contact": "070-7719-5788",
       "registration_period": "2026년7월2일~2026년9월30일",
