@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-05T02:58:01.216Z",
+  "updatedAt": "2026-07-05T10:11:43.654Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 707,
+  "count": 709,
   "races": [
     {
       "id": "40976",
@@ -9604,6 +9604,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41629"
     },
     {
+      "id": "41668",
+      "name": "2026 JUST RUN10 김해 대동",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "10km,5km",
+      "region": "경남",
+      "place": "김해 대동생태체육공원 축구장",
+      "organizer": "대동면 체육회, 전국러닝협회",
+      "contact": "042-710-2058",
+      "registration_period": "2026년7월3일~2026년8월2일",
+      "homepage": "http://runten.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41668"
+    },
+    {
       "id": "41351",
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
@@ -10217,6 +10232,21 @@
       "homepage": "http://xn--439a68tboh.kr/index.asp",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41637"
+    },
+    {
+      "id": "41669",
+      "name": "2026 익산 기부런",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "10km,6.4km",
+      "region": "전북",
+      "place": "익산시종합운동장",
+      "organizer": "(사)크레파스",
+      "contact": "063-832-0033",
+      "registration_period": "2026년7월14일~2026년8월31일",
+      "homepage": "http://iksangiverun.or.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41669"
     },
     {
       "id": "41477",
