@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-06T03:25:03.068Z",
+  "updatedAt": "2026-07-06T12:03:46.350Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 709,
+  "count": 712,
   "races": [
     {
       "id": "40976",
@@ -9184,6 +9184,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41590"
     },
     {
+      "id": "41672",
+      "name": "사우나런 in 뚝섬한강공원",
+      "date_display": "2026년8월31일",
+      "date_iso": "2026-08-31",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "뚝섬한강공원 인근",
+      "organizer": "사우나런",
+      "contact": "070-4571-8805",
+      "registration_period": "2026년7월6일~2026년8월31일",
+      "homepage": "http://saunarun.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41672"
+    },
+    {
       "id": "41365",
       "name": "제23회 철원DMZ국제평화마라톤",
       "date_display": "2026년9월5일",
@@ -9687,7 +9702,7 @@
       "region": "경기",
       "place": "미사 조정경기장",
       "organizer": "한돈자조금위원회, 런코리아",
-      "contact": "070-1566-1936",
+      "contact": "1566-1936",
       "registration_period": "2026년7월13일~2026년8월30일",
       "homepage": "http://handonrun.com/",
       "status": "",
@@ -9722,6 +9737,21 @@
       "homepage": "http://ansanrun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41666"
+    },
+    {
+      "id": "41670",
+      "name": "2026 인천송도국제하프마라톤",
+      "date_display": "2026년9월20일",
+      "date_iso": "2026-09-20",
+      "distances": "하프,10km,5km",
+      "region": "인천",
+      "place": "송도인천대캠퍼스 정문앞",
+      "organizer": "(주)경인일보",
+      "contact": "1866-1718",
+      "registration_period": "2026년7월8일~2026년8월7일",
+      "homepage": "http://songdorun.net",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41670"
     },
     {
       "id": "41316",
@@ -10487,6 +10517,21 @@
       "homepage": "http://cafe.naver.com/seoultrailrun/?viewType=pc",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41667"
+    },
+    {
+      "id": "41671",
+      "name": "2026 과천마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "하프,10km,5km",
+      "region": "경기",
+      "place": "관문체육공원",
+      "organizer": "과천시체육회",
+      "contact": "031-575-7243",
+      "registration_period": "2026년7월20일~2026년7월31일",
+      "homepage": "http://gcrun.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41671"
     },
     {
       "id": "41528",
