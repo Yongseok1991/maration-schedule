@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-06T12:03:46.350Z",
+  "updatedAt": "2026-07-06T18:10:07.034Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 712,
   "races": [
@@ -9315,7 +9315,7 @@
       "contact": "010-2584-0474",
       "registration_period": "2026년3월16일~2026년7월6일",
       "homepage": "http://sandrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41402"
     },
     {
