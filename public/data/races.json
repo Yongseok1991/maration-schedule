@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-07T02:57:58.570Z",
+  "updatedAt": "2026-07-07T10:54:17.827Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 712,
+  "count": 718,
   "races": [
     {
       "id": "40976",
@@ -9049,6 +9049,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41641"
     },
     {
+      "id": "41678",
+      "name": "2026 INCHEON NIGHT RACE",
+      "date_display": "2026년8월15일",
+      "date_iso": "2026-08-15",
+      "distances": "8.15km",
+      "region": "인천",
+      "place": "인천 영정구 중산동 1946",
+      "organizer": "국민건강진흥원",
+      "contact": "070-4098-1114",
+      "registration_period": "2026년7월7일~2026년8월8일",
+      "homepage": "http://icnr.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41678"
+    },
+    {
       "id": "41663",
       "name": "2026Happy700평창대관령전국하프마라톤",
       "date_display": "2026년8월16일",
@@ -9634,6 +9649,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41668"
     },
     {
+      "id": "41674",
+      "name": "2026 안양천 하프 마라톤",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "신정교 하부 영롱이 억새구장",
+      "organizer": "(사)행복한가게",
+      "contact": "02-888-8875",
+      "registration_period": "2026년7월6일~2026년9월10일",
+      "homepage": "http://aychalf.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41674"
+    },
+    {
       "id": "41351",
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
@@ -9917,6 +9947,21 @@
       "homepage": "http://seoulopen.or.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41551"
+    },
+    {
+      "id": "41677",
+      "name": "런센스 2026",
+      "date_display": "2026년10월5일",
+      "date_iso": "2026-10-05",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "상암동 평화의공원 평화광장",
+      "organizer": "(주)일요신문사 (주)비즈한국",
+      "contact": "070-7706-1011",
+      "registration_period": "2026년7월8일~2026년8월27일",
+      "homepage": "http://www.runsense.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41677"
     },
     {
       "id": "41352",
@@ -10682,6 +10727,51 @@
       "homepage": "http://www.gcrun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41644"
+    },
+    {
+      "id": "41673",
+      "name": "2026 세정 가을바람 유러닝페스타",
+      "date_display": "2026년11월21일",
+      "date_iso": "2026-11-21",
+      "distances": "10km,5km,10k 커플런,10k 단체전(5인1조)",
+      "region": "경기",
+      "place": "하남 미사리 조정경기장",
+      "organizer": "주식회사 세정",
+      "contact": "010-8017-1833",
+      "registration_period": "2026년7월8일~2026년11월7일",
+      "homepage": "http://urfesta.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41673"
+    },
+    {
+      "id": "41675",
+      "name": "2026 남원 춘향 전국 마라톤대회",
+      "date_display": "2026년11월28일",
+      "date_iso": "2026-11-28",
+      "distances": "풀,하프,10km,5km",
+      "region": "전북",
+      "place": "남원 종합스포츠타운 운동장",
+      "organizer": "남원시체육회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년7월7일~2026년10월28일",
+      "homepage": "http://mara1080.com/event/c2cec79b-c38a-4832-bf4f-7ecb499cdcd5/guide/overview",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41675"
+    },
+    {
+      "id": "41676",
+      "name": "2026 전국마라톤협회 금산 골드런 마라톤",
+      "date_display": "2026년12월5일",
+      "date_iso": "2026-12-05",
+      "distances": "5km,12km",
+      "region": "충남",
+      "place": "금산",
+      "organizer": "전국마라톤협회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년7월2일~2026년9월1일",
+      "homepage": "http://mara1080.com/event/df4b4e7d-4fbc-4843-858c-f15c032e92cb",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41676"
     }
   ]
 }
