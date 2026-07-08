@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-08T02:34:10.080Z",
+  "updatedAt": "2026-07-08T10:15:49.292Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 724,
+  "count": 725,
   "races": [
     {
       "id": "40976",
@@ -10190,18 +10190,19 @@
     },
     {
       "id": "41683",
-      "name": "2026 문경 오미자 하프마라톤",
-      "date_display": "2026년10월11일",
+      "name": "2026 문경 오미자",
+      "date_display": "10/11(일)",
       "date_iso": "2026-10-11",
-      "distances": "하프,10km,5km",
-      "region": "경북",
+      "distances": "하프마라톤하프,10km,5km",
+      "region": "",
       "place": "문경시민운동장",
       "organizer": "영남일보",
-      "contact": "1600-3949",
-      "registration_period": "2026년7월10일~2026년8월28일",
-      "homepage": "http://mgmarathon.kr",
+      "contact": "00-1600-3949",
+      "registration_period": "",
+      "homepage": "",
       "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41683"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41683",
+      "error": "detail_fetch_failed"
     },
     {
       "id": "41255",
@@ -10847,6 +10848,21 @@
       "homepage": "http://mara1080.com/event/c2cec79b-c38a-4832-bf4f-7ecb499cdcd5/guide/overview",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41675"
+    },
+    {
+      "id": "41685",
+      "name": "목욕런 2026",
+      "date_display": "2026년11월28일",
+      "date_iso": "2026-11-28",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "월드컵공원 평화의 광장",
+      "organizer": "사우나 민족",
+      "contact": "070-4571-8805",
+      "registration_period": "2026년8월10일~2026년8월30일",
+      "homepage": "http://mokyokrun.shop",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41685"
     },
     {
       "id": "41676",
