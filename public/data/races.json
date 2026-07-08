@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-08T10:15:49.292Z",
+  "updatedAt": "2026-07-08T17:27:54.297Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 725,
   "races": [
@@ -10190,19 +10190,18 @@
     },
     {
       "id": "41683",
-      "name": "2026 문경 오미자",
-      "date_display": "10/11(일)",
+      "name": "2026 문경 오미자 하프마라톤",
+      "date_display": "2026년10월11일",
       "date_iso": "2026-10-11",
-      "distances": "하프마라톤하프,10km,5km",
-      "region": "",
+      "distances": "하프,10km,5km",
+      "region": "경북",
       "place": "문경시민운동장",
       "organizer": "영남일보",
-      "contact": "00-1600-3949",
-      "registration_period": "",
-      "homepage": "",
+      "contact": "1600-3949",
+      "registration_period": "2026년7월10일~2026년8월28일",
+      "homepage": "http://mgmarathon.kr",
       "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41683",
-      "error": "detail_fetch_failed"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41683"
     },
     {
       "id": "41255",
