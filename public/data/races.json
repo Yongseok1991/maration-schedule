@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-07T17:58:13.943Z",
+  "updatedAt": "2026-07-08T02:34:10.080Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 718,
+  "count": 724,
   "races": [
     {
       "id": "40976",
@@ -9784,6 +9784,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41670"
     },
     {
+      "id": "41684",
+      "name": "2026 울산남구육상연맹 회장배 단축마라톤",
+      "date_display": "2026년9월20일",
+      "date_iso": "2026-09-20",
+      "distances": "10km,5km",
+      "region": "울산",
+      "place": "태화강국가정원 내 왕버들 공연",
+      "organizer": "울산광역시 남구 육상연맹",
+      "contact": "010-9360-0113",
+      "registration_period": "2026년7월15일~2026년7월30일",
+      "homepage": "http://modern-infinity-9e6.notion.site/2026-395918810cc28075b602c0e076d8d3ea",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41684"
+    },
+    {
       "id": "41316",
       "name": "제 2회 아산이순신 트레일",
       "date_display": "2026년10월3일",
@@ -9857,6 +9872,21 @@
       "homepage": "http://samsamis.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41649"
+    },
+    {
+      "id": "41680",
+      "name": "2026 마스터즈 하프 마라톤",
+      "date_display": "2026년10월3일",
+      "date_iso": "2026-10-03",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "상암 월드컵공원 평화광장",
+      "organizer": "(사)사회안전예방중앙회",
+      "contact": "02-2636-6543",
+      "registration_period": "2026년7월7일~2026년9월21일",
+      "homepage": "http://mastershalf.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41680"
     },
     {
       "id": "41332",
@@ -10159,6 +10189,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41640"
     },
     {
+      "id": "41683",
+      "name": "2026 문경 오미자 하프마라톤",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "하프,10km,5km",
+      "region": "경북",
+      "place": "문경시민운동장",
+      "organizer": "영남일보",
+      "contact": "1600-3949",
+      "registration_period": "2026년7월10일~2026년8월28일",
+      "homepage": "http://mgmarathon.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41683"
+    },
+    {
       "id": "41255",
       "name": "제24회 청원생명쌀대청호마라톤",
       "date_display": "2026년10월17일",
@@ -10217,6 +10262,36 @@
       "homepage": "http://jsrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41655"
+    },
+    {
+      "id": "41681",
+      "name": "2026 경청마라톤",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "신정교 하부 영롱이 억새구장",
+      "organizer": "(사)행복한동행",
+      "contact": "02-2636-7775",
+      "registration_period": "2026년7월7일~2026년10월7일",
+      "homepage": "http://storyrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41681"
+    },
+    {
+      "id": "41679",
+      "name": "제7회 충청남도 태안 전국어울림마라톤",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "하프,10km,5km,장애인부",
+      "region": "충남",
+      "place": "태안군 안면읍 꽃지해수욕장 일",
+      "organizer": "충청남도장애인체육회",
+      "contact": "02-785-1915",
+      "registration_period": "2026년7월22일~2026년9월17일",
+      "homepage": "http://www.충남전국어울림마라톤.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41679"
     },
     {
       "id": "41303",
@@ -10322,6 +10397,21 @@
       "homepage": "http://iksangiverun.or.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41669"
+    },
+    {
+      "id": "41682",
+      "name": "2026 하남 어텀 패밀리 마라톤",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "하남 미사 경정 공원",
+      "organizer": "청운의꿈(주)",
+      "contact": "02-2606-8187",
+      "registration_period": "2026년7월7일~2026년10월14일",
+      "homepage": "http://hnrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41682"
     },
     {
       "id": "41477",
