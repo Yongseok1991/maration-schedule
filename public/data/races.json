@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T10:58:11.419Z",
+  "updatedAt": "2026-07-09T17:54:48.315Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 725,
   "races": [
@@ -10125,7 +10125,7 @@
       "contact": "010-7469-1526",
       "registration_period": "2026년7월10일~2026년8월30일",
       "homepage": "http://samsamis.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41665"
     },
     {
@@ -10200,7 +10200,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년7월10일~2026년8월28일",
       "homepage": "http://mgmarathon.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41683"
     },
     {
@@ -10560,7 +10560,7 @@
       "contact": "042-255-7917",
       "registration_period": "2026년7월10일~2026년7월31일",
       "homepage": "http://www.djmarathon.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41659"
     },
     {
