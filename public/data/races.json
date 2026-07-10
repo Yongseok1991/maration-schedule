@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-10T02:54:46.558Z",
+  "updatedAt": "2026-07-10T10:52:24.258Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 725,
+  "count": 732,
   "races": [
     {
       "id": "40976",
@@ -8914,6 +8914,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41554"
     },
     {
+      "id": "41692",
+      "name": "순천만국가정원 챌린지가든런",
+      "date_display": "2026년7월25일",
+      "date_iso": "2026-07-25",
+      "distances": "10km",
+      "region": "전남",
+      "place": "순천만국가정원 동문",
+      "organizer": "순천만국가정원",
+      "contact": "070-5088-1180",
+      "registration_period": "2026년7월9일~2026년7월17일",
+      "homepage": "http://projectruntrip.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41692"
+    },
+    {
       "id": "41625",
       "name": "사우나런 in 올림픽공원",
       "date_display": "2026년7월31일",
@@ -8995,7 +9010,7 @@
       "date_iso": "2026-08-15",
       "distances": "9봉 87k",
       "region": "경남",
-      "place": "청운산장",
+      "place": "가늘산장",
       "organizer": "JYD자연을달린다",
       "contact": "010-4539-6887",
       "registration_period": "2026년4월1일~2026년7월15일",
@@ -9515,7 +9530,7 @@
     },
     {
       "id": "41591",
-      "name": "제 16회 스마일 런 페스티벌",
+      "name": "제16회 스마일 런 페스티벌",
       "date_display": "2026년9월13일",
       "date_iso": "2026-09-13",
       "distances": "하프,10km,5km,걷기",
@@ -9994,6 +10009,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41677"
     },
     {
+      "id": "41690",
+      "name": "제12회 시흥시 전국하프마라톤",
+      "date_display": "2026년10월5일",
+      "date_iso": "2026-10-05",
+      "distances": "하프,10km,5km",
+      "region": "경기",
+      "place": "한국공학대학교 제2캠퍼스",
+      "organizer": "경기일보, 시흥시체육회",
+      "contact": "031-575-7243",
+      "registration_period": "2026년7월22일~2026년7월22일",
+      "homepage": "http://shmarathon.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41690"
+    },
+    {
       "id": "41352",
       "name": "제26회 홍성마라톤",
       "date_display": "2026년10월9일",
@@ -10129,6 +10159,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41665"
     },
     {
+      "id": "41689",
+      "name": "제4회 강서허준런(RUN)",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "10km,5km,3km 패밀리런",
+      "region": "서울",
+      "place": "서울식물원 초지원",
+      "organizer": "강서구",
+      "contact": "02-2600-6795",
+      "registration_period": "2026년7월9일~2026년7월17일",
+      "homepage": "http://강서허준런.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41689"
+    },
+    {
       "id": "41434",
       "name": "2026 MBN 전국 나주 마라톤대회",
       "date_display": "2026년10월11일",
@@ -10202,6 +10247,21 @@
       "homepage": "http://mgmarathon.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41683"
+    },
+    {
+      "id": "41687",
+      "name": "2026 핑크런",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "상암월드컵공원 평화광장",
+      "organizer": "한국유방건강재단",
+      "contact": "070-4633-1233",
+      "registration_period": "2026년7월27일~2026년8월7일",
+      "homepage": "http://www.pinkrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41687"
     },
     {
       "id": "41255",
@@ -10414,6 +10474,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41682"
     },
     {
+      "id": "41688",
+      "name": "2026 경기옛길 함께RUN",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "도농체육공원",
+      "organizer": "경기도",
+      "contact": "1600-3962",
+      "registration_period": "2026년7월9일~2026년8월8일",
+      "homepage": "http://ggcrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41688"
+    },
+    {
       "id": "41477",
       "name": "2026 청송사과트레일런",
       "date_display": "2026년10월25일",
@@ -10562,6 +10637,21 @@
       "homepage": "http://www.djmarathon.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41659"
+    },
+    {
+      "id": "41691",
+      "name": "2026 DMZ OPEN 평화마라톤",
+      "date_display": "2026년11월1일",
+      "date_iso": "2026-11-01",
+      "distances": "하프,10km",
+      "region": "경기",
+      "place": "파주 임진각 평화누리 일원",
+      "organizer": "경기도",
+      "contact": "031-575-7243",
+      "registration_period": "2026년8월1일~2026년8월1일",
+      "homepage": "http://dmzopenrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41691"
     },
     {
       "id": "41539",
@@ -10813,10 +10903,25 @@
       "place": "고창공설운동장",
       "organizer": "고창군체육회",
       "contact": "063-561-5211",
-      "registration_period": "2026년7월1일~2026년8월31일",
+      "registration_period": "2026년7월1일~2026년7월9일",
       "homepage": "http://www.gcrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41644"
+    },
+    {
+      "id": "41686",
+      "name": "2026 9회 서울평화마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "신정교하부육상트랙구장",
+      "organizer": "서울자주통일평화연대",
+      "contact": "010-3408-8150",
+      "registration_period": "2026년7월8일~2026년10월16일",
+      "homepage": "http://seoultongilrun.org",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41686"
     },
     {
       "id": "41673",
