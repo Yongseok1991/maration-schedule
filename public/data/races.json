@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10T10:52:24.258Z",
+  "updatedAt": "2026-07-10T17:46:37.714Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 732,
   "races": [
@@ -8880,7 +8880,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년10월20일~2026년7월10일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250821130406&csno=20190812093657#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41140"
     },
     {
