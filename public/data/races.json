@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-10T17:46:37.714Z",
+  "updatedAt": "2026-07-11T02:32:02.226Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 732,
   "races": [
@@ -8939,7 +8939,7 @@
       "organizer": "사우나런",
       "contact": "070-4571-8805",
       "registration_period": "2026년6월12일~2026년7월31일",
-      "homepage": "http://saunarun.com/category/?idx=119",
+      "homepage": "http://saunarun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41625"
     },
