@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-12T09:49:58.322Z",
+  "updatedAt": "2026-07-12T16:57:19.623Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 732,
   "races": [
@@ -9750,7 +9750,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년7월13일~2026년8월30일",
       "homepage": "http://handonrun.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41630"
     },
     {
@@ -9975,7 +9975,7 @@
       "contact": "055-210-6104",
       "registration_period": "2026년7월13일~2026년8월29일",
       "homepage": "http://www.knmarathon.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41660"
     },
     {
