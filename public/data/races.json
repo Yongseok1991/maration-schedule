@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-13T11:09:14.072Z",
+  "updatedAt": "2026-07-13T17:53:34.954Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 732,
   "races": [
@@ -10410,7 +10410,7 @@
       "contact": "042-934-8890",
       "registration_period": "2026년6월10일~2026년7월13일",
       "homepage": "http://www.dcmarathon.or.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41603"
     },
     {
@@ -10455,7 +10455,7 @@
       "contact": "063-832-0033",
       "registration_period": "2026년7월14일~2026년8월31일",
       "homepage": "http://iksangiverun.or.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41669"
     },
     {
@@ -10560,7 +10560,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년7월1일~2026년7월13일",
       "homepage": "http://gmrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41661"
     },
     {
