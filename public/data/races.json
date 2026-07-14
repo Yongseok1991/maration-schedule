@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-13T17:53:34.954Z",
+  "updatedAt": "2026-07-14T02:23:33.099Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 732,
+  "count": 735,
   "races": [
     {
       "id": "40976",
@@ -9679,6 +9679,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41674"
     },
     {
+      "id": "41694",
+      "name": "제4회 문경 오미자런",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "10km,5km",
+      "region": "경북",
+      "place": "문경종합온천",
+      "organizer": "문경시, 문경시 청년센터",
+      "contact": "010-2805-9016",
+      "registration_period": "2026년7월13일~2026년8월3일",
+      "homepage": "http://www.omijarun.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41694"
+    },
+    {
+      "id": "41693",
+      "name": "제2회 경기신문 씨사이드 마라톤",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "하프,10km,5km",
+      "region": "인천",
+      "place": "영종구 씨사이드파크 일원",
+      "organizer": "경기신문",
+      "contact": "1588-2341",
+      "registration_period": "2026년7월13일~2026년8월31일",
+      "homepage": "http://kgseasiderun.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41693"
+    },
+    {
       "id": "41351",
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
@@ -10922,6 +10952,21 @@
       "homepage": "http://seoultongilrun.org",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41686"
+    },
+    {
+      "id": "41695",
+      "name": "2026 제주감귤마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "풀,하프,10km",
+      "region": "제주",
+      "place": "조천운동장",
+      "organizer": "한라일보",
+      "contact": "064-750-2291",
+      "registration_period": "2026년7월6일~2026년9월11일",
+      "homepage": "http://marathon.ihalla.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41695"
     },
     {
       "id": "41673",
