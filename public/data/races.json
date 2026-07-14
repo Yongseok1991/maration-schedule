@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-14T09:56:58.262Z",
+  "updatedAt": "2026-07-14T17:13:14.198Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 735,
+  "count": 740,
   "races": [
     {
       "id": "40976",
@@ -9604,6 +9604,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41652"
     },
     {
+      "id": "41697",
+      "name": "2026 히어로레이스",
+      "date_display": "2026년9월13일",
+      "date_iso": "2026-09-13",
+      "distances": "15km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "MBN",
+      "contact": "070-7727-1751",
+      "registration_period": "2026년7월14일~2026년8월14일",
+      "homepage": "http://web.runit.co.kr/races/1120",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41697"
+    },
+    {
       "id": "41349",
       "name": "2026 장수트레일레이스 Fall",
       "date_display": "2026년9월19일",
@@ -9840,7 +9855,7 @@
       "contact": "010-9360-0113",
       "registration_period": "2026년7월15일~2026년7월30일",
       "homepage": "http://modern-infinity-9e6.notion.site/2026-395918810cc28075b602c0e076d8d3ea",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41684"
     },
     {
@@ -9932,6 +9947,21 @@
       "homepage": "http://mastershalf.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41680"
+    },
+    {
+      "id": "41700",
+      "name": "2026 JUST RUN10 청주",
+      "date_display": "2026년10월3일",
+      "date_iso": "2026-10-03",
+      "distances": "10km,5km",
+      "region": "충북",
+      "place": "무심천체육공원",
+      "organizer": "(주)러닝브레이커, 전국러닝협",
+      "contact": "042-710-2058",
+      "registration_period": "2026년7월14일~2026년8월14일",
+      "homepage": "http://runten.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41700"
     },
     {
       "id": "41332",
@@ -10052,6 +10082,21 @@
       "homepage": "http://shmarathon.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41690"
+    },
+    {
+      "id": "41698",
+      "name": "2026 한경서울마라톤",
+      "date_display": "2026년10월5일",
+      "date_iso": "2026-10-05",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "여의도 문화의공원 일원",
+      "organizer": "한경닷컴/런코리아",
+      "contact": "1566-1936",
+      "registration_period": "2026년7월14일~2026년9월14일",
+      "homepage": "http://www.hk-marathon.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41698"
     },
     {
       "id": "41352",
@@ -10650,7 +10695,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년7월15일~2026년9월18일",
       "homepage": "http://gcmarathon.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41654"
     },
     {
@@ -10787,6 +10832,21 @@
       "homepage": "http://gcrun.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41671"
+    },
+    {
+      "id": "41696",
+      "name": "2026 부산 헤리티지 런",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "10km,5km",
+      "region": "부산",
+      "place": "다대포 해수욕장",
+      "organizer": "아시아경제",
+      "contact": "02-338-6564",
+      "registration_period": "2026년8월11일~2026년8월31일",
+      "homepage": "http://heritage.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41696"
     },
     {
       "id": "41528",
@@ -10967,6 +11027,21 @@
       "homepage": "http://marathon.ihalla.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41695"
+    },
+    {
+      "id": "41699",
+      "name": "제28회 부산국제마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "하프,10km,5km",
+      "region": "부산",
+      "place": "부산시 사하구 다대포해수욕장",
+      "organizer": "국제신문",
+      "contact": "1522-4897",
+      "registration_period": "2026년7월20일~2026년9월15일",
+      "homepage": "http://kjmarathon.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41699"
     },
     {
       "id": "41673",
