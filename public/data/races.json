@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-14T17:13:14.198Z",
+  "updatedAt": "2026-07-15T02:21:56.000Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 740,
+  "count": 742,
   "races": [
     {
       "id": "40976",
@@ -9619,6 +9619,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41697"
     },
     {
+      "id": "41702",
+      "name": "달리는 세상 10km 런",
+      "date_display": "2026년9월13일",
+      "date_iso": "2026-09-13",
+      "distances": "10km,5km",
+      "region": "대전",
+      "place": "대전엑스포시민광장",
+      "organizer": "월드런",
+      "contact": "042-638-1080",
+      "registration_period": "2026년7월15일~2026년8월31일",
+      "homepage": "http://mara1080.com/event/0674df45-473c-4182-bed4-d15582fb8c73/guide/overview",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41702"
+    },
+    {
       "id": "41349",
       "name": "2026 장수트레일레이스 Fall",
       "date_display": "2026년9월19일",
@@ -10247,6 +10262,21 @@
       "homepage": "http://강서허준런.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41689"
+    },
+    {
+      "id": "41701",
+      "name": "충주 앙성 비내길 마라톤 대회",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "10km,5km",
+      "region": "충북",
+      "place": "충주앙성온천광장",
+      "organizer": "앙성면체육회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년7월15일~2026년9월10일",
+      "homepage": "http://mara1080.com/event/380079d2-ab1c-4351-b1f2-d21ccaba5cdd/guide/overview",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41701"
     },
     {
       "id": "41434",
