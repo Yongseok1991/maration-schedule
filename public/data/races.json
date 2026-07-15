@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-15T10:01:24.817Z",
+  "updatedAt": "2026-07-15T17:15:58.504Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 747,
   "races": [
@@ -9015,7 +9015,7 @@
       "contact": "010-4539-6887",
       "registration_period": "2026년4월1일~2026년7월15일",
       "homepage": "http://jyd.creatorlink.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41508"
     },
     {
@@ -9330,7 +9330,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년6월19일~2026년7월15일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41650"
     },
     {
@@ -9435,7 +9435,7 @@
       "contact": "070-7725-6258",
       "registration_period": "2026년6월17일~2026년7월15일",
       "homepage": "http://run.ytn.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41556"
     },
     {
@@ -9795,7 +9795,7 @@
       "contact": "02-6285-7428",
       "registration_period": "2026년7월16일~2026년8월31일",
       "homepage": "http://cityforestival.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41704"
     },
     {
@@ -10875,7 +10875,7 @@
       "contact": "070-7766-1238",
       "registration_period": "2026년6월15일~2026년7월15일",
       "homepage": "http://k-marathon.or.kr/main.php",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41634"
     },
     {
