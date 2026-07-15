@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-15T02:21:56.000Z",
+  "updatedAt": "2026-07-15T10:01:24.817Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 742,
+  "count": 747,
   "races": [
     {
       "id": "40976",
@@ -9214,6 +9214,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41590"
     },
     {
+      "id": "41705",
+      "name": "제16회 성북구청장배육상대회",
+      "date_display": "2026년8월30일",
+      "date_iso": "2026-08-30",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "성북구 중랑천 체육공원",
+      "organizer": "성북구육상연맹",
+      "contact": "010-8784-2199",
+      "registration_period": "2026년7월15일~2026년8월10일",
+      "homepage": "http://cafe.naver.com/sblovemarathon/?viewType=pc",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41705"
+    },
+    {
       "id": "41672",
       "name": "사우나런 in 뚝섬한강공원",
       "date_display": "2026년8월31일",
@@ -9317,6 +9332,21 @@
       "homepage": "http://runten.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41650"
+    },
+    {
+      "id": "41707",
+      "name": "2026 이일선마라톤",
+      "date_display": "2026년9월5일",
+      "date_iso": "2026-09-05",
+      "distances": "10km,4.4km걷기",
+      "region": "경북",
+      "place": "울릉도내 나리분지",
+      "organizer": "이일선기념사업회",
+      "contact": "010-6353-7227",
+      "registration_period": "2026년7월14일~2026년8월18일",
+      "homepage": "http://forms.gle/6Y88RJqW6QCZkZoE7",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41707"
     },
     {
       "id": "41032",
@@ -9497,6 +9527,21 @@
       "homepage": "http://whiterun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41549"
+    },
+    {
+      "id": "41708",
+      "name": "2026 에너지 히어로 레이스",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "서울월드컵경기장 평화광장",
+      "organizer": "굿피플",
+      "contact": "02-6285-7428",
+      "registration_period": "2026년7월20일~2026년8월31일",
+      "homepage": "http://www.herorace.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41708"
     },
     {
       "id": "41192",
@@ -9737,6 +9782,21 @@
       "homepage": "http://kgseasiderun.co.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41693"
+    },
+    {
+      "id": "41704",
+      "name": "시포레 RUN & FIT with 디스커버리",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "10km,+운동 프로그램",
+      "region": "경기",
+      "place": "고양시 일산호수공원",
+      "organizer": "HLL중앙 / 코틴스포츠",
+      "contact": "02-6285-7428",
+      "registration_period": "2026년7월16일~2026년8월31일",
+      "homepage": "http://cityforestival.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41704"
     },
     {
       "id": "41351",
@@ -10457,6 +10517,21 @@
       "homepage": "http://www.충남전국어울림마라톤.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41679"
+    },
+    {
+      "id": "41706",
+      "name": "2026 U+ 119 메모리얼런",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "5km,11.9km 코스",
+      "region": "세종",
+      "place": "세종중앙공원 도시축제마당",
+      "organizer": "(주)엘지유플러스",
+      "contact": "070-4350-5636",
+      "registration_period": "2026년7월22일~2026년9월14일",
+      "homepage": "http://119memorial.com/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41706"
     },
     {
       "id": "41303",
