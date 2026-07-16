@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-16T02:29:06.553Z",
+  "updatedAt": "2026-07-16T10:07:17.711Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 747,
+  "count": 752,
   "races": [
     {
       "id": "40976",
@@ -9544,6 +9544,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41708"
     },
     {
+      "id": "41709",
+      "name": "2026 장수 레드푸드레이스",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "10km,5km,16Km",
+      "region": "전북",
+      "place": "장수말역사체험관",
+      "organizer": "주식회사 락앤런",
+      "contact": "010-5056-1523",
+      "registration_period": "2026년7월16일~2026년8월31일",
+      "homepage": "http://rocknrun.kr/REDFOODRACE",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41709"
+    },
+    {
       "id": "41192",
       "name": "제14회설악산공룡능선UTMB",
       "date_display": "2026년9월13일",
@@ -10025,7 +10040,7 @@
     },
     {
       "id": "41700",
-      "name": "2026 JUST RUN10 청주",
+      "name": "2026 하반기 JUST RUN10 청주",
       "date_display": "2026년10월3일",
       "date_iso": "2026-10-03",
       "distances": "10km,5km",
@@ -10112,6 +10127,36 @@
       "homepage": "http://www.knmarathon.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41660"
+    },
+    {
+      "id": "41714",
+      "name": "제14회 광명시장배건강달리기",
+      "date_display": "2026년10월4일",
+      "date_iso": "2026-10-04",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "광명 찬빛광장(안양천)",
+      "organizer": "광명시육상연맹",
+      "contact": "010-2234-2248",
+      "registration_period": "2026년7월20일~2026년7월31일",
+      "homepage": "http://gmaf.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41714"
+    },
+    {
+      "id": "41711",
+      "name": "2026 S오일 감동의 마라톤",
+      "date_display": "2026년10월4일",
+      "date_iso": "2026-10-04",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "상암동 평화의 광장",
+      "organizer": "더윙, S오일",
+      "contact": "010-2499-6616",
+      "registration_period": "2026년8월1일~2026년8월31일",
+      "homepage": "http://xn--439ar1m25cg1c810a7ro.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41711"
     },
     {
       "id": "41551",
@@ -10607,6 +10652,21 @@
       "homepage": "http://mara1080.com/event/edaee6e1-0d92-4248-9927-06ed3b0abfd0",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41610"
+    },
+    {
+      "id": "41712",
+      "name": "제19회 중랑구청장배 장미 마라톤",
+      "date_display": "2026년10월18일",
+      "date_iso": "2026-10-18",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "중화체육공원",
+      "organizer": "중랑구육상연맹",
+      "contact": "02-3285-5556",
+      "registration_period": "2026년7월15일~2026년10월11일",
+      "homepage": "http://www.jnrun.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41712"
     },
     {
       "id": "41637",
@@ -11207,6 +11267,21 @@
       "homepage": "http://mara1080.com/event/df4b4e7d-4fbc-4843-858c-f15c032e92cb",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41676"
+    },
+    {
+      "id": "41710",
+      "name": "2026 부산브릿지 마라톤",
+      "date_display": "2026년12월6일",
+      "date_iso": "2026-12-06",
+      "distances": "풀,10km",
+      "region": "부산",
+      "place": "부산 벡스코 제1전시장",
+      "organizer": "KNN,부산시",
+      "contact": "070-4111-5620",
+      "registration_period": "2026년8월1일~2026년8월16일",
+      "homepage": "http://www.busanmarathon.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41710"
     }
   ]
 }
