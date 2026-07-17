@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-17T02:32:00.410Z",
+  "updatedAt": "2026-07-17T09:55:35.894Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 752,
+  "count": 753,
   "races": [
     {
       "id": "40976",
@@ -9557,6 +9557,21 @@
       "homepage": "http://rocknrun.kr/REDFOODRACE",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41709"
+    },
+    {
+      "id": "41715",
+      "name": "2026 여수 백리섬섬트레일런",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "40K, 27K, 16K",
+      "region": "전남",
+      "place": "청심 국제해양청소년수련원",
+      "organizer": "스피드에이전시",
+      "contact": "010-6449-5073",
+      "registration_period": "2026년7월17일~2026년7월17일",
+      "homepage": "http://speedtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41715"
     },
     {
       "id": "41192",
