@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-19T09:50:36.975Z",
+  "updatedAt": "2026-07-19T16:56:53.455Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 753,
   "races": [
@@ -9540,7 +9540,7 @@
       "contact": "02-6285-7428",
       "registration_period": "2026년7월20일~2026년8월31일",
       "homepage": "http://www.herorace.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41708"
     },
     {
@@ -10155,7 +10155,7 @@
       "contact": "010-2234-2248",
       "registration_period": "2026년7월20일~2026년7월31일",
       "homepage": "http://gmaf.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41714"
     },
     {
@@ -10410,7 +10410,7 @@
       "contact": "031-821-9949",
       "registration_period": "2026년5월15일~2026년7월19일",
       "homepage": "http://najumarathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41434"
     },
     {
@@ -11010,7 +11010,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년7월20일~2026년7월31일",
       "homepage": "http://gcrun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41671"
     },
     {
@@ -11220,7 +11220,7 @@
       "contact": "1522-4897",
       "registration_period": "2026년7월20일~2026년9월15일",
       "homepage": "http://kjmarathon.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41699"
     },
     {
