@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T10:50:27.861Z",
+  "updatedAt": "2026-07-20T18:01:12.369Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 755,
   "races": [
@@ -9660,7 +9660,7 @@
       "contact": "054-1600-4525",
       "registration_period": "2026년6월29일~2026년7월20일",
       "homepage": "http://energyrun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41648"
     },
     {
@@ -9675,7 +9675,7 @@
       "contact": "054-1600-4525",
       "registration_period": "2026년6월29일~2026년7월20일",
       "homepage": "http://energyrun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41652"
     },
     {
@@ -9930,7 +9930,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년7월6일~2026년7월20일",
       "homepage": "http://ansanrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41666"
     },
     {
@@ -10685,7 +10685,7 @@
     },
     {
       "id": "41712",
-      "name": "제19회 중랑구청장배 장미 마라톤",
+      "name": "제19회 중랑구청장배 장미 마라톤 준비중",
       "date_display": "2026년10월18일",
       "date_iso": "2026-10-18",
       "distances": "하프,10km,5km",
