@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-20T02:49:53.834Z",
+  "updatedAt": "2026-07-20T10:50:27.861Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 755,
   "races": [
@@ -9328,9 +9328,9 @@
       "place": "세종마루공원 밑 금강변",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년6월19일~2026년7월15일",
+      "registration_period": "2026년6월19일~2026년8월8일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41650"
     },
     {
@@ -11052,9 +11052,9 @@
       "region": "부산",
       "place": "다대포 해수욕장",
       "organizer": "아시아경제",
-      "contact": "02-338-6564",
-      "registration_period": "2026년8월11일~2026년8월31일",
-      "homepage": "http://heritage.co.kr",
+      "contact": "02-338-0344",
+      "registration_period": "2026년8월11일~2026년9월31일",
+      "homepage": "http://heritagerun.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41696"
     },
@@ -11127,8 +11127,8 @@
       "region": "울산",
       "place": "울주군 영남알프스 일원",
       "organizer": "울산광역시 울주군육상연맹",
-      "contact": "010-4741-5959",
-      "registration_period": "2026년9월1일~2026년9월31일",
+      "contact": "052-269-1001",
+      "registration_period": "2026년9월1일~2026년9월30일",
       "homepage": "http://영남알프스마라톤.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41565"
