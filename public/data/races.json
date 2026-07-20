@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-19T16:56:53.455Z",
+  "updatedAt": "2026-07-20T02:49:53.834Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 753,
+  "count": 755,
   "races": [
     {
       "id": "40976",
@@ -8870,7 +8870,7 @@
     },
     {
       "id": "41140",
-      "name": "2026 청계산.인릉산TrailRunn",
+      "name": "2026 청계산.인릉산 TrailRunn",
       "date_display": "2026년7월19일",
       "date_iso": "2026-07-19",
       "distances": "하프,12km",
@@ -9538,9 +9538,9 @@
       "place": "서울월드컵경기장 평화광장",
       "organizer": "굿피플",
       "contact": "02-6285-7428",
-      "registration_period": "2026년7월20일~2026년8월31일",
+      "registration_period": "2026년7월27일~2026년8월31일",
       "homepage": "http://www.herorace.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41708"
     },
     {
@@ -9823,7 +9823,7 @@
       "place": "고양시 일산호수공원",
       "organizer": "HLL중앙 / 코틴스포츠",
       "contact": "02-6285-7428",
-      "registration_period": "2026년7월16일~2026년8월31일",
+      "registration_period": "2026년7월16일~2026년8월30일",
       "homepage": "http://cityforestival.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41704"
@@ -10399,6 +10399,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41701"
     },
     {
+      "id": "41716",
+      "name": "제주풍차런",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "10km,5km",
+      "region": "제주",
+      "place": "한림수협다목적어업인종합지원센터",
+      "organizer": "주식회사 어디감수광, 수원리",
+      "contact": "010-4281-4624",
+      "registration_period": "2026년7월8일~2026년9월4일",
+      "homepage": "http://jejuwindmillrun.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41716"
+    },
+    {
       "id": "41434",
       "name": "2026 MBN 전국 나주 마라톤대회",
       "date_display": "2026년10월11일",
@@ -10817,6 +10832,21 @@
       "homepage": "http://gmrun.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41661"
+    },
+    {
+      "id": "41718",
+      "name": "2026 부산바다마라톤",
+      "date_display": "2026년10월25일",
+      "date_iso": "2026-10-25",
+      "distances": "10km,5km,15km코스",
+      "region": "부산",
+      "place": "부산 벡스코 일원",
+      "organizer": "부산일보사",
+      "contact": "051-461-4046",
+      "registration_period": "2026년7월28일~2026년8월18일",
+      "homepage": "http://marathon.busan.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41718"
     },
     {
       "id": "41259",
