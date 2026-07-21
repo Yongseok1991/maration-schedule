@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-20T18:01:12.369Z",
+  "updatedAt": "2026-07-21T02:32:44.430Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 755,
+  "count": 759,
   "races": [
     {
       "id": "40976",
@@ -10069,6 +10069,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41700"
     },
     {
+      "id": "41722",
+      "name": "2026 춘천연합마라톤",
+      "date_display": "2026년10월3일",
+      "date_iso": "2026-10-03",
+      "distances": "하프,10km,5km",
+      "region": "강원",
+      "place": "춘천시 엘리시안 강촌",
+      "organizer": "연합뉴스, 춘천시육상연맹",
+      "contact": "033-244-7758",
+      "registration_period": "2026년7월16일~2026년8월31일",
+      "homepage": "http://www.yonma.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41722"
+    },
+    {
       "id": "41332",
       "name": "제20회 달서하프마라톤",
       "date_display": "2026년10월4일",
@@ -10693,9 +10708,9 @@
       "place": "중화체육공원",
       "organizer": "중랑구육상연맹",
       "contact": "02-3285-5556",
-      "registration_period": "2026년7월15일~2026년10월11일",
+      "registration_period": "2026년7월30일~2026년10월11일",
       "homepage": "http://www.jnrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41712"
     },
     {
@@ -10757,6 +10772,21 @@
       "homepage": "http://ggcrun.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41688"
+    },
+    {
+      "id": "41721",
+      "name": "RUN&MUSIC FESTIVAL in 안동",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "하프,10km",
+      "region": "경북",
+      "place": "안동시민운동장",
+      "organizer": "기후에너지환경부,안동시",
+      "contact": "02-1566-1936",
+      "registration_period": "2026년7월28일~2026년8월10일",
+      "homepage": "http://runmusicfestival.localvibehub.com/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41721"
     },
     {
       "id": "41477",
@@ -10967,6 +10997,21 @@
       "homepage": "http://mara1080.com/event/ffc023fc-7a54-4610-bdd6-2bb9a1028122",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41662"
+    },
+    {
+      "id": "41719",
+      "name": "2026 해양수도 부산 런페스타",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "10km",
+      "region": "부산",
+      "place": "부산 북항친수공원",
+      "organizer": "한국해운신문, 부산항발전협의회",
+      "contact": "031-821-9949",
+      "registration_period": "2026년7월27일~2026년10월16일",
+      "homepage": "http://runfesta.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41719"
     },
     {
       "id": "41634",
@@ -11312,6 +11357,21 @@
       "homepage": "http://mara1080.com/event/df4b4e7d-4fbc-4843-858c-f15c032e92cb",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41676"
+    },
+    {
+      "id": "41720",
+      "name": "제23회 한강시민마라톤",
+      "date_display": "2026년12월5일",
+      "date_iso": "2026-12-05",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "여의도 물빛무대 앞 광장",
+      "organizer": "(사)대한생활체육회",
+      "contact": "1644-4219",
+      "registration_period": "2026년8월1일~2026년10월28일",
+      "homepage": "http://www.hangangmarathon.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41720"
     },
     {
       "id": "41710",
