@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-22T10:23:55.112Z",
+  "updatedAt": "2026-07-22T17:17:14.426Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 759,
   "races": [
@@ -9360,7 +9360,7 @@
       "contact": "02-2647-4488",
       "registration_period": "2026년4월13일~2026년7월22일",
       "homepage": "http://amarunsb.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41032"
     },
     {
@@ -10230,7 +10230,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년7월22일~2026년7월22일",
       "homepage": "http://shmarathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41690"
     },
     {
@@ -10575,7 +10575,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년6월23일~2026년7월22일",
       "homepage": "http://jsrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41655"
     },
     {
