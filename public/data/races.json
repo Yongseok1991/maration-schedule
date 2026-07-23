@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-23T10:21:23.259Z",
+  "updatedAt": "2026-07-23T17:21:45.393Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 759,
   "races": [
@@ -8985,7 +8985,7 @@
       "contact": "1522-4897",
       "registration_period": "2026년6월8일~2026년7월23일",
       "homepage": "http://www.yangsanuphillrace.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41623"
     },
     {
@@ -10785,7 +10785,7 @@
       "contact": "02-1566-1936",
       "registration_period": "2026년7월24일~2026년9월19일",
       "homepage": "http://runmusicfestival.localvibehub.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41721"
     },
     {
@@ -10830,7 +10830,7 @@
       "contact": "02-724-6333",
       "registration_period": "2026년6월16일~2026년7월23일",
       "homepage": "http://www.chuncheonmarathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41636"
     },
     {
