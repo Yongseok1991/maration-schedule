@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-24T10:14:58.075Z",
+  "updatedAt": "2026-07-24T17:36:27.888Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 763,
   "races": [
@@ -10680,7 +10680,7 @@
       "contact": "061-270-9212",
       "registration_period": "2026년7월1일~2026년7월24일",
       "homepage": "http://www.greenstep.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41548"
     },
     {
