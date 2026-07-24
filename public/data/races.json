@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-23T17:21:45.393Z",
+  "updatedAt": "2026-07-24T02:33:33.597Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 759,
+  "count": 763,
   "races": [
     {
       "id": "40976",
@@ -10519,6 +10519,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41687"
     },
     {
+      "id": "41727",
+      "name": "2026 울산마라톤대회",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "하프,10km,5km",
+      "region": "울산",
+      "place": "울산종합운동장",
+      "organizer": "울산광역시 육상연맹",
+      "contact": "052-286-6605",
+      "registration_period": "2026년7월27일~2026년8월31일",
+      "homepage": "http://www.uaf.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41727"
+    },
+    {
       "id": "41255",
       "name": "제24회 청원생명쌀대청호마라톤",
       "date_display": "2026년10월17일",
@@ -10622,6 +10637,21 @@
       "homepage": "http://119memorial.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41706"
+    },
+    {
+      "id": "41724",
+      "name": "제2회 10.19 평화마라톤",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "5km,10.19",
+      "region": "전남",
+      "place": "여수진남경기장 주경기장",
+      "organizer": "뉴스탑전남",
+      "contact": "061-921-9900",
+      "registration_period": "2026년7월24일~2026년9월20일",
+      "homepage": "http://ys1019.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41724"
     },
     {
       "id": "41303",
@@ -11008,7 +11038,7 @@
       "place": "부산 북항친수공원",
       "organizer": "한국해운신문, 부산항발전협의회",
       "contact": "031-821-9949",
-      "registration_period": "2026년7월27일~2026년10월16일",
+      "registration_period": "2026년7월31일~2026년10월16일",
       "homepage": "http://runfesta.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41719"
@@ -11104,6 +11134,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41696"
     },
     {
+      "id": "41726",
+      "name": "경주시육상연맹회장배 마라톤대회",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "하프,10km,5km",
+      "region": "경북",
+      "place": "경주서천둔치(생활체육광장)",
+      "organizer": "경주시육상연맹",
+      "contact": "010-9190-2204",
+      "registration_period": "2026년7월21일~2026년10월8일",
+      "homepage": "http://xn--289a04w1ifu9bvwfi4b78e.com/resv/competition.php",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41726"
+    },
+    {
       "id": "41528",
       "name": "2026 포항마라톤챔피언십",
       "date_display": "2026년11월14일",
@@ -11117,6 +11162,21 @@
       "homepage": "http://pohangmarathon.com/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41528"
+    },
+    {
+      "id": "41725",
+      "name": "제26회 순천 남승룡마라톤대회",
+      "date_display": "2026년11월14일",
+      "date_iso": "2026-11-14",
+      "distances": "풀,하프,10km,5km",
+      "region": "전남",
+      "place": "전남광주 순천시 팔마로 333",
+      "organizer": "순천시체육회",
+      "contact": "061-749-5009",
+      "registration_period": "2026년8월3일~2026년10월16일",
+      "homepage": "http://sc-marathon.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41725"
     },
     {
       "id": "41522",
