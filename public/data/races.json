@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-25T09:45:45.002Z",
+  "updatedAt": "2026-07-25T16:55:26.675Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 763,
+  "count": 768,
   "races": [
     {
       "id": "40976",
@@ -8998,7 +8998,7 @@
       "place": "화엄사주차장",
       "organizer": "(사)한국산악마라톤연맹",
       "contact": "02-424-2195",
-      "registration_period": "2025년12월5일~2026년7월31일",
+      "registration_period": "2025년12월5일~2026년8월2일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250820150217&csno=20191209143330#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41223"
@@ -9090,7 +9090,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년6월10일~2026년7월25일",
       "homepage": "http://www.ifunrunkorea.co.kr/sub0102",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41663"
     },
     {
@@ -9167,6 +9167,21 @@
       "homepage": "http://danyangmarathon.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41620"
+    },
+    {
+      "id": "41732",
+      "name": "백범김구선생 탄생150주년기념 손기정하천마라톤",
+      "date_display": "2026년8월29일",
+      "date_iso": "2026-08-29",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "의정부시 동막교 인라인광장",
+      "organizer": "플랜인",
+      "contact": "02-6341-1153",
+      "registration_period": "2026년7월25일~2026년8월21일",
+      "homepage": "http://funandrun.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41732"
     },
     {
       "id": "41353",
@@ -10189,6 +10204,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41711"
     },
     {
+      "id": "41733",
+      "name": "2026 Run Your Way Seoul 10K",
+      "date_display": "2026년10월4일",
+      "date_iso": "2026-10-04",
+      "distances": "10km",
+      "region": "서울",
+      "place": "여의도공원 문화의 광장",
+      "organizer": "뉴발란스",
+      "contact": "02-312-1998",
+      "registration_period": "2026년7월31일~2026년8월2일",
+      "homepage": "http://www.nbkorea.com/launchingCalendar/detail.action?listStatus=H&launchingIdx=3117",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41733"
+    },
+    {
       "id": "41551",
       "name": "2026 서울오픈마라톤",
       "date_display": "2026년10월5일",
@@ -10453,7 +10483,7 @@
       "place": "광평교운동장",
       "organizer": "한국트레일러너연맹(사)한국산악마라톤연맹",
       "contact": "02-424-2195",
-      "registration_period": "2026년2월23일~2026년9월10일",
+      "registration_period": "2026년2월23일~2026년9월15일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&csno=20190605121808&opp=20260203121910#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41422"
@@ -10654,6 +10684,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41724"
     },
     {
+      "id": "41731",
+      "name": "2026 전남광주통합특별시 남구청장배 마라톤",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "하프,10km,5km",
+      "region": "광주",
+      "place": "광주공원앞 광주천변 광주교",
+      "organizer": "전남광주통합특별시남구육상연맹",
+      "contact": "010-9475-3735",
+      "registration_period": "2026년7월10일~2026년9월17일",
+      "homepage": "http://cafe.daum.net/6507447/Ep6u",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41731"
+    },
+    {
       "id": "41303",
       "name": "2026 아시아 오픈 마라톤",
       "date_display": "2026년10월18일",
@@ -10817,6 +10862,21 @@
       "homepage": "http://runmusicfestival.localvibehub.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41721"
+    },
+    {
+      "id": "41730",
+      "name": "네이버웍스와 함께하는 SEJONG RUN 26",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "10km,5km",
+      "region": "세종",
+      "place": "세종중앙공원 도시축제마당",
+      "organizer": "세종특별자치시육상연맹",
+      "contact": "010-8468-5148",
+      "registration_period": "2026년7월24일~2026년9월24일",
+      "homepage": "http://sejongrun26.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41730"
     },
     {
       "id": "41477",
@@ -11147,6 +11207,21 @@
       "homepage": "http://xn--289a04w1ifu9bvwfi4b78e.com/resv/competition.php",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41726"
+    },
+    {
+      "id": "41729",
+      "name": "제20회 자원봉사 사랑 굿펀 마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "신정교하부육상트랙구장",
+      "organizer": "(사)대한생활체육마라톤협회",
+      "contact": "1644-4219",
+      "registration_period": "2026년7월27일~2026년10월18일",
+      "homepage": "http://www.hangangmarathon.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41729"
     },
     {
       "id": "41528",
