@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-26T09:58:07.618Z",
+  "updatedAt": "2026-07-26T16:58:38.508Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 768,
+  "count": 769,
   "races": [
     {
       "id": "40976",
@@ -9555,7 +9555,7 @@
       "contact": "02-6285-7428",
       "registration_period": "2026년7월27일~2026년8월31일",
       "homepage": "http://www.herorace.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41708"
     },
     {
@@ -9722,6 +9722,21 @@
       "homepage": "http://mara1080.com/event/0674df45-473c-4182-bed4-d15582fb8c73/guide/overview",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41702"
+    },
+    {
+      "id": "41734",
+      "name": "제19회 구로구청장배 안양천 단풍마라톤",
+      "date_display": "2026년9월13일",
+      "date_iso": "2026-09-13",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "구일역 하부 인라인스케이트장",
+      "organizer": "구로구육상연맹",
+      "contact": "010-7734-3840",
+      "registration_period": "2026년8월3일~2026년8월14일",
+      "homepage": "http://cafe.daum.net/guro-run/LvM7/45",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41734"
     },
     {
       "id": "41349",
@@ -10545,7 +10560,7 @@
       "contact": "070-4633-1233",
       "registration_period": "2026년7월27일~2026년8월7일",
       "homepage": "http://www.pinkrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41687"
     },
     {
@@ -10560,7 +10575,7 @@
       "contact": "052-286-6605",
       "registration_period": "2026년7월27일~2026년8월31일",
       "homepage": "http://www.uaf.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41727"
     },
     {
@@ -11220,7 +11235,7 @@
       "contact": "1644-4219",
       "registration_period": "2026년7월27일~2026년10월18일",
       "homepage": "http://www.hangangmarathon.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41729"
     },
     {
