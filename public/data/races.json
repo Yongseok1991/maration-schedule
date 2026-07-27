@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-27T02:47:41.062Z",
+  "updatedAt": "2026-07-27T11:19:16.240Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 769,
+  "count": 770,
   "races": [
     {
       "id": "40976",
@@ -9313,7 +9313,7 @@
       "place": "신정교하부육상트랙구장",
       "organizer": "(사)대한생활체육마라톤협회",
       "contact": "1644-4219",
-      "registration_period": "2026년5월26일~2026년8월12일",
+      "registration_period": "2026년5월26일~2026년8월18일",
       "homepage": "http://vrun.kr/index.asp",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41595"
@@ -9587,6 +9587,21 @@
       "homepage": "http://speedtrailrun.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41715"
+    },
+    {
+      "id": "41735",
+      "name": "2026 굿네이버스 레이스",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "여의도 한강공원 물빛무대 앞",
+      "organizer": "굿네이버스",
+      "contact": "070-4350-5635",
+      "registration_period": "2026년7월27일~2026년8월21일",
+      "homepage": "http://goodneighbors001.cafe24.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41735"
     },
     {
       "id": "41192",
@@ -10574,7 +10589,7 @@
       "organizer": "울산광역시 육상연맹",
       "contact": "052-286-6605",
       "registration_period": "2026년7월27일~2026년8월31일",
-      "homepage": "http://www.uaf.co.kr/",
+      "homepage": "http://run.uaf.co.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41727"
     },
