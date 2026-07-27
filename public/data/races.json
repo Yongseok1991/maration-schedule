@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-26T16:58:38.508Z",
+  "updatedAt": "2026-07-27T02:47:41.062Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 769,
   "races": [
@@ -9545,7 +9545,7 @@
     },
     {
       "id": "41708",
-      "name": "2026 에너지 히어로 레이스",
+      "name": "히어로 레이스 l 2026 에너지 히어로 레이",
       "date_display": "2026년9월12일",
       "date_iso": "2026-09-12",
       "distances": "10km,5km",
@@ -11234,7 +11234,7 @@
       "organizer": "(사)대한생활체육마라톤협회",
       "contact": "1644-4219",
       "registration_period": "2026년7월27일~2026년10월18일",
-      "homepage": "http://www.hangangmarathon.kr/",
+      "homepage": "http://xn--oi2bo7bn3do4es0j56afy5b.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41729"
     },
