@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-27T11:19:16.240Z",
+  "updatedAt": "2026-07-27T17:41:29.120Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 770,
   "races": [
@@ -9405,7 +9405,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년2월3일~2026년7월27일",
       "homepage": "http://bonghwarun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41368"
     },
     {
@@ -10995,7 +10995,7 @@
       "contact": "051-461-4046",
       "registration_period": "2026년7월28일~2026년8월18일",
       "homepage": "http://marathon.busan.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41718"
     },
     {
