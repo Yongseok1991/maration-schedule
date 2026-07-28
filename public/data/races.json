@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-28T02:26:15.551Z",
+  "updatedAt": "2026-07-28T10:33:02.203Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 770,
+  "count": 774,
   "races": [
     {
       "id": "40976",
@@ -9874,6 +9874,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41704"
     },
     {
+      "id": "41743",
+      "name": "2026 무한도전 Run in 경주",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "하프,10km",
+      "region": "경북",
+      "place": "경주시민운동장",
+      "organizer": "MBC",
+      "contact": "000-0000",
+      "registration_period": "2026년7월30일~2026년8월9일",
+      "homepage": "http://www.coupangplay.com/promotion/2026-Mudorun-Gyeongju/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41743"
+    },
+    {
       "id": "41351",
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
@@ -10594,6 +10609,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41727"
     },
     {
+      "id": "41742",
+      "name": "2026 천안 이봉주 마라톤",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "하프,10km,5km",
+      "region": "충남",
+      "place": "천안종합운동장 일원",
+      "organizer": "천안시체육회",
+      "contact": "1600-3962",
+      "registration_period": "2026년7월31일~2026년8월28일",
+      "homepage": "http://bjlee.casports.or.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41742"
+    },
+    {
       "id": "41255",
       "name": "제24회 청원생명쌀대청호마라톤",
       "date_display": "2026년10월17일",
@@ -10997,6 +11027,21 @@
       "homepage": "http://marathon.busan.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41718"
+    },
+    {
+      "id": "41740",
+      "name": "2026 오티즘 레이스",
+      "date_display": "2026년10월31일",
+      "date_iso": "2026-10-31",
+      "distances": "하프,10km,4.2km",
+      "region": "서울",
+      "place": "월드컵공원 평화의 광장",
+      "organizer": "한국자폐인사랑협회",
+      "contact": "070-7725-3462",
+      "registration_period": "2026년7월8일~2026년9월30일",
+      "homepage": "http://autismrace.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41740"
     },
     {
       "id": "41259",
@@ -11507,6 +11552,21 @@
       "homepage": "http://mokyokrun.shop",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41685"
+    },
+    {
+      "id": "41741",
+      "name": "제2회 천안독립기념관 마라톤대회",
+      "date_display": "2026년11월29일",
+      "date_iso": "2026-11-29",
+      "distances": "10km,5km,3.56KM 걷기",
+      "region": "충남",
+      "place": "천안 독립기념관",
+      "organizer": "주식회사 오소컴퍼니",
+      "contact": "010-4985-5878",
+      "registration_period": "2026년7월31일~2026년11월28일",
+      "homepage": "http://https://peacewalk.imweb.me/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41741"
     },
     {
       "id": "41676",
