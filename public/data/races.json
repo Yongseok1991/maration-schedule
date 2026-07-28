@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-28T10:33:02.203Z",
+  "updatedAt": "2026-07-28T17:25:34.956Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 774,
   "races": [
@@ -10835,7 +10835,7 @@
     },
     {
       "id": "41712",
-      "name": "제19회 중랑구청장배 장미 마라톤 준비중",
+      "name": "제19회 중랑구청장배 마라톤 8월5일 접수시작",
       "date_display": "2026년10월18일",
       "date_iso": "2026-10-18",
       "distances": "하프,10km,5km",
@@ -10843,7 +10843,7 @@
       "place": "중화체육공원",
       "organizer": "중랑구육상연맹",
       "contact": "02-3285-5556",
-      "registration_period": "2026년7월30일~2026년10월11일",
+      "registration_period": "2026년8월5일~2026년10월11일",
       "homepage": "http://www.jnrun.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41712"
