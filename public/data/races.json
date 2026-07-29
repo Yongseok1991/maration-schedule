@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-29T02:30:18.012Z",
+  "updatedAt": "2026-07-29T10:37:17.237Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 774,
+  "count": 777,
   "races": [
     {
       "id": "40976",
@@ -9604,6 +9604,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41735"
     },
     {
+      "id": "41750",
+      "name": "2026 나이트런 플러스 청주",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "10km,5km",
+      "region": "충북",
+      "place": "청주시 무심천체육공원",
+      "organizer": "청주청년회의소/주식회사 유고",
+      "contact": "1666-9975",
+      "registration_period": "2026년7월29일~2026년8월23일",
+      "homepage": "http://n-runplus.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41750"
+    },
+    {
       "id": "41192",
       "name": "제14회설악산공룡능선UTMB",
       "date_display": "2026년9월13일",
@@ -9882,11 +9897,26 @@
       "region": "경북",
       "place": "경주시민운동장",
       "organizer": "MBC",
-      "contact": "000-0000",
+      "contact": "1899-7466",
       "registration_period": "2026년7월30일~2026년8월9일",
       "homepage": "http://www.coupangplay.com/promotion/2026-Mudorun-Gyeongju/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41743"
+    },
+    {
+      "id": "41744",
+      "name": "2026 여수낭도트레일",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "13km",
+      "region": "전남",
+      "place": "여수 화정면낭도출장소앞 주차장",
+      "organizer": "파브코리아",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년7월28일~2026년9월18일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41744"
     },
     {
       "id": "41351",
@@ -10622,6 +10652,21 @@
       "homepage": "http://bjlee.casports.or.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41742"
+    },
+    {
+      "id": "41747",
+      "name": "진안고원 포레스티벌 Run & Heal",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "16km",
+      "region": "전북",
+      "place": "국립진안고원산림치유원",
+      "organizer": "주식회사 락앤런",
+      "contact": "063-353-2025",
+      "registration_period": "2026년8월10일~2026년9월15일",
+      "homepage": "http://rocknrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41747"
     },
     {
       "id": "41255",
