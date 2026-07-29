@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-29T10:37:17.237Z",
+  "updatedAt": "2026-07-29T17:13:23.692Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 777,
   "races": [
@@ -9690,7 +9690,7 @@
       "contact": "02-338-0344",
       "registration_period": "2026년6월29일~2026년7월29일",
       "homepage": "http://runseoulrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41643"
     },
     {
@@ -9900,7 +9900,7 @@
       "contact": "1899-7466",
       "registration_period": "2026년7월30일~2026년8월9일",
       "homepage": "http://www.coupangplay.com/promotion/2026-Mudorun-Gyeongju/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41743"
     },
     {
@@ -11460,7 +11460,7 @@
       "contact": "010-3448-0990",
       "registration_period": "2026년6월20일~2026년7월29일",
       "homepage": "http://sjrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41602"
     },
     {
