@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-28T17:25:34.956Z",
+  "updatedAt": "2026-07-29T02:30:18.012Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 774,
   "races": [
@@ -10880,7 +10880,7 @@
     },
     {
       "id": "41682",
-      "name": "2026 하남 어텀 패밀리 마라톤",
+      "name": "해당 대회는 취소되었습니다",
       "date_display": "2026년10월24일",
       "date_iso": "2026-10-24",
       "distances": "10km,5km",
@@ -10888,9 +10888,9 @@
       "place": "하남 미사 경정 공원",
       "organizer": "청운의꿈(주)",
       "contact": "02-2606-8187",
-      "registration_period": "2026년7월7일~2026년10월14일",
+      "registration_period": "2026년7월7일~2026년7월28일",
       "homepage": "http://hnrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41682"
     },
     {
