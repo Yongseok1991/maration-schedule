@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T02:12:47.774Z",
+  "updatedAt": "2026-07-30T10:23:43.257Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 777,
   "races": [
@@ -9658,7 +9658,7 @@
       "place": "상암동 평화의공원 평화광장",
       "organizer": "(사)대한치과의사협회",
       "contact": "02-852-0911",
-      "registration_period": "2026년6월29일~2026년7월31일",
+      "registration_period": "2026년6월29일~2026년8월18일",
       "homepage": "http://www.smilerun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41591"
@@ -9923,7 +9923,7 @@
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
       "date_iso": "2026-09-20",
-      "distances": "하프,10km,5km,10Km커플런,4.2Km 가족런",
+      "distances": "하프,10km,5km,10Km커플런,5Km 가족런",
       "region": "경기",
       "place": "가평종합운동장(경기)",
       "organizer": "가평군체육회, 세계일보",
@@ -11218,7 +11218,7 @@
       "place": "부산 북항친수공원",
       "organizer": "한국해운신문, 부산항발전협의회",
       "contact": "031-821-9949",
-      "registration_period": "2026년7월31일~2026년10월16일",
+      "registration_period": "2026년8월7일~2026년10월16일",
       "homepage": "http://runfesta.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41719"
