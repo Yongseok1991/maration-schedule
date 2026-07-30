@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T10:23:43.257Z",
+  "updatedAt": "2026-07-30T17:25:24.979Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 777,
   "races": [
@@ -8955,7 +8955,7 @@
       "contact": "02-2031-1935",
       "registration_period": "2026년3월26일~2026년7월30일",
       "homepage": "http://insiderun.me",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41504"
     },
     {
@@ -10050,7 +10050,7 @@
       "contact": "010-9360-0113",
       "registration_period": "2026년7월15일~2026년7월30일",
       "homepage": "http://modern-infinity-9e6.notion.site/2026-395918810cc28075b602c0e076d8d3ea",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41684"
     },
     {
@@ -10290,7 +10290,7 @@
       "contact": "02-312-1998",
       "registration_period": "2026년7월31일~2026년8월2일",
       "homepage": "http://www.nbkorea.com/launchingCalendar/detail.action?listStatus=H&launchingIdx=3117",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41733"
     },
     {
@@ -10650,7 +10650,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년7월31일~2026년8월28일",
       "homepage": "http://bjlee.casports.or.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41742"
     },
     {
@@ -11610,7 +11610,7 @@
       "contact": "010-4985-5878",
       "registration_period": "2026년7월31일~2026년11월28일",
       "homepage": "http://https://peacewalk.imweb.me/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41741"
     },
     {
