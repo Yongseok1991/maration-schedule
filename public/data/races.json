@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-31T10:37:32.856Z",
+  "updatedAt": "2026-07-31T17:27:40.344Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 784,
   "races": [
@@ -9030,7 +9030,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년5월15일~2026년7월31일",
       "homepage": "http://rocknrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41576"
     },
     {
@@ -9225,7 +9225,7 @@
       "contact": "010-2828-9226",
       "registration_period": "2026년5월22일~2026년7월31일",
       "homepage": "http://daegwallyeongrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41590"
     },
     {
@@ -9330,7 +9330,7 @@
       "contact": "02-707-2050",
       "registration_period": "2026년6월30일~2026년7월31일",
       "homepage": "http://runbs.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41639"
     },
     {
@@ -9675,7 +9675,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년6월8일~2026년7월31일",
       "homepage": "http://www.ganghwamarathon.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41606"
     },
     {
@@ -10200,7 +10200,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년4월13일~2026년7월31일",
       "homepage": "http://www.admarathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
     },
     {
@@ -10260,7 +10260,7 @@
       "contact": "010-2234-2248",
       "registration_period": "2026년7월20일~2026년7월31일",
       "homepage": "http://gmaf.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41714"
     },
     {
@@ -10275,7 +10275,7 @@
       "contact": "010-2499-6616",
       "registration_period": "2026년8월1일~2026년8월31일",
       "homepage": "http://xn--439ar1m25cg1c810a7ro.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41711"
     },
     {
@@ -10470,7 +10470,7 @@
       "contact": "010-3504-1206",
       "registration_period": "2026년6월15일~2026년7월31일",
       "homepage": "http://cafe.naver.com/gumitrailrunnerclub",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41601"
     },
     {
@@ -11190,7 +11190,7 @@
       "contact": "042-255-7917",
       "registration_period": "2026년7월10일~2026년7월31일",
       "homepage": "http://www.djmarathon.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41659"
     },
     {
@@ -11325,7 +11325,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년7월20일~2026년7월31일",
       "homepage": "http://gcrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41671"
     },
     {
@@ -11730,7 +11730,7 @@
       "contact": "1644-4219",
       "registration_period": "2026년8월1일~2026년10월28일",
       "homepage": "http://www.hangangmarathon.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41720"
     },
     {
@@ -11745,7 +11745,7 @@
       "contact": "070-4111-5620",
       "registration_period": "2026년8월1일~2026년8월16일",
       "homepage": "http://www.busanmarathon.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41710"
     },
     {
