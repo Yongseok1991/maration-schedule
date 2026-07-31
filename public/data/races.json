@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-07-31T02:41:13.340Z",
+  "updatedAt": "2026-07-31T10:37:32.856Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 777,
+  "count": 784,
   "races": [
     {
       "id": "40976",
@@ -9823,7 +9823,7 @@
       "place": "김해 대동생태체육공원 축구장",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년7월3일~2026년7월31일",
+      "registration_period": "2026년7월3일~2026년8월8일",
       "homepage": "http://runten.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41668"
@@ -10894,6 +10894,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41712"
     },
     {
+      "id": "41751",
+      "name": "제28회 창원 시민건강달리기",
+      "date_display": "2026년10월18일",
+      "date_iso": "2026-10-18",
+      "distances": "6km",
+      "region": "경남",
+      "place": "창원스포츠파크 보조경기장",
+      "organizer": "창원을 사랑하는 시민연합",
+      "contact": "055-275-6611",
+      "registration_period": "2026년8월5일~2026년9월20일",
+      "homepage": "http://www.cwrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41751"
+    },
+    {
       "id": "41637",
       "name": "2026 제3회 감성런",
       "date_display": "2026년10월24일",
@@ -10961,7 +10976,7 @@
       "distances": "하프,10km",
       "region": "경북",
       "place": "안동시민운동장",
-      "organizer": "K-WATER, 안동시, SBS",
+      "organizer": "SBS, 런코리아",
       "contact": "02-1566-1936",
       "registration_period": "2026년7월24일~2026년9월19일",
       "homepage": "http://runmusicfestival.localvibehub.com/",
@@ -10982,6 +10997,21 @@
       "homepage": "http://sejongrun26.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41730"
+    },
+    {
+      "id": "41756",
+      "name": "2026 뉴시스 바다마라톤",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "하프,10km,5km",
+      "region": "인천",
+      "place": "영종도 씨사이드파크 하늘구름광",
+      "organizer": "뉴시스",
+      "contact": "02-1566-1936",
+      "registration_period": "2026년8월3일~2026년9월18일",
+      "homepage": "http://marathon.newsis.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41756"
     },
     {
       "id": "41477",
@@ -11344,6 +11374,51 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41729"
     },
     {
+      "id": "41755",
+      "name": "2026 라운드랩 RUN",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "하프,10km,5km",
+      "region": "강원",
+      "place": "춘천 송암스포츠타운 종합경기장",
+      "organizer": "서린컴퍼니(주), 강원일보",
+      "contact": "1551-3934",
+      "registration_period": "2026년8월7일~2026년10월23일",
+      "homepage": "http://kw-marathon.com/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41755"
+    },
+    {
+      "id": "41754",
+      "name": "제19회 진해마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "5km,11.11km",
+      "region": "경남",
+      "place": "진해공설운동장",
+      "organizer": "(주)경남신문사",
+      "contact": "055-210-6103",
+      "registration_period": "2026년8월19일~2026년10월9일",
+      "homepage": "http://www.jinhaemarathon.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41754"
+    },
+    {
+      "id": "41752",
+      "name": "2026 부산 사상 ECO마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "10km,5km,5km 슬로조깅",
+      "region": "부산",
+      "place": "삼락생태공원 럭비구장",
+      "organizer": "사상구청,사상구체육회",
+      "contact": "051-310-4128",
+      "registration_period": "2026년8월10일~2026년10월11일",
+      "homepage": "http://ssecorun.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41752"
+    },
+    {
       "id": "41528",
       "name": "2026 포항마라톤챔피언십",
       "date_display": "2026년11월14일",
@@ -11569,6 +11644,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41673"
     },
     {
+      "id": "41748",
+      "name": "2026 남해트레일레이스(가을)",
+      "date_display": "2026년11월21일",
+      "date_iso": "2026-11-21",
+      "distances": "풀,30km,12km",
+      "region": "경남",
+      "place": "남해공설운동장",
+      "organizer": "주식회사 락앤런",
+      "contact": "063-353-2025",
+      "registration_period": "2026년8월10일~2026년10월15일",
+      "homepage": "http://rocknrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41748"
+    },
+    {
       "id": "41675",
       "name": "2026 남원 춘향 전국 마라톤대회",
       "date_display": "2026년11월28일",
@@ -11657,6 +11747,21 @@
       "homepage": "http://www.busanmarathon.com",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41710"
+    },
+    {
+      "id": "41745",
+      "name": "제36회 진주마라톤",
+      "date_display": "2026년12월13일",
+      "date_iso": "2026-12-13",
+      "distances": "풀,하프,10km,5km",
+      "region": "경남",
+      "place": "진주종합경기장",
+      "organizer": "진주시육상연맹",
+      "contact": "010-5488-8322",
+      "registration_period": "2026년10월22일~2026년11월16일",
+      "homepage": "http://www.jinma.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41745"
     }
   ]
 }
