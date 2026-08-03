@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T16:56:39.490Z",
+  "updatedAt": "2026-08-03T02:40:20.249Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 784,
   "races": [
@@ -11254,6 +11254,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41719"
     },
     {
+      "id": "41754",
+      "name": "제19회 진해마라톤",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "5km,11.11km",
+      "region": "경남",
+      "place": "진해공설운동장",
+      "organizer": "(주)경남신문사",
+      "contact": "055-210-6103",
+      "registration_period": "2026년8월19일~2026년10월9일",
+      "homepage": "http://www.jinhaemarathon.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41754"
+    },
+    {
       "id": "41634",
       "name": "2026 양산 배내골 애플 런",
       "date_display": "2026년11월8일",
@@ -11387,21 +11402,6 @@
       "homepage": "http://kw-marathon.com/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41755"
-    },
-    {
-      "id": "41754",
-      "name": "제19회 진해마라톤",
-      "date_display": "2026년11월8일",
-      "date_iso": "2026-11-08",
-      "distances": "5km,11.11km",
-      "region": "경남",
-      "place": "진해공설운동장",
-      "organizer": "(주)경남신문사",
-      "contact": "055-210-6103",
-      "registration_period": "2026년8월19일~2026년10월9일",
-      "homepage": "http://www.jinhaemarathon.co.kr",
-      "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41754"
     },
     {
       "id": "41752",
