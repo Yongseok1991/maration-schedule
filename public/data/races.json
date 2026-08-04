@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-03T17:49:43.024Z",
+  "updatedAt": "2026-08-04T02:24:38.171Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 784,
+  "count": 791,
   "races": [
     {
       "id": "40976",
@@ -11104,6 +11104,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41718"
     },
     {
+      "id": "41761",
+      "name": "제14회 정서진아라뱃길 마라톤",
+      "date_display": "2026년10월25일",
+      "date_iso": "2026-10-25",
+      "distances": "하프,10km,5km",
+      "region": "인천",
+      "place": "정서진 아라타워",
+      "organizer": "인천일보,인천마라톤조직위원회",
+      "contact": "1866-1718",
+      "registration_period": "2026년7월31일~2026년7월31일",
+      "homepage": "http://www.jeongseojin.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41761"
+    },
+    {
       "id": "41740",
       "name": "2026 오티즘 레이스",
       "date_display": "2026년10월31일",
@@ -11449,6 +11464,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41725"
     },
     {
+      "id": "41760",
+      "name": "제2회 안양천 단풍길 마라톤",
+      "date_display": "2026년11월14일",
+      "date_iso": "2026-11-14",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "신정교 하부 영롱이 억새구장",
+      "organizer": "(사)대한생활체육연맹",
+      "contact": "02-888-8805",
+      "registration_period": "2026년7월31일~2026년11월5일",
+      "homepage": "http://maplerun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41760"
+    },
+    {
       "id": "41522",
       "name": "제24회 대모산,구룡산 트레일런",
       "date_display": "2026년11월15일",
@@ -11659,6 +11689,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41748"
     },
     {
+      "id": "41763",
+      "name": "2026 평화의숲 마라톤",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "상암 월드컵공원 평화광장",
+      "organizer": "세계평화사랑연맹",
+      "contact": "02-2606-8187",
+      "registration_period": "2026년8월3일~2026년11월15일",
+      "homepage": "http://peace-run.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41763"
+    },
+    {
+      "id": "41749",
+      "name": "2026 무진장트레일레이스",
+      "date_display": "2026년11월23일",
+      "date_iso": "2026-11-23",
+      "distances": "335km",
+      "region": "전북",
+      "place": "장수종합경기장",
+      "organizer": "주식회사 락앤런",
+      "contact": "063-353-2025",
+      "registration_period": "2026년8월31일~2026년10월31일",
+      "homepage": "http://rocknrun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41749"
+    },
+    {
       "id": "41675",
       "name": "2026 남원 춘향 전국 마라톤대회",
       "date_display": "2026년11월28일",
@@ -11689,6 +11749,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41685"
     },
     {
+      "id": "41766",
+      "name": "2027 서울 세계청년대회 성공 기원 평화런",
+      "date_display": "2026년11월28일",
+      "date_iso": "2026-11-28",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "2027 서울WYD, CPBC",
+      "contact": "1566-1936",
+      "registration_period": "2026년8월14일~2026년10월24일",
+      "homepage": "http://www.peacerun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41766"
+    },
+    {
       "id": "41741",
       "name": "제2회 천안독립기념관 마라톤대회",
       "date_display": "2026년11월29일",
@@ -11702,6 +11777,21 @@
       "homepage": "http://runwithus.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41741"
+    },
+    {
+      "id": "41759",
+      "name": "제14회 안중근 평화 마라톤",
+      "date_display": "2026년11월29일",
+      "date_iso": "2026-11-29",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "안중근평화재단청년아카데미",
+      "contact": "02-336-1588",
+      "registration_period": "2026년7월31일~2026년11월22일",
+      "homepage": "http://ajgrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41759"
     },
     {
       "id": "41676",
@@ -11732,6 +11822,21 @@
       "homepage": "http://www.hangangmarathon.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41720"
+    },
+    {
+      "id": "41762",
+      "name": "2026 하남 미사 호수 에너지런",
+      "date_display": "2026년12월5일",
+      "date_iso": "2026-12-05",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "하남미사경정공원",
+      "organizer": "(사)행복한가게",
+      "contact": "02-888-8875",
+      "registration_period": "2026년8월3일~2026년11월26일",
+      "homepage": "http://energyrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41762"
     },
     {
       "id": "41710",
