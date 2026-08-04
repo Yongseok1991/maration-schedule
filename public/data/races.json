@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-04T02:24:38.171Z",
+  "updatedAt": "2026-08-04T10:37:27.449Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 791,
+  "count": 793,
   "races": [
     {
       "id": "40976",
@@ -9688,9 +9688,9 @@
       "place": "서울 광장",
       "organizer": "일간스포츠",
       "contact": "02-338-0344",
-      "registration_period": "2026년6월29일~2026년7월29일",
+      "registration_period": "2026년6월29일~2026년8월14일",
       "homepage": "http://runseoulrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41643"
     },
     {
@@ -10880,7 +10880,7 @@
     },
     {
       "id": "41712",
-      "name": "제19회 중랑구청장배 마라톤 8월5일 접수시작",
+      "name": "제19회 중랑구청장배마라톤 8월10일 접수시작",
       "date_display": "2026년10월18일",
       "date_iso": "2026-10-18",
       "distances": "하프,10km,5km",
@@ -10888,7 +10888,7 @@
       "place": "중화체육공원",
       "organizer": "중랑구육상연맹",
       "contact": "02-3285-5556",
-      "registration_period": "2026년8월5일~2026년10월7일",
+      "registration_period": "2026년8월10일~2026년10월7일",
       "homepage": "http://www.jnrun.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41712"
@@ -11284,6 +11284,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41754"
     },
     {
+      "id": "41767",
+      "name": "2026 문경 레전드 트레일 백두대간",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "50k, 34k, 21k",
+      "region": "경북",
+      "place": "문경새재도립공원야외공연장",
+      "organizer": "에코라인",
+      "contact": "010-5605-9059",
+      "registration_period": "2026년8월12일~2026년8월12일",
+      "homepage": "http://legendtrail.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41767"
+    },
+    {
       "id": "41634",
       "name": "2026 양산 배내골 애플 런",
       "date_display": "2026년11월8일",
@@ -11368,7 +11383,7 @@
       "place": "다대포 해수욕장",
       "organizer": "아시아경제",
       "contact": "02-338-0344",
-      "registration_period": "2026년8월11일~2026년9월31일",
+      "registration_period": "2026년8월25일~2026년10월9일",
       "homepage": "http://heritagerun.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41696"
@@ -11543,12 +11558,12 @@
       "name": "제17회 행복트레일런 축제",
       "date_display": "2026년11월15일",
       "date_iso": "2026-11-15",
-      "distances": "29km",
+      "distances": "20km",
       "region": "서울",
-      "place": "수서역 6번출구 광장",
+      "place": "청계산수변공원",
       "organizer": "{사}소아암환우돕기 조직위",
       "contact": "02-2647-4488",
-      "registration_period": "2026년7월19일~2026년8월31일",
+      "registration_period": "2026년7월19일~2026년9월30일",
       "homepage": "http://happytrailrun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41585"
@@ -11704,6 +11719,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41763"
     },
     {
+      "id": "41768",
+      "name": "자이스 스마일 레이스",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "여의도공원 문화의 마당",
+      "organizer": "ZEISS/런코리아",
+      "contact": "1566-1936",
+      "registration_period": "2026년8월10일~2026년9월19일",
+      "homepage": "http://zeiss-smilerace.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41768"
+    },
+    {
       "id": "41749",
       "name": "2026 무진장트레일레이스",
       "date_display": "2026년11월23일",
@@ -11750,17 +11780,17 @@
     },
     {
       "id": "41766",
-      "name": "2027 서울 세계청년대회 성공 기원 평화런",
+      "name": "2026 평화런",
       "date_display": "2026년11월28일",
       "date_iso": "2026-11-28",
       "distances": "10km,5km",
       "region": "서울",
       "place": "여의도공원 문화의마당",
-      "organizer": "2027 서울WYD, CPBC",
+      "organizer": "가톨릭평화방송/런코리아",
       "contact": "1566-1936",
-      "registration_period": "2026년8월14일~2026년10월24일",
+      "registration_period": "2026년8월4일~2026년10월24일",
       "homepage": "http://www.peacerun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41766"
     },
     {
