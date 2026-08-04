@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-04T10:37:27.449Z",
+  "updatedAt": "2026-08-04T17:47:33.578Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 793,
   "races": [
@@ -10905,7 +10905,7 @@
       "contact": "055-275-6611",
       "registration_period": "2026년8월5일~2026년9월20일",
       "homepage": "http://www.cwrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41751"
     },
     {
@@ -11290,7 +11290,7 @@
       "date_iso": "2026-11-07",
       "distances": "50k, 34k, 21k",
       "region": "경북",
-      "place": "문경새재도립공원야외공연장",
+      "place": "문경새재도립공원 야외공연장",
       "organizer": "에코라인",
       "contact": "010-5605-9059",
       "registration_period": "2026년8월12일~2026년8월12일",
