@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-05T02:24:04.738Z",
+  "updatedAt": "2026-08-05T10:32:48.307Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 793,
+  "count": 798,
   "races": [
     {
       "id": "40976",
@@ -9619,6 +9619,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41750"
     },
     {
+      "id": "41772",
+      "name": "제 6회 계란 마라톤",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "하프,10km,5km",
+      "region": "경기",
+      "place": "경인아라뱃길여객터미널 아라타워",
+      "organizer": "계란자조금관리위원회",
+      "contact": "1600-3962",
+      "registration_period": "2026년8월6일~2026년8월26일",
+      "homepage": "http://egg-run.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41772"
+    },
+    {
+      "id": "41773",
+      "name": "서울올림픽기념 88RUN",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "미사경정공원",
+      "organizer": "국민체육진흥공단경륜경정총괄본부",
+      "contact": "1600-3962",
+      "registration_period": "2026년8월5일~2026년8월5일",
+      "homepage": "http://88run.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41773"
+    },
+    {
       "id": "41192",
       "name": "제14회설악산공룡능선UTMB",
       "date_display": "2026년9월13일",
@@ -9703,9 +9733,9 @@
       "place": "포항운하관주차장",
       "organizer": "매일신문사",
       "contact": "054-1600-4525",
-      "registration_period": "2026년6월29일~2026년7월20일",
+      "registration_period": "2026년6월29일~2026년8월31일",
       "homepage": "http://energyrun.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41648"
     },
     {
@@ -9718,9 +9748,9 @@
       "place": "포항운하관주차장",
       "organizer": "매일신사",
       "contact": "054-1600-4525",
-      "registration_period": "2026년6월29일~2026년7월20일",
+      "registration_period": "2026년6월29일~2026년8월31일",
       "homepage": "http://energyrun.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41652"
     },
     {
@@ -10534,6 +10564,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41716"
     },
     {
+      "id": "41771",
+      "name": "제3회서울트레일런 대회",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "37: 20:11",
+      "region": "서울",
+      "place": "시청 덕수궁돌담길",
+      "organizer": "서울울트라랠리",
+      "contact": "02-776-4288",
+      "registration_period": "2026년8월5일~2026년8월5일",
+      "homepage": "http://www.xn--zl2btb922be3fb2a860c.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41771"
+    },
+    {
       "id": "41434",
       "name": "2026 MBN 전국 나주 마라톤대회",
       "date_display": "2026년10월11일",
@@ -10667,6 +10712,21 @@
       "homepage": "http://rocknrun.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41747"
+    },
+    {
+      "id": "41769",
+      "name": "2026 인천로봇랜드 퓨처런",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "10km,5km",
+      "region": "인천",
+      "place": "인천로봇랜드 로봇타워",
+      "organizer": "기호일보",
+      "contact": "1866-1718",
+      "registration_period": "2026년8월7일~2026년9월4일",
+      "homepage": "http://futurerun.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41769"
     },
     {
       "id": "41255",
@@ -10880,7 +10940,7 @@
     },
     {
       "id": "41712",
-      "name": "제19회 중랑구청장배마라톤 8월10일 접수시작",
+      "name": "제19회 중랑구청장배 장미 마라톤",
       "date_display": "2026년10월18일",
       "date_iso": "2026-10-18",
       "distances": "하프,10km,5km",
@@ -10888,9 +10948,9 @@
       "place": "중화체육공원",
       "organizer": "중랑구육상연맹",
       "contact": "02-3285-5556",
-      "registration_period": "2026년8월10일~2026년10월7일",
+      "registration_period": "2026년8월5일~2026년10월7일",
       "homepage": "http://www.jnrun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41712"
     },
     {
@@ -11012,6 +11072,21 @@
       "homepage": "http://marathon.newsis.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41756"
+    },
+    {
+      "id": "41770",
+      "name": "2026 무쓰런",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "10km,5km",
+      "region": "충북",
+      "place": "무심천체육공원",
+      "organizer": "청주충북환경운동연합",
+      "contact": "043-222-2466",
+      "registration_period": "2026년7월21일~2026년8월31일",
+      "homepage": "http://forms.gle/ga7gKHnRJB7pfLFY6",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41770"
     },
     {
       "id": "41477",
@@ -11458,9 +11533,9 @@
       "place": "영일대해상누각",
       "organizer": "kthcn",
       "contact": "054-1600-4525",
-      "registration_period": "2026년4월13일~2026년6월31일",
+      "registration_period": "2026년4월13일~2026년10월31일",
       "homepage": "http://pohangmarathon.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41528"
     },
     {
