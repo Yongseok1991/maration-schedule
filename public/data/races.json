@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-04T17:47:33.578Z",
+  "updatedAt": "2026-08-05T02:24:04.738Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 793,
   "races": [
@@ -11105,7 +11105,7 @@
     },
     {
       "id": "41761",
-      "name": "제14회 정서진아라뱃길 마라톤",
+      "name": "제14회 정서진아라뱃길 전국마라톤대회",
       "date_display": "2026년10월25일",
       "date_iso": "2026-10-25",
       "distances": "하프,10km,5km",
@@ -11113,9 +11113,9 @@
       "place": "정서진 아라타워",
       "organizer": "인천일보,인천마라톤조직위원회",
       "contact": "1866-1718",
-      "registration_period": "2026년7월31일~2026년7월31일",
+      "registration_period": "2026년8월5일~2026년9월8일",
       "homepage": "http://www.jeongseojin.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41761"
     },
     {
@@ -11723,7 +11723,7 @@
       "name": "자이스 스마일 레이스",
       "date_display": "2026년11월22일",
       "date_iso": "2026-11-22",
-      "distances": "하프,10km,5km",
+      "distances": "10km,5km",
       "region": "서울",
       "place": "여의도공원 문화의 마당",
       "organizer": "ZEISS/런코리아",
