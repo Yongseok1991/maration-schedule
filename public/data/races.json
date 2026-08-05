@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-05T10:32:48.307Z",
+  "updatedAt": "2026-08-05T17:27:44.819Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 798,
+  "count": 799,
   "races": [
     {
       "id": "40976",
@@ -9630,7 +9630,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년8월6일~2026년8월26일",
       "homepage": "http://egg-run.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41772"
     },
     {
@@ -9645,7 +9645,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년8월5일~2026년8월5일",
       "homepage": "http://88run.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41773"
     },
     {
@@ -10575,7 +10575,7 @@
       "contact": "02-776-4288",
       "registration_period": "2026년8월5일~2026년8월5일",
       "homepage": "http://www.xn--zl2btb922be3fb2a860c.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41771"
     },
     {
@@ -11803,10 +11803,25 @@
       "place": "여의도공원 문화의 마당",
       "organizer": "ZEISS/런코리아",
       "contact": "1566-1936",
-      "registration_period": "2026년8월10일~2026년9월19일",
+      "registration_period": "2026년8월10일~2026년10월18일",
       "homepage": "http://zeiss-smilerace.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41768"
+    },
+    {
+      "id": "41774",
+      "name": "2026 서울 억새풀 마라톤대회",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "(영등포) 영롱이 억새구장",
+      "organizer": "아시아투데이(사)한국마라톤연맹",
+      "contact": "02-2647-4488",
+      "registration_period": "2026년8월17일~2026년10월30일",
+      "homepage": "http://ssrun.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41774"
     },
     {
       "id": "41749",
