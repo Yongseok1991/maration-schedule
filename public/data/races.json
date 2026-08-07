@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-06T10:36:49.566Z",
+  "updatedAt": "2026-08-07T02:35:23.952Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 800,
   "races": [
@@ -9045,7 +9045,7 @@
       "contact": "02-2606-8187",
       "registration_period": "2026년6월5일~2026년8월6일",
       "homepage": "http://moonnightrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41617"
     },
     {
@@ -9480,7 +9480,7 @@
       "contact": "042-638-108",
       "registration_period": "2026년6월10일~2026년8월6일",
       "homepage": "http://mara1080.com/event/a9780087-8fc3-4849-a234-7659978f6792",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41635"
     },
     {
@@ -10725,7 +10725,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년8월7일~2026년9월4일",
       "homepage": "http://futurerun.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41769"
     },
     {
@@ -11220,7 +11220,7 @@
       "contact": "055-751-1085",
       "registration_period": "2026년8월6일~2026년8월6일",
       "homepage": "http://sunset.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41778"
     },
     {
@@ -11355,7 +11355,7 @@
       "contact": "031-821-9949",
       "registration_period": "2026년8월7일~2026년10월16일",
       "homepage": "http://runfesta.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41719"
     },
     {
@@ -11516,11 +11516,11 @@
       "distances": "하프,10km,5km",
       "region": "강원",
       "place": "춘천 송암스포츠타운 종합경기장",
-      "organizer": "서린컴퍼니(주), 강원일보",
+      "organizer": "라운드랩, 강원일보",
       "contact": "1551-3934",
       "registration_period": "2026년8월7일~2026년10월23일",
       "homepage": "http://kw-marathon.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41755"
     },
     {
@@ -11995,7 +11995,7 @@
       "date_iso": "2026-12-13",
       "distances": "풀,하프,10km,5km",
       "region": "경남",
-      "place": "진주종합경기장",
+      "place": "진주노을공원",
       "organizer": "진주시육상연맹",
       "contact": "010-3931-1356",
       "registration_period": "2026년10월22일~2026년11월16일",
