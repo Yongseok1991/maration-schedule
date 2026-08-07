@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-07T08:57:27.943Z",
+  "updatedAt": "2026-08-07T16:53:05.836Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 800,
+  "count": 805,
   "races": [
     {
       "id": "40976",
@@ -9949,6 +9949,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41744"
     },
     {
+      "id": "41783",
+      "name": "2026 사찰런",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "6.3km",
+      "region": "경북",
+      "place": "경산 갓바위 소원길",
+      "organizer": "윌슨컴퍼니 주식회사",
+      "contact": "070-8670-0781",
+      "registration_period": "2026년8월7일~2026년9월10일",
+      "homepage": "http://sachalrun.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41783"
+    },
+    {
       "id": "41351",
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
@@ -10065,7 +10080,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년7월8일~2026년8월7일",
       "homepage": "http://songdorun.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41670"
     },
     {
@@ -10384,6 +10399,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41698"
     },
     {
+      "id": "41782",
+      "name": "제23회 강남국제평화마라톤",
+      "date_display": "2026년10월5일",
+      "date_iso": "2026-10-05",
+      "distances": "풀,하프,10km,5km",
+      "region": "서울",
+      "place": "봉은사로 삼성1동 주민센터 앞",
+      "organizer": "강남구",
+      "contact": "02-3462-7330",
+      "registration_period": "2026년8월10일~2026년8월13일",
+      "homepage": "http://peacemarathon.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41782"
+    },
+    {
       "id": "41352",
       "name": "제26회 홍성마라톤",
       "date_display": "2026년10월9일",
@@ -10665,7 +10695,7 @@
       "contact": "070-4633-1233",
       "registration_period": "2026년7월27일~2026년8월7일",
       "homepage": "http://www.pinkrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41687"
     },
     {
@@ -11224,6 +11254,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41778"
     },
     {
+      "id": "41781",
+      "name": "제7회 중소기업 인 기살리기 마라톤 대회",
+      "date_display": "2026년10월31일",
+      "date_iso": "2026-10-31",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "구일역 하부 구로 안양천축구장",
+      "organizer": "(사) 중소기업진흥회",
+      "contact": "010-2760-7745",
+      "registration_period": "2026년8월7일~2026년8월7일",
+      "homepage": "http://kasmirun.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41781"
+    },
+    {
       "id": "41259",
       "name": "2026 jtbc 마라톤",
       "date_display": "2026년11월1일",
@@ -11537,6 +11582,21 @@
       "homepage": "http://ssecorun.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41752"
+    },
+    {
+      "id": "41780",
+      "name": "제12회 아산 은행나무길 전국마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "하프,10km,5km",
+      "region": "충남",
+      "place": "아산시 현충사 은행나무길",
+      "organizer": "아산시 마라톤 협회",
+      "contact": "042-543-4592",
+      "registration_period": "2026년8월20일~2026년10월25일",
+      "homepage": "http://asanmarathon.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41780"
     },
     {
       "id": "41528",
@@ -12002,6 +12062,21 @@
       "homepage": "http://www.jinma.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41745"
+    },
+    {
+      "id": "41784",
+      "name": "제5회 밤섬 마라톤",
+      "date_display": "2026년12월13일",
+      "date_iso": "2026-12-13",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "상암월드컵공원 평화광장",
+      "organizer": "(사)대한생활체육연맹",
+      "contact": "02-569-5551",
+      "registration_period": "2026년8월7일~2026년11월22일",
+      "homepage": "http://bamseom.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41784"
     }
   ]
 }
