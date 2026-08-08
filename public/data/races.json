@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T16:53:05.836Z",
+  "updatedAt": "2026-08-08T01:25:42.961Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 805,
   "races": [
@@ -10406,7 +10406,7 @@
       "distances": "풀,하프,10km,5km",
       "region": "서울",
       "place": "봉은사로 삼성1동 주민센터 앞",
-      "organizer": "강남구",
+      "organizer": "강남구,미8군사령부",
       "contact": "02-3462-7330",
       "registration_period": "2026년8월10일~2026년8월13일",
       "homepage": "http://peacemarathon.co.kr",
@@ -11592,7 +11592,7 @@
       "region": "충남",
       "place": "아산시 현충사 은행나무길",
       "organizer": "아산시 마라톤 협회",
-      "contact": "042-543-4592",
+      "contact": "041-543-4592",
       "registration_period": "2026년8월20일~2026년10월25일",
       "homepage": "http://asanmarathon.co.kr/",
       "status": "",
