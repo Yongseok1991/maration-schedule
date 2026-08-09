@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-09T08:40:30.906Z",
+  "updatedAt": "2026-08-09T16:33:18.807Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 805,
   "races": [
@@ -9930,7 +9930,7 @@
       "contact": "1899-7466",
       "registration_period": "2026년7월30일~2026년8월9일",
       "homepage": "http://www.coupangplay.com/promotion/2026-Mudorun-Gyeongju/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41743"
     },
     {
@@ -10410,7 +10410,7 @@
       "contact": "02-3462-7330",
       "registration_period": "2026년8월10일~2026년8월13일",
       "homepage": "http://peacemarathon.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41782"
     },
     {
@@ -10740,7 +10740,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년8월10일~2026년9월15일",
       "homepage": "http://rocknrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41747"
     },
     {
@@ -11850,7 +11850,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년8월10일~2026년10월15일",
       "homepage": "http://rocknrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41748"
     },
     {
@@ -11880,7 +11880,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년8월10일~2026년10월18일",
       "homepage": "http://zeiss-smilerace.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41768"
     },
     {
@@ -11940,7 +11940,7 @@
       "contact": "070-4571-8805",
       "registration_period": "2026년8월10일~2026년8월30일",
       "homepage": "http://mokyokrun.shop",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41685"
     },
     {
