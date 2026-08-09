@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-08T16:31:10.087Z",
+  "updatedAt": "2026-08-09T01:37:41.241Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 805,
   "races": [
@@ -9883,9 +9883,9 @@
       "place": "문경종합온천",
       "organizer": "문경시, 문경시 청년센터",
       "contact": "010-2805-9016",
-      "registration_period": "2026년7월13일~2026년8월3일",
+      "registration_period": "2026년7월13일~2026년8월31일",
       "homepage": "http://www.omijarun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41694"
     },
     {
