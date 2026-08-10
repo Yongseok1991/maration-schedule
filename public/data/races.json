@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-10T01:41:14.716Z",
+  "updatedAt": "2026-08-10T09:18:33.252Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 807,
+  "count": 810,
   "races": [
     {
       "id": "40976",
@@ -9649,6 +9649,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41773"
     },
     {
+      "id": "41791",
+      "name": "비포 선라이즈 슬로우 마라톤",
+      "date_display": "2026년9월12일",
+      "date_iso": "2026-09-12",
+      "distances": "10km,5km",
+      "region": "강원",
+      "place": "강릉 경포호수 일대",
+      "organizer": "강릉시, 강릉관광개발공사",
+      "contact": "033-640-9851",
+      "registration_period": "2026년8월10일~2026년8월23일",
+      "homepage": "http://healingtour.gtdc.or.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41791"
+    },
+    {
       "id": "41192",
       "name": "제14회설악산공룡능선UTMB",
       "date_display": "2026년9월13일",
@@ -10243,9 +10258,9 @@
       "place": "안동시민운동장",
       "organizer": "안동시, 매일신문사",
       "contact": "031-575-7243",
-      "registration_period": "2026년4월13일~2026년7월31일",
+      "registration_period": "2026년4월13일~2026년8월31일",
       "homepage": "http://www.admarathon.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
     },
     {
@@ -10757,6 +10772,21 @@
       "homepage": "http://futurerun.co.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41769"
+    },
+    {
+      "id": "41785",
+      "name": "2026 대학생RUN",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "구일역 안양천 축구장",
+      "organizer": "대학문화유니온",
+      "contact": "010-4737-7125",
+      "registration_period": "2026년8월10일~2026년9월20일",
+      "homepage": "http://www.univrun.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41785"
     },
     {
       "id": "41255",
@@ -11359,6 +11389,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41691"
     },
     {
+      "id": "41790",
+      "name": "26서울동행마라톤대회",
+      "date_display": "2026년11월1일",
+      "date_iso": "2026-11-01",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "서울 목동종합운동장 주경기장",
+      "organizer": "서울동행마라톤조직위원회",
+      "contact": "02-736-1136",
+      "registration_period": "2026년8월10일~2026년10월2일",
+      "homepage": "http://seoulrun.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41790"
+    },
+    {
       "id": "41539",
       "name": "2026 영천댐 마라톤",
       "date_display": "2026년11월7일",
@@ -11908,9 +11953,9 @@
       "place": "여의도공원 문화의 마당",
       "organizer": "ZEISS/런코리아",
       "contact": "1566-1936",
-      "registration_period": "2026년8월10일~2026년10월18일",
+      "registration_period": "2026년8월24일~2026년10월18일",
       "homepage": "http://zeiss-smilerace.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41768"
     },
     {
