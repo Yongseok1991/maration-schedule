@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-10T09:18:33.252Z",
+  "updatedAt": "2026-08-10T16:52:53.625Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 810,
   "races": [
@@ -9238,9 +9238,9 @@
       "place": "성북구 중랑천 체육공원",
       "organizer": "성북구육상연맹",
       "contact": "010-8784-2199",
-      "registration_period": "2026년7월15일~2026년8월10일",
+      "registration_period": "2026년7월15일~2026년8월9일",
       "homepage": "http://cafe.naver.com/sblovemarathon/?viewType=pc",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41705"
     },
     {
@@ -9825,7 +9825,7 @@
       "contact": "063-352-2025",
       "registration_period": "2026년6월10일~2026년8월10일",
       "homepage": "http://rocknrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41349"
     },
     {
@@ -10035,7 +10035,7 @@
       "contact": "010-4899-8421",
       "registration_period": "2026년6월10일~2026년8월10일",
       "homepage": "http://www.runddm.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41605"
     },
     {
@@ -10275,7 +10275,7 @@
       "contact": "031-955-0025",
       "registration_period": "2026년5월4일~2026년8월10일",
       "homepage": "http://runbookcity.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41560"
     },
     {
