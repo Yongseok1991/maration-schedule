@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-09T16:33:18.807Z",
+  "updatedAt": "2026-08-10T01:41:14.716Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 805,
+  "count": 807,
   "races": [
     {
       "id": "40976",
@@ -11434,6 +11434,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41767"
     },
     {
+      "id": "41788",
+      "name": "GVIE RUN 2026 구미",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "10km,5km",
+      "region": "경북",
+      "place": "구미 낙동강체육공원",
+      "organizer": "굿피플",
+      "contact": "1600-3949",
+      "registration_period": "2026년8월12일~2026년10월9일",
+      "homepage": "http://giverun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41788"
+    },
+    {
       "id": "41634",
       "name": "2026 양산 배내골 애플 런",
       "date_display": "2026년11월8일",
@@ -11852,6 +11867,21 @@
       "homepage": "http://rocknrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41748"
+    },
+    {
+      "id": "41789",
+      "name": "GIVE RUN 2026 부산",
+      "date_display": "2026년11월21일",
+      "date_iso": "2026-11-21",
+      "distances": "10km,5km",
+      "region": "부산",
+      "place": "부산 삼락생태공원",
+      "organizer": "굿피플",
+      "contact": "1600-3949",
+      "registration_period": "2026년8월12일~2026년10월16일",
+      "homepage": "http://giverun.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41789"
     },
     {
       "id": "41763",
