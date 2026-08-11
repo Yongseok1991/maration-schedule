@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-11T01:38:10.758Z",
+  "updatedAt": "2026-08-11T08:53:52.526Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 810,
   "races": [
@@ -11330,19 +11330,18 @@
     },
     {
       "id": "41638",
-      "name": "2026 무안 해안 노을길",
-      "date_display": "11/1(일)",
+      "name": "2026 무안 해안 노을길 걷기 및 마라톤",
+      "date_display": "2026년11월1일",
       "date_iso": "2026-11-01",
-      "distances": "걷기 및 마라톤10km,5km",
-      "region": "",
+      "distances": "10km,5km",
+      "region": "전남",
       "place": "무안낙지공원",
       "organizer": "무안군체육회",
       "contact": "042-638-1080",
-      "registration_period": "",
-      "homepage": "",
+      "registration_period": "2026년6월15일~2026년10월1일",
+      "homepage": "http://mara1080.com/event/d596615e-cf32-4f20-bdbe-13b633f51c4e",
       "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41638",
-      "error": "detail_fetch_failed"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41638"
     },
     {
       "id": "41654",
@@ -11924,7 +11923,7 @@
       "place": "부산 삼락생태공원",
       "organizer": "굿피플",
       "contact": "1600-3949",
-      "registration_period": "2026년8월12일~2026년10월16일",
+      "registration_period": "2026년8월31일~2026년10월16일",
       "homepage": "http://giverun.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41789"
