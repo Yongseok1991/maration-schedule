@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-11T08:53:52.526Z",
+  "updatedAt": "2026-08-11T16:56:14.166Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 810,
+  "count": 812,
   "races": [
     {
       "id": "40976",
@@ -9979,13 +9979,28 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41783"
     },
     {
+      "id": "41793",
+      "name": "2026 청년의날 남동런",
+      "date_display": "2026년9월19일",
+      "date_iso": "2026-09-19",
+      "distances": "10km,5km",
+      "region": "인천",
+      "place": "인천대공원",
+      "organizer": "디지틀조선일보C&M",
+      "contact": "032-710-0260",
+      "registration_period": "2026년7월28일~2026년9월1일",
+      "homepage": "http://namdongrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41793"
+    },
+    {
       "id": "41351",
       "name": "제19회 가평자라섬 전국마라톤",
       "date_display": "2026년9월20일",
       "date_iso": "2026-09-20",
       "distances": "하프,10km,5km,10Km커플런,5Km 가족런",
       "region": "경기",
-      "place": "가평종합운동장(경기)",
+      "place": "(가평) 자라섬 행사장",
       "organizer": "가평군체육회, 세계일보",
       "contact": "02-2647-4488",
       "registration_period": "2026년4월14일~2026년5월30일",
@@ -10789,6 +10804,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41785"
     },
     {
+      "id": "41794",
+      "name": "제6회 영등포구청장배 육상대회",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "신정교하부육상트랙구장",
+      "organizer": "영등포구육상연맹",
+      "contact": "010-3794-7297",
+      "registration_period": "2026년8월10일~2026년10월4일",
+      "homepage": "http://cafe.naver.com/ydprun1/646",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41794"
+    },
+    {
       "id": "41255",
       "name": "제24회 청원생명쌀대청호마라톤",
       "date_display": "2026년10월17일",
@@ -11475,7 +11505,7 @@
       "contact": "010-5605-9059",
       "registration_period": "2026년8월12일~2026년8월12일",
       "homepage": "http://legendtrail.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41767"
     },
     {
@@ -11490,7 +11520,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년8월12일~2026년10월9일",
       "homepage": "http://giverun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41788"
     },
     {
