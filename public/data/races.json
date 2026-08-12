@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T09:09:39.733Z",
+  "updatedAt": "2026-08-12T16:55:19.261Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 817,
   "races": [
@@ -9630,7 +9630,7 @@
       "contact": "070-4350-5635",
       "registration_period": "2026년7월27일~2026년8월12일",
       "homepage": "http://goodneighbors001.cafe24.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41735"
     },
     {
@@ -9885,7 +9885,7 @@
       "contact": "070-7706-1011",
       "registration_period": "2026년6월17일~2026년8월12일",
       "homepage": "http://www.cyber-run.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41629"
     },
     {
@@ -11235,7 +11235,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년8월13일~2026년8월31일",
       "homepage": "http://runwithgo.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41798"
     },
     {
@@ -11580,7 +11580,7 @@
       "contact": "010-5605-9059",
       "registration_period": "2026년8월12일~2026년8월12일",
       "homepage": "http://legendtrail.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41767"
     },
     {
