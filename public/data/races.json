@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-11T16:56:14.166Z",
+  "updatedAt": "2026-08-12T01:48:40.638Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 812,
+  "count": 817,
   "races": [
     {
       "id": "40976",
@@ -9139,6 +9139,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41512"
     },
     {
+      "id": "41786",
+      "name": "2026 교룡산성 백야드",
+      "date_display": "2026년8월23일",
+      "date_iso": "2026-08-23",
+      "distances": "1회전 7K",
+      "region": "전북",
+      "place": "전북 남원시 산곡동 251-2",
+      "organizer": "삼삼이즈",
+      "contact": "010-7469-1526",
+      "registration_period": "2026년8월9일~2026년8월17일",
+      "homepage": "http://samsamis.com/66",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41786"
+    },
+    {
       "id": "41624",
       "name": "2026 전마협 증평 무료 마라톤",
       "date_display": "2026년8월29일",
@@ -9482,6 +9497,21 @@
       "homepage": "http://mara1080.com/event/a9780087-8fc3-4849-a234-7659978f6792",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41635"
+    },
+    {
+      "id": "41787",
+      "name": "2026 문경새재 트레일런",
+      "date_display": "2026년9월6일",
+      "date_iso": "2026-09-06",
+      "distances": "13km",
+      "region": "경북",
+      "place": "문경새재도립공원 제1주차장",
+      "organizer": "파브코리아",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년8월10일~2026년8월10일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41787"
     },
     {
       "id": "41420",
@@ -10226,7 +10256,7 @@
       "distances": "10km,5km",
       "region": "충북",
       "place": "무심천체육공원",
-      "organizer": "(주)러닝브레이커, 전국러닝협",
+      "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
       "registration_period": "2026년7월14일~2026년8월14일",
       "homepage": "http://runten.co.kr",
@@ -10811,7 +10841,7 @@
       "distances": "10km,5km",
       "region": "서울",
       "place": "신정교하부육상트랙구장",
-      "organizer": "영등포구육상연맹",
+      "organizer": "서울특별시영등포구체육회",
       "contact": "010-3794-7297",
       "registration_period": "2026년8월10일~2026년10월4일",
       "homepage": "http://cafe.naver.com/ydprun1/646",
@@ -10952,6 +10982,21 @@
       "homepage": "http://cafe.daum.net/6507447/Ep6u",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41731"
+    },
+    {
+      "id": "41800",
+      "name": "2026 의정부시 물길마라톤",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "하프,10km,5km",
+      "region": "경기",
+      "place": "동막교인라인광장",
+      "organizer": "의정부체육회",
+      "contact": "031-850-5755",
+      "registration_period": "2026년8월12일~2026년9월11일",
+      "homepage": "http://ujb.my-race.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41800"
     },
     {
       "id": "41303",
@@ -11179,6 +11224,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41770"
     },
     {
+      "id": "41798",
+      "name": "2026 서울 펫림픽 & 런 위드 고",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "서울 월드컵경기장 평화광장",
+      "organizer": "(사)함께하는 사랑밭",
+      "contact": "031-575-7243",
+      "registration_period": "2026년8월13일~2026년8월31일",
+      "homepage": "http://runwithgo.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41798"
+    },
+    {
       "id": "41477",
       "name": "2026 청송사과트레일런",
       "date_display": "2026년10월25일",
@@ -11327,6 +11387,21 @@
       "homepage": "http://kasmirun.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41781"
+    },
+    {
+      "id": "41795",
+      "name": "2026 JUST RUN10 포천",
+      "date_display": "2026년10월31일",
+      "date_iso": "2026-10-31",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "포천시종합운동장",
+      "organizer": "(주)러닝브레이커,전국러닝협회",
+      "contact": "042-710-2058",
+      "registration_period": "2026년8월11일~2026년9월25일",
+      "homepage": "http://runten.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41795"
     },
     {
       "id": "41259",
