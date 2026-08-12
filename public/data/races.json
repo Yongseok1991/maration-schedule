@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-12T01:48:40.638Z",
+  "updatedAt": "2026-08-12T09:09:39.733Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 817,
   "races": [
@@ -10138,9 +10138,9 @@
       "place": "송도인천대캠퍼스 정문앞",
       "organizer": "(주)경인일보",
       "contact": "1866-1718",
-      "registration_period": "2026년7월8일~2026년8월7일",
+      "registration_period": "2026년7월8일~2026년8월28일",
       "homepage": "http://songdorun.net",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41670"
     },
     {
@@ -11563,7 +11563,7 @@
       "place": "진해공설운동장",
       "organizer": "(주)경남신문사",
       "contact": "055-210-6103",
-      "registration_period": "2026년8월19일~2026년10월9일",
+      "registration_period": "2026년8월24일~2026년10월9일",
       "homepage": "http://www.jinhaemarathon.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41754"
