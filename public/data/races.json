@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-14T09:06:20.649Z",
+  "updatedAt": "2026-08-14T16:50:45.571Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 825,
   "races": [
@@ -9570,7 +9570,7 @@
       "contact": "02-556-8879",
       "registration_period": "2026년4월27일~2026년8월14일",
       "homepage": "http://whiterun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41549"
     },
     {
@@ -9765,7 +9765,7 @@
       "contact": "02-338-0344",
       "registration_period": "2026년6월29일~2026년8월14일",
       "homepage": "http://runseoulrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41643"
     },
     {
@@ -9810,7 +9810,7 @@
       "contact": "070-7727-1751",
       "registration_period": "2026년7월14일~2026년8월14일",
       "homepage": "http://web.runit.co.kr/races/1120",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41697"
     },
     {
