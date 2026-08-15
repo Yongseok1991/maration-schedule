@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-15T01:08:22.199Z",
+  "updatedAt": "2026-08-15T08:26:26.957Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 825,
+  "count": 826,
   "races": [
     {
       "id": "40976",
@@ -11417,6 +11417,21 @@
       "homepage": "http://runten.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41795"
+    },
+    {
+      "id": "41809",
+      "name": "2026 태종대 BEAT ON 좀비레이스",
+      "date_display": "2026년10월31일",
+      "date_iso": "2026-10-31",
+      "distances": "4km 코스",
+      "region": "부산",
+      "place": "부산 영도구 태종대 자동차야외극장(Drive in영도)",
+      "organizer": "주식회사 무브네이션",
+      "contact": "051-867-0516",
+      "registration_period": "2026년8월15일~2026년9월20일",
+      "homepage": "http://taejongdaezombie.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41809"
     },
     {
       "id": "41259",
