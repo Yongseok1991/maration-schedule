@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-16T08:27:13.165Z",
+  "updatedAt": "2026-08-16T16:22:21.350Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 826,
   "races": [
@@ -12120,7 +12120,7 @@
       "contact": "02-2647-4488",
       "registration_period": "2026년8월17일~2026년10월30일",
       "homepage": "http://ssrun.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41774"
     },
     {
@@ -12255,7 +12255,7 @@
       "contact": "02-0000-0000",
       "registration_period": "2026년8월17일~2026년11월16일",
       "homepage": "http://sh-run.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41807"
     },
     {
@@ -12315,7 +12315,7 @@
       "contact": "070-4111-5620",
       "registration_period": "2026년8월1일~2026년8월16일",
       "homepage": "http://www.busanmarathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41710"
     },
     {
