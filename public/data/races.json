@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-17T08:41:16.697Z",
+  "updatedAt": "2026-08-17T16:25:17.532Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 826,
   "races": [
@@ -9150,7 +9150,7 @@
       "contact": "010-7469-1526",
       "registration_period": "2026년8월9일~2026년8월17일",
       "homepage": "http://samsamis.com/66",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41786"
     },
     {
@@ -11460,7 +11460,7 @@
       "contact": "052-242-1119",
       "registration_period": "2026년8월18일~2026년9월18일",
       "homepage": "http://www.humanrun.org",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41552"
     },
     {
@@ -11775,7 +11775,7 @@
       "contact": "051-310-4128",
       "registration_period": "2026년8월18일~2026년10월11일",
       "homepage": "http://ssecorun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41752"
     },
     {
