@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-18T16:29:19.263Z",
+  "updatedAt": "2026-08-19T01:08:27.553Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 826,
+  "count": 830,
   "races": [
     {
       "id": "40976",
@@ -10684,6 +10684,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41771"
     },
     {
+      "id": "41813",
+      "name": "카카오프렌즈런 2026",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "탄천 종합운동장",
+      "organizer": "카카오",
+      "contact": "02-1577-6263",
+      "registration_period": "2026년8월10일~2026년8월17일",
+      "homepage": "http://b.kakao.com/views/kakaofriendsrun",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41813"
+    },
+    {
       "id": "41434",
       "name": "2026 MBN 전국 나주 마라톤대회",
       "date_display": "2026년10월11일",
@@ -11357,6 +11372,21 @@
       "homepage": "http://www.jeongseojin.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41761"
+    },
+    {
+      "id": "41811",
+      "name": "울산 런 페스타 (U-RUN)",
+      "date_display": "2026년10월25일",
+      "date_iso": "2026-10-25",
+      "distances": "하프,10km,5km",
+      "region": "울산",
+      "place": "울산 문수 국제양궁장",
+      "organizer": "울산문화방송(주)",
+      "contact": "052-295-7779",
+      "registration_period": "2026년8월19일~2026년9월20일",
+      "homepage": "http://www.ulsanrunfesta.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41811"
     },
     {
       "id": "41740",
@@ -12259,6 +12289,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41807"
     },
     {
+      "id": "41810",
+      "name": "2026 정읍공동체 프리마켓 마라톤",
+      "date_display": "2026년11월29일",
+      "date_iso": "2026-11-29",
+      "distances": "10km,5km,5km가족부(2인1조),10km 단체전(3인1조)",
+      "region": "전북",
+      "place": "정읍천변 어린이전용축구장",
+      "organizer": "대흥리마을공동체,정읍시공동체협",
+      "contact": "010-4654-0495",
+      "registration_period": "2026년8월18일~2026년11월15일",
+      "homepage": "http://dhrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41810"
+    },
+    {
       "id": "41676",
       "name": "2026 전국마라톤협회 금산 골드런 마라톤",
       "date_display": "2026년12월5일",
@@ -12332,6 +12377,21 @@
       "homepage": "http://roadracing.co.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41802"
+    },
+    {
+      "id": "41812",
+      "name": "2026 소년소녀 가장 돕기 기부런",
+      "date_display": "2026년12월12일",
+      "date_iso": "2026-12-12",
+      "distances": "10km,5km,걷기",
+      "region": "서울",
+      "place": "상암동 평화광장",
+      "organizer": "소풍",
+      "contact": "02-556-8879",
+      "registration_period": "2026년8월18일~2026년11월6일",
+      "homepage": "http://gibukidsrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41812"
     },
     {
       "id": "41745",
