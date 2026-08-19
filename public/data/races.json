@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T01:08:27.553Z",
+  "updatedAt": "2026-08-19T08:35:22.260Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 830,
   "races": [
@@ -10478,12 +10478,12 @@
       "name": "2026 양주 천일홍 가을 페스타 마라톤",
       "date_display": "2026년10월5일",
       "date_iso": "2026-10-05",
-      "distances": "10km,5km,20km코스",
+      "distances": "하프,10km,5km,걷기",
       "region": "경기",
-      "place": "양주시 나리공원",
+      "place": "양주시 나리농원",
       "organizer": "양주시체육회",
       "contact": "02-556-8879",
-      "registration_period": "2026년8월19일~2026년10월2일",
+      "registration_period": "2026년8월19일~2026년10월1일",
       "homepage": "http://yangjurun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41805"
@@ -12299,7 +12299,7 @@
       "organizer": "대흥리마을공동체,정읍시공동체협",
       "contact": "010-4654-0495",
       "registration_period": "2026년8월18일~2026년11월15일",
-      "homepage": "http://dhrun.kr",
+      "homepage": "http://www.xn--ob0bs4k27c8xc9da633vynbkyur2ft5hckl.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41810"
     },
@@ -12448,9 +12448,9 @@
       "place": "안양천다목적광장",
       "organizer": "(사)대한생활체육연맹",
       "contact": "02-888-8805",
-      "registration_period": "2026년8월14일~2026년12월12일",
+      "registration_period": "2026년9월20일~2026년12월12일",
       "homepage": "http://hgrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41806"
     }
   ]
