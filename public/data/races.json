@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-19T08:35:22.260Z",
+  "updatedAt": "2026-08-19T16:29:26.672Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 830,
   "races": [
@@ -9838,9 +9838,9 @@
       "place": "구일역 하부 인라인스케이트장",
       "organizer": "구로구육상연맹",
       "contact": "010-7734-3840",
-      "registration_period": "2026년8월3일~2026년8월31일",
+      "registration_period": "2026년8월3일~2026년8월18일",
       "homepage": "http://cafe.daum.net/guro-run/LvM7/45",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41734"
     },
     {
@@ -9870,7 +9870,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년4월17일~2026년8월19일",
       "homepage": "http://mara1080.com/event/2044eb82-fcdb-4e56-b79b-f3543a6a360d",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41541"
     },
     {
@@ -11263,7 +11263,7 @@
       "place": "서울 월드컵경기장 평화광장",
       "organizer": "(사)함께하는 사랑밭",
       "contact": "031-575-7243",
-      "registration_period": "2026년8월13일~2026년8월31일",
+      "registration_period": "2026년8월13일~2026년9월18일",
       "homepage": "http://runwithgo.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41798"
@@ -11460,7 +11460,7 @@
       "contact": "051-867-0516",
       "registration_period": "2026년8월20일~2026년9월20일",
       "homepage": "http://taejongdaezombie.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41809"
     },
     {
@@ -11820,7 +11820,7 @@
       "contact": "041-543-4592",
       "registration_period": "2026년8월20일~2026년10월25일",
       "homepage": "http://asanmarathon.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41780"
     },
     {
@@ -12150,7 +12150,7 @@
       "contact": "02-2647-4488",
       "registration_period": "2026년8월20일~2026년10월30일",
       "homepage": "http://ssrun.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41774"
     },
     {
