@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-20T08:36:01.260Z",
+  "updatedAt": "2026-08-20T16:33:16.573Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 835,
   "races": [
@@ -9094,21 +9094,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41663"
     },
     {
-      "id": "41642",
-      "name": "제2회 한양도성길 트레일런",
-      "date_display": "2026년8월22일",
-      "date_iso": "2026-08-22",
-      "distances": "20km",
-      "region": "서울",
-      "place": "낙산공원중앙광장(낙산길54)",
-      "organizer": "파브코리아",
-      "contact": "010-3526-9120",
-      "registration_period": "2026년6월15일~2026년8월20일",
-      "homepage": "http://www.mtrailrun.kr/",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41642"
-    },
-    {
       "id": "41500",
       "name": "2026대구세계마스터즈 10km대회",
       "date_display": "2026년8월23일",
@@ -9197,6 +9182,21 @@
       "homepage": "http://funandrun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41732"
+    },
+    {
+      "id": "41642",
+      "name": "포항호미반도트레일런",
+      "date_display": "2026년8월30일",
+      "date_iso": "2026-08-30",
+      "distances": "15km",
+      "region": "경북",
+      "place": "도구해수욕장",
+      "organizer": "파브코리아",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년8월15일~2026년8월29일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41642"
     },
     {
       "id": "41353",
@@ -10110,7 +10110,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년6월23일~2026년8월20일",
       "homepage": "http://mara1080.com/event/53b338c6-d38a-47b3-9479-080b00c6113a",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41657"
     },
     {
