@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-20T01:07:40.767Z",
+  "updatedAt": "2026-08-20T08:36:01.260Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 830,
+  "count": 835,
   "races": [
     {
       "id": "40976",
@@ -10183,9 +10183,9 @@
       "place": "서산스포츠테마파크",
       "organizer": "서산시체육회",
       "contact": "042-638-1080",
-      "registration_period": "2026년3월20일~2026년9월3일",
+      "registration_period": "2026년3월20일~2026년7월14일",
       "homepage": "http://mara1080.com/event/fcaa0bc8-1489-47c3-8fec-8e5a5c17284e",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41491"
     },
     {
@@ -10532,6 +10532,21 @@
       "homepage": "http://hangeulrun.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41664"
+    },
+    {
+      "id": "41814",
+      "name": "2026 고흥우주항공배 마라톤",
+      "date_display": "2026년10월9일",
+      "date_iso": "2026-10-09",
+      "distances": "하프,10km,5km",
+      "region": "전남",
+      "place": "고흥군 박지성공설운동장",
+      "organizer": "고흥군체육회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년8월19일~2026년9월20일",
+      "homepage": "http://mara1080.com/event/10fcc153-1bb7-403e-8f57-7571c1c324d5",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41814"
     },
     {
       "id": "41300",
@@ -11659,6 +11674,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41788"
     },
     {
+      "id": "41819",
+      "name": "SaveRace 2026",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "10km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "카카오뱅크, 유니셰프",
+      "contact": "02-1566-1936",
+      "registration_period": "2026년9월1일~2026년10월25일",
+      "homepage": "http://www.saverace.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41819"
+    },
+    {
+      "id": "41815",
+      "name": "2026 푸르메런",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "10km,3km",
+      "region": "서울",
+      "place": "상암 월드컵공원 평화광장",
+      "organizer": "푸르메재단",
+      "contact": "02-338-0344",
+      "registration_period": "2026년8월26일~2026년9월23일",
+      "homepage": "http://purmerun.com/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41815"
+    },
+    {
       "id": "41634",
       "name": "2026 양산 배내골 애플 런",
       "date_display": "2026년11월8일",
@@ -11837,6 +11882,21 @@
       "homepage": "http://haenammarathon.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41808"
+    },
+    {
+      "id": "41816",
+      "name": "제24회 전국 나주 금성산숲길마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "하프,6km,11km",
+      "region": "전남",
+      "place": "나주시 금성산 일원",
+      "organizer": "나주시체육회",
+      "contact": "061-331-6482",
+      "registration_period": "2026년8월24일~2026년9월10일",
+      "homepage": "http://www.geumsungsan.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41816"
     },
     {
       "id": "41528",
@@ -12062,6 +12122,21 @@
       "homepage": "http://kjmarathon.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41699"
+    },
+    {
+      "id": "41817",
+      "name": "2026 나눔레이스 인 용인",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "10km,15km",
+      "region": "경기",
+      "place": "세리박위드용인",
+      "organizer": "나눔레이스조직위원회",
+      "contact": "02-2135-1297",
+      "registration_period": "2026년8월24일~2026년9월6일",
+      "homepage": "http://nanumrun.or.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41817"
     },
     {
       "id": "41673",
