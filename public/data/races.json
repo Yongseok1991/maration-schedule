@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-21T01:12:03.430Z",
+  "updatedAt": "2026-08-21T08:38:24.065Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 835,
+  "count": 836,
   "races": [
     {
       "id": "40976",
@@ -10948,9 +10948,9 @@
       "place": "정선생태체험학습장",
       "organizer": "정선군",
       "contact": "1600-3962",
-      "registration_period": "2026년6월23일~2026년7월22일",
+      "registration_period": "2026년6월23일~2026년8월31일",
       "homepage": "http://jsrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41655"
     },
     {
@@ -11690,7 +11690,7 @@
     },
     {
       "id": "41815",
-      "name": "2026 푸르메런",
+      "name": "넥슨과 함께하는 2026 푸르메런",
       "date_display": "2026년11월7일",
       "date_iso": "2026-11-07",
       "distances": "10km,3km",
@@ -11848,9 +11848,9 @@
       "place": "삼락생태공원 럭비구장",
       "organizer": "사상구청,사상구체육회",
       "contact": "051-310-4128",
-      "registration_period": "2026년8월18일~2026년10월11일",
+      "registration_period": "2026년8월24일~2026년10월11일",
       "homepage": "http://ssecorun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41752"
     },
     {
@@ -12242,6 +12242,21 @@
       "homepage": "http://www.djrun.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41803"
+    },
+    {
+      "id": "41820",
+      "name": "2026 인천마라톤",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "풀,10km,5km",
+      "region": "인천",
+      "place": "인천아시아드 주경기장",
+      "organizer": "인천시,대한육연",
+      "contact": "1866-1718",
+      "registration_period": "2026년9월21일~2026년9월21일",
+      "homepage": "http://incheonmarathn.or.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41820"
     },
     {
       "id": "41749",
