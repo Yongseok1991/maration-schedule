@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T01:13:40.331Z",
+  "updatedAt": "2026-08-23T08:27:40.510Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 836,
   "races": [
@@ -9898,9 +9898,9 @@
       "place": "김해 대동생태체육공원 축구장",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년7월3일~2026년8월21일",
+      "registration_period": "2026년7월3일~2026년8월31일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41668"
     },
     {
@@ -10258,9 +10258,9 @@
       "place": "무심천체육공원",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년7월14일~2026년8월21일",
+      "registration_period": "2026년7월14일~2026년8월31일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41700"
     },
     {
@@ -11893,8 +11893,8 @@
       "place": "나주시 금성산 일원",
       "organizer": "나주시체육회",
       "contact": "061-331-6482",
-      "registration_period": "2026년8월24일~2026년9월10일",
-      "homepage": "http://www.geumsungsan.co.kr",
+      "registration_period": "2026년8월24일~2026년10월10일",
+      "homepage": "http://www.geumsungsan.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41816"
     },
