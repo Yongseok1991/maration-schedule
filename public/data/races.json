@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-23T08:27:40.510Z",
+  "updatedAt": "2026-08-23T16:22:53.605Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 836,
   "races": [
@@ -9225,7 +9225,7 @@
       "contact": "02-888-8805",
       "registration_period": "2026년5월13일~2026년8월23일",
       "homepage": "http://seoulhalfrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41581"
     },
     {
@@ -9645,7 +9645,7 @@
       "contact": "1666-9975",
       "registration_period": "2026년7월29일~2026년8월23일",
       "homepage": "http://n-runplus.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41750"
     },
     {
@@ -9690,7 +9690,7 @@
       "contact": "033-640-9851",
       "registration_period": "2026년8월10일~2026년8월23일",
       "homepage": "http://healingtour.gtdc.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41791"
     },
     {
@@ -10515,7 +10515,7 @@
       "contact": "010-8235-0759",
       "registration_period": "2026년8월2일~2026년8월23일",
       "homepage": "http://cafe.naver.com/browna6seu",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41656"
     },
     {
@@ -11640,7 +11640,7 @@
       "contact": "055-210-6103",
       "registration_period": "2026년8월24일~2026년10월9일",
       "homepage": "http://www.jinhaemarathon.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41754"
     },
     {
@@ -11850,7 +11850,7 @@
       "contact": "051-310-4128",
       "registration_period": "2026년8월24일~2026년10월11일",
       "homepage": "http://ssecorun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41752"
     },
     {
@@ -11895,7 +11895,7 @@
       "contact": "061-331-6482",
       "registration_period": "2026년8월24일~2026년10월10일",
       "homepage": "http://www.geumsungsan.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41816"
     },
     {
@@ -12135,7 +12135,7 @@
       "contact": "02-2135-1297",
       "registration_period": "2026년8월24일~2026년9월6일",
       "homepage": "http://nanumrun.or.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41817"
     },
     {
@@ -12210,7 +12210,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년8월24일~2026년10월18일",
       "homepage": "http://zeiss-smilerace.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41768"
     },
     {
