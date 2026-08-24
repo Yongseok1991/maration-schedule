@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-24T08:45:22.234Z",
+  "updatedAt": "2026-08-24T16:35:11.928Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 836,
   "races": [
@@ -9300,7 +9300,7 @@
       "contact": "010-9887-0071",
       "registration_period": "2026년4월1일~2026년8월24일",
       "homepage": "http://www.scultra100.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41559"
     },
     {
@@ -9898,9 +9898,9 @@
       "place": "김해 대동생태체육공원 축구장",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년7월3일~2026년8월31일",
+      "registration_period": "2026년7월3일~2026년8월24일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41668"
     },
     {
@@ -11085,7 +11085,7 @@
       "contact": "053-958-0660",
       "registration_period": "2026년8월3일~2026년8월24일",
       "homepage": "http://maraton.dbsfa365.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41596"
     },
     {
@@ -11790,7 +11790,7 @@
       "contact": "02-338-0344",
       "registration_period": "2026년8월25일~2026년10월9일",
       "homepage": "http://heritagerun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41696"
     },
     {
