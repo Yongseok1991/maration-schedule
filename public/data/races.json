@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-24T16:35:11.928Z",
+  "updatedAt": "2026-08-25T01:09:43.554Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 836,
+  "count": 838,
   "races": [
     {
       "id": "40976",
@@ -9838,9 +9838,9 @@
       "place": "구일역 하부 인라인스케이트장",
       "organizer": "구로구육상연맹",
       "contact": "010-7734-3840",
-      "registration_period": "2026년8월3일~2026년8월18일",
+      "registration_period": "2026년8월3일~2026년8월31일",
       "homepage": "http://cafe.daum.net/guro-run/LvM7/45",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41734"
     },
     {
@@ -10712,6 +10712,21 @@
       "homepage": "http://b.kakao.com/views/kakaofriendsrun",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41813"
+    },
+    {
+      "id": "41822",
+      "name": "2026 하트런",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "올림픽공원 피크닉장",
+      "organizer": "하트-하트재단",
+      "contact": "070-4350-5663",
+      "registration_period": "2026년8월24일~2026년9월11일",
+      "homepage": "http://heartrun.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41822"
     },
     {
       "id": "41434",
@@ -11942,6 +11957,21 @@
       "homepage": "http://maplerun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41760"
+    },
+    {
+      "id": "41821",
+      "name": "제2회 한강 브릿지 런",
+      "date_display": "2026년11월14일",
+      "date_iso": "2026-11-14",
+      "distances": "65km",
+      "region": "서울",
+      "place": "구리한강시민공원 주차장",
+      "organizer": "파브코리아",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년8월21일~2026년11월13일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41821"
     },
     {
       "id": "41522",
