@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-26T08:40:58.780Z",
+  "updatedAt": "2026-08-26T16:47:08.240Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 841,
   "races": [
@@ -9660,7 +9660,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년8월6일~2026년8월26일",
       "homepage": "http://egg-run.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41772"
     },
     {
@@ -11338,9 +11338,9 @@
       "place": "청도공설운동장",
       "organizer": "청도군체육회, 대구일보",
       "contact": "1600-3949",
-      "registration_period": "2026년7월1일~2026년8월28일",
+      "registration_period": "2026년7월1일~2026년7월31일",
       "homepage": "http://청도반시마라톤.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41621"
     },
     {
@@ -11563,9 +11563,9 @@
       "place": "김천종합스포츠타운",
       "organizer": "김천시체육회, 매일신문사",
       "contact": "1600-3949",
-      "registration_period": "2026년7월15일~2026년9월18일",
+      "registration_period": "2026년7월15일~2026년8월24일",
       "homepage": "http://gcmarathon.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41654"
     },
     {
