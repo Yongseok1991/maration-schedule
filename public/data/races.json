@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-26T01:12:01.208Z",
+  "updatedAt": "2026-08-26T08:40:58.780Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 838,
+  "count": 841,
   "races": [
     {
       "id": "40976",
@@ -11164,6 +11164,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41751"
     },
     {
+      "id": "41823",
+      "name": "2026 하남시 시장기 당정마라톤",
+      "date_display": "2026년10월18일",
+      "date_iso": "2026-10-18",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "하남스타필드 앞 당정뜰",
+      "organizer": "하남시육상연맹",
+      "contact": "02-515-9033",
+      "registration_period": "2026년9월2일~2026년9월18일",
+      "homepage": "http://runcop.com/event/hanam",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41823"
+    },
+    {
       "id": "41637",
       "name": "2026 제3회 감성런",
       "date_display": "2026년10월24일",
@@ -11974,6 +11989,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41821"
     },
     {
+      "id": "41825",
+      "name": "2026 영종 하늘길 마라톤",
+      "date_display": "2026년11월14일",
+      "date_iso": "2026-11-14",
+      "distances": "하프,10km,5km",
+      "region": "인천",
+      "place": "인천, 영종 씨사이드파크 일대",
+      "organizer": "리빗",
+      "contact": "02-852-0077",
+      "registration_period": "2026년8월24일~2026년10월8일",
+      "homepage": "http://www.leaveit.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41825"
+    },
+    {
       "id": "41522",
       "name": "제24회 대모산,구룡산 트레일런",
       "date_display": "2026년11월15일",
@@ -12557,6 +12587,21 @@
       "homepage": "http://youngrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41801"
+    },
+    {
+      "id": "41824",
+      "name": "2026 코리아 시즌 레이스",
+      "date_display": "2026년12월26일",
+      "date_iso": "2026-12-26",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "상암월드컵공원 평화광장",
+      "organizer": "(사)한국경비원협회중앙회",
+      "contact": "02-888-8875",
+      "registration_period": "2026년8월25일~2026년12월16일",
+      "homepage": "http://k-run.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41824"
     },
     {
       "id": "41806",
