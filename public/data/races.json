@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-27T07:24:19.515Z",
+  "updatedAt": "2026-08-27T18:51:20.573Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 841,
   "races": [
@@ -10425,7 +10425,7 @@
       "contact": "070-7706-1011",
       "registration_period": "2026년7월8일~2026년8월27일",
       "homepage": "http://www.runsense.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41677"
     },
     {
@@ -10975,7 +10975,7 @@
       "date_iso": "2026-10-17",
       "distances": "하프,10km,5km",
       "region": "서울",
-      "place": "신정교 하부 영롱이 억새구장",
+      "place": "도림천역 600미터 영롱이 억새구장",
       "organizer": "(사)행복한동행",
       "contact": "02-2636-7775",
       "registration_period": "2026년7월7일~2026년10월7일",
@@ -12605,7 +12605,7 @@
     },
     {
       "id": "41806",
-      "name": "2026 한강런",
+      "name": "2026 한강런 준비중",
       "date_display": "2026년12월28일",
       "date_iso": "2026-12-28",
       "distances": "10km,5km",
