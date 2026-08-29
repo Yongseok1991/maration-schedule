@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-29T00:24:58.365Z",
+  "updatedAt": "2026-08-29T13:38:04.013Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 845,
   "races": [
@@ -9184,21 +9184,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41732"
     },
     {
-      "id": "41642",
-      "name": "포항호미반도트레일런",
-      "date_display": "2026년8월30일",
-      "date_iso": "2026-08-30",
-      "distances": "15km",
-      "region": "경북",
-      "place": "도구해수욕장",
-      "organizer": "파브코리아",
-      "contact": "010-3526-9120",
-      "registration_period": "2026년8월15일~2026년8월29일",
-      "homepage": "http://www.mtrailrun.kr/",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41642"
-    },
-    {
       "id": "41353",
       "name": "2026대구세계마스터즈 하프마라톤대회",
       "date_display": "2026년8월30일",
@@ -9497,21 +9482,6 @@
       "homepage": "http://mara1080.com/event/a9780087-8fc3-4849-a234-7659978f6792",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41635"
-    },
-    {
-      "id": "41787",
-      "name": "2026 문경새재 트레일런",
-      "date_display": "2026년9월6일",
-      "date_iso": "2026-09-06",
-      "distances": "13km",
-      "region": "경북",
-      "place": "문경새재도립공원 제1주차장",
-      "organizer": "파브코리아",
-      "contact": "010-3526-9120",
-      "registration_period": "2026년8월10일~2026년9월5일",
-      "homepage": "http://www.mtrailrun.kr/",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41787"
     },
     {
       "id": "41420",
@@ -11179,6 +11149,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41823"
     },
     {
+      "id": "41642",
+      "name": "서울 대모-구룡산트레일런",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "14.6km",
+      "region": "서울",
+      "place": "수서역6번출구",
+      "organizer": "파브코리아",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년8월15일~2026년10월23일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41642"
+    },
+    {
       "id": "41637",
       "name": "2026 제3회 감성런",
       "date_display": "2026년10월24일",
@@ -11627,6 +11612,21 @@
       "homepage": "http://seoulrun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41790"
+    },
+    {
+      "id": "41787",
+      "name": "남한산성트레일",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "13km",
+      "region": "경기",
+      "place": "산성로타리",
+      "organizer": "명품트레일런",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년8월29일~2026년11월6일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41787"
     },
     {
       "id": "41539",
