@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-28T09:39:00.787Z",
+  "updatedAt": "2026-08-29T00:24:58.365Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 841,
+  "count": 845,
   "races": [
     {
       "id": "40976",
@@ -9014,7 +9014,7 @@
       "organizer": "JYD자연을달린다",
       "contact": "010-4539-6887",
       "registration_period": "2026년4월1일~2026년7월15일",
-      "homepage": "http://jyd.creatorlink.net",
+      "homepage": "http://jyd.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41508"
     },
@@ -10140,7 +10140,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년7월8일~2026년8월28일",
       "homepage": "http://songdorun.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41670"
     },
     {
@@ -10800,7 +10800,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년7월10일~2026년8월28일",
       "homepage": "http://mgmarathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41683"
     },
     {
@@ -10845,7 +10845,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년7월31일~2026년8월28일",
       "homepage": "http://bjlee.casports.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41742"
     },
     {
@@ -11312,6 +11312,21 @@
       "homepage": "http://runwithgo.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41798"
+    },
+    {
+      "id": "41829",
+      "name": "2026 담양 트레일런 데이브레이크",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "29km",
+      "region": "전남",
+      "place": "담양군 일원",
+      "organizer": "담양군",
+      "contact": "070-5088-1180",
+      "registration_period": "2026년8월27일~2026년10월24일",
+      "homepage": "http://projectruntrip.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41829"
     },
     {
       "id": "41477",
@@ -12004,6 +12019,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41825"
     },
     {
+      "id": "41831",
+      "name": "2026 통큰런",
+      "date_display": "2026년11월14일",
+      "date_iso": "2026-11-14",
+      "distances": "10km,5km,3km(가족런)",
+      "region": "서울",
+      "place": "상암 월드컵공원 평화광장",
+      "organizer": "롯데마트, 롯데슈퍼, 기아대책",
+      "contact": "070-8656-9035",
+      "registration_period": "2026년9월14일~2026년10월23일",
+      "homepage": "http://tongkeun-run.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41831"
+    },
+    {
       "id": "41522",
       "name": "제24회 대모산,구룡산 트레일런",
       "date_display": "2026년11월15일",
@@ -12199,6 +12229,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41817"
     },
     {
+      "id": "41830",
+      "name": "제16회 대전서구청장배 마라톤대회",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "10km,5km,가족코스,건강코스",
+      "region": "대전",
+      "place": "대전 유성구 엑스포 다리밑",
+      "organizer": "대전서구육상연맹/중걷마런",
+      "contact": "042-543-5210",
+      "registration_period": "2026년8월28일~2026년10월28일",
+      "homepage": "http://JGMRUN.COM",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41830"
+    },
+    {
       "id": "41673",
       "name": "2026 세정 가을바람 유러닝페스타",
       "date_display": "2026년11월21일",
@@ -12317,6 +12362,21 @@
       "homepage": "http://incheonmarathn.or.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41820"
+    },
+    {
+      "id": "41832",
+      "name": "2026 인천마라톤",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "풀,10km,5km",
+      "region": "인천",
+      "place": "인천아시아드 주경기장, 운서역",
+      "organizer": "인천시,대한육상경기연맹",
+      "contact": "02-3012-0187",
+      "registration_period": "2026년9월7일~2026년9월8일",
+      "homepage": "http://incheonmarathon.or.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41832"
     },
     {
       "id": "41749",
