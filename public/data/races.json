@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-29T13:38:04.013Z",
+  "updatedAt": "2026-08-29T19:12:52.992Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 845,
   "races": [
@@ -10320,7 +10320,7 @@
       "contact": "055-210-6104",
       "registration_period": "2026년7월13일~2026년8월29일",
       "homepage": "http://www.knmarathon.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41660"
     },
     {
