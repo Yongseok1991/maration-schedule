@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-30T13:33:43.302Z",
+  "updatedAt": "2026-08-30T19:03:23.999Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 845,
+  "count": 846,
   "races": [
     {
       "id": "40976",
@@ -9420,7 +9420,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년12월18일~2026년8월30일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250626120820&csno=20191016122754#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41254"
     },
     {
@@ -9435,7 +9435,7 @@
       "contact": "02-569-5551",
       "registration_period": "2026년5월13일~2026년8월30일",
       "homepage": "http://kdjrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41582"
     },
     {
@@ -9930,7 +9930,7 @@
       "contact": "02-6285-7428",
       "registration_period": "2026년7월16일~2026년8월30일",
       "homepage": "http://cityforestival.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41704"
     },
     {
@@ -10065,7 +10065,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년7월13일~2026년8월30일",
       "homepage": "http://handonrun.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41630"
     },
     {
@@ -10500,7 +10500,7 @@
       "contact": "02-338-6564",
       "registration_period": "2026년7월1일~2026년8월30일",
       "homepage": "http://hangeulrun.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41664"
     },
     {
@@ -10605,7 +10605,7 @@
       "contact": "010-7469-1526",
       "registration_period": "2026년7월10일~2026년8월30일",
       "homepage": "http://samsamis.com/57",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41665"
     },
     {
@@ -10877,6 +10877,21 @@
       "homepage": "http://cafe.naver.com/ydprun1/646",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41794"
+    },
+    {
+      "id": "41835",
+      "name": "제22회 금천구청장배 건강달리기",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "안양천 다목적광장",
+      "organizer": "금천구청",
+      "contact": "010-9118-7632",
+      "registration_period": "2026년9월1일~2026년9월11일",
+      "homepage": "http://www.gcrun.kr/s1p1",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41835"
     },
     {
       "id": "41255",
@@ -11325,7 +11340,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년3월16일~2026년8월30일",
       "homepage": "http://csmarathon.co.kr/csmarathon/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41477"
     },
     {
@@ -12285,7 +12300,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년8월31일~2026년10월16일",
       "homepage": "http://giverun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41789"
     },
     {
@@ -12420,7 +12435,7 @@
       "contact": "070-4571-8805",
       "registration_period": "2026년8월10일~2026년8월30일",
       "homepage": "http://mokyokrun.shop",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41685"
     },
     {
