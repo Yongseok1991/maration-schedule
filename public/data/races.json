@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-31T03:46:21.976Z",
+  "updatedAt": "2026-08-31T15:51:17.453Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 846,
+  "count": 848,
   "races": [
     {
       "id": "40976",
@@ -9555,7 +9555,7 @@
       "contact": "02-6285-7428",
       "registration_period": "2026년7월27일~2026년8월31일",
       "homepage": "http://www.herorace.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41708"
     },
     {
@@ -9570,7 +9570,7 @@
       "contact": "010-5056-1523",
       "registration_period": "2026년7월16일~2026년8월31일",
       "homepage": "http://rocknrun.kr/REDFOODRACE",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41709"
     },
     {
@@ -9675,7 +9675,7 @@
       "contact": "02-424-2195",
       "registration_period": "2025년11월13일~2026년8월31일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20250910133652&csno=20191227110239#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41192"
     },
     {
@@ -9765,7 +9765,7 @@
       "contact": "054-1600-4525",
       "registration_period": "2026년6월29일~2026년8월31일",
       "homepage": "http://energyrun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41652"
     },
     {
@@ -9793,7 +9793,7 @@
       "place": "대전엑스포시민광장",
       "organizer": "월드런",
       "contact": "042-638-1080",
-      "registration_period": "2026년7월15일~2026년8월31일",
+      "registration_period": "2026년7월15일~2026년9월1일",
       "homepage": "http://mara1080.com/event/0674df45-473c-4182-bed4-d15582fb8c73/guide/overview",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41702"
@@ -9810,7 +9810,7 @@
       "contact": "010-7734-3840",
       "registration_period": "2026년8월3일~2026년8월31일",
       "homepage": "http://cafe.daum.net/guro-run/LvM7/45",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41734"
     },
     {
@@ -9898,7 +9898,7 @@
       "place": "문경종합온천",
       "organizer": "문경시, 문경시 청년센터",
       "contact": "010-2805-9016",
-      "registration_period": "2026년7월13일~2026년8월31일",
+      "registration_period": "2026년7월13일~2026년9월11일",
       "homepage": "http://www.omijarun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41694"
@@ -9915,7 +9915,7 @@
       "contact": "1588-2341",
       "registration_period": "2026년7월13일~2026년8월31일",
       "homepage": "http://kgseasiderun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41693"
     },
     {
@@ -10078,9 +10078,9 @@
       "place": "평화의 공원 평화광장",
       "organizer": "마포구체육회",
       "contact": "042-638-1080",
-      "registration_period": "2026년6월23일~2026년8월20일",
+      "registration_period": "2026년6월23일~2026년9월1일",
       "homepage": "http://mara1080.com/event/53b338c6-d38a-47b3-9479-080b00c6113a",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41657"
     },
     {
@@ -10153,9 +10153,9 @@
       "place": "서산스포츠테마파크",
       "organizer": "서산시체육회",
       "contact": "042-638-1080",
-      "registration_period": "2026년3월20일~2026년7월14일",
+      "registration_period": "2026년3월20일~2026년9월2일",
       "homepage": "http://mara1080.com/event/fcaa0bc8-1489-47c3-8fec-8e5a5c17284e",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41491"
     },
     {
@@ -10200,7 +10200,7 @@
       "contact": "010-7469-1526",
       "registration_period": "2026년6월19일~2026년8월31일",
       "homepage": "http://samsamis.com/34",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41649"
     },
     {
@@ -10230,7 +10230,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년7월14일~2026년8월31일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41700"
     },
     {
@@ -10245,7 +10245,7 @@
       "contact": "033-244-7758",
       "registration_period": "2026년7월16일~2026년8월31일",
       "homepage": "http://www.yonma.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41722"
     },
     {
@@ -10275,7 +10275,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년4월13일~2026년8월31일",
       "homepage": "http://www.admarathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41516"
     },
     {
@@ -10305,7 +10305,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년5월19일~2026년8월31일",
       "homepage": "http://www.hongcheonrun.net/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41571"
     },
     {
@@ -10350,7 +10350,7 @@
       "contact": "010-3482-6615",
       "registration_period": "2026년8월1일~2026년8월31일",
       "homepage": "http://감동의마라톤.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41711"
     },
     {
@@ -10800,7 +10800,7 @@
       "contact": "052-286-6605",
       "registration_period": "2026년7월27일~2026년8월31일",
       "homepage": "http://run.uaf.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41727"
     },
     {
@@ -10890,8 +10890,23 @@
       "contact": "010-9118-7632",
       "registration_period": "2026년9월1일~2026년9월11일",
       "homepage": "http://www.gcrun.kr/s1p1",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41835"
+    },
+    {
+      "id": "41837",
+      "name": "2026 당진황금들녘 건강마라톤",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "하프,10km,5km",
+      "region": "충남",
+      "place": "당진 삽교 관광단지 헬기장.",
+      "organizer": "당진시스포츠관광협회",
+      "contact": "010-2126-2019",
+      "registration_period": "2026년8월31일~2026년9월23일",
+      "homepage": "http://당진마라톤대회.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41837"
     },
     {
       "id": "41255",
@@ -10950,7 +10965,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년6월23일~2026년8월31일",
       "homepage": "http://jsrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41655"
     },
     {
@@ -11205,7 +11220,7 @@
       "contact": "063-832-0033",
       "registration_period": "2026년7월14일~2026년8월31일",
       "homepage": "http://iksangiverun.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41669"
     },
     {
@@ -11295,7 +11310,7 @@
       "contact": "043-222-2466",
       "registration_period": "2026년7월21일~2026년8월31일",
       "homepage": "http://forms.gle/ga7gKHnRJB7pfLFY6",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41770"
     },
     {
@@ -11655,7 +11670,7 @@
       "contact": "054-331-6029",
       "registration_period": "2026년9월1일~2026년9월30일",
       "homepage": "http://runyc.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41539"
     },
     {
@@ -11745,7 +11760,7 @@
       "contact": "02-1566-1936",
       "registration_period": "2026년9월1일~2026년10월25일",
       "homepage": "http://www.saverace.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41819"
     },
     {
@@ -12105,7 +12120,7 @@
       "contact": "052-269-1001",
       "registration_period": "2026년9월1일~2026년9월30일",
       "homepage": "http://영남알프스마라톤.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41565"
     },
     {
@@ -12360,7 +12375,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년9월1일~2026년10월1일",
       "homepage": "http://www.djrun.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41803"
     },
     {
@@ -12572,6 +12587,21 @@
       "homepage": "http://energyrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41762"
+    },
+    {
+      "id": "41833",
+      "name": "2026월드 레코드 국제 마라톤 축제 - 사웨",
+      "date_display": "2026년12월5일",
+      "date_iso": "2026-12-05",
+      "distances": "14km",
+      "region": "충남",
+      "place": "금산세계인삼엑스포광장",
+      "organizer": "전국마라톤협회",
+      "contact": "042- 638-1080",
+      "registration_period": "2026년8월31일~2026년9월20일",
+      "homepage": "http://mara1080.com/event/ccf77de8-1b14-4170-afcb-c2eeaee1a78d/guide/overview",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41833"
     },
     {
       "id": "41710",
