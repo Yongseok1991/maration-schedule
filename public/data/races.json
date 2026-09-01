@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T13:07:02.160Z",
+  "updatedAt": "2026-09-01T19:12:56.915Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 848,
   "races": [
@@ -9795,7 +9795,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년7월15일~2026년9월1일",
       "homepage": "http://mara1080.com/event/0674df45-473c-4182-bed4-d15582fb8c73/guide/overview",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41702"
     },
     {
@@ -9990,7 +9990,7 @@
       "contact": "032-710-0260",
       "registration_period": "2026년7월28일~2026년9월1일",
       "homepage": "http://namdongrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41793"
     },
     {
@@ -10080,7 +10080,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년6월23일~2026년9월1일",
       "homepage": "http://mara1080.com/event/53b338c6-d38a-47b3-9479-080b00c6113a",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41657"
     },
     {
@@ -11175,7 +11175,7 @@
       "contact": "02-515-9033",
       "registration_period": "2026년9월2일~2026년9월18일",
       "homepage": "http://runcop.com/event/hanam",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41823"
     },
     {
