@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-02T02:58:42.666Z",
+  "updatedAt": "2026-09-02T12:34:25.329Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 848,
+  "count": 857,
   "races": [
     {
       "id": "40976",
@@ -11308,7 +11308,7 @@
       "place": "무심천체육공원",
       "organizer": "청주충북환경운동연합",
       "contact": "043-222-2466",
-      "registration_period": "2026년7월21일~2026년8월31일",
+      "registration_period": "2026년9월8일~2026년9월22일",
       "homepage": "http://forms.gle/ga7gKHnRJB7pfLFY6",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41770"
@@ -11974,6 +11974,51 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41816"
     },
     {
+      "id": "41846",
+      "name": "2026 청양군 칠갑마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "하프,14km,7km",
+      "region": "충남",
+      "place": "청양군 청양목재문화자연사체험관",
+      "organizer": "청양군육상연맹",
+      "contact": "010-4401-2829",
+      "registration_period": "2026년9월2일~2026년9월2일",
+      "homepage": "http://cymarathon.imweb.me/index?preview_mode=1",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41846"
+    },
+    {
+      "id": "41844",
+      "name": "2026 경상북도 신도시 마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "하프,10km,5km",
+      "region": "경북",
+      "place": "경북도청 천년숲 앞",
+      "organizer": "경상북도, 경상북도체육회",
+      "contact": "070-7707-2808",
+      "registration_period": "2026년9월1일~2026년10월8일",
+      "homepage": "http://1004.tbc.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41844"
+    },
+    {
+      "id": "41843",
+      "name": "2026 경기화성 생태마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "하프,10km,5km,5km 가족달리기",
+      "region": "경기",
+      "place": "경기 화성 궁평항 일대",
+      "organizer": "경기신문",
+      "contact": "010-4573-3330",
+      "registration_period": "2026년9월4일~2026년10월18일",
+      "homepage": "http://kiccrace.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41843"
+    },
+    {
       "id": "41528",
       "name": "2026 포항마라톤챔피언십",
       "date_display": "2026년11월14일",
@@ -12274,6 +12319,66 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41830"
     },
     {
+      "id": "41847",
+      "name": "2026 FILA RUN & ESPRESSO",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "10km",
+      "region": "서울",
+      "place": "상암 월드컵공원 평화광장",
+      "organizer": "휠라코리아",
+      "contact": "02-334-6274",
+      "registration_period": "2026년8월31일~2026년9월10일",
+      "homepage": "http://www.fila.co.kr/pages/fila-run-espresso-10k-seoul",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41847"
+    },
+    {
+      "id": "41845",
+      "name": "2026 손기정평화마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "풀,하프,10km,6km코스",
+      "region": "경기",
+      "place": "파주 임진각",
+      "organizer": "손기정기념재단",
+      "contact": "02-364-1936",
+      "registration_period": "2026년8월9일~2026년9월14일",
+      "homepage": "http://sonkeechungrun.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41845"
+    },
+    {
+      "id": "41838",
+      "name": "제12회 창원특례시장배 광려천마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "하프,10km",
+      "region": "경남",
+      "place": "창원시 광려천수변공원",
+      "organizer": "창원시육상연맹",
+      "contact": "070-4443-4392",
+      "registration_period": "2026년9월1일~2026년9월15일",
+      "homepage": "http://www.cwaaf.kr/bbs/board.php?bo_table=rally&wr_id=3",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41838"
+    },
+    {
+      "id": "41842",
+      "name": "26회 창원통일마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "5km",
+      "region": "경남",
+      "place": "창원종합운동장 보조경기장",
+      "organizer": "창원통일마라톤대회조직위원회",
+      "contact": "055-285-6158",
+      "registration_period": "2026년9월14일~2026년10월23일",
+      "homepage": "http://www.tongilmarathon.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41842"
+    },
+    {
       "id": "41673",
       "name": "2026 세정 가을바람 유러닝페스타",
       "date_display": "2026년11월21일",
@@ -12407,6 +12512,21 @@
       "homepage": "http://incheonmarathon.or.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41832"
+    },
+    {
+      "id": "41841",
+      "name": "2026 무주반딧불평화마라톤",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "하프,10km,5km",
+      "region": "전북",
+      "place": "무주 등나무운동장",
+      "organizer": "무주마라톤협회/평화마라톤조직위",
+      "contact": "010-2116-0148",
+      "registration_period": "2026년9월1일~2026년10월28일",
+      "homepage": "http://mujumarathon.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41841"
     },
     {
       "id": "41749",
@@ -12647,6 +12767,21 @@
       "homepage": "http://gibukidsrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41812"
+    },
+    {
+      "id": "41840",
+      "name": "제3회 긍정의힘 마라톤",
+      "date_display": "2026년12월12일",
+      "date_iso": "2026-12-12",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "신정교 하부 영롱이 억새구장",
+      "organizer": "(사)한국유튜브방송협회",
+      "contact": "02-336-1588",
+      "registration_period": "2026년8월30일~2026년11월22일",
+      "homepage": "http://www.powerrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41840"
     },
     {
       "id": "41745",
