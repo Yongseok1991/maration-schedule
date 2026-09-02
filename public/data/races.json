@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-02T12:34:25.329Z",
+  "updatedAt": "2026-09-02T19:13:47.665Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 857,
   "races": [
@@ -10155,7 +10155,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년3월20일~2026년9월2일",
       "homepage": "http://mara1080.com/event/fcaa0bc8-1489-47c3-8fec-8e5a5c17284e",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41491"
     },
     {
@@ -10228,9 +10228,9 @@
       "place": "무심천체육공원",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년7월14일~2026년8월31일",
+      "registration_period": "2026년7월14일~2026년9월7일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41700"
     },
     {
@@ -11985,7 +11985,7 @@
       "contact": "010-4401-2829",
       "registration_period": "2026년9월2일~2026년9월2일",
       "homepage": "http://cymarathon.imweb.me/index?preview_mode=1",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41846"
     },
     {
@@ -12778,7 +12778,7 @@
       "place": "신정교 하부 영롱이 억새구장",
       "organizer": "(사)한국유튜브방송협회",
       "contact": "02-336-1588",
-      "registration_period": "2026년8월30일~2026년11월22일",
+      "registration_period": "2026년8월30일~2026년12월6일",
       "homepage": "http://www.powerrun.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41840"
