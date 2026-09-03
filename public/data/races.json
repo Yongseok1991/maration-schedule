@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-03T03:01:27.351Z",
+  "updatedAt": "2026-09-03T12:37:06.959Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 857,
+  "count": 860,
   "races": [
     {
       "id": "40976",
@@ -10198,9 +10198,9 @@
       "place": "완주군 고산자연휴양림",
       "organizer": "완주군/삼삼이즈",
       "contact": "010-7469-1526",
-      "registration_period": "2026년6월19일~2026년8월31일",
+      "registration_period": "2026년6월19일~2026년9월31일",
       "homepage": "http://samsamis.com/34",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41649"
     },
     {
@@ -10348,9 +10348,9 @@
       "place": "상암동 평화의 광장",
       "organizer": "S-OIL, 한국장애인재활협회",
       "contact": "010-3482-6615",
-      "registration_period": "2026년8월1일~2026년8월31일",
+      "registration_period": "2026년8월1일~2026년9월9일",
       "homepage": "http://감동의마라톤.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41711"
     },
     {
@@ -10603,9 +10603,9 @@
       "place": "살곶이대운동장(축구장)",
       "organizer": "성동구체육회 / 성동구육상연맹",
       "contact": "010-7469-1526",
-      "registration_period": "2026년7월10일~2026년8월30일",
+      "registration_period": "2026년7월10일~2026년9월30일",
       "homepage": "http://samsamis.com/57",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41665"
     },
     {
@@ -12019,6 +12019,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41843"
     },
     {
+      "id": "41853",
+      "name": "강남하프마라톤(제17회강남구청장배육상대회)",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "하프,10km",
+      "region": "서울",
+      "place": "강남구 대치유수지 체육공원",
+      "organizer": "강남구육상연맹",
+      "contact": "010-6364-4749",
+      "registration_period": "2026년9월3일~2026년10월23일",
+      "homepage": "http://comport11.oopy.io/gangnamhalfmarathon",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41853"
+    },
+    {
+      "id": "41848",
+      "name": "제3회 자유민주 마라톤대회",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "10km,6.1km",
+      "region": "서울",
+      "place": "서울시청",
+      "organizer": "민주화운동기념사업회",
+      "contact": "031-575-7243",
+      "registration_period": "2026년9월4일~2026년9월30일",
+      "homepage": "http://www.610run.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41848"
+    },
+    {
       "id": "41528",
       "name": "2026 포항마라톤챔피언십",
       "date_display": "2026년11월14일",
@@ -12752,6 +12782,21 @@
       "homepage": "http://roadracing.co.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41802"
+    },
+    {
+      "id": "41851",
+      "name": "제20회 양산전국하프마라톤",
+      "date_display": "2026년12월6일",
+      "date_iso": "2026-12-06",
+      "distances": "하프,10km,5km",
+      "region": "경남",
+      "place": "양산종합운동장",
+      "organizer": "양산시체육회, 양산육상연맹",
+      "contact": "051-867-0517",
+      "registration_period": "2026년10월1일~2026년10월20일",
+      "homepage": "http://ysmarathon.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41851"
     },
     {
       "id": "41812",
