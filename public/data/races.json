@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-03T12:37:06.959Z",
+  "updatedAt": "2026-09-03T19:06:23.600Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 860,
   "races": [
@@ -12015,7 +12015,7 @@
       "contact": "010-4573-3330",
       "registration_period": "2026년9월4일~2026년10월18일",
       "homepage": "http://kiccrace.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41843"
     },
     {
@@ -12045,7 +12045,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년9월4일~2026년9월30일",
       "homepage": "http://www.610run.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41848"
     },
     {
