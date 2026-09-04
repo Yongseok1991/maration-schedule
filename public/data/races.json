@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T03:04:28.745Z",
+  "updatedAt": "2026-09-04T12:31:08.016Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 860,
   "races": [
@@ -9349,21 +9349,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41650"
     },
     {
-      "id": "41707",
-      "name": "2026 이일선마라톤",
-      "date_display": "2026년9월5일",
-      "date_iso": "2026-09-05",
-      "distances": "10km,4.4km걷기",
-      "region": "경북",
-      "place": "울릉도내 나리분지",
-      "organizer": "이일선기념사업회",
-      "contact": "010-6353-7227",
-      "registration_period": "2026년7월14일~2026년8월18일",
-      "homepage": "http://forms.gle/6Y88RJqW6QCZkZoE7",
-      "status": "",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41707"
-    },
-    {
       "id": "41032",
       "name": "희망드림 제23회 새벽강변 국제마라톤",
       "date_display": "2026년9월6일",
@@ -10127,6 +10112,21 @@
       "homepage": "http://modern-infinity-9e6.notion.site/2026-395918810cc28075b602c0e076d8d3ea",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41684"
+    },
+    {
+      "id": "41707",
+      "name": "2026 이일선마라톤",
+      "date_display": "2026년10월3일",
+      "date_iso": "2026-10-03",
+      "distances": "10km,4.4km걷기",
+      "region": "경북",
+      "place": "울릉도내 나리분지",
+      "organizer": "이일선기념사업회",
+      "contact": "010-6353-7227",
+      "registration_period": "2026년7월14일~2026년8월18일",
+      "homepage": "http://forms.gle/6Y88RJqW6QCZkZoE7",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41707"
     },
     {
       "id": "41316",
@@ -11983,9 +11983,9 @@
       "place": "청양군 청양목재문화자연사체험관",
       "organizer": "청양군육상연맹",
       "contact": "010-4401-2829",
-      "registration_period": "2026년9월2일~2026년9월2일",
+      "registration_period": "2026년9월2일~2026년10월15일",
       "homepage": "http://cymarathon.imweb.me/index?preview_mode=1",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41846"
     },
     {
@@ -12740,7 +12740,7 @@
     },
     {
       "id": "41833",
-      "name": "2026월드 레코드 국제 마라톤 축제 - 사웨",
+      "name": "사바스티안 사웨 초청기념 월드레코드 마라톤축제",
       "date_display": "2026년12월5일",
       "date_iso": "2026-12-05",
       "distances": "14km",
