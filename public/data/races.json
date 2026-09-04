@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T12:31:08.016Z",
+  "updatedAt": "2026-09-04T18:49:15.227Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 860,
   "races": [
@@ -10650,7 +10650,7 @@
       "contact": "010-4281-4624",
       "registration_period": "2026년7월8일~2026년9월4일",
       "homepage": "http://jejuwindmillrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41716"
     },
     {
@@ -10845,7 +10845,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년8월7일~2026년9월4일",
       "homepage": "http://futurerun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41769"
     },
     {
