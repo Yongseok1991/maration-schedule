@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-07T13:59:22.166Z",
+  "updatedAt": "2026-09-07T19:36:13.137Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 866,
   "races": [
@@ -10230,7 +10230,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년7월14일~2026년9월7일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41700"
     },
     {
@@ -11085,7 +11085,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년9월8일~2026년9월28일",
       "homepage": "http://xn--o80b37in2b02lesgqqcj12a.kr/index.asp",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41857"
     },
     {
@@ -11340,7 +11340,7 @@
       "contact": "043-222-2466",
       "registration_period": "2026년9월8일~2026년9월22일",
       "homepage": "http://forms.gle/ga7gKHnRJB7pfLFY6",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41770"
     },
     {
@@ -12885,7 +12885,7 @@
       "contact": "042- 638-1080",
       "registration_period": "2026년9월8일~2026년10월30일",
       "homepage": "http://www.mara1080.com/event/ccf77de8-1b14-4170-afcb-c2eeaee1a78d",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41856"
     },
     {
