@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-07T02:59:45.731Z",
+  "updatedAt": "2026-09-07T13:59:22.166Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 865,
+  "count": 866,
   "races": [
     {
       "id": "40976",
@@ -11582,6 +11582,21 @@
       "homepage": "http://taejongdaezombie.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41809"
+    },
+    {
+      "id": "41854",
+      "name": "2026 당진원런 마라톤",
+      "date_display": "2026년10월31일",
+      "date_iso": "2026-10-31",
+      "distances": "10km,5km",
+      "region": "충남",
+      "place": "석문방조제 인근",
+      "organizer": "당진 마라톤 연합회",
+      "contact": "010-4520-2737",
+      "registration_period": "2026년9월3일~2026년9월31일",
+      "homepage": "http://www.instagram.com/drt_2022",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41854"
     },
     {
       "id": "41259",
