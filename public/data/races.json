@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-06T18:01:56.376Z",
+  "updatedAt": "2026-09-07T02:59:45.731Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 860,
+  "count": 865,
   "races": [
     {
       "id": "40976",
@@ -10699,6 +10699,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41822"
     },
     {
+      "id": "41747",
+      "name": "진안트레일레이스",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "16km",
+      "region": "전북",
+      "place": "국립진안고원산림치유원",
+      "organizer": "주식회사 락앤런",
+      "contact": "063-353-2025",
+      "registration_period": "2026년8월10일~2026년9월20일",
+      "homepage": "http://rocknrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41747"
+    },
+    {
       "id": "41434",
       "name": "2026 MBN 전국 나주 마라톤대회",
       "date_display": "2026년10월11일",
@@ -10819,21 +10834,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41742"
     },
     {
-      "id": "41747",
-      "name": "진안고원 포레스티벌 Run & Heal",
-      "date_display": "2026년10월11일",
-      "date_iso": "2026-10-11",
-      "distances": "16km",
-      "region": "전북",
-      "place": "국립진안고원산림치유원",
-      "organizer": "주식회사 락앤런",
-      "contact": "063-353-2025",
-      "registration_period": "2026년8월10일~2026년9월15일",
-      "homepage": "http://rocknrun.kr",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41747"
-    },
-    {
       "id": "41769",
       "name": "2026 인천로봇랜드 퓨처런",
       "date_display": "2026년10월11일",
@@ -10907,6 +10907,21 @@
       "homepage": "http://당진마라톤대회.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41837"
+    },
+    {
+      "id": "41852",
+      "name": "함께런 러닝 페스티벌",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "미사경정공원 관리동 광장",
+      "organizer": "미사강변종합사회복지관, 진선재",
+      "contact": "02-515-9033",
+      "registration_period": "2026년9월4일~2026년9월20일",
+      "homepage": "http://runcop.com/event/hamkkerun",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41852"
     },
     {
       "id": "41255",
@@ -11057,6 +11072,21 @@
       "homepage": "http://ujb.my-race.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41800"
+    },
+    {
+      "id": "41857",
+      "name": "2026 억새노을마라톤대회",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "10km,5km",
+      "region": "광주",
+      "place": "상무시민공원",
+      "organizer": "전남광주통합특별시 서구",
+      "contact": "061-375-1201",
+      "registration_period": "2026년9월8일~2026년9월28일",
+      "homepage": "http://xn--o80b37in2b02lesgqqcj12a.kr/index.asp",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41857"
     },
     {
       "id": "41303",
@@ -11342,6 +11372,21 @@
       "homepage": "http://projectruntrip.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41829"
+    },
+    {
+      "id": "41858",
+      "name": "불닭 버닝 트레일런",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "5km,23K,13K",
+      "region": "강원",
+      "place": "대관령 삼양라운드힐",
+      "organizer": "프립, 러너킹",
+      "contact": "070-8843-0320",
+      "registration_period": "2026년9월6일~2026년9월6일",
+      "homepage": "http://burningfesta.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41858"
     },
     {
       "id": "41477",
@@ -11777,6 +11822,21 @@
       "homepage": "http://purmerun.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41815"
+    },
+    {
+      "id": "41849",
+      "name": "런텐 13차 레이스 JUST RUN10 대전",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "10km,5km",
+      "region": "대전",
+      "place": "엑스포다리 인근",
+      "organizer": "(주)러닝브레이커,전국러닝협회",
+      "contact": "042-710-2058",
+      "registration_period": "2026년9월2일~2026년10월10일",
+      "homepage": "http://runten.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41849"
     },
     {
       "id": "41634",
@@ -12797,6 +12857,21 @@
       "homepage": "http://ysmarathon.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41851"
+    },
+    {
+      "id": "41856",
+      "name": "사바스티안 사웨 초청기념 월드레코드 마라톤축제",
+      "date_display": "2026년12월6일",
+      "date_iso": "2026-12-06",
+      "distances": "10km",
+      "region": "충남",
+      "place": "금산세계인삼엑스포광장",
+      "organizer": "전국마라톤협회",
+      "contact": "042- 638-1080",
+      "registration_period": "2026년9월8일~2026년10월30일",
+      "homepage": "http://www.mara1080.com/event/ccf77de8-1b14-4170-afcb-c2eeaee1a78d",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41856"
     },
     {
       "id": "41812",
