@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-08T03:09:33.578Z",
+  "updatedAt": "2026-09-08T12:37:59.946Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 866,
+  "count": 868,
   "races": [
     {
       "id": "40976",
@@ -12634,6 +12634,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41841"
     },
     {
+      "id": "41859",
+      "name": "제6회 고용노동부장관배 직장인마라톤대회",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "하남미사경정공원일원",
+      "organizer": "나눔레이스조직위원회",
+      "contact": "02-2135-1297",
+      "registration_period": "2026년9월9일~2026년9월30일",
+      "homepage": "http://krun.or.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41859"
+    },
+    {
       "id": "41749",
       "name": "2026 무진장트레일레이스",
       "date_display": "2026년11월23일",
@@ -12889,6 +12904,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41856"
     },
     {
+      "id": "41860",
+      "name": "2026 청춘런",
+      "date_display": "2026년12월6일",
+      "date_iso": "2026-12-06",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "상암동 평화의공원 평화광장",
+      "organizer": "런앤런",
+      "contact": "02-2632-0912",
+      "registration_period": "2026년9월9일~2026년11월8일",
+      "homepage": "http://www.youthrun.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41860"
+    },
+    {
       "id": "41812",
       "name": "2026 소년소녀 가장 돕기 기부런",
       "date_display": "2026년12월12일",
@@ -12986,7 +13016,7 @@
       "distances": "10km,5km",
       "region": "서울",
       "place": "안양천다목적광장",
-      "organizer": "(사)대한생활체육연맹",
+      "organizer": "한강런(주)",
       "contact": "02-888-8805",
       "registration_period": "2026년9월20일~2026년12월12일",
       "homepage": "http://hgrun.kr",
