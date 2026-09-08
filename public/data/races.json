@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-08T12:37:59.946Z",
+  "updatedAt": "2026-09-08T19:15:59.208Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 868,
   "races": [
@@ -9840,7 +9840,7 @@
       "contact": "070-7706-1011",
       "registration_period": "2026년6월17일~2026년9월8일",
       "homepage": "http://www.cyber-run.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41629"
     },
     {
@@ -11490,7 +11490,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년8월5일~2026년9월8일",
       "homepage": "http://www.jeongseojin.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41761"
     },
     {
@@ -12615,7 +12615,7 @@
       "contact": "02-3012-0187",
       "registration_period": "2026년9월7일~2026년9월8일",
       "homepage": "http://incheonmarathon.or.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41832"
     },
     {
@@ -12645,7 +12645,7 @@
       "contact": "02-2135-1297",
       "registration_period": "2026년9월9일~2026년9월30일",
       "homepage": "http://krun.or.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41859"
     },
     {
@@ -12915,7 +12915,7 @@
       "contact": "02-2632-0912",
       "registration_period": "2026년9월9일~2026년11월8일",
       "homepage": "http://www.youthrun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41860"
     },
     {
