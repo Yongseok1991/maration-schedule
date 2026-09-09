@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-09T03:11:19.835Z",
+  "updatedAt": "2026-09-09T12:45:06.692Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 868,
+  "count": 869,
   "races": [
     {
       "id": "40976",
@@ -10738,7 +10738,7 @@
       "place": "광평교운동장",
       "organizer": "한국트레일러너연맹(사)한국산악마라톤연맹",
       "contact": "02-424-2195",
-      "registration_period": "2026년2월23일~2026년9월15일",
+      "registration_period": "2026년2월23일~2026년9월13일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&csno=20190605121808&opp=20260203121910#baseline",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41422"
@@ -11597,6 +11597,21 @@
       "homepage": "http://www.instagram.com/drt_2022",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41854"
+    },
+    {
+      "id": "41861",
+      "name": "2026 마블런",
+      "date_display": "2026년10월31일",
+      "date_iso": "2026-10-31",
+      "distances": "10km,5km,2.5km",
+      "region": "강원",
+      "place": "인제스피디움",
+      "organizer": "원유니버스",
+      "contact": "02-338-0344",
+      "registration_period": "2026년9월22일~2026년10월30일",
+      "homepage": "http://marvelrunkorea2026.com/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41861"
     },
     {
       "id": "41259",
