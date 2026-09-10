@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-10T12:43:16.471Z",
+  "updatedAt": "2026-09-10T18:57:39.606Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 872,
   "races": [
@@ -9870,7 +9870,7 @@
       "contact": "02-888-8875",
       "registration_period": "2026년7월6일~2026년9월10일",
       "homepage": "http://aychalf.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41674"
     },
     {
@@ -9960,7 +9960,7 @@
       "contact": "070-8670-0781",
       "registration_period": "2026년8월7일~2026년9월10일",
       "homepage": "http://sachalrun.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41783"
     },
     {
@@ -10635,7 +10635,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년7월15일~2026년9월10일",
       "homepage": "http://mara1080.com/event/380079d2-ab1c-4351-b1f2-d21ccaba5cdd/guide/overview",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41701"
     },
     {
@@ -12480,7 +12480,7 @@
       "contact": "02-334-6274",
       "registration_period": "2026년8월31일~2026년9월10일",
       "homepage": "http://www.fila.co.kr/pages/fila-run-espresso-10k-seoul",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41847"
     },
     {
@@ -12585,7 +12585,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년9월11일~2026년10월16일",
       "homepage": "http://mara1080.com/event/cf5801a7-c7fd-4152-998b-bf11f0ec3e26",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41863"
     },
     {
