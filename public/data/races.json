@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-11T12:37:31.584Z",
+  "updatedAt": "2026-09-11T18:59:30.995Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 876,
   "races": [
@@ -9885,7 +9885,7 @@
       "contact": "010-2805-9016",
       "registration_period": "2026년7월13일~2026년9월11일",
       "homepage": "http://www.omijarun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41694"
     },
     {
@@ -10230,7 +10230,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년7월14일~2026년9월11일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41700"
     },
     {
@@ -10695,7 +10695,7 @@
       "contact": "070-4350-5663",
       "registration_period": "2026년8월24일~2026년9월11일",
       "homepage": "http://heartrun.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41822"
     },
     {
@@ -10890,7 +10890,7 @@
       "contact": "010-9118-7632",
       "registration_period": "2026년9월1일~2026년9월11일",
       "homepage": "http://www.gcrun.kr/s1p1",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41835"
     },
     {
@@ -11070,7 +11070,7 @@
       "contact": "031-850-5755",
       "registration_period": "2026년8월12일~2026년9월11일",
       "homepage": "http://ujb.my-race.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41800"
     },
     {
@@ -12420,7 +12420,7 @@
       "contact": "064-750-2291",
       "registration_period": "2026년7월6일~2026년9월11일",
       "homepage": "http://marathon.ihalla.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41695"
     },
     {
@@ -12941,7 +12941,7 @@
       "distances": "하프,10km,5km,마니아",
       "region": "서울",
       "place": "서울 가든파이브라이프 중앙광장",
-      "organizer": "(주)스포테인",
+      "organizer": "국민체육진흥협회",
       "contact": "02-3210-1666",
       "registration_period": "2026년9월10일~2026년11월16일",
       "homepage": "http://www.irunman.kr",
@@ -13063,9 +13063,9 @@
       "place": "영종구 씨사이드파크 일원",
       "organizer": "새마펄스",
       "contact": "1811-7978",
-      "registration_period": "2026년9월11일~2026년11월20일",
+      "registration_period": "2026년9월14일~2026년11월20일",
       "homepage": "http://www.omrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41866"
     },
     {
