@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-11T03:06:45.176Z",
+  "updatedAt": "2026-09-11T12:37:31.584Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 872,
+  "count": 876,
   "races": [
     {
       "id": "40976",
@@ -10228,9 +10228,9 @@
       "place": "무심천체육공원",
       "organizer": "(주)러닝브레이커, 전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년7월14일~2026년9월7일",
+      "registration_period": "2026년7월14일~2026년9월11일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41700"
     },
     {
@@ -11555,7 +11555,7 @@
     },
     {
       "id": "41795",
-      "name": "2026 JUST RUN10 포천",
+      "name": "런텐 12차 레이스 JUST RUN10 포천",
       "date_display": "2026년10월31일",
       "date_iso": "2026-10-31",
       "distances": "10km,5km",
@@ -12589,6 +12589,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41863"
     },
     {
+      "id": "41868",
+      "name": "런텐 14차 JUST RUN10 대구",
+      "date_display": "2026년11월21일",
+      "date_iso": "2026-11-21",
+      "distances": "10km,5km",
+      "region": "대구",
+      "place": "금호강 러닝성지",
+      "organizer": "(주)러닝브레이커,전국러닝협회",
+      "contact": "042-710-2058",
+      "registration_period": "2026년9월11일~2026년10월20일",
+      "homepage": "http://runten.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41868"
+    },
+    {
+      "id": "41865",
+      "name": "2026 아식스 서울신문 고프리런",
+      "date_display": "2026년11월21일",
+      "date_iso": "2026-11-21",
+      "distances": "하프,10km",
+      "region": "서울",
+      "place": "여의도공원 문화의마당",
+      "organizer": "서울신문/ 아식스",
+      "contact": "02-785-1915",
+      "registration_period": "2026년9월1일~2026년10월21일",
+      "homepage": "http://gofree.seoul.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41865"
+    },
+    {
       "id": "41763",
       "name": "2026 평화의숲 마라톤",
       "date_display": "2026년11월22일",
@@ -12904,6 +12934,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41833"
     },
     {
+      "id": "41867",
+      "name": "제4회 가든파이브 라이프 레이스",
+      "date_display": "2026년12월5일",
+      "date_iso": "2026-12-05",
+      "distances": "하프,10km,5km,마니아",
+      "region": "서울",
+      "place": "서울 가든파이브라이프 중앙광장",
+      "organizer": "(주)스포테인",
+      "contact": "02-3210-1666",
+      "registration_period": "2026년9월10일~2026년11월16일",
+      "homepage": "http://www.irunman.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41867"
+    },
+    {
       "id": "41710",
       "name": "2026 부산브릿지 마라톤",
       "date_display": "2026년12월6일",
@@ -13007,6 +13052,21 @@
       "homepage": "http://www.powerrun.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41840"
+    },
+    {
+      "id": "41866",
+      "name": "2026 ONE MORE RUN",
+      "date_display": "2026년12월12일",
+      "date_iso": "2026-12-12",
+      "distances": "하프,10km,5km",
+      "region": "인천",
+      "place": "영종구 씨사이드파크 일원",
+      "organizer": "새마펄스",
+      "contact": "1811-7978",
+      "registration_period": "2026년9월11일~2026년11월20일",
+      "homepage": "http://www.omrun.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41866"
     },
     {
       "id": "41745",
