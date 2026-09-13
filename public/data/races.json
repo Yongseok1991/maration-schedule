@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-13T13:07:24.201Z",
+  "updatedAt": "2026-09-13T18:33:16.341Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 876,
   "races": [
@@ -10740,7 +10740,7 @@
       "contact": "02-424-2195",
       "registration_period": "2026년2월23일~2026년9월13일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eindex&csno=20190605121808&opp=20260203121910#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41422"
     },
     {
@@ -11895,7 +11895,7 @@
       "contact": "061-921-6600",
       "registration_period": "2026년9월14일~2026년9월23일",
       "homepage": "http://marathontest1.s3-website.ap-northeast-2.amazonaws.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41864"
     },
     {
@@ -12255,7 +12255,7 @@
       "contact": "070-8656-9035",
       "registration_period": "2026년9월14일~2026년10월23일",
       "homepage": "http://tongkeun-run.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41831"
     },
     {
@@ -12525,7 +12525,7 @@
       "contact": "055-285-6158",
       "registration_period": "2026년9월14일~2026년10월23일",
       "homepage": "http://www.tongilmarathon.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41842"
     },
     {
@@ -12590,7 +12590,7 @@
     },
     {
       "id": "41868",
-      "name": "런텐 14차 JUST RUN10 대구",
+      "name": "런텐 14차 레이스 JUST RUN10 대구",
       "date_display": "2026년11월21일",
       "date_iso": "2026-11-21",
       "distances": "10km,5km",
@@ -13065,7 +13065,7 @@
       "contact": "1811-7978",
       "registration_period": "2026년9월14일~2026년11월20일",
       "homepage": "http://www.omrun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41866"
     },
     {
@@ -13080,7 +13080,7 @@
       "contact": "010-5521-3720",
       "registration_period": "2026년9월14일~2026년9월21일",
       "homepage": "http://www.jinma.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41745"
     },
     {
