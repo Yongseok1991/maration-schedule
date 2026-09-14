@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-13T18:33:16.341Z",
+  "updatedAt": "2026-09-14T03:28:47.122Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 876,
   "races": [
@@ -10213,7 +10213,7 @@
       "place": "상암 월드컵공원 평화광장",
       "organizer": "(사)사회안전예방중앙회",
       "contact": "02-2636-6543",
-      "registration_period": "2026년7월7일~2026년9월21일",
+      "registration_period": "2026년7월7일~2026년9월27일",
       "homepage": "http://mastershalf.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41680"
@@ -11893,9 +11893,9 @@
       "place": "여수시 화양면 조발전망대 광장",
       "organizer": "일레븐브리지마라톤조직위원회",
       "contact": "061-921-6600",
-      "registration_period": "2026년9월14일~2026년9월23일",
-      "homepage": "http://marathontest1.s3-website.ap-northeast-2.amazonaws.com/",
-      "status": "접수중",
+      "registration_period": "2026년9월16일~2026년9월23일",
+      "homepage": "http://11bridge.com",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41864"
     },
     {
