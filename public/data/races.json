@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-15T03:30:06.403Z",
+  "updatedAt": "2026-09-15T13:09:13.528Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 876,
   "races": [
@@ -13078,9 +13078,9 @@
       "place": "진주노을공원",
       "organizer": "진주시육상연맹",
       "contact": "010-5521-3720",
-      "registration_period": "2026년9월14일~2026년9월21일",
+      "registration_period": "2026년9월14일~2026년9월14일",
       "homepage": "http://www.jinma.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41745"
     },
     {
