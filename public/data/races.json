@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-14T20:10:10.360Z",
+  "updatedAt": "2026-09-15T03:30:06.403Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 876,
   "races": [
@@ -12565,12 +12565,12 @@
       "date_iso": "2026-11-21",
       "distances": "10km,5km",
       "region": "부산",
-      "place": "부산 삼락생태공원",
+      "place": "부산 대저생태공원",
       "organizer": "굿피플",
       "contact": "1600-3949",
-      "registration_period": "2026년8월31일~2026년10월16일",
+      "registration_period": "2026년9월16일~2026년10월16일",
       "homepage": "http://giverun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41789"
     },
     {
