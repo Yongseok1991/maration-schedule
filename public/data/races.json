@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-15T13:09:13.528Z",
+  "updatedAt": "2026-09-15T19:32:22.793Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 876,
   "races": [
@@ -11895,7 +11895,7 @@
       "contact": "061-921-6600",
       "registration_period": "2026년9월16일~2026년9월23일",
       "homepage": "http://11bridge.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41864"
     },
     {
@@ -12435,7 +12435,7 @@
       "contact": "1522-4897",
       "registration_period": "2026년7월20일~2026년9월15일",
       "homepage": "http://kjmarathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41699"
     },
     {
@@ -12510,7 +12510,7 @@
       "contact": "070-4443-4392",
       "registration_period": "2026년9월1일~2026년9월15일",
       "homepage": "http://www.cwaaf.kr/bbs/board.php?bo_table=rally&wr_id=3",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41838"
     },
     {
@@ -12570,7 +12570,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년9월16일~2026년10월16일",
       "homepage": "http://giverun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41789"
     },
     {
