@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-15T19:32:22.793Z",
+  "updatedAt": "2026-09-16T03:26:11.212Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 876,
+  "count": 879,
   "races": [
     {
       "id": "40976",
@@ -10714,6 +10714,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41747"
     },
     {
+      "id": "41870",
+      "name": "2026 연수 꿈이음길 러닝대회",
+      "date_display": "2026년10월10일",
+      "date_iso": "2026-10-10",
+      "distances": "10km,5km",
+      "region": "인천",
+      "place": "인천광역시 연수구 한마음공원",
+      "organizer": "(주)경기일보",
+      "contact": "010-5426-3381",
+      "registration_period": "2026년9월14일~2026년9월30일",
+      "homepage": "http://kyeonggiincheon.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41870"
+    },
+    {
       "id": "41434",
       "name": "2026 MBN 전국 나주 마라톤대회",
       "date_display": "2026년10월11일",
@@ -12169,6 +12184,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41848"
     },
     {
+      "id": "41869",
+      "name": "2026 안성맞춤 전국 마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "안성맞춤랜드 일원",
+      "organizer": "안성시 체육회 / 경인일보",
+      "contact": "010-3482-6615",
+      "registration_period": "2026년9월1일~2026년9월31일",
+      "homepage": "http://asrun.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41869"
+    },
+    {
       "id": "41528",
       "name": "2026 포항마라톤챔피언십",
       "date_display": "2026년11월14일",
@@ -12257,6 +12287,21 @@
       "homepage": "http://tongkeun-run.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41831"
+    },
+    {
+      "id": "41872",
+      "name": "그 시절 스타들과 달리는 레트로 런 IN 증평",
+      "date_display": "2026년11월14일",
+      "date_iso": "2026-11-14",
+      "distances": "10km,5km",
+      "region": "충북",
+      "place": "증평군 보강천 시민체육공원",
+      "organizer": "스타콜 & 롤링스톤 코리아",
+      "contact": "010-7708-4382",
+      "registration_period": "2026년9월15일~2026년10월25일",
+      "homepage": "http://n-runplus.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41872"
     },
     {
       "id": "41522",
@@ -12800,7 +12845,7 @@
     },
     {
       "id": "41741",
-      "name": "제2회 천안독립기념관 마라톤대회",
+      "name": "2026 천안 희망나눔 마라톤",
       "date_display": "2026년11월29일",
       "date_iso": "2026-11-29",
       "distances": "10km,5km,3.56KM 걷기",
