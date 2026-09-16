@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-16T03:26:11.212Z",
+  "updatedAt": "2026-09-16T13:09:17.816Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 879,
+  "count": 881,
   "races": [
     {
       "id": "40976",
@@ -10197,7 +10197,7 @@
       "region": "전북",
       "place": "완주군 고산자연휴양림",
       "organizer": "완주군/삼삼이즈",
-      "contact": "010-7469-1526",
+      "contact": "010-0000-0000",
       "registration_period": "2026년6월19일~2026년9월31일",
       "homepage": "http://samsamis.com/34",
       "status": "접수중",
@@ -10602,7 +10602,7 @@
       "region": "서울",
       "place": "살곶이대운동장(축구장)",
       "organizer": "성동구체육회 / 성동구육상연맹",
-      "contact": "010-7469-1526",
+      "contact": "010-0000-0000",
       "registration_period": "2026년7월10일~2026년9월30일",
       "homepage": "http://samsamis.com/57",
       "status": "접수중",
@@ -10939,6 +10939,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41852"
     },
     {
+      "id": "41876",
+      "name": "83타워 업힐런",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "업힐코스",
+      "region": "대구",
+      "place": "대구 이월드 및 83타워",
+      "organizer": "㈜이월드 / 페스티벌잼",
+      "contact": "010-9514-0724",
+      "registration_period": "2026년9월11일~2026년10월10일",
+      "homepage": "http://leisure-web.yanolja.com/leisure/10365567",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41876"
+    },
+    {
       "id": "41255",
       "name": "제24회 청원생명쌀대청호마라톤",
       "date_display": "2026년10월17일",
@@ -10993,9 +11008,9 @@
       "place": "정선생태체험학습장",
       "organizer": "정선군",
       "contact": "1600-3962",
-      "registration_period": "2026년6월23일~2026년8월31일",
+      "registration_period": "2026년6월23일~2026년9월25일",
       "homepage": "http://jsrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41655"
     },
     {
@@ -11914,6 +11929,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41864"
     },
     {
+      "id": "41873",
+      "name": "2026 EGG RUN",
+      "date_display": "2026년11월7일",
+      "date_iso": "2026-11-07",
+      "distances": "5km",
+      "region": "세종",
+      "place": "국립세종수목원 축제마당",
+      "organizer": "굿네이버스충청권역,국립세종수목원",
+      "contact": "041-575-9601",
+      "registration_period": "2026년9월7일~2026년10월7일",
+      "homepage": "http://eggrun2026.imweb.me",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41873"
+    },
+    {
       "id": "41634",
       "name": "2026 양산 배내골 애플 런",
       "date_display": "2026년11월8일",
@@ -12762,7 +12792,7 @@
       "region": "전북",
       "place": "무주 등나무운동장",
       "organizer": "무주마라톤협회/평화마라톤조직위",
-      "contact": "010-7469-1526",
+      "contact": "010-0000-0000",
       "registration_period": "2026년9월1일~2026년10월28일",
       "homepage": "http://mujumarathon.com",
       "status": "접수중",
