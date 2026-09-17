@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-17T03:31:49.221Z",
+  "updatedAt": "2026-09-17T13:03:43.039Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 881,
+  "count": 883,
   "races": [
     {
       "id": "40976",
@@ -9934,21 +9934,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41743"
     },
     {
-      "id": "41744",
-      "name": "2026 여수낭도트레일",
-      "date_display": "2026년9월19일",
-      "date_iso": "2026-09-19",
-      "distances": "13km",
-      "region": "전남",
-      "place": "여수 화정면낭도출장소앞 주차장",
-      "organizer": "파브코리아",
-      "contact": "010-3526-9120",
-      "registration_period": "2026년7월28일~2026년9월18일",
-      "homepage": "http://www.mtrailrun.kr/",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41744"
-    },
-    {
       "id": "41783",
       "name": "2026 사찰런",
       "date_display": "2026년9월19일",
@@ -11419,6 +11404,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41858"
     },
     {
+      "id": "41874",
+      "name": "TOUR 5K & Beach Ploggin망상",
+      "date_display": "2026년10월24일",
+      "date_iso": "2026-10-24",
+      "distances": "5km,2K 플로깅",
+      "region": "강원",
+      "place": "동해시 망상해수욕장",
+      "organizer": "스포노베이션",
+      "contact": "010-5535-2432",
+      "registration_period": "2026년9월16일~2026년10월17일",
+      "homepage": "http://mypb.info/competition/666",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41874"
+    },
+    {
       "id": "41477",
       "name": "2026 청송사과트레일런",
       "date_display": "2026년10월25일",
@@ -12874,6 +12874,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41766"
     },
     {
+      "id": "41744",
+      "name": "2026 대전보문산트레일",
+      "date_display": "2026년11월29일",
+      "date_iso": "2026-11-29",
+      "distances": "15km",
+      "region": "전남",
+      "place": "오월드 주차장",
+      "organizer": "명품 파브코리아",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년8월28일~2026년11월28일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41744"
+    },
+    {
       "id": "41741",
       "name": "2026 천안 희망나눔 마라톤",
       "date_display": "2026년11월29일",
@@ -12947,6 +12962,21 @@
       "homepage": "http://www.xn--ob0bs4k27c8xc9da633vynbkyur2ft5hckl.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41810"
+    },
+    {
+      "id": "41879",
+      "name": "2026 원주 치악마라톤",
+      "date_display": "2026년11월29일",
+      "date_iso": "2026-11-29",
+      "distances": "하프,10km,5km",
+      "region": "강원",
+      "place": "원주종합운동장",
+      "organizer": "강원도민일보, 원주시육상연맹",
+      "contact": "031-821-9951",
+      "registration_period": "2026년9월17일~2026년10월30일",
+      "homepage": "http://wonju.raceplan.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41879"
     },
     {
       "id": "41676",
