@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-18T12:43:50.001Z",
+  "updatedAt": "2026-09-18T18:53:23.537Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 885,
   "races": [
@@ -11220,7 +11220,7 @@
       "contact": "02-515-9033",
       "registration_period": "2026년9월2일~2026년9월18일",
       "homepage": "http://runcop.com/event/hanam",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41823"
     },
     {
@@ -11340,7 +11340,7 @@
       "contact": "02-1566-1936",
       "registration_period": "2026년8월3일~2026년9월18일",
       "homepage": "http://marathon.newsis.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41756"
     },
     {
@@ -11370,7 +11370,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년8월13일~2026년9월18일",
       "homepage": "http://runwithgo.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41798"
     },
     {
@@ -11685,7 +11685,7 @@
       "contact": "052-242-1119",
       "registration_period": "2026년8월18일~2026년9월18일",
       "homepage": "http://www.humanrun.org",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41552"
     },
     {
