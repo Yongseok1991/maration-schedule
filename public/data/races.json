@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-19T12:17:32.454Z",
+  "updatedAt": "2026-09-19T18:25:52.106Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 885,
   "races": [
@@ -11310,7 +11310,7 @@
       "contact": "02-1566-1936",
       "registration_period": "2026년7월24일~2026년9월19일",
       "homepage": "http://runmusicfestival.localvibehub.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41721"
     },
     {
@@ -13275,7 +13275,7 @@
       "contact": "02-888-8805",
       "registration_period": "2026년9월20일~2026년12월12일",
       "homepage": "http://hgrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41806"
     }
   ]
