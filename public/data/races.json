@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-23T03:25:45.302Z",
+  "updatedAt": "2026-09-23T13:22:22.679Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 895,
   "races": [
@@ -11125,7 +11125,7 @@
       "date_iso": "2026-10-18",
       "distances": "하프,10km",
       "region": "서울",
-      "place": "광화문 광장(예정)",
+      "place": "광화문 광장",
       "organizer": "아시아투데이",
       "contact": "02-2647-4488",
       "registration_period": "2026년4월14일~2026년5월18일",
@@ -11383,9 +11383,9 @@
       "place": "서울 월드컵경기장 평화광장",
       "organizer": "(사)함께하는 사랑밭",
       "contact": "031-575-7243",
-      "registration_period": "2026년8월13일~2026년9월18일",
+      "registration_period": "2026년8월13일~2026년10월7일",
       "homepage": "http://runwithgo.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41798"
     },
     {
@@ -11427,7 +11427,7 @@
       "region": "강원",
       "place": "동해시 망상해수욕장",
       "organizer": "스포노베이션",
-      "contact": "010-5535-2432",
+      "contact": "02-0000-0000",
       "registration_period": "2026년9월16일~2026년10월17일",
       "homepage": "http://mypb.info/competition/666",
       "status": "접수중",
@@ -11652,9 +11652,9 @@
       "region": "충남",
       "place": "석문방조제 인근",
       "organizer": "당진 마라톤 연합회",
-      "contact": "010-4520-2737",
+      "contact": "010-0000-0000",
       "registration_period": "2026년9월3일~2026년9월31일",
-      "homepage": "http://www.instagram.com/drt_2022",
+      "homepage": "http://pf.kakao.com/_vQWxaX",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41854"
     },
