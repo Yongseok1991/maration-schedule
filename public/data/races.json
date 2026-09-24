@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-24T13:14:07.696Z",
+  "updatedAt": "2026-09-24T19:48:25.910Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 895,
   "races": [
@@ -11340,7 +11340,7 @@
       "contact": "010-8468-5148",
       "registration_period": "2026년7월24일~2026년9월24일",
       "homepage": "http://sejongrun26.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41730"
     },
     {
