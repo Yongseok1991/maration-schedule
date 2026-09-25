@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T13:16:10.414Z",
+  "updatedAt": "2026-09-25T19:50:30.840Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 895,
   "races": [
@@ -10995,7 +10995,7 @@
       "contact": "1600-3962",
       "registration_period": "2026년6월23일~2026년9월25일",
       "homepage": "http://jsrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41655"
     },
     {
@@ -11625,7 +11625,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년8월11일~2026년9월25일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41795"
     },
     {
