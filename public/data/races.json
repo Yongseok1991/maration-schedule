@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-27T13:32:42.336Z",
+  "updatedAt": "2026-09-27T19:33:17.561Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 895,
+  "count": 899,
   "races": [
     {
       "id": "40976",
@@ -10200,7 +10200,7 @@
       "contact": "02-2636-6543",
       "registration_period": "2026년7월7일~2026년9월27일",
       "homepage": "http://mastershalf.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41680"
     },
     {
@@ -10380,7 +10380,7 @@
       "contact": "070-7706-1011",
       "registration_period": "2026년7월8일~2026년9월27일",
       "homepage": "http://www.runsense.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41677"
     },
     {
@@ -10939,6 +10939,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41876"
     },
     {
+      "id": "41897",
+      "name": "독립유공자후손 기부마라톤 2026대학생RUN",
+      "date_display": "2026년10월11일",
+      "date_iso": "2026-10-11",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "서울시 구로구 안양천 축구장A",
+      "organizer": "대학문화유니온, 사단법인 독립",
+      "contact": "010-7937-2087",
+      "registration_period": "2026년9월21일~2026년10월4일",
+      "homepage": "http://www.univrun.co.kr/index.php",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41897"
+    },
+    {
       "id": "41255",
       "name": "제24회 청원생명쌀대청호마라톤",
       "date_display": "2026년10월17일",
@@ -11117,6 +11132,21 @@
       "homepage": "http://gnrace.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41890"
+    },
+    {
+      "id": "41896",
+      "name": "2026 원주 바람길숲 기부런",
+      "date_display": "2026년10월17일",
+      "date_iso": "2026-10-17",
+      "distances": "10km",
+      "region": "강원",
+      "place": "강원도 원주 치악산 바람길숲",
+      "organizer": "한국관광공사",
+      "contact": "010-8566-8705",
+      "registration_period": "2026년9월23일~2026년10월13일",
+      "homepage": "http://cltoo.com/ko/product/379?category=CL_TO_EDITION",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41896"
     },
     {
       "id": "41303",
@@ -12454,6 +12484,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41872"
     },
     {
+      "id": "41895",
+      "name": "서울 빵빵런 2026",
+      "date_display": "2026년11월14일",
+      "date_iso": "2026-11-14",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "뚝섬한강공원 수변무대",
+      "organizer": "(주)1986프로덕션",
+      "contact": "02-364-1986",
+      "registration_period": "2026년9월21일~2026년11월13일",
+      "homepage": "http://seoul.bbangrun.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41895"
+    },
+    {
       "id": "41522",
       "name": "제24회 대모산,구룡산 트레일런",
       "date_display": "2026년11월15일",
@@ -12827,6 +12872,21 @@
       "homepage": "http://cafe.naver.com/bikewin/12",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41885"
+    },
+    {
+      "id": "41894",
+      "name": "2026 서울 라이프마라톤(가을)",
+      "date_display": "2026년11월21일",
+      "date_iso": "2026-11-21",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "평화의공원 평화광장",
+      "organizer": "(주)1986프로덕션",
+      "contact": "02-364-1986",
+      "registration_period": "2026년8월10일~2026년11월20일",
+      "homepage": "http://seoul.lifemarathon.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41894"
     },
     {
       "id": "41763",
