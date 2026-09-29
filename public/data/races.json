@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-09-28T16:28:19.981Z",
+  "updatedAt": "2026-09-29T04:21:13.441Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 899,
+  "count": 900,
   "races": [
     {
       "id": "40976",
@@ -10198,9 +10198,9 @@
       "place": "상암 월드컵공원 평화광장",
       "organizer": "(사)사회안전예방중앙회",
       "contact": "02-2636-6543",
-      "registration_period": "2026년7월7일~2026년9월27일",
+      "registration_period": "2026년7월7일~2026년9월30일",
       "homepage": "http://mastershalf.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41680"
     },
     {
@@ -12863,13 +12863,13 @@
       "name": "2026 GETR구미 에코 트레일레이스",
       "date_display": "2026년11월21일",
       "date_iso": "2026-11-21",
-      "distances": "21km",
+      "distances": "10km,21km,키즈레이스",
       "region": "경북",
       "place": "구미시 경운대학교",
       "organizer": "구미러닝크루",
       "contact": "010-7152-1910",
       "registration_period": "2026년9월11일~2026년10월30일",
-      "homepage": "http://cafe.naver.com/bikewin/12",
+      "homepage": "http://naver.me/59lo1fB8",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41885"
     },
@@ -13187,6 +13187,21 @@
       "homepage": "http://seoulloverun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41891"
+    },
+    {
+      "id": "41898",
+      "name": "제9회 광진구청장배 육상대회",
+      "date_display": "2026년11월29일",
+      "date_iso": "2026-11-29",
+      "distances": "10km",
+      "region": "서울",
+      "place": "중곡동 중랑천 물놀이장 옆",
+      "organizer": "광진구체육회(광진구육상연맹)",
+      "contact": "02-457-0121",
+      "registration_period": "2026년9월28일~2026년11월11일",
+      "homepage": "http://ksgaaf.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41898"
     },
     {
       "id": "41676",
