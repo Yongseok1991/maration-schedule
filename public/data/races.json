@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-29T20:27:43.981Z",
+  "updatedAt": "2026-09-30T04:05:08.841Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 901,
   "races": [
@@ -12893,7 +12893,7 @@
       "name": "K-거상 트레일 러닝 대회",
       "date_display": "2026년11월21일",
       "date_iso": "2026-11-21",
-      "distances": "19km",
+      "distances": "5km,15km,20km",
       "region": "경남",
       "place": "가례초등학교(경남 의령)",
       "organizer": "경남관광재단",
