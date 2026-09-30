@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-30T04:05:08.841Z",
+  "updatedAt": "2026-09-30T14:37:58.919Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 901,
   "races": [
@@ -11683,9 +11683,9 @@
       "place": "석문방조제 인근",
       "organizer": "당진 마라톤 연합회",
       "contact": "010-0000-0000",
-      "registration_period": "2026년9월3일~2026년9월31일",
+      "registration_period": "2026년9월3일~2026년9월29일",
       "homepage": "http://pf.kakao.com/_vQWxaX",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41854"
     },
     {
@@ -13243,7 +13243,7 @@
       "place": "여의도 물빛무대 앞 광장",
       "organizer": "(사)대한생활체육회",
       "contact": "1644-4219",
-      "registration_period": "2026년8월1일~2026년10월28일",
+      "registration_period": "2026년8월1일~2026년11월10일",
       "homepage": "http://www.hangangmarathon.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41720"
