@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-01T04:16:41.612Z",
+  "updatedAt": "2026-10-01T15:06:35.002Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 901,
   "races": [
@@ -10185,7 +10185,7 @@
       "contact": "010-0000-0000",
       "registration_period": "2026년6월19일~2026년9월31일",
       "homepage": "http://samsamis.com/34",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41649"
     },
     {
@@ -10440,7 +10440,7 @@
       "contact": "02-556-8879",
       "registration_period": "2026년8월19일~2026년10월1일",
       "homepage": "http://yangjurun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41805"
     },
     {
@@ -11775,7 +11775,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년6월15일~2026년10월1일",
       "homepage": "http://mara1080.com/event/d596615e-cf32-4f20-bdbe-13b633f51c4e",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41638"
     },
     {
@@ -12148,9 +12148,9 @@
       "place": "서울마당(지하철1호선 시청역 4번출구)",
       "organizer": "서울신문, 한국익스트림앤스포츠",
       "contact": "070-7719-5788",
-      "registration_period": "2026년7월2일~2026년9월30일",
+      "registration_period": "2026년7월2일~2026년10월12일",
       "homepage": "http://cafe.naver.com/seoultrailrun/?viewType=pc",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41667"
     },
     {
@@ -12375,7 +12375,7 @@
       "contact": "010-3482-6615",
       "registration_period": "2026년9월1일~2026년9월31일",
       "homepage": "http://asrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41869"
     },
     {
@@ -12960,7 +12960,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년9월1일~2026년10월1일",
       "homepage": "http://www.djrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41803"
     },
     {
