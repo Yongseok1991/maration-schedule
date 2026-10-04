@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T13:42:16.431Z",
+  "updatedAt": "2026-10-04T19:12:21.483Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 901,
   "races": [
@@ -10875,7 +10875,7 @@
       "contact": "010-3794-7297",
       "registration_period": "2026년8월10일~2026년10월4일",
       "homepage": "http://cafe.naver.com/ydprun1/646",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41794"
     },
     {
@@ -10950,7 +10950,7 @@
       "contact": "010-7937-2087",
       "registration_period": "2026년9월21일~2026년10월4일",
       "homepage": "http://www.univrun.co.kr/index.php",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41897"
     },
     {
