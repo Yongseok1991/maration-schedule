@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-04T19:12:21.483Z",
+  "updatedAt": "2026-10-05T04:10:10.198Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 901,
   "races": [
@@ -10865,7 +10865,7 @@
     },
     {
       "id": "41794",
-      "name": "제6회 영등포구청장배 육상대회",
+      "name": "제6회 영등포구청장배 육상대회 (마감)",
       "date_display": "2026년10월11일",
       "date_iso": "2026-10-11",
       "distances": "10km,5km",
