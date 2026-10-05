@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-05T04:10:10.198Z",
+  "updatedAt": "2026-10-05T16:48:49.520Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 901,
   "races": [
@@ -11653,9 +11653,9 @@
       "place": "포천시종합운동장",
       "organizer": "(주)러닝브레이커,전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년8월11일~2026년9월25일",
+      "registration_period": "2026년8월11일~2026년10월25일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41795"
     },
     {
@@ -12120,7 +12120,7 @@
       "contact": "010-5071-3432",
       "registration_period": "2026년7월1일~2026년10월5일",
       "homepage": "http://www.songparunsportal.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41647"
     },
     {
