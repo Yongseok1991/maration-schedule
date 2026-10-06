@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06T14:45:16.976Z",
+  "updatedAt": "2026-10-06T20:48:27.965Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 901,
   "races": [
@@ -11730,7 +11730,7 @@
       "contact": "031-715-6016",
       "registration_period": "2026년9월14일~2026년10월6일",
       "homepage": "http://runpass.kr/races/seongnam-ymca/2026",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41880"
     },
     {
