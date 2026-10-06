@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06T04:59:03.233Z",
+  "updatedAt": "2026-10-06T14:45:16.976Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 901,
   "races": [
@@ -11711,7 +11711,7 @@
       "distances": "하프,10km,5km,8.15km",
       "region": "인천",
       "place": "인천 영정구 중산동 하늘구름광",
-      "organizer": "국민건강진흥원/인천광역시걷기협",
+      "organizer": "인천광역시걷기협",
       "contact": "070-4098-1114",
       "registration_period": "2026년9월1일~2026년10월20일",
       "homepage": "http://icnr.kr",
@@ -11908,9 +11908,9 @@
       "place": "부여 구드래나루터 선착장",
       "organizer": "부여군마라톤연합회",
       "contact": "042-638-1080",
-      "registration_period": "2026년6월30일~2026년10월7일",
+      "registration_period": "2026년6월30일~2026년10월1일",
       "homepage": "http://mara1080.com/event/ffc023fc-7a54-4610-bdd6-2bb9a1028122",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41662"
     },
     {
@@ -12523,9 +12523,9 @@
       "place": "상주시민운동장",
       "organizer": "전국마라톤협회",
       "contact": "042-638-1080",
-      "registration_period": "2026년5월6일~2026년6월16일",
+      "registration_period": "2026년5월6일~2026년10월20일",
       "homepage": "http://www.mara1080.com/event/c8dc2c22-a83a-4743-9e34-c884e9809dbb",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41563"
     },
     {
@@ -13048,7 +13048,7 @@
       "place": "남원 종합스포츠타운 운동장",
       "organizer": "남원시체육회",
       "contact": "042-638-1080",
-      "registration_period": "2026년7월7일~2026년10월28일",
+      "registration_period": "2026년7월7일~2026년10월25일",
       "homepage": "http://mara1080.com/event/c2cec79b-c38a-4832-bf4f-7ecb499cdcd5/guide/overview",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41675"
@@ -13273,9 +13273,9 @@
       "place": "금산세계인삼엑스포광장",
       "organizer": "전국마라톤협회",
       "contact": "042- 638-1080",
-      "registration_period": "2026년8월31일~2026년9월20일",
+      "registration_period": "2026년8월31일~2026년11월25일",
       "homepage": "http://mara1080.com/event/df4b4e7d-4fbc-4843-858c-f15c032e92cb",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41833"
     },
     {
