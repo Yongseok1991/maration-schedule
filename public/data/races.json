@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-07T04:25:41.472Z",
+  "updatedAt": "2026-10-07T15:05:42.979Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 905,
+  "count": 906,
   "races": [
     {
       "id": "40976",
@@ -11235,7 +11235,7 @@
       "contact": "02-3285-5556",
       "registration_period": "2026년8월5일~2026년10월7일",
       "homepage": "http://www.jnrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41712"
     },
     {
@@ -11415,7 +11415,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년8월13일~2026년10월7일",
       "homepage": "http://runwithgo.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41798"
     },
     {
@@ -12733,9 +12733,9 @@
       "place": "파주 임진각",
       "organizer": "손기정기념재단",
       "contact": "02-364-1936",
-      "registration_period": "2026년8월9일~2026년9월14일",
+      "registration_period": "2026년8월9일~2026년10월13일",
       "homepage": "http://sonkeechungrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41845"
     },
     {
@@ -12805,7 +12805,7 @@
       "date_iso": "2026-11-15",
       "distances": "10km,5km",
       "region": "서울",
-      "place": "여의도 한강공원 물빛무대앞 광",
+      "place": "여의도한강공원 물빛무대앞광장",
       "organizer": "빗썸나눔 & 이투데이",
       "contact": "070-4350-5663",
       "registration_period": "2026년10월6일~2026년10월21일",
@@ -13067,6 +13067,21 @@
       "homepage": "http://krun.or.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41859"
+    },
+    {
+      "id": "41908",
+      "name": "부산항일학생의거86주년기념 부산시민이어달리기",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "이어달리기16키로",
+      "region": "부산",
+      "place": "부산시내 중앙로구덕운동장~초읍",
+      "organizer": "(사)부산항일학생의거기념사업회",
+      "contact": "070-4406-1123",
+      "registration_period": "2026년10월7일~2026년10월7일",
+      "homepage": "http://i1123.org",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41908"
     },
     {
       "id": "41749",
@@ -13485,7 +13500,7 @@
       "contact": "033-264-1365",
       "registration_period": "2026년10월8일~2026년11월26일",
       "homepage": "http://yhitf.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41905"
     },
     {
