@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-06T20:48:27.965Z",
+  "updatedAt": "2026-10-07T04:25:41.472Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 901,
+  "count": 905,
   "races": [
     {
       "id": "40976",
@@ -12043,7 +12043,7 @@
       "place": "국립세종수목원 축제마당",
       "organizer": "굿네이버스충청권역,국립세종수목원",
       "contact": "041-575-9601",
-      "registration_period": "2026년9월7일~2026년10월7일",
+      "registration_period": "2026년9월7일~2026년10월18일",
       "homepage": "http://eggrun2026.imweb.me",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41873"
@@ -12769,6 +12769,51 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41842"
     },
     {
+      "id": "41906",
+      "name": "2026 에코나우런",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "5km",
+      "region": "서울",
+      "place": "뚝섬한강공원 수변무대 앞 광장",
+      "organizer": "에코나우",
+      "contact": "02-556-3012",
+      "registration_period": "2026년10월1일~2026년11월8일",
+      "homepage": "http://econow.campaignus.me/econow_run",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41906"
+    },
+    {
+      "id": "41903",
+      "name": "2026 영남일보 혁신도시 마라톤",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "10km,5km",
+      "region": "대구",
+      "place": "대구혁신도시 신서중앙공원",
+      "organizer": "영남일보",
+      "contact": "1600-3949",
+      "registration_period": "2026년10월2일~2026년10월30일",
+      "homepage": "http://inno.ynmarathon.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41903"
+    },
+    {
+      "id": "41902",
+      "name": "우리함께런 with 빗썸나눔",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "여의도 한강공원 물빛무대앞 광",
+      "organizer": "빗썸나눔 & 이투데이",
+      "contact": "070-4350-5663",
+      "registration_period": "2026년10월6일~2026년10월21일",
+      "homepage": "http://bithumbnanumrun.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41902"
+    },
+    {
       "id": "41673",
       "name": "2026 세정 가을바람 유러닝페스타",
       "date_display": "2026년11월21일",
@@ -13427,6 +13472,21 @@
       "homepage": "http://www.omrun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41866"
+    },
+    {
+      "id": "41905",
+      "name": "2026 연합뉴스 하남 국제 트레일런 페스티벌",
+      "date_display": "2026년12월12일",
+      "date_iso": "2026-12-12",
+      "distances": "10km,5km,15km,28km",
+      "region": "경기",
+      "place": "미사경정공원 및 하남시 일대",
+      "organizer": "연합뉴스,하남시,한국체육대학교",
+      "contact": "033-264-1365",
+      "registration_period": "2026년10월8일~2026년11월26일",
+      "homepage": "http://yhitf.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41905"
     },
     {
       "id": "41745",
