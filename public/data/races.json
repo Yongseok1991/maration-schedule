@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-08T04:36:58.956Z",
+  "updatedAt": "2026-10-08T15:13:47.842Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 907,
+  "count": 908,
   "races": [
     {
       "id": "40976",
@@ -11295,7 +11295,7 @@
       "contact": "1644-4219",
       "registration_period": "2026년6월18일~2026년10월8일",
       "homepage": "http://xn--439a68tboh.kr/index.asp",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41637"
     },
     {
@@ -11668,9 +11668,9 @@
       "place": "부산 영도구 태종대 자동차야외극장(Drive in영도)",
       "organizer": "주식회사 무브네이션",
       "contact": "051-867-0516",
-      "registration_period": "2026년8월20일~2026년9월20일",
+      "registration_period": "2026년8월20일~2026년10월31일",
       "homepage": "http://taejongdaezombie.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41809"
     },
     {
@@ -12195,7 +12195,7 @@
       "contact": "010-3522-6374",
       "registration_period": "2026년7월21일~2026년10월8일",
       "homepage": "http://xn--289a04w1ifu9bvwfi4b78e.com/resv/competition.php",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41726"
     },
     {
@@ -12298,7 +12298,7 @@
       "place": "청양군 청양목재문화자연사체험관",
       "organizer": "청양군육상연맹",
       "contact": "010-4401-2829",
-      "registration_period": "2026년9월2일~2026년10월15일",
+      "registration_period": "2026년9월2일~2026년10월25일",
       "homepage": "http://cymarathon.imweb.me/index?preview_mode=1",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41846"
@@ -12315,7 +12315,7 @@
       "contact": "070-7707-2808",
       "registration_period": "2026년9월1일~2026년10월8일",
       "homepage": "http://1004.tbc.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41844"
     },
     {
@@ -12450,7 +12450,7 @@
       "contact": "02-852-0077",
       "registration_period": "2026년8월24일~2026년10월8일",
       "homepage": "http://www.leaveit.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41825"
     },
     {
@@ -12827,6 +12827,21 @@
       "homepage": "http://youngrace.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41909"
+    },
+    {
+      "id": "41910",
+      "name": "2026 연수구청장배 송도 WALK & RUN",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "하프,10km,5km,WALK 5km,WALK 10km",
+      "region": "인천",
+      "place": "국립인천대학교 송도캠퍼스 정문",
+      "organizer": "인천광역시연수구걷기협회",
+      "contact": "070-4098-1114",
+      "registration_period": "2026년10월9일~2026년11월8일",
+      "homepage": "http://walknrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41910"
     },
     {
       "id": "41673",
@@ -13333,9 +13348,9 @@
       "place": "하남미사경정공원",
       "organizer": "(사)행복한가게",
       "contact": "02-888-8875",
-      "registration_period": "2026년8월3일~2026년11월26일",
+      "registration_period": "2026년8월3일~2026년9월26일",
       "homepage": "http://energyrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41762"
     },
     {
