@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-07T21:00:45.730Z",
+  "updatedAt": "2026-10-08T04:36:58.956Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 906,
+  "count": 907,
   "races": [
     {
       "id": "40976",
@@ -12814,6 +12814,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41902"
     },
     {
+      "id": "41909",
+      "name": "2026 청춘레이스",
+      "date_display": "2026년11월15일",
+      "date_iso": "2026-11-15",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "성북구 중랑천 체육공원",
+      "organizer": "(사)행복한가게",
+      "contact": "02-877-3335",
+      "registration_period": "2026년10월8일~2026년11월8일",
+      "homepage": "http://youngrace.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41909"
+    },
+    {
       "id": "41673",
       "name": "2026 세정 가을바람 유러닝페스타",
       "date_display": "2026년11월21일",
@@ -13078,7 +13093,7 @@
       "place": "부산시내 중앙로구덕운동장~초읍",
       "organizer": "(사)부산항일학생의거기념사업회",
       "contact": "070-4406-1123",
-      "registration_period": "2026년10월7일~2026년10월7일",
+      "registration_period": "2026년10월13일~2026년11월10일",
       "homepage": "http://i1123.org",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41908"
