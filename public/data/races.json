@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-08T15:13:47.842Z",
+  "updatedAt": "2026-10-08T21:02:47.166Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 908,
   "races": [
@@ -11233,9 +11233,9 @@
       "place": "중화체육공원",
       "organizer": "중랑구육상연맹",
       "contact": "02-3285-5556",
-      "registration_period": "2026년8월5일~2026년10월7일",
+      "registration_period": "2026년8월5일~2026년10월11일",
       "homepage": "http://www.jnrun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41712"
     },
     {
@@ -12013,7 +12013,7 @@
       "place": "엑스포다리 인근",
       "organizer": "(주)러닝브레이커,전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년9월2일~2026년10월10일",
+      "registration_period": "2026년9월2일~2026년10월20일",
       "homepage": "http://runten.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41849"
@@ -12913,7 +12913,7 @@
       "place": "금호강 러닝성지",
       "organizer": "(주)러닝브레이커,전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년9월11일~2026년10월20일",
+      "registration_period": "2026년9월11일~2026년10월30일",
       "homepage": "http://runten.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41868"
@@ -13208,7 +13208,7 @@
       "name": "제14회 안중근 평화 마라톤",
       "date_display": "2026년11월29일",
       "date_iso": "2026-11-29",
-      "distances": "10km,5km",
+      "distances": "하프,10km,5km",
       "region": "서울",
       "place": "여의도공원 문화의마당",
       "organizer": "안중근평화재단청년아카데미",
@@ -13340,14 +13340,14 @@
     },
     {
       "id": "41762",
-      "name": "2026 하남 미사 호수 에너지런",
+      "name": "2026 하남 미사 대회 취소",
       "date_display": "2026년12월5일",
       "date_iso": "2026-12-05",
       "distances": "10km,5km",
       "region": "경기",
       "place": "하남미사경정공원",
-      "organizer": "(사)행복한가게",
-      "contact": "02-888-8875",
+      "organizer": "하남미사",
+      "contact": "02-000-0000",
       "registration_period": "2026년8월3일~2026년9월26일",
       "homepage": "http://energyrun.kr",
       "status": "",
