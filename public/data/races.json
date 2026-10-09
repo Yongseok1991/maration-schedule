@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-09T14:59:15.522Z",
+  "updatedAt": "2026-10-09T20:33:52.861Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 910,
   "races": [
@@ -11970,7 +11970,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년8월12일~2026년10월9일",
       "homepage": "http://giverun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41788"
     },
     {
@@ -12075,7 +12075,7 @@
       "contact": "064-756-3213",
       "registration_period": "2026년9월21일~2026년10월9일",
       "homepage": "http://www.jaaf.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41889"
     },
     {
@@ -12180,7 +12180,7 @@
       "contact": "02-338-0344",
       "registration_period": "2026년8월25일~2026년10월9일",
       "homepage": "http://heritagerun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41696"
     },
     {
@@ -13590,7 +13590,7 @@
       "contact": "02-424-2195",
       "registration_period": "2026년10월9일~2026년10월9일",
       "homepage": "http://koreatrail.net",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41914"
     },
     {
