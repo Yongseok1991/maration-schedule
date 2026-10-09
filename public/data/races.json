@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-09T04:40:09.190Z",
+  "updatedAt": "2026-10-09T14:59:15.522Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 908,
+  "count": 910,
   "races": [
     {
       "id": "40976",
@@ -13384,6 +13384,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41867"
     },
     {
+      "id": "41911",
+      "name": "2026 허그런(HUG RUN)",
+      "date_display": "2026년12월5일",
+      "date_iso": "2026-12-05",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "상암 월드컵공원 평화광장",
+      "organizer": "동방사회복지회",
+      "contact": "02-332-3997",
+      "registration_period": "2026년10월6일~2026년11월8일",
+      "homepage": "http://hugrun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41911"
+    },
+    {
       "id": "41710",
       "name": "2026 부산브릿지 마라톤",
       "date_display": "2026년12월6일",
@@ -13562,6 +13577,21 @@
       "homepage": "http://bamseom.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41784"
+    },
+    {
+      "id": "41914",
+      "name": "제2회 일자산TRAL RUNNING",
+      "date_display": "2026년12월13일",
+      "date_iso": "2026-12-13",
+      "distances": "8km",
+      "region": "서울",
+      "place": "일자산보훈병원앞",
+      "organizer": "(사)한국산악마라톤연맹",
+      "contact": "02-424-2195",
+      "registration_period": "2026년10월9일~2026년10월9일",
+      "homepage": "http://koreatrail.net",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41914"
     },
     {
       "id": "41801",
