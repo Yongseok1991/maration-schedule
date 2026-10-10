@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-10T04:26:00.154Z",
+  "updatedAt": "2026-10-10T14:14:30.660Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 910,
+  "count": 911,
   "races": [
     {
       "id": "40976",
@@ -10502,6 +10502,21 @@
       "homepage": "http://mara1080.com/event/10fcc153-1bb7-403e-8f57-7571c1c324d5",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41814"
+    },
+    {
+      "id": "41916",
+      "name": "제11회 수퍼블루마라톤",
+      "date_display": "2026년10월9일",
+      "date_iso": "2026-10-09",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "상암동 평화의 광장",
+      "organizer": "스페셜올림픽 조직위",
+      "contact": "02-312-1998",
+      "registration_period": "2026년7월8일~2026년9월10일",
+      "homepage": "http://www.superbluemarathon.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41916"
     },
     {
       "id": "41300",
