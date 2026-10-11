@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-11T14:39:39.669Z",
+  "updatedAt": "2026-10-11T19:55:39.996Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 911,
   "races": [
@@ -11040,7 +11040,7 @@
       "contact": "02-2636-7775",
       "registration_period": "2026년7월7일~2026년10월11일",
       "homepage": "http://storyrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41681"
     },
     {
@@ -11250,7 +11250,7 @@
       "contact": "02-3285-5556",
       "registration_period": "2026년8월5일~2026년10월11일",
       "homepage": "http://www.jnrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41712"
     },
     {
@@ -12255,7 +12255,7 @@
       "contact": "051-310-4128",
       "registration_period": "2026년8월24일~2026년10월11일",
       "homepage": "http://ssecorun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41752"
     },
     {
