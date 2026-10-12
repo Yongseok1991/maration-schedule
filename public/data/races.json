@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-12T04:26:19.549Z",
+  "updatedAt": "2026-10-12T17:23:41.915Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 911,
   "races": [
@@ -11715,7 +11715,7 @@
       "contact": "02-338-0344",
       "registration_period": "2026년9월22일~2026년10월12일",
       "homepage": "http://marvelrunkorea2026.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41861"
     },
     {
@@ -12165,7 +12165,7 @@
       "contact": "070-7719-5788",
       "registration_period": "2026년7월2일~2026년10월12일",
       "homepage": "http://cafe.naver.com/seoultrailrun/?viewType=pc",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41667"
     },
     {
@@ -12698,7 +12698,7 @@
       "name": "2026 나눔레이스 인 용인",
       "date_display": "2026년11월15일",
       "date_iso": "2026-11-15",
-      "distances": "10km,15km",
+      "distances": "10km,5km,15km",
       "region": "경기",
       "place": "세리박위드용인",
       "organizer": "나눔레이스조직위원회",
@@ -13125,7 +13125,7 @@
       "contact": "070-4406-1123",
       "registration_period": "2026년10월13일~2026년11월10일",
       "homepage": "http://i1123.org",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41908"
     },
     {
@@ -13348,7 +13348,7 @@
       "place": "여의도 물빛무대 앞 광장",
       "organizer": "(사)대한생활체육회",
       "contact": "1644-4219",
-      "registration_period": "2026년8월1일~2026년11월10일",
+      "registration_period": "2026년8월1일~2026년11월16일",
       "homepage": "http://www.hangangmarathon.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41720"
