@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-11T19:55:39.996Z",
+  "updatedAt": "2026-10-12T04:26:19.549Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 911,
   "races": [
@@ -12253,9 +12253,9 @@
       "place": "삼락생태공원 럭비구장",
       "organizer": "사상구청,사상구체육회",
       "contact": "051-310-4128",
-      "registration_period": "2026년8월24일~2026년10월11일",
+      "registration_period": "2026년8월24일~2026년11월8일",
       "homepage": "http://ssecorun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41752"
     },
     {
@@ -12835,7 +12835,7 @@
       "date_iso": "2026-11-15",
       "distances": "하프,10km,5km",
       "region": "서울",
-      "place": "성북구 중랑천 체육공원",
+      "place": "우이천 다목적광장",
       "organizer": "(사)행복한가게",
       "contact": "02-877-3335",
       "registration_period": "2026년10월8일~2026년11월8일",
