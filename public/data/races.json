@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-13T05:34:22.312Z",
+  "updatedAt": "2026-10-13T15:35:43.626Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
   "count": 911,
   "races": [
@@ -11160,7 +11160,7 @@
       "contact": "010-8566-8705",
       "registration_period": "2026년9월23일~2026년10월13일",
       "homepage": "http://cltoo.com/ko/product/379?category=CL_TO_EDITION",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41896"
     },
     {
@@ -11938,9 +11938,9 @@
       "place": "부산 북항친수공원",
       "organizer": "한국해운신문, 부산항발전협의회",
       "contact": "031-821-9949",
-      "registration_period": "2026년8월7일~2026년10월16일",
+      "registration_period": "2026년8월7일~2026년10월13일",
       "homepage": "http://runfesta.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41719"
     },
     {
@@ -12283,7 +12283,7 @@
       "place": "대흥사쉼터 일원",
       "organizer": "해남군육상연맹",
       "contact": "1600-3949",
-      "registration_period": "2026년8월13일~2026년10월14일",
+      "registration_period": "2026년8월13일~2026년10월19일",
       "homepage": "http://haenammarathon.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41808"
