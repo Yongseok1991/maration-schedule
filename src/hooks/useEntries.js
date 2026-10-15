@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { dataService } from "../services/dataService";
 import { optimizeImageFile, isSupportedImageFile, dataUrlBytes } from "../utils/imageOptimizer";
 
+const LOCAL_STORAGE_KEY = "maraton.my_entries.v1";
+
 const detectDistanceCategory = (value) => {
   const text = String(value || "").toLowerCase().replace(/\s+/g, "");
   if (!text) return "";
@@ -34,6 +36,14 @@ const makeEntry = (race) => ({
   updatedAt: new Date().toISOString()
 });
 
+const saveToLocalStorage = (data) => {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
+  } catch (err) {
+    console.warn("Failed to write entries to localStorage:", err);
+  }
+};
+
 export function useEntries(user, authLoading) {
   const [entries, setEntries] = useState([]);
   const [entriesReady, setEntriesReady] = useState(false);
@@ -41,15 +51,43 @@ export function useEntries(user, authLoading) {
 
   const loadEntries = useCallback(async () => {
     if (!user) {
-      setEntries([]);
-      setEntriesReady(true);
+      // 1. 비로그인 상태일 때는 localStorage 확인
+      try {
+        const local = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (local) {
+          const parsed = JSON.parse(local);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setEntries(parsed);
+            setEntriesReady(true);
+            return;
+          }
+        }
+        // 2. localStorage도 없으면 기본 user-data/my-marathons.json 읽어오기
+        const res = await fetch("./user-data/my-marathons.json");
+        if (res.ok) {
+          const json = await res.json();
+          const items = Array.isArray(json?.entries) ? json.entries : [];
+          setEntries(items);
+          saveToLocalStorage(items);
+        }
+      } catch (err) {
+        console.warn("Guest entries fallback notice:", err);
+      } finally {
+        setEntriesReady(true);
+      }
       return;
     }
+
     try {
       const data = await dataService.getEntries(user.id);
       setEntries(data);
+      saveToLocalStorage(data);
     } catch (err) {
-      console.error("Failed to load user entries:", err);
+      console.error("Failed to load user entries from Supabase:", err);
+      try {
+        const local = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (local) setEntries(JSON.parse(local));
+      } catch {}
       setSyncState({ kind: "error", message: "일정을 불러오지 못했습니다." });
     } finally {
       setEntriesReady(true);
@@ -63,14 +101,18 @@ export function useEntries(user, authLoading) {
   }, [authLoading, loadEntries]);
 
   const addRaceToEntries = async (race) => {
-    if (!user) {
-      return { needAuth: true };
-    }
     if (entries.some((e) => e.raceId && e.raceId === race.id)) {
       return { alreadyExists: true };
     }
     const newEntry = makeEntry(race);
-    setEntries((prev) => [newEntry, ...prev]);
+    const next = [newEntry, ...entries];
+    setEntries(next);
+    saveToLocalStorage(next);
+
+    if (!user) {
+      setSyncState({ kind: "success", message: "내 일정에 추가되었습니다. (로컬)" });
+      return { success: true };
+    }
 
     try {
       await dataService.saveEntry(newEntry, user.id);
@@ -84,7 +126,6 @@ export function useEntries(user, authLoading) {
   };
 
   const addManualEntry = async (manualForm) => {
-    if (!user) return { needAuth: true };
     const name = manualForm.name.trim();
     if (!name) return { error: "대회명을 입력해주세요." };
 
@@ -100,7 +141,14 @@ export function useEntries(user, authLoading) {
     newEntry.entryFee = manualForm.entryFee?.trim() || "";
     newEntry.raceType = manualForm.raceType || "";
 
-    setEntries((prev) => [newEntry, ...prev]);
+    const next = [newEntry, ...entries];
+    setEntries(next);
+    saveToLocalStorage(next);
+
+    if (!user) {
+      setSyncState({ kind: "success", message: "대회가 추가되었습니다. (로컬)" });
+      return { success: true };
+    }
 
     try {
       await dataService.saveEntry(newEntry, user.id);
@@ -114,12 +162,15 @@ export function useEntries(user, authLoading) {
   };
 
   const updateEntry = async (entryId, patch) => {
-    if (!user) return;
     const target = entries.find((e) => e.entryId === entryId);
     if (!target) return;
 
     const updated = { ...target, ...patch, updatedAt: new Date().toISOString() };
-    setEntries((prev) => prev.map((e) => (e.entryId === entryId ? updated : e)));
+    const next = entries.map((e) => (e.entryId === entryId ? updated : e));
+    setEntries(next);
+    saveToLocalStorage(next);
+
+    if (!user) return;
 
     try {
       await dataService.saveEntry(updated, user.id);
@@ -130,8 +181,15 @@ export function useEntries(user, authLoading) {
   };
 
   const removeEntry = async (entryId) => {
-    if (!user) return;
-    setEntries((prev) => prev.filter((e) => e.entryId !== entryId));
+    const next = entries.filter((e) => e.entryId !== entryId);
+    setEntries(next);
+    saveToLocalStorage(next);
+
+    if (!user) {
+      setSyncState({ kind: "success", message: "삭제되었습니다." });
+      return;
+    }
+
     try {
       await dataService.deleteEntry(entryId, user.id);
       setSyncState({ kind: "success", message: "삭제되었습니다." });
@@ -141,7 +199,7 @@ export function useEntries(user, authLoading) {
   };
 
   const onCertificateChange = async (entryId, file) => {
-    if (!user || !file) return;
+    if (!file) return;
     if (!isSupportedImageFile(file)) {
       setSyncState({ kind: "error", message: "이미지 파일만 업로드할 수 있습니다." });
       return;
@@ -159,7 +217,6 @@ export function useEntries(user, authLoading) {
   };
 
   const onRacePhotosChange = async (entryId, fileList) => {
-    if (!user) return;
     const current = entries.find((e) => e.entryId === entryId);
     const currentCount = current?.racePhotoDataUrls?.length || 0;
     const available = Math.max(0, 6 - currentCount);
@@ -178,7 +235,6 @@ export function useEntries(user, authLoading) {
   };
 
   const removeRacePhoto = async (entryId, index) => {
-    if (!user) return;
     const target = entries.find((e) => e.entryId === entryId);
     if (!target) return;
     const nextPhotos = (target.racePhotoDataUrls || []).filter((_, i) => i !== index);

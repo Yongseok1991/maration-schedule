@@ -429,7 +429,7 @@ export default function App() {
   const backupInputRef = useRef(null);
 
   const racesData = { updatedAt: racesState.updatedAt, races: racesState.races };
-  const { query, setQuery, region, setRegion, regions, month, setMonth, monthOptions, todayMonth, openOnly, setOpenOnly, calendarMonth, setCalendarMonth, selectedDate, setSelectedDate, browseRaces } = racesState;
+  const { query, setQuery, region, setRegion, regions, month, setMonth, monthOptions, todayMonth, openOnly, setOpenOnly, calendarMonth, setCalendarMonth, selectedDate, setSelectedDate, browseRaces, racesByDate } = racesState;
   const { entries, entriesReady, entriesByDate, syncState, setSyncState } = entriesState;
   const { shoes, shoeForm, setShoeForm } = shoesState;
   const { pbMap, totalEntryFee, yearlyEntryFees, totalShoePrice, yearlyShoePrices } = statsState;
@@ -462,7 +462,8 @@ export default function App() {
     shoesCount: shoes.length
   }), [entries, shoes]);
 
-  const selectedDateEntries = selectedDate ? entriesByDate.get(selectedDate) || [] : [];
+  const selectedDateMyEntries = selectedDate ? entriesByDate.get(selectedDate) || [] : [];
+  const selectedDateRaces = selectedDate ? (racesByDate?.get(selectedDate) || []) : [];
 
   const scrollMonthChipToStart = (targetMonth) => {
     const container = monthScrollerRef.current;
@@ -960,38 +961,150 @@ export default function App() {
           <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-zinc-500 py-1">{["일","월","화","수","목","금","토"].map((w, i) => <div key={w} className={i === 0 ? "text-rose-400/80" : i === 6 ? "text-sky-400/80" : ""}>{w}</div>)}</div>
           <div className="mt-1 grid grid-cols-7 gap-1">
             {cells.map((key, idx) => {
-              if (!key) return <div key={`blank-${idx}`} className="h-10 rounded-xl bg-zinc-900/15" />;
-              const count = (entriesByDate.get(key) || []).length;
+              if (!key) return <div key={`blank-${idx}`} className="h-11 rounded-xl bg-zinc-900/15" />;
+              const raceList = racesByDate?.get(key) || [];
+              const myList = entriesByDate.get(key) || [];
               const selected = selectedDate === key;
               return (
                 <button
                   key={key}
-                  className={`h-10 rounded-xl border text-xs font-semibold flex flex-col items-center justify-center transition-all ${
+                  className={`h-11 rounded-xl border text-xs font-semibold flex flex-col items-center justify-center transition-all ${
                     selected
-                      ? "border-amber-400/60 bg-amber-400/20 text-amber-200 shadow-sm"
-                      : count > 0
-                      ? "border-zinc-700/80 bg-zinc-800/60 text-zinc-200"
-                      : "border-zinc-800/60 bg-zinc-900/40 text-zinc-400 hover:bg-zinc-800/40"
+                      ? "border-amber-400/80 bg-amber-400/25 text-amber-200 shadow-md ring-1 ring-amber-400/40"
+                      : myList.length > 0
+                      ? "border-amber-500/40 bg-amber-500/10 text-amber-100"
+                      : raceList.length > 0
+                      ? "border-zinc-750/70 bg-zinc-850/50 text-zinc-200 hover:border-zinc-600"
+                      : "border-zinc-800/60 bg-zinc-900/40 text-zinc-500 hover:bg-zinc-800/40"
                   }`}
                   onClick={() => setSelectedDate(key)}
                 >
-                  <span>{Number(key.slice(8, 10))}</span>
-                  {count > 0 && <span className="text-[10px] font-bold text-emerald-400 leading-none">{count}</span>}
+                  <div className="flex items-center gap-1 leading-none">
+                    <span>{Number(key.slice(8, 10))}</span>
+                    {myList.length > 0 && <span className="h-1.5 w-1.5 rounded-full bg-amber-400" title="내 등록 일정 있음" />}
+                  </div>
+                  {raceList.length > 0 && (
+                    <span className="text-[10px] font-bold text-emerald-400 leading-none mt-1">
+                      {raceList.length}건
+                    </span>
+                  )}
                 </button>
               );
             })}
           </div>
         </div>
+
+        {/* 선택한 날짜의 상세 일정 카드 */}
         <div className="mt-3 card-panel p-4">
-          <p className="text-sm font-bold text-zinc-100 tracking-tight">{selectedDate ? `${selectedDate} 일정` : TEXT.selectDate}</p>
-          <div className="mt-2.5 space-y-2">
-            {selectedDateEntries.map((e) => (
-              <div key={e.entryId} className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-3">
-                <p className="text-sm font-bold text-zinc-100">{e.name}</p>
-                <p className="text-xs text-zinc-400 mt-0.5">{e.place || "-"}</p>
+          <div className="flex items-center justify-between pb-2.5 border-b border-zinc-800/80">
+            <div className="flex items-center gap-2 flex-wrap">
+              <p className="text-sm font-bold text-zinc-100 tracking-tight">
+                {selectedDate ? `${selectedDate} 일정` : TEXT.selectDate}
+              </p>
+              {selectedDate && (
+                <span className="text-xs text-zinc-400">
+                  (내 일정 {selectedDateMyEntries.length}건 · 마라톤 {selectedDateRaces.length}건)
+                </span>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-3 space-y-4">
+            {/* 1. 내 등록 일정 */}
+            {selectedDateMyEntries.length > 0 && (
+              <div className="space-y-2">
+                <p className="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-amber-400" />
+                  내 등록 일정 ({selectedDateMyEntries.length}건)
+                </p>
+                {selectedDateMyEntries.map((e) => (
+                  <div key={e.entryId} className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-3.5 space-y-1.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-sm font-bold text-zinc-100">{e.name}</span>
+                      {e.status && (
+                        <span className={`rounded-full border px-2 py-0.5 text-[10px] font-semibold ${statusBadgeClass(e.status)}`}>
+                          {STATUS_LABEL[e.status] || e.status}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-xs text-zinc-400 flex flex-wrap gap-x-3 gap-y-1">
+                      {e.place && <span>장소: {e.place}</span>}
+                      {e.distances && <span>종목: {e.distances}</span>}
+                      {e.goalTime && <span>목표: {e.goalTime}</span>}
+                      {e.resultTime && <span className="font-semibold text-emerald-400">기록: {e.resultTime}</span>}
+                    </div>
+                    {e.memo && <p className="text-xs text-zinc-300 bg-zinc-900/60 rounded-lg p-2 mt-1">{e.memo}</p>}
+                  </div>
+                ))}
               </div>
-            ))}
-            {selectedDate && selectedDateEntries.length === 0 && <p className="text-xs text-zinc-500 py-2">{TEXT.noDateEntries}</p>}
+            )}
+
+            {/* 2. 해당 날짜에 열리는 마라톤 대회 목록 */}
+            {selectedDateRaces.length > 0 && (
+              <div className="space-y-2">
+                <p className="text-xs font-bold text-zinc-300 flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                  마라톤 대회 목록 ({selectedDateRaces.length}건)
+                </p>
+                <div className="space-y-2.5">
+                  {selectedDateRaces.map((race) => {
+                    const alreadyAdded = entries.some((e) => e.raceId && e.raceId === race.id);
+                    return (
+                      <div key={race.id} className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-3.5 space-y-2">
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <h3 className="text-sm font-bold text-zinc-100 leading-snug">{race.name}</h3>
+                            {race.status && (
+                              <span className={`inline-block mt-1 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${statusBadgeClass(race.status)}`}>
+                                {STATUS_LABEL[race.status] || race.status}
+                              </span>
+                            )}
+                          </div>
+                          <button
+                            className={`h-7 px-2.5 rounded-lg border font-semibold text-xs transition flex items-center gap-1 ${
+                              alreadyAdded
+                                ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-300 cursor-default"
+                                : "border-amber-400/40 bg-amber-400/15 text-amber-300 hover:bg-amber-400/25 active:scale-95"
+                            }`}
+                            onClick={() => !alreadyAdded && addRaceToMyEntries(race)}
+                            disabled={alreadyAdded}
+                          >
+                            {alreadyAdded ? "✓ 등록됨" : "+ 내 일정 추가"}
+                          </button>
+                        </div>
+                        <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-xs text-zinc-400">
+                          <p className="truncate"><span className="text-zinc-500">종목:</span> {race.distances || "-"}</p>
+                          <p className="truncate"><span className="text-zinc-500">장소:</span> {race.place || "-"}</p>
+                          <p className="col-span-2"><span className="text-zinc-500">접수:</span> {formatRegPeriod(race.registration_period)}</p>
+                          {race.organizer && <p className="col-span-2 truncate"><span className="text-zinc-500">주최:</span> {race.organizer}</p>}
+                        </div>
+                        {race.homepage && (
+                          <div className="pt-0.5">
+                            <a
+                              className="h-7 rounded-lg border border-zinc-700/80 bg-zinc-800/60 hover:bg-zinc-800 px-2.5 text-xs font-medium text-zinc-300 inline-flex items-center gap-1 transition"
+                              href={race.homepage}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <span>홈페이지</span>
+                              <span className="text-[10px] text-zinc-500">↗</span>
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* 아무 일정도 없을 때 */}
+            {selectedDate && selectedDateMyEntries.length === 0 && selectedDateRaces.length === 0 && (
+              <p className="text-xs text-zinc-500 py-4 text-center">선택한 날짜에 예정된 마라톤 대회가 없습니다.</p>
+            )}
+            {!selectedDate && (
+              <p className="text-xs text-zinc-500 py-4 text-center">달력에서 날짜를 선택하면 해당 일자의 마라톤 대회 및 내 일정이 표시됩니다.</p>
+            )}
           </div>
         </div>
       </section>

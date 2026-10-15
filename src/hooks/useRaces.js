@@ -71,8 +71,19 @@ export function useRaces() {
     });
   }, [racesData.races, query, region, month, openOnly]);
 
+  const racesByDate = useMemo(() => {
+    const map = new Map();
+    racesData.races.forEach((r) => {
+      if (!r.date_iso) return;
+      if (!map.has(r.date_iso)) map.set(r.date_iso, []);
+      map.get(r.date_iso).push(r);
+    });
+    return map;
+  }, [racesData.races]);
+
   return {
     races: racesData.races,
+    racesByDate,
     updatedAt: racesData.updatedAt,
     loading,
     query,
