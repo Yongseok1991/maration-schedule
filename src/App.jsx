@@ -409,6 +409,7 @@ export default function App() {
   const statsState = useStats(entriesState.entries, shoesState.shoes);
 
   const [photoViewer, setPhotoViewer] = useState("");
+  const [saveFeedback, setSaveFeedback] = useState({});
   const [manualForm, setManualForm] = useState({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
 
   const visibleTabs = useMemo(() => {
@@ -479,6 +480,22 @@ export default function App() {
 
   const updateEntry = (entryId, patch) => entriesState.updateEntry(entryId, patch);
   const removeEntry = (entryId) => entriesState.removeEntry(entryId);
+
+  const handleSaveEntry = async (entryId) => {
+    setSaveFeedback((prev) => ({ ...prev, [entryId]: "saving" }));
+    const res = await entriesState.saveEntry(entryId);
+    if (res?.success) {
+      setSaveFeedback((prev) => ({ ...prev, [entryId]: "saved" }));
+      setTimeout(() => {
+        setSaveFeedback((prev) => ({ ...prev, [entryId]: null }));
+      }, 2500);
+    } else {
+      setSaveFeedback((prev) => ({ ...prev, [entryId]: "error" }));
+      setTimeout(() => {
+        setSaveFeedback((prev) => ({ ...prev, [entryId]: null }));
+      }, 3000);
+    }
+  };
 
   const addShoe = async () => {
     const res = await shoesState.addShoe();
@@ -773,6 +790,40 @@ export default function App() {
                   <img alt="certificate" src={entry.certificateDataUrl} className="max-h-48 w-full cursor-zoom-in object-contain bg-zinc-950" onClick={() => setPhotoViewer(entry.certificateDataUrl)} />
                 </div>
               )}
+            </div>
+            {/* 저장 액션 바 */}
+            <div className="mt-4 flex items-center justify-between border-t border-zinc-800/80 pt-3">
+              <div className="flex items-center gap-1.5 text-xs">
+                {saveFeedback[entry.entryId] === "saving" && (
+                  <span className="text-amber-400 font-medium flex items-center gap-1.5 animate-pulse">
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                    DB 저장 중...
+                  </span>
+                )}
+                {saveFeedback[entry.entryId] === "saved" && (
+                  <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                    ✓ 저장되었습니다!
+                  </span>
+                )}
+                {saveFeedback[entry.entryId] === "error" && (
+                  <span className="text-rose-400 font-medium">
+                    저장 실패 (다시 시도해주세요)
+                  </span>
+                )}
+                {!saveFeedback[entry.entryId] && (
+                  <span className="text-[11px] text-zinc-500">
+                    작성 후 저장을 누르면 DB에 안전하게 동기화됩니다
+                  </span>
+                )}
+              </div>
+              <button
+                type="button"
+                className="h-8.5 rounded-xl border border-amber-400/40 bg-amber-400/15 hover:bg-amber-400/25 px-4 text-xs font-bold text-amber-200 transition flex items-center gap-1.5 shadow-sm active:scale-95"
+                onClick={() => handleSaveEntry(entry.entryId)}
+              >
+                <span>기록 저장</span>
+                <span className="text-[11px]">💾</span>
+              </button>
             </div>
           </article>
         );

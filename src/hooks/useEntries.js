@@ -161,7 +161,7 @@ export function useEntries(user, authLoading) {
     }
   };
 
-  const updateEntry = async (entryId, patch) => {
+  const updateEntry = (entryId, patch) => {
     const target = entries.find((e) => e.entryId === entryId);
     if (!target) return;
 
@@ -169,14 +169,27 @@ export function useEntries(user, authLoading) {
     const next = entries.map((e) => (e.entryId === entryId ? updated : e));
     setEntries(next);
     saveToLocalStorage(next);
+  };
 
-    if (!user) return;
+  const saveEntry = async (entryId) => {
+    const target = entries.find((e) => e.entryId === entryId);
+    if (!target) return { error: "대회를 찾을 수 없습니다." };
+
+    saveToLocalStorage(entries);
+
+    if (!user) {
+      setSyncState({ kind: "success", message: "로컬에 저장되었습니다." });
+      return { success: true, local: true };
+    }
 
     try {
-      await dataService.saveEntry(updated, user.id);
+      await dataService.saveEntry(target, user.id);
+      setSyncState({ kind: "success", message: "클라우드 DB에 저장되었습니다." });
+      return { success: true };
     } catch (err) {
-      console.error("Update error:", err);
-      setSyncState({ kind: "error", message: "업데이트 실패" });
+      console.error("Save entry error:", err);
+      setSyncState({ kind: "error", message: "저장에 실패했습니다." });
+      return { success: false, error: err };
     }
   };
 
@@ -210,7 +223,15 @@ export function useEntries(user, authLoading) {
     }
     try {
       const optimized = await optimizeImageFile(file, { maxSide: 2200, maxBytes: 1400 * 1024 });
-      await updateEntry(entryId, { certificateDataUrl: optimized });
+      const target = entries.find((e) => e.entryId === entryId);
+      if (!target) return;
+      const updated = { ...target, certificateDataUrl: optimized, updatedAt: new Date().toISOString() };
+      const next = entries.map((e) => (e.entryId === entryId ? updated : e));
+      setEntries(next);
+      saveToLocalStorage(next);
+      if (user) {
+        await dataService.saveEntry(updated, user.id);
+      }
     } catch {
       setSyncState({ kind: "error", message: "이미지 처리 실패" });
     }
@@ -228,7 +249,13 @@ export function useEntries(user, authLoading) {
         files.map((file) => optimizeImageFile(file, { maxSide: 1800, maxBytes: 900 * 1024 }))
       );
       const nextPhotos = [...(current?.racePhotoDataUrls || []), ...urls].slice(0, 6);
-      await updateEntry(entryId, { racePhotoDataUrls: nextPhotos });
+      const updated = { ...current, racePhotoDataUrls: nextPhotos, updatedAt: new Date().toISOString() };
+      const next = entries.map((e) => (e.entryId === entryId ? updated : e));
+      setEntries(next);
+      saveToLocalStorage(next);
+      if (user) {
+        await dataService.saveEntry(updated, user.id);
+      }
     } catch {
       setSyncState({ kind: "error", message: "사진 처리 중 오류가 발생했습니다." });
     }
@@ -238,7 +265,13 @@ export function useEntries(user, authLoading) {
     const target = entries.find((e) => e.entryId === entryId);
     if (!target) return;
     const nextPhotos = (target.racePhotoDataUrls || []).filter((_, i) => i !== index);
-    await updateEntry(entryId, { racePhotoDataUrls: nextPhotos });
+    const updated = { ...target, racePhotoDataUrls: nextPhotos, updatedAt: new Date().toISOString() };
+    const next = entries.map((e) => (e.entryId === entryId ? updated : e));
+    setEntries(next);
+    saveToLocalStorage(next);
+    if (user) {
+      await dataService.saveEntry(updated, user.id);
+    }
   };
 
   const entriesByDate = useMemo(() => {
@@ -260,6 +293,7 @@ export function useEntries(user, authLoading) {
     addRaceToEntries,
     addManualEntry,
     updateEntry,
+    saveEntry,
     removeEntry,
     onCertificateChange,
     onRacePhotosChange,
