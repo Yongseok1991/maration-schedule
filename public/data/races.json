@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T13:06:10.558Z",
+  "updatedAt": "2026-10-15T19:43:05.566Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 925,
   "races": [
@@ -12540,7 +12540,7 @@
       "contact": "1899-8610",
       "registration_period": "2026년5월4일~2026년10월15일",
       "homepage": "http://www.cuk-sports.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41558"
     },
     {
@@ -12870,7 +12870,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년8월10일~2026년10월15일",
       "homepage": "http://rocknrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41748"
     },
     {
