@@ -46,19 +46,19 @@ export function useRaces() {
   }, [racesData.races]);
 
   const monthOptions = useMemo(() => {
-    const list = [];
-    let cur = MIN_FILTER_MONTH;
-    const end = shiftMonth(currentMonthKey(), 12);
-    while (cur <= end) {
-      list.push(cur);
-      cur = shiftMonth(cur, 1);
-    }
-    return list;
-  }, []);
+    const set = new Set();
+    racesData.races.forEach((r) => {
+      const m = (r.date_iso || "").slice(0, 7);
+      if (/^\d{4}-\d{2}$/.test(m)) set.add(m);
+    });
+    set.add(currentMonthKey());
+    // 최신순 (내림차순, 최신 월이 맨 앞)
+    return Array.from(set).sort((a, b) => b.localeCompare(a));
+  }, [racesData.races]);
 
   const browseRaces = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return racesData.races.filter((race) => {
+    const filtered = racesData.races.filter((race) => {
       if (openOnly && race.status !== "접수중") return false;
       if (region !== "all" && !(race.place || "").includes(region)) return false;
       if (month && !(race.date_iso || "").startsWith(month)) return false;
@@ -68,6 +68,13 @@ export function useRaces() {
         (race.place || "").toLowerCase().includes(q) ||
         (race.organizer || "").toLowerCase().includes(q)
       );
+    });
+
+    // 최신순 (날짜 내림차순: 최신 일자 대회 우선 정렬)
+    return filtered.sort((a, b) => {
+      const ad = a.date_iso || "";
+      const bd = b.date_iso || "";
+      return bd.localeCompare(ad);
     });
   }, [racesData.races, query, region, month, openOnly]);
 
