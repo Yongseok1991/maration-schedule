@@ -432,7 +432,7 @@ export default function App() {
   const { query, setQuery, region, setRegion, regions, month, setMonth, monthOptions, todayMonth, openOnly, setOpenOnly, calendarMonth, setCalendarMonth, selectedDate, setSelectedDate, browseRaces, racesByDate } = racesState;
   const { entries, entriesReady, entriesByDate, syncState, setSyncState } = entriesState;
   const { shoes, shoeForm, setShoeForm } = shoesState;
-  const { pbMap, totalEntryFee, yearlyEntryFees, totalShoePrice, yearlyShoePrices } = statsState;
+  const { pbSummary, statsSummary, totalEntryFee, yearlyEntryFees, totalShoePrice, yearlyShoePrices } = statsState;
 
   const raceIdSet = useMemo(() => new Set(racesData.races.map((r) => r.id).filter(Boolean)), [racesData.races]);
   const raceById = useMemo(() => new Map(racesData.races.map((r) => [r.id, r])), [racesData.races]);
@@ -450,19 +450,6 @@ export default function App() {
         return (b.updatedAt || "").localeCompare(a.updatedAt || "");
       });
   }, [entries]);
-
-  const pbSummary = useMemo(() => ({
-    "5k": { seconds: pbMap.pb5k !== "기록 없음" ? 1 : null },
-    "10k": { seconds: pbMap.pb10k !== "기록 없음" ? 1 : null },
-    half: { seconds: pbMap.pbHalf !== "기록 없음" ? 1 : null },
-    full: { seconds: pbMap.pbFull !== "기록 없음" ? 1 : null }
-  }), [pbMap]);
-
-  const statsSummary = useMemo(() => ({
-    totalRaces: entries.length,
-    finishedRaces: entries.filter((entry) => parseResultSeconds(entry.resultTime)).length,
-    shoesCount: shoes.length
-  }), [entries, shoes]);
 
   const selectedDateMyEntries = selectedDate ? entriesByDate.get(selectedDate) || [] : [];
   const selectedDateRaces = selectedDate ? (racesByDate?.get(selectedDate) || []) : [];

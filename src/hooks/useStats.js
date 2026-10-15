@@ -15,6 +15,16 @@ const parseResultSeconds = (value) => {
   return null;
 };
 
+const detectDistanceCategory = (value) => {
+  const text = String(value || "").toLowerCase().replace(/\s+/g, "");
+  if (!text) return "";
+  if (text.includes("5km") || /(^|[^0-9])5k/.test(text)) return "5k";
+  if (text.includes("42.195") || text.includes("풀코스") || /(^|[^0-9])42k/.test(text) || text.includes("풀")) return "full";
+  if (text.includes("하프") || text.includes("21.0975") || /(^|[^0-9])21k/.test(text)) return "half";
+  if (text.includes("10km") || /(^|[^0-9])10k/.test(text)) return "10k";
+  return "";
+};
+
 const formatResultSeconds = (seconds) => {
   if (!Number.isFinite(seconds) || seconds <= 0) return "기록 없음";
   const hours = Math.floor(seconds / 3600);
@@ -24,33 +34,34 @@ const formatResultSeconds = (seconds) => {
   return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
 };
 
-export function useStats(entries, shoes) {
-  const pbMap = useMemo(() => {
-    const bests = { "5k": null, "10k": null, half: null, full: null };
-    entries.forEach((e) => {
-      const type = e.raceType;
-      if (!type || !(type in bests)) return;
-      const secs = parseResultSeconds(e.resultTime);
-      if (!secs) return;
-      if (bests[type] === null || secs < bests[type]) {
-        bests[type] = secs;
+export function useStats(entries = [], shoes = []) {
+  const pbSummary = useMemo(() => {
+    const best = { "5k": null, "10k": null, half: null, full: null };
+    (entries || []).forEach((entry) => {
+      const category = entry.raceType || detectDistanceCategory(entry.distances) || detectDistanceCategory(entry.name);
+      const seconds = parseResultSeconds(entry.resultTime);
+      if (!category || !seconds || !(category in best)) return;
+      const current = best[category];
+      if (!current || seconds < current.seconds) {
+        best[category] = { seconds, name: entry.name, dateIso: entry.dateIso || "" };
       }
     });
-    return {
-      pb5k: formatResultSeconds(bests["5k"]),
-      pb10k: formatResultSeconds(bests["10k"]),
-      pbHalf: formatResultSeconds(bests.half),
-      pbFull: formatResultSeconds(bests.full)
-    };
+    return best;
   }, [entries]);
 
+  const statsSummary = useMemo(() => ({
+    totalRaces: (entries || []).length,
+    finishedRaces: (entries || []).filter((entry) => parseResultSeconds(entry.resultTime)).length,
+    shoesCount: (shoes || []).length
+  }), [entries, shoes]);
+
   const totalEntryFee = useMemo(() => {
-    return entries.reduce((acc, e) => acc + parseEntryFee(e.entryFee), 0);
+    return (entries || []).reduce((acc, e) => acc + parseEntryFee(e.entryFee), 0);
   }, [entries]);
 
   const yearlyEntryFees = useMemo(() => {
     const map = new Map();
-    entries.forEach((e) => {
+    (entries || []).forEach((e) => {
       const year = e.dateIso ? e.dateIso.slice(0, 4) : "미정";
       map.set(year, (map.get(year) || 0) + parseEntryFee(e.entryFee));
     });
@@ -62,12 +73,12 @@ export function useStats(entries, shoes) {
   }, [entries]);
 
   const totalShoePrice = useMemo(() => {
-    return shoes.reduce((acc, s) => acc + parseEntryFee(s.price), 0);
+    return (shoes || []).reduce((acc, s) => acc + parseEntryFee(s.price), 0);
   }, [shoes]);
 
   const yearlyShoePrices = useMemo(() => {
     const map = new Map();
-    shoes.forEach((s) => {
+    (shoes || []).forEach((s) => {
       const year = s.purchaseDate ? s.purchaseDate.slice(0, 4) : "미정";
       map.set(year, (map.get(year) || 0) + parseEntryFee(s.price));
     });
@@ -79,11 +90,13 @@ export function useStats(entries, shoes) {
   }, [shoes]);
 
   return {
-    pbMap,
+    pbSummary,
+    statsSummary,
     totalEntryFee,
     yearlyEntryFees,
     totalShoePrice,
     yearlyShoePrices,
-    formatResultSeconds
+    formatResultSeconds,
+    parseResultSeconds
   };
 }
