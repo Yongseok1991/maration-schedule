@@ -705,7 +705,7 @@ export default function App() {
         </div>
       </article>
 
-      {/* 대회 D-Day 웹푸시 알림 설정 카드 */}
+      {/* 마라톤 스마트 알림 설정 카드 */}
       <article className="card-panel p-4 border-amber-400/25 bg-gradient-to-b from-zinc-900/90 to-zinc-950/90">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-start sm:items-center gap-2.5">
@@ -714,7 +714,7 @@ export default function App() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <p className="text-sm font-bold text-zinc-100 tracking-tight">대회 D-Day 푸시 알림</p>
+                <p className="text-sm font-bold text-zinc-100 tracking-tight">마라톤 스마트 알림</p>
                 {webPushState.isSubscribed ? (
                   <span className="rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 text-[10px] font-bold text-emerald-400">
                     알림 켜짐 ✓
@@ -725,8 +725,8 @@ export default function App() {
                   </span>
                 )}
               </div>
-              <p className="text-xs text-zinc-400 mt-0.5">
-                접수하신 대회의 <span className="text-amber-300 font-semibold">7일 전, 3일 전, 하루 전</span> 오전 9시에 스마트폰/PC로 알림을 보냅니다.
+              <p className="text-xs text-zinc-400 mt-1 leading-relaxed">
+                ⭐ <span className="text-amber-300 font-semibold">찜한 대회 접수 시작(D-1, 당일)</span>과 🏃 <span className="text-amber-300 font-semibold">출전 대회 D-Day(D-7, D-3, D-1)</span> 오전 9시에 스마트폰/PC로 미리 알려드립니다.
               </p>
             </div>
           </div>
@@ -745,7 +745,7 @@ export default function App() {
               ? "처리 중..."
               : webPushState.isSubscribed
               ? "알림 끄기"
-              : "알림 켜기 🔔"}
+              : "스마트 알림 켜기 🔔"}
           </button>
         </div>
 

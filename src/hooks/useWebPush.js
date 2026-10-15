@@ -156,8 +156,8 @@ export function useWebPush(user) {
       setIsSubscribed(true);
 
       // 즉시 확인용 웰컴 알림 띄우기
-      reg.showNotification("🔔 RACEBOOK 대회 알림 설정 완료", {
-        body: "접수하신 대회의 7일 전, 3일 전, 하루 전 오전 9시에 알림을 보내드립니다!",
+      reg.showNotification("🔔 RACEBOOK 마라톤 스마트 알림 설정 완료", {
+        body: "⭐ 찜한 대회의 접수 시작일과 🏃 출전 대회의 D-Day 일정을 오전 9시에 챙겨드립니다!",
         icon: "./icons/icon-192.png",
         badge: "./icons/icon-192.png"
       });
