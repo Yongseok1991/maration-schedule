@@ -25,19 +25,21 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
   } = performanceState;
 
   const [isGarminModalOpen, setIsGarminModalOpen] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState("all"); // 'all' 또는 'YYYY-MM'
-  const [filterRaceOnly, setFilterRaceOnly] = useState(false); // 대회 기록만 필터링
+  const [selectedMonth, setSelectedMonth] = useState(""); // 처음 진입 시 가장 최근 월로 자동 초기화
+  const [filterRaceOnly, setFilterRaceOnly] = useState(false); // 사용자가 직접 제목을 수정한 대회 기록만 필터
+  const [isListExpanded, setIsListExpanded] = useState(false); // 목록 5개 초과 시 접기/펼치기
   const fileInputRef = useRef(null);
 
-  // 1. 전체 활동 중 대회 기록 총 개수 및 월별 통계 집계
-  const { monthStatsList, totalRaceCount, totalAllKm } = useMemo(() => {
+  // 1. 전체 활동의 월별 통계 목록 및 대회 기록 총 개수 집계
+  const { monthStatsList, totalRaceCount, totalAllKm, latestMonthKey } = useMemo(() => {
     if (!activities || activities.length === 0) {
-      return { monthStatsList: [], totalRaceCount: 0, totalAllKm: 0 };
+      return { monthStatsList: [], totalRaceCount: 0, totalAllKm: 0, latestMonthKey: "" };
     }
 
     const monthMap = {};
     let raceCount = 0;
     let allMeters = 0;
+    let firstMonthKey = "";
 
     activities.forEach((act) => {
       const dist = Number(act.distance_meters) || 0;
@@ -53,6 +55,10 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
       const year = d.getFullYear();
       const month = String(d.getMonth() + 1).padStart(2, "0");
       const key = `${year}-${month}`;
+
+      if (!firstMonthKey) {
+        firstMonthKey = key;
+      }
 
       if (!monthMap[key]) {
         monthMap[key] = {
@@ -74,18 +80,26 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     return {
       monthStatsList: sortedMonths,
       totalRaceCount: raceCount,
-      totalAllKm: allMeters / 1000
+      totalAllKm: allMeters / 1000,
+      latestMonthKey: sortedMonths.length > 0 ? sortedMonths[0].key : firstMonthKey
     };
   }, [activities]);
 
-  // 2. 선택된 월 및 대회 필터가 적용된 활동 목록
+  // 2. 처음 진입 시 가장 최근 월(latestMonthKey)로 자동 선택
+  useEffect(() => {
+    if (latestMonthKey && !selectedMonth) {
+      setSelectedMonth(latestMonthKey);
+    }
+  }, [latestMonthKey, selectedMonth]);
+
+  // 3. 선택된 월 및 대회 필터가 적용된 활동 목록
   const filteredActivities = useMemo(() => {
     if (!activities || activities.length === 0) return [];
 
     let list = activities;
 
-    // 월별 필터
-    if (selectedMonth !== "all") {
+    // 월별 필터 (대회 전용 모드가 아니거나, 월별 대회 조회를 위해 적용)
+    if (selectedMonth && selectedMonth !== "all") {
       list = list.filter((act) => {
         if (!act.start_time) return false;
         const d = new Date(act.start_time);
@@ -94,7 +108,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
       });
     }
 
-    // 대회 기록만 필터
+    // 대회 기록만 보기 (사용자가 직접 제목을 수정한 대회명 필터)
     if (filterRaceOnly) {
       list = list.filter(isRaceActivity);
     }
@@ -102,7 +116,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     return list;
   }, [activities, selectedMonth, filterRaceOnly]);
 
-  // 3. 필터 변경 시 선택된 액티비티가 필터 목록에 없으면 첫 번째 활동 자동 선택
+  // 4. 필터 변경 시 선택된 액티비티가 현재 목록에 없으면 첫 번째 활동 자동 선택
   useEffect(() => {
     if (filteredActivities.length > 0) {
       const exists = filteredActivities.some((a) => a.activity_id === selectedActivityId);
@@ -112,11 +126,35 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     }
   }, [filteredActivities, selectedActivityId, setSelectedActivityId]);
 
-  // 4. 선택된 기간/필터에 따른 동적 핵심 지표 계산
+  // 5. 이전 / 다음 활동 네비게이션
+  const currentActivityIndex = filteredActivities.findIndex((a) => a.activity_id === selectedActivityId);
+  const hasPrev = currentActivityIndex > 0;
+  const hasNext = currentActivityIndex >= 0 && currentActivityIndex < filteredActivities.length - 1;
+
+  const handlePrevActivity = () => {
+    if (hasPrev) {
+      setSelectedActivityId(filteredActivities[currentActivityIndex - 1].activity_id);
+    }
+  };
+
+  const handleNextActivity = () => {
+    if (hasNext) {
+      setSelectedActivityId(filteredActivities[currentActivityIndex + 1].activity_id);
+    }
+  };
+
+  // 6. 선택된 기간/필터에 따른 핵심 지표 동적 계산
   const periodSummary = useMemo(() => {
     if (!filteredActivities || filteredActivities.length === 0) {
+      let label = "선택 기간";
+      if (selectedMonth === "all") label = "전체 기간";
+      else if (selectedMonth) {
+        const [y, m] = selectedMonth.split("-");
+        label = `${y}년 ${parseInt(m, 10)}월`;
+      }
+
       return {
-        title: selectedMonth === "all" ? "전체 기간 총 거리" : "선택 기간 총 거리",
+        periodLabel: label,
         totalDistanceKm: "0.0",
         totalRuns: 0,
         avgPaceSeconds: 0,
@@ -133,7 +171,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     const raceCount = filteredActivities.filter(isRaceActivity).length;
 
     let periodLabel = "전체 기간";
-    if (selectedMonth !== "all") {
+    if (selectedMonth !== "all" && selectedMonth) {
       const [y, m] = selectedMonth.split("-");
       periodLabel = `${y}년 ${parseInt(m, 10)}월`;
     }
@@ -148,12 +186,12 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     };
   }, [filteredActivities, selectedMonth]);
 
-  // 5. 선택된 액티비티에 대한 스마트 리포트 생성
+  // 7. 선택된 액티비티 스마트 리포트 생성
   const smartReport = selectedActivity
     ? generateSmartReport(selectedActivity, selectedLaps)
     : null;
 
-  // 1km 랩 차트용 페이스 최소/최대 계산 (차트 높이 정규화용)
+  // 1km 랩 차트용 페이스 최소/최대 계산
   const maxPace = selectedLaps.length > 0 ? Math.max(...selectedLaps.map((l) => l.pace_seconds)) : 360;
   const minPace = selectedLaps.length > 0 ? Math.min(...selectedLaps.map((l) => l.pace_seconds)) : 280;
   const paceRange = Math.max(30, maxPace - minPace);
@@ -185,6 +223,11 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
 
   const hasActivities = activities && activities.length > 0;
 
+  // 세로 리스트에서 표시할 활동 (기본 5개 또는 전체)
+  const displayedActivities = isListExpanded
+    ? filteredActivities
+    : filteredActivities.slice(0, 5);
+
   return (
     <div className="space-y-4 mt-3">
       {/* 1. 가민 연동 상태 배너 */}
@@ -208,7 +251,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
             </div>
             <p className="text-xs text-zinc-400 mt-0.5">
               {garminAuth
-                ? `${garminAuth.garmin_email} 계정 등록됨 (총 ${activities.length}회 수집됨)`
+                ? `${garminAuth.garmin_email} 계정 연동됨 (총 ${activities.length}회 수집됨)`
                 : "가민 계정을 연동하면 1km 랩 페이스와 심박수가 자동으로 분석됩니다."}
             </p>
           </div>
@@ -250,14 +293,14 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
         </div>
       </div>
 
-      {/* 2. 월별 거리 선택 select 박스 & 대회 기록 전용 필터 툴바 */}
+      {/* 2. 월별 거리 조회 select 박스 & 대회 기록 전용 필터 툴바 */}
       {hasActivities && (
         <div className="card-panel p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-zinc-900/80 border-zinc-800/90">
           {/* 월별 셀렉트 박스 */}
           <div className="flex items-center gap-2.5 flex-1 min-w-0">
             <label htmlFor="month-select" className="text-xs font-bold text-zinc-300 flex items-center gap-1.5 shrink-0">
               <span className="text-amber-400">📅</span>
-              <span>월별 거리 조회:</span>
+              <span>월별 거리:</span>
             </label>
             <div className="relative flex-1 max-w-sm">
               <select
@@ -266,14 +309,14 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
                 onChange={(e) => setSelectedMonth(e.target.value)}
                 className="w-full appearance-none rounded-xl bg-zinc-950 border border-zinc-700/90 px-3 py-1.5 pr-8 text-xs font-semibold text-zinc-100 hover:border-amber-400/80 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition cursor-pointer shadow-inner"
               >
-                <option value="all">
-                  🌐 전체 기간 누적 (총 {totalAllKm.toFixed(1)}km · {activities.length}회{totalRaceCount > 0 ? ` · 🏆대회 ${totalRaceCount}건` : ""})
-                </option>
                 {monthStatsList.map((m) => (
                   <option key={m.key} value={m.key}>
                     {m.label} (총 {(m.distanceMeters / 1000).toFixed(1)}km · {m.count}회{m.raceCount > 0 ? ` · 🏆대회 ${m.raceCount}건` : ""})
                   </option>
                 ))}
+                <option value="all">
+                  🌐 전체 기간 누적 (총 {totalAllKm.toFixed(1)}km · {activities.length}회{totalRaceCount > 0 ? ` · 🏆대회 ${totalRaceCount}건` : ""})
+                </option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-zinc-400 text-[10px]">
                 ▼
@@ -283,7 +326,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
 
           {/* 대회 기록만 선택 토글 탭 */}
           <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs font-medium text-zinc-400 shrink-0">기록 구분:</span>
+            <span className="text-xs font-medium text-zinc-400 shrink-0">구분:</span>
             <div className="flex rounded-xl bg-zinc-950 p-1 border border-zinc-800">
               <button
                 type="button"
@@ -399,25 +442,72 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
         </div>
       )}
 
-      {/* 5. 러닝/대회 액티비티 선택 칩 리스트 */}
+      {/* 5. 사용성 극대화: 가로 스크롤 제거 & 빠른 선택 바 + 세로 카드 목록 */}
       {hasActivities && (
         <div className="card-panel p-4 space-y-3">
-          <div className="flex items-center justify-between flex-wrap gap-2">
-            <h4 className="text-xs font-bold text-zinc-200 flex items-center gap-1.5">
-              <span className={`h-2 w-2 rounded-full ${filterRaceOnly ? "bg-amber-400" : "bg-emerald-400"}`} />
-              <span>
+          {/* 5-1. 빠른 선택 드롭다운 & 이전/다음 네비게이션 컨트롤 */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 border-b border-zinc-800/70">
+            <div className="flex items-center gap-2">
+              <span className={`h-2.5 w-2.5 rounded-full ${filterRaceOnly ? "bg-amber-400" : "bg-emerald-400"}`} />
+              <h4 className="text-xs font-bold text-zinc-200">
                 {filterRaceOnly
-                  ? `🏆 마라톤 대회 기록 선택 (${filteredActivities.length}건)`
-                  : `러닝 액티비티 선택 (${filteredActivities.length}건 / 전체 ${activities.length}건)`}
-              </span>
-            </h4>
-            <span className="text-[11px] text-zinc-500">
-              {filterRaceOnly
-                ? "대회를 클릭하면 1km 랩 스플릿과 레이스 분석이 표시됩니다"
-                : "액티비티를 클릭하면 1km 랩 스플릿이 표시됩니다"}
-            </span>
+                  ? `🏆 마라톤 대회 기록 (${filteredActivities.length}건)`
+                  : `러닝 기록 (${filteredActivities.length}건 / 전체 ${activities.length}건)`}
+              </h4>
+            </div>
+
+            {filteredActivities.length > 0 && (
+              <div className="flex items-center gap-1.5 w-full sm:w-auto">
+                {/* 이전 활동 버튼 */}
+                <button
+                  type="button"
+                  onClick={handlePrevActivity}
+                  disabled={!hasPrev}
+                  className="px-2.5 py-1.5 rounded-xl border border-zinc-800 bg-zinc-900/90 text-xs font-semibold text-zinc-300 hover:border-zinc-700 disabled:opacity-30 disabled:cursor-not-allowed transition shrink-0"
+                  title="이전 기록"
+                >
+                  ◀ 이전
+                </button>
+
+                {/* 현재 활동 선택 드롭다운 (가로 스크롤 완전 대체) */}
+                <div className="relative flex-1 sm:w-64">
+                  <select
+                    value={selectedActivityId || ""}
+                    onChange={(e) => setSelectedActivityId(e.target.value)}
+                    className="w-full appearance-none rounded-xl bg-zinc-950 border border-zinc-700/80 px-2.5 py-1.5 pr-7 text-xs font-bold text-zinc-100 hover:border-amber-400/80 focus:border-amber-400 focus:outline-none transition cursor-pointer truncate"
+                  >
+                    {filteredActivities.map((act) => {
+                      const isRace = isRaceActivity(act);
+                      const d = act.start_time ? new Date(act.start_time) : null;
+                      const dateStr = d ? `${d.getMonth() + 1}.${d.getDate()}` : "";
+                      const distKm = (act.distance_meters / 1000).toFixed(1);
+                      return (
+                        <option key={act.activity_id} value={act.activity_id}>
+                          {isRace ? "🏆 " : ""}{dateStr} · {act.activity_name} ({distKm}km · {formatPace(act.avg_pace_seconds)})
+                        </option>
+                      );
+                    })}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-zinc-400 text-[10px]">
+                    ▼
+                  </div>
+                </div>
+
+                {/* 다음 활동 버튼 */}
+                <button
+                  type="button"
+                  onClick={handleNextActivity}
+                  disabled={!hasNext}
+                  className="px-2.5 py-1.5 rounded-xl border border-zinc-800 bg-zinc-900/90 text-xs font-semibold text-zinc-300 hover:border-zinc-700 disabled:opacity-30 disabled:cursor-not-allowed transition shrink-0"
+                  title="다음 기록"
+                >
+                  다음 ▶
+                </button>
+              </div>
+            )}
           </div>
 
+          {/* 5-2. 세로 카드 리스트 (가로 스크롤 대신 한눈에 클릭 가능한 깔끔한 행 나열) */}
           {filteredActivities.length === 0 ? (
             <div className="p-6 text-center text-xs text-zinc-400 bg-zinc-950/40 rounded-xl border border-zinc-800/80">
               {filterRaceOnly
@@ -432,48 +522,76 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
-              {filteredActivities.map((act) => {
+            <div className="space-y-1.5 pt-1">
+              {displayedActivities.map((act) => {
                 const isSelected = act.activity_id === selectedActivityId;
                 const isRace = isRaceActivity(act);
                 const raceTag = isRace ? getRaceCategory(act) : null;
+                const d = act.start_time ? new Date(act.start_time) : null;
+                const dateText = d ? d.toLocaleDateString("ko-KR", { month: "numeric", day: "numeric", weekday: "short" }) : "";
 
                 return (
                   <button
                     key={act.activity_id}
                     onClick={() => setSelectedActivityId(act.activity_id)}
-                    className={`px-3 py-2 rounded-xl border text-left shrink-0 transition relative ${
+                    className={`w-full p-2.5 rounded-xl border text-left transition flex items-center justify-between gap-3 ${
                       isSelected
-                        ? "border-amber-400 bg-amber-400/15 text-zinc-100 shadow-md ring-1 ring-amber-400/40"
+                        ? "border-amber-400/90 bg-amber-400/10 text-zinc-100 shadow-md ring-1 ring-amber-400/30"
                         : isRace
-                        ? "border-amber-500/40 bg-zinc-900/80 text-zinc-300 hover:border-amber-400/70"
-                        : "border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+                        ? "border-amber-500/30 bg-zinc-900/70 text-zinc-300 hover:border-amber-400/60 hover:bg-zinc-900"
+                        : "border-zinc-800/80 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
                     }`}
                   >
-                    <div className="flex items-center gap-1.5 max-w-[170px]">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <span className="text-[11px] font-mono text-zinc-400 shrink-0 w-16">
+                        {dateText}
+                      </span>
+
                       {isRace && (
-                        <span className="text-[10px] font-extrabold text-amber-300 bg-amber-400/20 px-1 py-0.2 rounded border border-amber-400/40 shrink-0">
+                        <span className="text-[10px] font-extrabold text-amber-300 bg-amber-400/20 px-1.5 py-0.5 rounded border border-amber-400/40 shrink-0">
                           🏆 {raceTag}
                         </span>
                       )}
-                      <p className="text-xs font-bold truncate">{act.activity_name}</p>
+
+                      <span className={`text-xs font-bold truncate ${isSelected ? "text-amber-300" : "text-zinc-200"}`}>
+                        {act.activity_name}
+                      </span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 mt-1">
-                      <span>{(act.distance_meters / 1000).toFixed(1)}km</span>
-                      <span>·</span>
-                      <span className="font-mono text-zinc-300">{formatPace(act.avg_pace_seconds)}</span>
-                      {act.start_time && (
-                        <>
-                          <span>·</span>
-                          <span className="text-zinc-500 text-[9px]">
-                            {new Date(act.start_time).toLocaleDateString("ko-KR", { month: "numeric", day: "numeric" })}
-                          </span>
-                        </>
+
+                    <div className="flex items-center gap-3 shrink-0 text-xs font-mono">
+                      <span className="font-bold text-zinc-100">
+                        {(act.distance_meters / 1000).toFixed(2)} km
+                      </span>
+                      <span className="text-zinc-400 hidden sm:inline">
+                        {formatPace(act.avg_pace_seconds)}
+                      </span>
+                      {act.avg_heart_rate && (
+                        <span className="text-rose-400 text-[11px] hidden sm:inline">
+                          {act.avg_heart_rate} bpm
+                        </span>
                       )}
+                      <span className={`text-xs ${isSelected ? "text-amber-400 font-bold" : "text-zinc-600"}`}>
+                        {isSelected ? "선택됨 ✓" : "선택"}
+                      </span>
                     </div>
                   </button>
                 );
               })}
+
+              {/* 활동이 5개 초과일 때 더보기 / 접기 버튼 */}
+              {filteredActivities.length > 5 && (
+                <div className="pt-1 text-center">
+                  <button
+                    type="button"
+                    onClick={() => setIsListExpanded(!isListExpanded)}
+                    className="text-xs font-semibold text-zinc-400 hover:text-amber-400 transition inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700"
+                  >
+                    {isListExpanded
+                      ? `▲ 접기 (최근 5개만 보기)`
+                      : `▼ 목록 전체 보기 (+${filteredActivities.length - 5}건 더보기)`}
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>

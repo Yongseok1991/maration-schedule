@@ -166,26 +166,32 @@ export function generateSmartReport(activity, laps = []) {
   };
 }
 
-// 8. 대회(Race) 활동 판별 함수
+// 8. 대회(Race) 활동 판별 함수 (사용자가 직접 제목을 수정한 대회 기록만 필터링)
 export function isRaceActivity(activity) {
   if (!activity) return false;
   if (activity.is_race === true || activity.event_type === "race") return true;
 
-  const name = (activity.activity_name || "").toLowerCase();
-  const raceKeywords = [
-    "대회", "마라톤", "marathon", "race", "half", "하프", "풀코스",
-    "10k", "21k", "42k", "jtbc", "동마", "춘마", "제마", "서울", "송도", "손기정", "레이스"
-  ];
-  if (raceKeywords.some((k) => name.includes(k))) return true;
+  const rawName = activity.activity_name || "";
+  const name = rawName.toLowerCase();
 
-  const distM = Number(activity.distance_meters) || 0;
-  const km = distM / 1000;
-  // 표준 대회 거리 범위 (10K, 하프, 풀코스)
-  if ((km >= 9.8 && km <= 10.6) || (km >= 20.8 && km <= 21.6) || (km >= 41.8 && km <= 43.0)) {
-    const nonRaceKeywords = ["조깅", "jog", "회복", "recovery", "인터벌", "interval", "빌드업", "트랙", "treadmill"];
-    if (nonRaceKeywords.some((k) => name.includes(k))) return false;
+  // 사용자가 대회명으로 직접 수정한 키워드 패턴 (마라톤, 하프, 레이스, 10km, 21k, 대회명 등)
+  const customRaceKeywords = [
+    "대회", "마라톤", "marathon", "race", "레이스",
+    "half", "하프", "풀코스",
+    "10k", "21k", "42k",
+    "jtbc", "동마", "춘마", "제마",
+    "런(", "run (", "run(", "run "
+  ];
+
+  const hasRaceKeyword = customRaceKeywords.some((k) => name.includes(k));
+  if (hasRaceKeyword) {
+    // 혹시 '트레드밀'이나 '실내'가 섞여있으면 제외
+    if (name.includes("트레드밀") || name.includes("treadmill") || name.includes("indoor")) {
+      return false;
+    }
     return true;
   }
+
   return false;
 }
 
