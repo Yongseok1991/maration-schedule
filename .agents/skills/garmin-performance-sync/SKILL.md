@@ -213,4 +213,31 @@ END $$;
   - **월간 평균 유산소 심폐 효율(EF)**: 한 달간의 심박수 대비 스피드 효율 추적
   - **월간 대표 기록 기준 대회 완주 시간 예측**: 해당 월의 최장 거리/대표 러닝을 기준으로 피트 리겔 공식을 적용한 5K/10K/하프/풀코스 예상 시간 도출
 
+---
+
+## 9. 대회 D-Day 웹푸시 알림 시스템 아키텍처
+
+### 9.1. 발송 규칙 및 메시지
+- **발송 시점**: 매일 한국 시간 **오전 9시 (KST 09:00 / UTC 00:00)**
+- **대상**: Supabase `user_races` 중 상태가 `registered`(접수완료) 또는 `training`(준비중)인 참가 일정
+- **D-Day별 맞춤 안내**:
+  - **D-7**: `[대회명] 일주일 전! (D-7)` - 무리한 장거리 지양 및 가벼운 조깅/영양 보충 컨디션 조절 권장
+  - **D-3**: `[대회명] 3일 전! (D-3)` - 배번호, 러닝화, 에너지젤 필수 준비물 점검 및 탄수화물 로딩 안내
+  - **D-1**: `내일은 [대회명] 결전의 날! (D-1)` - 출발 시간/장소 확인 및 최적 수면 권장
+
+### 9.2. 컴포넌트 구성
+1. **PWA 서비스 워커 (`public/custom-sw.js` + `dist/sw.js`)**:
+   - `vite.config.js`의 `workbox.importScripts: ["custom-sw.js"]` 설정으로 Workbox 캐시와 푸시 수신(`push`) 및 클릭(`notificationclick`) 완벽 결합.
+2. **클라이언트 훅 (`src/hooks/useWebPush.js`)**:
+   - `Notification.requestPermission()` 및 `PushManager.subscribe()`로 VAPID 공개키 서명 토큰 생성.
+   - Supabase `push_subscriptions` 테이블에 upsert 동기화.
+   - 마이페이지에 **"알림 켜기/끄기"** 및 **"테스트 알림 받기"** 즉시 확인 버튼 제공.
+3. **발송 엔진 (`scripts/send-race-push.js`)**:
+   - `races.json`의 대회 날짜(`date_iso`)와 KST 오늘 날짜 비교하여 D-7, D-3, D-1 대상자 필터링.
+   - `push_logs` 중복 방지 테이블을 통해 동일 유저·대회·D-Day에 대해 1회만 발송 보장.
+   - 만료된 푸시 토큰(HTTP 410/404) 자동 정리.
+4. **자동화 워크플로우 (`.github/workflows/daily-push.yml`)**:
+   - GitHub Actions `cron: "0 0 * * *"` (KST 09:00) 매일 자동 실행.
+
+
 
