@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-15T07:42:59.609Z",
+  "updatedAt": "2026-10-15T13:06:10.558Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 925,
   "races": [
@@ -11269,21 +11269,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41823"
     },
     {
-      "id": "41642",
-      "name": "서울 대모-구룡산트레일런",
-      "date_display": "2026년10월24일",
-      "date_iso": "2026-10-24",
-      "distances": "14.6km",
-      "region": "서울",
-      "place": "수서역6번출구",
-      "organizer": "파브코리아",
-      "contact": "010-3526-9120",
-      "registration_period": "2026년8월15일~2026년10월23일",
-      "homepage": "http://www.mtrailrun.kr/",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41642"
-    },
-    {
       "id": "41637",
       "name": "2026 제3회 감성런",
       "date_display": "2026년10월24일",
@@ -13427,6 +13412,21 @@
       "homepage": "http://hugrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41911"
+    },
+    {
+      "id": "41642",
+      "name": "대전보문산트레일런",
+      "date_display": "2026년12월6일",
+      "date_iso": "2026-12-06",
+      "distances": "15km",
+      "region": "대전",
+      "place": "수서역6번출구",
+      "organizer": "파브코리아/명품트레일",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년8월15일~2026년12월5일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41642"
     },
     {
       "id": "41710",
