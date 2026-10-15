@@ -100,6 +100,7 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
     if access_token:
         try:
             supabase_client.postgrest.auth(access_token)
+            supabase_client.postgrest.session.headers['authorization'] = f'Bearer {access_token}'
             print("[+] Supabase authenticated with user access token (RLS bypassed for this user)!")
         except Exception as e:
             print(f"[!] Supabase auth warning: {e}")

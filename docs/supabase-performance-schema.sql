@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS public.user_garmin_auth (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
     garmin_email TEXT NOT NULL,
-    session_token_encrypted TEXT, -- 암호화된 가민 SSO 세션 토큰
+    session_token_encrypted TEXT, -- 가민 SSO 세션 토큰 캐시
     sync_status TEXT DEFAULT 'idle', -- 'idle' | 'syncing' | 'success' | 'error'
     last_sync_at TIMESTAMPTZ,
     last_error_message TEXT,
@@ -18,9 +18,11 @@ CREATE TABLE IF NOT EXISTS public.user_garmin_auth (
 
 ALTER TABLE public.user_garmin_auth ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Users can only manage their own garmin auth" ON public.user_garmin_auth;
 CREATE POLICY "Users can only manage their own garmin auth"
 ON public.user_garmin_auth FOR ALL
-USING (auth.uid() = user_id);
+USING (auth.uid() = user_id)
+WITH CHECK (auth.uid() = user_id);
 
 
 -- 2. 러닝 액티비티 마스터 테이블 (Garmin Activity Summary)
@@ -49,14 +51,16 @@ CREATE TABLE IF NOT EXISTS public.performance_activities (
 
 ALTER TABLE public.performance_activities ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Users can only access their own performance activities" ON public.performance_activities;
 CREATE POLICY "Users can only access their own performance activities"
 ON public.performance_activities FOR ALL
-USING (auth.uid() = user_id);
+USING (auth.uid() = user_id)
+WITH CHECK (auth.uid() = user_id);
 
 CREATE INDEX IF NOT EXISTS idx_perf_act_user_date ON public.performance_activities (user_id, start_time DESC);
 
 
--- 3. 1km 랩(Lap) 스플릿 세부 기록 테이블
+-- 3. 1km 랩(Lap) 스플릿 세부 기록 테이블 (외래키 FK로 부모 activity에 종속)
 CREATE TABLE IF NOT EXISTS public.performance_laps (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     activity_id TEXT NOT NULL, -- Garmin Activity ID
@@ -70,13 +74,33 @@ CREATE TABLE IF NOT EXISTS public.performance_laps (
     avg_cadence INT, -- 해당 1km 케이던스
     elevation_diff_meters NUMERIC(6, 1), -- 1km 내 고도 변화
     created_at TIMESTAMPTZ DEFAULT now(),
-    CONSTRAINT unique_activity_lap UNIQUE (activity_id, lap_index)
+    CONSTRAINT unique_activity_lap UNIQUE (activity_id, lap_index),
+    CONSTRAINT fk_performance_laps_activity
+        FOREIGN KEY (user_id, activity_id)
+        REFERENCES public.performance_activities (user_id, activity_id)
+        ON DELETE CASCADE
 );
+
+-- 기존 테이블이 이미 생성되어 있을 경우 외래키 추가 (안전 실행)
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint WHERE conname = 'fk_performance_laps_activity'
+    ) THEN
+        ALTER TABLE public.performance_laps
+        ADD CONSTRAINT fk_performance_laps_activity
+        FOREIGN KEY (user_id, activity_id)
+        REFERENCES public.performance_activities (user_id, activity_id)
+        ON DELETE CASCADE;
+    END IF;
+END $$;
 
 ALTER TABLE public.performance_laps ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "Users can only access their own performance laps" ON public.performance_laps;
 CREATE POLICY "Users can only access their own performance laps"
 ON public.performance_laps FOR ALL
-USING (auth.uid() = user_id);
+USING (auth.uid() = user_id)
+WITH CHECK (auth.uid() = user_id);
 
 CREATE INDEX IF NOT EXISTS idx_perf_laps_act ON public.performance_laps (activity_id, lap_index ASC);

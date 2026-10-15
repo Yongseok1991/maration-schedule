@@ -208,12 +208,16 @@ export function usePerformance(user) {
         localStorage.setItem(LOCAL_STORAGE_ACTIVITIES, JSON.stringify(fetchedActivities));
         localStorage.setItem(LOCAL_STORAGE_LAPS, JSON.stringify(fetchedLaps));
 
-        // 4. Supabase DB에 유저 세션 권한으로 안전하게 적재 (Postgres 정수 컬럼 정규화 & RLS 100% 통과)
+        // 4. Supabase DB에 유저 세션 권한으로 안전하게 적재 (Activities 선적재 -> Laps 후적재, 청킹 배치)
         if (supabase) {
           try {
+            // 활동 데이터 화이트리스트 정제 (정수/실수 형변환 및 확실한 user_id 바인딩)
             const sanitizedActivities = fetchedActivities.map((act) => ({
-              ...act,
               user_id: user.id,
+              activity_id: String(act.activity_id),
+              activity_name: act.activity_name || "러닝",
+              activity_type: act.activity_type || "running",
+              start_time: act.start_time,
               distance_meters: Math.round(Number(act.distance_meters || 0) * 100) / 100,
               duration_seconds: Math.round(Number(act.duration_seconds || 0)),
               avg_pace_seconds: act.avg_pace_seconds ? Math.round(Number(act.avg_pace_seconds)) : 0,
@@ -223,42 +227,75 @@ export function usePerformance(user) {
               elevation_gain_meters: act.elevation_gain_meters ? Math.round(Number(act.elevation_gain_meters) * 10) / 10 : 0,
               calories: act.calories ? Math.round(Number(act.calories)) : null,
               vo2max: act.vo2max ? Math.round(Number(act.vo2max) * 10) / 10 : null,
-              pace_consistency_score: act.pace_consistency_score ? Math.round(Number(act.pace_consistency_score)) : 85
+              aerobic_ef: act.aerobic_ef ? Math.round(Number(act.aerobic_ef) * 100) / 100 : null,
+              pace_consistency_score: act.pace_consistency_score ? Math.round(Number(act.pace_consistency_score)) : 85,
+              split_type: act.split_type || "even"
             }));
 
-            const { error: actError } = await supabase.from("performance_activities").upsert(sanitizedActivities, {
-              onConflict: "user_id,activity_id"
-            });
-            if (actError) {
-              console.error("[!] Supabase activities batch upsert error:", actError);
-            } else {
-              console.log("[+] Supabase activities successfully saved to DB!");
+            // 4-1. Activities를 50개씩 청킹하여 순차 적재 (부모 레코드 우선 커밋)
+            const actChunks = [];
+            for (let i = 0; i < sanitizedActivities.length; i += 50) {
+              actChunks.push(sanitizedActivities.slice(i, i + 50));
             }
+            console.log(`[*] Upserting ${sanitizedActivities.length} activities in ${actChunks.length} chunks...`);
 
-            const allLaps = Object.values(fetchedLaps).flat().map((lap) => ({
-              ...lap,
-              user_id: user.id,
-              distance_meters: Math.round(Number(lap.distance_meters || 1000) * 100) / 100,
-              duration_seconds: Math.round(Number(lap.duration_seconds || 0)),
-              pace_seconds: Math.round(Number(lap.pace_seconds || 0)),
-              avg_heart_rate: lap.avg_heart_rate ? Math.round(Number(lap.avg_heart_rate)) : null,
-              max_heart_rate: lap.max_heart_rate ? Math.round(Number(lap.max_heart_rate)) : null,
-              avg_cadence: lap.avg_cadence ? Math.round(Number(lap.avg_cadence)) : null,
-              elevation_diff_meters: lap.elevation_diff_meters ? Math.round(Number(lap.elevation_diff_meters) * 10) / 10 : 0
-            }));
-
-            if (allLaps.length > 0) {
-              const { error: lapError } = await supabase.from("performance_laps").upsert(allLaps, {
-                onConflict: "activity_id,lap_index"
+            let actSuccessCount = 0;
+            for (const chunk of actChunks) {
+              const { error: actError } = await supabase.from("performance_activities").upsert(chunk, {
+                onConflict: "user_id,activity_id"
               });
-              if (lapError) {
-                console.error("[!] Supabase laps batch upsert error:", lapError);
-              } else {
-                console.log("[+] Supabase laps successfully saved to DB!");
+              if (actError) {
+                console.error("[!] Supabase activities chunk upsert error:", actError);
+                throw new Error(`러닝 기록 저장 실패: ${actError.message}`);
               }
+              actSuccessCount += chunk.length;
+            }
+            console.log(`[+] Successfully saved ${actSuccessCount} activities to Supabase DB!`);
+
+            // 4-2. 랩(Lap) 스플릿 데이터 화이트리스트 정제 (부모 activity_id 및 user_id 확실하게 FK 매핑)
+            const allLaps = [];
+            Object.entries(fetchedLaps).forEach(([actId, laps]) => {
+              if (Array.isArray(laps)) {
+                laps.forEach((lap, idx) => {
+                  allLaps.push({
+                    user_id: user.id,
+                    activity_id: String(actId),
+                    lap_index: Number(lap.lap_index || idx + 1),
+                    distance_meters: Math.round(Number(lap.distance_meters || 1000) * 100) / 100,
+                    duration_seconds: Math.round(Number(lap.duration_seconds || 0)),
+                    pace_seconds: Math.round(Number(lap.pace_seconds || 0)),
+                    avg_heart_rate: lap.avg_heart_rate ? Math.round(Number(lap.avg_heart_rate)) : null,
+                    max_heart_rate: lap.max_heart_rate ? Math.round(Number(lap.max_heart_rate)) : null,
+                    avg_cadence: lap.avg_cadence ? Math.round(Number(lap.avg_cadence)) : null,
+                    elevation_diff_meters: lap.elevation_diff_meters ? Math.round(Number(lap.elevation_diff_meters) * 10) / 10 : 0
+                  });
+                });
+              }
+            });
+
+            // 4-3. Laps를 100개씩 청킹하여 순차 적재 (자식 레코드 적재)
+            if (allLaps.length > 0) {
+              const lapChunks = [];
+              for (let i = 0; i < allLaps.length; i += 100) {
+                lapChunks.push(allLaps.slice(i, i + 100));
+              }
+              console.log(`[*] Upserting ${allLaps.length} laps in ${lapChunks.length} chunks...`);
+
+              let lapSuccessCount = 0;
+              for (const chunk of lapChunks) {
+                const { error: lapError } = await supabase.from("performance_laps").upsert(chunk, {
+                  onConflict: "activity_id,lap_index"
+                });
+                if (lapError) {
+                  console.error("[!] Supabase laps chunk upsert error:", lapError);
+                } else {
+                  lapSuccessCount += chunk.length;
+                }
+              }
+              console.log(`[+] Successfully saved ${lapSuccessCount} laps to Supabase DB!`);
             }
           } catch (sbErr) {
-            console.warn("Supabase activities batch upsert exception:", sbErr);
+            console.error("Supabase activities batch upsert exception:", sbErr);
           }
         }
       } else {
