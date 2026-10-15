@@ -1,5 +1,11 @@
-import { useState, useRef } from "react";
-import { formatPace, formatDuration, generateSmartReport } from "../../utils/performanceMath";
+import { useState, useRef, useMemo, useEffect } from "react";
+import {
+  formatPace,
+  formatDuration,
+  generateSmartReport,
+  isRaceActivity,
+  getRaceCategory
+} from "../../utils/performanceMath";
 import GarminAuthModal from "./GarminAuthModal";
 
 export default function PerformanceView({ performanceState, onOpenAuth }) {
@@ -19,9 +25,130 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
   } = performanceState;
 
   const [isGarminModalOpen, setIsGarminModalOpen] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState("all"); // 'all' 또는 'YYYY-MM'
+  const [filterRaceOnly, setFilterRaceOnly] = useState(false); // 대회 기록만 필터링
   const fileInputRef = useRef(null);
 
-  // 선택된 액티비티에 대한 스마트 리포트 생성
+  // 1. 전체 활동 중 대회 기록 총 개수 및 월별 통계 집계
+  const { monthStatsList, totalRaceCount, totalAllKm } = useMemo(() => {
+    if (!activities || activities.length === 0) {
+      return { monthStatsList: [], totalRaceCount: 0, totalAllKm: 0 };
+    }
+
+    const monthMap = {};
+    let raceCount = 0;
+    let allMeters = 0;
+
+    activities.forEach((act) => {
+      const dist = Number(act.distance_meters) || 0;
+      allMeters += dist;
+
+      const isRace = isRaceActivity(act);
+      if (isRace) raceCount += 1;
+
+      if (!act.start_time) return;
+      const d = new Date(act.start_time);
+      if (Number.isNaN(d.getTime())) return;
+
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, "0");
+      const key = `${year}-${month}`;
+
+      if (!monthMap[key]) {
+        monthMap[key] = {
+          key,
+          label: `${year}년 ${d.getMonth() + 1}월`,
+          count: 0,
+          distanceMeters: 0,
+          raceCount: 0
+        };
+      }
+      monthMap[key].count += 1;
+      monthMap[key].distanceMeters += dist;
+      if (isRace) {
+        monthMap[key].raceCount += 1;
+      }
+    });
+
+    const sortedMonths = Object.values(monthMap).sort((a, b) => b.key.localeCompare(a.key));
+    return {
+      monthStatsList: sortedMonths,
+      totalRaceCount: raceCount,
+      totalAllKm: allMeters / 1000
+    };
+  }, [activities]);
+
+  // 2. 선택된 월 및 대회 필터가 적용된 활동 목록
+  const filteredActivities = useMemo(() => {
+    if (!activities || activities.length === 0) return [];
+
+    let list = activities;
+
+    // 월별 필터
+    if (selectedMonth !== "all") {
+      list = list.filter((act) => {
+        if (!act.start_time) return false;
+        const d = new Date(act.start_time);
+        const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+        return key === selectedMonth;
+      });
+    }
+
+    // 대회 기록만 필터
+    if (filterRaceOnly) {
+      list = list.filter(isRaceActivity);
+    }
+
+    return list;
+  }, [activities, selectedMonth, filterRaceOnly]);
+
+  // 3. 필터 변경 시 선택된 액티비티가 필터 목록에 없으면 첫 번째 활동 자동 선택
+  useEffect(() => {
+    if (filteredActivities.length > 0) {
+      const exists = filteredActivities.some((a) => a.activity_id === selectedActivityId);
+      if (!exists) {
+        setSelectedActivityId(filteredActivities[0].activity_id);
+      }
+    }
+  }, [filteredActivities, selectedActivityId, setSelectedActivityId]);
+
+  // 4. 선택된 기간/필터에 따른 동적 핵심 지표 계산
+  const periodSummary = useMemo(() => {
+    if (!filteredActivities || filteredActivities.length === 0) {
+      return {
+        title: selectedMonth === "all" ? "전체 기간 총 거리" : "선택 기간 총 거리",
+        totalDistanceKm: "0.0",
+        totalRuns: 0,
+        avgPaceSeconds: 0,
+        avgHeartRate: 0,
+        raceCount: 0
+      };
+    }
+
+    const totalDistMeters = filteredActivities.reduce((sum, a) => sum + (Number(a.distance_meters) || 0), 0);
+    const totalSeconds = filteredActivities.reduce((sum, a) => sum + (Number(a.duration_seconds) || 0), 0);
+    const hrList = filteredActivities.filter((a) => a.avg_heart_rate);
+    const avgHr = hrList.length > 0 ? hrList.reduce((sum, a) => sum + a.avg_heart_rate, 0) / hrList.length : 0;
+    const avgPace = totalDistMeters > 0 ? totalSeconds / (totalDistMeters / 1000) : 0;
+    const raceCount = filteredActivities.filter(isRaceActivity).length;
+
+    let periodLabel = "전체 기간";
+    if (selectedMonth !== "all") {
+      const [y, m] = selectedMonth.split("-");
+      periodLabel = `${y}년 ${parseInt(m, 10)}월`;
+    }
+
+    return {
+      periodLabel,
+      totalDistanceKm: (totalDistMeters / 1000).toFixed(1),
+      totalRuns: filteredActivities.length,
+      avgPaceSeconds: Math.round(avgPace),
+      avgHeartRate: Math.round(avgHr),
+      raceCount
+    };
+  }, [filteredActivities, selectedMonth]);
+
+  // 5. 선택된 액티비티에 대한 스마트 리포트 생성
   const smartReport = selectedActivity
     ? generateSmartReport(selectedActivity, selectedLaps)
     : null;
@@ -31,7 +158,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
   const minPace = selectedLaps.length > 0 ? Math.min(...selectedLaps.map((l) => l.pace_seconds)) : 280;
   const paceRange = Math.max(30, maxPace - minPace);
 
-  // 가민 활동 파일(.json, .gpx 등) 또는 수동 임포트 처리
+  // 수동 JSON/FIT 임포트
   const handleFileUpload = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -40,7 +167,6 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     reader.onload = (event) => {
       try {
         const text = event.target?.result;
-        // JSON 형태인 경우
         if (file.name.endsWith(".json")) {
           const json = JSON.parse(text);
           if (json.activity && Array.isArray(json.laps)) {
@@ -82,7 +208,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
             </div>
             <p className="text-xs text-zinc-400 mt-0.5">
               {garminAuth
-                ? `${garminAuth.garmin_email} 계정 등록됨 (매월 1일 새벽 04시 자동 수집)`
+                ? `${garminAuth.garmin_email} 계정 등록됨 (총 ${activities.length}회 수집됨)`
                 : "가민 계정을 연동하면 1km 랩 페이스와 심박수가 자동으로 분석됩니다."}
             </p>
           </div>
@@ -124,48 +250,124 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
         </div>
       </div>
 
-      {/* 2. 월간 핵심 지표 4대 카드 */}
+      {/* 2. 월별 거리 선택 select 박스 & 대회 기록 전용 필터 툴바 */}
+      {hasActivities && (
+        <div className="card-panel p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-zinc-900/80 border-zinc-800/90">
+          {/* 월별 셀렉트 박스 */}
+          <div className="flex items-center gap-2.5 flex-1 min-w-0">
+            <label htmlFor="month-select" className="text-xs font-bold text-zinc-300 flex items-center gap-1.5 shrink-0">
+              <span className="text-amber-400">📅</span>
+              <span>월별 거리 조회:</span>
+            </label>
+            <div className="relative flex-1 max-w-sm">
+              <select
+                id="month-select"
+                value={selectedMonth}
+                onChange={(e) => setSelectedMonth(e.target.value)}
+                className="w-full appearance-none rounded-xl bg-zinc-950 border border-zinc-700/90 px-3 py-1.5 pr-8 text-xs font-semibold text-zinc-100 hover:border-amber-400/80 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition cursor-pointer shadow-inner"
+              >
+                <option value="all">
+                  🌐 전체 기간 누적 (총 {totalAllKm.toFixed(1)}km · {activities.length}회{totalRaceCount > 0 ? ` · 🏆대회 ${totalRaceCount}건` : ""})
+                </option>
+                {monthStatsList.map((m) => (
+                  <option key={m.key} value={m.key}>
+                    {m.label} (총 {(m.distanceMeters / 1000).toFixed(1)}km · {m.count}회{m.raceCount > 0 ? ` · 🏆대회 ${m.raceCount}건` : ""})
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-zinc-400 text-[10px]">
+                ▼
+              </div>
+            </div>
+          </div>
+
+          {/* 대회 기록만 선택 토글 탭 */}
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-xs font-medium text-zinc-400 shrink-0">기록 구분:</span>
+            <div className="flex rounded-xl bg-zinc-950 p-1 border border-zinc-800">
+              <button
+                type="button"
+                onClick={() => setFilterRaceOnly(false)}
+                className={`px-3 py-1 rounded-lg text-xs font-bold transition ${
+                  !filterRaceOnly
+                    ? "bg-zinc-800 text-zinc-100 shadow-sm"
+                    : "text-zinc-400 hover:text-zinc-200"
+                }`}
+              >
+                전체 활동
+              </button>
+              <button
+                type="button"
+                onClick={() => setFilterRaceOnly(true)}
+                className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition ${
+                  filterRaceOnly
+                    ? "bg-gradient-to-r from-amber-400 to-amber-500 text-zinc-950 shadow-md font-extrabold"
+                    : "text-amber-400/90 hover:text-amber-300"
+                }`}
+              >
+                <span>🏆</span>
+                <span>대회 기록만 ({totalRaceCount})</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 3. 선택된 월/대회 기준 핵심 지표 4대 카드 */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
         <div className="card-panel p-3.5 space-y-1">
-          <p className="text-[11px] font-medium text-zinc-400">이번 달 총 거리</p>
+          <p className="text-[11px] font-medium text-zinc-400">
+            {filterRaceOnly
+              ? `${periodSummary.periodLabel} 대회 총 거리`
+              : `${periodSummary.periodLabel} 총 거리`}
+          </p>
           <p className="text-xl font-black text-amber-400 tracking-tight">
-            {monthlySummary.totalDistanceKm} <span className="text-xs font-bold text-zinc-300">km</span>
-          </p>
-          <p className="text-[10px] text-zinc-500">총 {monthlySummary.totalRuns}회 러닝</p>
-        </div>
-
-        <div className="card-panel p-3.5 space-y-1">
-          <p className="text-[11px] font-medium text-zinc-400">월간 평균 페이스</p>
-          <p className="text-xl font-black text-zinc-100 tracking-tight">
-            {monthlySummary.avgPaceSeconds > 0 ? formatPace(monthlySummary.avgPaceSeconds) : "-:--/km"}
-          </p>
-          <p className="text-[10px] text-emerald-400">
-            {monthlySummary.avgPaceSeconds > 0 ? "유산소 지속주" : "기록 대기 중"}
-          </p>
-        </div>
-
-        <div className="card-panel p-3.5 space-y-1">
-          <p className="text-[11px] font-medium text-zinc-400">평균 심박수</p>
-          <p className="text-xl font-black text-rose-400 tracking-tight">
-            {monthlySummary.avgHeartRate > 0 ? `${monthlySummary.avgHeartRate} bpm` : "- bpm"}
+            {periodSummary.totalDistanceKm} <span className="text-xs font-bold text-zinc-300">km</span>
           </p>
           <p className="text-[10px] text-zinc-500">
-            {monthlySummary.avgHeartRate > 0 ? "유산소 심박 영역" : "데이터 없음"}
+            총 {periodSummary.totalRuns}회 {filterRaceOnly ? "대회 완주" : "러닝"}
+            {periodSummary.raceCount > 0 && !filterRaceOnly && ` (대회 ${periodSummary.raceCount}건 포함)`}
           </p>
         </div>
 
         <div className="card-panel p-3.5 space-y-1">
-          <p className="text-[11px] font-medium text-zinc-400">유산소 심폐 효율</p>
+          <p className="text-[11px] font-medium text-zinc-400">
+            {filterRaceOnly ? "대회 평균 페이스" : "기간 평균 페이스"}
+          </p>
+          <p className="text-xl font-black text-zinc-100 tracking-tight">
+            {periodSummary.avgPaceSeconds > 0 ? formatPace(periodSummary.avgPaceSeconds) : "-:--/km"}
+          </p>
+          <p className="text-[10px] text-emerald-400">
+            {periodSummary.avgPaceSeconds > 0 ? (filterRaceOnly ? "대회 레이스 페이스" : "유산소 지속 페이스") : "기록 대기 중"}
+          </p>
+        </div>
+
+        <div className="card-panel p-3.5 space-y-1">
+          <p className="text-[11px] font-medium text-zinc-400">
+            {filterRaceOnly ? "대회 평균 심박수" : "평균 심박수"}
+          </p>
+          <p className="text-xl font-black text-rose-400 tracking-tight">
+            {periodSummary.avgHeartRate > 0 ? `${periodSummary.avgHeartRate} bpm` : "- bpm"}
+          </p>
+          <p className="text-[10px] text-zinc-500">
+            {periodSummary.avgHeartRate > 0 ? (filterRaceOnly ? "레이스 역치 심박 구간" : "유산소 심박 영역") : "데이터 없음"}
+          </p>
+        </div>
+
+        <div className="card-panel p-3.5 space-y-1">
+          <p className="text-[11px] font-medium text-zinc-400">
+            {filterRaceOnly ? "완주한 대회 수" : "유산소 심폐 효율"}
+          </p>
           <p className="text-xl font-black text-emerald-400 tracking-tight">
-            {hasActivities ? monthlySummary.aerobicEfGrowth : "-"}
+            {filterRaceOnly ? `${periodSummary.raceCount}개 대회` : (hasActivities ? monthlySummary.aerobicEfGrowth : "-")}
           </p>
           <p className="text-[10px] text-emerald-400/90">
-            {hasActivities ? "동일 심박 대비 속도" : "동기화 대기 중"}
+            {filterRaceOnly ? "공식 레이스 완주 완료" : (hasActivities ? "동일 심박 대비 속도 성장" : "동기화 대기 중")}
           </p>
         </div>
       </div>
 
-      {/* 3. 데이터가 없을 때의 Empty State (정갈한 안내) */}
+      {/* 4. 데이터가 없을 때의 Empty State */}
       {!hasActivities && (
         <div className="card-panel p-8 text-center space-y-3">
           <div className="mx-auto h-12 w-12 rounded-2xl bg-zinc-800/80 border border-zinc-700/80 flex items-center justify-center text-2xl">
@@ -197,54 +399,105 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
         </div>
       )}
 
-      {/* 4. 최근 러닝 액티비티 선택 칩 */}
+      {/* 5. 러닝/대회 액티비티 선택 칩 리스트 */}
       {hasActivities && (
         <div className="card-panel p-4 space-y-3">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-wrap gap-2">
             <h4 className="text-xs font-bold text-zinc-200 flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-amber-400" />
-              러닝 액티비티 선택 ({activities.length}건)
+              <span className={`h-2 w-2 rounded-full ${filterRaceOnly ? "bg-amber-400" : "bg-emerald-400"}`} />
+              <span>
+                {filterRaceOnly
+                  ? `🏆 마라톤 대회 기록 선택 (${filteredActivities.length}건)`
+                  : `러닝 액티비티 선택 (${filteredActivities.length}건 / 전체 ${activities.length}건)`}
+              </span>
             </h4>
             <span className="text-[11px] text-zinc-500">
-              대회를 선택하면 1km 랩 스플릿이 표시됩니다
+              {filterRaceOnly
+                ? "대회를 클릭하면 1km 랩 스플릿과 레이스 분석이 표시됩니다"
+                : "액티비티를 클릭하면 1km 랩 스플릿이 표시됩니다"}
             </span>
           </div>
 
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
-            {activities.map((act) => {
-              const isSelected = act.activity_id === selectedActivityId;
-              return (
-                <button
-                  key={act.activity_id}
-                  onClick={() => setSelectedActivityId(act.activity_id)}
-                  className={`px-3 py-2 rounded-xl border text-left shrink-0 transition ${
-                    isSelected
-                      ? "border-amber-400/80 bg-amber-400/15 text-zinc-100 shadow-md ring-1 ring-amber-400/30"
-                      : "border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
-                  }`}
-                >
-                  <p className="text-xs font-bold truncate max-w-[150px]">{act.activity_name}</p>
-                  <p className="text-[10px] text-zinc-400 mt-0.5">
-                    {(act.distance_meters / 1000).toFixed(1)}km · {formatPace(act.avg_pace_seconds)}
-                  </p>
-                </button>
-              );
-            })}
-          </div>
+          {filteredActivities.length === 0 ? (
+            <div className="p-6 text-center text-xs text-zinc-400 bg-zinc-950/40 rounded-xl border border-zinc-800/80">
+              {filterRaceOnly
+                ? `선택하신 기간(${periodSummary.periodLabel})에는 참가한 대회 기록이 없습니다.`
+                : "선택하신 기간의 러닝 기록이 없습니다."}
+              <button
+                type="button"
+                onClick={() => { setSelectedMonth("all"); setFilterRaceOnly(false); }}
+                className="block mx-auto mt-2 text-amber-400 hover:underline font-bold"
+              >
+                전체 기간 러닝 모두 보기
+              </button>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
+              {filteredActivities.map((act) => {
+                const isSelected = act.activity_id === selectedActivityId;
+                const isRace = isRaceActivity(act);
+                const raceTag = isRace ? getRaceCategory(act) : null;
+
+                return (
+                  <button
+                    key={act.activity_id}
+                    onClick={() => setSelectedActivityId(act.activity_id)}
+                    className={`px-3 py-2 rounded-xl border text-left shrink-0 transition relative ${
+                      isSelected
+                        ? "border-amber-400 bg-amber-400/15 text-zinc-100 shadow-md ring-1 ring-amber-400/40"
+                        : isRace
+                        ? "border-amber-500/40 bg-zinc-900/80 text-zinc-300 hover:border-amber-400/70"
+                        : "border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 max-w-[170px]">
+                      {isRace && (
+                        <span className="text-[10px] font-extrabold text-amber-300 bg-amber-400/20 px-1 py-0.2 rounded border border-amber-400/40 shrink-0">
+                          🏆 {raceTag}
+                        </span>
+                      )}
+                      <p className="text-xs font-bold truncate">{act.activity_name}</p>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 mt-1">
+                      <span>{(act.distance_meters / 1000).toFixed(1)}km</span>
+                      <span>·</span>
+                      <span className="font-mono text-zinc-300">{formatPace(act.avg_pace_seconds)}</span>
+                      {act.start_time && (
+                        <>
+                          <span>·</span>
+                          <span className="text-zinc-500 text-[9px]">
+                            {new Date(act.start_time).toLocaleDateString("ko-KR", { month: "numeric", day: "numeric" })}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 
-      {/* 5. 선택된 액티비티의 1km 랩 스플릿 시각화 차트 */}
+      {/* 6. 선택된 액티비티의 1km 랩 스플릿 시각화 차트 */}
       {hasActivities && selectedActivity && (
         <div className="card-panel p-4 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 pb-3 border-b border-zinc-800/80">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-zinc-800/80">
             <div>
-              <h3 className="text-base font-bold text-zinc-100">{selectedActivity.activity_name}</h3>
-              <p className="text-xs text-zinc-400 mt-0.5">
-                {new Date(selectedActivity.start_time).toLocaleDateString("ko-KR")} · 총 거리 {(selectedActivity.distance_meters / 1000).toFixed(2)}km · 소요 시간 {formatDuration(selectedActivity.duration_seconds)}
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="text-base font-bold text-zinc-100">{selectedActivity.activity_name}</h3>
+                {isRaceActivity(selectedActivity) && (
+                  <span className="rounded-full bg-amber-400/20 border border-amber-400/40 px-2 py-0.5 text-[11px] font-extrabold text-amber-300 flex items-center gap-1">
+                    <span>🏆</span>
+                    <span>{getRaceCategory(selectedActivity)}</span>
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-zinc-400 mt-1">
+                {new Date(selectedActivity.start_time).toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric", weekday: "short" })} · 총 거리 {(selectedActivity.distance_meters / 1000).toFixed(2)}km · 소요 시간 {formatDuration(selectedActivity.duration_seconds)}
               </p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 shrink-0">
               <span className="rounded-lg bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 text-xs font-bold text-emerald-300">
                 평균 {formatPace(selectedActivity.avg_pace_seconds)}
               </span>
@@ -307,7 +560,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
         </div>
       )}
 
-      {/* 6. 스마트 스포츠 과학 리포트 (규칙 엔진 자동 생성) */}
+      {/* 7. 스마트 스포츠 과학 리포트 */}
       {hasActivities && smartReport && (
         <div className="card-panel p-4 space-y-3.5 border-amber-400/30 bg-gradient-to-b from-zinc-900/90 to-zinc-950/90">
           <div className="flex items-center justify-between pb-2 border-b border-zinc-800">

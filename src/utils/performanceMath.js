@@ -165,3 +165,39 @@ export function generateSmartReport(activity, laps = []) {
     predictions
   };
 }
+
+// 8. 대회(Race) 활동 판별 함수
+export function isRaceActivity(activity) {
+  if (!activity) return false;
+  if (activity.is_race === true || activity.event_type === "race") return true;
+
+  const name = (activity.activity_name || "").toLowerCase();
+  const raceKeywords = [
+    "대회", "마라톤", "marathon", "race", "half", "하프", "풀코스",
+    "10k", "21k", "42k", "jtbc", "동마", "춘마", "제마", "서울", "송도", "손기정", "레이스"
+  ];
+  if (raceKeywords.some((k) => name.includes(k))) return true;
+
+  const distM = Number(activity.distance_meters) || 0;
+  const km = distM / 1000;
+  // 표준 대회 거리 범위 (10K, 하프, 풀코스)
+  if ((km >= 9.8 && km <= 10.6) || (km >= 20.8 && km <= 21.6) || (km >= 41.8 && km <= 43.0)) {
+    const nonRaceKeywords = ["조깅", "jog", "회복", "recovery", "인터벌", "interval", "빌드업", "트랙", "treadmill"];
+    if (nonRaceKeywords.some((k) => name.includes(k))) return false;
+    return true;
+  }
+  return false;
+}
+
+// 9. 대회 카테고리 태그 반환 (10K / 하프 / 풀코스 / 대회)
+export function getRaceCategory(activity) {
+  const km = (Number(activity?.distance_meters) || 0) / 1000;
+  const name = (activity?.activity_name || "").toLowerCase();
+
+  if (km >= 41.5 || name.includes("풀코스") || name.includes("full")) return "풀코스";
+  if ((km >= 20.5 && km <= 22.0) || name.includes("하프") || name.includes("half") || name.includes("21k")) return "하프";
+  if ((km >= 9.5 && km <= 10.8) || name.includes("10k") || name.includes("10km")) return "10K";
+  if ((km >= 4.8 && km <= 5.5) || name.includes("5k")) return "5K";
+  return "대회";
+}
+
