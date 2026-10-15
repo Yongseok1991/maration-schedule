@@ -147,31 +147,87 @@ export function usePerformance(user) {
   }, [selectedActivityId, loadLapsForActivity]);
 
   // 4. 가민 계정 연동 저장
+  // 4. 가민 계정 연동 및 과거 전체 러닝 실시간 수집
   const linkGarminAccount = async (email, password) => {
     if (!user) return { error: "로그인이 필요합니다." };
     setSyncing(true);
     try {
+      // 1. Vite 백엔드 API를 통해 가민 공식 서버에서 과거 전체 러닝 및 1km 랩 스플릿 실시간 수집
+      const resp = await fetch("/api/garmin-sync", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          password: password.trim(),
+          userId: user.id,
+          mode: "full" // 최초 연동 시 과거 전체 활동 수집
+        })
+      });
+
+      const result = await resp.json().catch(() => ({}));
+
+      if (!resp.ok || result.success === false) {
+        throw new Error(result.error || "가민 계정 인증 및 데이터 수집에 실패했습니다.");
+      }
+
+      const fetchedActivities = Array.isArray(result.activities) ? result.activities : [];
+      const fetchedLaps = result.laps || {};
+
+      // 2. 가민 연동 인증 정보 갱신
       const now = new Date().toISOString();
-      const payload = {
+      const authPayload = {
         user_id: user.id,
-        garmin_email: email,
-        sync_status: "linked",
-        last_sync_at: now
+        garmin_email: email.trim(),
+        sync_status: "success",
+        last_sync_at: now,
+        last_error_message: null
       };
 
-      // 로컬스토리지에 즉시 보존
-      setGarminAuth(payload);
-      localStorage.setItem(LOCAL_STORAGE_GARMIN_AUTH, JSON.stringify(payload));
+      setGarminAuth(authPayload);
+      localStorage.setItem(LOCAL_STORAGE_GARMIN_AUTH, JSON.stringify(authPayload));
 
       if (supabase) {
         try {
-          await supabase.from("user_garmin_auth").upsert(payload, { onConflict: "user_id" });
+          await supabase.from("user_garmin_auth").upsert(authPayload, { onConflict: "user_id" });
         } catch (e) {
-          console.warn("Supabase auth table not yet migrated, saved locally:", e);
+          console.warn("user_garmin_auth upsert warning:", e);
         }
       }
 
-      return { success: true };
+      // 3. 수집된 러닝 활동 및 1km 랩 데이터를 React 상태 및 로컬 스토리지에 즉시 반영
+      if (fetchedActivities.length > 0) {
+        setActivities(fetchedActivities);
+        setLapsMap(fetchedLaps);
+        setSelectedActivityId(fetchedActivities[0].activity_id);
+
+        localStorage.setItem(LOCAL_STORAGE_ACTIVITIES, JSON.stringify(fetchedActivities));
+        localStorage.setItem(LOCAL_STORAGE_LAPS, JSON.stringify(fetchedLaps));
+
+        // 4. Supabase DB에 유저 세션 권한으로 안전하게 적재 (RLS 100% 통과)
+        if (supabase) {
+          try {
+            await supabase.from("performance_activities").upsert(fetchedActivities, {
+              onConflict: "user_id,activity_id"
+            });
+
+            const allLaps = Object.values(fetchedLaps).flat();
+            if (allLaps.length > 0) {
+              await supabase.from("performance_laps").upsert(allLaps, {
+                onConflict: "activity_id,lap_index"
+              });
+            }
+          } catch (sbErr) {
+            console.warn("Supabase activities batch upsert warning:", sbErr);
+          }
+        }
+      } else {
+        await loadActivities();
+      }
+
+      return {
+        success: true,
+        count: fetchedActivities.length
+      };
     } catch (err) {
       console.error("Link garmin error:", err);
       return { error: err.message || "가민 연동 실패" };

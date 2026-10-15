@@ -92,12 +92,19 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
           {garminAuth ? (
             <>
               <button
+                onClick={() => setIsGarminModalOpen(true)}
+                className="rounded-xl border border-amber-400/30 bg-amber-400/10 hover:bg-amber-400/20 px-3 py-1.5 text-xs font-semibold text-amber-300 flex items-center gap-1.5 transition"
+              >
+                <span>⚡</span>
+                <span>전체 데이터 가져오기</span>
+              </button>
+              <button
                 onClick={triggerManualSync}
                 disabled={syncing}
                 className="rounded-xl border border-zinc-700/80 bg-zinc-800/80 hover:bg-zinc-700/80 px-3 py-1.5 text-xs font-semibold text-zinc-200 flex items-center gap-1.5 transition disabled:opacity-50"
               >
                 <span className={syncing ? "animate-spin" : ""}>🔄</span>
-                <span>{syncing ? "동기화 중..." : "동기화 새로고침"}</span>
+                <span>{syncing ? "새로고침 중..." : "새로고침"}</span>
               </button>
               <button
                 onClick={unlinkGarminAccount}
@@ -167,19 +174,18 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
           <h4 className="text-sm font-bold text-zinc-100">동기화된 러닝 기록이 아직 없습니다</h4>
           <p className="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
             {garminAuth
-              ? `가민 계정(${garminAuth.garmin_email})이 등록되었습니다. 매월 1일 새벽 04시에 지난 1달간의 기록이 자동 수집되며, 수집 완료 시 1km 랩 분석 차트가 표시됩니다.`
-              : "가민(Garmin Connect) 계정을 연동하거나 활동 데이터를 동기화하면 1km 구간별 페이스 스플릿과 심박수 분석이 시작됩니다."}
+              ? `가민 계정(${garminAuth.garmin_email})이 등록되었습니다. 아래 버튼을 눌러 과거 러닝 및 1km 랩 스플릿 데이터를 지금 즉시 가져오세요.`
+              : "가민(Garmin Connect) 계정을 연동하면 과거 전체 러닝 기록과 1km 구간별 페이스 스플릿, 심박수가 실시간으로 수집 및 정밀 분석됩니다."}
           </p>
 
           <div className="pt-2 flex items-center justify-center gap-2">
-            {!garminAuth && (
-              <button
-                onClick={() => setIsGarminModalOpen(true)}
-                className="rounded-xl bg-amber-400 hover:bg-amber-300 px-4 py-2 text-xs font-bold text-zinc-950 transition shadow-sm"
-              >
-                가민 계정 연동하기
-              </button>
-            )}
+            <button
+              onClick={() => setIsGarminModalOpen(true)}
+              className="rounded-xl bg-amber-400 hover:bg-amber-300 px-4 py-2 text-xs font-bold text-zinc-950 transition shadow-sm flex items-center gap-1.5"
+            >
+              <span>⌚</span>
+              <span>{garminAuth ? "가민 러닝 데이터 지금 전체 가져오기" : "가민 계정 연동 및 데이터 가져오기"}</span>
+            </button>
             <input
               ref={fileInputRef}
               type="file"
