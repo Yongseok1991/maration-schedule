@@ -40,63 +40,63 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm">
-      <div className="relative w-full max-w-md rounded-2xl border border-zinc-700 bg-zinc-900 p-6 shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md">
+      <div className="relative w-full max-w-md rounded-2xl border border-zinc-700/80 bg-zinc-900/95 p-6 shadow-2xl">
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 text-zinc-400 hover:text-white"
+          className="absolute right-4 top-4 h-7 w-7 rounded-full border border-zinc-700 bg-zinc-800 text-xs font-bold text-zinc-400 hover:text-white flex items-center justify-center transition"
         >
           ✕
         </button>
 
-        <h3 className="mb-2 text-xl font-bold text-white">
+        <h3 className="mb-1.5 text-xl font-bold tracking-tight text-zinc-100">
           {isSignUp ? "회원가입" : "로그인"}
         </h3>
-        <p className="mb-6 text-sm text-zinc-400">
+        <p className="mb-5 text-xs text-zinc-400 leading-relaxed">
           {isSignUp
             ? "계정을 생성하여 모든 기기에서 마라톤 일정과 기록을 동기화하세요."
             : "로그인하면 클라우드에 저장된 기록을 불러오고 동기화합니다."}
         </p>
 
         {errorMsg && (
-          <div className="mb-4 rounded-lg border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-300">
+          <div className="mb-4 rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-300">
             {errorMsg}
           </div>
         )}
         {successMsg && (
-          <div className="mb-4 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-3 text-xs text-emerald-300">
+          <div className="mb-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-xs text-emerald-300">
             {successMsg}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3.5">
           {isSignUp && (
             <div>
-              <label className="mb-1 block text-xs font-medium text-zinc-300">닉네임</label>
+              <label className="mb-1 block text-xs font-medium text-zinc-400">닉네임</label>
               <input
                 type="text"
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
                 placeholder="러너 닉네임"
-                className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-amber-400 focus:outline-none"
+                className="dark-input w-full px-3.5 py-2 text-xs text-zinc-100"
               />
             </div>
           )}
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-300">이메일</label>
+            <label className="mb-1 block text-xs font-medium text-zinc-400">이메일</label>
             <input
               type="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="runner@example.com"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-amber-400 focus:outline-none"
+              className="dark-input w-full px-3.5 py-2 text-xs text-zinc-100"
             />
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-300">비밀번호</label>
+            <label className="mb-1 block text-xs font-medium text-zinc-400">비밀번호</label>
             <input
               type="password"
               required
@@ -104,14 +104,14 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="6자리 이상 비밀번호"
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500 focus:border-amber-400 focus:outline-none"
+              className="dark-input w-full px-3.5 py-2 text-xs text-zinc-100"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-amber-400 py-2.5 text-sm font-semibold text-zinc-950 transition-colors hover:bg-amber-300 disabled:opacity-50"
+            className="w-full rounded-xl bg-amber-400 py-2.5 text-xs font-bold text-zinc-950 transition hover:bg-amber-300 disabled:opacity-50 mt-2"
           >
             {loading ? "처리 중..." : isSignUp ? "가입하기" : "로그인"}
           </button>
@@ -126,7 +126,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
               setErrorMsg("");
               setSuccessMsg("");
             }}
-            className="font-medium text-amber-400 hover:underline"
+            className="font-semibold text-amber-400 hover:underline ml-1"
           >
             {isSignUp ? "로그인하기" : "회원가입"}
           </button>

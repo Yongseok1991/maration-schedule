@@ -312,10 +312,12 @@ const decodeBase64Utf8 = (base64) => {
 };
 
 const statusBadgeClass = (status) => {
-  if (status === "\uc811\uc218\uc911" || status === "registered") return "border-emerald-400/35 bg-emerald-400/15 text-emerald-200";
-  if (status === "\uc2e0\uaddc") return "border-amber-400/35 bg-amber-400/15 text-amber-200";
-  if (status === "finished") return "border-cyan-400/35 bg-cyan-400/15 text-cyan-200";
-  return "border-zinc-500/35 bg-zinc-500/20 text-zinc-200";
+  if (status === "접수중" || status === "registered") return "border-emerald-500/30 bg-emerald-500/10 text-emerald-300";
+  if (status === "신규") return "border-amber-500/30 bg-amber-500/10 text-amber-300";
+  if (status === "finished") return "border-sky-500/30 bg-sky-500/10 text-sky-300";
+  if (status === "training") return "border-indigo-500/30 bg-indigo-500/10 text-indigo-300";
+  if (status === "dns") return "border-zinc-700 bg-zinc-800/60 text-zinc-400";
+  return "border-zinc-700/60 bg-zinc-800/40 text-zinc-300";
 };
 
 const parseEntryFee = (value) => {
@@ -671,71 +673,93 @@ export default function App() {
       {browseRaces.map((race) => {
         const alreadyAdded = entries.some((e) => e.raceId && e.raceId === race.id);
         return (
-          <article key={race.id} className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
-            <div className="flex items-start justify-between gap-2">
-              <p className="text-xs font-semibold text-amber-300">{race.date_display || formatDate(race.date_iso)}</p>
-              {race.status && <span className={`rounded-full border px-2 py-0.5 text-[11px] font-semibold ${statusBadgeClass(race.status)}`}>{STATUS_LABEL[race.status] || race.status}</span>}
+          <article key={race.id} className="card-panel p-4">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs font-semibold text-amber-400/90 tracking-wide">
+                {race.date_display || formatDate(race.date_iso)}
+              </span>
+              {race.status && (
+                <span className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${statusBadgeClass(race.status)}`}>
+                  {STATUS_LABEL[race.status] || race.status}
+                </span>
+              )}
             </div>
-            <div className="mt-1 flex items-center justify-between gap-2">
-              <h2 className="text-[16px] font-bold leading-snug text-zinc-100">{race.name}</h2>
+            <div className="mt-1.5 flex items-start justify-between gap-3">
+              <h2 className="text-[16px] font-bold leading-snug text-zinc-100 tracking-tight">{race.name}</h2>
               <button
-                className="h-7 w-7 rounded-md border border-amber-300/40 bg-amber-400/15 text-base font-bold leading-none text-amber-200 disabled:cursor-not-allowed disabled:opacity-45"
-                onClick={() => addRaceToMyEntries(race)}
+                className={`h-7 w-7 flex-shrink-0 rounded-lg border font-bold text-sm transition-all flex items-center justify-center ${
+                  alreadyAdded
+                    ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-300 cursor-default"
+                    : "border-amber-400/40 bg-amber-400/15 text-amber-300 hover:bg-amber-400/25 active:scale-95"
+                }`}
+                onClick={() => !alreadyAdded && addRaceToMyEntries(race)}
                 disabled={alreadyAdded}
                 aria-label={alreadyAdded ? TEXT.added : TEXT.add}
                 title={alreadyAdded ? TEXT.added : TEXT.add}
               >
-                {alreadyAdded ? "v" : "+"}
+                {alreadyAdded ? "✓" : "+"}
               </button>
             </div>
-            <div className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-[13px] text-zinc-300">
-              <p className="truncate">{TEXT.dist}: {race.distances || "-"}</p>
-              <p className="truncate">{TEXT.place}: {race.place || "-"}</p>
-              <p className="col-span-2">{TEXT.reg}: {formatRegPeriod(race.registration_period)}</p>
-              <p className="truncate">{TEXT.org}: {race.organizer || "-"}</p>
+            <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 text-[13px]">
+              <p className="truncate text-zinc-400"><span className="text-zinc-500">{TEXT.dist}:</span> {race.distances || "-"}</p>
+              <p className="truncate text-zinc-400"><span className="text-zinc-500">{TEXT.place}:</span> {race.place || "-"}</p>
+              <p className="col-span-2 text-zinc-400"><span className="text-zinc-500">{TEXT.reg}:</span> {formatRegPeriod(race.registration_period)}</p>
+              <p className="col-span-2 truncate text-zinc-400"><span className="text-zinc-500">{TEXT.org}:</span> {race.organizer || "-"}</p>
             </div>
-            <div className="mt-2 flex items-center gap-2">
-              {race.homepage && <a className="h-9 rounded-lg border border-zinc-700 px-3 text-sm font-semibold text-zinc-100 inline-flex items-center" href={race.homepage} target="_blank" rel="noreferrer">{TEXT.homepage}</a>}
-            </div>
+            {race.homepage && (
+              <div className="mt-3 flex items-center gap-2">
+                <a
+                  className="h-8 rounded-lg border border-zinc-700/80 bg-zinc-800/50 hover:bg-zinc-800/80 px-3 text-xs font-semibold text-zinc-200 inline-flex items-center gap-1.5 transition"
+                  href={race.homepage}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>{TEXT.homepage}</span>
+                  <span className="text-[10px] text-zinc-400">↗</span>
+                </a>
+              </div>
+            )}
           </article>
         );
       })}
-      {browseRaces.length === 0 && <p className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-4 text-center text-sm text-zinc-400">{TEXT.noRaces}</p>}
+      {browseRaces.length === 0 && <p className="card-panel p-6 text-center text-sm text-zinc-400">{TEXT.noRaces}</p>}
     </section>
   );
 
   const renderMyPage = () => (
     <section className="mt-3 grid grid-cols-1 gap-3">
-      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
-        <p className="text-sm font-semibold text-zinc-100">{TEXT.statsTitle}</p>
-        <div className="mt-2 grid grid-cols-3 gap-2">
-          <div className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
-            <p className="text-[11px] text-zinc-400">{TEXT.totalRaces}</p>
-            <p className="mt-1 text-lg font-black text-zinc-100">{statsSummary.totalRaces}</p>
+      {/* 대회 통계 카드 */}
+      <article className="card-panel p-4">
+        <p className="text-sm font-bold text-zinc-100 tracking-tight">{TEXT.statsTitle}</p>
+        <div className="mt-3 grid grid-cols-3 gap-2.5">
+          <div className="rounded-xl border border-zinc-800/90 bg-zinc-900/60 p-3 text-center">
+            <p className="text-[11px] font-medium text-zinc-400">{TEXT.totalRaces}</p>
+            <p className="mt-1 text-xl font-black text-zinc-100">{statsSummary.totalRaces}</p>
           </div>
-          <div className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
-            <p className="text-[11px] text-zinc-400">{TEXT.finishedRaces}</p>
-            <p className="mt-1 text-lg font-black text-zinc-100">{statsSummary.finishedRaces}</p>
+          <div className="rounded-xl border border-zinc-800/90 bg-zinc-900/60 p-3 text-center">
+            <p className="text-[11px] font-medium text-zinc-400">{TEXT.finishedRaces}</p>
+            <p className="mt-1 text-xl font-black text-emerald-400">{statsSummary.finishedRaces}</p>
           </div>
-          <div className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
-            <p className="text-[11px] text-zinc-400">{TEXT.shoesCount}</p>
-            <p className="mt-1 text-lg font-black text-zinc-100">{statsSummary.shoesCount}</p>
+          <div className="rounded-xl border border-zinc-800/90 bg-zinc-900/60 p-3 text-center">
+            <p className="text-[11px] font-medium text-zinc-400">{TEXT.shoesCount}</p>
+            <p className="mt-1 text-xl font-black text-zinc-100">{statsSummary.shoesCount}</p>
           </div>
         </div>
       </article>
 
-      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+      {/* 참가비 합계 */}
+      <article className="card-panel p-4">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-sm font-semibold text-zinc-100">{TEXT.totalEntryFee}</p>
-          <p className="text-base font-black text-amber-200">{formatEntryFee(totalEntryFee)}</p>
+          <p className="text-sm font-bold text-zinc-100 tracking-tight">{TEXT.totalEntryFee}</p>
+          <p className="text-lg font-black text-amber-300">{formatEntryFee(totalEntryFee)}</p>
         </div>
         {yearlyEntryFees.length > 0 && (
-          <div className="mt-3 border-t border-zinc-800 pt-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">{TEXT.yearlyEntryFee}</p>
+          <div className="mt-3 border-t border-zinc-800/80 pt-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500">{TEXT.yearlyEntryFee}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {yearlyEntryFees.map(([year, amount]) => (
-                <span key={year} className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-xs font-semibold text-zinc-200">
-                  {year}: {formatEntryFee(amount)}
+                <span key={year} className="rounded-lg border border-zinc-800 bg-zinc-900/70 px-2.5 py-1 text-xs font-medium text-zinc-300">
+                  <span className="text-zinc-500">{year}:</span> {formatEntryFee(amount)}
                 </span>
               ))}
             </div>
@@ -743,18 +767,19 @@ export default function App() {
         )}
       </article>
 
-      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
+      {/* 러닝화 비용 합계 */}
+      <article className="card-panel p-4">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-sm font-semibold text-zinc-100">{TEXT.totalShoePrice}</p>
-          <p className="text-base font-black text-amber-200">{formatEntryFee(totalShoePrice)}</p>
+          <p className="text-sm font-bold text-zinc-100 tracking-tight">{TEXT.totalShoePrice}</p>
+          <p className="text-lg font-black text-amber-300">{formatEntryFee(totalShoePrice)}</p>
         </div>
         {yearlyShoePrices.length > 0 && (
-          <div className="mt-3 border-t border-zinc-800 pt-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">{TEXT.yearlyShoePrice}</p>
+          <div className="mt-3 border-t border-zinc-800/80 pt-3">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500">{TEXT.yearlyShoePrice}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {yearlyShoePrices.map(([year, amount]) => (
-                <span key={year} className="rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-1.5 text-xs font-semibold text-zinc-200">
-                  {year}: {formatEntryFee(amount)}
+                <span key={year} className="rounded-lg border border-zinc-800 bg-zinc-900/70 px-2.5 py-1 text-xs font-medium text-zinc-300">
+                  <span className="text-zinc-500">{year}:</span> {formatEntryFee(amount)}
                 </span>
               ))}
             </div>
@@ -762,49 +787,55 @@ export default function App() {
         )}
       </article>
 
-      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
-        <p className="text-sm font-semibold text-zinc-100">{TEXT.pbTitle}</p>
-        <div className="mt-2 grid grid-cols-1 gap-2">
+      {/* PB 최고기록 */}
+      <article className="card-panel p-4">
+        <p className="text-sm font-bold text-zinc-100 tracking-tight">{TEXT.pbTitle} (Personal Best)</p>
+        <div className="mt-3 grid grid-cols-1 gap-2">
           {[["5k", TEXT.pb5k], ["10k", TEXT.pb10k], ["half", TEXT.pbHalf], ["full", TEXT.pbFull]].map(([key, label]) => {
             const pb = pbSummary[key];
             return (
-              <div key={key} className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
+              <div key={key} className="rounded-xl border border-zinc-800/80 bg-zinc-900/60 p-3">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="text-sm font-semibold text-zinc-100">{label}</p>
-                  <p className="text-base font-black text-emerald-200">{pb ? formatResultSeconds(pb.seconds) : TEXT.noPb}</p>
+                  <span className="text-sm font-semibold text-zinc-200">{label}</span>
+                  <span className="text-base font-black text-emerald-400 font-mono tracking-tight">{pb ? formatResultSeconds(pb.seconds) : TEXT.noPb}</span>
                 </div>
-                {pb && <p className="mt-1 text-xs text-zinc-400">{pb.name}{pb.dateIso ? ` · ${pb.dateIso}` : ""}</p>}
+                {pb && <p className="mt-1 text-xs text-zinc-400 truncate">{pb.name}{pb.dateIso ? ` · ${pb.dateIso}` : ""}</p>}
               </div>
             );
           })}
         </div>
       </article>
 
-      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
-        <p className="text-sm font-semibold text-zinc-100">{TEXT.shoesTitle}</p>
-        <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
-          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.shoeName}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoeForm.name} onChange={(e) => setShoeForm((prev) => ({ ...prev, name: e.target.value }))} placeholder={TEXT.shoeNamePlaceholder} /></label>
-          <label className="flex flex-col gap-1"><span>{TEXT.shoePrice}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={shoeForm.price} onChange={(e) => setShoeForm((prev) => ({ ...prev, price: e.target.value }))} placeholder={TEXT.shoePricePlaceholder} /></label>
-          <label className="flex flex-col gap-1"><span>{TEXT.shoePurchaseDate}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" type="date" value={shoeForm.purchaseDate} onChange={(e) => setShoeForm((prev) => ({ ...prev, purchaseDate: e.target.value }))} placeholder={TEXT.shoePurchaseDatePlaceholder} /></label>
-          <label className="flex flex-col gap-1"><span>{TEXT.shoeDistance}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="decimal" value={shoeForm.distanceKm} onChange={(e) => setShoeForm((prev) => ({ ...prev, distanceKm: e.target.value }))} placeholder={TEXT.shoeDistancePlaceholder} /></label>
-          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.shoeMemo}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoeForm.memo} onChange={(e) => setShoeForm((prev) => ({ ...prev, memo: e.target.value }))} placeholder={TEXT.shoeMemoPlaceholder} /></label>
+      {/* 러닝화 관리 */}
+      <article className="card-panel p-4">
+        <p className="text-sm font-bold text-zinc-100 tracking-tight">{TEXT.shoesTitle}</p>
+        <div className="mt-3 grid grid-cols-2 gap-2.5 text-[13px] text-zinc-300">
+          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.shoeName}</span><input className="dark-input h-9 px-3 text-xs" value={shoeForm.name} onChange={(e) => setShoeForm((prev) => ({ ...prev, name: e.target.value }))} placeholder={TEXT.shoeNamePlaceholder} /></label>
+          <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.shoePrice}</span><input className="dark-input h-9 px-3 text-xs" inputMode="numeric" value={shoeForm.price} onChange={(e) => setShoeForm((prev) => ({ ...prev, price: e.target.value }))} placeholder={TEXT.shoePricePlaceholder} /></label>
+          <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.shoePurchaseDate}</span><input className="dark-input h-9 px-3 text-xs" type="date" value={shoeForm.purchaseDate} onChange={(e) => setShoeForm((prev) => ({ ...prev, purchaseDate: e.target.value }))} placeholder={TEXT.shoePurchaseDatePlaceholder} /></label>
+          <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.shoeDistance}</span><input className="dark-input h-9 px-3 text-xs" inputMode="decimal" value={shoeForm.distanceKm} onChange={(e) => setShoeForm((prev) => ({ ...prev, distanceKm: e.target.value }))} placeholder={TEXT.shoeDistancePlaceholder} /></label>
+          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.shoeMemo}</span><input className="dark-input h-9 px-3 text-xs" value={shoeForm.memo} onChange={(e) => setShoeForm((prev) => ({ ...prev, memo: e.target.value }))} placeholder={TEXT.shoeMemoPlaceholder} /></label>
         </div>
-        <div className="mt-2 flex justify-end"><button className="h-9 rounded-lg border border-amber-300/40 bg-amber-400/15 px-3 text-sm font-semibold text-amber-200" onClick={addShoe}>{TEXT.addShoe}</button></div>
-        <div className="mt-3 grid grid-cols-1 gap-2">
+        <div className="mt-3 flex justify-end">
+          <button className="h-9 rounded-xl border border-amber-400/40 bg-amber-400/15 px-4 text-xs font-semibold text-amber-200 hover:bg-amber-400/25 transition" onClick={addShoe}>
+            {TEXT.addShoe}
+          </button>
+        </div>
+        <div className="mt-4 grid grid-cols-1 gap-2.5">
           {shoes.map((shoe) => (
-            <div key={shoe.shoeId} className="rounded-lg border border-zinc-800 bg-zinc-950 p-3">
+            <div key={shoe.shoeId} className="rounded-xl border border-zinc-800/80 bg-zinc-900/60 p-3.5">
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <p className="text-sm font-semibold text-zinc-100">{shoe.name || "-"}</p>
-                  <p className="mt-1 text-xs text-zinc-400">{formatEntryFee(shoe.price)}{shoe.purchaseDate ? ` · ${shoe.purchaseDate}` : ""}</p>
+                  <p className="text-sm font-bold text-zinc-100">{shoe.name || "-"}</p>
+                  <p className="mt-0.5 text-xs text-zinc-400">{formatEntryFee(shoe.price)}{shoe.purchaseDate ? ` · ${shoe.purchaseDate}` : ""}</p>
                 </div>
-                <button className="text-[11px] font-semibold text-zinc-400 hover:text-red-300" onClick={() => removeShoe(shoe.shoeId)}>{TEXT.remove}</button>
+                <button className="text-xs text-zinc-500 hover:text-rose-400 transition" onClick={() => removeShoe(shoe.shoeId)}>{TEXT.remove}</button>
               </div>
-              <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
-                <label className="flex flex-col gap-1"><span>{TEXT.shoePrice}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={shoe.price} onChange={(e) => updateShoe(shoe.shoeId, { price: e.target.value })} /></label>
-                <label className="flex flex-col gap-1"><span>{TEXT.shoePurchaseDate}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" type="date" value={shoe.purchaseDate} onChange={(e) => updateShoe(shoe.shoeId, { purchaseDate: e.target.value })} /></label>
-                <label className="flex flex-col gap-1"><span>{TEXT.shoeDistance}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="decimal" value={shoe.distanceKm} onChange={(e) => updateShoe(shoe.shoeId, { distanceKm: e.target.value })} /></label>
-                <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.shoeMemo}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={shoe.memo} onChange={(e) => updateShoe(shoe.shoeId, { memo: e.target.value })} /></label>
+              <div className="mt-3 grid grid-cols-2 gap-2 text-[12px] text-zinc-300">
+                <label className="flex flex-col gap-1"><span className="text-zinc-500">{TEXT.shoePrice}</span><input className="dark-input h-8 px-2.5 text-xs" inputMode="numeric" value={shoe.price} onChange={(e) => updateShoe(shoe.shoeId, { price: e.target.value })} /></label>
+                <label className="flex flex-col gap-1"><span className="text-zinc-500">{TEXT.shoePurchaseDate}</span><input className="dark-input h-8 px-2.5 text-xs" type="date" value={shoe.purchaseDate} onChange={(e) => updateShoe(shoe.shoeId, { purchaseDate: e.target.value })} /></label>
+                <label className="flex flex-col gap-1"><span className="text-zinc-500">{TEXT.shoeDistance}</span><input className="dark-input h-8 px-2.5 text-xs" inputMode="decimal" value={shoe.distanceKm} onChange={(e) => updateShoe(shoe.shoeId, { distanceKm: e.target.value })} /></label>
+                <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-500">{TEXT.shoeMemo}</span><input className="dark-input h-8 px-2.5 text-xs" value={shoe.memo} onChange={(e) => updateShoe(shoe.shoeId, { memo: e.target.value })} /></label>
               </div>
             </div>
           ))}
@@ -815,54 +846,95 @@ export default function App() {
 
   const renderMine = () => (
     <section className="mt-3 grid grid-cols-1 gap-3">
-      <article className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
-        <p className="text-sm font-semibold text-zinc-100">{TEXT.manualAdd}</p>
-        <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
-          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualName}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.name} onChange={(e) => setManualForm((p) => ({ ...p, name: e.target.value }))} placeholder={TEXT.manualNamePlaceholder} /></label>
-          <label className="flex flex-col gap-1"><span>{TEXT.manualDate}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" type="date" value={manualForm.dateIso} onChange={(e) => setManualForm((p) => ({ ...p, dateIso: e.target.value }))} /></label>
-          <label className="flex flex-col gap-1"><span>{TEXT.manualRaceType}</span><select className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.raceType} onChange={(e) => setManualForm((p) => ({ ...p, raceType: e.target.value }))}>{RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}</select></label>
-          <label className="flex flex-col gap-1"><span>{TEXT.manualDistances}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.distances} onChange={(e) => setManualForm((p) => ({ ...p, distances: e.target.value }))} placeholder="Half, 10K" /></label>
-          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualFee}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={manualForm.entryFee} onChange={(e) => setManualForm((p) => ({ ...p, entryFee: e.target.value }))} placeholder="50000" /></label>
-          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualPlace}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.place} onChange={(e) => setManualForm((p) => ({ ...p, place: e.target.value }))} placeholder={TEXT.manualPlacePlaceholder} /></label>
-          <label className="col-span-2 flex flex-col gap-1"><span>{TEXT.manualHomepage}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={manualForm.homepage} onChange={(e) => setManualForm((p) => ({ ...p, homepage: e.target.value }))} placeholder="https://..." /></label>
+      <article className="card-panel p-4">
+        <p className="text-sm font-bold text-zinc-100 tracking-tight">{TEXT.manualAdd}</p>
+        <div className="mt-3 grid grid-cols-2 gap-2.5 text-[13px] text-zinc-300">
+          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualName}</span><input className="dark-input h-9 px-3 text-xs" value={manualForm.name} onChange={(e) => setManualForm((p) => ({ ...p, name: e.target.value }))} placeholder={TEXT.manualNamePlaceholder} /></label>
+          <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualDate}</span><input className="dark-input h-9 px-3 text-xs" type="date" value={manualForm.dateIso} onChange={(e) => setManualForm((p) => ({ ...p, dateIso: e.target.value }))} /></label>
+          <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualRaceType}</span><select className="dark-input h-9 px-2 text-xs" value={manualForm.raceType} onChange={(e) => setManualForm((p) => ({ ...p, raceType: e.target.value }))}>{RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}</select></label>
+          <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualDistances}</span><input className="dark-input h-9 px-3 text-xs" value={manualForm.distances} onChange={(e) => setManualForm((p) => ({ ...p, distances: e.target.value }))} placeholder="Half, 10K" /></label>
+          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualFee}</span><input className="dark-input h-9 px-3 text-xs" inputMode="numeric" value={manualForm.entryFee} onChange={(e) => setManualForm((p) => ({ ...p, entryFee: e.target.value }))} placeholder="50000" /></label>
+          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualPlace}</span><input className="dark-input h-9 px-3 text-xs" value={manualForm.place} onChange={(e) => setManualForm((p) => ({ ...p, place: e.target.value }))} placeholder={TEXT.manualPlacePlaceholder} /></label>
+          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualHomepage}</span><input className="dark-input h-9 px-3 text-xs" value={manualForm.homepage} onChange={(e) => setManualForm((p) => ({ ...p, homepage: e.target.value }))} placeholder="https://..." /></label>
         </div>
-        <div className="mt-2 flex justify-end"><button className="h-9 rounded-lg border border-amber-300/40 bg-amber-400/15 px-3 text-sm font-semibold text-amber-200" onClick={addManualEntry}>{TEXT.saveEntry}</button></div>
+        <div className="mt-3 flex justify-end">
+          <button className="h-9 rounded-xl border border-amber-400/40 bg-amber-400/15 px-4 text-xs font-semibold text-amber-200 hover:bg-amber-400/25 transition" onClick={addManualEntry}>
+            {TEXT.saveEntry}
+          </button>
+        </div>
       </article>
 
       {myEntries.map((entry) => {
         const missingFromSource = entry.raceId && !raceIdSet.has(entry.raceId);
         const fallbackHomepage = entry.homepage || (entry.raceId ? raceById.get(entry.raceId)?.homepage || "" : "");
         return (
-        <article key={entry.entryId} className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 shadow-[0_6px_18px_rgba(0,0,0,0.3)]">
-          <div className="flex items-start justify-between gap-2">
-            <p className="text-xs font-semibold text-amber-300">{entry.dateDisplay || formatDate(entry.dateIso)}</p>
-            <button className="text-[11px] font-semibold text-zinc-400 hover:text-red-300" onClick={() => removeEntry(entry.entryId)}>{TEXT.remove}</button>
-          </div>
-          <div className="mt-1 flex items-center gap-2">
-            <h2 className="text-[16px] font-bold leading-snug text-zinc-100">{entry.name}</h2>
-            {missingFromSource && <span className="rounded-full border border-rose-400/35 bg-rose-400/15 px-2 py-0.5 text-[11px] font-semibold text-rose-200">{TEXT.sourceMissing}</span>}
-          </div>
-          <div className="mt-2 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
-            <label className="flex flex-col gap-1"><span>{TEXT.status}</span><select className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.status} onChange={(e) => updateEntry(entry.entryId, { status: e.target.value })}>{STATUS_OPTIONS.map((s) => <option key={s} value={s}>{STATUS_LABEL[s] || s}</option>)}</select></label>
-            <label className="flex flex-col gap-1"><span>{TEXT.raceType}</span><select className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.raceType || ""} onChange={(e) => updateEntry(entry.entryId, { raceType: e.target.value })}>{RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}</select></label>
-            <label className="flex flex-col gap-1"><span>{TEXT.entryFee}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" inputMode="numeric" value={entry.entryFee || ""} onChange={(e) => updateEntry(entry.entryId, { entryFee: e.target.value })} placeholder="50000" /></label>
-            <label className="flex flex-col gap-1"><span>{TEXT.goalTime}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.goalTime} onChange={(e) => updateEntry(entry.entryId, { goalTime: e.target.value })} placeholder="03:45:00" /></label>
-            <label className="flex flex-col gap-1"><span>{TEXT.goalPace}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.goalPace} onChange={(e) => updateEntry(entry.entryId, { goalPace: e.target.value })} placeholder="5:20/km" /></label>
-            <label className="flex flex-col gap-1"><span>{TEXT.resultTime}</span><input className="h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-2" value={entry.resultTime} onChange={(e) => updateEntry(entry.entryId, { resultTime: e.target.value })} placeholder="03:51:10" /></label>
-          </div>
-          <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300"><span>{TEXT.memo}</span><textarea className="min-h-[72px] rounded-lg border border-zinc-700 bg-zinc-900 p-2" value={entry.memo} onChange={(e) => updateEntry(entry.entryId, { memo: e.target.value })} placeholder={TEXT.memoPlaceholder} /></label>
-          <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300"><span>{TEXT.resultNote}</span><textarea className="min-h-[64px] rounded-lg border border-zinc-700 bg-zinc-900 p-2" value={entry.resultNote} onChange={(e) => updateEntry(entry.entryId, { resultNote: e.target.value })} placeholder={TEXT.resultPlaceholder} /></label>
-          <div className="mt-2 flex items-center gap-2 text-[13px] text-zinc-300">{fallbackHomepage && <a className="h-8 rounded-lg border border-zinc-700 px-3 text-sm font-semibold text-zinc-100 inline-flex items-center" href={fallbackHomepage} target="_blank" rel="noreferrer">{TEXT.homepage}</a>}</div>
-          <div className="mt-2 text-[13px] text-zinc-300">
-            <p>{TEXT.racePhotos}</p>
-            <p className="mt-1 text-xs text-zinc-400">{TEXT.racePhotosTip}</p>
-            <input className="mt-1 block w-full text-sm text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-zinc-700 file:px-2 file:py-1 file:text-zinc-100" type="file" accept="image/*" multiple onChange={(e) => onRacePhotosChange(entry.entryId, e.target.files)} />
-            {(entry.racePhotoDataUrls || []).length > 0 && <div className="mt-2 grid grid-cols-3 gap-2">{(entry.racePhotoDataUrls || []).map((photo, idx) => <div key={idx} className="relative"><img alt="race-photo" src={photo} className="h-28 w-full cursor-zoom-in rounded-lg border border-zinc-700 object-contain bg-zinc-950 p-1" onClick={() => setPhotoViewer(photo)} /><button type="button" className="absolute right-1 top-1 rounded-md border border-black/40 bg-black/60 px-1.5 py-0.5 text-[10px] font-semibold text-white" onClick={() => removeRacePhoto(entry.entryId, idx)}>{TEXT.removePhoto}</button></div>)}</div>}
-          </div>
-          <div className="mt-2 text-[13px] text-zinc-300"><p>{TEXT.cert}</p><input className="mt-1 block w-full text-sm text-zinc-300 file:mr-2 file:rounded-md file:border-0 file:bg-zinc-700 file:px-2 file:py-1 file:text-zinc-100" type="file" accept="image/*" onChange={(e) => onCertificateChange(entry.entryId, e.target.files?.[0])} />{entry.certificateDataUrl && <img alt="certificate" src={entry.certificateDataUrl} className="mt-2 max-h-40 w-full cursor-zoom-in rounded-lg border border-zinc-700 object-contain bg-zinc-950" onClick={() => setPhotoViewer(entry.certificateDataUrl)} />}</div>
-        </article>
-      );})}
-      {myEntries.length === 0 && <p className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-4 text-center text-sm text-zinc-400">{TEXT.noEntries}</p>}
+          <article key={entry.entryId} className="card-panel p-4">
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-xs font-semibold text-amber-400/90 tracking-wide">
+                {entry.dateDisplay || formatDate(entry.dateIso)}
+              </span>
+              <button className="text-xs text-zinc-500 hover:text-rose-400 transition" onClick={() => removeEntry(entry.entryId)}>
+                {TEXT.remove}
+              </button>
+            </div>
+            <div className="mt-1.5 flex items-center gap-2">
+              <h2 className="text-[16px] font-bold leading-snug text-zinc-100 tracking-tight">{entry.name}</h2>
+              {missingFromSource && <span className="rounded-full border border-rose-400/35 bg-rose-400/15 px-2 py-0.5 text-[11px] font-semibold text-rose-200">{TEXT.sourceMissing}</span>}
+            </div>
+            <div className="mt-3 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
+              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.status}</span><select className="dark-input h-9 px-2 text-xs" value={entry.status} onChange={(e) => updateEntry(entry.entryId, { status: e.target.value })}>{STATUS_OPTIONS.map((s) => <option key={s} value={s}>{STATUS_LABEL[s] || s}</option>)}</select></label>
+              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.raceType}</span><select className="dark-input h-9 px-2 text-xs" value={entry.raceType || ""} onChange={(e) => updateEntry(entry.entryId, { raceType: e.target.value })}>{RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}</select></label>
+              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.entryFee}</span><input className="dark-input h-9 px-2.5 text-xs" inputMode="numeric" value={entry.entryFee || ""} onChange={(e) => updateEntry(entry.entryId, { entryFee: e.target.value })} placeholder="50000" /></label>
+              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.goalTime}</span><input className="dark-input h-9 px-2.5 text-xs" value={entry.goalTime} onChange={(e) => updateEntry(entry.entryId, { goalTime: e.target.value })} placeholder="03:45:00" /></label>
+              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.goalPace}</span><input className="dark-input h-9 px-2.5 text-xs" value={entry.goalPace} onChange={(e) => updateEntry(entry.entryId, { goalPace: e.target.value })} placeholder="5:20/km" /></label>
+              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.resultTime}</span><input className="dark-input h-9 px-2.5 text-xs" value={entry.resultTime} onChange={(e) => updateEntry(entry.entryId, { resultTime: e.target.value })} placeholder="03:51:10" /></label>
+            </div>
+            <label className="mt-2.5 flex flex-col gap-1 text-[13px] text-zinc-300">
+              <span className="text-zinc-400 text-xs font-medium">{TEXT.memo}</span>
+              <textarea className="dark-input min-h-[72px] p-2.5 text-xs" value={entry.memo} onChange={(e) => updateEntry(entry.entryId, { memo: e.target.value })} placeholder={TEXT.memoPlaceholder} />
+            </label>
+            <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300">
+              <span className="text-zinc-400 text-xs font-medium">{TEXT.resultNote}</span>
+              <textarea className="dark-input min-h-[64px] p-2.5 text-xs" value={entry.resultNote} onChange={(e) => updateEntry(entry.entryId, { resultNote: e.target.value })} placeholder={TEXT.resultPlaceholder} />
+            </label>
+            {fallbackHomepage && (
+              <div className="mt-3 flex items-center gap-2">
+                <a className="h-8 rounded-lg border border-zinc-700/80 bg-zinc-800/50 hover:bg-zinc-800 px-3 text-xs font-semibold text-zinc-200 inline-flex items-center gap-1.5 transition" href={fallbackHomepage} target="_blank" rel="noreferrer">
+                  <span>{TEXT.homepage}</span>
+                  <span className="text-[10px] text-zinc-400">↗</span>
+                </a>
+              </div>
+            )}
+            <div className="mt-3 border-t border-zinc-800/70 pt-3 text-[13px] text-zinc-300">
+              <p className="font-semibold text-zinc-200 text-xs">{TEXT.racePhotos}</p>
+              <p className="mt-0.5 text-xs text-zinc-500">{TEXT.racePhotosTip}</p>
+              <input className="mt-2 block w-full text-xs text-zinc-400 file:mr-2 file:rounded-lg file:border-0 file:bg-zinc-800 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 hover:file:bg-zinc-700 cursor-pointer" type="file" accept="image/*" multiple onChange={(e) => onRacePhotosChange(entry.entryId, e.target.files)} />
+              {(entry.racePhotoDataUrls || []).length > 0 && (
+                <div className="mt-2.5 grid grid-cols-3 gap-2">
+                  {(entry.racePhotoDataUrls || []).map((photo, idx) => (
+                    <div key={idx} className="relative rounded-xl overflow-hidden border border-zinc-800 group">
+                      <img alt="race-photo" src={photo} className="h-24 w-full cursor-zoom-in object-cover bg-zinc-950 transition hover:scale-105" onClick={() => setPhotoViewer(photo)} />
+                      <button type="button" className="absolute right-1 top-1 rounded-md bg-black/70 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-200 hover:text-white" onClick={() => removeRacePhoto(entry.entryId, idx)}>
+                        {TEXT.removePhoto}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="mt-3 border-t border-zinc-800/70 pt-3 text-[13px] text-zinc-300">
+              <p className="font-semibold text-zinc-200 text-xs">{TEXT.cert}</p>
+              <input className="mt-2 block w-full text-xs text-zinc-400 file:mr-2 file:rounded-lg file:border-0 file:bg-zinc-800 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 hover:file:bg-zinc-700 cursor-pointer" type="file" accept="image/*" onChange={(e) => onCertificateChange(entry.entryId, e.target.files?.[0])} />
+              {entry.certificateDataUrl && (
+                <div className="mt-2.5 rounded-xl overflow-hidden border border-zinc-800">
+                  <img alt="certificate" src={entry.certificateDataUrl} className="max-h-48 w-full cursor-zoom-in object-contain bg-zinc-950" onClick={() => setPhotoViewer(entry.certificateDataUrl)} />
+                </div>
+              )}
+            </div>
+          </article>
+        );
+      })}
+      {myEntries.length === 0 && <p className="card-panel p-6 text-center text-sm text-zinc-400">{TEXT.noEntries}</p>}
     </section>
   );
 
@@ -879,31 +951,47 @@ export default function App() {
 
     return (
       <section className="mt-3">
-        <div className="rounded-xl border border-zinc-800 bg-zinc-900/75 p-3">
-          <div className="mb-2 flex items-center justify-between gap-2">
-            <button className="rounded-md border border-zinc-700 px-2 py-1 text-sm text-zinc-200 disabled:opacity-40" onClick={() => canGoPrev && setCalendarMonth(shiftMonth(calendarMonth, -1))} disabled={!canGoPrev}>{TEXT.prev}</button>
-            <input className="h-9 rounded-md border border-zinc-700 bg-zinc-900 px-2 text-sm text-zinc-100" type="month" min={MIN_FILTER_MONTH} value={calendarMonth} onChange={(e) => setCalendarMonth(clampMonthFromMin(e.target.value))} />
-            <button className="rounded-md border border-zinc-700 px-2 py-1 text-sm text-zinc-200" onClick={() => setCalendarMonth(shiftMonth(calendarMonth, 1))}>{TEXT.next}</button>
+        <div className="card-panel p-4">
+          <div className="mb-3 flex items-center justify-between gap-2">
+            <button className="rounded-xl border border-zinc-800 bg-zinc-900/60 px-3 py-1.5 text-xs font-semibold text-zinc-300 hover:bg-zinc-800 disabled:opacity-40 transition" onClick={() => canGoPrev && setCalendarMonth(shiftMonth(calendarMonth, -1))} disabled={!canGoPrev}>{TEXT.prev}</button>
+            <input className="dark-input h-9 px-3 text-xs font-semibold text-zinc-100" type="month" min={MIN_FILTER_MONTH} value={calendarMonth} onChange={(e) => setCalendarMonth(clampMonthFromMin(e.target.value))} />
+            <button className="rounded-xl border border-zinc-800 bg-zinc-900/60 px-3 py-1.5 text-xs font-semibold text-zinc-300 hover:bg-zinc-800 transition" onClick={() => setCalendarMonth(shiftMonth(calendarMonth, 1))}>{TEXT.next}</button>
           </div>
-          <div className="grid grid-cols-7 gap-1 text-center text-[11px] text-zinc-400">{["S","M","T","W","T","F","S"].map((w) => <div key={w}>{w}</div>)}</div>
+          <div className="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-zinc-500 py-1">{["일","월","화","수","목","금","토"].map((w, i) => <div key={w} className={i === 0 ? "text-rose-400/80" : i === 6 ? "text-sky-400/80" : ""}>{w}</div>)}</div>
           <div className="mt-1 grid grid-cols-7 gap-1">
             {cells.map((key, idx) => {
-              if (!key) return <div key={`blank-${idx}`} className="h-10 rounded-md bg-zinc-900/20" />;
+              if (!key) return <div key={`blank-${idx}`} className="h-10 rounded-xl bg-zinc-900/15" />;
               const count = (entriesByDate.get(key) || []).length;
               const selected = selectedDate === key;
               return (
-                <button key={key} className={`h-10 rounded-md border text-xs ${selected ? "border-amber-300 bg-amber-400/15 text-amber-200" : "border-zinc-800 bg-zinc-900/40 text-zinc-200"}`} onClick={() => setSelectedDate(key)}>
-                  <div>{Number(key.slice(8, 10))}</div>{count > 0 && <div className="text-[10px] text-emerald-300">{count}</div>}
+                <button
+                  key={key}
+                  className={`h-10 rounded-xl border text-xs font-semibold flex flex-col items-center justify-center transition-all ${
+                    selected
+                      ? "border-amber-400/60 bg-amber-400/20 text-amber-200 shadow-sm"
+                      : count > 0
+                      ? "border-zinc-700/80 bg-zinc-800/60 text-zinc-200"
+                      : "border-zinc-800/60 bg-zinc-900/40 text-zinc-400 hover:bg-zinc-800/40"
+                  }`}
+                  onClick={() => setSelectedDate(key)}
+                >
+                  <span>{Number(key.slice(8, 10))}</span>
+                  {count > 0 && <span className="text-[10px] font-bold text-emerald-400 leading-none">{count}</span>}
                 </button>
               );
             })}
           </div>
         </div>
-        <div className="mt-2 rounded-xl border border-zinc-800 bg-zinc-900/75 p-3">
-          <p className="text-sm font-semibold text-zinc-100">{selectedDate ? `${selectedDate} \uc77c\uc815` : TEXT.selectDate}</p>
-          <div className="mt-2 space-y-2">
-            {selectedDateEntries.map((e) => <div key={e.entryId} className="rounded-lg border border-zinc-800 bg-zinc-900 p-2"><p className="text-sm font-semibold text-zinc-100">{e.name}</p><p className="text-xs text-zinc-400">{e.place || "-"}</p></div>)}
-            {selectedDate && selectedDateEntries.length === 0 && <p className="text-sm text-zinc-400">{TEXT.noDateEntries}</p>}
+        <div className="mt-3 card-panel p-4">
+          <p className="text-sm font-bold text-zinc-100 tracking-tight">{selectedDate ? `${selectedDate} 일정` : TEXT.selectDate}</p>
+          <div className="mt-2.5 space-y-2">
+            {selectedDateEntries.map((e) => (
+              <div key={e.entryId} className="rounded-xl border border-zinc-800 bg-zinc-900/60 p-3">
+                <p className="text-sm font-bold text-zinc-100">{e.name}</p>
+                <p className="text-xs text-zinc-400 mt-0.5">{e.place || "-"}</p>
+              </div>
+            ))}
+            {selectedDate && selectedDateEntries.length === 0 && <p className="text-xs text-zinc-500 py-2">{TEXT.noDateEntries}</p>}
           </div>
         </div>
       </section>
@@ -911,35 +999,44 @@ export default function App() {
   };
 
   const renderSync = () => (
-    <section className="mt-3 rounded-xl border border-zinc-800 bg-zinc-900/75 p-3 text-sm text-zinc-300">
-      <p className="mb-2 text-zinc-100">{TEXT.syncTitle}</p>
-      <div className="grid grid-cols-1 gap-2">
-        <input className="h-10 rounded-lg border border-zinc-700 bg-zinc-900 px-3" placeholder={TEXT.ownerPlaceholder} value={syncConfig.owner} onChange={(e) => setSyncConfig((p) => ({ ...p, owner: e.target.value.trim() }))} />
-        <input className="h-10 rounded-lg border border-zinc-700 bg-zinc-900 px-3" placeholder={TEXT.repoPlaceholder} value={syncConfig.repo} onChange={(e) => setSyncConfig((p) => ({ ...p, repo: e.target.value.trim() }))} />
-        <input className="h-10 rounded-lg border border-zinc-700 bg-zinc-900 px-3" placeholder={TEXT.branchPlaceholder} value={syncConfig.branch} onChange={(e) => setSyncConfig((p) => ({ ...p, branch: e.target.value.trim() || "master" }))} />
-        <input className="h-10 rounded-lg border border-zinc-700 bg-zinc-900 px-3" placeholder={TEXT.pathPlaceholder} value={syncConfig.path} onChange={(e) => setSyncConfig((p) => ({ ...p, path: e.target.value.trim() || DEFAULT_SYNC.path }))} />
-        <input className="h-10 rounded-lg border border-zinc-700 bg-zinc-900 px-3" type="password" placeholder={TEXT.tokenPlaceholder} value={syncConfig.token} onChange={(e) => setSyncConfig((p) => ({ ...p, token: e.target.value.trim() }))} />
-        <label className="flex items-center gap-2"><input type="checkbox" checked={syncConfig.autoSync} onChange={(e) => setSyncConfig((p) => ({ ...p, autoSync: e.target.checked }))} />{TEXT.autoSync}</label>
-        <div className="flex gap-2"><button className="h-10 rounded-lg border border-zinc-700 px-3" onClick={() => pullFromGitHub()}>{TEXT.pull}</button><button className="h-10 rounded-lg border border-amber-300/40 bg-amber-400/15 px-3 text-amber-200" onClick={() => pushToGitHub()}>{TEXT.push}</button></div>
-        <div className="flex gap-2"><button className="h-10 rounded-lg border border-zinc-700 px-3" onClick={exportBackup}>{TEXT.backupExport}</button><button className="h-10 rounded-lg border border-zinc-700 px-3" onClick={() => backupInputRef.current?.click()}>{TEXT.backupImport}</button><input ref={backupInputRef} type="file" accept="application/json,.json" className="hidden" onChange={(e) => { importBackup(e.target.files?.[0]); e.target.value = ""; }} /></div>
-        {syncState.kind !== "idle" && <p className={`rounded-md p-2 text-xs ${syncState.kind === "error" ? "bg-red-500/15 text-red-200" : syncState.kind === "success" ? "bg-emerald-500/15 text-emerald-200" : "bg-zinc-700/40 text-zinc-200"}`}>{syncState.message}</p>}
+    <section className="mt-3 card-panel p-4 text-sm text-zinc-300">
+      <p className="mb-3 font-bold text-zinc-100">{TEXT.syncTitle}</p>
+      <div className="grid grid-cols-1 gap-2.5">
+        <input className="dark-input h-10 px-3 text-xs" placeholder={TEXT.ownerPlaceholder} value={syncConfig.owner} onChange={(e) => setSyncConfig((p) => ({ ...p, owner: e.target.value.trim() }))} />
+        <input className="dark-input h-10 px-3 text-xs" placeholder={TEXT.repoPlaceholder} value={syncConfig.repo} onChange={(e) => setSyncConfig((p) => ({ ...p, repo: e.target.value.trim() }))} />
+        <input className="dark-input h-10 px-3 text-xs" placeholder={TEXT.branchPlaceholder} value={syncConfig.branch} onChange={(e) => setSyncConfig((p) => ({ ...p, branch: e.target.value.trim() || "master" }))} />
+        <input className="dark-input h-10 px-3 text-xs" placeholder={TEXT.pathPlaceholder} value={syncConfig.path} onChange={(e) => setSyncConfig((p) => ({ ...p, path: e.target.value.trim() || DEFAULT_SYNC.path }))} />
+        <input className="dark-input h-10 px-3 text-xs" type="password" placeholder={TEXT.tokenPlaceholder} value={syncConfig.token} onChange={(e) => setSyncConfig((p) => ({ ...p, token: e.target.value.trim() }))} />
+        <label className="flex items-center gap-2 text-xs text-zinc-300 cursor-pointer pt-1"><input type="checkbox" className="rounded accent-amber-400" checked={syncConfig.autoSync} onChange={(e) => setSyncConfig((p) => ({ ...p, autoSync: e.target.checked }))} />{TEXT.autoSync}</label>
+        <div className="flex gap-2 pt-1">
+          <button className="h-9 flex-1 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 px-3 text-xs font-semibold text-zinc-200 transition" onClick={() => pullFromGitHub()}>{TEXT.pull}</button>
+          <button className="h-9 flex-1 rounded-xl border border-amber-400/40 bg-amber-400/15 hover:bg-amber-400/25 px-3 text-xs font-semibold text-amber-200 transition" onClick={() => pushToGitHub()}>{TEXT.push}</button>
+        </div>
+        <div className="flex gap-2">
+          <button className="h-9 flex-1 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 px-3 text-xs font-medium text-zinc-300 transition" onClick={exportBackup}>{TEXT.backupExport}</button>
+          <button className="h-9 flex-1 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 px-3 text-xs font-medium text-zinc-300 transition" onClick={() => backupInputRef.current?.click()}>{TEXT.backupImport}</button>
+          <input ref={backupInputRef} type="file" accept="application/json,.json" className="hidden" onChange={(e) => { importBackup(e.target.files?.[0]); e.target.value = ""; }} />
+        </div>
+        {syncState.kind !== "idle" && <p className={`rounded-xl p-2.5 text-xs ${syncState.kind === "error" ? "bg-rose-500/15 text-rose-300 border border-rose-500/30" : syncState.kind === "success" ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30" : "bg-zinc-800/60 text-zinc-300 border border-zinc-700"}`}>{syncState.message}</p>}
       </div>
     </section>
   );
 
   return (
-    <main className="app-shell mx-auto w-full max-w-xl px-3 pb-16 pt-3 sm:px-4">
-      <section className="hero-panel rounded-2xl p-4">
+    <main className="mx-auto w-full max-w-xl px-3 pb-20 pt-4 sm:px-4">
+      {/* Header Panel */}
+      <section className="hero-panel p-4 sm:p-5">
         <div className="flex items-center justify-between">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Maraton Mobile</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500">Maraton Archive</p>
           {user ? (
             <div className="flex items-center gap-2">
-              <span className="text-xs font-medium text-emerald-600">
+              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 {user.user_metadata?.nickname || user.email?.split("@")[0]} 님
               </span>
               <button
                 onClick={() => signOut()}
-                className="rounded-lg border border-zinc-200 bg-white px-2.5 py-1 text-xs text-zinc-600 hover:bg-zinc-50 shadow-sm"
+                className="rounded-full border border-zinc-700/60 bg-zinc-800/60 px-2.5 py-1 text-xs text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700/60 transition"
               >
                 로그아웃
               </button>
@@ -947,43 +1044,70 @@ export default function App() {
           ) : (
             <button
               onClick={() => setIsAuthModalOpen(true)}
-              className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 hover:bg-amber-100 shadow-sm"
+              className="flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 px-3.5 py-1 text-xs font-semibold text-amber-300 hover:bg-amber-400/20 transition shadow-sm"
             >
-              로그인 / 회원가입
+              <span>로그인 / 회원가입</span>
             </button>
           )}
         </div>
-        <h1 className="mt-1 text-2xl font-black text-zinc-900">{TEXT.plannerTitle}</h1>
-        <p className="mt-1 text-sm text-zinc-500">{TEXT.plannerDesc}</p>
-        <div className="mt-3 flex flex-wrap gap-2 text-xs">
+        <h1 className="mt-2 text-2xl font-black tracking-tight text-zinc-100">{TEXT.plannerTitle}</h1>
+        <p className="mt-1 text-xs text-zinc-400 leading-relaxed">{TEXT.plannerDesc}</p>
+        <div className="mt-3.5 flex flex-wrap gap-2 text-xs">
           <span className="stat-chip">{TEXT.updated} {racesData.updatedAt ? new Date(racesData.updatedAt).toLocaleDateString("ko-KR") : "-"}</span>
           <span className="stat-chip">{TEXT.upcoming} {browseRaces.length}건</span>
           <span className="stat-chip stat-chip-strong">{TEXT.myEntries} {entries.length}건</span>
         </div>
       </section>
 
-      <section className="toss-nav sticky top-2 z-20 mt-3 rounded-2xl p-2 backdrop-blur">
-        <div className="grid grid-cols-5 gap-1">{TABS.map((t) => <button key={t.id} className={`h-9 rounded-lg text-xs font-semibold ${tab === t.id ? "toss-tab-active" : "toss-tab"}`} onClick={() => setTab(t.id)}>{t.label}</button>)}</div>
+      {/* Navigation & Filters Panel */}
+      <section className="nav-panel sticky top-2 z-20 mt-3 p-1.5">
+        <div className="grid grid-cols-5 gap-1">
+          {TABS.map((t) => (
+            <button
+              key={t.id}
+              className={`h-9 text-xs font-semibold transition-all ${tab === t.id ? "nav-tab-active" : "nav-tab"}`}
+              onClick={() => setTab(t.id)}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
         {tab === "browse" && (
-          <div className="mt-2 grid grid-cols-1 gap-2">
-            <input className="toss-input h-10 rounded-xl px-3 text-sm outline-none transition" placeholder={TEXT.searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} />
+          <div className="mt-2 space-y-2 pt-1 border-t border-zinc-800/60">
+            <input
+              className="dark-input h-10 w-full px-3.5 text-xs text-zinc-100"
+              placeholder={TEXT.searchPlaceholder}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
             <div className="grid grid-cols-1 gap-2">
-              <select className="toss-input h-10 rounded-xl px-2 text-sm" value={region} onChange={(e) => setRegion(e.target.value)}><option value="all">{TEXT.allRegions}</option>{regions.map((r) => <option key={r} value={r}>{r}</option>)}</select>
+              <select
+                className="dark-input h-10 px-3 text-xs text-zinc-200"
+                value={region}
+                onChange={(e) => setRegion(e.target.value)}
+              >
+                <option value="all">{TEXT.allRegions}</option>
+                {regions.map((r) => <option key={r} value={r}>{r}</option>)}
+              </select>
               <div className="overflow-x-auto pb-1" ref={monthScrollerRef}>
-                <div className="flex min-w-max gap-2">
+                <div className="flex min-w-max gap-1.5">
                   <button
                     type="button"
-                    className={month === todayMonth ? "h-9 rounded-lg border border-emerald-300 bg-emerald-50 px-3 text-sm font-semibold text-emerald-700" : "toss-chip h-9 rounded-lg px-3 text-sm font-semibold"}
+                    className={`h-8 px-3 text-xs font-semibold transition-all ${
+                      month === todayMonth ? "dark-chip-active" : "dark-chip"
+                    }`}
                     onClick={() => setMonth(todayMonth)}
                   >
-                    {"\uc624\ub298"}
+                    오늘
                   </button>
                   {monthOptions.map((m) => (
                     <button
                       key={m}
                       ref={(el) => { monthChipRefs.current[m] = el; }}
                       type="button"
-                      className={month === m ? "h-9 rounded-lg border border-amber-300 bg-amber-50 px-3 text-sm font-semibold text-amber-700" : "toss-chip h-9 rounded-lg px-3 text-sm font-semibold"}
+                      className={`h-8 px-3 text-xs transition-all ${
+                        month === m ? "dark-chip-active" : "dark-chip"
+                      }`}
                       onClick={() => setMonth(m)}
                       onFocus={() => scrollMonthChipToStart(m)}
                     >
@@ -993,7 +1117,15 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <label className="toss-checkbox flex h-10 items-center gap-2 rounded-xl px-3 text-sm"><input type="checkbox" checked={openOnly} onChange={(e) => setOpenOnly(e.target.checked)} />{TEXT.openOnly}</label>
+            <label className="dark-input flex h-10 items-center gap-2 px-3 text-xs text-zinc-300 cursor-pointer">
+              <input
+                type="checkbox"
+                className="rounded accent-amber-400"
+                checked={openOnly}
+                onChange={(e) => setOpenOnly(e.target.checked)}
+              />
+              {TEXT.openOnly}
+            </label>
           </div>
         )}
       </section>
@@ -1005,20 +1137,20 @@ export default function App() {
       {tab === "sync" && renderSync()}
 
       {photoViewer && (
-        <div className="fixed inset-0 z-50 bg-black/75 p-4" onClick={() => setPhotoViewer("")}>
-          <div className="mx-auto flex h-full w-full max-w-4xl items-center justify-center">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-4 flex items-center justify-center" onClick={() => setPhotoViewer("")}>
+          <div className="relative max-h-[88vh] max-w-4xl">
             <img
               alt="race-photo-full"
               src={photoViewer}
-              className="max-h-[86vh] max-w-[94vw] rounded-xl border border-zinc-700 bg-zinc-950 object-contain"
-              onClick={() => setPhotoViewer("")}
+              className="max-h-[86vh] max-w-[94vw] rounded-2xl border border-zinc-700/80 bg-zinc-950 object-contain shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
             />
             <button
               type="button"
-              className="absolute right-5 top-5 rounded-md border border-zinc-500 bg-zinc-900/90 px-3 py-1.5 text-sm font-semibold text-white"
+              className="absolute -top-3 -right-3 rounded-full border border-zinc-600 bg-zinc-800 text-zinc-200 hover:text-white h-8 w-8 flex items-center justify-center text-sm font-bold shadow-lg"
               onClick={() => setPhotoViewer("")}
             >
-              X
+              ✕
             </button>
           </div>
         </div>
