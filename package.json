@@ -7,15 +7,19 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "scrape": "node scripts/scrape.js"
+    "scrape": "node scripts/scrape.js",
+    "validate:data": "node scripts/validate-data.js",
+    "check:system": "node .gemini/skills/maraton-harness/scripts/check-system.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
     "axios": "^1.8.4",
     "cheerio": "^1.0.0",
     "heic2any": "^0.0.4",
     "iconv-lite": "^0.6.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.0",

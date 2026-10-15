@@ -1,5 +1,10 @@
-﻿import { useEffect, useMemo, useRef, useState } from "react";
-import { getEntriesFromDb, saveEntriesToDb } from "./lib/entriesDb";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useAuth } from "./hooks/useAuth";
+import { useRaces } from "./hooks/useRaces";
+import { useEntries } from "./hooks/useEntries";
+import { useShoes } from "./hooks/useShoes";
+import { useStats } from "./hooks/useStats";
+import AuthModal from "./components/auth/AuthModal";
 
 const TEXT = {
   tabs: {
@@ -404,135 +409,31 @@ const shiftMonth = (monthKey, delta) => {
 const formatMonthLabel = (m) => (m || "").replace("-", ".");
 
 export default function App() {
+  const { user, session, loading: authLoading, signOut } = useAuth();
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [tab, setTab] = useState("browse");
-  const [racesData, setRacesData] = useState({ updatedAt: null, races: [] });
-  const [entries, setEntries] = useState([]);
-  const [entriesReady, setEntriesReady] = useState(false);
-  const [syncConfig, setSyncConfig] = useState(() => ({ ...DEFAULT_SYNC, ...readJSON(STORAGE_KEYS.syncConfig, {}) }));
-  const [query, setQuery] = useState("");
-  const [region, setRegion] = useState("all");
-  const [month, setMonth] = useState(() => clampMonthFromMin(currentMonthKey()));
-  const [openOnly, setOpenOnly] = useState(false);
-  const [calendarMonth, setCalendarMonth] = useState(() => clampMonthFromMin(currentMonthKey()));
-  const [selectedDate, setSelectedDate] = useState("");
-  const [syncState, setSyncState] = useState({ kind: "idle", message: "" });
+
+  const racesState = useRaces();
+  const entriesState = useEntries(user, authLoading);
+  const shoesState = useShoes(user, authLoading);
+  const statsState = useStats(entriesState.entries, shoesState.shoes);
+
   const [photoViewer, setPhotoViewer] = useState("");
   const [manualForm, setManualForm] = useState({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
-  const [shoes, setShoes] = useState(() => readJSON(STORAGE_KEYS.shoes, []).map(normalizeShoe));
-  const [shoeForm, setShoeForm] = useState({ name: "", price: "", purchaseDate: "", distanceKm: "", memo: "" });
+  const [syncConfig, setSyncConfig] = useState(() => ({ ...DEFAULT_SYNC, ...readJSON(STORAGE_KEYS.syncConfig, {}) }));
 
-  const syncTimerRef = useRef(null);
-  const saveTimerRef = useRef(null);
-  const firstRef = useRef(true);
   const monthScrollerRef = useRef(null);
   const monthChipRefs = useRef({});
   const backupInputRef = useRef(null);
 
-  useEffect(() => {
-    fetch("./data/races.json")
-      .then((res) => res.json())
-      .then((json) => setRacesData({ updatedAt: json.updatedAt, races: json.races || [] }))
-      .catch(() => setRacesData({ updatedAt: null, races: [] }));
-  }, []);
+  const racesData = { updatedAt: racesState.updatedAt, races: racesState.races };
+  const { query, setQuery, region, setRegion, regions, month, setMonth, monthOptions, todayMonth, openOnly, setOpenOnly, calendarMonth, setCalendarMonth, selectedDate, setSelectedDate, browseRaces } = racesState;
+  const { entries, entriesReady, entriesByDate, syncState, setSyncState } = entriesState;
+  const { shoes, shoeForm, setShoeForm } = shoesState;
+  const { pbMap, totalEntryFee, yearlyEntryFees, totalShoePrice, yearlyShoePrices } = statsState;
 
-  useEffect(() => {
-    let mounted = true;
-    const loadEntries = async () => {
-      try {
-        const fromDb = await getEntriesFromDb();
-        if (mounted && Array.isArray(fromDb) && fromDb.length > 0) {
-          setEntries(fromDb.map(normalizeEntry));
-          return;
-        }
-        const legacy = readJSON(STORAGE_KEYS.legacyEntries, []);
-        if (mounted && Array.isArray(legacy) && legacy.length > 0) {
-          setEntries(legacy.map(normalizeEntry));
-          try {
-            await saveEntriesToDb(legacy.map(normalizeEntry));
-            localStorage.removeItem(STORAGE_KEYS.legacyEntries);
-          } catch {
-            // Ignore migration failure and keep in-memory data.
-          }
-        }
-      } catch {
-        const legacy = readJSON(STORAGE_KEYS.legacyEntries, []);
-        if (mounted && Array.isArray(legacy)) setEntries(legacy.map(normalizeEntry));
-      } finally {
-        if (mounted) setEntriesReady(true);
-      }
-    };
-    loadEntries();
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!entriesReady) return;
-    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
-    saveTimerRef.current = setTimeout(() => {
-      saveEntriesToDb(entries).catch(() => {
-        setSyncState((prev) => (prev.kind === "error" && prev.message === TEXT.storageFull ? prev : { kind: "error", message: TEXT.storageFull }));
-      });
-    }, 350);
-    return () => saveTimerRef.current && clearTimeout(saveTimerRef.current);
-  }, [entries, entriesReady]);
-
-  useEffect(() => {
-    if (!entriesReady) return;
-    if (firstRef.current) {
-      firstRef.current = false;
-      return;
-    }
-    if (!syncConfig.autoSync || !syncConfig.owner || !syncConfig.repo || !syncConfig.token) return;
-    if (syncTimerRef.current) clearTimeout(syncTimerRef.current);
-    syncTimerRef.current = setTimeout(() => {
-      pushToGitHub().catch((err) => setSyncState({ kind: "error", message: String(err?.message || err) }));
-    }, 900);
-    return () => syncTimerRef.current && clearTimeout(syncTimerRef.current);
-  }, [entries, entriesReady, syncConfig.autoSync, syncConfig.owner, syncConfig.repo, syncConfig.token, syncConfig.branch, syncConfig.path]);
-
-  useEffect(() => {
-    const saved = writeJSON(STORAGE_KEYS.syncConfig, syncConfig);
-    if (!saved) {
-      setSyncState((prev) => (prev.kind === "error" && prev.message === TEXT.storageFull ? prev : { kind: "error", message: TEXT.storageFull }));
-    }
-  }, [syncConfig]);
-
-  useEffect(() => {
-    const saved = writeJSON(STORAGE_KEYS.shoes, shoes);
-    if (!saved) {
-      setSyncState((prev) => (prev.kind === "error" && prev.message === TEXT.storageFull ? prev : { kind: "error", message: TEXT.storageFull }));
-    }
-  }, [shoes]);
-
-  const regions = useMemo(() => [...new Set(racesData.races.map((r) => r.region).filter(Boolean))].sort(), [racesData.races]);
-  const months = useMemo(() => [...new Set(racesData.races.map((r) => monthKeyOf(r.date_iso)).filter((m) => m && m >= MIN_FILTER_MONTH))].sort(), [racesData.races]);
-  const monthOptions = useMemo(() => (months.includes(month) ? months : [...new Set([month, ...months])].sort()), [months, month]);
-  const todayMonth = clampMonthFromMin(currentMonthKey());
   const raceIdSet = useMemo(() => new Set(racesData.races.map((r) => r.id).filter(Boolean)), [racesData.races]);
   const raceById = useMemo(() => new Map(racesData.races.map((r) => [r.id, r])), [racesData.races]);
-
-  const browseRaces = useMemo(() => {
-    return racesData.races
-      .filter((race) => {
-        const hitOpen = openOnly ? race.status === "\uc811\uc218\uc911" : true;
-        const text = `${race.name || ""} ${race.place || ""} ${race.organizer || ""} ${race.distances || ""}`.toLowerCase();
-        const hitQuery = query.trim() ? text.includes(query.trim().toLowerCase()) : true;
-        const hitRegion = region === "all" ? true : race.region === region;
-        const raceMonth = monthKeyOf(race.date_iso);
-        const hitMonth = !raceMonth ? true : raceMonth >= month;
-        return hitOpen && hitQuery && hitRegion && hitMonth;
-      })
-      .sort((a, b) => {
-        const ad = toDate(a.date_iso);
-        const bd = toDate(b.date_iso);
-        if (!ad && !bd) return 0;
-        if (!ad) return 1;
-        if (!bd) return -1;
-        return ad - bd;
-      });
-  }, [racesData.races, openOnly, query, region, month]);
 
   const myEntries = useMemo(() => {
     return [...entries]
@@ -546,65 +447,18 @@ export default function App() {
       });
   }, [entries]);
 
-  const totalEntryFee = useMemo(() => entries.reduce((sum, entry) => sum + parseEntryFee(entry.entryFee), 0), [entries]);
-
-  const yearlyEntryFees = useMemo(() => {
-    const map = new Map();
-    entries.forEach((entry) => {
-      const year = /^\d{4}-\d{2}-\d{2}$/.test(entry.dateIso || "") ? entry.dateIso.slice(0, 4) : "\ubbf8\uc815";
-      map.set(year, (map.get(year) || 0) + parseEntryFee(entry.entryFee));
-    });
-    return [...map.entries()].sort((a, b) => {
-      if (a[0] === "\ubbf8\uc815") return 1;
-      if (b[0] === "\ubbf8\uc815") return -1;
-      return a[0].localeCompare(b[0]);
-    });
-  }, [entries]);
-
-  const pbSummary = useMemo(() => {
-    const best = { "5k": null, "10k": null, half: null, full: null };
-    entries.forEach((entry) => {
-      const category = entry.raceType || detectDistanceCategory(entry.distances);
-      const seconds = parseResultSeconds(entry.resultTime);
-      if (!category || !seconds) return;
-      const current = best[category];
-      if (!current || seconds < current.seconds) {
-        best[category] = { seconds, name: entry.name, dateIso: entry.dateIso || "" };
-      }
-    });
-    return best;
-  }, [entries]);
+  const pbSummary = useMemo(() => ({
+    "5k": { seconds: pbMap.pb5k !== "기록 없음" ? 1 : null },
+    "10k": { seconds: pbMap.pb10k !== "기록 없음" ? 1 : null },
+    half: { seconds: pbMap.pbHalf !== "기록 없음" ? 1 : null },
+    full: { seconds: pbMap.pbFull !== "기록 없음" ? 1 : null }
+  }), [pbMap]);
 
   const statsSummary = useMemo(() => ({
     totalRaces: entries.length,
     finishedRaces: entries.filter((entry) => parseResultSeconds(entry.resultTime)).length,
     shoesCount: shoes.length
   }), [entries, shoes]);
-
-  const totalShoePrice = useMemo(() => shoes.reduce((sum, shoe) => sum + parseEntryFee(shoe.price), 0), [shoes]);
-
-  const yearlyShoePrices = useMemo(() => {
-    const map = new Map();
-    shoes.forEach((shoe) => {
-      const year = /^\d{4}-\d{2}-\d{2}$/.test(shoe.purchaseDate || "") ? shoe.purchaseDate.slice(0, 4) : "\ubbf8\uc815";
-      map.set(year, (map.get(year) || 0) + parseEntryFee(shoe.price));
-    });
-    return [...map.entries()].sort((a, b) => {
-      if (a[0] === "\ubbf8\uc815") return 1;
-      if (b[0] === "\ubbf8\uc815") return -1;
-      return a[0].localeCompare(b[0]);
-    });
-  }, [shoes]);
-
-  const entriesByDate = useMemo(() => {
-    const map = new Map();
-    entries.forEach((e) => {
-      if (!e.dateIso) return;
-      if (!map.has(e.dateIso)) map.set(e.dateIso, []);
-      map.get(e.dateIso).push(e);
-    });
-    return map;
-  }, [entries]);
 
   const selectedDateEntries = selectedDate ? entriesByDate.get(selectedDate) || [] : [];
 
@@ -622,129 +476,48 @@ export default function App() {
     return () => clearTimeout(t);
   }, [month, tab]);
 
-  const addRaceToMyEntries = (race) => {
-    if (entries.some((e) => e.raceId && e.raceId === race.id)) return;
-    const nextEntry = makeEntry(race);
-    nextEntry.raceType = detectDistanceCategory(race.distances);
-    setEntries((prev) => [...prev, nextEntry]);
+  const addRaceToMyEntries = async (race) => {
+    const res = await entriesState.addRaceToEntries(race);
+    if (res?.needAuth) {
+      setIsAuthModalOpen(true);
+      return;
+    }
     setTab("mine");
   };
 
-  const updateEntry = (entryId, patch) => {
-    setEntries((prev) => prev.map((e) => (e.entryId === entryId ? { ...e, ...patch, updatedAt: new Date().toISOString() } : e)));
-  };
+  const updateEntry = (entryId, patch) => entriesState.updateEntry(entryId, patch);
+  const removeEntry = (entryId) => entriesState.removeEntry(entryId);
 
-  const removeEntry = (entryId) => setEntries((prev) => prev.filter((e) => e.entryId !== entryId));
-
-  const addShoe = () => {
-    const name = shoeForm.name.trim();
-    if (!name) {
-      setSyncState({ kind: "error", message: TEXT.shoeNameRequired });
+  const addShoe = async () => {
+    const res = await shoesState.addShoe();
+    if (res?.needAuth) {
+      setIsAuthModalOpen(true);
       return;
     }
-    setShoes((prev) => [...prev, normalizeShoe({ ...shoeForm, name })]);
-    setShoeForm({ name: "", price: "", purchaseDate: "", distanceKm: "", memo: "" });
+    if (res?.error) {
+      setSyncState({ kind: "error", message: res.error });
+    }
   };
 
-  const updateShoe = (shoeId, patch) => {
-    setShoes((prev) => prev.map((shoe) => (shoe.shoeId === shoeId ? { ...shoe, ...patch } : shoe)));
-  };
+  const updateShoe = (shoeId, patch) => shoesState.updateShoe(shoeId, patch);
+  const removeShoe = (shoeId) => shoesState.removeShoe(shoeId);
 
-  const removeShoe = (shoeId) => setShoes((prev) => prev.filter((shoe) => shoe.shoeId !== shoeId));
-
-  const addManualEntry = () => {
-    const name = manualForm.name.trim();
-    if (!name) {
-      setSyncState({ kind: "error", message: TEXT.manualNameRequired });
+  const addManualEntry = async () => {
+    const res = await entriesState.addManualEntry(manualForm);
+    if (res?.needAuth) {
+      setIsAuthModalOpen(true);
       return;
     }
-
-    const nextEntry = makeEntry({
-      id: null,
-      name,
-      date_iso: manualForm.dateIso || "",
-      date_display: manualForm.dateIso || "",
-      place: manualForm.place.trim(),
-      distances: manualForm.distances.trim(),
-      homepage: manualForm.homepage.trim()
-    });
-
-    nextEntry.entryFee = manualForm.entryFee.trim();
-    nextEntry.raceType = manualForm.raceType;
-
-    setEntries((prev) => [...prev, nextEntry]);
+    if (res?.error) {
+      setSyncState({ kind: "error", message: res.error });
+      return;
+    }
     setManualForm({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
-    setSyncState({ kind: "success", message: TEXT.manualSaved });
   };
 
-  const onCertificateChange = async (entryId, file) => {
-    if (!file) return;
-    if (!isSupportedImageFile(file)) {
-      setSyncState({ kind: "error", message: TEXT.certOnlyImage });
-      return;
-    }
-    if (file.size > 8 * 1024 * 1024) {
-      setSyncState({ kind: "error", message: TEXT.certMaxSize });
-      return;
-    }
-    try {
-      const optimized = await optimizeImageFile(file, { maxSide: 2200, maxBytes: 1400 * 1024 });
-      if (dataUrlBytes(optimized) > 1400 * 1024) {
-        setSyncState({ kind: "error", message: TEXT.certTooLargeAfterCompress });
-        return;
-      }
-      updateEntry(entryId, { certificateDataUrl: optimized });
-    } catch {
-      setSyncState({ kind: "error", message: TEXT.imageProcessFailed });
-    }
-  };
-
-  const onRacePhotosChange = async (entryId, fileList) => {
-    const currentCount = entries.find((e) => e.entryId === entryId)?.racePhotoDataUrls?.length || 0;
-    const available = Math.max(0, 6 - currentCount);
-    const files = Array.from(fileList || []).slice(0, available);
-    if (!files.length) return;
-
-    for (const file of files) {
-      if (!isSupportedImageFile(file)) {
-        setSyncState({ kind: "error", message: TEXT.photoOnlyImage });
-        return;
-      }
-      if (file.size > 8 * 1024 * 1024) {
-        setSyncState({ kind: "error", message: TEXT.photoMaxSize });
-        return;
-      }
-    }
-
-    try {
-      const urls = await Promise.all(files.map((file) => optimizeImageFile(file, { maxSide: 1800, maxBytes: 900 * 1024 })));
-      const tooLarge = urls.some((u) => dataUrlBytes(u) > 900 * 1024);
-      if (tooLarge) {
-        setSyncState({ kind: "error", message: TEXT.photoTooLargeAfterCompress });
-        return;
-      }
-      setEntries((prev) =>
-        prev.map((e) => {
-          if (e.entryId !== entryId) return e;
-          const nextPhotos = [...(e.racePhotoDataUrls || []), ...urls].slice(0, 6);
-          return { ...e, racePhotoDataUrls: nextPhotos, updatedAt: new Date().toISOString() };
-        })
-      );
-    } catch {
-      setSyncState({ kind: "error", message: TEXT.imageProcessFailed });
-    }
-  };
-
-  const removeRacePhoto = (entryId, index) => {
-    setEntries((prev) =>
-      prev.map((e) => {
-        if (e.entryId !== entryId) return e;
-        const nextPhotos = [...(e.racePhotoDataUrls || [])];
-        nextPhotos.splice(index, 1);
-        return { ...e, racePhotoDataUrls: nextPhotos, updatedAt: new Date().toISOString() };
-      })
-    );
-  };
+  const onCertificateChange = (entryId, file) => entriesState.onCertificateChange(entryId, file);
+  const onRacePhotosChange = (entryId, files) => entriesState.onRacePhotosChange(entryId, files);
+  const removeRacePhoto = (entryId, index) => entriesState.removeRacePhoto(entryId, index);
 
   const githubApi = async (path, options = {}) => {
     const res = await fetch(`https://api.github.com${path}`, {
@@ -1155,30 +928,52 @@ export default function App() {
   );
 
   return (
-    <main className="mx-auto w-full max-w-xl px-3 pb-16 pt-3 sm:px-4">
+    <main className="app-shell mx-auto w-full max-w-xl px-3 pb-16 pt-3 sm:px-4">
       <section className="hero-panel rounded-2xl p-4">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-400">Maraton Mobile</p>
-        <h1 className="mt-1 text-2xl font-black text-zinc-100">{TEXT.plannerTitle}</h1>
-        <p className="mt-1 text-sm text-zinc-400">{TEXT.plannerDesc}</p>
+        <div className="flex items-center justify-between">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Maraton Mobile</p>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-medium text-emerald-600">
+                {user.user_metadata?.nickname || user.email?.split("@")[0]} 님
+              </span>
+              <button
+                onClick={() => signOut()}
+                className="rounded-lg border border-zinc-200 bg-white px-2.5 py-1 text-xs text-zinc-600 hover:bg-zinc-50 shadow-sm"
+              >
+                로그아웃
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setIsAuthModalOpen(true)}
+              className="rounded-lg border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800 hover:bg-amber-100 shadow-sm"
+            >
+              로그인 / 회원가입
+            </button>
+          )}
+        </div>
+        <h1 className="mt-1 text-2xl font-black text-zinc-900">{TEXT.plannerTitle}</h1>
+        <p className="mt-1 text-sm text-zinc-500">{TEXT.plannerDesc}</p>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
           <span className="stat-chip">{TEXT.updated} {racesData.updatedAt ? new Date(racesData.updatedAt).toLocaleDateString("ko-KR") : "-"}</span>
-          <span className="stat-chip">{TEXT.upcoming} {browseRaces.length}{"\uac74"}</span>
-          <span className="stat-chip stat-chip-strong">{TEXT.myEntries} {entries.length}{"\uac74"}</span>
+          <span className="stat-chip">{TEXT.upcoming} {browseRaces.length}건</span>
+          <span className="stat-chip stat-chip-strong">{TEXT.myEntries} {entries.length}건</span>
         </div>
       </section>
 
-      <section className="sticky top-2 z-20 mt-3 rounded-2xl border border-zinc-700/70 bg-zinc-950/90 p-2 backdrop-blur">
-        <div className="grid grid-cols-5 gap-1">{TABS.map((t) => <button key={t.id} className={`h-9 rounded-lg text-xs font-semibold ${tab === t.id ? "bg-amber-400/20 text-amber-200" : "bg-zinc-900 text-zinc-300"}`} onClick={() => setTab(t.id)}>{t.label}</button>)}</div>
+      <section className="toss-nav sticky top-2 z-20 mt-3 rounded-2xl p-2 backdrop-blur">
+        <div className="grid grid-cols-5 gap-1">{TABS.map((t) => <button key={t.id} className={`h-9 rounded-lg text-xs font-semibold ${tab === t.id ? "toss-tab-active" : "toss-tab"}`} onClick={() => setTab(t.id)}>{t.label}</button>)}</div>
         {tab === "browse" && (
           <div className="mt-2 grid grid-cols-1 gap-2">
-            <input className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100 outline-none transition focus:border-amber-300" placeholder={TEXT.searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} />
+            <input className="toss-input h-10 rounded-xl px-3 text-sm outline-none transition" placeholder={TEXT.searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} />
             <div className="grid grid-cols-1 gap-2">
-              <select className="h-10 rounded-xl border border-zinc-700 bg-zinc-900 px-2 text-sm text-zinc-100" value={region} onChange={(e) => setRegion(e.target.value)}><option value="all">{TEXT.allRegions}</option>{regions.map((r) => <option key={r} value={r}>{r}</option>)}</select>
+              <select className="toss-input h-10 rounded-xl px-2 text-sm" value={region} onChange={(e) => setRegion(e.target.value)}><option value="all">{TEXT.allRegions}</option>{regions.map((r) => <option key={r} value={r}>{r}</option>)}</select>
               <div className="overflow-x-auto pb-1" ref={monthScrollerRef}>
                 <div className="flex min-w-max gap-2">
                   <button
                     type="button"
-                    className={month === todayMonth ? "h-9 rounded-lg border border-emerald-300 bg-emerald-400/15 px-3 text-sm font-semibold text-emerald-200" : "h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-3 text-sm font-semibold text-zinc-200"}
+                    className={month === todayMonth ? "h-9 rounded-lg border border-emerald-300 bg-emerald-50 px-3 text-sm font-semibold text-emerald-700" : "toss-chip h-9 rounded-lg px-3 text-sm font-semibold"}
                     onClick={() => setMonth(todayMonth)}
                   >
                     {"\uc624\ub298"}
@@ -1188,7 +983,7 @@ export default function App() {
                       key={m}
                       ref={(el) => { monthChipRefs.current[m] = el; }}
                       type="button"
-                      className={month === m ? "h-9 rounded-lg border border-amber-300 bg-amber-400/15 px-3 text-sm font-semibold text-amber-200" : "h-9 rounded-lg border border-zinc-700 bg-zinc-900 px-3 text-sm font-semibold text-zinc-200"}
+                      className={month === m ? "h-9 rounded-lg border border-amber-300 bg-amber-50 px-3 text-sm font-semibold text-amber-700" : "toss-chip h-9 rounded-lg px-3 text-sm font-semibold"}
                       onClick={() => setMonth(m)}
                       onFocus={() => scrollMonthChipToStart(m)}
                     >
@@ -1198,7 +993,7 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <label className="flex h-10 items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900 px-3 text-sm text-zinc-100"><input type="checkbox" checked={openOnly} onChange={(e) => setOpenOnly(e.target.checked)} />{TEXT.openOnly}</label>
+            <label className="toss-checkbox flex h-10 items-center gap-2 rounded-xl px-3 text-sm"><input type="checkbox" checked={openOnly} onChange={(e) => setOpenOnly(e.target.checked)} />{TEXT.openOnly}</label>
           </div>
         )}
       </section>
@@ -1228,6 +1023,8 @@ export default function App() {
           </div>
         </div>
       )}
+
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </main>
   );
 }

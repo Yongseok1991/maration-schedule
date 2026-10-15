@@ -1,0 +1,96 @@
+import { useState, useEffect, useMemo } from "react";
+
+const MIN_FILTER_MONTH = "2025-09";
+const currentMonthKey = () => new Date().toISOString().slice(0, 7);
+const clampMonthFromMin = (monthKey) => {
+  const normalized = /^\d{4}-\d{2}$/.test(monthKey || "") ? monthKey : currentMonthKey();
+  return normalized < MIN_FILTER_MONTH ? MIN_FILTER_MONTH : normalized;
+};
+const shiftMonth = (monthKey, delta) => {
+  const [y, m] = String(monthKey || currentMonthKey()).split("-").map(Number);
+  const d = new Date(y, (m || 1) - 1 + delta, 1);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}`;
+};
+
+export function useRaces() {
+  const [racesData, setRacesData] = useState({ updatedAt: null, races: [] });
+  const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState("");
+  const [region, setRegion] = useState("all");
+  const [month, setMonth] = useState(() => clampMonthFromMin(currentMonthKey()));
+  const [openOnly, setOpenOnly] = useState(false);
+  const [calendarMonth, setCalendarMonth] = useState(() => clampMonthFromMin(currentMonthKey()));
+  const [selectedDate, setSelectedDate] = useState("");
+
+  useEffect(() => {
+    fetch("./data/races.json")
+      .then((res) => res.json())
+      .then((json) => {
+        setRacesData({ updatedAt: json.updatedAt, races: json.races || [] });
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load races.json:", err);
+        setRacesData({ updatedAt: null, races: [] });
+        setLoading(false);
+      });
+  }, []);
+
+  const regions = useMemo(() => {
+    const set = new Set();
+    racesData.races.forEach((r) => {
+      const match = (r.place || "").match(/^([가-힣]{2})/);
+      if (match) set.add(match[1]);
+    });
+    return ["all", ...Array.from(set).sort()];
+  }, [racesData.races]);
+
+  const monthOptions = useMemo(() => {
+    const list = [];
+    let cur = MIN_FILTER_MONTH;
+    const end = shiftMonth(currentMonthKey(), 12);
+    while (cur <= end) {
+      list.push(cur);
+      cur = shiftMonth(cur, 1);
+    }
+    return list;
+  }, []);
+
+  const browseRaces = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return racesData.races.filter((race) => {
+      if (openOnly && race.status !== "접수중") return false;
+      if (region !== "all" && !(race.place || "").includes(region)) return false;
+      if (month && !(race.date_iso || "").startsWith(month)) return false;
+      if (!q) return true;
+      return (
+        (race.name || "").toLowerCase().includes(q) ||
+        (race.place || "").toLowerCase().includes(q) ||
+        (race.organizer || "").toLowerCase().includes(q)
+      );
+    });
+  }, [racesData.races, query, region, month, openOnly]);
+
+  return {
+    races: racesData.races,
+    updatedAt: racesData.updatedAt,
+    loading,
+    query,
+    setQuery,
+    region,
+    setRegion,
+    regions,
+    month,
+    setMonth,
+    monthOptions,
+    todayMonth: currentMonthKey(),
+    openOnly,
+    setOpenOnly,
+    calendarMonth,
+    setCalendarMonth,
+    selectedDate,
+    setSelectedDate,
+    browseRaces,
+    shiftMonth
+  };
+}
