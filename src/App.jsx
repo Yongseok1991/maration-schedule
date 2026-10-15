@@ -469,11 +469,11 @@ export default function App() {
   }, [month, tab]);
 
   const addRaceToMyEntries = async (race) => {
-    const res = await entriesState.addRaceToEntries(race);
-    if (res?.needAuth) {
+    if (!user) {
       setIsAuthModalOpen(true);
       return;
     }
+    await entriesState.addRaceToEntries(race);
     setTab("mine");
   };
 
