@@ -765,16 +765,20 @@ export default function App() {
                 <span className="text-zinc-400 text-xs font-medium">{TEXT.entryFee} (원)</span>
                 <input className="dark-input h-9 px-2.5 text-xs" inputMode="numeric" value={entry.entryFee || ""} onChange={(e) => updateEntry(entry.entryId, { entryFee: e.target.value })} placeholder="50000" />
               </label>
-              <TimeInput
-                label={TEXT.goalTime}
-                value={entry.goalTime}
-                onChange={(val) => updateEntry(entry.entryId, { goalTime: val })}
-              />
-              <PaceInput
-                label={TEXT.goalPace}
-                value={entry.goalPace}
-                onChange={(val) => updateEntry(entry.entryId, { goalPace: val })}
-              />
+              <div className="col-span-2 sm:col-span-1 min-w-0">
+                <TimeInput
+                  label={TEXT.goalTime}
+                  value={entry.goalTime}
+                  onChange={(val) => updateEntry(entry.entryId, { goalTime: val })}
+                />
+              </div>
+              <div className="col-span-2 sm:col-span-1 min-w-0">
+                <PaceInput
+                  label={TEXT.goalPace}
+                  value={entry.goalPace}
+                  onChange={(val) => updateEntry(entry.entryId, { goalPace: val })}
+                />
+              </div>
               <div className="col-span-2">
                 <TimeInput
                   label={TEXT.resultTime}

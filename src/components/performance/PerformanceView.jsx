@@ -231,61 +231,66 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
   return (
     <div className="space-y-4 mt-3">
       {/* 1. 가민 연동 상태 배너 */}
-      <div className="card-panel p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-center gap-2.5">
-          <div className="h-9 w-9 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-lg shrink-0">
+      <div className="card-panel p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 min-w-0">
+        <div className="flex items-start sm:items-center gap-2.5 min-w-0">
+          <div className="h-9 w-9 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-lg shrink-0 mt-0.5 sm:mt-0">
             ⌚
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <h3 className="text-sm font-bold text-zinc-100">Garmin Connect 연동</h3>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h3 className="text-sm font-bold text-zinc-100 shrink-0">Garmin Connect 연동</h3>
               {garminAuth ? (
-                <span className="rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 text-[10px] font-bold text-emerald-400">
+                <span className="rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 text-[10px] font-bold text-emerald-400 shrink-0">
                   계정 등록됨
                 </span>
               ) : (
-                <span className="rounded-full bg-zinc-800 border border-zinc-700 px-2 py-0.5 text-[10px] font-medium text-zinc-400">
+                <span className="rounded-full bg-zinc-800 border border-zinc-700 px-2 py-0.5 text-[10px] font-medium text-zinc-400 shrink-0">
                   미연동
                 </span>
               )}
             </div>
-            <p className="text-xs text-zinc-400 mt-0.5">
+            <p className="text-xs text-zinc-400 mt-0.5 truncate">
               {garminAuth
-                ? `${garminAuth.garmin_email} 계정 연동됨 (총 ${activities.length}회 수집됨)`
+                ? `${garminAuth.garmin_email} (총 ${activities.length}회 수집됨)`
                 : "가민 계정을 연동하면 1km 랩 페이스와 심박수가 자동으로 분석됩니다."}
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0 flex-wrap">
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0 w-full sm:w-auto pt-1 sm:pt-0 border-t border-zinc-800/60 sm:border-t-0">
           {garminAuth ? (
-            <>
+            <div className="grid grid-cols-3 sm:flex items-center gap-1.5 w-full sm:w-auto">
               <button
+                type="button"
                 onClick={() => setIsGarminModalOpen(true)}
-                className="rounded-xl border border-amber-400/30 bg-amber-400/10 hover:bg-amber-400/20 px-3 py-1.5 text-xs font-semibold text-amber-300 flex items-center gap-1.5 transition"
+                className="rounded-xl border border-amber-400/30 bg-amber-400/10 hover:bg-amber-400/20 px-2.5 py-1.5 text-xs font-semibold text-amber-300 flex items-center justify-center gap-1 transition truncate"
               >
                 <span>⚡</span>
-                <span>전체 데이터 가져오기</span>
+                <span className="hidden xs:inline sm:inline">전체 가져오기</span>
+                <span className="xs:hidden sm:hidden">가져오기</span>
               </button>
               <button
+                type="button"
                 onClick={triggerManualSync}
                 disabled={syncing}
-                className="rounded-xl border border-zinc-700/80 bg-zinc-800/80 hover:bg-zinc-700/80 px-3 py-1.5 text-xs font-semibold text-zinc-200 flex items-center gap-1.5 transition disabled:opacity-50"
+                className="rounded-xl border border-zinc-700/80 bg-zinc-800/80 hover:bg-zinc-700/80 px-2.5 py-1.5 text-xs font-semibold text-zinc-200 flex items-center justify-center gap-1 transition disabled:opacity-50 truncate"
               >
                 <span className={syncing ? "animate-spin" : ""}>🔄</span>
-                <span>{syncing ? "새로고침 중..." : "새로고침"}</span>
+                <span>{syncing ? "동기화..." : "새로고침"}</span>
               </button>
               <button
+                type="button"
                 onClick={unlinkGarminAccount}
-                className="rounded-xl border border-zinc-800 bg-zinc-900/60 hover:bg-rose-500/10 hover:border-rose-500/30 px-2.5 py-1.5 text-xs font-medium text-zinc-400 hover:text-rose-400 transition"
+                className="rounded-xl border border-zinc-800 bg-zinc-900/60 hover:bg-rose-500/10 hover:border-rose-500/30 px-2 py-1.5 text-xs font-medium text-zinc-400 hover:text-rose-400 transition text-center truncate"
               >
                 연동 해제
               </button>
-            </>
+            </div>
           ) : (
             <button
+              type="button"
               onClick={() => setIsGarminModalOpen(true)}
-              className="rounded-xl bg-amber-400 hover:bg-amber-300 px-3.5 py-1.5 text-xs font-bold text-zinc-950 transition shadow-sm"
+              className="w-full sm:w-auto rounded-xl bg-amber-400 hover:bg-amber-300 px-3.5 py-2 text-xs font-bold text-zinc-950 transition shadow-sm text-center"
             >
               가민 계정 연동하기
             </button>
@@ -295,43 +300,43 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
 
       {/* 2. 월별 거리 조회 select 박스 & 대회 기록 전용 필터 툴바 */}
       {hasActivities && (
-        <div className="card-panel p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-zinc-900/80 border-zinc-800/90">
+        <div className="card-panel p-3 sm:p-3.5 flex flex-col md:flex-row md:items-center justify-between gap-2.5 sm:gap-3 bg-zinc-900/80 border-zinc-800/90 min-w-0">
           {/* 월별 셀렉트 박스 */}
-          <div className="flex items-center gap-2.5 flex-1 min-w-0">
-            <label htmlFor="month-select" className="text-xs font-bold text-zinc-300 flex items-center gap-1.5 shrink-0">
+          <div className="flex items-center gap-2 w-full md:max-w-md min-w-0">
+            <label htmlFor="month-select" className="text-xs font-bold text-zinc-300 flex items-center gap-1 shrink-0">
               <span className="text-amber-400">📅</span>
-              <span>월별 거리:</span>
+              <span className="whitespace-nowrap">월별 거리:</span>
             </label>
-            <div className="relative flex-1 max-w-sm">
+            <div className="relative flex-1 min-w-0">
               <select
                 id="month-select"
                 value={selectedMonth}
                 onChange={(e) => setSelectedMonth(e.target.value)}
-                className="w-full appearance-none rounded-xl bg-zinc-950 border border-zinc-700/90 px-3 py-1.5 pr-8 text-xs font-semibold text-zinc-100 hover:border-amber-400/80 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition cursor-pointer shadow-inner"
+                className="w-full appearance-none rounded-xl bg-zinc-950 border border-zinc-700/90 px-2.5 py-1.5 pr-7 text-xs font-semibold text-zinc-100 hover:border-amber-400/80 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition cursor-pointer shadow-inner truncate"
               >
                 {monthStatsList.map((m) => (
                   <option key={m.key} value={m.key}>
-                    {m.label} (총 {(m.distanceMeters / 1000).toFixed(1)}km · {m.count}회{m.raceCount > 0 ? ` · 🏆대회 ${m.raceCount}건` : ""})
+                    {m.label} ({(m.distanceMeters / 1000).toFixed(1)}km · {m.count}회{m.raceCount > 0 ? ` · 🏆대회 ${m.raceCount}` : ""})
                   </option>
                 ))}
                 <option value="all">
-                  🌐 전체 기간 누적 (총 {totalAllKm.toFixed(1)}km · {activities.length}회{totalRaceCount > 0 ? ` · 🏆대회 ${totalRaceCount}건` : ""})
+                  🌐 전체 기간 누적 ({totalAllKm.toFixed(1)}km · {activities.length}회{totalRaceCount > 0 ? ` · 🏆대회 ${totalRaceCount}` : ""})
                 </option>
               </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-zinc-400 text-[10px]">
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-zinc-400 text-[10px]">
                 ▼
               </div>
             </div>
           </div>
 
           {/* 대회 기록만 선택 토글 탭 */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 w-full md:w-auto shrink-0 justify-between sm:justify-start">
             <span className="text-xs font-medium text-zinc-400 shrink-0">구분:</span>
-            <div className="flex rounded-xl bg-zinc-950 p-1 border border-zinc-800">
+            <div className="grid grid-cols-2 sm:flex rounded-xl bg-zinc-950 p-1 border border-zinc-800 flex-1 sm:flex-initial">
               <button
                 type="button"
                 onClick={() => setFilterRaceOnly(false)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold text-center transition truncate ${
                   !filterRaceOnly
                     ? "bg-zinc-800 text-zinc-100 shadow-sm"
                     : "text-zinc-400 hover:text-zinc-200"
@@ -342,14 +347,14 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
               <button
                 type="button"
                 onClick={() => setFilterRaceOnly(true)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-1.5 transition ${
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center justify-center gap-1 transition truncate ${
                   filterRaceOnly
                     ? "bg-gradient-to-r from-amber-400 to-amber-500 text-zinc-950 shadow-md font-extrabold"
                     : "text-amber-400/90 hover:text-amber-300"
                 }`}
               >
                 <span>🏆</span>
-                <span>대회 기록만 ({totalRaceCount})</span>
+                <span>대회만 ({totalRaceCount})</span>
               </button>
             </div>
           </div>
