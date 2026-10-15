@@ -1038,20 +1038,23 @@ export default function App() {
     <main className="mx-auto w-full max-w-xl px-3 pb-20 pt-4 sm:px-4">
       {/* Header Panel */}
       <section className="hero-panel p-4 sm:p-5">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5">
+        <div className="flex items-center justify-between gap-1.5 min-w-0">
+          <div className="flex items-center gap-1.5 shrink-0">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)]" />
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-zinc-400">RACEBOOK ARCHIVE</p>
+            <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider sm:tracking-[0.22em] text-zinc-400">
+              RACEBOOK ARCHIVE
+            </p>
           </div>
           {user ? (
-            <div className="flex items-center gap-2">
-              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                {user.user_metadata?.nickname || user.email?.split("@")[0]} 님
+            <div className="flex items-center gap-1.5 shrink-0 min-w-0">
+              <span className="flex items-center gap-1 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2 sm:px-2.5 py-0.5 text-[11px] font-medium text-emerald-300 max-w-[105px] sm:max-w-[160px]">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                <span className="truncate">{user.user_metadata?.nickname || user.email?.split("@")[0]}</span>
+                <span className="shrink-0 text-[10px] text-emerald-400/80">님</span>
               </span>
               <button
                 onClick={() => signOut()}
-                className="rounded-full border border-zinc-700/60 bg-zinc-800/60 px-2.5 py-1 text-xs text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700/60 transition"
+                className="rounded-full border border-zinc-700/60 bg-zinc-800/60 px-2 py-0.5 text-[11px] text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700/60 transition shrink-0"
               >
                 로그아웃
               </button>
@@ -1059,9 +1062,9 @@ export default function App() {
           ) : (
             <button
               onClick={() => setIsAuthModalOpen(true)}
-              className="flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-400/10 px-3.5 py-1 text-xs font-semibold text-amber-300 hover:bg-amber-400/20 transition shadow-sm"
+              className="flex items-center gap-1 rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 sm:px-3 py-0.5 text-[11px] font-semibold text-amber-300 hover:bg-amber-400/20 transition shadow-sm shrink-0"
             >
-              <span>로그인 / 회원가입</span>
+              <span>로그인</span>
             </button>
           )}
         </div>
