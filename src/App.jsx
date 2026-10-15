@@ -5,6 +5,8 @@ import { useEntries } from "./hooks/useEntries";
 import { useShoes } from "./hooks/useShoes";
 import { useStats } from "./hooks/useStats";
 import AuthModal from "./components/auth/AuthModal";
+import TimeInput from "./components/common/TimeInput";
+import PaceInput from "./components/common/PaceInput";
 
 const TEXT = {
   tabs: {
@@ -742,12 +744,40 @@ export default function App() {
               {missingFromSource && <span className="rounded-full border border-rose-400/35 bg-rose-400/15 px-2 py-0.5 text-[11px] font-semibold text-rose-200">{TEXT.sourceMissing}</span>}
             </div>
             <div className="mt-3 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
-              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.status}</span><select className="dark-input h-9 px-2 text-xs" value={entry.status} onChange={(e) => updateEntry(entry.entryId, { status: e.target.value })}>{STATUS_OPTIONS.map((s) => <option key={s} value={s}>{STATUS_LABEL[s] || s}</option>)}</select></label>
-              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.raceType}</span><select className="dark-input h-9 px-2 text-xs" value={entry.raceType || ""} onChange={(e) => updateEntry(entry.entryId, { raceType: e.target.value })}>{RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}</select></label>
-              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.entryFee}</span><input className="dark-input h-9 px-2.5 text-xs" inputMode="numeric" value={entry.entryFee || ""} onChange={(e) => updateEntry(entry.entryId, { entryFee: e.target.value })} placeholder="50000" /></label>
-              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.goalTime}</span><input className="dark-input h-9 px-2.5 text-xs" value={entry.goalTime} onChange={(e) => updateEntry(entry.entryId, { goalTime: e.target.value })} placeholder="03:45:00" /></label>
-              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.goalPace}</span><input className="dark-input h-9 px-2.5 text-xs" value={entry.goalPace} onChange={(e) => updateEntry(entry.entryId, { goalPace: e.target.value })} placeholder="5:20/km" /></label>
-              <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.resultTime}</span><input className="dark-input h-9 px-2.5 text-xs" value={entry.resultTime} onChange={(e) => updateEntry(entry.entryId, { resultTime: e.target.value })} placeholder="03:51:10" /></label>
+              <label className="flex flex-col gap-1">
+                <span className="text-zinc-400 text-xs font-medium">{TEXT.status}</span>
+                <select className="dark-input h-9 px-2 text-xs" value={entry.status} onChange={(e) => updateEntry(entry.entryId, { status: e.target.value })}>
+                  {STATUS_OPTIONS.map((s) => <option key={s} value={s}>{STATUS_LABEL[s] || s}</option>)}
+                </select>
+              </label>
+              <label className="flex flex-col gap-1">
+                <span className="text-zinc-400 text-xs font-medium">{TEXT.raceType}</span>
+                <select className="dark-input h-9 px-2 text-xs" value={entry.raceType || ""} onChange={(e) => updateEntry(entry.entryId, { raceType: e.target.value })}>
+                  {RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}
+                </select>
+              </label>
+              <label className="col-span-2 flex flex-col gap-1">
+                <span className="text-zinc-400 text-xs font-medium">{TEXT.entryFee} (원)</span>
+                <input className="dark-input h-9 px-2.5 text-xs" inputMode="numeric" value={entry.entryFee || ""} onChange={(e) => updateEntry(entry.entryId, { entryFee: e.target.value })} placeholder="50000" />
+              </label>
+              <TimeInput
+                label={TEXT.goalTime}
+                value={entry.goalTime}
+                onChange={(val) => updateEntry(entry.entryId, { goalTime: val })}
+              />
+              <PaceInput
+                label={TEXT.goalPace}
+                value={entry.goalPace}
+                onChange={(val) => updateEntry(entry.entryId, { goalPace: val })}
+              />
+              <div className="col-span-2">
+                <TimeInput
+                  label={TEXT.resultTime}
+                  value={entry.resultTime}
+                  highlightResult
+                  onChange={(val) => updateEntry(entry.entryId, { resultTime: val })}
+                />
+              </div>
             </div>
             <label className="mt-2.5 flex flex-col gap-1 text-[13px] text-zinc-300">
               <span className="text-zinc-400 text-xs font-medium">{TEXT.memo}</span>
