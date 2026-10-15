@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-14T19:59:09.028Z",
+  "updatedAt": "2026-10-15T03:17:54.636Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php",
-  "count": 911,
+  "count": 914,
   "races": [
     {
       "id": "40976",
@@ -12394,6 +12394,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41869"
     },
     {
+      "id": "41926",
+      "name": "2026전국 체육회장배 안산 RUN 마라톤",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "10km,5km,3km(학생부),5인1조(10km)",
+      "region": "경기",
+      "place": "안산 호수공원(중앙무대)인근",
+      "organizer": "안산시체육회/안산시육상연맹",
+      "contact": "031-339-6338",
+      "registration_period": "2026년10월14일~2026년10월24일",
+      "homepage": "http://aaaf.koreashout.com/bbs/board.php?bo_table=cp_list&wr_id=60",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41926"
+    },
+    {
       "id": "41528",
       "name": "2026 포항마라톤챔피언십",
       "date_display": "2026년11월14일",
@@ -13129,6 +13144,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41908"
     },
     {
+      "id": "41925",
+      "name": "제19회 대구광역시장기 생활체육 육상대회",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "10km,100m,200m",
+      "region": "대구",
+      "place": "대구스타디움",
+      "organizer": "대구광역시체육회",
+      "contact": "010-3503-4558",
+      "registration_period": "2026년10월15일~2026년11월5일",
+      "homepage": "http://www.daegutf.co.kr/front/board/view.php?code=game&tab=%EB%8C%80%EA%B5%AC&mid=0003%2C0014&no=722",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41925"
+    },
+    {
       "id": "41749",
       "name": "2026 무진장트레일레이스",
       "date_display": "2026년11월23일",
@@ -13502,6 +13532,21 @@
       "homepage": "http://love.myrunup.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41888"
+    },
+    {
+      "id": "41923",
+      "name": "2026 화순고인돌마라톤",
+      "date_display": "2026년12월6일",
+      "date_iso": "2026-12-06",
+      "distances": "하프,10km,5km",
+      "region": "전남",
+      "place": "화순공설운동장",
+      "organizer": "화순군체육회, 화순군육상연맹",
+      "contact": "061-375-1201",
+      "registration_period": "2026년10월20일~2026년11월10일",
+      "homepage": "http://xn--299a84k68cg1cr8pi6h5qsd0i.kr/index.asp",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41923"
     },
     {
       "id": "41812",
