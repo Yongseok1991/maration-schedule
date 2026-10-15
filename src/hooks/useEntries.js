@@ -14,7 +14,7 @@ const detectDistanceCategory = (value) => {
   return "";
 };
 
-const makeEntry = (race) => ({
+const makeEntry = (race, initialStatus = "registered") => ({
   entryId: typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
   raceId: race.id || null,
   name: race.name || "이름 없는 대회",
@@ -23,7 +23,7 @@ const makeEntry = (race) => ({
   place: race.place || "",
   distances: race.distances || "",
   homepage: race.homepage || "",
-  status: "registered",
+  status: initialStatus,
   raceType: detectDistanceCategory(race.distances),
   entryFee: "",
   goalTime: "",
@@ -100,29 +100,56 @@ export function useEntries(user, authLoading) {
     }
   }, [authLoading, loadEntries]);
 
-  const addRaceToEntries = async (race) => {
-    if (entries.some((e) => e.raceId && e.raceId === race.id)) {
+  const addRaceToEntries = async (race, initialStatus = "registered") => {
+    const existing = entries.find((e) => e.raceId && e.raceId === race.id);
+    if (existing) {
+      // 이미 관심 상태인데 [ + ] 접수 추가를 누른 경우 -> 접수완료로 상태 업데이트
+      if (existing.status === "interested" && initialStatus === "registered") {
+        return updateEntry(existing.entryId, { status: "registered" });
+      }
       return { alreadyExists: true };
     }
-    const newEntry = makeEntry(race);
+    const newEntry = makeEntry(race, initialStatus);
     const next = [newEntry, ...entries];
     setEntries(next);
     saveToLocalStorage(next);
 
+    const isFav = initialStatus === "interested";
+    const msg = isFav ? "⭐ 관심 대회로 등록되었습니다. (접수 오픈 전날/당일 알림)" : "내 일정에 추가되었습니다.";
+
     if (!user) {
-      setSyncState({ kind: "success", message: "내 일정에 추가되었습니다. (로컬)" });
+      setSyncState({ kind: "success", message: `${msg} (로컬)` });
       return { success: true };
     }
 
     try {
       await dataService.saveEntry(newEntry, user.id);
-      setSyncState({ kind: "success", message: "내 일정에 추가되었습니다." });
+      setSyncState({ kind: "success", message: msg });
       return { success: true };
     } catch (err) {
       console.error("Save entry error:", err);
       setSyncState({ kind: "error", message: "저장 중 오류가 발생했습니다." });
       return { success: false, error: err };
     }
+  };
+
+  const toggleFavoriteRace = async (race) => {
+    const existing = entries.find((e) => e.raceId && e.raceId === race.id);
+    if (existing) {
+      if (existing.status === "interested") {
+        // 관심 상태이면 토글 해제 (삭제)
+        await removeEntry(existing.entryId);
+        setSyncState({ kind: "success", message: "관심 등록이 해제되었습니다." });
+        return { isFavorite: false };
+      }
+      // 이미 접수완료/준비중/완주로 등록된 대회
+      alert("이미 내 일정에 등록되어 있는 대회입니다.");
+      return { isFavorite: true, alreadyRegistered: true };
+    }
+
+    // 새로 관심 등록
+    await addRaceToEntries(race, "interested");
+    return { isFavorite: true };
   };
 
   const addManualEntry = async (manualForm) => {
@@ -291,6 +318,7 @@ export function useEntries(user, authLoading) {
     syncState,
     setSyncState,
     addRaceToEntries,
+    toggleFavoriteRace,
     addManualEntry,
     updateEntry,
     saveEntry,

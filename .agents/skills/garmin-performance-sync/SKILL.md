@@ -219,25 +219,33 @@ END $$;
 
 ### 9.1. 발송 규칙 및 메시지
 - **발송 시점**: 매일 한국 시간 **오전 9시 (KST 09:00 / UTC 00:00)**
-- **대상**: Supabase `user_races` 중 상태가 `registered`(접수완료) 또는 `training`(준비중)인 참가 일정
-- **D-Day별 맞춤 안내**:
-  - **D-7**: `[대회명] 일주일 전! (D-7)` - 무리한 장거리 지양 및 가벼운 조깅/영양 보충 컨디션 조절 권장
-  - **D-3**: `[대회명] 3일 전! (D-3)` - 배번호, 러닝화, 에너지젤 필수 준비물 점검 및 탄수화물 로딩 안내
-  - **D-1**: `내일은 [대회명] 결전의 날! (D-1)` - 출발 시간/장소 확인 및 최적 수면 권장
+- **대상**:
+  1. **관심 등록 대회 (`user_races.status = 'interested'`)**:
+     - **접수 시작 D-1 (`REG-D-1`)**: `📢 [대회명] 내일 접수 오픈!` - 선착순 마감 전 공식 홈페이지 신청 준비 권장
+     - **접수 시작 당일 (`REG-D-0`)**: `🚀 오늘 [대회명] 접수 오픈일!` - 지금 바로 공식 홈페이지에서 신청 안내
+  2. **접수 완료/준비중 대회 (`user_races.status IN ('registered', 'training')`)**:
+     - **대회 D-7**: `[대회명] 일주일 전! (D-7)` - 무리한 장거리 지양 및 가벼운 조깅/영양 보충 컨디션 조절 권장
+     - **대회 D-3**: `[대회명] 3일 전! (D-3)` - 배번호, 러닝화, 에너지젤 필수 준비물 점검 및 탄수화물 로딩 안내
+     - **대회 D-1**: `내일은 [대회명] 결전의 날! (D-1)` - 출발 시간/장소 확인 및 최적 수면 권장
 
 ### 9.2. 컴포넌트 구성
-1. **PWA 서비스 워커 (`public/custom-sw.js` + `dist/sw.js`)**:
+1. **대회 탐색 원클릭 `[ ⭐ ]` 찜 기능 및 필터 (`src/App.jsx`)**:
+   - 대회 카드 우측 상단 `[ ☆ / ⭐ ]` 버튼으로 원클릭 찜 토글 (`user_races`에 `status = 'interested'` 저장).
+   - 탐색 탭 상단에 `[ ⭐ 찜한 대회 (N) ]` 필터 칩을 두어 찜한 대회만 0.1초 만에 모아보기 제공.
+2. **PWA 서비스 워커 (`public/custom-sw.js` + `dist/sw.js`)**:
    - `vite.config.js`의 `workbox.importScripts: ["custom-sw.js"]` 설정으로 Workbox 캐시와 푸시 수신(`push`) 및 클릭(`notificationclick`) 완벽 결합.
-2. **클라이언트 훅 (`src/hooks/useWebPush.js`)**:
+3. **클라이언트 훅 (`src/hooks/useWebPush.js`)**:
    - `Notification.requestPermission()` 및 `PushManager.subscribe()`로 VAPID 공개키 서명 토큰 생성.
    - Supabase `push_subscriptions` 테이블에 upsert 동기화.
    - 마이페이지에 **"알림 켜기/끄기"** 및 **"테스트 알림 받기"** 즉시 확인 버튼 제공.
-3. **발송 엔진 (`scripts/send-race-push.js`)**:
-   - `races.json`의 대회 날짜(`date_iso`)와 KST 오늘 날짜 비교하여 D-7, D-3, D-1 대상자 필터링.
-   - `push_logs` 중복 방지 테이블을 통해 동일 유저·대회·D-Day에 대해 1회만 발송 보장.
+4. **발송 엔진 (`scripts/send-race-push.js`)**:
+   - 관심 대회의 `registration_period`에서 접수 시작일을 추출(`YYYY-MM-DD`)하여 D-1, D-Day 대상자 필터링.
+   - 접수완료 대회의 `date_iso`를 비교하여 대회 D-7, D-3, D-1 대상자 필터링.
+   - `push_logs` 중복 방지 테이블(`uk_push_logs_user_race_dday`)을 통해 중복 발송 0% 보장.
    - 만료된 푸시 토큰(HTTP 410/404) 자동 정리.
-4. **자동화 워크플로우 (`.github/workflows/daily-push.yml`)**:
+5. **자동화 워크플로우 (`.github/workflows/daily-push.yml`)**:
    - GitHub Actions `cron: "0 0 * * *"` (KST 09:00) 매일 자동 실행.
+
 
 
 

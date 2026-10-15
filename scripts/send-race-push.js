@@ -61,31 +61,70 @@ async function main() {
     process.exit(1);
   }
 
-  // 2. Supabase에서 접수 완료(registered) 또는 준비중(training) 대회 일정 조회
+  // 2. Supabase에서 접수/준비중 또는 관심(interested) 등록된 대회 일정 조회
   const { data: entries, error: entriesErr } = await supabase
     .from("user_races")
     .select("user_id, race_id, status, name, date_iso")
-    .in("status", ["registered", "training"]);
+    .in("status", ["registered", "training", "interested"]);
 
   if (entriesErr) {
     console.error("❌ user_races 조회 실패:", entriesErr.message);
     process.exit(1);
   }
 
-  console.log(`[2] 접수/준비중인 참가 일정: 총 ${entries?.length || 0}건 조회`);
+  console.log(`[2] 알림 대상 참가 및 관심 일정: 총 ${entries?.length || 0}건 조회`);
 
   if (!entries || entries.length === 0) {
     console.log("알림 대상 일정이 없습니다. 종료합니다.");
     return;
   }
 
-  // 3. 오늘 날짜 기준 D-7, D-3, D-1 대상자 판별
+  // 3. 오늘 날짜 기준 알림 대상자 판별 (대회 D-Day 알림 + 관심 대회 접수 오픈 알림)
   const targets = [];
   for (const entry of entries) {
     const race = entry.race_id ? raceMap.get(String(entry.race_id)) : null;
-    const raceDate = entry.date_iso || race?.date_iso;
     const raceName = entry.name || race?.name || "마라톤 대회";
 
+    // A. [관심 등록 대회] 접수 시작일 알림 (오픈 하루 전 & 오픈 당일)
+    if (entry.status === "interested") {
+      const regText = (race?.registration_period || "").trim();
+      const match = regText.match(/^(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일?/);
+      if (!match) continue;
+
+      const regStartDate = `${match[1]}-${match[2].padStart(2, "0")}-${match[3].padStart(2, "0")}`;
+      const daysToReg = diffInDays(regStartDate, todayKst);
+
+      let dDayType = null;
+      let pushTitle = "";
+      let pushBody = "";
+
+      if (daysToReg === 1) {
+        dDayType = "REG-D-1";
+        pushTitle = `📢 [${raceName}] 내일 접수 오픈!`;
+        pushBody = `관심 등록하신 대회의 접수가 내일 시작됩니다! 선착순 마감 전에 공식 홈페이지에서 신청 준비를 해두세요 🏃`;
+      } else if (daysToReg === 0) {
+        dDayType = "REG-D-0";
+        pushTitle = `🚀 오늘 [${raceName}] 접수 오픈일!`;
+        pushBody = `오늘 접수가 시작되었습니다! 선착순 마감 전 지금 바로 공식 홈페이지에서 신청하세요 🔥`;
+      }
+
+      if (dDayType) {
+        targets.push({
+          userId: entry.user_id,
+          raceId: String(entry.race_id),
+          raceName,
+          dDayType,
+          daysLeft: daysToReg,
+          pushTitle,
+          pushBody,
+          url: race?.homepage || "./"
+        });
+      }
+      continue;
+    }
+
+    // B. [접수 완료 / 준비중 대회] 대회 D-Day 카운트다운 알림 (D-7, D-3, D-1)
+    const raceDate = entry.date_iso || race?.date_iso;
     if (!raceDate || !/^\d{4}-\d{2}-\d{2}$/.test(raceDate)) continue;
 
     const daysLeft = diffInDays(raceDate, todayKst);
@@ -116,15 +155,16 @@ async function main() {
         dDayType,
         daysLeft,
         pushTitle,
-        pushBody
+        pushBody,
+        url: "./#mine"
       });
     }
   }
 
-  console.log(`[3] D-Day 조건 부합 알림 대상: 총 ${targets.length}건`);
+  console.log(`[3] 발송 조건 부합 알림 대상: 총 ${targets.length}건`);
 
   if (targets.length === 0) {
-    console.log("오늘 발송할 D-7, D-3, D-1 대상 대회가 없습니다. 작업을 완료합니다.");
+    console.log("오늘 발송할 알림(대회 D-Day 또는 접수 오픈) 대상이 없습니다. 작업을 완료합니다.");
     return;
   }
 
@@ -164,7 +204,7 @@ async function main() {
     const payload = JSON.stringify({
       title: target.pushTitle,
       body: target.pushBody,
-      url: `./#mine`,
+      url: target.url || "./#mine",
       raceId: target.raceId,
       tag: `race-${target.raceId}-${target.dDayType}`
     });

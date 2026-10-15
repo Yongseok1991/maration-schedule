@@ -420,6 +420,7 @@ export default function App() {
   const [photoViewer, setPhotoViewer] = useState("");
   const [saveFeedback, setSaveFeedback] = useState({});
   const [manualForm, setManualForm] = useState({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false); // 관심(찜) 대회만 보기 필터
 
   const visibleTabs = useMemo(() => {
     if (!user) {
@@ -443,6 +444,27 @@ export default function App() {
   const { entries, entriesReady, entriesByDate, syncState, setSyncState } = entriesState;
   const { shoes, shoeForm, setShoeForm } = shoesState;
   const { pbSummary, statsSummary, totalEntryFee, yearlyEntryFees, totalShoePrice, yearlyShoePrices } = statsState;
+
+  // 찜(interested) 등록된 대회 ID 집합
+  const favoriteRaceIds = useMemo(() => {
+    const set = new Set();
+    entries.forEach((e) => {
+      if (e.raceId && e.status === "interested") {
+        set.add(String(e.raceId));
+      }
+    });
+    return set;
+  }, [entries]);
+
+  const favoriteCount = favoriteRaceIds.size;
+
+  // 찜 필터가 켜져 있으면 찜한 대회만 표출
+  const finalBrowseRaces = useMemo(() => {
+    if (showFavoritesOnly) {
+      return browseRaces.filter((r) => favoriteRaceIds.has(String(r.id)));
+    }
+    return browseRaces;
+  }, [browseRaces, showFavoritesOnly, favoriteRaceIds]);
 
   const raceIdSet = useMemo(() => new Set(racesData.races.map((r) => r.id).filter(Boolean)), [racesData.races]);
   const raceById = useMemo(() => new Map(racesData.races.map((r) => [r.id, r])), [racesData.races]);
@@ -539,8 +561,11 @@ export default function App() {
 
   const renderBrowse = () => (
     <section className="mt-3 grid grid-cols-1 gap-3">
-      {browseRaces.map((race) => {
-        const alreadyAdded = entries.some((e) => e.raceId && e.raceId === race.id);
+      {finalBrowseRaces.map((race) => {
+        const entry = entries.find((e) => e.raceId && String(e.raceId) === String(race.id));
+        const isFavorite = entry?.status === "interested";
+        const isRegistered = entry && entry.status !== "interested";
+
         return (
           <article key={race.id} className="card-panel p-4">
             <div className="flex items-center justify-between gap-2">
@@ -555,19 +580,48 @@ export default function App() {
             </div>
             <div className="mt-1.5 flex items-start justify-between gap-3">
               <h2 className="text-[16px] font-bold leading-snug text-zinc-100 tracking-tight">{race.name}</h2>
-              <button
-                className={`h-7 w-7 flex-shrink-0 rounded-lg border font-bold text-sm transition-all flex items-center justify-center ${
-                  alreadyAdded
-                    ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-300 cursor-default"
-                    : "border-amber-400/40 bg-amber-400/15 text-amber-300 hover:bg-amber-400/25 active:scale-95"
-                }`}
-                onClick={() => !alreadyAdded && addRaceToMyEntries(race)}
-                disabled={alreadyAdded}
-                aria-label={alreadyAdded ? TEXT.added : TEXT.add}
-                title={alreadyAdded ? TEXT.added : TEXT.add}
-              >
-                {alreadyAdded ? "✓" : "+"}
-              </button>
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                {/* 1. 관심 (⭐) 토글 버튼 */}
+                <button
+                  type="button"
+                  className={`h-7 w-7 rounded-lg border text-sm transition-all flex items-center justify-center ${
+                    isFavorite
+                      ? "border-amber-400 bg-amber-400/20 text-amber-300 shadow-sm scale-105"
+                      : "border-zinc-800 bg-zinc-900/60 text-zinc-500 hover:text-amber-300 hover:border-zinc-700"
+                  }`}
+                  onClick={() => {
+                    if (!user) {
+                      setIsAuthModalOpen(true);
+                      return;
+                    }
+                    entriesState.toggleFavoriteRace(race);
+                  }}
+                  title={isFavorite ? "관심 등록 해제" : "관심 등록 (접수 시작일 알림)"}
+                >
+                  {isFavorite ? "⭐" : "☆"}
+                </button>
+
+                {/* 2. 내 일정 추가 버튼 */}
+                <button
+                  className={`h-7 w-7 rounded-lg border font-bold text-sm transition-all flex items-center justify-center ${
+                    isRegistered
+                      ? "border-emerald-500/40 bg-emerald-500/15 text-emerald-300 cursor-default"
+                      : "border-amber-400/40 bg-amber-400/15 text-amber-300 hover:bg-amber-400/25 active:scale-95"
+                  }`}
+                  onClick={() => {
+                    if (!user) {
+                      setIsAuthModalOpen(true);
+                      return;
+                    }
+                    !isRegistered && addRaceToMyEntries(race);
+                  }}
+                  disabled={isRegistered}
+                  aria-label={isRegistered ? TEXT.added : TEXT.add}
+                  title={isRegistered ? "내 일정 등록됨" : "내 일정에 접수 추가"}
+                >
+                  {isRegistered ? "✓" : "+"}
+                </button>
+              </div>
             </div>
             <div className="mt-3 grid grid-cols-2 gap-x-3 gap-y-1.5 text-[13px]">
               <p className="truncate text-zinc-400"><span className="text-zinc-500">{TEXT.dist}:</span> {race.distances || "-"}</p>
@@ -591,7 +645,11 @@ export default function App() {
           </article>
         );
       })}
-      {browseRaces.length === 0 && <p className="card-panel p-6 text-center text-sm text-zinc-400">{TEXT.noRaces}</p>}
+      {finalBrowseRaces.length === 0 && (
+        <p className="card-panel p-6 text-center text-sm text-zinc-400">
+          {showFavoritesOnly ? "⭐ 관심 등록한 대회가 없습니다. 대회 카드의 ☆ 아이콘을 눌러 관심 대회를 찜해보세요!" : TEXT.noRaces}
+        </p>
+      )}
     </section>
   );
 
@@ -1235,15 +1293,33 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <label className="dark-input flex h-10 items-center gap-2 px-3 text-xs text-zinc-300 cursor-pointer">
-              <input
-                type="checkbox"
-                className="rounded accent-amber-400"
-                checked={openOnly}
-                onChange={(e) => setOpenOnly(e.target.checked)}
-              />
-              {TEXT.openOnly}
-            </label>
+            <div className="flex items-center gap-2">
+              <label className="dark-input flex-1 flex h-10 items-center gap-2 px-3 text-xs text-zinc-300 cursor-pointer">
+                <input
+                  type="checkbox"
+                  className="rounded accent-amber-400"
+                  checked={openOnly}
+                  onChange={(e) => setOpenOnly(e.target.checked)}
+                />
+                {TEXT.openOnly}
+              </label>
+
+              {user && (
+                <button
+                  type="button"
+                  onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                  className={`h-10 px-3.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition shrink-0 ${
+                    showFavoritesOnly
+                      ? "border-amber-400 bg-amber-400/20 text-amber-300 font-bold shadow-sm"
+                      : "border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:text-zinc-200 hover:border-zinc-700"
+                  }`}
+                  title="관심 등록한 대회만 모아보기"
+                >
+                  <span>{showFavoritesOnly ? "⭐" : "☆"}</span>
+                  <span>찜한 대회 ({favoriteCount})</span>
+                </button>
+              )}
+            </div>
           </div>
         )}
       </section>
