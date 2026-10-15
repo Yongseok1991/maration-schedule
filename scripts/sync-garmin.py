@@ -120,10 +120,10 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
         # 2. 가민에서 활동 목록 가져오기
         raw_activities = []
         if is_full_sync:
-            print("[*] Fetching ALL historical running activities (Paging up to 300 activities)...")
+            print("[*] Fetching ALL historical running activities (Paging entire account history without limit)...")
             start_idx = 0
-            page_size = 50
-            max_limit = 300
+            page_size = 100
+            max_limit = 10000  # 계정 내 과거 전체 기록 전수 수집
             while start_idx < max_limit:
                 batch = garmin.get_activities(start_idx, page_size)
                 if not batch:
@@ -156,8 +156,9 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
         for act in raw_activities:
             act_id = str(act.get("activityId"))
             
-            # [월간 증분 갱신 모드일 때 중복 방지 핵심 로직]
-            if not is_full_sync and act_id in existing_ids:
+            # [중복 방지 및 초고속 동기화 핵심 로직]
+            # 이미 DB에 존재하는 활동이면 중복 적재 및 불필요한 랩 API 재호출을 방지하여 안전하게 SKIP
+            if act_id in existing_ids:
                 skipped_count += 1
                 continue
 
