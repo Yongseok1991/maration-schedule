@@ -114,15 +114,31 @@ flowchart TD
 
 ---
 
-## 5. 두 가지 동기화 모드
+## 5. 정기 자동 동기화 & 중복 0% 누락 방지 아키텍처
 
+### 5.1. 두 가지 동기화 모드
 1. **초기 전체 수집 (`mode: "full"`)**:
    - 가민 계정 최초 연동 시 실행.
-   - 과거 전체 활동(297건) 및 1km 랩 전수 수집.
+   - `max_limit = 10000`으로 과거 297건 러닝 및 1km 랩 전수 수집.
 2. **월간 증분 갱신 (`mode: "monthly"`)**:
-   - 정기 크론 또는 월간 새로고침 시 실행.
-   - 최근 35일간의 데이터만 조회.
-   - DB에 이미 존재하는 `activity_id`는 랩 조회를 건너뛰고(SKIP), 신규 활동만 삽입하여 중복 100% 방지.
+   - 매월 1일 크론 또는 앱 실행 시 주기적 자동 동기화.
+   - 최근 35일간의 데이터 조회 후 DB에 없는 신규 활동만 골라내어 적재.
+
+### 5.2. 중복 적재 0% 원천 차단 (2중 방어선)
+1. **1차 방어 (Python 엔진 레벨 SKIP)**:
+   - 가민에서 활동 목록을 조회한 후, `get_existing_activity_ids()`로 Supabase DB에 이미 존재하는 `activity_id` 목록과 대조.
+   - 이미 존재하는 활동은 1km 랩 스플릿 API 호출을 건너뛰고(SKIP), 신규 활동만 조회하여 네트워크 트래픽과 가민 429 차단을 원천 방지.
+2. **2차 방어 (PostgreSQL 복합 유니크 제약조건)**:
+   - `performance_activities`: `CONSTRAINT unique_user_activity UNIQUE (user_id, activity_id)`
+   - `performance_laps`: `CONSTRAINT unique_activity_lap UNIQUE (activity_id, lap_index)`
+   - `onConflict: "user_id,activity_id"` 및 `onConflict: "activity_id,lap_index"` 구문으로 동일 데이터 유입 시 신규 행이 추가되지 않고 UPDATE되므로 **중복 데이터 발생 확률은 0%**입니다.
+
+### 5.3. 1달 주기 자동 갱신 트리거 (듀얼 자동화)
+1. **서버 사이드 정기 크론 (`.github/workflows/sync-garmin-monthly.yml`)**:
+   - 매월 1일 새벽 04:00 (KST) GitHub Actions 자동 실행.
+   - `scripts/sync-garmin.py --monthly-cron` 모드로 연동 유저의 토큰스토어를 순회하며 최신 활동 자동 적재.
+2. **클라이언트 사이드 자동 감지 갱신 (`usePerformance.js`)**:
+   - 사용자가 앱에 접속할 때 `last_sync_at`을 검사하여 마지막 동기화로부터 7일 이상 경과했을 경우, 백그라운드에서 `/api/garmin-sync`를 조용히 실행하여 항상 최신 상태 유지.
 
 ---
 
