@@ -68,6 +68,8 @@
 
 ### Phase 6: 원격 푸시 및 자동 배포
 - [x] GitHub Secret Scanning 차단 해결 (시크릿 키 클린업)
+- [x] Supabase 기본 연결 URL 및 공개 Anon 키 클라이언트 폴백 구성 (GitHub Pages 배포 환경 인증 오류 영구 해결)
+- [x] CI/CD 워크플로우(`ci.yml`, `deploy-pages.yml`) 환경변수 폴백 주입 연동
 - [x] `master` 원격 브랜치 푸시 완료
 - [x] GitHub Actions 자동 CI/CD 및 GitHub Pages 배포 연동
 - [x] README.md 전면 개편 (Mermaid 다이어그램, 테이블 명세서, CLI 안내)
