@@ -11,8 +11,7 @@ const TEXT = {
     browse: "\ud0d0\uc0c9",
     mine: "\ub0b4 \uc77c\uc815",
     mypage: "\ub9c8\uc774",
-    calendar: "\uce98\ub9b0\ub354",
-    sync: "\ub3d9\uae30\ud654"
+    calendar: "\uce98\ub9b0\ub354"
   },
   plannerTitle: "\ub9c8\ub77c\ud1a4 \ud50c\ub798\ub108",
   plannerDesc: "\ubaa9\ud45c, \uba54\ubaa8, \uae30\ub85d\uc99d, \uce98\ub9b0\ub354\ub97c \ud55c \ubc88\uc5d0 \uad00\ub9ac",
@@ -126,8 +125,7 @@ const TABS = [
   { id: "browse", label: TEXT.tabs.browse },
   { id: "mine", label: TEXT.tabs.mine },
   { id: "mypage", label: TEXT.tabs.mypage },
-  { id: "calendar", label: TEXT.tabs.calendar },
-  { id: "sync", label: TEXT.tabs.sync }
+  { id: "calendar", label: TEXT.tabs.calendar }
 ];
 
 const STATUS_OPTIONS = ["interested", "registered", "training", "finished", "dns"];
@@ -153,17 +151,7 @@ const RACE_TYPE_LABEL = {
 
 const STORAGE_KEYS = {
   legacyEntries: "maraton.my_entries.v1",
-  syncConfig: "maraton.sync_config.v1",
   shoes: "maraton.shoes.v1"
-};
-
-const DEFAULT_SYNC = {
-  owner: "yongseok1991",
-  repo: "maration-schedule",
-  branch: "master",
-  path: "user-data/my-marathons.json",
-  token: "",
-  autoSync: true
 };
 
 const readJSON = (key, fallback) => {
@@ -422,7 +410,19 @@ export default function App() {
 
   const [photoViewer, setPhotoViewer] = useState("");
   const [manualForm, setManualForm] = useState({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
-  const [syncConfig, setSyncConfig] = useState(() => ({ ...DEFAULT_SYNC, ...readJSON(STORAGE_KEYS.syncConfig, {}) }));
+
+  const visibleTabs = useMemo(() => {
+    if (!user) {
+      return [{ id: "browse", label: TEXT.tabs.browse }];
+    }
+    return TABS;
+  }, [user]);
+
+  useEffect(() => {
+    if (!user && tab !== "browse") {
+      setTab("browse");
+    }
+  }, [user, tab]);
 
   const monthScrollerRef = useRef(null);
   const monthChipRefs = useRef({});
@@ -521,153 +521,6 @@ export default function App() {
   const onCertificateChange = (entryId, file) => entriesState.onCertificateChange(entryId, file);
   const onRacePhotosChange = (entryId, files) => entriesState.onRacePhotosChange(entryId, files);
   const removeRacePhoto = (entryId, index) => entriesState.removeRacePhoto(entryId, index);
-
-  const githubApi = async (path, options = {}) => {
-    const res = await fetch(`https://api.github.com${path}`, {
-      ...options,
-      headers: {
-        Accept: "application/vnd.github+json",
-        Authorization: `Bearer ${syncConfig.token}`,
-        ...(options.headers || {})
-      }
-    });
-    if (!res.ok) {
-      const text = await res.text();
-      throw new Error(`GitHub API ${res.status}: ${text.slice(0, 200)}`);
-    }
-    return res.json();
-  };
-
-  const pullFromGitHub = async () => {
-    if (!syncConfig.owner || !syncConfig.repo || !syncConfig.token) {
-      setSyncState({ kind: "error", message: TEXT.syncNeedFields });
-      return;
-    }
-    setSyncState({ kind: "syncing", message: TEXT.syncPulling });
-    try {
-      const branch = syncConfig.branch || "master";
-      const contentPath = `/repos/${syncConfig.owner}/${syncConfig.repo}/contents/${encodeURIComponent(syncConfig.path)}?ref=${encodeURIComponent(branch)}`;
-      const file = await githubApi(contentPath, { method: "GET" });
-
-      let decoded = "";
-      const encodedContent = String(file?.content || "").replace(/\n/g, "");
-      if (encodedContent && !file?.truncated) {
-        decoded = decodeBase64Utf8(encodedContent);
-      } else if (file?.sha) {
-        const blobPath = `/repos/${syncConfig.owner}/${syncConfig.repo}/git/blobs/${file.sha}`;
-        const blob = await githubApi(blobPath, { method: "GET" });
-        const blobContent = String(blob?.content || "").replace(/\n/g, "");
-        decoded = decodeBase64Utf8(blobContent);
-      } else {
-        throw new Error("GitHub 파일 내용을 읽을 수 없습니다.");
-      }
-
-      let parsed;
-      try {
-        parsed = JSON.parse(decoded);
-      } catch {
-        throw new Error("동기화 파일 JSON이 깨졌거나 일부만 내려왔습니다. 다시 가져오기를 시도하세요.");
-      }
-
-      const nextEntries = Array.isArray(parsed?.entries) ? parsed.entries : [];
-      const nextShoes = Array.isArray(parsed?.shoes) ? parsed.shoes : [];
-      setEntries(nextEntries.map(normalizeEntry));
-      setShoes(nextShoes.map(normalizeShoe));
-      setSyncState({ kind: "success", message: `${nextEntries.length}\uac1c \uc77c\uc815\uc744 \uac00\uc838\uc654\uc2b5\ub2c8\ub2e4.` });
-    } catch (err) {
-      setSyncState({ kind: "error", message: String(err?.message || err) });
-    }
-  };
-
-  const pushToGitHub = async () => {
-    if (!syncConfig.owner || !syncConfig.repo || !syncConfig.token) {
-      setSyncState({ kind: "error", message: TEXT.syncNeedFields });
-      return;
-    }
-    setSyncState({ kind: "syncing", message: TEXT.syncPushing });
-    const payload = { version: 1, updatedAt: new Date().toISOString(), entries, shoes };
-    const content = encodeBase64Utf8(`${JSON.stringify(payload, null, 2)}\n`);
-    const branch = syncConfig.branch || "master";
-    const filePath = `/repos/${syncConfig.owner}/${syncConfig.repo}/contents/${encodeURIComponent(syncConfig.path)}`;
-    try {
-      let sha;
-      try {
-        const existing = await githubApi(`${filePath}?ref=${encodeURIComponent(branch)}`, { method: "GET" });
-        sha = existing.sha;
-      } catch {
-        sha = undefined;
-      }
-      const bodyOf = (nextSha) => JSON.stringify({
-        message: `sync: \ub9c8\ub77c\ud1a4 \uc77c\uc815 \uc5c5\ub370\uc774\ud2b8 (${entries.length})`,
-        content,
-        branch,
-        sha: nextSha
-      });
-      const putOnce = (nextSha) =>
-        githubApi(filePath, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: bodyOf(nextSha)
-        });
-
-      try {
-        await putOnce(sha);
-      } catch (err) {
-        const msg = String(err?.message || err);
-        if (!msg.includes("GitHub API 409")) throw err;
-        const latest = await githubApi(`${filePath}?ref=${encodeURIComponent(branch)}`, { method: "GET" });
-        await putOnce(latest?.sha);
-      }
-      setSyncState({ kind: "success", message: TEXT.syncDone });
-    } catch (err) {
-      setSyncState({ kind: "error", message: String(err?.message || err) });
-    }
-  };
-
-  const exportBackup = () => {
-    try {
-      const payload = {
-        version: 1,
-        exportedAt: new Date().toISOString(),
-        entries,
-        shoes
-      };
-      const blob = new Blob([`${JSON.stringify(payload, null, 2)}\n`], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(".", "_").slice(0, 15);
-      a.href = url;
-      a.download = `maraton-backup-${stamp}.json`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-      setSyncState({ kind: "success", message: TEXT.backupExportDone });
-    } catch (err) {
-      setSyncState({ kind: "error", message: String(err?.message || err) });
-    }
-  };
-
-  const importBackup = async (file) => {
-    if (!file) return;
-    const ok = window.confirm(TEXT.backupImportConfirm);
-    if (!ok) return;
-    try {
-      const raw = await file.text();
-      const parsed = JSON.parse(raw);
-      const nextEntries = Array.isArray(parsed?.entries) ? parsed.entries : Array.isArray(parsed) ? parsed : null;
-      const nextShoes = Array.isArray(parsed?.shoes) ? parsed.shoes : [];
-      if (!nextEntries) {
-        setSyncState({ kind: "error", message: TEXT.backupImportInvalid });
-        return;
-      }
-      setEntries(nextEntries.map(normalizeEntry));
-      setShoes(nextShoes.map(normalizeShoe));
-      setSyncState({ kind: "success", message: TEXT.backupImportDone });
-    } catch {
-      setSyncState({ kind: "error", message: TEXT.backupImportInvalid });
-    }
-  };
 
   const renderBrowse = () => (
     <section className="mt-3 grid grid-cols-1 gap-3">
@@ -1111,30 +964,6 @@ export default function App() {
     );
   };
 
-  const renderSync = () => (
-    <section className="mt-3 card-panel p-4 text-sm text-zinc-300">
-      <p className="mb-3 font-bold text-zinc-100">{TEXT.syncTitle}</p>
-      <div className="grid grid-cols-1 gap-2.5">
-        <input className="dark-input h-10 px-3 text-xs" placeholder={TEXT.ownerPlaceholder} value={syncConfig.owner} onChange={(e) => setSyncConfig((p) => ({ ...p, owner: e.target.value.trim() }))} />
-        <input className="dark-input h-10 px-3 text-xs" placeholder={TEXT.repoPlaceholder} value={syncConfig.repo} onChange={(e) => setSyncConfig((p) => ({ ...p, repo: e.target.value.trim() }))} />
-        <input className="dark-input h-10 px-3 text-xs" placeholder={TEXT.branchPlaceholder} value={syncConfig.branch} onChange={(e) => setSyncConfig((p) => ({ ...p, branch: e.target.value.trim() || "master" }))} />
-        <input className="dark-input h-10 px-3 text-xs" placeholder={TEXT.pathPlaceholder} value={syncConfig.path} onChange={(e) => setSyncConfig((p) => ({ ...p, path: e.target.value.trim() || DEFAULT_SYNC.path }))} />
-        <input className="dark-input h-10 px-3 text-xs" type="password" placeholder={TEXT.tokenPlaceholder} value={syncConfig.token} onChange={(e) => setSyncConfig((p) => ({ ...p, token: e.target.value.trim() }))} />
-        <label className="flex items-center gap-2 text-xs text-zinc-300 cursor-pointer pt-1"><input type="checkbox" className="rounded accent-amber-400" checked={syncConfig.autoSync} onChange={(e) => setSyncConfig((p) => ({ ...p, autoSync: e.target.checked }))} />{TEXT.autoSync}</label>
-        <div className="flex gap-2 pt-1">
-          <button className="h-9 flex-1 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 px-3 text-xs font-semibold text-zinc-200 transition" onClick={() => pullFromGitHub()}>{TEXT.pull}</button>
-          <button className="h-9 flex-1 rounded-xl border border-amber-400/40 bg-amber-400/15 hover:bg-amber-400/25 px-3 text-xs font-semibold text-amber-200 transition" onClick={() => pushToGitHub()}>{TEXT.push}</button>
-        </div>
-        <div className="flex gap-2">
-          <button className="h-9 flex-1 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 px-3 text-xs font-medium text-zinc-300 transition" onClick={exportBackup}>{TEXT.backupExport}</button>
-          <button className="h-9 flex-1 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:bg-zinc-800 px-3 text-xs font-medium text-zinc-300 transition" onClick={() => backupInputRef.current?.click()}>{TEXT.backupImport}</button>
-          <input ref={backupInputRef} type="file" accept="application/json,.json" className="hidden" onChange={(e) => { importBackup(e.target.files?.[0]); e.target.value = ""; }} />
-        </div>
-        {syncState.kind !== "idle" && <p className={`rounded-xl p-2.5 text-xs ${syncState.kind === "error" ? "bg-rose-500/15 text-rose-300 border border-rose-500/30" : syncState.kind === "success" ? "bg-emerald-500/15 text-emerald-300 border border-emerald-500/30" : "bg-zinc-800/60 text-zinc-300 border border-zinc-700"}`}>{syncState.message}</p>}
-      </div>
-    </section>
-  );
-
   return (
     <main className="mx-auto w-full max-w-xl px-3 pb-20 pt-4 sm:px-4">
       {/* Header Panel */}
@@ -1168,23 +997,49 @@ export default function App() {
         <div className="mt-3.5 flex flex-wrap gap-2 text-xs">
           <span className="stat-chip">{TEXT.updated} {racesData.updatedAt ? new Date(racesData.updatedAt).toLocaleDateString("ko-KR") : "-"}</span>
           <span className="stat-chip">{TEXT.upcoming} {browseRaces.length}건</span>
-          <span className="stat-chip stat-chip-strong">{TEXT.myEntries} {entries.length}건</span>
+          {user ? (
+            <span className="stat-chip stat-chip-strong">{TEXT.myEntries} {entries.length}건</span>
+          ) : (
+            <button
+              onClick={() => setIsAuthModalOpen(true)}
+              className="stat-chip stat-chip-strong cursor-pointer hover:border-amber-400/60 transition"
+            >
+              로그인하고 내 일정/기록 관리 시작 ↗
+            </button>
+          )}
         </div>
       </section>
 
       {/* Navigation & Filters Panel */}
       <section className="nav-panel sticky top-2 z-20 mt-3 p-1.5">
-        <div className="grid grid-cols-5 gap-1">
-          {TABS.map((t) => (
+        {user ? (
+          <div className="grid grid-cols-4 gap-1">
+            {visibleTabs.map((t) => (
+              <button
+                key={t.id}
+                className={`h-9 text-xs font-semibold transition-all ${tab === t.id ? "nav-tab-active" : "nav-tab"}`}
+                onClick={() => setTab(t.id)}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div className="flex items-center justify-between px-2.5 py-1">
+            <span className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-amber-400" />
+              대회 탐색
+            </span>
             <button
-              key={t.id}
-              className={`h-9 text-xs font-semibold transition-all ${tab === t.id ? "nav-tab-active" : "nav-tab"}`}
-              onClick={() => setTab(t.id)}
+              onClick={() => setIsAuthModalOpen(true)}
+              className="text-xs text-zinc-400 hover:text-amber-300 font-medium transition flex items-center gap-1"
             >
-              {t.label}
+              <span>로그인 시 내 일정·마이·캘린더 이용 가능</span>
+              <span className="text-[10px]">↗</span>
             </button>
-          ))}
-        </div>
+          </div>
+        )}
+
         {tab === "browse" && (
           <div className="mt-2 space-y-2 pt-1 border-t border-zinc-800/60">
             <input
@@ -1244,10 +1099,9 @@ export default function App() {
       </section>
 
       {tab === "browse" && renderBrowse()}
-      {tab === "mine" && renderMine()}
-      {tab === "mypage" && renderMyPage()}
-      {tab === "calendar" && renderCalendar()}
-      {tab === "sync" && renderSync()}
+      {user && tab === "mine" && renderMine()}
+      {user && tab === "mypage" && renderMyPage()}
+      {user && tab === "calendar" && renderCalendar()}
 
       {photoViewer && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-4 flex items-center justify-center" onClick={() => setPhotoViewer("")}>
