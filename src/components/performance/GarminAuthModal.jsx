@@ -130,7 +130,7 @@ export default function GarminAuthModal({ isOpen, onClose, onLinkSuccess }) {
               🛡️ 안전한 세션 토큰 연동 안내
             </p>
             <p className="text-zinc-400 leading-relaxed">
-              입력하신 비밀번호는 DB에 평문으로 저장되지 않으며, 가민 공식 SSO 세션 토큰을 발급받아 매월 1일 새벽 신규 기록을 수집하는 데만 사용됩니다.
+              입력하신 비밀번호는 DB에 평문으로 저장되지 않으며, 가민 공식 SSO 세션 토큰을 발급받아 매일 새벽 최신 러닝 기록을 자동으로 수집하는 데만 사용됩니다.
             </p>
           </div>
 

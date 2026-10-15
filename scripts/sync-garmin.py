@@ -84,17 +84,31 @@ def get_existing_activity_ids(supabase_client: Client, user_id: str) -> set:
         return set()
 
 
-def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password: str, mode: str = "full", days_back: int = 35, output_json_path: str = None, access_token: str = None):
+def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password: str, mode: str = "daily", days_back: int = None, output_json_path: str = None, access_token: str = None):
     """
     mode:
-      - 'full': 초기 전체 동기화 (과거 전체 러닝 페이징 수집)
+      - 'daily': 데일리 증분 갱신 (최근 7일 러닝만 수집, 기존 중복 기록 완벽 스킵)
       - 'monthly': 월간 증분 갱신 (최근 35일 러닝만 수집, 기존 중복 기록 완벽 스킵)
+      - 'full': 초기 전체 동기화 (과거 전체 러닝 페이징 수집)
     """
     import json
     is_full_sync = (mode == "full")
+    if days_back is None:
+        if mode == "daily":
+            days_back = 7
+        elif mode == "monthly":
+            days_back = 35
+        else:
+            days_back = 7
+
+    mode_label = (
+        "[1. 초기 전체 수집 (Full)]" if is_full_sync else
+        "[2. 데일리 증분 갱신 (Daily - 최근 7일)]" if mode == "daily" else
+        f"[3. 월간 증분 갱신 (Monthly - 최근 {days_back}일)]"
+    )
     print(f"\n=======================================================")
     print(f"[*] Starting Garmin Sync: User={user_id} ({email})")
-    print(f"[*] Mode: {'[1. 초기 전체 수집 (Full)]' if is_full_sync else '[2. 월간 증분 갱신 (Monthly)]'}")
+    print(f"[*] Mode: {mode_label}")
     print(f"=======================================================")
 
     if access_token:
@@ -392,9 +406,10 @@ def run_daemon(supabase_client: Client):
 def main():
     parser = argparse.ArgumentParser(description="RACEBOOK Garmin Sync Tool")
     parser.add_argument("--daemon", action="store_true", help="Run background daemon polling for UI sync requests")
-    parser.add_argument("--mode", type=str, choices=["full", "monthly"], default="full",
-                        help="'full' for initial full historical sync, 'monthly' for monthly incremental sync")
-    parser.add_argument("--monthly-cron", action="store_true", help="Run in monthly cron mode for all users")
+    parser.add_argument("--mode", type=str, choices=["full", "monthly", "daily"], default="daily",
+                        help="'daily' for daily incremental sync (last 7 days), 'monthly' for monthly (35 days), 'full' for initial full sync")
+    parser.add_argument("--daily-cron", action="store_true", help="Run in daily cron mode for all users")
+    parser.add_argument("--monthly-cron", action="store_true", help="Run in cron mode for all users (alias)")
     parser.add_argument("--email", type=str, help="Garmin account email")
     parser.add_argument("--password", type=str, help="Garmin account password")
     parser.add_argument("--user-id", type=str, help="Supabase user UUID")
@@ -406,9 +421,10 @@ def main():
 
     if args.daemon:
         run_daemon(supabase_client)
-    elif args.monthly_cron:
+    elif args.daily_cron or args.monthly_cron:
         import base64
-        print("=== [CRON] Running Monthly Garmin Sync Pipeline (Incremental Mode) ===")
+        cron_title = "Daily" if (args.daily_cron or args.mode == "daily") else "Monthly"
+        print(f"=== [CRON] Running {cron_title} Garmin Sync Pipeline (Incremental Mode) ===")
         try:
             res = supabase_client.from_("user_garmin_auth").select("*").execute()
             users = res.data or []
@@ -432,7 +448,7 @@ def main():
                     password = enc_token
 
             if os.path.exists(token_file) or password:
-                print(f"\n[*] Processing monthly sync for: {email} ({uid})...")
+                print(f"\n[*] Processing daily sync for: {email} ({uid})...")
                 try:
                     sync_user_garmin(supabase_client, uid, email, password, mode=args.mode)
                 except Exception as e:
@@ -440,7 +456,7 @@ def main():
             else:
                 print(f"[!] Skipped {email}: No tokenstore or credentials found.")
 
-        print("\n=== [CRON] Monthly Sync Pipeline Finished Successfully ===")
+        print(f"\n=== [CRON] {cron_title} Sync Pipeline Finished Successfully ===")
     elif args.email and args.password and args.user_id:
         success = sync_user_garmin(
             supabase_client,

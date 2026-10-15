@@ -25,6 +25,7 @@ function garminSyncPlugin() {
 
         req.on("end", async () => {
           try {
+            const { email, password, userId, accessToken, mode = "daily" } = JSON.parse(body || "{}");
             const tokenstoreFile = path.join(os.homedir(), ".racebook_garmin_tokens", userId || "", "garmin_tokens.json");
             const hasCachedToken = fs.existsSync(tokenstoreFile);
 

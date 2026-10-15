@@ -365,7 +365,7 @@ export function usePerformance(user) {
       const sessionRes = supabase ? await supabase.auth.getSession() : null;
       const accessToken = sessionRes?.data?.session?.access_token || null;
 
-      // 1. Vite 백엔드 API에 증분 모드(monthly, 최근 35일치)로 요청 (토큰스토어로 0.5초 만에 직통 수집)
+      // 1. Vite 백엔드 API에 증분 모드(daily, 최근 7일치)로 요청 (토큰스토어로 0.5초 만에 직통 수집)
       const resp = await fetch("/api/garmin-sync", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -374,7 +374,7 @@ export function usePerformance(user) {
           password: "tokenstore_cached",
           userId: user.id,
           accessToken,
-          mode: "monthly" // 최근 35일간의 최신 러닝만 증분 수집 (기존 것은 100% SKIP)
+          mode: "daily" // 최근 7일간의 최신 러닝만 데일리 증분 수집 (기존 것은 100% SKIP)
         })
       });
 

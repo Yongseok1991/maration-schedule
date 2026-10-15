@@ -224,7 +224,7 @@ RACEBOOK은 최신 모던 웹 표준 기술로 설계되었습니다:
 - **Frontend**: React 19, Vite, Tailwind CSS, Workbox PWA Service Worker
 - **BaaS & DB**: Supabase (PostgreSQL with Row Level Security, Storage CDN, Auth)
 - **External Integration**: Garmin Connect SSO Session Tokenstore, W3C Web Push (VAPID)
-- **Automated Pipelines**: GitHub Actions (마라톤 크롤러 하루 3회, 스마트 알림 매일 09시 KST, 가민 자동 동기화)
+- **Automated Pipelines**: GitHub Actions (마라톤 크롤러 하루 3회, 스마트 알림 매일 09시 KST, 가민 최신 러닝 자동 수집 매일 04시 KST)
 
 ### 로컬 실행
 ```bash
