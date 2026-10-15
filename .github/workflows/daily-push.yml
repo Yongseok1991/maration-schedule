@@ -1,0 +1,35 @@
+name: Daily Race Push Notifications
+
+on:
+  schedule:
+    # 매일 한국 시간 오전 9시 (KST 09:00 = UTC 00:00)
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  send-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Send Race D-Day Web Push Notifications
+        run: node scripts/send-race-push.js
+        env:
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://ayvxlbnovvsdupxsotec.supabase.co' }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT || 'mailto:dobest0998@gmail.com' }}

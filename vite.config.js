@@ -126,6 +126,9 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
+      workbox: {
+        importScripts: ["custom-sw.js"]
+      },
       includeAssets: ["icon.svg", "icons/icon-192.png", "icons/icon-512.png"],
       manifest: {
         name: "RACEBOOK",

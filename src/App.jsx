@@ -5,6 +5,7 @@ import { useEntries } from "./hooks/useEntries";
 import { useShoes } from "./hooks/useShoes";
 import { useStats } from "./hooks/useStats";
 import { usePerformance } from "./hooks/usePerformance";
+import { useWebPush } from "./hooks/useWebPush";
 import AuthModal from "./components/auth/AuthModal";
 import TimeInput from "./components/common/TimeInput";
 import PaceInput from "./components/common/PaceInput";
@@ -414,6 +415,7 @@ export default function App() {
   const shoesState = useShoes(user, authLoading);
   const statsState = useStats(entriesState.entries, shoesState.shoes);
   const performanceState = usePerformance(user);
+  const webPushState = useWebPush(user);
 
   const [photoViewer, setPhotoViewer] = useState("");
   const [saveFeedback, setSaveFeedback] = useState({});
@@ -612,6 +614,66 @@ export default function App() {
             <p className="mt-1 text-xl font-black text-zinc-100">{statsSummary.shoesCount}</p>
           </div>
         </div>
+      </article>
+
+      {/* 대회 D-Day 웹푸시 알림 설정 카드 */}
+      <article className="card-panel p-4 border-amber-400/25 bg-gradient-to-b from-zinc-900/90 to-zinc-950/90">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-start sm:items-center gap-2.5">
+            <div className="h-9 w-9 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-base shrink-0 mt-0.5 sm:mt-0">
+              🔔
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <p className="text-sm font-bold text-zinc-100 tracking-tight">대회 D-Day 푸시 알림</p>
+                {webPushState.isSubscribed ? (
+                  <span className="rounded-full bg-emerald-500/15 border border-emerald-500/30 px-2 py-0.5 text-[10px] font-bold text-emerald-400">
+                    알림 켜짐 ✓
+                  </span>
+                ) : (
+                  <span className="rounded-full bg-zinc-800 border border-zinc-700 px-2 py-0.5 text-[10px] font-medium text-zinc-400">
+                    꺼짐
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-zinc-400 mt-0.5">
+                접수하신 대회의 <span className="text-amber-300 font-semibold">7일 전, 3일 전, 하루 전</span> 오전 9시에 스마트폰/PC로 알림을 보냅니다.
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            disabled={webPushState.loading || !webPushState.isSupported}
+            onClick={webPushState.isSubscribed ? webPushState.unsubscribe : webPushState.subscribe}
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition shrink-0 ${
+              webPushState.isSubscribed
+                ? "border border-zinc-700 bg-zinc-800/80 text-zinc-300 hover:bg-zinc-700"
+                : "border border-amber-400/50 bg-amber-400 text-zinc-950 hover:bg-amber-300 shadow-md ring-1 ring-amber-400/30"
+            }`}
+          >
+            {webPushState.loading
+              ? "확인 중..."
+              : webPushState.isSubscribed
+              ? "알림 끄기"
+              : "알림 켜기 🔔"}
+          </button>
+        </div>
+
+        {webPushState.isSubscribed && (
+          <div className="mt-3 pt-3 border-t border-zinc-800/80 flex items-center justify-between gap-2">
+            <p className="text-[11px] text-zinc-400">
+              💡 알림이 잘 오는지 지금 바로 테스트해 보세요.
+            </p>
+            <button
+              type="button"
+              onClick={webPushState.sendTestNotification}
+              className="text-xs font-semibold text-amber-400 hover:text-amber-300 transition px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-800 hover:border-zinc-700"
+            >
+              테스트 알림 받기
+            </button>
+          </div>
+        )}
       </article>
 
       {/* 참가비 합계 */}
