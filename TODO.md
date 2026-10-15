@@ -65,6 +65,10 @@
 - [x] 탐색 탭의 월 선택 바(Month Filter Chips) 및 대회 목록 날짜 최신순(내림차순) 정렬 적용 (오래된 2025.09 우선 노출 문제 해결)
 - [x] 마이페이지 PB(Personal Best) 종목별 최고 기록 및 대회명/일자 정상 계산·연동 버그 수정 (`useStats.js`)
 - [x] '내 일정' 카드별 명시적 '기록 저장 💾' 액션 바 및 실시간 피드백(저장 중 / ✓ 저장 완료) 추가 (`saveEntry`)
+- [x] '이메일(아이디) 기억하기' 기능 구현 (`localStorage.setItem('racebook_saved_email')`, 비밀번호 저장 원천 금지)
+- [x] 개인 기기 vs 공용 PC 분리 '로그인 상태 유지 (자동 로그인)' 세션 스토리지 어댑터 적용 (`localStorage` vs `sessionStorage` 창 닫을 시 파기)
+- [x] 비밀번호 숄더 서핑 방어 보기/숨기기(눈 아이콘 👁️) 토글 지원
+- [x] 무차별 대입(Brute-force) 방어 5회 연속 실패 시 60초 쿨다운 잠금 및 실시간 카운트다운 타이머 탑재
 
 ### Phase 6: 원격 푸시 및 자동 배포
 - [x] GitHub Secret Scanning 차단 해결 (시크릿 키 클린업)

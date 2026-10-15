@@ -35,8 +35,15 @@ export const authService = {
     return data;
   },
 
-  async signIn({ email, password }) {
+  async signIn({ email, password, keepLoggedIn = true }) {
     if (!supabase) throw new Error("Supabase가 설정되지 않았습니다.");
+    if (typeof window !== "undefined") {
+      try {
+        window.localStorage.setItem("racebook_keep_logged_in", keepLoggedIn ? "true" : "false");
+      } catch (e) {
+        console.warn("Could not save keepLoggedIn flag:", e);
+      }
+    }
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password
@@ -47,8 +54,27 @@ export const authService = {
 
   async signOut() {
     if (!supabase) return;
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+    } finally {
+      if (typeof window !== "undefined") {
+        try {
+          Object.keys(window.localStorage).forEach((key) => {
+            if (key.startsWith("sb-") && key.endsWith("-auth-token")) {
+              window.localStorage.removeItem(key);
+            }
+          });
+          Object.keys(window.sessionStorage).forEach((key) => {
+            if (key.startsWith("sb-") && key.endsWith("-auth-token")) {
+              window.sessionStorage.removeItem(key);
+            }
+          });
+        } catch {
+          // ignore cleanup errors
+        }
+      }
+    }
   },
 
   onAuthStateChange(callback) {
