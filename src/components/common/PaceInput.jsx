@@ -1,127 +1,120 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-// 문자열 "5:20/km", "05:20", "5분 20초" 등에서 { m, s } 파싱
-function parsePaceToParts(val) {
-  if (!val || typeof val !== "string") return { m: "", s: "" };
-  const digitsOnly = val.replace(/[^\d:]/g, "");
-  const parts = digitsOnly.split(":").filter(Boolean);
-  if (parts.length >= 2) {
-    return {
-      m: parts[0] ? String(Number(parts[0])) : "",
-      s: parts[1] ? String(Math.min(59, Number(parts[1]))).padStart(2, "0") : ""
-    };
+// 페이스 문자열을 "M:SS/km" 표준 포맷으로 자동 정규화
+function normalizePaceString(input) {
+  if (!input || typeof input !== "string") return "";
+  const cleaned = input.trim().replace(/[^\d:]/g, "");
+  if (!cleaned) return "";
+
+  // 1. 콜론이 있는 경우 (예: 5:20 -> 5:20/km)
+  if (cleaned.includes(":")) {
+    const parts = cleaned.split(":").filter((p) => p.length > 0);
+    if (parts.length >= 2) {
+      const m = Number(parts[0]);
+      const s = String(Math.min(59, Number(parts[1]))).padStart(2, "0");
+      return `${m}:${s}/km`;
+    }
+    if (parts.length === 1) {
+      return `${Number(parts[0])}:00/km`;
+    }
   }
-  if (parts.length === 1 && parts[0]) {
-    return { m: String(Number(parts[0])), s: "" };
+
+  // 2. 숫자만 입력한 경우 (예: 520 -> 5:20/km, 430 -> 4:30/km)
+  const digits = cleaned.replace(/[^\d]/g, "");
+  if (digits.length === 3) {
+    const m = digits.slice(0, 1);
+    const s = String(Math.min(59, Number(digits.slice(1, 3)))).padStart(2, "0");
+    return `${m}:${s}/km`;
   }
-  return { m: "", s: "" };
+  if (digits.length === 4) {
+    const m = digits.slice(0, 2);
+    const s = String(Math.min(59, Number(digits.slice(2, 4)))).padStart(2, "0");
+    return `${m}:${s}/km`;
+  }
+  if (digits.length <= 2) {
+    return `${Number(digits)}:00/km`;
+  }
+  return `${cleaned}/km`;
+}
+
+// 실시간 한글 페이스 해석 (예: "5분 20초 /km")
+function getPacePreview(val) {
+  if (!val) return "";
+  const norm = normalizePaceString(val);
+  const clean = norm.replace("/km", "").trim();
+  const parts = clean.split(":").map(Number);
+  if (parts.length === 2 && !parts.some(Number.isNaN)) {
+    return `${parts[0]}분 ${parts[1]}초 /km`;
+  }
+  return "";
 }
 
 export default function PaceInput({ label, value, onChange }) {
-  const [parts, setParts] = useState(() => parsePaceToParts(value));
-  const minRef = useRef(null);
-  const secRef = useRef(null);
+  const [text, setText] = useState(value || "");
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    setParts(parsePaceToParts(value));
-  }, [value]);
-
-  const emitChange = (nextParts) => {
-    const { m, s } = nextParts;
-    if (!m && !s) {
-      onChange && onChange("");
-      return;
+    if (!isFocused) {
+      setText(value || "");
     }
-    const finalM = m || "5";
-    const finalS = s ? s.padStart(2, "0") : "00";
-    onChange && onChange(`${finalM}:${finalS}/km`);
-  };
+  }, [value, isFocused]);
 
-  const handleMinChange = (e) => {
-    const raw = e.target.value.replace(/[^\d]/g, "").slice(0, 2);
-    const next = { ...parts, m: raw };
-    setParts(next);
-    emitChange(next);
-    if (raw.length === 1 && Number(raw) >= 3) {
-      // 3분대 이상이면 분 입력 완료로 보고 초로 이동
-      secRef.current?.focus();
-      secRef.current?.select();
-    }
-  };
-
-  const handleSecChange = (e) => {
-    let raw = e.target.value.replace(/[^\d]/g, "").slice(0, 2);
-    if (Number(raw) > 59) raw = "59";
-    const next = { ...parts, s: raw };
-    setParts(next);
-    emitChange(next);
+  const handleChange = (e) => {
+    // 숫자, 콜론, km 문자 허용
+    const filtered = e.target.value.replace(/[^\d:km/]/gi, "");
+    setText(filtered);
+    onChange && onChange(filtered);
   };
 
   const handleBlur = () => {
-    if (!parts.m && !parts.s) return;
-    const padded = {
-      m: parts.m || "5",
-      s: parts.s ? parts.s.padStart(2, "0") : "00"
-    };
-    setParts(padded);
-    emitChange(padded);
+    setIsFocused(false);
+    if (!text.trim()) {
+      setText("");
+      onChange && onChange("");
+      return;
+    }
+    const formatted = normalizePaceString(text);
+    setText(formatted);
+    onChange && onChange(formatted);
   };
 
   const handleClear = (e) => {
     e.stopPropagation();
-    const empty = { m: "", s: "" };
-    setParts(empty);
+    setText("");
     onChange && onChange("");
   };
 
-  const hasValue = Boolean(parts.m || parts.s);
+  const preview = getPacePreview(text);
 
   return (
     <div className="flex flex-col gap-1">
       <div className="flex items-center justify-between">
         <span className="text-xs font-medium text-zinc-400">{label}</span>
-        <span className="text-[10px] text-zinc-500 font-mono">분 : 초 /km</span>
+        {preview && (
+          <span className="text-[11px] font-semibold text-emerald-400/90 bg-emerald-400/10 px-1.5 py-0.2 rounded border border-emerald-400/20">
+            {preview}
+          </span>
+        )}
       </div>
 
-      <div className="flex items-center justify-between gap-1 h-9 rounded-xl border border-zinc-800 bg-zinc-900/90 px-2.5 transition focus-within:border-amber-400/70 focus-within:ring-1 focus-within:ring-amber-400/20">
-        <div className="flex items-center gap-1 font-mono text-xs">
-          {/* 분 */}
-          <input
-            ref={minRef}
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            maxLength={2}
-            value={parts.m}
-            onChange={handleMinChange}
-            onBlur={handleBlur}
-            placeholder="5"
-            className="w-5 text-center bg-transparent font-bold text-zinc-100 placeholder:text-zinc-600 outline-none"
-          />
-          <span className="text-zinc-400 text-[11px] font-sans font-medium">분</span>
+      <div className="relative flex items-center h-9 rounded-xl border border-zinc-800 bg-zinc-900/90 transition px-3 focus-within:border-amber-400/70 focus-within:ring-1 focus-within:ring-amber-400/20">
+        <input
+          type="text"
+          inputMode="numeric"
+          value={text}
+          onFocus={() => setIsFocused(true)}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="5:20/km (또는 520)"
+          className="w-full bg-transparent font-mono text-xs font-semibold text-zinc-100 placeholder:text-zinc-600 outline-none pr-6"
+        />
 
-          {/* 초 */}
-          <input
-            ref={secRef}
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            maxLength={2}
-            value={parts.s}
-            onChange={handleSecChange}
-            onBlur={handleBlur}
-            placeholder="20"
-            className="w-6 text-center bg-transparent font-bold text-zinc-100 placeholder:text-zinc-600 outline-none"
-          />
-          <span className="text-zinc-400 text-[11px] font-sans font-medium">초 /km</span>
-        </div>
-
-        {hasValue && (
+        {text && (
           <button
             type="button"
             onClick={handleClear}
-            className="h-4 w-4 rounded-full bg-zinc-800 text-zinc-400 hover:text-zinc-200 flex items-center justify-center text-[10px] transition"
-            title="페이스 지우기"
+            className="absolute right-2.5 h-4 w-4 rounded-full bg-zinc-800 text-zinc-400 hover:text-zinc-200 flex items-center justify-center text-[10px] transition"
+            title="초기화"
           >
             ✕
           </button>
