@@ -4,16 +4,19 @@ import { useRaces } from "./hooks/useRaces";
 import { useEntries } from "./hooks/useEntries";
 import { useShoes } from "./hooks/useShoes";
 import { useStats } from "./hooks/useStats";
+import { usePerformance } from "./hooks/usePerformance";
 import AuthModal from "./components/auth/AuthModal";
 import TimeInput from "./components/common/TimeInput";
 import PaceInput from "./components/common/PaceInput";
+import PerformanceView from "./components/performance/PerformanceView";
 
 const TEXT = {
   tabs: {
-    browse: "\ud0d0\uc0c9",
-    mine: "\ub0b4 \uc77c\uc815",
-    mypage: "\ub9c8\uc774",
-    calendar: "\uce98\ub9b0\ub354"
+    browse: "탐색",
+    mine: "내 일정",
+    mypage: "마이",
+    calendar: "캘린더",
+    perf: "퍼포먼스"
   },
   plannerTitle: "RACEBOOK",
   plannerDesc: "전국 마라톤 대회 일정 탐색부터 목표, 기록, 완주증까지 한 번에 관리",
@@ -127,7 +130,8 @@ const TABS = [
   { id: "browse", label: TEXT.tabs.browse },
   { id: "mine", label: TEXT.tabs.mine },
   { id: "mypage", label: TEXT.tabs.mypage },
-  { id: "calendar", label: TEXT.tabs.calendar }
+  { id: "calendar", label: TEXT.tabs.calendar },
+  { id: "perf", label: TEXT.tabs.perf }
 ];
 
 const STATUS_OPTIONS = ["interested", "registered", "training", "finished", "dns"];
@@ -409,6 +413,7 @@ export default function App() {
   const entriesState = useEntries(user, authLoading);
   const shoesState = useShoes(user, authLoading);
   const statsState = useStats(entriesState.entries, shoesState.shoes);
+  const performanceState = usePerformance(user);
 
   const [photoViewer, setPhotoViewer] = useState("");
   const [saveFeedback, setSaveFeedback] = useState({});
@@ -1092,7 +1097,7 @@ export default function App() {
       {/* Navigation & Filters Panel */}
       <section className="nav-panel sticky top-2 z-20 mt-3 p-1.5">
         {user ? (
-          <div className="grid grid-cols-4 gap-1">
+          <div className="grid grid-cols-5 gap-1">
             {visibleTabs.map((t) => (
               <button
                 key={t.id}
@@ -1113,7 +1118,7 @@ export default function App() {
               onClick={() => setIsAuthModalOpen(true)}
               className="text-xs text-zinc-400 hover:text-amber-300 font-medium transition flex items-center gap-1"
             >
-              <span>로그인 시 내 일정·마이·캘린더 이용 가능</span>
+              <span>로그인 시 내 일정·마이·캘린더·퍼포먼스 이용 가능</span>
               <span className="text-[10px]">↗</span>
             </button>
           </div>
@@ -1181,6 +1186,12 @@ export default function App() {
       {user && tab === "mine" && renderMine()}
       {user && tab === "mypage" && renderMyPage()}
       {user && tab === "calendar" && renderCalendar()}
+      {user && tab === "perf" && (
+        <PerformanceView
+          performanceState={performanceState}
+          onOpenAuth={() => setIsAuthModalOpen(true)}
+        />
+      )}
 
       {photoViewer && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-4 flex items-center justify-center" onClick={() => setPhotoViewer("")}>

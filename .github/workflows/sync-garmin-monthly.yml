@@ -1,0 +1,30 @@
+name: Monthly Garmin Running Sync & Analytics
+
+on:
+  schedule:
+    # 매월 1일 UTC 19:00 (한국 시간 KST 매월 1일 새벽 04:00 실행)
+    - cron: '0 19 1 * *'
+  workflow_dispatch: # 관리자 수동 즉시 실행 지원
+
+jobs:
+  sync-garmin:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          pip install garminconnect supabase
+
+      - name: Run Monthly Garmin Sync Pipeline
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://ayvxlbnovvsdupxsotec.supabase.co' }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY || secrets.VITE_SUPABASE_ANON_KEY || 'sb_publishable_1lcq2IVZvi71rgHJrZMvVg_sUse0Vzp' }}
+        run: |
+          python scripts/sync-garmin.py --monthly-cron

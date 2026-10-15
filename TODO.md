@@ -79,3 +79,13 @@
 - [x] `master` 원격 브랜치 푸시 완료
 - [x] GitHub Actions 자동 CI/CD 및 GitHub Pages 배포 연동
 - [x] README.md 전면 개편 (Mermaid 다이어그램, 테이블 명세서, CLI 안내)
+
+### Phase 7: 운동 퍼포먼스 탭 & 가민(Garmin) 1km 랩 연동 및 월간 자동 수집기
+- [x] Supabase 러닝 퍼포먼스 및 1km 랩 테이블 스키마 작성 (`docs/supabase-performance-schema.sql`)
+- [x] 스포츠 과학 통계 알고리즘 & 스마트 리포트 모듈 구현 (`src/utils/performanceMath.js`, LLM 제로 순수 팩트 계산)
+- [x] 가민 연동 및 러닝/1km 랩 데이터 관리 커스텀 훅 (`src/hooks/usePerformance.js`)
+- [x] 5번째 네비게이션 탭 `[퍼포먼스]` 및 대시보드 뷰 구현 (`src/components/performance/PerformanceView.jsx`)
+- [x] 1km 구간별 페이스 바 & 심박수 스플릿 인터랙티브 시각화 차트 탑재
+- [x] 가민 로그인 연동 모달 구현 (`src/components/performance/GarminAuthModal.jsx`)
+- [x] 가민 SSO 데이터 수집 엔진 스크립트 작성 (`scripts/sync-garmin.py`)
+- [x] 매월 1일 새벽 04:00 (KST) 무인 자동 수집 GitHub Actions 워크플로우 구축 (`.github/workflows/sync-garmin-monthly.yml`)
