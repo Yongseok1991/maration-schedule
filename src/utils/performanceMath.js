@@ -207,3 +207,95 @@ export function getRaceCategory(activity) {
   return "대회";
 }
 
+// 10. 월간 전체 러닝 통합 스포츠 과학 리포트 생성기
+export function generateMonthlyReport(monthLabel, monthActivities = []) {
+  if (!monthActivities || monthActivities.length === 0) return null;
+
+  const totalRuns = monthActivities.length;
+  const totalDistMeters = monthActivities.reduce((s, a) => s + (Number(a.distance_meters) || 0), 0);
+  const totalDurationSec = monthActivities.reduce((s, a) => s + (Number(a.duration_seconds) || 0), 0);
+  const totalCalories = monthActivities.reduce((s, a) => s + (Number(a.calories) || 0), 0);
+
+  const distKm = (totalDistMeters / 1000).toFixed(1);
+  const avgPaceSec = totalDistMeters > 0 ? Math.round(totalDurationSec / (totalDistMeters / 1000)) : 0;
+  const avgPace = formatPace(avgPaceSec);
+
+  const hrList = monthActivities.filter((a) => a.avg_heart_rate);
+  const avgHr = hrList.length > 0 ? Math.round(hrList.reduce((s, a) => s + a.avg_heart_rate, 0) / hrList.length) : null;
+
+  // 월간 최장 롱런 활동
+  const longestRun = [...monthActivities].sort((a, b) => (b.distance_meters || 0) - (a.distance_meters || 0))[0];
+  const longestKm = longestRun ? (longestRun.distance_meters / 1000).toFixed(1) : 0;
+
+  // 월간 최고 속도 활동 (3km 이상 중 최고 페이스)
+  const qualifiedForFast = monthActivities.filter((a) => (a.distance_meters || 0) >= 3000 && a.avg_pace_seconds > 0);
+  const fastestRun = qualifiedForFast.length > 0 ? [...qualifiedForFast].sort((a, b) => a.avg_pace_seconds - b.avg_pace_seconds)[0] : null;
+
+  // 월간 평균 유산소 심폐 효율 지수
+  const efList = monthActivities.filter((a) => a.aerobic_ef).map((a) => Number(a.aerobic_ef));
+  const avgEf = efList.length > 0 ? Number((efList.reduce((s, e) => s + e, 0) / efList.length).toFixed(2)) : null;
+
+  const reportItems = [];
+
+  // 1. 월간 주행 마일리지 평가
+  const kmNum = Number(distKm);
+  if (kmNum >= 150) {
+    reportItems.push({
+      badge: "🏆 엘리트 마일리지 (150km+)",
+      text: `월 누적 ${distKm}km (${totalRuns}회 러닝)를 달성하여 풀코스 마라톤 서브3~330을 위한 탄탄한 장거리 유산소 베이스를 완벽하게 구축했습니다.`
+    });
+  } else if (kmNum >= 80) {
+    reportItems.push({
+      badge: "💪 마라톤 완주 안정권 (80km+)",
+      text: `월 누적 ${distKm}km (${totalRuns}회 러닝)로 하프 및 풀코스 완주에 필요한 유산소 지구력을 꾸준히 안정적으로 확보하고 있습니다.`
+    });
+  } else {
+    reportItems.push({
+      badge: "🌱 기초 체력 빌드업",
+      text: `월 누적 ${distKm}km (${totalRuns}회 러닝)를 기록했습니다. 주 3회 이상의 규칙적인 러닝으로 마일리지를 점진적으로 늘려가는 것을 추천합니다.`
+    });
+  }
+
+  // 2. 월간 최장 롱런(LSD) 평가
+  if (longestRun && Number(longestKm) >= 20) {
+    reportItems.push({
+      badge: "🏅 20km+ 장거리 LSD 완수",
+      text: `최장 ${longestKm}km 달리기('${longestRun.activity_name}')를 소화하여 대회 후반부 페이스 저하와 글리코겐 고갈을 이겨낼 지지대 훈련을 성공적으로 마쳤습니다.`
+    });
+  } else if (longestRun && Number(longestKm) >= 10) {
+    reportItems.push({
+      badge: "🏃 10km+ 지속주 훈련",
+      text: `월간 최장 거리 ${longestKm}km를 달성했습니다. 하프/풀코스 대비를 위해 15km~20km 장거리 LSD 러닝을 서서히 도입해보세요.`
+    });
+  }
+
+  // 3. 심폐 효율성 평가
+  if (avgEf) {
+    reportItems.push({
+      badge: "💓 월간 심폐 유산소 효율 (EF)",
+      text: `이번 달 평균 유산소 심폐 효율은 ${avgEf}입니다. 동일한 심박수 대비 스피드 효율이 안정적으로 유지되고 있습니다.`
+    });
+  }
+
+  // 4. 대회 예상 완주 시간 (월간 최장 거리 또는 대표 기록 기준 Riegel 공식 적용)
+  const sampleForPrediction = longestRun && longestRun.distance_meters >= 5000 ? longestRun : (fastestRun || monthActivities[0]);
+  const predictions = sampleForPrediction ? predictRaceTimes(sampleForPrediction.distance_meters, sampleForPrediction.duration_seconds) : null;
+
+  return {
+    title: `${monthLabel} 종합 퍼포먼스 리포트`,
+    distKm,
+    totalRuns,
+    avgPace,
+    avgHr: avgHr ? `${avgHr} bpm` : null,
+    totalDurationFormatted: formatDuration(totalDurationSec),
+    totalCalories: totalCalories > 0 ? `${totalCalories.toLocaleString()} kcal` : null,
+    longestKm,
+    longestRunName: longestRun?.activity_name || null,
+    fastestPace: fastestRun ? formatPace(fastestRun.avg_pace_seconds) : null,
+    fastestRunName: fastestRun?.activity_name || null,
+    reportItems,
+    predictions,
+    predictionBasis: sampleForPrediction ? `${sampleForPrediction.activity_name} (${(sampleForPrediction.distance_meters / 1000).toFixed(1)}km)` : null
+  };
+}
+

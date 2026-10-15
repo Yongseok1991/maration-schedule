@@ -3,6 +3,7 @@ import {
   formatPace,
   formatDuration,
   generateSmartReport,
+  generateMonthlyReport,
   isRaceActivity,
   getRaceCategory
 } from "../../utils/performanceMath";
@@ -28,6 +29,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
   const [selectedMonth, setSelectedMonth] = useState(""); // 처음 진입 시 가장 최근 월로 자동 초기화
   const [filterRaceOnly, setFilterRaceOnly] = useState(false); // 사용자가 직접 제목을 수정한 대회 기록만 필터
   const [isListExpanded, setIsListExpanded] = useState(false); // 목록 5개 초과 시 접기/펼치기
+  const [reportTab, setReportTab] = useState("activity"); // "activity" | "monthly"
   const fileInputRef = useRef(null);
 
   // 1. 전체 활동의 월별 통계 목록 및 대회 기록 총 개수 집계
@@ -186,10 +188,14 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     };
   }, [filteredActivities, selectedMonth]);
 
-  // 7. 선택된 액티비티 스마트 리포트 생성
+  // 7. 선택된 액티비티 스마트 리포트 및 월간 종합 리포트 생성
   const smartReport = selectedActivity
     ? generateSmartReport(selectedActivity, selectedLaps)
     : null;
+
+  const monthlyReport = useMemo(() => {
+    return generateMonthlyReport(periodSummary.periodLabel, filteredActivities);
+  }, [periodSummary.periodLabel, filteredActivities]);
 
   // 1km 랩 차트용 페이스 최소/최대 계산
   const maxPace = selectedLaps.length > 0 ? Math.max(...selectedLaps.map((l) => l.pace_seconds)) : 360;
@@ -683,56 +689,182 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
         </div>
       )}
 
-      {/* 7. 스마트 스포츠 과학 리포트 */}
-      {hasActivities && smartReport && (
+      {/* 7. 스마트 스포츠 과학 리포트 (개별 러닝 ↔ 월간 종합 리포트 토글 지원) */}
+      {hasActivities && (smartReport || monthlyReport) && (
         <div className="card-panel p-4 space-y-3.5 border-amber-400/30 bg-gradient-to-b from-zinc-900/90 to-zinc-950/90">
-          <div className="flex items-center justify-between pb-2 border-b border-zinc-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2 border-b border-zinc-800">
             <h4 className="text-sm font-bold text-zinc-100 flex items-center gap-2">
               <span>🤖</span>
               <span>스포츠 과학 퍼포먼스 리포트</span>
             </h4>
-            <span className="rounded-full bg-amber-400/15 border border-amber-400/30 px-2.5 py-0.5 text-[11px] font-bold text-amber-300">
-              일관성 점수 {smartReport.consistencyScore}점
-            </span>
+
+            {/* 리포트 뷰 토글 탭 */}
+            <div className="flex items-center gap-1 bg-zinc-950/80 p-1 rounded-xl border border-zinc-800 shrink-0 text-xs font-semibold">
+              <button
+                type="button"
+                onClick={() => setReportTab("activity")}
+                disabled={!smartReport}
+                className={`px-2.5 py-1 rounded-lg transition ${
+                  reportTab === "activity"
+                    ? "bg-amber-400 text-zinc-950 font-bold shadow"
+                    : "text-zinc-400 hover:text-zinc-200 disabled:opacity-40"
+                }`}
+              >
+                🏃 선택 러닝 분석
+              </button>
+              <button
+                type="button"
+                onClick={() => setReportTab("monthly")}
+                disabled={!monthlyReport}
+                className={`px-2.5 py-1 rounded-lg transition ${
+                  reportTab === "monthly"
+                    ? "bg-amber-400 text-zinc-950 font-bold shadow"
+                    : "text-zinc-400 hover:text-zinc-200 disabled:opacity-40"
+                }`}
+              >
+                📅 {periodSummary.periodLabel} 종합 분석
+              </button>
+            </div>
           </div>
 
-          <div className="space-y-2.5">
-            {smartReport.reportItems.map((item, idx) => (
-              <div key={idx} className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-3 space-y-1">
-                <span className="inline-block text-xs font-bold text-amber-300">
-                  {item.badge}
+          {/* 7-1. [선택 활동 분석] 모드 */}
+          {reportTab === "activity" && smartReport && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-xs text-zinc-400 bg-zinc-900/40 px-3 py-1.5 rounded-lg border border-zinc-850">
+                <span className="font-semibold text-zinc-300">
+                  분석 대상: {smartReport.title}
                 </span>
-                <p className="text-xs text-zinc-300 leading-relaxed">
-                  {item.text}
-                </p>
+                <span className="rounded-full bg-amber-400/15 border border-amber-400/30 px-2 py-0.5 text-[11px] font-bold text-amber-300">
+                  페이스 일관성 {smartReport.consistencyScore}점
+                </span>
               </div>
-            ))}
-          </div>
 
-          {/* 마라톤 대회 예상 완주 시간 (Pete Riegel 공식) */}
-          {smartReport.predictions && (
-            <div className="mt-3 pt-3 border-t border-zinc-800/80">
-              <p className="text-xs font-bold text-zinc-200 mb-2 flex items-center gap-1.5">
-                <span>🔮</span> 현재 페이스 기준 대회 예상 완주 시간 (Riegel Formula)
-              </p>
+              <div className="space-y-2.5">
+                {smartReport.reportItems.map((item, idx) => (
+                  <div key={idx} className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-3 space-y-1">
+                    <span className="inline-block text-xs font-bold text-amber-300">
+                      {item.badge}
+                    </span>
+                    <p className="text-xs text-zinc-300 leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* 대회 예상 완주 시간 (Pete Riegel 공식) */}
+              {smartReport.predictions && (
+                <div className="mt-3 pt-3 border-t border-zinc-800/80">
+                  <p className="text-xs font-bold text-zinc-200 mb-2 flex items-center gap-1.5">
+                    <span>🔮</span> 이 러닝 페이스 기준 대회 예상 완주 시간 (Pete Riegel 공식)
+                  </p>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+                    <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
+                      <p className="text-[10px] text-zinc-400 font-medium">5K 예상</p>
+                      <p className="text-xs font-bold text-zinc-100 font-mono mt-0.5">{smartReport.predictions.fiveK}</p>
+                    </div>
+                    <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
+                      <p className="text-[10px] text-zinc-400 font-medium">10K 예상</p>
+                      <p className="text-xs font-bold text-zinc-100 font-mono mt-0.5">{smartReport.predictions.tenK}</p>
+                    </div>
+                    <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
+                      <p className="text-[10px] text-zinc-400 font-medium">하프 (21.1K)</p>
+                      <p className="text-xs font-bold text-emerald-400 font-mono mt-0.5">{smartReport.predictions.half}</p>
+                    </div>
+                    <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
+                      <p className="text-[10px] text-zinc-400 font-medium">풀코스 (42.2K)</p>
+                      <p className="text-xs font-bold text-amber-400 font-mono mt-0.5">{smartReport.predictions.full}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* 7-2. [월간 종합 분석] 모드 */}
+          {reportTab === "monthly" && monthlyReport && (
+            <div className="space-y-3">
+              {/* 월간 핵심 요약 그리드 */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
-                <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
-                  <p className="text-[10px] text-zinc-400 font-medium">5K 예상</p>
-                  <p className="text-xs font-bold text-zinc-100 font-mono mt-0.5">{smartReport.predictions.fiveK}</p>
+                <div className="rounded-xl bg-zinc-900/60 border border-zinc-800 p-2.5">
+                  <p className="text-[10px] text-zinc-400 font-medium">월 누적 거리</p>
+                  <p className="text-sm font-extrabold text-amber-400 font-mono mt-0.5">
+                    {monthlyReport.distKm} <span className="text-xs font-normal">km</span>
+                  </p>
+                  <p className="text-[10px] text-zinc-500 mt-0.5">총 {monthlyReport.totalRuns}회 러닝</p>
                 </div>
-                <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
-                  <p className="text-[10px] text-zinc-400 font-medium">10K 예상</p>
-                  <p className="text-xs font-bold text-zinc-100 font-mono mt-0.5">{smartReport.predictions.tenK}</p>
+                <div className="rounded-xl bg-zinc-900/60 border border-zinc-800 p-2.5">
+                  <p className="text-[10px] text-zinc-400 font-medium">월 평균 페이스</p>
+                  <p className="text-sm font-extrabold text-zinc-100 font-mono mt-0.5">
+                    {monthlyReport.avgPace}
+                  </p>
+                  <p className="text-[10px] text-zinc-500 mt-0.5">총 {monthlyReport.totalDurationFormatted}</p>
                 </div>
-                <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
-                  <p className="text-[10px] text-zinc-400 font-medium">하프 (21.1K)</p>
-                  <p className="text-xs font-bold text-emerald-400 font-mono mt-0.5">{smartReport.predictions.half}</p>
+                <div className="rounded-xl bg-zinc-900/60 border border-zinc-800 p-2.5">
+                  <p className="text-[10px] text-zinc-400 font-medium">월간 최장 거리 (LSD)</p>
+                  <p className="text-sm font-extrabold text-emerald-400 font-mono mt-0.5">
+                    {monthlyReport.longestKm} <span className="text-xs font-normal">km</span>
+                  </p>
+                  <p className="text-[10px] text-zinc-500 truncate mt-0.5" title={monthlyReport.longestRunName}>
+                    {monthlyReport.longestRunName || "-"}
+                  </p>
                 </div>
-                <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
-                  <p className="text-[10px] text-zinc-400 font-medium">풀코스 (42.2K)</p>
-                  <p className="text-xs font-bold text-amber-400 font-mono mt-0.5">{smartReport.predictions.full}</p>
+                <div className="rounded-xl bg-zinc-900/60 border border-zinc-800 p-2.5">
+                  <p className="text-[10px] text-zinc-400 font-medium">월 평균 심박수</p>
+                  <p className="text-sm font-extrabold text-rose-400 font-mono mt-0.5">
+                    {monthlyReport.avgHr || "-"}
+                  </p>
+                  <p className="text-[10px] text-zinc-500 mt-0.5">{monthlyReport.totalCalories || "-"}</p>
                 </div>
               </div>
+
+              {/* 월간 진단 리포트 항목 */}
+              <div className="space-y-2.5">
+                {monthlyReport.reportItems.map((item, idx) => (
+                  <div key={idx} className="rounded-xl border border-zinc-800 bg-zinc-900/50 p-3 space-y-1">
+                    <span className="inline-block text-xs font-bold text-amber-300">
+                      {item.badge}
+                    </span>
+                    <p className="text-xs text-zinc-300 leading-relaxed">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* 월간 최장주/대표 기록 기준 대회 예상 완주 시간 */}
+              {monthlyReport.predictions && (
+                <div className="mt-3 pt-3 border-t border-zinc-800/80">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                    <p className="text-xs font-bold text-zinc-200 flex items-center gap-1.5">
+                      <span>🔮</span> {periodSummary.periodLabel} 대표 기록 기준 마라톤 대회 예상 완주 시간
+                    </p>
+                    {monthlyReport.predictionBasis && (
+                      <span className="text-[10px] text-zinc-400 bg-zinc-800/80 px-2 py-0.5 rounded truncate max-w-[240px]" title={monthlyReport.predictionBasis}>
+                        기준: {monthlyReport.predictionBasis}
+                      </span>
+                    )}
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+                    <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
+                      <p className="text-[10px] text-zinc-400 font-medium">5K 예상</p>
+                      <p className="text-xs font-bold text-zinc-100 font-mono mt-0.5">{monthlyReport.predictions.fiveK}</p>
+                    </div>
+                    <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
+                      <p className="text-[10px] text-zinc-400 font-medium">10K 예상</p>
+                      <p className="text-xs font-bold text-zinc-100 font-mono mt-0.5">{monthlyReport.predictions.tenK}</p>
+                    </div>
+                    <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
+                      <p className="text-[10px] text-zinc-400 font-medium">하프 (21.1K)</p>
+                      <p className="text-xs font-bold text-emerald-400 font-mono mt-0.5">{monthlyReport.predictions.half}</p>
+                    </div>
+                    <div className="rounded-xl bg-zinc-850/60 border border-zinc-800 p-2">
+                      <p className="text-[10px] text-zinc-400 font-medium">풀코스 (42.2K)</p>
+                      <p className="text-xs font-bold text-amber-400 font-mono mt-0.5">{monthlyReport.predictions.full}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
