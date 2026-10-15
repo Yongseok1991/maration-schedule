@@ -58,15 +58,37 @@ export function useRaces() {
 
   const browseRaces = useMemo(() => {
     const q = query.trim().toLowerCase();
+    const qClean = q.replace(/\s+/g, "");
+
     const filtered = racesData.races.filter((race) => {
       if (openOnly && race.status !== "접수중") return false;
       if (region !== "all" && !(race.place || "").includes(region)) return false;
-      if (month && !(race.date_iso || "").startsWith(month)) return false;
+
+      // 검색어가 없을 때만 월(month) 필터를 적용하고, 검색어가 있을 때는 전체 기간에서 검색!
+      if (!q && month && month !== "all" && !(race.date_iso || "").startsWith(month)) {
+        return false;
+      }
+
       if (!q) return true;
+
+      const name = (race.name || "").toLowerCase();
+      const place = (race.place || "").toLowerCase();
+      const organizer = (race.organizer || "").toLowerCase();
+      const distances = (race.distances || "").toLowerCase();
+      const dateIso = (race.date_iso || "").toLowerCase();
+      const dateDisplay = (race.date_display || "").toLowerCase();
+      const status = (race.status || "").toLowerCase();
+
       return (
-        (race.name || "").toLowerCase().includes(q) ||
-        (race.place || "").toLowerCase().includes(q) ||
-        (race.organizer || "").toLowerCase().includes(q)
+        name.includes(q) ||
+        name.replace(/\s+/g, "").includes(qClean) ||
+        place.includes(q) ||
+        place.replace(/\s+/g, "").includes(qClean) ||
+        organizer.includes(q) ||
+        distances.includes(q) ||
+        dateIso.includes(q) ||
+        dateDisplay.includes(q) ||
+        status.includes(q)
       );
     });
 

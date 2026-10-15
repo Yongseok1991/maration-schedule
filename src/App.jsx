@@ -561,6 +561,20 @@ export default function App() {
 
   const renderBrowse = () => (
     <section className="mt-3 grid grid-cols-1 gap-3">
+      {query && (
+        <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-zinc-900/80 border border-zinc-800 text-xs text-zinc-300">
+          <span className="truncate">
+            🔍 <span className="text-amber-400 font-bold">"{query}"</span> 검색 결과 <span className="text-zinc-100 font-bold">{finalBrowseRaces.length}</span>건 (전체 기간 대상)
+          </span>
+          <button
+            type="button"
+            onClick={() => setQuery("")}
+            className="text-[11px] text-amber-400 hover:text-amber-300 underline font-medium ml-2 shrink-0"
+          >
+            초기화
+          </button>
+        </div>
+      )}
       {finalBrowseRaces.map((race) => {
         const entry = entries.find((e) => e.raceId && String(e.raceId) === String(race.id));
         const isFavorite = entry?.status === "interested";
@@ -646,9 +660,26 @@ export default function App() {
         );
       })}
       {finalBrowseRaces.length === 0 && (
-        <p className="card-panel p-6 text-center text-sm text-zinc-400">
-          {showFavoritesOnly ? "⭐ 관심 등록한 대회가 없습니다. 대회 카드의 ☆ 아이콘을 눌러 관심 대회를 찜해보세요!" : TEXT.noRaces}
-        </p>
+        <div className="card-panel p-6 text-center text-sm text-zinc-400 space-y-3">
+          <p>
+            {showFavoritesOnly
+              ? query
+                ? `찜한 대회 중 '${query}' 검색 결과가 없습니다.`
+                : "⭐ 관심 등록한 대회가 없습니다. 대회 카드의 ☆ 아이콘을 눌러 관심 대회를 찜해보세요!"
+              : query
+                ? `'${query}'에 해당하는 대회가 없습니다.`
+                : TEXT.noRaces}
+          </p>
+          {showFavoritesOnly && (
+            <button
+              type="button"
+              onClick={() => setShowFavoritesOnly(false)}
+              className="px-3.5 py-1.5 rounded-lg border border-amber-400/40 bg-amber-400/10 text-xs font-semibold text-amber-300 hover:bg-amber-400/20 transition"
+            >
+              전체 대회에서 검색하기
+            </button>
+          )}
+        </div>
       )}
     </section>
   );
@@ -1250,12 +1281,24 @@ export default function App() {
 
         {tab === "browse" && (
           <div className="mt-2 space-y-2 pt-1 border-t border-zinc-800/60">
-            <input
-              className="dark-input h-10 w-full px-3.5 text-xs text-zinc-100"
-              placeholder={TEXT.searchPlaceholder}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
+            <div className="relative">
+              <input
+                className="dark-input h-10 w-full pl-3.5 pr-8 text-xs text-zinc-100"
+                placeholder={TEXT.searchPlaceholder}
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-200 text-xs w-5 h-5 flex items-center justify-center rounded-full hover:bg-zinc-800"
+                  title="검색어 지우기"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
             <div className="grid grid-cols-1 gap-2">
               <select
                 className="dark-input h-10 px-3 text-xs text-zinc-200"
@@ -1268,6 +1311,17 @@ export default function App() {
               <div className="overflow-x-auto pb-1" ref={monthScrollerRef}>
                 <div className="flex min-w-max gap-1.5">
                   <button
+                    ref={(el) => { monthChipRefs.current["all"] = el; }}
+                    type="button"
+                    className={`h-8 px-3 text-xs font-semibold transition-all ${
+                      month === "all" ? "dark-chip-active" : "dark-chip"
+                    }`}
+                    onClick={() => setMonth("all")}
+                  >
+                    전체
+                  </button>
+                  <button
+                    ref={(el) => { monthChipRefs.current[todayMonth] = el; }}
                     type="button"
                     className={`h-8 px-3 text-xs font-semibold transition-all ${
                       month === todayMonth ? "dark-chip-active" : "dark-chip"
