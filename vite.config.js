@@ -25,7 +25,7 @@ function garminSyncPlugin() {
 
         req.on("end", async () => {
           try {
-            const { email, password, userId, mode = "full" } = JSON.parse(body || "{}");
+            const { email, password, userId, accessToken, mode = "full" } = JSON.parse(body || "{}");
             if (!email || !password) {
               res.statusCode = 400;
               res.setHeader("Content-Type", "application/json; charset=utf-8");
@@ -42,6 +42,10 @@ function garminSyncPlugin() {
               "--user-id", userId || "anonymous-user",
               "--output-json", tempOutputFile
             ];
+
+            if (accessToken) {
+              pythonArgs.push("--access-token", accessToken);
+            }
 
             console.log(`[*] [Vite API] Starting Garmin Sync for user: ${email}...`);
             const pyProc = spawn("python", pythonArgs, {

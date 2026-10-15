@@ -152,6 +152,10 @@ export function usePerformance(user) {
     if (!user) return { error: "로그인이 필요합니다." };
     setSyncing(true);
     try {
+      // Supabase 로그인 세션 토큰 획득 (Python 백엔드가 RLS를 완벽히 통과하도록 전달)
+      const sessionRes = supabase ? await supabase.auth.getSession() : null;
+      const accessToken = sessionRes?.data?.session?.access_token || null;
+
       // 1. Vite 백엔드 API를 통해 가민 공식 서버에서 과거 전체 러닝 및 1km 랩 스플릿 실시간 수집
       const resp = await fetch("/api/garmin-sync", {
         method: "POST",
@@ -160,6 +164,7 @@ export function usePerformance(user) {
           email: email.trim(),
           password: password.trim(),
           userId: user.id,
+          accessToken,
           mode: "full" // 최초 연동 시 과거 전체 활동 수집
         })
       });
@@ -203,21 +208,57 @@ export function usePerformance(user) {
         localStorage.setItem(LOCAL_STORAGE_ACTIVITIES, JSON.stringify(fetchedActivities));
         localStorage.setItem(LOCAL_STORAGE_LAPS, JSON.stringify(fetchedLaps));
 
-        // 4. Supabase DB에 유저 세션 권한으로 안전하게 적재 (RLS 100% 통과)
+        // 4. Supabase DB에 유저 세션 권한으로 안전하게 적재 (Postgres 정수 컬럼 정규화 & RLS 100% 통과)
         if (supabase) {
           try {
-            await supabase.from("performance_activities").upsert(fetchedActivities, {
+            const sanitizedActivities = fetchedActivities.map((act) => ({
+              ...act,
+              user_id: user.id,
+              distance_meters: Math.round(Number(act.distance_meters || 0) * 100) / 100,
+              duration_seconds: Math.round(Number(act.duration_seconds || 0)),
+              avg_pace_seconds: act.avg_pace_seconds ? Math.round(Number(act.avg_pace_seconds)) : 0,
+              avg_heart_rate: act.avg_heart_rate ? Math.round(Number(act.avg_heart_rate)) : null,
+              max_heart_rate: act.max_heart_rate ? Math.round(Number(act.max_heart_rate)) : null,
+              avg_cadence: act.avg_cadence ? Math.round(Number(act.avg_cadence)) : null,
+              elevation_gain_meters: act.elevation_gain_meters ? Math.round(Number(act.elevation_gain_meters) * 10) / 10 : 0,
+              calories: act.calories ? Math.round(Number(act.calories)) : null,
+              vo2max: act.vo2max ? Math.round(Number(act.vo2max) * 10) / 10 : null,
+              pace_consistency_score: act.pace_consistency_score ? Math.round(Number(act.pace_consistency_score)) : 85
+            }));
+
+            const { error: actError } = await supabase.from("performance_activities").upsert(sanitizedActivities, {
               onConflict: "user_id,activity_id"
             });
+            if (actError) {
+              console.error("[!] Supabase activities batch upsert error:", actError);
+            } else {
+              console.log("[+] Supabase activities successfully saved to DB!");
+            }
 
-            const allLaps = Object.values(fetchedLaps).flat();
+            const allLaps = Object.values(fetchedLaps).flat().map((lap) => ({
+              ...lap,
+              user_id: user.id,
+              distance_meters: Math.round(Number(lap.distance_meters || 1000) * 100) / 100,
+              duration_seconds: Math.round(Number(lap.duration_seconds || 0)),
+              pace_seconds: Math.round(Number(lap.pace_seconds || 0)),
+              avg_heart_rate: lap.avg_heart_rate ? Math.round(Number(lap.avg_heart_rate)) : null,
+              max_heart_rate: lap.max_heart_rate ? Math.round(Number(lap.max_heart_rate)) : null,
+              avg_cadence: lap.avg_cadence ? Math.round(Number(lap.avg_cadence)) : null,
+              elevation_diff_meters: lap.elevation_diff_meters ? Math.round(Number(lap.elevation_diff_meters) * 10) / 10 : 0
+            }));
+
             if (allLaps.length > 0) {
-              await supabase.from("performance_laps").upsert(allLaps, {
+              const { error: lapError } = await supabase.from("performance_laps").upsert(allLaps, {
                 onConflict: "activity_id,lap_index"
               });
+              if (lapError) {
+                console.error("[!] Supabase laps batch upsert error:", lapError);
+              } else {
+                console.log("[+] Supabase laps successfully saved to DB!");
+              }
             }
           } catch (sbErr) {
-            console.warn("Supabase activities batch upsert warning:", sbErr);
+            console.warn("Supabase activities batch upsert exception:", sbErr);
           }
         }
       } else {

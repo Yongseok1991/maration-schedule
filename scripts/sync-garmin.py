@@ -84,7 +84,7 @@ def get_existing_activity_ids(supabase_client: Client, user_id: str) -> set:
         return set()
 
 
-def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password: str, mode: str = "full", days_back: int = 35, output_json_path: str = None):
+def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password: str, mode: str = "full", days_back: int = 35, output_json_path: str = None, access_token: str = None):
     """
     mode:
       - 'full': 초기 전체 동기화 (과거 전체 러닝 페이징 수집)
@@ -96,6 +96,13 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
     print(f"[*] Starting Garmin Sync: User={user_id} ({email})")
     print(f"[*] Mode: {'[1. 초기 전체 수집 (Full)]' if is_full_sync else '[2. 월간 증분 갱신 (Monthly)]'}")
     print(f"=======================================================")
+
+    if access_token:
+        try:
+            supabase_client.postgrest.auth(access_token)
+            print("[+] Supabase authenticated with user access token (RLS bypassed for this user)!")
+        except Exception as e:
+            print(f"[!] Supabase auth warning: {e}")
 
     try:
         # 가민 세션 토큰 디렉토리 (로그인 성공 시 세션 캐싱하여 추후 429 차단 완전 방지)
@@ -150,22 +157,26 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
             act_id = str(act.get("activityId"))
             
             # [월간 증분 갱신 모드일 때 중복 방지 핵심 로직]
-            # 이미 DB에 존재하는 활동이면 중복 적재 및 랩 API 재호출을 방지하여 스킵
             if not is_full_sync and act_id in existing_ids:
                 skipped_count += 1
                 continue
 
             act_name = act.get("activityName") or "러닝"
             start_time = act.get("startTimeGMT") or act.get("startTimeLocal")
-            dist_m = act.get("distance", 0.0)
-            duration_s = int(act.get("duration", 0))
-            avg_pace_s = int(duration_s / (dist_m / 1000.0)) if dist_m > 0 else 0
+            dist_m = round(float(act.get("distance", 0.0) or 0.0), 2)
+            duration_s = int(round(float(act.get("duration", 0) or 0)))
+            avg_pace_s = int(round(duration_s / (dist_m / 1000.0))) if dist_m > 0 else 0
+
             avg_hr = act.get("averageHR")
+            avg_hr_int = int(round(float(avg_hr))) if avg_hr is not None else None
             max_hr = act.get("maxHR")
+            max_hr_int = int(round(float(max_hr))) if max_hr is not None else None
             avg_cadence = act.get("averageRunningCadenceInStepsPerMinute")
-            elev_gain = act.get("elevationGain", 0.0)
-            calories = act.get("calories", 0)
-            vo2max = act.get("vO2MaxValue")
+            avg_cadence_int = int(round(float(avg_cadence))) if avg_cadence is not None else None
+            elev_gain = round(float(act.get("elevationGain", 0.0) or 0.0), 1)
+            calories = act.get("calories")
+            calories_int = int(round(float(calories))) if calories is not None else None
+            vo2max = float(act.get("vO2MaxValue")) if act.get("vO2MaxValue") is not None else None
 
             # 1km 랩 스플릿 세부 조회
             laps_data = []
@@ -173,9 +184,12 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
                 splits = garmin.get_activity_splits(act_id)
                 lap_splits = splits.get("lapDTOs", []) or splits.get("splitSummaries", [])
                 for idx, lap in enumerate(lap_splits):
-                    lap_dist = lap.get("distance", 1000.0)
-                    lap_dur = int(lap.get("duration", 0))
-                    lap_pace = int(lap_dur / (lap_dist / 1000.0)) if lap_dist > 0 else 0
+                    lap_dist = round(float(lap.get("distance", 1000.0) or 1000.0), 2)
+                    lap_dur = int(round(float(lap.get("duration", 0) or 0)))
+                    lap_pace = int(round(lap_dur / (lap_dist / 1000.0))) if lap_dist > 0 else 0
+                    l_hr = lap.get("averageHR")
+                    l_mhr = lap.get("maxHR")
+                    l_cad = lap.get("averageRunCadence")
                     laps_data.append({
                         "activity_id": act_id,
                         "user_id": user_id,
@@ -183,10 +197,10 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
                         "distance_meters": lap_dist,
                         "duration_seconds": lap_dur,
                         "pace_seconds": lap_pace,
-                        "avg_heart_rate": lap.get("averageHR"),
-                        "max_heart_rate": lap.get("maxHR"),
-                        "avg_cadence": lap.get("averageRunCadence"),
-                        "elevation_diff_meters": lap.get("elevationGain", 0.0)
+                        "avg_heart_rate": int(round(float(l_hr))) if l_hr is not None else None,
+                        "max_heart_rate": int(round(float(l_mhr))) if l_mhr is not None else None,
+                        "avg_cadence": int(round(float(l_cad))) if l_cad is not None else None,
+                        "elevation_diff_meters": round(float(lap.get("elevationGain", 0.0) or 0.0), 1)
                     })
             except Exception as e:
                 print(f"[!] Warning: Could not fetch laps for activity {act_id}: {e}")
@@ -203,14 +217,14 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
                         "distance_meters": 1000.0,
                         "duration_seconds": per_km_sec,
                         "pace_seconds": per_km_sec,
-                        "avg_heart_rate": avg_hr,
-                        "max_heart_rate": max_hr,
-                        "avg_cadence": avg_cadence,
+                        "avg_heart_rate": avg_hr_int,
+                        "max_heart_rate": max_hr_int,
+                        "avg_cadence": avg_cadence_int,
                         "elevation_diff_meters": 0.0
                     })
 
             # 스포츠 과학 지표 계산
-            ef = calculate_ef(dist_m, duration_s, avg_hr)
+            ef = calculate_ef(dist_m, duration_s, avg_hr_int)
             consistency = calculate_consistency_score(laps_data)
             split_type = detect_split_type(laps_data)
 
@@ -224,11 +238,11 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
                 "distance_meters": dist_m,
                 "duration_seconds": duration_s,
                 "avg_pace_seconds": avg_pace_s,
-                "avg_heart_rate": avg_hr,
-                "max_heart_rate": max_hr,
-                "avg_cadence": avg_cadence,
+                "avg_heart_rate": avg_hr_int,
+                "max_heart_rate": max_hr_int,
+                "avg_cadence": avg_cadence_int,
                 "elevation_gain_meters": elev_gain,
-                "calories": calories,
+                "calories": calories_int,
                 "vo2max": vo2max,
                 "aerobic_ef": ef,
                 "pace_consistency_score": consistency,
@@ -239,7 +253,7 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
             if laps_data:
                 laps_by_activity[act_id] = laps_data
 
-            # Supabase 직접 적재 시도 (RLS 정책에 따라 성공 시 DB 즉시 반영)
+            # Supabase 직접 적재 시도 (타입 캐스팅 완료 & access_token 권한)
             try:
                 supabase_client.from_("performance_activities").upsert(
                     act_payload, on_conflict="user_id,activity_id"
@@ -249,9 +263,9 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
                     supabase_client.from_("performance_laps").upsert(
                         laps_data, on_conflict="activity_id,lap_index"
                     ).execute()
+                print(f"[+] Saved activity {act_id} ({act_name}) and {len(laps_data)} laps to Supabase!")
             except Exception as sb_err:
-                # Anon key RLS일 경우 웹 브라우저 사용자 세션에서 일괄 저장하므로 진행
-                pass
+                print(f"[!] Supabase upsert note: {sb_err}")
 
             new_count += 1
             existing_ids.add(act_id)
@@ -383,6 +397,7 @@ def main():
     parser.add_argument("--password", type=str, help="Garmin account password")
     parser.add_argument("--user-id", type=str, help="Supabase user UUID")
     parser.add_argument("--output-json", type=str, help="Path to write JSON results to")
+    parser.add_argument("--access-token", type=str, help="Supabase user Bearer access token")
     args = parser.parse_args()
 
     supabase_client = get_supabase_client()
@@ -406,7 +421,8 @@ def main():
             args.email,
             args.password,
             mode=args.mode,
-            output_json_path=args.output_json
+            output_json_path=args.output_json,
+            access_token=args.access_token
         )
         sys.exit(0 if success else 1)
     else:
