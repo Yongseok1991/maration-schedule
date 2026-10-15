@@ -67,7 +67,7 @@ export default function GarminAuthModal({ isOpen, onClose, onLinkSuccess }) {
         {errorMsg && (
           <div className="mb-4 rounded-xl border border-rose-500/30 bg-rose-500/10 p-3.5 text-xs text-rose-300 flex items-start gap-2">
             <span className="shrink-0 text-sm">⚠️</span>
-            <div className="leading-relaxed">{errorMsg}</div>
+            <div className="leading-relaxed whitespace-pre-line">{errorMsg}</div>
           </div>
         )}
 

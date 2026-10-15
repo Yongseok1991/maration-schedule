@@ -98,8 +98,12 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
     print(f"=======================================================")
 
     try:
+        # 가민 세션 토큰 디렉토리 (로그인 성공 시 세션 캐싱하여 추후 429 차단 완전 방지)
+        tokenstore_dir = os.path.join(os.path.expanduser("~"), ".racebook_garmin_tokens", user_id)
+        os.makedirs(tokenstore_dir, exist_ok=True)
+
         garmin = Garmin(email, password)
-        garmin.login()
+        garmin.login(tokenstore_dir)
         print("[+] Garmin SSO Login successful!")
 
         # 1. DB에 이미 존재하는 활동 ID 목록 확인 (중복 방지용)
@@ -283,7 +287,11 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
         return True
 
     except GarminConnectAuthenticationError as auth_err:
-        err_msg = "가민 이메일 또는 비밀번호가 올바르지 않습니다."
+        err_msg = (
+            "가민 계정 이메일 또는 비밀번호가 올바르지 않습니다. (401 Unauthorized)\n\n"
+            "• 평소 구글/애플 소셜 로그인으로 가민을 사용하셨다면, connect.garmin.com 로그인 화면의 '비밀번호를 잊으셨습니까?'를 통해 가민 비밀번호를 1회 설정하신 후 입력해주세요.\n"
+            "• 비밀번호의 영문 대소문자 및 특수문자 오타를 다시 한번 확인해주세요."
+        )
         print(f"[ERROR] Garmin Auth Error: {auth_err}")
         try:
             supabase_client.from_("user_garmin_auth").update({
@@ -297,7 +305,19 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
                 json.dump({"success": False, "error": err_msg}, f, ensure_ascii=False)
         return False
     except Exception as err:
-        err_msg = f"가민 동기화 오류: {err}"
+        err_str = str(err)
+        if "429" in err_str or "TooManyRequests" in err_str:
+            err_msg = (
+                "가민 서버에서 일시적으로 로그인 요청을 제한(429)했습니다.\n"
+                "가민 보안 정책상 단기간에 여러 번 시도할 경우 일시 차단될 수 있습니다. 약 5~10분 후 다시 시도해주세요."
+            )
+        elif "GARMIN Authentication Application" in err_str or "MFA" in err_str:
+            err_msg = (
+                "가민 2단계 인증(MFA) 또는 추가 보안 확인이 감지되었습니다.\n"
+                "가민 계정 설정에서 2단계 인증을 확인하시거나 잠시 후 다시 시도해주세요."
+            )
+        else:
+            err_msg = f"가민 동기화 오류: {err}"
         print(f"[ERROR] Sync failed: {err}")
         try:
             supabase_client.from_("user_garmin_auth").update({
