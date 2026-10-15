@@ -2,9 +2,27 @@ name: Monthly Garmin Running Sync & Analytics
 
 on:
   schedule:
-    # 매월 1일 UTC 19:00 (한국 시간 KST 매월 1일 새벽 04:00 실행)
+    # 매월 1일 UTC 19:00 (한국 시간 KST 매월 1일 새벽 04:00 자동 실행 - 증분 수집 모드)
     - cron: '0 19 1 * *'
-  workflow_dispatch: # 관리자 수동 즉시 실행 지원
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: '수집 모드 선택 (full: 초기 전체 수집, monthly: 월간 증분 수집)'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - monthly
+      user_id:
+        description: '특정 사용자 UUID (선택 사항)'
+        required: false
+      email:
+        description: '가민 이메일 (선택 사항)'
+        required: false
+      password:
+        description: '가민 비밀번호 (선택 사항)'
+        required: false
 
 jobs:
   sync-garmin:
@@ -22,9 +40,13 @@ jobs:
         run: |
           pip install garminconnect supabase
 
-      - name: Run Monthly Garmin Sync Pipeline
+      - name: Run Garmin Sync Pipeline
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://ayvxlbnovvsdupxsotec.supabase.co' }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY || secrets.VITE_SUPABASE_ANON_KEY || 'sb_publishable_1lcq2IVZvi71rgHJrZMvVg_sUse0Vzp' }}
         run: |
-          python scripts/sync-garmin.py --monthly-cron
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ github.event.inputs.email }}" ] && [ -n "${{ github.event.inputs.password }}" ]; then
+            python scripts/sync-garmin.py --mode ${{ github.event.inputs.mode }} --email "${{ github.event.inputs.email }}" --password "${{ github.event.inputs.password }}" --user-id "${{ github.event.inputs.user_id }}"
+          else
+            python scripts/sync-garmin.py --monthly-cron --mode monthly
+          fi

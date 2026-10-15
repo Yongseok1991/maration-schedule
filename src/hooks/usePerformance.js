@@ -83,10 +83,17 @@ export function usePerformance(user) {
           .order("start_time", { ascending: false });
 
         if (!error && Array.isArray(data) && data.length > 0) {
-          setActivities(data);
-          localStorage.setItem(LOCAL_STORAGE_ACTIVITIES, JSON.stringify(data));
+          const actMap = new Map();
+          data.forEach((item) => {
+            if (item.activity_id && !actMap.has(item.activity_id)) {
+              actMap.set(item.activity_id, item);
+            }
+          });
+          const deduped = Array.from(actMap.values());
+          setActivities(deduped);
+          localStorage.setItem(LOCAL_STORAGE_ACTIVITIES, JSON.stringify(deduped));
           if (!selectedActivityId) {
-            setSelectedActivityId(data[0].activity_id);
+            setSelectedActivityId(deduped[0].activity_id);
           }
         }
       } catch (err) {
