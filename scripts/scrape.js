@@ -1,4 +1,4 @@
-﻿import fs from "node:fs/promises";
+import fs from "node:fs/promises";
 import path from "node:path";
 import axios from "axios";
 import iconv from "iconv-lite";
@@ -30,7 +30,7 @@ const parseIsoDate = (text) => {
   return `${y}-${mo}-${d}`;
 };
 
-const parseDateFromMonthDay = (text) => {
+const parseDateFromMonthDay = (text, fallbackYear) => {
   const s = clean(text).replace(/\s+/g, "");
   const withYear = s.match(/^(20\d{2})(\d{1,2})\/(\d{1,2})/);
   if (withYear) {
@@ -42,7 +42,7 @@ const parseDateFromMonthDay = (text) => {
 
   const m = s.match(/(\d{1,2})\/(\d{1,2})/);
   if (!m) return null;
-  const year = new Date().getFullYear();
+  const year = fallbackYear || new Date().getFullYear();
   const month = m[1].padStart(2, "0");
   const day = m[2].padStart(2, "0");
   return `${year}-${month}-${day}`;
@@ -75,7 +75,7 @@ const parseStatusFromCell = ($, td) => {
   return "";
 };
 
-const parseListRows = (html) => {
+const parseListRows = (html, fallbackYear) => {
   const $ = cheerio.load(html);
   const rows = [];
 
@@ -110,7 +110,7 @@ const parseListRows = (html) => {
       contact,
       status,
       date_display: dateDisplay,
-      date_iso_guess: parseDateFromMonthDay(dateDisplay),
+      date_iso_guess: parseDateFromMonthDay(dateDisplay, fallbackYear),
       detail_url: `${BASE_URL}view.php?no=${id}`
     });
   });
@@ -231,12 +231,31 @@ const sortByDateIso = (a, b) => {
 };
 
 const run = async () => {
-  const listSources = [{ type: "default", url: LIST_URL }];
+  const currentYear = new Date().getFullYear();
+  const nextYear = currentYear + 1;
+
+  const createYearForm = (yearVal) => ({
+    course1_key: "",
+    syoil_key: "",
+    take_key: "",
+    area_key: "",
+    syear_key: String(yearVal),
+    smonth_key: "",
+    search_f: "",
+    search_k: ""
+  });
+
+  const listSources = [
+    { type: "default", url: LIST_URL, year: currentYear },
+    { type: `year-${currentYear}`, url: LIST_URL, form: createYearForm(currentYear), year: currentYear },
+    { type: `year-${nextYear}`, url: LIST_URL, form: createYearForm(nextYear), year: nextYear }
+  ];
 
   if (ONE_TIME_YEAR) {
     listSources.push({
       type: "one-time-year",
       url: LIST_URL,
+      year: Number(ONE_TIME_YEAR) || currentYear,
       form: {
         course1_key: "",
         syoil_key: "",
@@ -253,7 +272,7 @@ const run = async () => {
   const rowMap = new Map();
   for (const source of listSources) {
     const listHtml = source.form ? await fetchPostEucKr(source.url, source.form) : await fetchEucKr(source.url);
-    const rows = parseListRows(listHtml);
+    const rows = parseListRows(listHtml, source.year);
     for (const row of rows) rowMap.set(row.id, row);
   }
 
