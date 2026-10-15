@@ -23,7 +23,6 @@
 8. 👟 [마이페이지 탭 (코스별 PB 최고기록 & 러닝화 수명 트래커)](#-8-마이페이지-탭-코스별-pb-최고기록--러닝화-수명-트래커)
 9. 📱 [스마트폰 홈 화면에 '진짜 앱'처럼 설치하는 방법 (PWA)](#-9-스마트폰-홈-화면에-진짜-앱처럼-설치하는-방법-pwa)
 10. ❓ [자주 묻는 질문 (FAQ)](#-10-자주-묻는-질문-faq)
-11. 💻 [개발자 & 기술 스택 안내 (For Developers)](#-11-개발자--기술-스택-안내-for-developers)
 
 ---
 
@@ -214,25 +213,6 @@ RACEBOOK은 웹 표준 기술(PWA)로 제작되어, 앱스토어에서 번거롭
 
 **Q4. 비용이 드는 유료 서비스인가요?**  
 아닙니다! RACEBOOK의 모든 기능은 러너들을 위해 **100% 무료**로 제공됩니다.
-
----
-
-## 💻 11. 개발자 & 기술 스택 안내 (For Developers)
-
-RACEBOOK은 최신 모던 웹 표준 기술로 설계되었습니다:
-
-- **Frontend**: React 19, Vite, Tailwind CSS, Workbox PWA Service Worker
-- **BaaS & DB**: Supabase (PostgreSQL with Row Level Security, Storage CDN, Auth)
-- **External Integration**: Garmin Connect SSO Session Tokenstore, W3C Web Push (VAPID)
-- **Automated Pipelines**: GitHub Actions (마라톤 크롤러 하루 3회, 스마트 알림 매일 09시 KST, 가민 최신 러닝 자동 수집 매일 04시 KST)
-
-### 로컬 실행
-```bash
-git clone https://github.com/yongseok1991/maration-schedule.git
-cd maration-schedule
-npm install
-npm run dev
-```
 
 ---
 
