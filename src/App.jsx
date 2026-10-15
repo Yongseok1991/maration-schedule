@@ -644,7 +644,7 @@ export default function App() {
 
           <button
             type="button"
-            disabled={webPushState.loading || !webPushState.isSupported}
+            disabled={webPushState.loading}
             onClick={webPushState.isSubscribed ? webPushState.unsubscribe : webPushState.subscribe}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition shrink-0 ${
               webPushState.isSubscribed
@@ -653,7 +653,7 @@ export default function App() {
             }`}
           >
             {webPushState.loading
-              ? "확인 중..."
+              ? "처리 중..."
               : webPushState.isSubscribed
               ? "알림 끄기"
               : "알림 켜기 🔔"}

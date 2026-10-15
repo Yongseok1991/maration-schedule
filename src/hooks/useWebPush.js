@@ -6,7 +6,7 @@ export function useWebPush(user) {
   const [isSupported, setIsSupported] = useState(false);
   const [permission, setPermission] = useState("default");
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // 1. 브라우저 지원 여부 및 현재 권한 확인
   useEffect(() => {
@@ -26,13 +26,34 @@ export function useWebPush(user) {
     }
   }, [user?.id]);
 
+  // 안전하게 서비스 워커 등록 객체를 가져오는 헬퍼 (무한 대기 방지)
+  const getSafeRegistration = async (timeoutMs = 1500) => {
+    if (!("serviceWorker" in navigator)) return null;
+
+    try {
+      // 1순위: getRegistration()으로 이미 활성화된 SW 즉시 확인
+      const existing = await navigator.serviceWorker.getRegistration();
+      if (existing) return existing;
+
+      // 2순위: ready 대기 (timeoutMs 초과 시 포기)
+      const timeoutPromise = new Promise((resolve) => setTimeout(() => resolve(null), timeoutMs));
+      const readyPromise = navigator.serviceWorker.ready;
+      return await Promise.race([readyPromise, timeoutPromise]);
+    } catch {
+      return null;
+    }
+  };
+
   // 2. 현재 기기 푸시 구독 상태 확인
   const checkExistingSubscription = async () => {
     try {
-      setLoading(true);
-      const reg = await navigator.serviceWorker.ready;
-      const sub = await reg.pushManager.getSubscription();
+      const reg = await getSafeRegistration(1500);
+      if (!reg || !reg.pushManager) {
+        setIsSubscribed(false);
+        return;
+      }
 
+      const sub = await reg.pushManager.getSubscription();
       if (sub) {
         setIsSubscribed(true);
         // 만약 로그인된 유저인데 DB에 저장이 안 되어있을 수 있으므로 upsert 동기화
@@ -84,7 +105,20 @@ export function useWebPush(user) {
         return false;
       }
 
-      const reg = await navigator.serviceWorker.ready;
+      let reg = await getSafeRegistration(3000);
+      if (!reg) {
+        // 서비스 워커 명시적 등록 시도
+        try {
+          reg = await navigator.serviceWorker.register("./sw.js");
+        } catch (e) {
+          console.warn("SW register fallback failed:", e);
+        }
+      }
+
+      if (!reg || !reg.pushManager) {
+        throw new Error("서비스 워커가 아직 활성화되지 않았습니다. 페이지를 새로고침(F5) 후 다시 시도해주세요.");
+      }
+
       let sub = await reg.pushManager.getSubscription();
 
       if (!sub) {
@@ -142,8 +176,8 @@ export function useWebPush(user) {
   const unsubscribe = useCallback(async () => {
     try {
       setLoading(true);
-      const reg = await navigator.serviceWorker.ready;
-      const sub = await reg.pushManager.getSubscription();
+      const reg = await getSafeRegistration(2000);
+      const sub = reg?.pushManager ? await reg.pushManager.getSubscription() : null;
 
       if (sub) {
         const endpoint = sub.endpoint;
@@ -172,7 +206,11 @@ export function useWebPush(user) {
       alert("먼저 푸시 알림을 켜주세요.");
       return;
     }
-    const reg = await navigator.serviceWorker.ready;
+    const reg = await getSafeRegistration(2000);
+    if (!reg) {
+      alert("서비스 워커가 준비되지 않았습니다. 새로고침 후 다시 시도해주세요.");
+      return;
+    }
     reg.showNotification("🏃 [테스트] 2027 전마협 새해 동계 마라톤 D-7", {
       body: "대회가 일주일 남았습니다! 마지막 주말 가벼운 조깅으로 컨디션을 조절하세요 🏃",
       icon: "./icons/icon-192.png",
