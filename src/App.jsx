@@ -445,7 +445,9 @@ export default function App() {
         if (!ad && !bd) return 0;
         if (!ad) return 1;
         if (!bd) return -1;
-        return ad - bd;
+        const diff = bd.getTime() - ad.getTime();
+        if (diff !== 0) return diff;
+        return (b.updatedAt || "").localeCompare(a.updatedAt || "");
       });
   }, [entries]);
 
