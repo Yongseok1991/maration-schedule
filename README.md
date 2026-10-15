@@ -1,6 +1,6 @@
-# 🏃 Maraton (마라톤 플래너 & 스케줄 하네스 PWA)
+# 🏃 RACEBOOK (마라톤 대회 일정 & 러닝 아카이브 PWA)
 
-> **전국 마라톤 대회 실시간 수집 + 개인 참가 일정·목표 페이스·완주 기록·사진 갤러리·러닝화 수명 관리 올인원 PWA**  
+> **전국 마라톤 대회 실시간 수집 + 개인 참가 일정·목표 페이스·완주 기록·사진 갤러리·러닝화 수명 관리 올인원 반응형 웹/PWA**  
 > 모놀리식 구조를 탈피하여 **도메인별 커스텀 훅(Custom Hooks)**과 **Supabase BaaS(Auth + DB + Storage)**, **엔지니어링 하네스(Zod 데이터 안전망 + CI/CD 자동화)** 체계로 견고하게 구축되었습니다.
 
 [![CI Pipeline](https://github.com/yongseok1991/maration-schedule/actions/workflows/ci.yml/badge.svg)](https://github.com/yongseok1991/maration-schedule/actions)

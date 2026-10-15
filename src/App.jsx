@@ -13,8 +13,8 @@ const TEXT = {
     mypage: "\ub9c8\uc774",
     calendar: "\uce98\ub9b0\ub354"
   },
-  plannerTitle: "\ub9c8\ub77c\ud1a4 \ud50c\ub798\ub108",
-  plannerDesc: "\ubaa9\ud45c, \uba54\ubaa8, \uae30\ub85d\uc99d, \uce98\ub9b0\ub354\ub97c \ud55c \ubc88\uc5d0 \uad00\ub9ac",
+  plannerTitle: "RACEBOOK",
+  plannerDesc: "전국 마라톤 대회 일정 탐색부터 목표, 기록, 완주증까지 한 번에 관리",
   updated: "\uc5c5\ub370\uc774\ud2b8",
   upcoming: "\ub2e4\uac00\uc624\ub294 \ub300\ud68c",
   myEntries: "\ub4f1\ub85d\ud55c \ub300\ud68c",
@@ -971,7 +971,10 @@ export default function App() {
       {/* Header Panel */}
       <section className="hero-panel p-4 sm:p-5">
         <div className="flex items-center justify-between">
-          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500">Maraton Archive</p>
+          <div className="flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)]" />
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-zinc-400">RACEBOOK ARCHIVE</p>
+          </div>
           {user ? (
             <div className="flex items-center gap-2">
               <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300">
@@ -994,7 +997,10 @@ export default function App() {
             </button>
           )}
         </div>
-        <h1 className="mt-2 text-2xl font-black tracking-tight text-zinc-100">{TEXT.plannerTitle}</h1>
+        <div className="mt-2.5 flex items-center gap-2">
+          <h1 className="text-2xl font-black tracking-tight text-zinc-100">{TEXT.plannerTitle}</h1>
+          <span className="rounded-md border border-amber-400/30 bg-amber-400/10 px-2 py-0.5 text-[10px] font-bold tracking-wider text-amber-300">PRO</span>
+        </div>
         <p className="mt-1 text-xs text-zinc-400 leading-relaxed">{TEXT.plannerDesc}</p>
         <div className="mt-3.5 flex flex-wrap gap-2 text-xs">
           <span className="stat-chip">{TEXT.updated} {racesData.updatedAt ? new Date(racesData.updatedAt).toLocaleDateString("ko-KR") : "-"}</span>
