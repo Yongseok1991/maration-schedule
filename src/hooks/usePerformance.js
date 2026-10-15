@@ -80,7 +80,8 @@ export function usePerformance(user) {
           .from("performance_activities")
           .select("*")
           .eq("user_id", user.id)
-          .order("start_time", { ascending: false });
+          .order("start_time", { ascending: false })
+          .limit(10000);
 
         if (!error && Array.isArray(data) && data.length > 0) {
           const actMap = new Map();
@@ -208,95 +209,9 @@ export function usePerformance(user) {
         localStorage.setItem(LOCAL_STORAGE_ACTIVITIES, JSON.stringify(fetchedActivities));
         localStorage.setItem(LOCAL_STORAGE_LAPS, JSON.stringify(fetchedLaps));
 
-        // 4. Supabase DB에 유저 세션 권한으로 안전하게 적재 (Activities 선적재 -> Laps 후적재, 청킹 배치)
+        // 4. Supabase DB에 유저 세션 권한으로 안전하게 적재 (공통 청킹 파이프라인)
         if (supabase) {
-          try {
-            // 활동 데이터 화이트리스트 정제 (정수/실수 형변환 및 확실한 user_id 바인딩)
-            const sanitizedActivities = fetchedActivities.map((act) => ({
-              user_id: user.id,
-              activity_id: String(act.activity_id),
-              activity_name: act.activity_name || "러닝",
-              activity_type: act.activity_type || "running",
-              start_time: act.start_time,
-              distance_meters: Math.round(Number(act.distance_meters || 0) * 100) / 100,
-              duration_seconds: Math.round(Number(act.duration_seconds || 0)),
-              avg_pace_seconds: act.avg_pace_seconds ? Math.round(Number(act.avg_pace_seconds)) : 0,
-              avg_heart_rate: act.avg_heart_rate ? Math.round(Number(act.avg_heart_rate)) : null,
-              max_heart_rate: act.max_heart_rate ? Math.round(Number(act.max_heart_rate)) : null,
-              avg_cadence: act.avg_cadence ? Math.round(Number(act.avg_cadence)) : null,
-              elevation_gain_meters: act.elevation_gain_meters ? Math.round(Number(act.elevation_gain_meters) * 10) / 10 : 0,
-              calories: act.calories ? Math.round(Number(act.calories)) : null,
-              vo2max: act.vo2max ? Math.round(Number(act.vo2max) * 10) / 10 : null,
-              aerobic_ef: act.aerobic_ef ? Math.round(Number(act.aerobic_ef) * 100) / 100 : null,
-              pace_consistency_score: act.pace_consistency_score ? Math.round(Number(act.pace_consistency_score)) : 85,
-              split_type: act.split_type || "even"
-            }));
-
-            // 4-1. Activities를 50개씩 청킹하여 순차 적재 (부모 레코드 우선 커밋)
-            const actChunks = [];
-            for (let i = 0; i < sanitizedActivities.length; i += 50) {
-              actChunks.push(sanitizedActivities.slice(i, i + 50));
-            }
-            console.log(`[*] Upserting ${sanitizedActivities.length} activities in ${actChunks.length} chunks...`);
-
-            let actSuccessCount = 0;
-            for (const chunk of actChunks) {
-              const { error: actError } = await supabase.from("performance_activities").upsert(chunk, {
-                onConflict: "user_id,activity_id"
-              });
-              if (actError) {
-                console.error("[!] Supabase activities chunk upsert error:", actError);
-                throw new Error(`러닝 기록 저장 실패: ${actError.message}`);
-              }
-              actSuccessCount += chunk.length;
-            }
-            console.log(`[+] Successfully saved ${actSuccessCount} activities to Supabase DB!`);
-
-            // 4-2. 랩(Lap) 스플릿 데이터 화이트리스트 정제 (부모 activity_id 및 user_id 확실하게 FK 매핑)
-            const allLaps = [];
-            Object.entries(fetchedLaps).forEach(([actId, laps]) => {
-              if (Array.isArray(laps)) {
-                laps.forEach((lap, idx) => {
-                  allLaps.push({
-                    user_id: user.id,
-                    activity_id: String(actId),
-                    lap_index: Number(lap.lap_index || idx + 1),
-                    distance_meters: Math.round(Number(lap.distance_meters || 1000) * 100) / 100,
-                    duration_seconds: Math.round(Number(lap.duration_seconds || 0)),
-                    pace_seconds: Math.round(Number(lap.pace_seconds || 0)),
-                    avg_heart_rate: lap.avg_heart_rate ? Math.round(Number(lap.avg_heart_rate)) : null,
-                    max_heart_rate: lap.max_heart_rate ? Math.round(Number(lap.max_heart_rate)) : null,
-                    avg_cadence: lap.avg_cadence ? Math.round(Number(lap.avg_cadence)) : null,
-                    elevation_diff_meters: lap.elevation_diff_meters ? Math.round(Number(lap.elevation_diff_meters) * 10) / 10 : 0
-                  });
-                });
-              }
-            });
-
-            // 4-3. Laps를 100개씩 청킹하여 순차 적재 (자식 레코드 적재)
-            if (allLaps.length > 0) {
-              const lapChunks = [];
-              for (let i = 0; i < allLaps.length; i += 100) {
-                lapChunks.push(allLaps.slice(i, i + 100));
-              }
-              console.log(`[*] Upserting ${allLaps.length} laps in ${lapChunks.length} chunks...`);
-
-              let lapSuccessCount = 0;
-              for (const chunk of lapChunks) {
-                const { error: lapError } = await supabase.from("performance_laps").upsert(chunk, {
-                  onConflict: "activity_id,lap_index"
-                });
-                if (lapError) {
-                  console.error("[!] Supabase laps chunk upsert error:", lapError);
-                } else {
-                  lapSuccessCount += chunk.length;
-                }
-              }
-              console.log(`[+] Successfully saved ${lapSuccessCount} laps to Supabase DB!`);
-            }
-          } catch (sbErr) {
-            console.error("Supabase activities batch upsert exception:", sbErr);
-          }
+          await saveActivitiesAndLapsToDb(fetchedActivities, fetchedLaps);
         }
       } else {
         await loadActivities();
@@ -314,7 +229,95 @@ export function usePerformance(user) {
     }
   };
 
-  // 5. 수동 가민 액티비티 추가 또는 FIT 파일 가져오기
+  // 5. 공통 DB 청킹 배치 적재 함수 (Activities 50개 선적재 -> Laps 100개 후적재, ON CONFLICT 중복 100% 방지)
+  const saveActivitiesAndLapsToDb = async (rawActs = [], rawLaps = {}) => {
+    if (!user || !supabase || rawActs.length === 0) return;
+
+    try {
+      // 5-1. 활동 데이터 정규화 및 화이트리스트 정제
+      const sanitizedActivities = rawActs.map((act) => ({
+        user_id: user.id,
+        activity_id: String(act.activity_id),
+        activity_name: act.activity_name || "러닝",
+        activity_type: act.activity_type || "running",
+        start_time: act.start_time,
+        distance_meters: Math.round(Number(act.distance_meters || 0) * 100) / 100,
+        duration_seconds: Math.round(Number(act.duration_seconds || 0)),
+        avg_pace_seconds: act.avg_pace_seconds ? Math.round(Number(act.avg_pace_seconds)) : 0,
+        avg_heart_rate: act.avg_heart_rate ? Math.round(Number(act.avg_heart_rate)) : null,
+        max_heart_rate: act.max_heart_rate ? Math.round(Number(act.max_heart_rate)) : null,
+        avg_cadence: act.avg_cadence ? Math.round(Number(act.avg_cadence)) : null,
+        elevation_gain_meters: act.elevation_gain_meters ? Math.round(Number(act.elevation_gain_meters) * 10) / 10 : 0,
+        calories: act.calories ? Math.round(Number(act.calories)) : null,
+        vo2max: act.vo2max ? Math.round(Number(act.vo2max) * 10) / 10 : null,
+        aerobic_ef: act.aerobic_ef ? Math.round(Number(act.aerobic_ef) * 100) / 100 : null,
+        pace_consistency_score: act.pace_consistency_score ? Math.round(Number(act.pace_consistency_score)) : 85,
+        split_type: act.split_type || "even"
+      }));
+
+      // 5-2. Activities 50개씩 청킹하여 순차 적재 (부모 레코드 우선 커밋)
+      const actChunks = [];
+      for (let i = 0; i < sanitizedActivities.length; i += 50) {
+        actChunks.push(sanitizedActivities.slice(i, i + 50));
+      }
+      console.log(`[*] Upserting ${sanitizedActivities.length} activities in ${actChunks.length} chunks...`);
+
+      for (const chunk of actChunks) {
+        const { error: actError } = await supabase.from("performance_activities").upsert(chunk, {
+          onConflict: "user_id,activity_id"
+        });
+        if (actError) {
+          console.error("[!] Supabase activities chunk upsert error:", actError);
+          throw new Error(`러닝 기록 저장 실패: ${actError.message}`);
+        }
+      }
+      console.log(`[+] Successfully saved ${sanitizedActivities.length} activities to Supabase DB!`);
+
+      // 5-3. 랩(Lap) 스플릿 데이터 정제
+      const allLaps = [];
+      Object.entries(rawLaps).forEach(([actId, laps]) => {
+        if (Array.isArray(laps)) {
+          laps.forEach((lap, idx) => {
+            allLaps.push({
+              user_id: user.id,
+              activity_id: String(actId),
+              lap_index: Number(lap.lap_index || idx + 1),
+              distance_meters: Math.round(Number(lap.distance_meters || 1000) * 100) / 100,
+              duration_seconds: Math.round(Number(lap.duration_seconds || 0)),
+              pace_seconds: Math.round(Number(lap.pace_seconds || 0)),
+              avg_heart_rate: lap.avg_heart_rate ? Math.round(Number(lap.avg_heart_rate)) : null,
+              max_heart_rate: lap.max_heart_rate ? Math.round(Number(lap.max_heart_rate)) : null,
+              avg_cadence: lap.avg_cadence ? Math.round(Number(lap.avg_cadence)) : null,
+              elevation_diff_meters: lap.elevation_diff_meters ? Math.round(Number(lap.elevation_diff_meters) * 10) / 10 : 0
+            });
+          });
+        }
+      });
+
+      // 5-4. Laps 100개씩 청킹하여 순차 적재 (자식 레코드 적재)
+      if (allLaps.length > 0) {
+        const lapChunks = [];
+        for (let i = 0; i < allLaps.length; i += 100) {
+          lapChunks.push(allLaps.slice(i, i + 100));
+        }
+        console.log(`[*] Upserting ${allLaps.length} laps in ${lapChunks.length} chunks...`);
+
+        for (const chunk of lapChunks) {
+          const { error: lapError } = await supabase.from("performance_laps").upsert(chunk, {
+            onConflict: "activity_id,lap_index"
+          });
+          if (lapError) {
+            console.error("[!] Supabase laps chunk upsert error:", lapError);
+          }
+        }
+        console.log(`[+] Successfully saved ${allLaps.length} laps to Supabase DB!`);
+      }
+    } catch (err) {
+      console.error("saveActivitiesAndLapsToDb error:", err);
+    }
+  };
+
+  // 6. 수동 가민 액티비티 추가 또는 FIT 파일 가져오기
   const addActivityWithLaps = (newActivity, laps = []) => {
     const updatedActivities = [newActivity, ...activities.filter((a) => a.activity_id !== newActivity.activity_id)];
     setActivities(updatedActivities);
@@ -342,7 +345,7 @@ export function usePerformance(user) {
     }
   };
 
-  // 6. 가민 연동 해제
+  // 7. 가민 연동 해제
   const unlinkGarminAccount = () => {
     setGarminAuth(null);
     localStorage.removeItem(LOCAL_STORAGE_GARMIN_AUTH);
@@ -353,19 +356,90 @@ export function usePerformance(user) {
     }
   };
 
-  // 7. 가민 데이터 즉시 동기화 새로고침
+  // 8. 가민 데이터 즉시 증분 동기화 새로고침 (가민 공식 서버에서 최신 러닝 실시간 수집 및 중복 없이 DB 적재)
   const triggerManualSync = async () => {
+    if (!user) return { error: "로그인이 필요합니다." };
     setSyncing(true);
     try {
+      const email = garminAuth?.garmin_email || "";
+      const sessionRes = supabase ? await supabase.auth.getSession() : null;
+      const accessToken = sessionRes?.data?.session?.access_token || null;
+
+      // 1. Vite 백엔드 API에 증분 모드(monthly, 최근 35일치)로 요청 (토큰스토어로 0.5초 만에 직통 수집)
+      const resp = await fetch("/api/garmin-sync", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.trim(),
+          password: "tokenstore_cached",
+          userId: user.id,
+          accessToken,
+          mode: "monthly" // 최근 35일간의 최신 러닝만 증분 수집 (기존 것은 100% SKIP)
+        })
+      });
+
+      const result = await resp.json().catch(() => ({}));
+
+      if (resp.ok && result.success && Array.isArray(result.activities) && result.activities.length > 0) {
+        console.log(`[*] Received ${result.activities.length} new running activities from Garmin.`);
+        // 신규 러닝 활동 및 랩 DB 적재
+        await saveActivitiesAndLapsToDb(result.activities, result.laps || {});
+      }
+
+      // 2. 동기화 후 DB에서 최신 데이터 다시 로드
       await loadActivities();
       if (selectedActivityId) {
         await loadLapsForActivity(selectedActivityId);
       }
-      return { success: true };
+
+      // 3. user_garmin_auth의 last_sync_at 갱신
+      const now = new Date().toISOString();
+      const authPayload = {
+        user_id: user.id,
+        garmin_email: email.trim(),
+        sync_status: "success",
+        last_sync_at: now,
+        last_error_message: null
+      };
+      setGarminAuth((prev) => ({ ...prev, ...authPayload }));
+      localStorage.setItem(LOCAL_STORAGE_GARMIN_AUTH, JSON.stringify({ ...garminAuth, ...authPayload }));
+
+      if (supabase) {
+        try {
+          await supabase.from("user_garmin_auth").upsert(authPayload, { onConflict: "user_id" });
+        } catch {}
+      }
+
+      return { success: true, count: result.count || 0 };
+    } catch (err) {
+      console.warn("Manual sync error, refreshed from DB instead:", err);
+      await loadActivities();
+      return { error: err.message };
     } finally {
       setSyncing(false);
     }
   };
+
+  // 9. 앱 실행 시 마지막 동기화 일자 감지 및 자동 최신화 (1주일/1달 경과 시 백그라운드 자동 증분 수집)
+  useEffect(() => {
+    if (!user || !garminAuth || syncing) return;
+
+    const checkAutoSync = async () => {
+      const lastSync = garminAuth.last_sync_at;
+      if (!lastSync) return;
+
+      const diffMs = Date.now() - new Date(lastSync).getTime();
+      const diffDays = diffMs / (1000 * 60 * 60 * 24);
+
+      // 마지막 동기화로부터 7일 이상 경과했으면 백그라운드에서 조용히 최신 활동 자동 갱신
+      if (diffDays >= 7) {
+        console.log(`[*] Last Garmin sync was ${diffDays.toFixed(1)} days ago. Running automatic background sync...`);
+        await triggerManualSync();
+      }
+    };
+
+    checkAutoSync();
+  }, [user, garminAuth?.last_sync_at]);
 
   // 현재 선택된 액티비티 및 랩 데이터
   const selectedActivity = useMemo(

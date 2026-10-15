@@ -25,8 +25,10 @@ function garminSyncPlugin() {
 
         req.on("end", async () => {
           try {
-            const { email, password, userId, accessToken, mode = "full" } = JSON.parse(body || "{}");
-            if (!email || !password) {
+            const tokenstoreFile = path.join(os.homedir(), ".racebook_garmin_tokens", userId || "", "garmin_tokens.json");
+            const hasCachedToken = fs.existsSync(tokenstoreFile);
+
+            if (!email || (!password && !hasCachedToken)) {
               res.statusCode = 400;
               res.setHeader("Content-Type", "application/json; charset=utf-8");
               res.end(JSON.stringify({ error: "가민 계정 이메일과 비밀번호를 입력해주세요." }));

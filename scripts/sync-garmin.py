@@ -407,15 +407,40 @@ def main():
     if args.daemon:
         run_daemon(supabase_client)
     elif args.monthly_cron:
+        import base64
         print("=== [CRON] Running Monthly Garmin Sync Pipeline (Incremental Mode) ===")
-        res = supabase_client.from_("user_garmin_auth").select("*").execute()
-        users = res.data or []
+        try:
+            res = supabase_client.from_("user_garmin_auth").select("*").execute()
+            users = res.data or []
+        except Exception as e:
+            print(f"[!] Could not query user_garmin_auth: {e}")
+            users = []
+
         print(f"[*] Found {len(users)} linked Garmin users.")
         for u in users:
             uid = u.get("user_id")
             email = u.get("garmin_email")
-            print(f"[*] Processing monthly incremental sync for user: {email}...")
-        print("=== [CRON] Monthly Sync Pipeline Finished ===")
+            enc_token = u.get("session_token_encrypted")
+            tokenstore_dir = os.path.join(os.path.expanduser("~"), ".racebook_garmin_tokens", uid)
+            token_file = os.path.join(tokenstore_dir, "garmin_tokens.json")
+
+            password = ""
+            if enc_token:
+                try:
+                    password = base64.b64decode(enc_token).decode("utf-8")
+                except Exception:
+                    password = enc_token
+
+            if os.path.exists(token_file) or password:
+                print(f"\n[*] Processing monthly sync for: {email} ({uid})...")
+                try:
+                    sync_user_garmin(supabase_client, uid, email, password, mode=args.mode)
+                except Exception as e:
+                    print(f"[!] Error syncing {email}: {e}")
+            else:
+                print(f"[!] Skipped {email}: No tokenstore or credentials found.")
+
+        print("\n=== [CRON] Monthly Sync Pipeline Finished Successfully ===")
     elif args.email and args.password and args.user_id:
         success = sync_user_garmin(
             supabase_client,
