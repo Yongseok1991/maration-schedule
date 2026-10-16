@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T13:02:41.100Z",
+  "updatedAt": "2026-10-16T19:20:56.536Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 927,
   "races": [
@@ -12045,7 +12045,7 @@
       "contact": "055-359-4563",
       "registration_period": "2026년9월21일~2026년10월16일",
       "homepage": "http://www.mywalk.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41892"
     },
     {
@@ -12300,7 +12300,7 @@
       "contact": "070-7707-2808",
       "registration_period": "2026년9월1일~2026년10월16일",
       "homepage": "http://1004.tbc.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41844"
     },
     {
@@ -12405,7 +12405,7 @@
       "contact": "061-745-5009",
       "registration_period": "2026년8월3일~2026년10월16일",
       "homepage": "http://sc-marathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41725"
     },
     {
@@ -12885,7 +12885,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년9월16일~2026년10월16일",
       "homepage": "http://giverun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41789"
     },
     {
