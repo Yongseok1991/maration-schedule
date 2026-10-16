@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-16T03:14:41.619Z",
+  "updatedAt": "2026-10-16T13:02:41.100Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 925,
+  "count": 927,
   "races": [
     {
       "id": "40976",
@@ -12530,7 +12530,7 @@
     },
     {
       "id": "41558",
-      "name": "제3회 무등산더블하트국제트레일런대회",
+      "name": "제3회 무등산더블하트국제트레일런대회 추가접수",
       "date_display": "2026년11월15일",
       "date_iso": "2026-11-15",
       "distances": "16km/36km",
@@ -12538,9 +12538,9 @@
       "place": "조선대학교",
       "organizer": "한국백혈병소아암협회/시유케이컴",
       "contact": "1899-8610",
-      "registration_period": "2026년5월4일~2026년10월15일",
+      "registration_period": "2026년5월4일~2026년10월31일",
       "homepage": "http://www.cuk-sports.com/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41558"
     },
     {
@@ -13189,6 +13189,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41766"
     },
     {
+      "id": "41927",
+      "name": "2026 착한서구 공부방 기부앤런",
+      "date_display": "2026년11월28일",
+      "date_iso": "2026-11-28",
+      "distances": "10km,5km",
+      "region": "광주",
+      "place": "영산강 자전거길(극락교~서창교",
+      "organizer": "전남광주통합특별시 서구",
+      "contact": "063-535-0495",
+      "registration_period": "2026년10월15일~2026년11월17일",
+      "homepage": "http://기부앤런.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41927"
+    },
+    {
       "id": "41744",
       "name": "2026 대전보문산트레일",
       "date_display": "2026년11월29일",
@@ -13712,6 +13727,21 @@
       "homepage": "http://mara1080.com/event/2c881231-b5dd-4ae8-a587-c02d539566af",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41919"
+    },
+    {
+      "id": "41931",
+      "name": "2027 전마협 고흥 누리호 마라톤대회",
+      "date_display": "2027년2월13일",
+      "date_iso": "2027-02-13",
+      "distances": "10km,5km",
+      "region": "전남",
+      "place": "고흥만 수변노을공원",
+      "organizer": "전국마라톤협회",
+      "contact": "042- 638-1080",
+      "registration_period": "2026년10월16일~2027년12월1일",
+      "homepage": "http://mara1080.com/event/f3c362bc-532f-4f3c-bc21-76d3023bfb3a",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41931"
     },
     {
       "id": "41900",
