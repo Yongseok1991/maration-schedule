@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T12:28:34.027Z",
+  "updatedAt": "2026-10-18T18:28:56.023Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 927,
   "races": [
@@ -11638,9 +11638,9 @@
       "place": "포천시종합운동장",
       "organizer": "(주)러닝브레이커,전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년8월11일~2026년10월25일",
+      "registration_period": "2026년8월11일~2026년10월18일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41795"
     },
     {
@@ -12030,7 +12030,7 @@
       "contact": "041-575-9601",
       "registration_period": "2026년9월7일~2026년10월18일",
       "homepage": "http://eggrun2026.imweb.me",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41873"
     },
     {
@@ -12315,7 +12315,7 @@
       "contact": "010-4573-3330",
       "registration_period": "2026년9월4일~2026년10월18일",
       "homepage": "http://kiccrace.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41843"
     },
     {
@@ -13005,7 +13005,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년8월24일~2026년10월18일",
       "homepage": "http://zeiss-smilerace.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41768"
     },
     {
@@ -13815,7 +13815,7 @@
       "contact": "053-803-6185",
       "registration_period": "2026년10월12일~2026년10월18일",
       "homepage": "http://daegumarathon.daegu.go.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41918"
     },
     {
