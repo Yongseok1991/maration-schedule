@@ -375,77 +375,80 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
         </div>
       )}
 
-      {/* 3. 선택된 월/대회 기준 핵심 지표 4대 카드 (총거리 & 소요시간 눈에 띄게 강조) */}
+      {/* 3. 선택된 월/대회 기준 핵심 지표 4대 카드 (폰트, 크기, 높이 완벽 통일) */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-        {/* 1. 총 거리 (골드/앰버 하이라이트) */}
-        <div className="card-panel p-3.5 sm:p-4 space-y-1.5 border-amber-400/40 bg-gradient-to-br from-amber-400/15 via-zinc-900/90 to-zinc-900/90 shadow-lg shadow-amber-950/20 relative overflow-hidden">
+        {/* 1. 총 거리 */}
+        <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
           <div className="flex items-center justify-between">
-            <p className="text-[11px] font-bold tracking-wider text-amber-300 uppercase">
+            <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
               {filterRaceOnly ? `${periodSummary.periodLabel} 대회 총 거리` : `${periodSummary.periodLabel} 총 거리`}
             </p>
             <span className="text-sm">🏃</span>
           </div>
-          <div className="flex items-baseline gap-1">
-            <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight">
+          <div className="flex items-baseline">
+            <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-mono">
               {periodSummary.totalDistanceKm}
             </span>
-            <span className="text-xs sm:text-sm font-extrabold text-amber-300">km</span>
+            <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">km</span>
           </div>
-          <p className="text-[10px] text-zinc-400">
+          <p className="text-[10px] text-zinc-400 truncate">
             총 {periodSummary.totalRuns}회 {filterRaceOnly ? "대회 완주" : "러닝"}
             {periodSummary.raceCount > 0 && !filterRaceOnly && ` (대회 ${periodSummary.raceCount}건)`}
           </p>
         </div>
 
-        {/* 2. 총 소요 시간 (화이트 & 플래티넘 실버) */}
-        <div className="card-panel p-3.5 sm:p-4 space-y-1.5 border-zinc-600/50 bg-gradient-to-br from-zinc-700/20 via-zinc-900/90 to-zinc-900/90 shadow-lg shadow-black/40 relative overflow-hidden">
+        {/* 2. 총 소요 시간 */}
+        <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
           <div className="flex items-center justify-between">
-            <p className="text-[11px] font-bold tracking-wider text-zinc-300 uppercase">
+            <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
               {filterRaceOnly ? "대회 총 소요 시간" : "기간 총 소요 시간"}
             </p>
             <span className="text-sm">⏱️</span>
           </div>
-          <div className="flex items-baseline gap-1">
+          <div className="flex items-baseline">
             <span className="text-2xl sm:text-3xl font-black text-white tracking-tight font-mono">
               {periodSummary.totalDurationFormatted}
             </span>
           </div>
-          <p className="text-[10px] text-zinc-400 font-mono">
+          <p className="text-[10px] text-zinc-400 font-mono truncate">
             {formatDuration(periodSummary.totalSeconds)} 완주 누적
           </p>
         </div>
 
         {/* 3. 평균 페이스 */}
-        <div className="card-panel p-3.5 sm:p-4 space-y-1.5 border-zinc-700/80 bg-zinc-900/90">
+        <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
           <div className="flex items-center justify-between">
             <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
               {filterRaceOnly ? "대회 평균 페이스" : "기간 평균 페이스"}
             </p>
             <span className="text-sm">⚡</span>
           </div>
-          <p className="text-2xl sm:text-3xl font-black text-zinc-100 tracking-tight font-mono">
-            {periodSummary.avgPaceSeconds > 0 ? formatPace(periodSummary.avgPaceSeconds) : "-:--/km"}
-          </p>
-          <p className="text-[10px] text-emerald-400">
+          <div className="flex items-baseline">
+            <span className="text-2xl sm:text-3xl font-black text-zinc-100 tracking-tight font-mono">
+              {periodSummary.avgPaceSeconds > 0 ? formatPace(periodSummary.avgPaceSeconds).replace("/km", "") : "-:--"}
+            </span>
+            <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">/km</span>
+          </div>
+          <p className="text-[10px] text-emerald-400 truncate">
             {periodSummary.avgPaceSeconds > 0 ? (filterRaceOnly ? "대회 레이스 페이스" : "유산소 지속 페이스") : "기록 대기 중"}
           </p>
         </div>
 
         {/* 4. 평균 심박수 & 효율 */}
-        <div className="card-panel p-3.5 sm:p-4 space-y-1.5 border-zinc-700/80 bg-zinc-900/90">
+        <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
           <div className="flex items-center justify-between">
             <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
               {filterRaceOnly ? "대회 평균 심박수" : "평균 심박수"}
             </p>
             <span className="text-sm">❤️</span>
           </div>
-          <div className="flex items-baseline gap-1">
+          <div className="flex items-baseline">
             <span className="text-2xl sm:text-3xl font-black text-rose-400 tracking-tight font-mono">
               {periodSummary.avgHeartRate > 0 ? periodSummary.avgHeartRate : "-"}
             </span>
-            {periodSummary.avgHeartRate > 0 && <span className="text-xs font-bold text-rose-300">bpm</span>}
+            {periodSummary.avgHeartRate > 0 && <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">bpm</span>}
           </div>
-          <p className="text-[10px] text-emerald-400/90">
+          <p className="text-[10px] text-emerald-400/90 truncate">
             {filterRaceOnly ? `${periodSummary.raceCount}개 대회 완주` : (hasActivities ? `심폐효율 ${monthlySummary.aerobicEfGrowth}` : "데이터 없음")}
           </p>
         </div>
@@ -665,68 +668,79 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
             </div>
           </div>
 
-          {/* 활동 핵심 지표 하이라이트 배너: 총 거리 & 소요 시간 대폭 강조 */}
+          {/* 활동 핵심 지표 4대 카드: 폰트, 크기, 높이, 유닛 완벽 통일 */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-            {/* 1. 총 거리 (Large Amber Hero Card) */}
-            <div className="rounded-2xl border-2 border-amber-400/40 bg-gradient-to-br from-amber-400/20 via-amber-500/5 to-zinc-900/90 p-3.5 sm:p-4 shadow-lg shadow-amber-950/20 relative overflow-hidden">
-              <div className="absolute -right-2 -bottom-2 text-4xl opacity-15 select-none pointer-events-none">🏃</div>
-              <p className="text-[11px] font-bold tracking-wider text-amber-300 uppercase">
-                총 거리 (DISTANCE)
-              </p>
-              <div className="flex items-baseline gap-1 mt-1">
-                <span className="text-3xl sm:text-4xl font-black text-amber-400 tracking-tight">
+            {/* 1. 총 거리 */}
+            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                  총 거리 (DISTANCE)
+                </p>
+                <span className="text-sm">🏃</span>
+              </div>
+              <div className="flex items-baseline">
+                <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-mono">
                   {(selectedActivity.distance_meters / 1000).toFixed(2)}
                 </span>
-                <span className="text-sm font-extrabold text-amber-300">km</span>
+                <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">km</span>
               </div>
-              <p className="text-[10px] text-zinc-400 mt-1">
+              <p className="text-[10px] text-zinc-400 truncate">
                 {selectedLaps.length}개 1km 랩 구간 완료
               </p>
             </div>
 
-            {/* 2. 소요 시간 (플래티넘 실버 & 화이트 대형 히어로 카드) */}
-            <div className="rounded-2xl border-2 border-zinc-600/50 bg-gradient-to-br from-zinc-700/25 via-zinc-800/10 to-zinc-900/90 p-3.5 sm:p-4 shadow-lg shadow-black/40 relative overflow-hidden">
-              <div className="absolute -right-2 -bottom-2 text-4xl opacity-15 select-none pointer-events-none">⏱️</div>
-              <p className="text-[11px] font-bold tracking-wider text-zinc-300 uppercase">
-                소요 시간 (TIME)
-              </p>
-              <div className="flex items-baseline gap-1 mt-1">
-                <span className="text-3xl sm:text-4xl font-black text-white tracking-tight font-mono">
+            {/* 2. 소요 시간 */}
+            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                  소요 시간 (TIME)
+                </p>
+                <span className="text-sm">⏱️</span>
+              </div>
+              <div className="flex items-baseline">
+                <span className="text-2xl sm:text-3xl font-black text-white tracking-tight font-mono">
                   {formatDuration(selectedActivity.duration_seconds)}
                 </span>
               </div>
-              <p className="text-[10px] text-zinc-400 mt-1 font-mono">
+              <p className="text-[10px] text-zinc-400 font-mono truncate">
                 {Math.floor(selectedActivity.duration_seconds / 60)}분 {selectedActivity.duration_seconds % 60}초 완주
               </p>
             </div>
 
             {/* 3. 평균 페이스 */}
-            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/80 p-3.5 sm:p-4 shadow-md">
-              <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-                평균 페이스 (PACE)
-              </p>
-              <div className="flex items-baseline gap-1 mt-1">
-                <span className="text-2xl sm:text-3xl font-black text-zinc-100 tracking-tight font-mono">
-                  {formatPace(selectedActivity.avg_pace_seconds)}
-                </span>
+            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                  평균 페이스 (PACE)
+                </p>
+                <span className="text-sm">⚡</span>
               </div>
-              <p className="text-[10px] text-emerald-400 mt-1 font-medium">
-                1km당 소요 시간
+              <div className="flex items-baseline">
+                <span className="text-2xl sm:text-3xl font-black text-zinc-100 tracking-tight font-mono">
+                  {formatPace(selectedActivity.avg_pace_seconds).replace("/km", "")}
+                </span>
+                <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">/km</span>
+              </div>
+              <p className="text-[10px] text-emerald-400 truncate">
+                1km당 평균 소요 시간
               </p>
             </div>
 
             {/* 4. 평균 심박수 */}
-            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/80 p-3.5 sm:p-4 shadow-md">
-              <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-                평균 심박수 (HEART RATE)
-              </p>
-              <div className="flex items-baseline gap-1 mt-1">
+            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                  평균 심박수 (HEART RATE)
+                </p>
+                <span className="text-sm">❤️</span>
+              </div>
+              <div className="flex items-baseline">
                 <span className="text-2xl sm:text-3xl font-black text-rose-400 tracking-tight font-mono">
                   {selectedActivity.avg_heart_rate || "-"}
                 </span>
-                {selectedActivity.avg_heart_rate && <span className="text-xs font-bold text-rose-300">bpm</span>}
+                {selectedActivity.avg_heart_rate && <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">bpm</span>}
               </div>
-              <p className="text-[10px] text-zinc-500 mt-1">
+              <p className="text-[10px] text-zinc-500 truncate">
                 최고 심박 {selectedActivity.max_heart_rate || "-"} bpm
               </p>
             </div>
