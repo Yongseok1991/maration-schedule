@@ -31,6 +31,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
   const [isListExpanded, setIsListExpanded] = useState(false); // 목록 5개 초과 시 접기/펼치기
   const [reportTab, setReportTab] = useState("activity"); // "activity" | "monthly"
   const fileInputRef = useRef(null);
+  const prevMonthRef = useRef(""); // 대회만 필터 선택 전 조회 중이던 월 기억
 
   // 1. 전체 활동의 월별 통계 목록 및 대회 기록 총 개수 집계
   const { monthStatsList, totalRaceCount, totalAllKm, latestMonthKey } = useMemo(() => {
@@ -349,7 +350,12 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
             <div className="grid grid-cols-2 sm:flex rounded-xl bg-zinc-950 p-1 border border-zinc-800 flex-1 sm:flex-initial">
               <button
                 type="button"
-                onClick={() => setFilterRaceOnly(false)}
+                onClick={() => {
+                  setFilterRaceOnly(false);
+                  if (prevMonthRef.current) {
+                    setSelectedMonth(prevMonthRef.current);
+                  }
+                }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold text-center transition truncate ${
                   !filterRaceOnly
                     ? "bg-zinc-800 text-zinc-100 shadow-sm"
@@ -360,7 +366,13 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
               </button>
               <button
                 type="button"
-                onClick={() => setFilterRaceOnly(true)}
+                onClick={() => {
+                  if (!filterRaceOnly) {
+                    prevMonthRef.current = selectedMonth;
+                    setSelectedMonth("all"); // 대회만을 클릭하면 월별 검색조건을 해제하고 대회 전체 표출
+                    setFilterRaceOnly(true);
+                  }
+                }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-bold flex items-center justify-center gap-1 transition truncate ${
                   filterRaceOnly
                     ? "bg-gradient-to-r from-amber-400 to-amber-500 text-zinc-950 shadow-md font-extrabold"

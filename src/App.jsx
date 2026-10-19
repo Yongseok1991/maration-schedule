@@ -1361,7 +1361,13 @@ export default function App() {
               {user && (
                 <button
                   type="button"
-                  onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                  onClick={() => {
+                    const next = !showFavoritesOnly;
+                    setShowFavoritesOnly(next);
+                    if (next && month !== "all") {
+                      setMonth("all"); // 관심(찜) 대회 클릭 시 특정 월에 갇히지 않고 전체 대회 표출
+                    }
+                  }}
                   className={`h-10 px-3.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition shrink-0 ${
                     showFavoritesOnly
                       ? "border-amber-400 bg-amber-400/20 text-amber-300 font-bold shadow-sm"
