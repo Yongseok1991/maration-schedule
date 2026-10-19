@@ -1,25 +1,37 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { supabase } from "../services/supabase";
 
-const LOCAL_STORAGE_GARMIN_AUTH = "racebook_garmin_auth";
-const LOCAL_STORAGE_ACTIVITIES = "racebook_performance_activities";
-const LOCAL_STORAGE_LAPS = "racebook_performance_laps";
+// 회원별 고유 스토리지 키 생성기 (회원 간 데이터 공유/오염 100% 원천 차단)
+const getAuthKey = (uid) => (uid ? `racebook_garmin_auth_${uid}` : null);
+const getActivitiesKey = (uid) => (uid ? `racebook_performance_activities_${uid}` : null);
+const getLapsKey = (uid) => (uid ? `racebook_performance_laps_${uid}` : null);
+
+// 레거시 공용 로컬스토리지 키 클린업
+try {
+  localStorage.removeItem("racebook_garmin_auth");
+  localStorage.removeItem("racebook_performance_activities");
+  localStorage.removeItem("racebook_performance_laps");
+} catch {}
 
 export function usePerformance(user) {
-  // 1. 연동 정보 초기화 (로컬스토리지에서 안전 복원)
+  const userId = user?.id || null;
+
+  // 1. 회원별 연동 정보 초기화 (해당 회원의 전용 스토리지에서만 복원)
   const [garminAuth, setGarminAuth] = useState(() => {
+    if (!userId) return null;
     try {
-      const saved = localStorage.getItem(LOCAL_STORAGE_GARMIN_AUTH);
+      const saved = localStorage.getItem(getAuthKey(userId));
       return saved ? JSON.parse(saved) : null;
     } catch {
       return null;
     }
   });
 
-  // 2. 더미데이터 완전 제거: 빈 배열로 시작
+  // 2. 러닝 활동 초기화 (해당 회원의 전용 스토리지에서만 복원)
   const [activities, setActivities] = useState(() => {
+    if (!userId) return [];
     try {
-      const saved = localStorage.getItem(LOCAL_STORAGE_ACTIVITIES);
+      const saved = localStorage.getItem(getActivitiesKey(userId));
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -27,8 +39,9 @@ export function usePerformance(user) {
   });
 
   const [selectedActivityId, setSelectedActivityId] = useState(() => {
+    if (!userId) return null;
     try {
-      const saved = localStorage.getItem(LOCAL_STORAGE_ACTIVITIES);
+      const saved = localStorage.getItem(getActivitiesKey(userId));
       const list = saved ? JSON.parse(saved) : [];
       return list.length > 0 ? list[0].activity_id : null;
     } catch {
@@ -37,8 +50,9 @@ export function usePerformance(user) {
   });
 
   const [lapsMap, setLapsMap] = useState(() => {
+    if (!userId) return {};
     try {
-      const saved = localStorage.getItem(LOCAL_STORAGE_LAPS);
+      const saved = localStorage.getItem(getLapsKey(userId));
       return saved ? JSON.parse(saved) : {};
     } catch {
       return {};
@@ -48,42 +62,54 @@ export function usePerformance(user) {
   const [loading, setLoading] = useState(false);
   const [syncing, setSyncing] = useState(false);
 
-  // 1. 가민 연동 상태 조회 (Supabase + localStorage 폴백)
+  // 1. 가민 연동 상태 조회 (현재 로그인 회원의 user_id 조건 필수)
   const loadGarminAuth = useCallback(async () => {
-    if (!user) return;
+    if (!userId) {
+      setGarminAuth(null);
+      return;
+    }
     if (supabase) {
       try {
         const { data, error } = await supabase
           .from("user_garmin_auth")
           .select("*")
-          .eq("user_id", user.id)
+          .eq("user_id", userId)
           .maybeSingle();
 
-        if (!error && data) {
-          setGarminAuth(data);
-          localStorage.setItem(LOCAL_STORAGE_GARMIN_AUTH, JSON.stringify(data));
-          return;
+        if (!error) {
+          const authData = data || null;
+          setGarminAuth(authData);
+          const k = getAuthKey(userId);
+          if (k) {
+            if (authData) localStorage.setItem(k, JSON.stringify(authData));
+            else localStorage.removeItem(k);
+          }
         }
       } catch (err) {
         console.warn("Supabase user_garmin_auth lookup failed, using local fallback:", err);
       }
     }
-  }, [user]);
+  }, [userId]);
 
-  // 2. 러닝 액티비티 목록 조회
+  // 2. 러닝 액티비티 목록 조회 (현재 로그인 회원의 user_id 조건 필수)
   const loadActivities = useCallback(async () => {
-    if (!user) return;
+    if (!userId) {
+      setActivities([]);
+      setSelectedActivityId(null);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     if (supabase) {
       try {
         const { data, error } = await supabase
           .from("performance_activities")
           .select("*")
-          .eq("user_id", user.id)
+          .eq("user_id", userId)
           .order("start_time", { ascending: false })
           .limit(10000);
 
-        if (!error && Array.isArray(data) && data.length > 0) {
+        if (!error && Array.isArray(data)) {
           const actMap = new Map();
           data.forEach((item) => {
             if (item.activity_id && !actMap.has(item.activity_id)) {
@@ -92,10 +118,14 @@ export function usePerformance(user) {
           });
           const deduped = Array.from(actMap.values());
           setActivities(deduped);
-          localStorage.setItem(LOCAL_STORAGE_ACTIVITIES, JSON.stringify(deduped));
-          if (!selectedActivityId) {
-            setSelectedActivityId(deduped[0].activity_id);
+          const k = getActivitiesKey(userId);
+          if (k) {
+            localStorage.setItem(k, JSON.stringify(deduped));
           }
+          setSelectedActivityId((prev) => {
+            if (prev && deduped.some((a) => a.activity_id === prev)) return prev;
+            return deduped.length > 0 ? deduped[0].activity_id : null;
+          });
         }
       } catch (err) {
         console.warn("Supabase activities lookup failed, using local:", err);
@@ -105,18 +135,19 @@ export function usePerformance(user) {
     } else {
       setLoading(false);
     }
-  }, [user, selectedActivityId]);
+  }, [userId]);
 
-  // 3. 선택한 액티비티의 1km 랩 목록 조회
+  // 3. 선택한 액티비티의 1km 랩 목록 조회 (현재 회원 소유 확인)
   const loadLapsForActivity = useCallback(async (activityId) => {
-    if (!activityId) return;
+    if (!activityId || !userId) return;
     if (lapsMap[activityId]) return;
 
-    if (!user || !supabase) return;
+    if (!supabase) return;
     try {
       const { data, error } = await supabase
         .from("performance_laps")
         .select("*")
+        .eq("user_id", userId)
         .eq("activity_id", activityId)
         .order("lap_index", { ascending: true });
 
@@ -124,7 +155,8 @@ export function usePerformance(user) {
         setLapsMap((prev) => {
           const updated = { ...prev, [activityId]: data };
           try {
-            localStorage.setItem(LOCAL_STORAGE_LAPS, JSON.stringify(updated));
+            const k = getLapsKey(userId);
+            if (k) localStorage.setItem(k, JSON.stringify(updated));
           } catch {}
           return updated;
         });
@@ -132,14 +164,51 @@ export function usePerformance(user) {
     } catch (err) {
       console.warn("Failed to load laps for activity:", err);
     }
-  }, [user, lapsMap]);
+  }, [userId, lapsMap]);
 
+  // 회원 변경(로그인/로그아웃/계정 전환) 시 상태 즉시 격리 및 최신화
   useEffect(() => {
-    if (user) {
-      loadGarminAuth();
-      loadActivities();
+    if (!userId) {
+      // 로그아웃 시 메모리 내 모든 가민 데이터 즉시 초기화
+      setGarminAuth(null);
+      setActivities([]);
+      setSelectedActivityId(null);
+      setLapsMap({});
+      return;
     }
-  }, [user, loadGarminAuth, loadActivities]);
+
+    // 새 계정으로 전환된 경우 해당 계정 전용 로컬 캐시 로드
+    try {
+      const authKey = getAuthKey(userId);
+      const savedAuth = authKey ? localStorage.getItem(authKey) : null;
+      setGarminAuth(savedAuth ? JSON.parse(savedAuth) : null);
+    } catch {
+      setGarminAuth(null);
+    }
+
+    try {
+      const actKey = getActivitiesKey(userId);
+      const savedActs = actKey ? localStorage.getItem(actKey) : null;
+      const parsedActs = savedActs ? JSON.parse(savedActs) : [];
+      setActivities(parsedActs);
+      setSelectedActivityId(parsedActs.length > 0 ? parsedActs[0].activity_id : null);
+    } catch {
+      setActivities([]);
+      setSelectedActivityId(null);
+    }
+
+    try {
+      const lapsKey = getLapsKey(userId);
+      const savedLaps = lapsKey ? localStorage.getItem(lapsKey) : null;
+      setLapsMap(savedLaps ? JSON.parse(savedLaps) : {});
+    } catch {
+      setLapsMap({});
+    }
+
+    // Supabase에서 해당 회원의 최신 데이터 페칭
+    loadGarminAuth();
+    loadActivities();
+  }, [userId, loadGarminAuth, loadActivities]);
 
   useEffect(() => {
     if (selectedActivityId) {
@@ -147,13 +216,11 @@ export function usePerformance(user) {
     }
   }, [selectedActivityId, loadLapsForActivity]);
 
-  // 4. 가민 계정 연동 저장
   // 4. 가민 계정 연동 및 과거 전체 러닝 실시간 수집
   const linkGarminAccount = async (email, password) => {
-    if (!user) return { error: "로그인이 필요합니다." };
+    if (!userId) return { error: "로그인이 필요합니다." };
     setSyncing(true);
     try {
-      // Supabase 로그인 세션 토큰 획득 (Python 백엔드가 RLS를 완벽히 통과하도록 전달)
       const sessionRes = supabase ? await supabase.auth.getSession() : null;
       const accessToken = sessionRes?.data?.session?.access_token || null;
 
@@ -164,9 +231,9 @@ export function usePerformance(user) {
         body: JSON.stringify({
           email: email.trim(),
           password: password.trim(),
-          userId: user.id,
+          userId,
           accessToken,
-          mode: "full" // 최초 연동 시 과거 전체 활동 수집
+          mode: "full"
         })
       });
 
@@ -182,7 +249,7 @@ export function usePerformance(user) {
       // 2. 가민 연동 인증 정보 갱신
       const now = new Date().toISOString();
       const authPayload = {
-        user_id: user.id,
+        user_id: userId,
         garmin_email: email.trim(),
         sync_status: "success",
         last_sync_at: now,
@@ -190,7 +257,10 @@ export function usePerformance(user) {
       };
 
       setGarminAuth(authPayload);
-      localStorage.setItem(LOCAL_STORAGE_GARMIN_AUTH, JSON.stringify(authPayload));
+      const authKey = getAuthKey(userId);
+      if (authKey) {
+        localStorage.setItem(authKey, JSON.stringify(authPayload));
+      }
 
       if (supabase) {
         try {
@@ -200,16 +270,18 @@ export function usePerformance(user) {
         }
       }
 
-      // 3. 수집된 러닝 활동 및 1km 랩 데이터를 React 상태 및 로컬 스토리지에 즉시 반영
+      // 3. 수집된 러닝 활동 및 1km 랩 데이터를 React 상태 및 회원 전용 로컬 스토리지에 즉시 반영
       if (fetchedActivities.length > 0) {
         setActivities(fetchedActivities);
         setLapsMap(fetchedLaps);
         setSelectedActivityId(fetchedActivities[0].activity_id);
 
-        localStorage.setItem(LOCAL_STORAGE_ACTIVITIES, JSON.stringify(fetchedActivities));
-        localStorage.setItem(LOCAL_STORAGE_LAPS, JSON.stringify(fetchedLaps));
+        const actKey = getActivitiesKey(userId);
+        const lapsKey = getLapsKey(userId);
+        if (actKey) localStorage.setItem(actKey, JSON.stringify(fetchedActivities));
+        if (lapsKey) localStorage.setItem(lapsKey, JSON.stringify(fetchedLaps));
 
-        // 4. Supabase DB에 유저 세션 권한으로 안전하게 적재 (공통 청킹 파이프라인)
+        // 4. Supabase DB에 유저 세션 권한으로 안전하게 적재
         if (supabase) {
           await saveActivitiesAndLapsToDb(fetchedActivities, fetchedLaps);
         }
@@ -229,14 +301,13 @@ export function usePerformance(user) {
     }
   };
 
-  // 5. 공통 DB 청킹 배치 적재 함수 (Activities 50개 선적재 -> Laps 100개 후적재, ON CONFLICT 중복 100% 방지)
+  // 5. 공통 DB 청킹 배치 적재 함수
   const saveActivitiesAndLapsToDb = async (rawActs = [], rawLaps = {}) => {
-    if (!user || !supabase || rawActs.length === 0) return;
+    if (!userId || !supabase || rawActs.length === 0) return;
 
     try {
-      // 5-1. 활동 데이터 정규화 및 화이트리스트 정제
       const sanitizedActivities = rawActs.map((act) => ({
-        user_id: user.id,
+        user_id: userId,
         activity_id: String(act.activity_id),
         activity_name: act.activity_name || "러닝",
         activity_type: act.activity_type || "running",
@@ -255,7 +326,6 @@ export function usePerformance(user) {
         split_type: act.split_type || "even"
       }));
 
-      // 5-2. Activities 50개씩 청킹하여 순차 적재 (부모 레코드 우선 커밋)
       const actChunks = [];
       for (let i = 0; i < sanitizedActivities.length; i += 50) {
         actChunks.push(sanitizedActivities.slice(i, i + 50));
@@ -271,15 +341,13 @@ export function usePerformance(user) {
           throw new Error(`러닝 기록 저장 실패: ${actError.message}`);
         }
       }
-      console.log(`[+] Successfully saved ${sanitizedActivities.length} activities to Supabase DB!`);
 
-      // 5-3. 랩(Lap) 스플릿 데이터 정제
       const allLaps = [];
       Object.entries(rawLaps).forEach(([actId, laps]) => {
         if (Array.isArray(laps)) {
           laps.forEach((lap, idx) => {
             allLaps.push({
-              user_id: user.id,
+              user_id: userId,
               activity_id: String(actId),
               lap_index: Number(lap.lap_index || idx + 1),
               distance_meters: Math.round(Number(lap.distance_meters || 1000) * 100) / 100,
@@ -294,13 +362,11 @@ export function usePerformance(user) {
         }
       });
 
-      // 5-4. Laps 100개씩 청킹하여 순차 적재 (자식 레코드 적재)
       if (allLaps.length > 0) {
         const lapChunks = [];
         for (let i = 0; i < allLaps.length; i += 100) {
           lapChunks.push(allLaps.slice(i, i + 100));
         }
-        console.log(`[*] Upserting ${allLaps.length} laps in ${lapChunks.length} chunks...`);
 
         for (const chunk of lapChunks) {
           const { error: lapError } = await supabase.from("performance_laps").upsert(chunk, {
@@ -310,7 +376,6 @@ export function usePerformance(user) {
             console.error("[!] Supabase laps chunk upsert error:", lapError);
           }
         }
-        console.log(`[+] Successfully saved ${allLaps.length} laps to Supabase DB!`);
       }
     } catch (err) {
       console.error("saveActivitiesAndLapsToDb error:", err);
@@ -319,6 +384,7 @@ export function usePerformance(user) {
 
   // 6. 수동 가민 액티비티 추가 또는 FIT 파일 가져오기
   const addActivityWithLaps = (newActivity, laps = []) => {
+    if (!userId) return;
     const updatedActivities = [newActivity, ...activities.filter((a) => a.activity_id !== newActivity.activity_id)];
     setActivities(updatedActivities);
     setSelectedActivityId(newActivity.activity_id);
@@ -327,16 +393,17 @@ export function usePerformance(user) {
     setLapsMap(updatedLapsMap);
 
     try {
-      localStorage.setItem(LOCAL_STORAGE_ACTIVITIES, JSON.stringify(updatedActivities));
-      localStorage.setItem(LOCAL_STORAGE_LAPS, JSON.stringify(updatedLapsMap));
+      const actKey = getActivitiesKey(userId);
+      const lapsKey = getLapsKey(userId);
+      if (actKey) localStorage.setItem(actKey, JSON.stringify(updatedActivities));
+      if (lapsKey) localStorage.setItem(lapsKey, JSON.stringify(updatedLapsMap));
     } catch {}
 
-    // Supabase 적재 시도
-    if (user && supabase) {
+    if (supabase) {
       try {
-        supabase.from("performance_activities").upsert({ ...newActivity, user_id: user.id }, { onConflict: "user_id,activity_id" });
+        supabase.from("performance_activities").upsert({ ...newActivity, user_id: userId }, { onConflict: "user_id,activity_id" });
         if (laps.length > 0) {
-          const lapsPayload = laps.map((l) => ({ ...l, user_id: user.id, activity_id: newActivity.activity_id }));
+          const lapsPayload = laps.map((l) => ({ ...l, user_id: userId, activity_id: newActivity.activity_id }));
           supabase.from("performance_laps").upsert(lapsPayload, { onConflict: "activity_id,lap_index" });
         }
       } catch (e) {
@@ -347,62 +414,73 @@ export function usePerformance(user) {
 
   // 7. 가민 연동 해제
   const unlinkGarminAccount = () => {
+    if (!userId) return;
     setGarminAuth(null);
-    localStorage.removeItem(LOCAL_STORAGE_GARMIN_AUTH);
-    if (user && supabase) {
+    setActivities([]);
+    setSelectedActivityId(null);
+    setLapsMap({});
+
+    try {
+      const authKey = getAuthKey(userId);
+      const actKey = getActivitiesKey(userId);
+      const lapsKey = getLapsKey(userId);
+      if (authKey) localStorage.removeItem(authKey);
+      if (actKey) localStorage.removeItem(actKey);
+      if (lapsKey) localStorage.removeItem(lapsKey);
+    } catch {}
+
+    if (supabase) {
       try {
-        supabase.from("user_garmin_auth").delete().eq("user_id", user.id);
+        supabase.from("user_garmin_auth").delete().eq("user_id", userId);
       } catch {}
     }
   };
 
-  // 8. 가민 데이터 즉시 증분 동기화 새로고침 (가민 공식 서버에서 최신 러닝 실시간 수집 및 중복 없이 DB 적재)
+  // 8. 가민 데이터 즉시 증분 동기화 새로고침
   const triggerManualSync = async () => {
-    if (!user) return { error: "로그인이 필요합니다." };
+    if (!userId) return { error: "로그인이 필요합니다." };
     setSyncing(true);
     try {
       const email = garminAuth?.garmin_email || "";
       const sessionRes = supabase ? await supabase.auth.getSession() : null;
       const accessToken = sessionRes?.data?.session?.access_token || null;
 
-      // 1. Vite 백엔드 API에 증분 모드(daily, 최근 7일치)로 요청 (토큰스토어로 0.5초 만에 직통 수집)
       const resp = await fetch("/api/garmin-sync", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: email.trim(),
           password: "tokenstore_cached",
-          userId: user.id,
+          userId,
           accessToken,
-          mode: "daily" // 최근 7일간의 최신 러닝만 데일리 증분 수집 (기존 것은 100% SKIP)
+          mode: "daily"
         })
       });
 
       const result = await resp.json().catch(() => ({}));
 
       if (resp.ok && result.success && Array.isArray(result.activities) && result.activities.length > 0) {
-        console.log(`[*] Received ${result.activities.length} new running activities from Garmin.`);
-        // 신규 러닝 활동 및 랩 DB 적재
         await saveActivitiesAndLapsToDb(result.activities, result.laps || {});
       }
 
-      // 2. 동기화 후 DB에서 최신 데이터 다시 로드
       await loadActivities();
       if (selectedActivityId) {
         await loadLapsForActivity(selectedActivityId);
       }
 
-      // 3. user_garmin_auth의 last_sync_at 갱신
       const now = new Date().toISOString();
       const authPayload = {
-        user_id: user.id,
+        user_id: userId,
         garmin_email: email.trim(),
         sync_status: "success",
         last_sync_at: now,
         last_error_message: null
       };
       setGarminAuth((prev) => ({ ...prev, ...authPayload }));
-      localStorage.setItem(LOCAL_STORAGE_GARMIN_AUTH, JSON.stringify({ ...garminAuth, ...authPayload }));
+      const authKey = getAuthKey(userId);
+      if (authKey) {
+        localStorage.setItem(authKey, JSON.stringify({ ...garminAuth, ...authPayload }));
+      }
 
       if (supabase) {
         try {
@@ -420,9 +498,9 @@ export function usePerformance(user) {
     }
   };
 
-  // 9. 앱 실행 시 마지막 동기화 일자 감지 및 자동 최신화 (1주일/1달 경과 시 백그라운드 자동 증분 수집)
+  // 9. 앱 실행 시 마지막 동기화 일자 감지 및 자동 최신화
   useEffect(() => {
-    if (!user || !garminAuth || syncing) return;
+    if (!userId || !garminAuth || syncing) return;
 
     const checkAutoSync = async () => {
       const lastSync = garminAuth.last_sync_at;
@@ -431,7 +509,6 @@ export function usePerformance(user) {
       const diffMs = Date.now() - new Date(lastSync).getTime();
       const diffDays = diffMs / (1000 * 60 * 60 * 24);
 
-      // 마지막 동기화로부터 7일 이상 경과했으면 백그라운드에서 조용히 최신 활동 자동 갱신
       if (diffDays >= 7) {
         console.log(`[*] Last Garmin sync was ${diffDays.toFixed(1)} days ago. Running automatic background sync...`);
         await triggerManualSync();
@@ -439,7 +516,7 @@ export function usePerformance(user) {
     };
 
     checkAutoSync();
-  }, [user, garminAuth?.last_sync_at]);
+  }, [userId, garminAuth?.last_sync_at]);
 
   // 현재 선택된 액티비티 및 랩 데이터
   const selectedActivity = useMemo(
