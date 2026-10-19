@@ -308,6 +308,11 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
                     print(f"[!] Warning reading token_file: {tok_err}")
 
             supabase_client.from_("user_garmin_auth").upsert(auth_update_payload, on_conflict="user_id").execute()
+            # 동일 가민 이메일을 가진 타 user_id 유령/중복 레코드 자동 청소
+            try:
+                supabase_client.from_("user_garmin_auth").delete().eq("garmin_email", garmin_email).neq("user_id", user_id).execute()
+            except Exception as stray_err:
+                pass
         except Exception as e:
             print(f"[!] Update user_garmin_auth warning: {e}")
 
@@ -415,6 +420,54 @@ def run_daemon(supabase_client: Client):
             time.sleep(5)
 
 
+def deduplicate_garmin_auth_users(supabase_client, users):
+    """
+    user_garmin_auth 테이블에서 동일한 garmin_email을 가진 중복 레코드를 탐지합니다.
+    - 유효한 세션 토큰(session_token_encrypted)이 존재하는 레코드를 최우선 보존합니다.
+    - 토큰이 비어 있거나 중복된 레코드는 Supabase에서 즉시 안전하게 삭제(DELETE)하여 단 1개의 고유 레코드만 남깁니다.
+    """
+    from collections import defaultdict
+    if not users:
+        return []
+
+    by_email = defaultdict(list)
+    for u in users:
+        email = (u.get("garmin_email") or "").strip().lower()
+        by_email[email].append(u)
+
+    cleaned_users = []
+    for email, u_list in by_email.items():
+        if len(u_list) == 1:
+            cleaned_users.append(u_list[0])
+            continue
+
+        print(f"\n[!] Detected {len(u_list)} duplicate rows in user_garmin_auth for '{email}'")
+
+        def sort_key(user_row):
+            has_token = bool(user_row.get("session_token_encrypted"))
+            last_sync = user_row.get("last_sync_at") or user_row.get("created_at") or ""
+            return (1 if has_token else 0, last_sync)
+
+        sorted_list = sorted(u_list, key=sort_key, reverse=True)
+        winner = sorted_list[0]
+        duplicates_to_delete = sorted_list[1:]
+
+        cleaned_users.append(winner)
+        print(f"    [+] Retaining active record: id={winner.get('id')}, user_id={winner.get('user_id')} (has_token={bool(winner.get('session_token_encrypted'))})")
+
+        for dup in duplicates_to_delete:
+            dup_id = dup.get("id")
+            dup_uid = dup.get("user_id")
+            print(f"    [-] Deleting redundant duplicate record: id={dup_id}, user_id={dup_uid}...")
+            try:
+                supabase_client.from_("user_garmin_auth").delete().eq("id", dup_id).execute()
+                print(f"    [OK] Successfully deleted duplicate record id={dup_id}!")
+            except Exception as del_err:
+                print(f"    [!] Failed to delete duplicate record id={dup_id}: {del_err}")
+
+    return cleaned_users
+
+
 def main():
     parser = argparse.ArgumentParser(description="RACEBOOK Garmin Sync Tool")
     parser.add_argument("--daemon", action="store_true", help="Run background daemon polling for UI sync requests")
@@ -439,12 +492,13 @@ def main():
         print(f"=== [CRON] Running {cron_title} Garmin Sync Pipeline (Incremental Mode) ===")
         try:
             res = supabase_client.from_("user_garmin_auth").select("*").execute()
-            users = res.data or []
+            raw_users = res.data or []
         except Exception as e:
             print(f"[!] Could not query user_garmin_auth: {e}")
-            users = []
+            raw_users = []
 
-        print(f"[*] Found {len(users)} linked Garmin users.")
+        users = deduplicate_garmin_auth_users(supabase_client, raw_users)
+        print(f"[*] Found {len(users)} unique linked Garmin users.")
         for u in users:
             uid = u.get("user_id")
             email = u.get("garmin_email")

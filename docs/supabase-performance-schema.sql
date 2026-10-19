@@ -13,8 +13,34 @@ CREATE TABLE IF NOT EXISTS public.user_garmin_auth (
     last_error_message TEXT,
     created_at TIMESTAMPTZ DEFAULT now(),
     updated_at TIMESTAMPTZ DEFAULT now(),
-    CONSTRAINT unique_user_garmin UNIQUE (user_id)
+    CONSTRAINT unique_user_garmin UNIQUE (user_id),
+    CONSTRAINT unique_garmin_email UNIQUE (garmin_email)
 );
+
+-- 기존 테이블이 이미 생성되어 있을 경우 중복 정리 및 고유 제약조건 안전 추가
+DO $$
+BEGIN
+    -- (1) 동일 이메일 중 세션 토큰이 없는 빈 stub/중복 레코드 우선 정리
+    DELETE FROM public.user_garmin_auth a
+    WHERE a.session_token_encrypted IS NULL
+      AND EXISTS (
+          SELECT 1 FROM public.user_garmin_auth b
+          WHERE LOWER(TRIM(b.garmin_email)) = LOWER(TRIM(a.garmin_email))
+            AND b.id <> a.id
+      );
+
+    -- (2) unique_garmin_email 제약조건 추가
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_constraint WHERE conname = 'unique_garmin_email'
+    ) THEN
+        ALTER TABLE public.user_garmin_auth
+        ADD CONSTRAINT unique_garmin_email UNIQUE (garmin_email);
+    END IF;
+END $$;
+
+-- 가민 이메일 대소문자 무시 고유 인덱스 (중복 생성 원천 차단)
+CREATE UNIQUE INDEX IF NOT EXISTS idx_unique_garmin_email_lower
+ON public.user_garmin_auth (LOWER(TRIM(garmin_email)));
 
 ALTER TABLE public.user_garmin_auth ENABLE ROW LEVEL SECURITY;
 

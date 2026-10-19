@@ -264,8 +264,21 @@ export function usePerformance(user) {
 
       if (supabase) {
         try {
-          await supabase.from("user_garmin_auth").upsert(authPayload, { onConflict: "user_id" });
+          const { error: upsertErr } = await supabase
+            .from("user_garmin_auth")
+            .upsert(authPayload, { onConflict: "user_id" });
+          if (upsertErr) {
+            if (
+              upsertErr.code === "23505" ||
+              upsertErr.message?.includes("unique") ||
+              upsertErr.message?.includes("idx_unique_garmin_email")
+            ) {
+              throw new Error("해당 가민 계정(이메일)은 이미 다른 사용자에게 연동되어 있습니다.");
+            }
+            console.warn("user_garmin_auth upsert warning:", upsertErr);
+          }
         } catch (e) {
+          if (e.message?.includes("이미 다른 사용자")) throw e;
           console.warn("user_garmin_auth upsert warning:", e);
         }
       }
@@ -484,8 +497,13 @@ export function usePerformance(user) {
 
       if (supabase) {
         try {
-          await supabase.from("user_garmin_auth").upsert(authPayload, { onConflict: "user_id" });
-        } catch {}
+          const { error: upsertErr } = await supabase.from("user_garmin_auth").upsert(authPayload, { onConflict: "user_id" });
+          if (upsertErr && (upsertErr.code === "23505" || upsertErr.message?.includes("unique"))) {
+            console.warn("Garmin email already linked to another user account:", upsertErr);
+          }
+        } catch (e) {
+          console.warn("user_garmin_auth update error:", e);
+        }
       }
 
       return { success: true, count: result.count || 0 };
