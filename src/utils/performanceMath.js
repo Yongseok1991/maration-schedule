@@ -220,10 +220,25 @@ export function findMatchedUserRace(activity, userRaces = []) {
   // 당일 대회가 있는지 검색
   const exactMatches = userRaces.filter((r) => r.dateIso === actDate);
   if (exactMatches.length > 0) {
-    // 거리가 매칭되는 종목 우선 매칭
+    const km = (Number(activity.distance_meters) || 0) / 1000;
+
+    // 1순위: 사용자가 '나의 마라톤'에서 직접 신청/선택한 종목(raceType)과 활동 거리가 일치하는 대회
+    const raceTypeMatch = exactMatches.find((r) => {
+      if (!r.raceType) return false;
+      const rt = r.raceType.toLowerCase();
+      if ((rt === "full" || rt.includes("풀")) && km >= 40.0) return true;
+      if ((rt === "half" || rt.includes("하프")) && km >= 19.5 && km <= 23.5) return true;
+      if ((rt === "10k" || rt.includes("10")) && km >= 9.0 && km <= 11.5) return true;
+      if ((rt === "5k" || rt.includes("5")) && km >= 4.5 && km <= 5.8) return true;
+      return false;
+    });
+    if (raceTypeMatch) return raceTypeMatch;
+
+    // 2순위: 거리가 매칭되는 종목 우선 매칭
     const distMatch = exactMatches.find((r) => isDistanceMatchingRace(activity.distance_meters, r.distances));
     if (distMatch) return distMatch;
-    // 당일 대회가 1건이면 종목 무관 매칭
+
+    // 3순위: 당일 대회가 1건이면 매칭
     if (exactMatches.length === 1) return exactMatches[0];
   }
 
@@ -288,23 +303,50 @@ export function getActivityDisplayName(activity, userRaces = []) {
 // 13. 대회 카테고리 태그 반환 (10K / 하프 / 풀코스 / 5K / 대회)
 export function getRaceCategory(activity, userRaces = []) {
   const km = (Number(activity?.distance_meters) || 0) / 1000;
-  const name = (activity?.activity_name || "").toLowerCase();
+  const rawName = (activity?.activity_name || "").toLowerCase();
+  const raceName = (activity?.race_name || "").toLowerCase();
+  const combinedName = `${rawName} ${raceName}`;
 
+  // 1순위: 사용자가 '나의 마라톤'에서 직접 신청/등록한 참가 종목(raceType) 최우선 반영!
   if (Array.isArray(userRaces) && userRaces.length > 0) {
     const matched = findMatchedUserRace(activity, userRaces);
-    if (matched && matched.distances) {
-      const d = matched.distances.toLowerCase();
-      if (km >= 40.0 || d.includes("풀") || d.includes("full")) return "풀코스";
-      if ((km >= 19.5 && km <= 23.0) || d.includes("하프") || d.includes("half")) return "하프";
-      if ((km >= 9.0 && km <= 11.5) || d.includes("10k") || d.includes("10km")) return "10K";
-      if ((km >= 4.5 && km <= 5.8) || d.includes("5k")) return "5K";
+    if (matched?.raceType) {
+      const rt = matched.raceType.toLowerCase();
+      if (rt === "full" || rt.includes("풀")) return "풀코스";
+      if (rt === "half" || rt.includes("하프")) return "하프";
+      if (rt === "10k" || rt.includes("10")) return "10K";
+      if (rt === "5k" || rt.includes("5")) return "5K";
     }
   }
 
-  if (km >= 41.0 || name.includes("풀코스") || name.includes("full")) return "풀코스";
-  if ((km >= 20.0 && km <= 22.5) || name.includes("하프") || name.includes("half") || name.includes("21k")) return "하프";
-  if ((km >= 9.5 && km <= 11.0) || name.includes("10k") || name.includes("10km")) return "10K";
-  if ((km >= 4.7 && km <= 5.5) || name.includes("5k")) return "5K";
+  // 2순위: 가민 활동의 실제 주행 거리 (러너가 실제로 완주한 거리 기반 판정)
+  // 대회가 풀코스를 포함하고 있더라도 내가 21km를 달렸으면 무조건 '하프'
+  if (km >= 40.0) return "풀코스";
+  if (km >= 19.5 && km <= 23.5) return "하프";
+  if (km >= 9.0 && km <= 11.5) return "10K";
+  if (km >= 4.5 && km <= 5.8) return "5K";
+
+  // 3순위: 활동명 또는 대회명에 명시된 종목 키워드
+  if (combinedName.includes("풀코스") || combinedName.includes("풀 마라톤") || combinedName.includes("full")) return "풀코스";
+  if (combinedName.includes("하프") || combinedName.includes("half") || combinedName.includes("21k")) return "하프";
+  if (combinedName.includes("10k") || combinedName.includes("10km")) return "10K";
+  if (combinedName.includes("5k") || combinedName.includes("5km")) return "5K";
+
+  // 4순위: 매칭된 대회의 종목 텍스트가 단일 종목(예: '10km' 단독 대회)인 경우에만 참조
+  if (Array.isArray(userRaces) && userRaces.length > 0) {
+    const matched = findMatchedUserRace(activity, userRaces);
+    if (matched?.distances) {
+      const d = matched.distances.toLowerCase();
+      // 여러 종목(풀, 하프, 10k 등)이 나열된 경우 상위 종목 오탐 방지를 위해 단일 종목일 때만 허용
+      if (!d.includes(",") && !d.includes("/") && !d.includes("·") && !d.includes(" 및 ")) {
+        if (d.includes("풀") || d.includes("full")) return "풀코스";
+        if (d.includes("하프") || d.includes("half")) return "하프";
+        if (d.includes("10k") || d.includes("10km")) return "10K";
+        if (d.includes("5k") || d.includes("5km")) return "5K";
+      }
+    }
+  }
+
   return "대회";
 }
 
