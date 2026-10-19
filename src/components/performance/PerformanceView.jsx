@@ -397,16 +397,16 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
           </p>
         </div>
 
-        {/* 2. 총 소요 시간 (시안 하이라이트) */}
-        <div className="card-panel p-3.5 sm:p-4 space-y-1.5 border-cyan-400/40 bg-gradient-to-br from-cyan-400/15 via-zinc-900/90 to-zinc-900/90 shadow-lg shadow-cyan-950/20 relative overflow-hidden">
+        {/* 2. 총 소요 시간 (화이트 & 플래티넘 실버) */}
+        <div className="card-panel p-3.5 sm:p-4 space-y-1.5 border-zinc-600/50 bg-gradient-to-br from-zinc-700/20 via-zinc-900/90 to-zinc-900/90 shadow-lg shadow-black/40 relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <p className="text-[11px] font-bold tracking-wider text-cyan-300 uppercase">
+            <p className="text-[11px] font-bold tracking-wider text-zinc-300 uppercase">
               {filterRaceOnly ? "대회 총 소요 시간" : "기간 총 소요 시간"}
             </p>
             <span className="text-sm">⏱️</span>
           </div>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl sm:text-3xl font-black text-cyan-300 tracking-tight font-mono">
+            <span className="text-2xl sm:text-3xl font-black text-white tracking-tight font-mono">
               {periodSummary.totalDurationFormatted}
             </span>
           </div>
@@ -605,8 +605,8 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
                         {(act.distance_meters / 1000).toFixed(2)} km
                       </span>
 
-                      {/* 소요 시간 강조 (시안 뱃지) */}
-                      <span className="font-bold text-xs sm:text-sm text-cyan-300 bg-cyan-400/15 border border-cyan-400/30 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg shrink-0">
+                      {/* 소요 시간 강조 (플래티넘 실버 뱃지) */}
+                      <span className="font-bold text-xs sm:text-sm text-zinc-100 bg-zinc-800/90 border border-zinc-600/70 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg shrink-0 shadow-sm">
                         {formatDuration(act.duration_seconds)}
                       </span>
 
@@ -684,14 +684,14 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
               </p>
             </div>
 
-            {/* 2. 소요 시간 (Large Cyan Hero Card) */}
-            <div className="rounded-2xl border-2 border-cyan-400/40 bg-gradient-to-br from-cyan-400/20 via-cyan-500/5 to-zinc-900/90 p-3.5 sm:p-4 shadow-lg shadow-cyan-950/20 relative overflow-hidden">
+            {/* 2. 소요 시간 (플래티넘 실버 & 화이트 대형 히어로 카드) */}
+            <div className="rounded-2xl border-2 border-zinc-600/50 bg-gradient-to-br from-zinc-700/25 via-zinc-800/10 to-zinc-900/90 p-3.5 sm:p-4 shadow-lg shadow-black/40 relative overflow-hidden">
               <div className="absolute -right-2 -bottom-2 text-4xl opacity-15 select-none pointer-events-none">⏱️</div>
-              <p className="text-[11px] font-bold tracking-wider text-cyan-300 uppercase">
+              <p className="text-[11px] font-bold tracking-wider text-zinc-300 uppercase">
                 소요 시간 (TIME)
               </p>
               <div className="flex items-baseline gap-1 mt-1">
-                <span className="text-3xl sm:text-4xl font-black text-cyan-300 tracking-tight font-mono">
+                <span className="text-3xl sm:text-4xl font-black text-white tracking-tight font-mono">
                   {formatDuration(selectedActivity.duration_seconds)}
                 </span>
               </div>
