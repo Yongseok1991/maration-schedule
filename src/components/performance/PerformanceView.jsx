@@ -572,7 +572,7 @@ export default function PerformanceView({
       {filterRaceOnly && raceStats ? (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
           {/* 1. 대회 완주 횟수 (총거리 합산 대체) */}
-          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-amber-400/40 bg-zinc-900/95 flex flex-col justify-between min-h-[110px] shadow-sm">
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-amber-400/40 bg-zinc-900/95 flex flex-col justify-between min-h-[115px] shadow-sm">
             <div className="flex items-center justify-between">
               <p className="text-[11px] font-bold tracking-wider text-amber-300 uppercase">
                 대회 완주 (FINISHES)
@@ -585,13 +585,13 @@ export default function PerformanceView({
               </span>
               <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">회 완주</span>
             </div>
-            <p className="text-[10px] text-zinc-400 truncate">
+            <p className="text-[10px] text-zinc-400 line-clamp-2 break-words leading-tight" title={raceStats.categorySummaryStr}>
               {raceStats.categorySummaryStr}
             </p>
           </div>
 
           {/* 2. 대회 최고 기록 (PB) (총 소요시간 합산 대체) */}
-          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[115px] shadow-sm">
             <div className="flex items-center justify-between">
               <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
                 대회 최고 기록 (PB)
@@ -603,13 +603,13 @@ export default function PerformanceView({
                 {raceStats.bestTimeFormatted}
               </span>
             </div>
-            <p className="text-[10px] text-zinc-400 font-mono truncate" title={`${raceStats.bestRaceName} (${raceStats.bestRaceCategory})`}>
+            <p className="text-[10px] text-zinc-300 font-mono line-clamp-2 break-words leading-tight" title={`${raceStats.bestRaceName} (${raceStats.bestRaceCategory})`}>
               {raceStats.bestRaceName ? `${raceStats.bestRaceName} (${raceStats.bestRaceCategory})` : "기록 대기 중"}
             </p>
           </div>
 
           {/* 3. 대회 최고 페이스 */}
-          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[115px] shadow-sm">
             <div className="flex items-center justify-between">
               <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
                 대회 최고 페이스
@@ -622,13 +622,13 @@ export default function PerformanceView({
               </span>
               <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">/km</span>
             </div>
-            <p className="text-[10px] text-emerald-400 truncate" title={raceStats.bestPaceRaceName}>
+            <p className="text-[10px] text-emerald-400 line-clamp-2 break-words leading-tight" title={raceStats.bestPaceRaceName}>
               {raceStats.bestPaceRaceName || "레이스 최고 속도"}
             </p>
           </div>
 
           {/* 4. 최장 완주 코스 */}
-          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[115px] shadow-sm">
             <div className="flex items-center justify-between">
               <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
                 최장 완주 코스
@@ -643,7 +643,7 @@ export default function PerformanceView({
                 <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">({raceStats.longestDistanceKm}km)</span>
               )}
             </div>
-            <p className="text-[10px] text-zinc-400 truncate">
+            <p className="text-[10px] text-zinc-400 line-clamp-2 break-words leading-tight">
               {raceStats.avgHr ? `대회 평균 심박 ${raceStats.avgHr} bpm` : "공식 코스 완주"}
             </p>
           </div>
@@ -789,11 +789,12 @@ export default function PerformanceView({
                 </button>
 
                 {/* 현재 활동 선택 드롭다운 (가로 스크롤 완전 대체) */}
-                <div className="relative flex-1 sm:w-64">
+                <div className="relative flex-1 sm:w-80 md:w-96">
                   <select
                     value={selectedActivityId || ""}
                     onChange={(e) => setSelectedActivityId(e.target.value)}
                     className="w-full appearance-none rounded-xl bg-zinc-950 border border-zinc-700/80 px-2.5 py-1.5 pr-7 text-xs font-bold text-zinc-100 hover:border-amber-400/80 focus:border-amber-400 focus:outline-none transition cursor-pointer truncate"
+                    title={selectedActivity ? getActivityDisplayName(selectedActivity, userRaces) : "활동 선택"}
                   >
                     {filteredActivities.map((act) => {
                       const isRace = isRaceActivity(act, userRaces);
@@ -842,7 +843,7 @@ export default function PerformanceView({
               </button>
             </div>
           ) : (
-            <div className="space-y-1.5 pt-1">
+            <div className="space-y-2 pt-1">
               {displayedActivities.map((act) => {
                 const isSelected = act.activity_id === selectedActivityId;
                 const isRace = isRaceActivity(act, userRaces);
@@ -855,7 +856,7 @@ export default function PerformanceView({
                   <button
                     key={act.activity_id}
                     onClick={() => setSelectedActivityId(act.activity_id)}
-                    className={`w-full p-2.5 rounded-xl border text-left transition flex items-center justify-between gap-3 ${
+                    className={`w-full p-3 rounded-xl border text-left transition flex flex-col gap-2 ${
                       isSelected
                         ? "border-amber-400/90 bg-amber-400/10 text-zinc-100 shadow-md ring-1 ring-amber-400/30"
                         : isRace
@@ -863,44 +864,52 @@ export default function PerformanceView({
                         : "border-zinc-800/80 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
                     }`}
                   >
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <span className="text-[11px] font-mono text-zinc-400 shrink-0 w-16">
-                        {dateText}
-                      </span>
-
-                      {isRace && (
-                        <span className="text-[10px] font-extrabold text-amber-300 bg-amber-400/20 px-1.5 py-0.5 rounded border border-amber-400/40 shrink-0">
-                          🏆 {raceTag}
+                    {/* 1행: 날짜 + 대회 태그 + 대회/활동명 (너비 제약 없이 온전히 표출되어 잘림 현상 원천 방지) */}
+                    <div className="flex items-start justify-between gap-2 w-full">
+                      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap min-w-0 flex-1">
+                        <span className="text-[11px] font-mono text-zinc-400 shrink-0">
+                          {dateText}
                         </span>
-                      )}
 
-                      <span className={`text-xs font-bold truncate ${isSelected ? "text-amber-300" : "text-zinc-200"}`}>
-                        {displayName}
+                        {isRace && (
+                          <span className="text-[10px] font-extrabold text-amber-300 bg-amber-400/20 px-1.5 py-0.5 rounded border border-amber-400/40 shrink-0">
+                            🏆 {raceTag}
+                          </span>
+                        )}
+
+                        <span className={`text-xs sm:text-sm font-bold break-words leading-snug ${isSelected ? "text-amber-300 font-extrabold" : "text-zinc-100"}`}>
+                          {displayName}
+                        </span>
+                      </div>
+
+                      <span className={`text-[11px] shrink-0 font-medium ${isSelected ? "text-amber-400 font-bold" : "text-zinc-500"}`}>
+                        {isSelected ? "선택됨 ✓" : "선택"}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 sm:gap-2.5 shrink-0 text-xs font-mono">
+                    {/* 2행: 핵심 수치 뱃지 (거리, 시간, 평균 페이스, 심박수) */}
+                    <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap text-xs font-mono pt-0.5">
                       {/* 총 거리 강조 (앰버 골드 뱃지) */}
-                      <span className="font-black text-xs sm:text-sm text-amber-400 bg-amber-400/15 border border-amber-400/35 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg tracking-tight shrink-0 shadow-sm">
+                      <span className="font-black text-xs text-amber-400 bg-amber-400/15 border border-amber-400/30 px-2 py-0.5 rounded-md tracking-tight shrink-0 shadow-sm">
                         {(act.distance_meters / 1000).toFixed(2)} km
                       </span>
 
                       {/* 소요 시간 강조 (플래티넘 실버 뱃지) */}
-                      <span className="font-bold text-xs sm:text-sm text-zinc-100 bg-zinc-800/90 border border-zinc-600/70 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg shrink-0 shadow-sm">
+                      <span className="font-bold text-xs text-zinc-100 bg-zinc-800/90 border border-zinc-700 px-2 py-0.5 rounded-md shrink-0 shadow-sm">
                         {formatDuration(act.duration_seconds)}
                       </span>
 
-                      <span className="text-zinc-400 hidden md:inline">
-                        {formatPace(act.avg_pace_seconds)}
+                      {/* 평균 페이스 */}
+                      <span className="text-zinc-300 bg-zinc-800/60 border border-zinc-700/60 px-2 py-0.5 rounded-md shrink-0">
+                        {formatPace(act.avg_pace_seconds)}/km
                       </span>
+
+                      {/* 평균 심박 */}
                       {act.avg_heart_rate && (
-                        <span className="text-rose-400 text-[11px] hidden lg:inline">
-                          {act.avg_heart_rate} bpm
+                        <span className="text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded-md text-[11px] shrink-0">
+                          ❤️ {act.avg_heart_rate} bpm
                         </span>
                       )}
-                      <span className={`text-xs ${isSelected ? "text-amber-400 font-bold" : "text-zinc-600"}`}>
-                        {isSelected ? "선택됨 ✓" : "선택"}
-                      </span>
                     </div>
                   </button>
                 );
@@ -937,24 +946,24 @@ export default function PerformanceView({
             return (
               <>
                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-zinc-800/80">
-                  <div className="space-y-1 min-w-0">
+                  <div className="space-y-1 min-w-0 flex-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="text-lg font-black text-zinc-100">{currentDisplayName}</h3>
+                      <h3 className="text-lg font-black text-zinc-100 break-words leading-snug">{currentDisplayName}</h3>
                       {isCurrentSelectedRace ? (
-                        <span className="rounded-full bg-amber-400/20 border border-amber-400/40 px-2.5 py-0.5 text-[11px] font-extrabold text-amber-300 flex items-center gap-1">
+                        <span className="rounded-full bg-amber-400/20 border border-amber-400/40 px-2.5 py-0.5 text-[11px] font-extrabold text-amber-300 flex items-center gap-1 shrink-0">
                           <span>🏆</span>
                           <span>{currentRaceCategory}</span>
                         </span>
                       ) : (
-                        <span className="rounded-full bg-zinc-800 border border-zinc-700 px-2 py-0.5 text-[10px] font-semibold text-zinc-400">
+                        <span className="rounded-full bg-zinc-800 border border-zinc-700 px-2 py-0.5 text-[10px] font-semibold text-zinc-400 shrink-0">
                           🏃 일반 러닝
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-zinc-400">
+                    <p className="text-xs text-zinc-400 break-words">
                       {new Date(selectedActivity.start_time).toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric", weekday: "short" })} 러닝 기록
                       {matchedUserRace && (
-                        <span className="ml-2 text-amber-300 font-medium">
+                        <span className="ml-2 text-amber-300 font-medium break-words">
                           · 나의 마라톤 '{matchedUserRace.name}' 매칭됨
                         </span>
                       )}
@@ -1326,7 +1335,7 @@ export default function PerformanceView({
                   <p className="text-sm font-extrabold text-emerald-400 font-mono mt-0.5">
                     {monthlyReport.longestKm} <span className="text-xs font-normal">km</span>
                   </p>
-                  <p className="text-[10px] text-zinc-500 truncate mt-0.5" title={monthlyReport.longestRunName}>
+                  <p className="text-[10px] text-zinc-400 line-clamp-2 break-words leading-tight mt-0.5" title={monthlyReport.longestRunName}>
                     {monthlyReport.longestRunName || "-"}
                   </p>
                 </div>
@@ -1435,9 +1444,9 @@ export default function PerformanceView({
                   {(selectedActivity.distance_meters / 1000).toFixed(2)} km · {formatDuration(selectedActivity.duration_seconds)}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-zinc-400">
-                <span>가민 원본 제목</span>
-                <span className="text-zinc-300 truncate max-w-[200px]">
+              <div className="flex items-center justify-between text-zinc-400 gap-2">
+                <span className="shrink-0">가민 원본 제목</span>
+                <span className="text-zinc-300 truncate max-w-[260px] text-right" title={selectedActivity.activity_name || "러닝"}>
                   {selectedActivity.activity_name || "러닝"}
                 </span>
               </div>
