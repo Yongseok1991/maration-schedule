@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-19T03:22:25.467Z",
+  "updatedAt": "2026-10-19T15:18:24.537Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 927,
+  "count": 928,
   "races": [
     {
       "id": "40976",
@@ -11833,9 +11833,9 @@
       "place": "반포한강공원 달빛광장",
       "organizer": "법률신문",
       "contact": "010-9573-7669",
-      "registration_period": "2026년9월21일~2026년10월14일",
+      "registration_period": "2026년9월21일~2026년10월21일",
       "homepage": "http://justicerun.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41871"
     },
     {
@@ -12255,7 +12255,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년8월13일~2026년10월19일",
       "homepage": "http://haenammarathon.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41808"
     },
     {
@@ -12377,6 +12377,21 @@
       "homepage": "http://aaaf.koreashout.com/bbs/board.php?bo_table=cp_list&wr_id=60",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41926"
+    },
+    {
+      "id": "41933",
+      "name": "83타워 업힐런 챌린지",
+      "date_display": "2026년11월8일",
+      "date_iso": "2026-11-08",
+      "distances": "1.8Km+77층 계단",
+      "region": "대구",
+      "place": "이월드",
+      "organizer": "이월드 / 페스티벌잼",
+      "contact": "070-7549-8112",
+      "registration_period": "2026년10월19일~2026년10월31일",
+      "homepage": "http://eworld83toweruphillrun.lovable.app/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41933"
     },
     {
       "id": "41528",
@@ -13545,7 +13560,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년10월20일~2026년11월10일",
       "homepage": "http://xn--299a84k68cg1cr8pi6h5qsd0i.kr/index.asp",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41923"
     },
     {
