@@ -486,6 +486,36 @@ export default function App() {
   const selectedDateMyEntries = selectedDate ? entriesByDate.get(selectedDate) || [] : [];
   const selectedDateRaces = selectedDate ? (racesByDate?.get(selectedDate) || []) : [];
 
+  // 가민 대회 완주 기록을 '나의 마라톤' 해당 대회 일정으로 자동 동기화
+  const handleSyncResultToUserRace = async (entryId, activity) => {
+    if (!entryId || !activity) return { error: "No entry or activity" };
+    const durSec = activity.duration_seconds || 0;
+    const hours = Math.floor(durSec / 3600);
+    const mins = Math.floor((durSec % 3600) / 60);
+    const secs = durSec % 60;
+    const formattedTime =
+      hours > 0
+        ? `${hours}:${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`
+        : `${mins}:${String(secs).padStart(2, "0")}`;
+
+    const distKm = (activity.distance_meters / 1000).toFixed(2);
+    const paceM = Math.floor((activity.avg_pace_seconds || 0) / 60);
+    const paceS = Math.round((activity.avg_pace_seconds || 0) % 60);
+    const paceStr = `${paceM}:${String(paceS).padStart(2, "0")}/km`;
+    const note = `가민 실측 완주 기록 (${distKm}km, 평균 페이스 ${paceStr})`;
+
+    entriesState.updateEntry(entryId, {
+      resultTime: formattedTime,
+      resultNote: note,
+      status: "completed"
+    });
+
+    if (user) {
+      await entriesState.saveEntry(entryId);
+    }
+    return { success: true, formattedTime, distKm };
+  };
+
   const scrollMonthChipToStart = (targetMonth) => {
     const container = monthScrollerRef.current;
     const chip = monthChipRefs.current[targetMonth];
@@ -1392,6 +1422,8 @@ export default function App() {
         <PerformanceView
           performanceState={performanceState}
           onOpenAuth={() => setIsAuthModalOpen(true)}
+          userRaces={entries}
+          onSyncResultToUserRace={handleSyncResultToUserRace}
         />
       )}
 

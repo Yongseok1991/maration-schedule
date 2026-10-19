@@ -71,9 +71,30 @@ CREATE TABLE IF NOT EXISTS public.performance_activities (
     aerobic_ef NUMERIC(6, 2), -- 유산소 심폐 효율 지수 (속도 m/min / 심박)
     pace_consistency_score INT, -- 페이스 일관성 점수 (100점 만점)
     split_type TEXT, -- 'negative' | 'even' | 'positive'
+    is_race BOOLEAN DEFAULT false, -- 대회 여부 플래그
+    race_name TEXT, -- 대회명 (손기정 마라톤, JTBC 마라톤 등)
+    user_race_id UUID REFERENCES public.user_races(id) ON DELETE SET NULL, -- 나의 마라톤 연결 FK
+    manual_override BOOLEAN DEFAULT false, -- 사용자 수동 지정 여부
     created_at TIMESTAMPTZ DEFAULT now(),
     CONSTRAINT unique_user_activity UNIQUE (user_id, activity_id)
 );
+
+-- 기존 테이블이 이미 생성되어 있을 경우 대회 식별 컬럼 안전 추가 (멱등성 보장)
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM information_schema.columns 
+        WHERE table_schema = 'public' AND table_name = 'performance_activities' AND column_name = 'is_race'
+    ) THEN
+        ALTER TABLE public.performance_activities
+        ADD COLUMN is_race BOOLEAN DEFAULT false,
+        ADD COLUMN race_name TEXT,
+        ADD COLUMN user_race_id UUID REFERENCES public.user_races(id) ON DELETE SET NULL,
+        ADD COLUMN manual_override BOOLEAN DEFAULT false;
+
+        CREATE INDEX IF NOT EXISTS idx_perf_act_is_race ON public.performance_activities (user_id, is_race);
+    END IF;
+END $$;
 
 ALTER TABLE public.performance_activities ENABLE ROW LEVEL SECURITY;
 

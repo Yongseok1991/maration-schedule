@@ -5,11 +5,19 @@ import {
   generateSmartReport,
   generateMonthlyReport,
   isRaceActivity,
-  getRaceCategory
+  getRaceCategory,
+  getActivityDisplayName,
+  findMatchedUserRace,
+  groupLapsByChunk
 } from "../../utils/performanceMath";
 import GarminAuthModal from "./GarminAuthModal";
 
-export default function PerformanceView({ performanceState, onOpenAuth }) {
+export default function PerformanceView({
+  performanceState,
+  onOpenAuth,
+  userRaces = [],
+  onSyncResultToUserRace
+}) {
   const {
     garminAuth,
     activities,
@@ -22,7 +30,8 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     linkGarminAccount,
     unlinkGarminAccount,
     addActivityWithLaps,
-    triggerManualSync
+    triggerManualSync,
+    updateActivityRaceStatus
   } = performanceState;
 
   const [isGarminModalOpen, setIsGarminModalOpen] = useState(false);
@@ -30,8 +39,54 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
   const [filterRaceOnly, setFilterRaceOnly] = useState(false); // 사용자가 직접 제목을 수정한 대회 기록만 필터
   const [isListExpanded, setIsListExpanded] = useState(false); // 목록 5개 초과 시 접기/펼치기
   const [reportTab, setReportTab] = useState("activity"); // "activity" | "monthly"
+  const [splitChunkMode, setSplitChunkMode] = useState("1k"); // "1k" | "5k"
+  const [isRaceAssignModalOpen, setIsRaceAssignModalOpen] = useState(false);
+  const [selectedRaceEntryId, setSelectedRaceEntryId] = useState("");
+  const [customRaceNameInput, setCustomRaceNameInput] = useState("");
+  const [shouldAutoSyncResult, setShouldAutoSyncResult] = useState(true);
+  const [syncFeedback, setSyncFeedback] = useState("");
   const fileInputRef = useRef(null);
   const prevMonthRef = useRef(""); // 대회만 필터 선택 전 조회 중이던 월 기억
+
+  // 대회 지정 및 완주 기록 동기화 저장 핸들러
+  const handleSaveRaceAssignment = async () => {
+    if (!selectedActivity) return;
+
+    let finalName = customRaceNameInput.trim();
+    let finalUserRaceId = selectedRaceEntryId || null;
+
+    if (finalUserRaceId) {
+      const match = userRaces.find((r) => String(r.entryId || r.id) === String(finalUserRaceId));
+      if (match && !finalName) {
+        finalName = match.name;
+      }
+    }
+
+    if (!finalName) {
+      finalName = selectedActivity.activity_name || "마라톤 대회";
+    }
+
+    if (updateActivityRaceStatus) {
+      await updateActivityRaceStatus(selectedActivity.activity_id, {
+        isRace: true,
+        raceName: finalName,
+        userRaceId: finalUserRaceId
+      });
+    }
+
+    if (finalUserRaceId && onSyncResultToUserRace && shouldAutoSyncResult) {
+      const res = await onSyncResultToUserRace(finalUserRaceId, selectedActivity);
+      if (res?.success) {
+        setSyncFeedback(`'${finalName}'에 완주 기록(${formatDuration(selectedActivity.duration_seconds)})이 성공적으로 동기화되었습니다!`);
+        setTimeout(() => setSyncFeedback(""), 4000);
+      }
+    } else {
+      setSyncFeedback(`'${finalName}' 대회로 지정되었습니다.`);
+      setTimeout(() => setSyncFeedback(""), 4000);
+    }
+
+    setIsRaceAssignModalOpen(false);
+  };
 
   // 1. 전체 활동의 월별 통계 목록 및 대회 기록 총 개수 집계
   const { monthStatsList, totalRaceCount, totalAllKm, latestMonthKey } = useMemo(() => {
@@ -48,7 +103,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
       const dist = Number(act.distance_meters) || 0;
       allMeters += dist;
 
-      const isRace = isRaceActivity(act);
+      const isRace = isRaceActivity(act, userRaces);
       if (isRace) raceCount += 1;
 
       if (!act.start_time) return;
@@ -86,7 +141,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
       totalAllKm: allMeters / 1000,
       latestMonthKey: sortedMonths.length > 0 ? sortedMonths[0].key : firstMonthKey
     };
-  }, [activities]);
+  }, [activities, userRaces]);
 
   // 2. 처음 진입 시 가장 최근 월(latestMonthKey)로 자동 선택
   useEffect(() => {
@@ -113,11 +168,11 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
 
     // 대회 기록만 보기 (사용자가 직접 제목을 수정한 대회명 필터)
     if (filterRaceOnly) {
-      list = list.filter(isRaceActivity);
+      list = list.filter((act) => isRaceActivity(act, userRaces));
     }
 
     return list;
-  }, [activities, selectedMonth, filterRaceOnly]);
+  }, [activities, selectedMonth, filterRaceOnly, userRaces]);
 
   // 4. 필터 변경 시 선택된 액티비티가 현재 목록에 없으면 첫 번째 활동 자동 선택
   useEffect(() => {
@@ -173,7 +228,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     const hrList = filteredActivities.filter((a) => a.avg_heart_rate);
     const avgHr = hrList.length > 0 ? hrList.reduce((sum, a) => sum + a.avg_heart_rate, 0) / hrList.length : 0;
     const avgPace = totalDistMeters > 0 ? totalSeconds / (totalDistMeters / 1000) : 0;
-    const raceCount = filteredActivities.filter(isRaceActivity).length;
+    const raceCount = filteredActivities.filter((a) => isRaceActivity(a, userRaces)).length;
 
     let periodLabel = "전체 기간";
     if (selectedMonth !== "all" && selectedMonth) {
@@ -195,7 +250,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
       avgHeartRate: Math.round(avgHr),
       raceCount
     };
-  }, [filteredActivities, selectedMonth]);
+  }, [filteredActivities, selectedMonth, userRaces]);
 
   // 7. 선택된 액티비티 스마트 리포트 및 월간 종합 리포트 생성
   const smartReport = selectedActivity
@@ -206,9 +261,17 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
     return generateMonthlyReport(periodSummary.periodLabel, filteredActivities);
   }, [periodSummary.periodLabel, filteredActivities]);
 
-  // 1km 랩 차트용 페이스 최소/최대 계산
-  const maxPace = selectedLaps.length > 0 ? Math.max(...selectedLaps.map((l) => l.pace_seconds)) : 360;
-  const minPace = selectedLaps.length > 0 ? Math.min(...selectedLaps.map((l) => l.pace_seconds)) : 280;
+  // 5km 구간 집계 및 활성 스플릿 데이터 계산
+  const fiveKmChunks = useMemo(() => {
+    return groupLapsByChunk(selectedLaps, 5);
+  }, [selectedLaps]);
+
+  const is5kAvailable = (selectedActivity?.distance_meters || 0) >= 4500 || selectedLaps.length >= 5;
+  const activeSplits = splitChunkMode === "5k" && fiveKmChunks.length > 0 ? fiveKmChunks : selectedLaps;
+
+  // 랩/스플릿 차트용 페이스 최소/최대 계산
+  const maxPace = activeSplits.length > 0 ? Math.max(...activeSplits.map((l) => l.pace_seconds)) : 360;
+  const minPace = activeSplits.length > 0 ? Math.min(...activeSplits.map((l) => l.pace_seconds)) : 280;
   const paceRange = Math.max(30, maxPace - minPace);
 
   // 수동 JSON/FIT 임포트
@@ -533,13 +596,14 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
                     className="w-full appearance-none rounded-xl bg-zinc-950 border border-zinc-700/80 px-2.5 py-1.5 pr-7 text-xs font-bold text-zinc-100 hover:border-amber-400/80 focus:border-amber-400 focus:outline-none transition cursor-pointer truncate"
                   >
                     {filteredActivities.map((act) => {
-                      const isRace = isRaceActivity(act);
+                      const isRace = isRaceActivity(act, userRaces);
+                      const displayName = getActivityDisplayName(act, userRaces);
                       const d = act.start_time ? new Date(act.start_time) : null;
                       const dateStr = d ? `${d.getMonth() + 1}.${d.getDate()}` : "";
                       const distKm = (act.distance_meters / 1000).toFixed(1);
                       return (
                         <option key={act.activity_id} value={act.activity_id}>
-                          {isRace ? "🏆 " : ""}{dateStr} · {act.activity_name} ({distKm}km · {formatPace(act.avg_pace_seconds)})
+                          {isRace ? "🏆 " : ""}{dateStr} · {displayName} ({distKm}km · {formatPace(act.avg_pace_seconds)})
                         </option>
                       );
                     })}
@@ -581,8 +645,9 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
             <div className="space-y-1.5 pt-1">
               {displayedActivities.map((act) => {
                 const isSelected = act.activity_id === selectedActivityId;
-                const isRace = isRaceActivity(act);
-                const raceTag = isRace ? getRaceCategory(act) : null;
+                const isRace = isRaceActivity(act, userRaces);
+                const raceTag = isRace ? getRaceCategory(act, userRaces) : null;
+                const displayName = getActivityDisplayName(act, userRaces);
                 const d = act.start_time ? new Date(act.start_time) : null;
                 const dateText = d ? d.toLocaleDateString("ko-KR", { month: "numeric", day: "numeric", weekday: "short" }) : "";
 
@@ -610,7 +675,7 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
                       )}
 
                       <span className={`text-xs font-bold truncate ${isSelected ? "text-amber-300" : "text-zinc-200"}`}>
-                        {act.activity_name}
+                        {displayName}
                       </span>
                     </div>
 
@@ -663,149 +728,285 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
       {/* 6. 선택된 액티비티의 1km 랩 스플릿 시각화 차트 */}
       {hasActivities && selectedActivity && (
         <div className="card-panel p-4 space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-zinc-800/80">
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="text-lg font-black text-zinc-100">{selectedActivity.activity_name}</h3>
-                {isRaceActivity(selectedActivity) && (
-                  <span className="rounded-full bg-amber-400/20 border border-amber-400/40 px-2.5 py-0.5 text-[11px] font-extrabold text-amber-300 flex items-center gap-1">
-                    <span>🏆</span>
-                    <span>{getRaceCategory(selectedActivity)}</span>
-                  </span>
-                )}
-              </div>
-              <p className="text-xs text-zinc-400 mt-1">
-                {new Date(selectedActivity.start_time).toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric", weekday: "short" })} 러닝 기록
-              </p>
-            </div>
-          </div>
+          {(() => {
+            const isCurrentSelectedRace = isRaceActivity(selectedActivity, userRaces);
+            const currentRaceCategory = isCurrentSelectedRace ? getRaceCategory(selectedActivity, userRaces) : null;
+            const currentDisplayName = getActivityDisplayName(selectedActivity, userRaces);
+            const matchedUserRace = findMatchedUserRace(selectedActivity, userRaces);
 
-          {/* 활동 핵심 지표 4대 카드: 폰트, 크기, 높이, 유닛 완벽 통일 */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-            {/* 1. 총 거리 */}
-            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
-              <div className="flex items-center justify-between">
-                <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-                  총 거리 (DISTANCE)
-                </p>
-                <span className="text-sm">🏃</span>
-              </div>
-              <div className="flex items-baseline">
-                <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-mono">
-                  {(selectedActivity.distance_meters / 1000).toFixed(2)}
-                </span>
-                <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">km</span>
-              </div>
-              <p className="text-[10px] text-zinc-400 truncate">
-                {selectedLaps.length}개 1km 랩 구간 완료
-              </p>
-            </div>
-
-            {/* 2. 소요 시간 */}
-            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
-              <div className="flex items-center justify-between">
-                <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-                  소요 시간 (TIME)
-                </p>
-                <span className="text-sm">⏱️</span>
-              </div>
-              <div className="flex items-baseline">
-                <span className="text-2xl sm:text-3xl font-black text-white tracking-tight font-mono">
-                  {formatDuration(selectedActivity.duration_seconds)}
-                </span>
-              </div>
-              <p className="text-[10px] text-zinc-400 font-mono truncate">
-                {Math.floor(selectedActivity.duration_seconds / 60)}분 {selectedActivity.duration_seconds % 60}초 완주
-              </p>
-            </div>
-
-            {/* 3. 평균 페이스 */}
-            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
-              <div className="flex items-center justify-between">
-                <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-                  평균 페이스 (PACE)
-                </p>
-                <span className="text-sm">⚡</span>
-              </div>
-              <div className="flex items-baseline">
-                <span className="text-2xl sm:text-3xl font-black text-zinc-100 tracking-tight font-mono">
-                  {formatPace(selectedActivity.avg_pace_seconds).replace("/km", "")}
-                </span>
-                <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">/km</span>
-              </div>
-              <p className="text-[10px] text-emerald-400 truncate">
-                1km당 평균 소요 시간
-              </p>
-            </div>
-
-            {/* 4. 평균 심박수 */}
-            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
-              <div className="flex items-center justify-between">
-                <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-                  평균 심박수 (HEART RATE)
-                </p>
-                <span className="text-sm">❤️</span>
-              </div>
-              <div className="flex items-baseline">
-                <span className="text-2xl sm:text-3xl font-black text-rose-400 tracking-tight font-mono">
-                  {selectedActivity.avg_heart_rate || "-"}
-                </span>
-                {selectedActivity.avg_heart_rate && <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">bpm</span>}
-              </div>
-              <p className="text-[10px] text-zinc-500 truncate">
-                최고 심박 {selectedActivity.max_heart_rate || "-"} bpm
-              </p>
-            </div>
-          </div>
-
-          {/* 1km 랩 인터랙티브 바 차트 */}
-          {selectedLaps.length > 0 ? (
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs font-semibold text-zinc-400">
-                <span>📊 1km 구간별 페이스 & 심박수 스플릿</span>
-                <span className="text-[11px] text-zinc-500">막대: 페이스 (낮을수록 빠름) · 뱃지: 심박</span>
-              </div>
-
-              <div className="space-y-1.5 pt-2">
-                {selectedLaps.map((lap) => {
-                  const pacePcnt = Math.max(20, Math.min(100, 100 - ((lap.pace_seconds - minPace) / paceRange) * 70));
-                  const isFastest = lap.pace_seconds === minPace;
-
-                  return (
-                    <div key={lap.lap_index} className="flex items-center gap-2 text-xs font-mono">
-                      <span className="w-8 font-bold text-zinc-400 shrink-0 text-right">
-                        {lap.lap_index}K
-                      </span>
-
-                      <div className="flex-1 h-7 rounded-lg bg-zinc-900/90 border border-zinc-800/80 p-0.5 flex items-center relative overflow-hidden">
-                        <div
-                          style={{ width: `${pacePcnt}%` }}
-                          className={`h-full rounded-md transition-all ${
-                            isFastest
-                              ? "bg-gradient-to-r from-amber-500 to-amber-300"
-                              : "bg-gradient-to-r from-emerald-600/70 to-emerald-400/80"
-                          }`}
-                        />
-                        <span className="absolute left-2.5 text-[11px] font-bold text-zinc-100 drop-shadow">
-                          {formatPace(lap.pace_seconds)}
+            return (
+              <>
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 pb-3 border-b border-zinc-800/80">
+                  <div className="space-y-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <h3 className="text-lg font-black text-zinc-100">{currentDisplayName}</h3>
+                      {isCurrentSelectedRace ? (
+                        <span className="rounded-full bg-amber-400/20 border border-amber-400/40 px-2.5 py-0.5 text-[11px] font-extrabold text-amber-300 flex items-center gap-1">
+                          <span>🏆</span>
+                          <span>{currentRaceCategory}</span>
                         </span>
-                      </div>
-
-                      {lap.avg_heart_rate && (
-                        <span className="w-16 rounded-md bg-zinc-800/80 border border-zinc-700/60 px-1.5 py-0.5 text-[10px] text-center font-bold text-rose-300 shrink-0">
-                          {lap.avg_heart_rate} bpm
+                      ) : (
+                        <span className="rounded-full bg-zinc-800 border border-zinc-700 px-2 py-0.5 text-[10px] font-semibold text-zinc-400">
+                          🏃 일반 러닝
                         </span>
                       )}
                     </div>
-                  );
-                })}
-              </div>
-            </div>
-          ) : (
-            <p className="text-xs text-zinc-500 py-3 text-center">
-              해당 활동의 1km 랩 스플릿 데이터가 없습니다.
-            </p>
-          )}
+                    <p className="text-xs text-zinc-400">
+                      {new Date(selectedActivity.start_time).toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric", weekday: "short" })} 러닝 기록
+                      {matchedUserRace && (
+                        <span className="ml-2 text-amber-300 font-medium">
+                          · 나의 마라톤 '{matchedUserRace.name}' 매칭됨
+                        </span>
+                      )}
+                    </p>
+                  </div>
+
+                  {/* 대회 태깅 & 나의 마라톤 동기화 컨트롤 버튼 영역 */}
+                  <div className="flex items-center gap-1.5 flex-wrap shrink-0">
+                    {isCurrentSelectedRace ? (
+                      <>
+                        {/* 나의 마라톤 동기화 버튼 */}
+                        {onSyncResultToUserRace && (
+                          <button
+                            type="button"
+                            onClick={async () => {
+                              const targetRace = matchedUserRace || (userRaces.length === 1 ? userRaces[0] : null);
+                              if (!targetRace) {
+                                setSelectedRaceEntryId(selectedActivity.user_race_id || "");
+                                setCustomRaceNameInput(selectedActivity.race_name || selectedActivity.activity_name || "");
+                                setIsRaceAssignModalOpen(true);
+                                return;
+                              }
+                              const res = await onSyncResultToUserRace(targetRace.entryId || targetRace.id, selectedActivity);
+                              if (res?.success) {
+                                setSyncFeedback(`'${targetRace.name}'에 완주 기록(${formatDuration(selectedActivity.duration_seconds)})이 성공적으로 동기화되었습니다!`);
+                                setTimeout(() => setSyncFeedback(""), 4000);
+                              }
+                            }}
+                            className="rounded-xl border border-emerald-500/40 bg-emerald-500/15 hover:bg-emerald-500/25 px-2.5 py-1.5 text-xs font-bold text-emerald-300 flex items-center gap-1 transition shadow-sm active:scale-95"
+                            title="나의 마라톤 탭에 완주 기록과 시간을 자동으로 반영합니다"
+                          >
+                            <span>🏅</span>
+                            <span>완주 기록 동기화</span>
+                          </button>
+                        )}
+
+                        {/* 일반 러닝으로 변경 버튼 */}
+                        <button
+                          type="button"
+                          onClick={async () => {
+                            if (window.confirm("이 활동을 일반 러닝으로 변경하시겠습니까? (대회 목록에서 제외됩니다)")) {
+                              if (updateActivityRaceStatus) {
+                                await updateActivityRaceStatus(selectedActivity.activity_id, {
+                                  isRace: false,
+                                  raceName: null,
+                                  userRaceId: null
+                                });
+                              }
+                            }
+                          }}
+                          className="rounded-xl border border-zinc-700/80 bg-zinc-800/60 hover:bg-zinc-700/80 px-2.5 py-1.5 text-xs font-medium text-zinc-300 hover:text-rose-300 transition"
+                          title="대회 지정을 해제하고 일반 러닝으로 전환합니다"
+                        >
+                          ✕ 일반 러닝으로 변경
+                        </button>
+                      </>
+                    ) : (
+                      /* 대회로 지정 버튼 */
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedRaceEntryId(matchedUserRace?.entryId || matchedUserRace?.id || "");
+                          setCustomRaceNameInput(matchedUserRace?.name || "");
+                          setIsRaceAssignModalOpen(true);
+                        }}
+                        className="rounded-xl border border-amber-400/40 bg-amber-400/15 hover:bg-amber-400/25 px-3 py-1.5 text-xs font-bold text-amber-300 flex items-center gap-1.5 transition shadow-sm active:scale-95"
+                      >
+                        <span>🏆</span>
+                        <span>대회로 지정</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* 동기화 성공 알림 피드백 */}
+                {syncFeedback && (
+                  <div className="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-xs font-bold text-emerald-300 flex items-center justify-between">
+                    <span>✓ {syncFeedback}</span>
+                    <button type="button" onClick={() => setSyncFeedback("")} className="text-zinc-400 hover:text-zinc-200 text-xs">✕</button>
+                  </div>
+                )}
+
+                {/* 활동 핵심 지표 4대 카드: 폰트, 크기, 높이, 유닛 완벽 통일 */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+                  {/* 1. 총 거리 */}
+                  <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                        총 거리 (DISTANCE)
+                      </p>
+                      <span className="text-sm">🏃</span>
+                    </div>
+                    <div className="flex items-baseline">
+                      <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-mono">
+                        {(selectedActivity.distance_meters / 1000).toFixed(2)}
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">km</span>
+                    </div>
+                    <p className="text-[10px] text-zinc-400 truncate">
+                      {selectedLaps.length}개 1km 랩 구간 완료{fiveKmChunks.length > 0 ? ` (${fiveKmChunks.length}개 5km 블록)` : ""}
+                    </p>
+                  </div>
+
+                  {/* 2. 소요 시간 */}
+                  <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                        소요 시간 (TIME)
+                      </p>
+                      <span className="text-sm">⏱️</span>
+                    </div>
+                    <div className="flex items-baseline">
+                      <span className="text-2xl sm:text-3xl font-black text-white tracking-tight font-mono">
+                        {formatDuration(selectedActivity.duration_seconds)}
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-zinc-400 font-mono truncate">
+                      {Math.floor(selectedActivity.duration_seconds / 60)}분 {selectedActivity.duration_seconds % 60}초 완주
+                    </p>
+                  </div>
+
+                  {/* 3. 평균 페이스 */}
+                  <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                        평균 페이스 (PACE)
+                      </p>
+                      <span className="text-sm">⚡</span>
+                    </div>
+                    <div className="flex items-baseline">
+                      <span className="text-2xl sm:text-3xl font-black text-zinc-100 tracking-tight font-mono">
+                        {formatPace(selectedActivity.avg_pace_seconds).replace("/km", "")}
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">/km</span>
+                    </div>
+                    <p className="text-[10px] text-emerald-400 truncate">
+                      1km당 평균 소요 시간
+                    </p>
+                  </div>
+
+                  {/* 4. 평균 심박수 */}
+                  <div className="rounded-2xl border border-zinc-700/80 bg-zinc-900/90 p-3.5 sm:p-4 space-y-2 flex flex-col justify-between min-h-[110px] shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                        평균 심박수 (HEART RATE)
+                      </p>
+                      <span className="text-sm">❤️</span>
+                    </div>
+                    <div className="flex items-baseline">
+                      <span className="text-2xl sm:text-3xl font-black text-rose-400 tracking-tight font-mono">
+                        {selectedActivity.avg_heart_rate || "-"}
+                      </span>
+                      {selectedActivity.avg_heart_rate && <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">bpm</span>}
+                    </div>
+                    <p className="text-[10px] text-zinc-500 truncate">
+                      최고 심박 {selectedActivity.max_heart_rate || "-"} bpm
+                    </p>
+                  </div>
+                </div>
+
+                {/* 1km & 5km 랩 인터랙티브 바 차트 */}
+                {activeSplits.length > 0 ? (
+                  <div className="space-y-2">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-semibold text-zinc-400">
+                      <div className="flex items-center gap-2">
+                        <span>📊 구간별 페이스 & 심박수 스플릿</span>
+                        {/* 1km vs 5km 토글 버튼 */}
+                        <div className="flex rounded-lg bg-zinc-950 p-0.5 border border-zinc-800">
+                          <button
+                            type="button"
+                            onClick={() => setSplitChunkMode("1k")}
+                            className={`px-2 py-0.5 rounded text-[11px] font-bold transition ${
+                              splitChunkMode === "1k"
+                                ? "bg-amber-400 text-zinc-950 shadow-sm"
+                                : "text-zinc-400 hover:text-zinc-200"
+                            }`}
+                          >
+                            1km 단위
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setSplitChunkMode("5k")}
+                            disabled={!is5kAvailable}
+                            title={!is5kAvailable ? "5km 이상 러닝에서 지원됩니다." : "5km 블록별 평균 페이스 비교"}
+                            className={`px-2 py-0.5 rounded text-[11px] font-bold transition ${
+                              splitChunkMode === "5k"
+                                ? "bg-amber-400 text-zinc-950 shadow-sm"
+                                : is5kAvailable
+                                ? "text-zinc-400 hover:text-zinc-200"
+                                : "text-zinc-600 cursor-not-allowed opacity-50"
+                            }`}
+                          >
+                            5km 단위 {fiveKmChunks.length > 0 ? `(${fiveKmChunks.length}구간)` : ""}
+                          </button>
+                        </div>
+                      </div>
+                      <span className="text-[11px] text-zinc-500">
+                        {splitChunkMode === "5k" ? "5km 가중 평균 페이스 · 소요시간" : "막대: 페이스 (낮을수록 빠름) · 뱃지: 심박"}
+                      </span>
+                    </div>
+
+                    <div className="space-y-1.5 pt-2">
+                      {activeSplits.map((item, idx) => {
+                        const pacePcnt = Math.max(20, Math.min(100, 100 - ((item.pace_seconds - minPace) / paceRange) * 70));
+                        const isFastest = item.pace_seconds === minPace;
+                        const label = splitChunkMode === "5k" ? item.label : `${item.lap_index}K`;
+
+                        return (
+                          <div key={item.chunk_index || item.lap_index || idx} className="flex items-center gap-2 text-xs font-mono">
+                            <span className={`font-bold text-zinc-400 shrink-0 text-right ${splitChunkMode === "5k" ? "w-28 text-[11px]" : "w-8"}`}>
+                              {label}
+                            </span>
+
+                            <div className="flex-1 h-7 rounded-lg bg-zinc-900/90 border border-zinc-800/80 p-0.5 flex items-center relative overflow-hidden">
+                              <div
+                                style={{ width: `${pacePcnt}%` }}
+                                className={`h-full rounded-md transition-all ${
+                                  isFastest
+                                    ? "bg-gradient-to-r from-amber-500 to-amber-300"
+                                    : "bg-gradient-to-r from-emerald-600/70 to-emerald-400/80"
+                                }`}
+                              />
+                              <div className="absolute left-2.5 flex items-center gap-2">
+                                <span className="text-[11px] font-bold text-zinc-100 drop-shadow">
+                                  {formatPace(item.pace_seconds)}
+                                </span>
+                                {splitChunkMode === "5k" && item.duration_seconds && (
+                                  <span className="text-[10px] text-zinc-300 drop-shadow font-normal hidden xs:inline">
+                                    ({formatDuration(item.duration_seconds)})
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+
+                            {item.avg_heart_rate && (
+                              <span className="w-16 rounded-md bg-zinc-800/80 border border-zinc-700/60 px-1.5 py-0.5 text-[10px] text-center font-bold text-rose-300 shrink-0">
+                                {item.avg_heart_rate} bpm
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : (
+                  <p className="text-xs text-zinc-500 py-3 text-center">
+                    해당 활동의 랩 스플릿 데이터가 없습니다.
+                  </p>
+                )}
+              </>
+            );
+          })()}
         </div>
       )}
 
@@ -987,6 +1188,144 @@ export default function PerformanceView({ performanceState, onOpenAuth }) {
               )}
             </div>
           )}
+        </div>
+      )}
+
+      {/* 🏆 대회 지정 및 완주 기록 동기화 모달 */}
+      {isRaceAssignModalOpen && selectedActivity && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm p-4 flex items-center justify-center"
+          onClick={() => setIsRaceAssignModalOpen(false)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl border border-zinc-700/80 bg-zinc-900 p-5 space-y-4 shadow-2xl relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 닫기 버튼 */}
+            <button
+              type="button"
+              onClick={() => setIsRaceAssignModalOpen(false)}
+              className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-100 text-sm font-bold w-7 h-7 flex items-center justify-center rounded-full hover:bg-zinc-800 transition"
+            >
+              ✕
+            </button>
+
+            {/* 헤더 */}
+            <div>
+              <h3 className="text-base font-black text-zinc-100 flex items-center gap-2">
+                <span className="text-amber-400">🏆</span>
+                <span>마라톤 대회로 지정하기</span>
+              </h3>
+              <p className="text-xs text-zinc-400 mt-1">
+                가민 러닝 기록을 참가한 마라톤 대회로 등록하고 완주 기록을 연동합니다.
+              </p>
+            </div>
+
+            {/* 대상 러닝 활동 요약 카드 */}
+            <div className="rounded-xl border border-zinc-800 bg-zinc-950/70 p-3 space-y-1.5 text-xs font-mono">
+              <div className="flex items-center justify-between text-zinc-400">
+                <span>활동 일시</span>
+                <span className="text-zinc-200 font-bold">
+                  {new Date(selectedActivity.start_time).toLocaleDateString("ko-KR", { year: "numeric", month: "long", day: "numeric" })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between text-zinc-400">
+                <span>주행 거리 / 소요 시간</span>
+                <span className="text-amber-400 font-bold">
+                  {(selectedActivity.distance_meters / 1000).toFixed(2)} km · {formatDuration(selectedActivity.duration_seconds)}
+                </span>
+              </div>
+              <div className="flex items-center justify-between text-zinc-400">
+                <span>가민 원본 제목</span>
+                <span className="text-zinc-300 truncate max-w-[200px]">
+                  {selectedActivity.activity_name || "러닝"}
+                </span>
+              </div>
+            </div>
+
+            {/* 1. 나의 마라톤 등록 대회와 연결 (우선 추천) */}
+            <div className="space-y-1.5">
+              <label htmlFor="user-race-select" className="text-xs font-bold text-zinc-300 flex items-center justify-between">
+                <span>1. '나의 마라톤' 등록 일정에서 선택 (추천)</span>
+                {userRaces.length > 0 && (
+                  <span className="text-[10px] text-amber-400 font-normal">등록된 대회 {userRaces.length}건</span>
+                )}
+              </label>
+              <select
+                id="user-race-select"
+                value={selectedRaceEntryId}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setSelectedRaceEntryId(val);
+                  if (val) {
+                    const match = userRaces.find((r) => String(r.entryId || r.id) === String(val));
+                    if (match) {
+                      setCustomRaceNameInput(match.name);
+                    }
+                  }
+                }}
+                className="w-full rounded-xl bg-zinc-950 border border-zinc-700 px-3 py-2 text-xs font-semibold text-zinc-100 hover:border-amber-400 focus:border-amber-400 focus:outline-none transition cursor-pointer"
+              >
+                <option value="">-- 직접 새 대회명 입력하기 --</option>
+                {userRaces.map((r) => (
+                  <option key={r.entryId || r.id} value={r.entryId || r.id}>
+                    {r.name} ({r.dateIso || r.date_display} · {r.distances || "종목 미지정"})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* 2. 표시할 대회명 입력 */}
+            <div className="space-y-1.5">
+              <label htmlFor="custom-race-name-input" className="text-xs font-bold text-zinc-300">
+                2. 표시할 대회명 입력
+              </label>
+              <input
+                id="custom-race-name-input"
+                type="text"
+                value={customRaceNameInput}
+                onChange={(e) => setCustomRaceNameInput(e.target.value)}
+                placeholder="예: 2026 손기정 평화마라톤"
+                className="w-full rounded-xl bg-zinc-950 border border-zinc-700 px-3 py-2 text-xs font-medium text-zinc-100 placeholder-zinc-500 hover:border-amber-400 focus:border-amber-400 focus:outline-none transition"
+              />
+            </div>
+
+            {/* 3. 완주 기록 자동 동기화 체크박스 */}
+            {selectedRaceEntryId && onSyncResultToUserRace && (
+              <label className="flex items-center gap-2 p-2.5 rounded-xl bg-amber-400/10 border border-amber-400/25 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={shouldAutoSyncResult}
+                  onChange={(e) => setShouldAutoSyncResult(e.target.checked)}
+                  className="rounded accent-amber-400"
+                />
+                <div className="text-xs text-amber-300">
+                  <span className="font-bold">'나의 마라톤'에 완주 기록 자동 반영</span>
+                  <p className="text-[10px] text-zinc-400 mt-0.5">
+                    완주 시간({formatDuration(selectedActivity.duration_seconds)}) 및 페이스를 '나의 마라톤' 결과란에 자동 저장합니다.
+                  </p>
+                </div>
+              </label>
+            )}
+
+            {/* 버튼 영역 */}
+            <div className="flex items-center gap-2 pt-2 border-t border-zinc-800">
+              <button
+                type="button"
+                onClick={() => setIsRaceAssignModalOpen(false)}
+                className="flex-1 rounded-xl border border-zinc-700 bg-zinc-800 hover:bg-zinc-700 py-2.5 text-xs font-semibold text-zinc-300 transition text-center"
+              >
+                취소
+              </button>
+              <button
+                type="button"
+                onClick={handleSaveRaceAssignment}
+                className="flex-1 rounded-xl bg-amber-400 hover:bg-amber-300 py-2.5 text-xs font-bold text-zinc-950 transition shadow text-center"
+              >
+                🏆 대회로 저장하기
+              </button>
+            </div>
+          </div>
         </div>
       )}
 

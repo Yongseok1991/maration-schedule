@@ -574,6 +574,46 @@ export function usePerformance(user) {
     };
   }, [activities]);
 
+  // 10. 활동의 대회 지정 상태 및 대회명 업데이트 (사용자 수동 토글 / 지정)
+  const updateActivityRaceStatus = useCallback(async (activityId, { isRace, raceName = null, userRaceId = null }) => {
+    if (!activityId) return { error: "No activityId" };
+
+    const patch = {
+      is_race: Boolean(isRace),
+      race_name: raceName || null,
+      user_race_id: userRaceId || null,
+      manual_override: true
+    };
+
+    // 1. React 상태 및 사용자별 로컬 스토리지 즉시 업데이트
+    setActivities((prev) => {
+      const next = prev.map((a) => (a.activity_id === activityId ? { ...a, ...patch } : a));
+      if (userId) {
+        const k = getActivitiesKey(userId);
+        if (k) localStorage.setItem(k, JSON.stringify(next));
+      }
+      return next;
+    });
+
+    // 2. Supabase DB 영구 저장
+    if (supabase && userId) {
+      try {
+        const { error } = await supabase
+          .from("performance_activities")
+          .update(patch)
+          .eq("user_id", userId)
+          .eq("activity_id", activityId);
+        if (error) {
+          console.warn("Supabase activity race status update notice:", error.message);
+        }
+      } catch (err) {
+        console.warn("Supabase activity update failed:", err);
+      }
+    }
+
+    return { success: true };
+  }, [userId]);
+
   return {
     garminAuth,
     activities,
@@ -587,6 +627,7 @@ export function usePerformance(user) {
     linkGarminAccount,
     unlinkGarminAccount,
     addActivityWithLaps,
-    triggerManualSync
+    triggerManualSync,
+    updateActivityRaceStatus
   };
 }
