@@ -40,6 +40,7 @@ export default function PerformanceView({
   const [isListExpanded, setIsListExpanded] = useState(false); // 목록 5개 초과 시 접기/펼치기
   const [reportTab, setReportTab] = useState("activity"); // "activity" | "monthly"
   const [splitChunkMode, setSplitChunkMode] = useState("1k"); // "1k" | "5k"
+  const [selectedRaceCategory, setSelectedRaceCategory] = useState("all"); // "all" | "풀코스" | "하프" | "10K" | "5K"
   const [isRaceAssignModalOpen, setIsRaceAssignModalOpen] = useState(false);
   const [selectedRaceEntryId, setSelectedRaceEntryId] = useState("");
   const [customRaceNameInput, setCustomRaceNameInput] = useState("");
@@ -150,6 +151,20 @@ export default function PerformanceView({
     }
   }, [latestMonthKey, selectedMonth]);
 
+  // 전체 대회 활동 목록 및 등록된 대회 종목 목록
+  const allRaceActivities = useMemo(() => {
+    if (!activities) return [];
+    return activities.filter((act) => isRaceActivity(act, userRaces));
+  }, [activities, userRaces]);
+
+  const raceCategoryList = useMemo(() => {
+    const set = new Set();
+    allRaceActivities.forEach((act) => {
+      set.add(getRaceCategory(act, userRaces));
+    });
+    return Array.from(set);
+  }, [allRaceActivities, userRaces]);
+
   // 3. 선택된 월 및 대회 필터가 적용된 활동 목록
   const filteredActivities = useMemo(() => {
     if (!activities || activities.length === 0) return [];
@@ -166,13 +181,16 @@ export default function PerformanceView({
       });
     }
 
-    // 대회 기록만 보기 (사용자가 직접 제목을 수정한 대회명 필터)
+    // 대회 기록만 보기 (종목 필터 포함)
     if (filterRaceOnly) {
       list = list.filter((act) => isRaceActivity(act, userRaces));
+      if (selectedRaceCategory !== "all") {
+        list = list.filter((act) => getRaceCategory(act, userRaces) === selectedRaceCategory);
+      }
     }
 
     return list;
-  }, [activities, selectedMonth, filterRaceOnly, userRaces]);
+  }, [activities, selectedMonth, filterRaceOnly, selectedRaceCategory, userRaces]);
 
   // 4. 필터 변경 시 선택된 액티비티가 현재 목록에 없으면 첫 번째 활동 자동 선택
   useEffect(() => {
@@ -251,6 +269,73 @@ export default function PerformanceView({
       raceCount
     };
   }, [filteredActivities, selectedMonth, userRaces]);
+
+  // 6-2. '대회만' 모드 전용 레이스 통계 (총거리 합산 대신 완주 횟수, 최고 기록(PB), 최고 페이스, 최장 코스 산출)
+  const raceStats = useMemo(() => {
+    if (!filteredActivities || filteredActivities.length === 0) {
+      return {
+        totalFinishes: 0,
+        categorySummaryStr: "완주 기록 없음",
+        bestTimeFormatted: "-:--:--",
+        bestRaceName: "",
+        bestRaceCategory: "",
+        bestPaceFormatted: "-:--",
+        bestPaceRaceName: "",
+        longestCategory: "-",
+        longestDistanceKm: "0.0",
+        avgHr: 0
+      };
+    }
+
+    const totalFinishes = filteredActivities.length;
+
+    // 종목별 완주 횟수 집계 (풀코스, 하프, 10K, 5K 등)
+    const catMap = {};
+    filteredActivities.forEach((act) => {
+      const cat = getRaceCategory(act, userRaces);
+      catMap[cat] = (catMap[cat] || 0) + 1;
+    });
+
+    const categorySummaryStr = Object.entries(catMap)
+      .map(([cat, count]) => `${cat} ${count}회`)
+      .join(" · ");
+
+    // 1. 최고 페이스 대회
+    const sortedByPace = [...filteredActivities]
+      .filter((a) => a.avg_pace_seconds > 0)
+      .sort((a, b) => a.avg_pace_seconds - b.avg_pace_seconds);
+    const bestPaceAct = sortedByPace[0] || filteredActivities[0];
+
+    // 2. 최장 거리 대회
+    const sortedByDist = [...filteredActivities].sort(
+      (a, b) => (b.distance_meters || 0) - (a.distance_meters || 0)
+    );
+    const longestAct = sortedByDist[0];
+    const longestCategory = longestAct ? getRaceCategory(longestAct, userRaces) : "-";
+    const longestDistanceKm = longestAct ? (longestAct.distance_meters / 1000).toFixed(1) : "0.0";
+
+    // 3. 대표 최고 기록 (PB): 최장 코스 중 가장 빠른 기록 (또는 전체 중 가장 대표적인 대회 완주 기록)
+    const sameCategoryRaces = filteredActivities.filter(
+      (a) => getRaceCategory(a, userRaces) === longestCategory && a.duration_seconds > 0
+    );
+    const bestRaceInLongest = sameCategoryRaces.sort((a, b) => a.duration_seconds - b.duration_seconds)[0] || bestPaceAct;
+
+    const hrList = filteredActivities.filter((a) => a.avg_heart_rate);
+    const avgHr = hrList.length > 0 ? Math.round(hrList.reduce((s, a) => s + a.avg_heart_rate, 0) / hrList.length) : 0;
+
+    return {
+      totalFinishes,
+      categorySummaryStr: categorySummaryStr || `${totalFinishes}회 완주`,
+      bestTimeFormatted: formatDuration(bestRaceInLongest.duration_seconds),
+      bestRaceName: getActivityDisplayName(bestRaceInLongest, userRaces),
+      bestRaceCategory: getRaceCategory(bestRaceInLongest, userRaces),
+      bestPaceFormatted: formatPace(bestPaceAct.avg_pace_seconds).replace("/km", ""),
+      bestPaceRaceName: getActivityDisplayName(bestPaceAct, userRaces),
+      longestCategory,
+      longestDistanceKm,
+      avgHr
+    };
+  }, [filteredActivities, userRaces]);
 
   // 7. 선택된 액티비티 스마트 리포트 및 월간 종합 리포트 생성
   const smartReport = selectedActivity
@@ -379,33 +464,66 @@ export default function PerformanceView({
       {/* 2. 월별 거리 조회 select 박스 & 대회 기록 전용 필터 툴바 */}
       {hasActivities && (
         <div className="card-panel p-3 sm:p-3.5 flex flex-col md:flex-row md:items-center justify-between gap-2.5 sm:gap-3 bg-zinc-900/80 border-zinc-800/90 min-w-0">
-          {/* 월별 셀렉트 박스 */}
-          <div className="flex items-center gap-2 w-full md:max-w-md min-w-0">
-            <label htmlFor="month-select" className="text-xs font-bold text-zinc-300 flex items-center gap-1 shrink-0">
-              <span className="text-amber-400">📅</span>
-              <span className="whitespace-nowrap">월별 거리:</span>
-            </label>
-            <div className="relative flex-1 min-w-0">
-              <select
-                id="month-select"
-                value={selectedMonth}
-                onChange={(e) => setSelectedMonth(e.target.value)}
-                className="w-full appearance-none rounded-xl bg-zinc-950 border border-zinc-700/90 px-2.5 py-1.5 pr-7 text-xs font-semibold text-zinc-100 hover:border-amber-400/80 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition cursor-pointer shadow-inner truncate"
-              >
-                {monthStatsList.map((m) => (
-                  <option key={m.key} value={m.key}>
-                    {m.label} ({(m.distanceMeters / 1000).toFixed(1)}km · {m.count}회{m.raceCount > 0 ? ` · 🏆대회 ${m.raceCount}` : ""})
+          {filterRaceOnly ? (
+            /* 🏆 대회 모드일 때: 종목별 필터 셀렉트 박스 (월별 거리 합산 노출 차단) */
+            <div className="flex items-center gap-2 w-full md:max-w-md min-w-0">
+              <label htmlFor="race-category-select" className="text-xs font-bold text-zinc-300 flex items-center gap-1 shrink-0">
+                <span className="text-amber-400">🏆</span>
+                <span className="whitespace-nowrap">대회 종목:</span>
+              </label>
+              <div className="relative flex-1 min-w-0">
+                <select
+                  id="race-category-select"
+                  value={selectedRaceCategory}
+                  onChange={(e) => setSelectedRaceCategory(e.target.value)}
+                  className="w-full appearance-none rounded-xl bg-zinc-950 border border-amber-400/50 px-2.5 py-1.5 pr-7 text-xs font-semibold text-amber-300 hover:border-amber-400 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition cursor-pointer shadow-inner truncate"
+                >
+                  <option value="all">
+                    🏁 전체 종목 ({totalRaceCount}건 완주)
                   </option>
-                ))}
-                <option value="all">
-                  🌐 전체 기간 누적 ({totalAllKm.toFixed(1)}km · {activities.length}회{totalRaceCount > 0 ? ` · 🏆대회 ${totalRaceCount}` : ""})
-                </option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-zinc-400 text-[10px]">
-                ▼
+                  {raceCategoryList.map((cat) => {
+                    const count = allRaceActivities.filter((a) => getRaceCategory(a, userRaces) === cat).length;
+                    return (
+                      <option key={cat} value={cat}>
+                        {cat} 코스 ({count}건)
+                      </option>
+                    );
+                  })}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-zinc-400 text-[10px]">
+                  ▼
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            /* 🏃 일반 러닝 모드일 때: 월별 누적 마일리지 셀렉트 박스 */
+            <div className="flex items-center gap-2 w-full md:max-w-md min-w-0">
+              <label htmlFor="month-select" className="text-xs font-bold text-zinc-300 flex items-center gap-1 shrink-0">
+                <span className="text-amber-400">📅</span>
+                <span className="whitespace-nowrap">월별 거리:</span>
+              </label>
+              <div className="relative flex-1 min-w-0">
+                <select
+                  id="month-select"
+                  value={selectedMonth}
+                  onChange={(e) => setSelectedMonth(e.target.value)}
+                  className="w-full appearance-none rounded-xl bg-zinc-950 border border-zinc-700/90 px-2.5 py-1.5 pr-7 text-xs font-semibold text-zinc-100 hover:border-amber-400/80 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition cursor-pointer shadow-inner truncate"
+                >
+                  {monthStatsList.map((m) => (
+                    <option key={m.key} value={m.key}>
+                      {m.label} ({(m.distanceMeters / 1000).toFixed(1)}km · {m.count}회{m.raceCount > 0 ? ` · 🏆대회 ${m.raceCount}` : ""})
+                    </option>
+                  ))}
+                  <option value="all">
+                    🌐 전체 기간 누적 ({totalAllKm.toFixed(1)}km · {activities.length}회{totalRaceCount > 0 ? ` · 🏆대회 ${totalRaceCount}` : ""})
+                  </option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-zinc-400 text-[10px]">
+                  ▼
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* 대회 기록만 선택 토글 탭 */}
           <div className="flex items-center gap-2 w-full md:w-auto shrink-0 justify-between sm:justify-start">
@@ -450,84 +568,166 @@ export default function PerformanceView({
         </div>
       )}
 
-      {/* 3. 선택된 월/대회 기준 핵심 지표 4대 카드 (폰트, 크기, 높이 완벽 통일) */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-        {/* 1. 총 거리 */}
-        <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
-          <div className="flex items-center justify-between">
-            <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-              {filterRaceOnly ? `${periodSummary.periodLabel} 대회 총 거리` : `${periodSummary.periodLabel} 총 거리`}
+      {/* 3. 핵심 지표 4대 카드 (대회만 모드 시 총거리 합산 대신 완주 횟수, PB, 최고 페이스, 최장 코스 표출) */}
+      {filterRaceOnly && raceStats ? (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+          {/* 1. 대회 완주 횟수 (총거리 합산 대체) */}
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-amber-400/40 bg-zinc-900/95 flex flex-col justify-between min-h-[110px] shadow-sm">
+            <div className="flex items-center justify-between">
+              <p className="text-[11px] font-bold tracking-wider text-amber-300 uppercase">
+                대회 완주 (FINISHES)
+              </p>
+              <span className="text-sm">🏆</span>
+            </div>
+            <div className="flex items-baseline">
+              <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-mono">
+                {raceStats.totalFinishes}
+              </span>
+              <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">회 완주</span>
+            </div>
+            <p className="text-[10px] text-zinc-400 truncate">
+              {raceStats.categorySummaryStr}
             </p>
-            <span className="text-sm">🏃</span>
           </div>
-          <div className="flex items-baseline">
-            <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-mono">
-              {periodSummary.totalDistanceKm}
-            </span>
-            <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">km</span>
-          </div>
-          <p className="text-[10px] text-zinc-400 truncate">
-            총 {periodSummary.totalRuns}회 {filterRaceOnly ? "대회 완주" : "러닝"}
-            {periodSummary.raceCount > 0 && !filterRaceOnly && ` (대회 ${periodSummary.raceCount}건)`}
-          </p>
-        </div>
 
-        {/* 2. 총 소요 시간 */}
-        <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
-          <div className="flex items-center justify-between">
-            <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-              {filterRaceOnly ? "대회 총 소요 시간" : "기간 총 소요 시간"}
+          {/* 2. 대회 최고 기록 (PB) (총 소요시간 합산 대체) */}
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+            <div className="flex items-center justify-between">
+              <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                대회 최고 기록 (PB)
+              </p>
+              <span className="text-sm">⏱️</span>
+            </div>
+            <div className="flex items-baseline">
+              <span className="text-2xl sm:text-3xl font-black text-white tracking-tight font-mono">
+                {raceStats.bestTimeFormatted}
+              </span>
+            </div>
+            <p className="text-[10px] text-zinc-400 font-mono truncate" title={`${raceStats.bestRaceName} (${raceStats.bestRaceCategory})`}>
+              {raceStats.bestRaceName ? `${raceStats.bestRaceName} (${raceStats.bestRaceCategory})` : "기록 대기 중"}
             </p>
-            <span className="text-sm">⏱️</span>
           </div>
-          <div className="flex items-baseline">
-            <span className="text-2xl sm:text-3xl font-black text-white tracking-tight font-mono">
-              {periodSummary.totalDurationFormatted}
-            </span>
-          </div>
-          <p className="text-[10px] text-zinc-400 font-mono truncate">
-            {formatDuration(periodSummary.totalSeconds)} 완주 누적
-          </p>
-        </div>
 
-        {/* 3. 평균 페이스 */}
-        <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
-          <div className="flex items-center justify-between">
-            <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-              {filterRaceOnly ? "대회 평균 페이스" : "기간 평균 페이스"}
+          {/* 3. 대회 최고 페이스 */}
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+            <div className="flex items-center justify-between">
+              <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                대회 최고 페이스
+              </p>
+              <span className="text-sm">⚡</span>
+            </div>
+            <div className="flex items-baseline">
+              <span className="text-2xl sm:text-3xl font-black text-zinc-100 tracking-tight font-mono">
+                {raceStats.bestPaceFormatted}
+              </span>
+              <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">/km</span>
+            </div>
+            <p className="text-[10px] text-emerald-400 truncate" title={raceStats.bestPaceRaceName}>
+              {raceStats.bestPaceRaceName || "레이스 최고 속도"}
             </p>
-            <span className="text-sm">⚡</span>
           </div>
-          <div className="flex items-baseline">
-            <span className="text-2xl sm:text-3xl font-black text-zinc-100 tracking-tight font-mono">
-              {periodSummary.avgPaceSeconds > 0 ? formatPace(periodSummary.avgPaceSeconds).replace("/km", "") : "-:--"}
-            </span>
-            <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">/km</span>
-          </div>
-          <p className="text-[10px] text-emerald-400 truncate">
-            {periodSummary.avgPaceSeconds > 0 ? (filterRaceOnly ? "대회 레이스 페이스" : "유산소 지속 페이스") : "기록 대기 중"}
-          </p>
-        </div>
 
-        {/* 4. 평균 심박수 & 효율 */}
-        <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
-          <div className="flex items-center justify-between">
-            <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
-              {filterRaceOnly ? "대회 평균 심박수" : "평균 심박수"}
+          {/* 4. 최장 완주 코스 */}
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+            <div className="flex items-center justify-between">
+              <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                최장 완주 코스
+              </p>
+              <span className="text-sm">🏅</span>
+            </div>
+            <div className="flex items-baseline">
+              <span className="text-2xl sm:text-3xl font-black text-rose-400 tracking-tight font-mono">
+                {raceStats.longestCategory}
+              </span>
+              {raceStats.longestDistanceKm !== "0.0" && (
+                <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">({raceStats.longestDistanceKm}km)</span>
+              )}
+            </div>
+            <p className="text-[10px] text-zinc-400 truncate">
+              {raceStats.avgHr ? `대회 평균 심박 ${raceStats.avgHr} bpm` : "공식 코스 완주"}
             </p>
-            <span className="text-sm">❤️</span>
           </div>
-          <div className="flex items-baseline">
-            <span className="text-2xl sm:text-3xl font-black text-rose-400 tracking-tight font-mono">
-              {periodSummary.avgHeartRate > 0 ? periodSummary.avgHeartRate : "-"}
-            </span>
-            {periodSummary.avgHeartRate > 0 && <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">bpm</span>}
-          </div>
-          <p className="text-[10px] text-emerald-400/90 truncate">
-            {filterRaceOnly ? `${periodSummary.raceCount}개 대회 완주` : (hasActivities ? `심폐효율 ${monthlySummary.aerobicEfGrowth}` : "데이터 없음")}
-          </p>
         </div>
-      </div>
+      ) : (
+        /* 🏃 '전체 활동' 모드: 기간/월별 총거리 및 마일리지 집계 카드 */
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
+          {/* 1. 총 거리 */}
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+            <div className="flex items-center justify-between">
+              <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                {periodSummary.periodLabel} 총 거리
+              </p>
+              <span className="text-sm">🏃</span>
+            </div>
+            <div className="flex items-baseline">
+              <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-mono">
+                {periodSummary.totalDistanceKm}
+              </span>
+              <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">km</span>
+            </div>
+            <p className="text-[10px] text-zinc-400 truncate">
+              총 {periodSummary.totalRuns}회 러닝
+              {periodSummary.raceCount > 0 && ` (대회 ${periodSummary.raceCount}건)`}
+            </p>
+          </div>
+
+          {/* 2. 총 소요 시간 */}
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+            <div className="flex items-center justify-between">
+              <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                기간 총 소요 시간
+              </p>
+              <span className="text-sm">⏱️</span>
+            </div>
+            <div className="flex items-baseline">
+              <span className="text-2xl sm:text-3xl font-black text-white tracking-tight font-mono">
+                {periodSummary.totalDurationFormatted}
+              </span>
+            </div>
+            <p className="text-[10px] text-zinc-400 font-mono truncate">
+              {formatDuration(periodSummary.totalSeconds)} 완주 누적
+            </p>
+          </div>
+
+          {/* 3. 평균 페이스 */}
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+            <div className="flex items-center justify-between">
+              <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                기간 평균 페이스
+              </p>
+              <span className="text-sm">⚡</span>
+            </div>
+            <div className="flex items-baseline">
+              <span className="text-2xl sm:text-3xl font-black text-zinc-100 tracking-tight font-mono">
+                {periodSummary.avgPaceSeconds > 0 ? formatPace(periodSummary.avgPaceSeconds).replace("/km", "") : "-:--"}
+              </span>
+              <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">/km</span>
+            </div>
+            <p className="text-[10px] text-emerald-400 truncate">
+              {periodSummary.avgPaceSeconds > 0 ? "유산소 지속 페이스" : "기록 대기 중"}
+            </p>
+          </div>
+
+          {/* 4. 평균 심박수 & 효율 */}
+          <div className="card-panel p-3.5 sm:p-4 space-y-2 border-zinc-700/80 bg-zinc-900/90 flex flex-col justify-between min-h-[110px] shadow-sm">
+            <div className="flex items-center justify-between">
+              <p className="text-[11px] font-bold tracking-wider text-zinc-400 uppercase">
+                평균 심박수
+              </p>
+              <span className="text-sm">❤️</span>
+            </div>
+            <div className="flex items-baseline">
+              <span className="text-2xl sm:text-3xl font-black text-rose-400 tracking-tight font-mono">
+                {periodSummary.avgHeartRate > 0 ? periodSummary.avgHeartRate : "-"}
+              </span>
+              {periodSummary.avgHeartRate > 0 && <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">bpm</span>}
+            </div>
+            <p className="text-[10px] text-emerald-400/90 truncate">
+              {hasActivities ? `심폐효율 ${monthlySummary.aerobicEfGrowth}` : "데이터 없음"}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* 4. 데이터가 없을 때의 Empty State */}
       {!hasActivities && (
