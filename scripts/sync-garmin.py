@@ -123,8 +123,9 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
         # 가민 세션 토큰 디렉토리 (로그인 성공 시 세션 캐싱하여 추후 429 차단 완전 방지)
         tokenstore_dir = os.path.join(os.path.expanduser("~"), ".racebook_garmin_tokens", user_id)
         os.makedirs(tokenstore_dir, exist_ok=True)
+        token_file = os.path.join(tokenstore_dir, "garmin_tokens.json")
 
-        garmin = Garmin(email, password)
+        garmin = Garmin(email, password or None)
         garmin.login(tokenstore_dir)
         print("[+] Garmin SSO Login successful!")
 
@@ -286,18 +287,29 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
             new_count += 1
             existing_ids.add(act_id)
 
-        # 동기화 상태 성공 갱신 시도
+        # 동기화 상태 성공 및 최신 가민 토큰 갱신 시도
         now_iso = datetime.now(timezone.utc).isoformat()
         try:
-            supabase_client.from_("user_garmin_auth").upsert({
+            import base64
+            auth_update_payload = {
                 "user_id": user_id,
                 "garmin_email": email,
                 "sync_status": "success",
                 "last_error_message": None,
                 "last_sync_at": now_iso
-            }, on_conflict="user_id").execute()
-        except Exception:
-            pass
+            }
+            if os.path.exists(token_file):
+                try:
+                    with open(token_file, "r", encoding="utf-8") as tf:
+                        tok_content = tf.read().strip()
+                    if tok_content:
+                        auth_update_payload["session_token_encrypted"] = base64.b64encode(tok_content.encode("utf-8")).decode("utf-8")
+                except Exception as tok_err:
+                    print(f"[!] Warning reading token_file: {tok_err}")
+
+            supabase_client.from_("user_garmin_auth").upsert(auth_update_payload, on_conflict="user_id").execute()
+        except Exception as e:
+            print(f"[!] Update user_garmin_auth warning: {e}")
 
         print(f"\n[DONE] Sync finished successfully!")
         print(f"       - 신규 추가/수집된 러닝: {new_count}건")
@@ -438,12 +450,24 @@ def main():
             email = u.get("garmin_email")
             enc_token = u.get("session_token_encrypted")
             tokenstore_dir = os.path.join(os.path.expanduser("~"), ".racebook_garmin_tokens", uid)
+            os.makedirs(tokenstore_dir, exist_ok=True)
             token_file = os.path.join(tokenstore_dir, "garmin_tokens.json")
 
             password = ""
             if enc_token:
                 try:
-                    password = base64.b64decode(enc_token).decode("utf-8")
+                    import json
+                    decoded = base64.b64decode(enc_token).decode("utf-8")
+                    try:
+                        token_obj = json.loads(decoded)
+                        if isinstance(token_obj, dict) and any(k in token_obj for k in ("di_token", "oauth_token", "di_refresh_token")):
+                            with open(token_file, "w", encoding="utf-8") as tf:
+                                tf.write(decoded)
+                            print(f"[+] Restored Garmin session token from Supabase for {email}")
+                        else:
+                            password = decoded
+                    except Exception:
+                        password = decoded
                 except Exception:
                     password = enc_token
 
