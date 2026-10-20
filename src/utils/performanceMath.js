@@ -300,54 +300,112 @@ export function getActivityDisplayName(activity, userRaces = []) {
   return activity.activity_name || "러닝";
 }
 
-// 13. 대회 카테고리 태그 반환 (10K / 하프 / 풀코스 / 5K / 대회)
-export function getRaceCategory(activity, userRaces = []) {
+// 13. 대회 목표 코스 및 완주 / DNF(미완주) 정밀 판정 함수
+// - 사용자가 등록한 종목(raceType) 또는 대회/활동명의 코스 키워드(풀, 하프, 10k 등)를 기준으로 목표 거리를 산출합니다.
+// - 실제 주행 거리가 오차범위(~1km)를 초과하여 부족한 경우(예: 하프 신청 후 12km 주행, 풀 신청 후 21km 주행 등) DNF(미완주)로 판정합니다.
+export function getRaceCompletionInfo(activity, userRaces = []) {
+  if (!activity) {
+    return {
+      targetCategory: "대회",
+      targetKm: 0,
+      minKm: 0,
+      ranKm: 0,
+      isCompleted: false,
+      isDnf: false,
+      statusLabel: "대회"
+    };
+  }
+
   const km = (Number(activity?.distance_meters) || 0) / 1000;
   const rawName = (activity?.activity_name || "").toLowerCase();
   const raceName = (activity?.race_name || "").toLowerCase();
   const combinedName = `${rawName} ${raceName}`;
 
+  let targetCategory = null;
+  let targetKm = 0;
+  let minKm = 0;
+
   // 1순위: 사용자가 '나의 마라톤'에서 직접 신청/등록한 참가 종목(raceType) 최우선 반영!
+  let matched = null;
   if (Array.isArray(userRaces) && userRaces.length > 0) {
-    const matched = findMatchedUserRace(activity, userRaces);
+    matched = findMatchedUserRace(activity, userRaces);
     if (matched?.raceType) {
       const rt = matched.raceType.toLowerCase();
-      if (rt === "full" || rt.includes("풀")) return "풀코스";
-      if (rt === "half" || rt.includes("하프")) return "하프";
-      if (rt === "10k" || rt.includes("10")) return "10K";
-      if (rt === "5k" || rt.includes("5")) return "5K";
-    }
-  }
-
-  // 2순위: 가민 활동의 실제 주행 거리 (러너가 실제로 완주한 거리 기반 판정)
-  // 대회가 풀코스를 포함하고 있더라도 내가 21km를 달렸으면 무조건 '하프'
-  if (km >= 40.0) return "풀코스";
-  if (km >= 19.5 && km <= 23.5) return "하프";
-  if (km >= 9.0 && km <= 11.5) return "10K";
-  if (km >= 4.5 && km <= 5.8) return "5K";
-
-  // 3순위: 활동명 또는 대회명에 명시된 종목 키워드
-  if (combinedName.includes("풀코스") || combinedName.includes("풀 마라톤") || combinedName.includes("full")) return "풀코스";
-  if (combinedName.includes("하프") || combinedName.includes("half") || combinedName.includes("21k")) return "하프";
-  if (combinedName.includes("10k") || combinedName.includes("10km")) return "10K";
-  if (combinedName.includes("5k") || combinedName.includes("5km")) return "5K";
-
-  // 4순위: 매칭된 대회의 종목 텍스트가 단일 종목(예: '10km' 단독 대회)인 경우에만 참조
-  if (Array.isArray(userRaces) && userRaces.length > 0) {
-    const matched = findMatchedUserRace(activity, userRaces);
-    if (matched?.distances) {
-      const d = matched.distances.toLowerCase();
-      // 여러 종목(풀, 하프, 10k 등)이 나열된 경우 상위 종목 오탐 방지를 위해 단일 종목일 때만 허용
-      if (!d.includes(",") && !d.includes("/") && !d.includes("·") && !d.includes(" 및 ")) {
-        if (d.includes("풀") || d.includes("full")) return "풀코스";
-        if (d.includes("하프") || d.includes("half")) return "하프";
-        if (d.includes("10k") || d.includes("10km")) return "10K";
-        if (d.includes("5k") || d.includes("5km")) return "5K";
+      if (rt === "full" || rt.includes("풀")) {
+        targetCategory = "풀코스"; targetKm = 42.195; minKm = 41.0;
+      } else if (rt === "half" || rt.includes("하프")) {
+        targetCategory = "하프"; targetKm = 21.0975; minKm = 20.0;
+      } else if (rt === "10k" || rt.includes("10")) {
+        targetCategory = "10K"; targetKm = 10.0; minKm = 9.0;
+      } else if (rt === "5k" || rt.includes("5")) {
+        targetCategory = "5K"; targetKm = 5.0; minKm = 4.5;
       }
     }
   }
 
-  return "대회";
+  // 2순위: 활동명 또는 대회명에 명시된 종목 키워드 (예: '강남국제하프마라톤', '서울마라톤 풀코스')
+  if (!targetCategory) {
+    if (combinedName.includes("풀코스") || combinedName.includes("풀 마라톤") || combinedName.includes("full")) {
+      targetCategory = "풀코스"; targetKm = 42.195; minKm = 41.0;
+    } else if (combinedName.includes("하프") || combinedName.includes("half") || combinedName.includes("21k")) {
+      targetCategory = "하프"; targetKm = 21.0975; minKm = 20.0;
+    } else if (combinedName.includes("10k") || combinedName.includes("10km")) {
+      targetCategory = "10K"; targetKm = 10.0; minKm = 9.0;
+    } else if (combinedName.includes("5k") || combinedName.includes("5km")) {
+      targetCategory = "5K"; targetKm = 5.0; minKm = 4.5;
+    }
+  }
+
+  // 3순위: 매칭된 대회의 종목 텍스트가 단일 종목인 경우
+  if (!targetCategory && matched?.distances) {
+    const d = matched.distances.toLowerCase();
+    if (!d.includes(",") && !d.includes("/") && !d.includes("·") && !d.includes(" 및 ")) {
+      if (d.includes("풀") || d.includes("full")) {
+        targetCategory = "풀코스"; targetKm = 42.195; minKm = 41.0;
+      } else if (d.includes("하프") || d.includes("half")) {
+        targetCategory = "하프"; targetKm = 21.0975; minKm = 20.0;
+      } else if (d.includes("10k") || d.includes("10km")) {
+        targetCategory = "10K"; targetKm = 10.0; minKm = 9.0;
+      } else if (d.includes("5k") || d.includes("5km")) {
+        targetCategory = "5K"; targetKm = 5.0; minKm = 4.5;
+      }
+    }
+  }
+
+  // 4순위: 목표 종목이 명시되지 않은 경우, 실제 주행 거리 기반으로 판정
+  if (!targetCategory) {
+    if (km >= 40.0) {
+      targetCategory = "풀코스"; targetKm = 42.195; minKm = 41.0;
+    } else if (km >= 19.5 && km <= 23.5) {
+      targetCategory = "하프"; targetKm = 21.0975; minKm = 20.0;
+    } else if (km >= 9.0 && km <= 11.5) {
+      targetCategory = "10K"; targetKm = 10.0; minKm = 9.0;
+    } else if (km >= 4.5 && km <= 5.8) {
+      targetCategory = "5K"; targetKm = 5.0; minKm = 4.5;
+    } else {
+      targetCategory = "대회"; targetKm = km; minKm = km;
+    }
+  }
+
+  // 완주 / DNF 여부 판정 (오차범위 1km 내외 반영)
+  const isDnf = targetKm > 0 && minKm > 0 && km < minKm;
+  const isCompleted = !isDnf;
+
+  return {
+    targetCategory,
+    targetKm,
+    minKm,
+    ranKm: Number(km.toFixed(2)),
+    isCompleted,
+    isDnf,
+    statusLabel: isDnf ? `${targetCategory} DNF` : `${targetCategory} 완주`
+  };
+}
+
+// 14. 대회 카테고리 태그 반환 (10K / 하프 / 풀코스 / 5K / 대회)
+export function getRaceCategory(activity, userRaces = []) {
+  const info = getRaceCompletionInfo(activity, userRaces);
+  return info.targetCategory;
 }
 
 // 10. 월간 전체 러닝 통합 스포츠 과학 리포트 생성기

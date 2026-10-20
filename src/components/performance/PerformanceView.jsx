@@ -6,6 +6,7 @@ import {
   generateMonthlyReport,
   isRaceActivity,
   getRaceCategory,
+  getRaceCompletionInfo,
   getActivityDisplayName,
   findMatchedUserRace,
   groupLapsByChunk
@@ -159,10 +160,17 @@ export default function PerformanceView({
 
   const raceCategoryList = useMemo(() => {
     const set = new Set();
+    let hasDnf = false;
     allRaceActivities.forEach((act) => {
-      set.add(getRaceCategory(act, userRaces));
+      const info = getRaceCompletionInfo(act, userRaces);
+      set.add(info.targetCategory);
+      if (info.isDnf) hasDnf = true;
     });
-    return Array.from(set);
+    const list = Array.from(set);
+    if (hasDnf) {
+      list.push("DNF (미완주)");
+    }
+    return list;
   }, [allRaceActivities, userRaces]);
 
   // 3. 선택된 월 및 대회 필터가 적용된 활동 목록
@@ -185,7 +193,11 @@ export default function PerformanceView({
     if (filterRaceOnly) {
       list = list.filter((act) => isRaceActivity(act, userRaces));
       if (selectedRaceCategory !== "all") {
-        list = list.filter((act) => getRaceCategory(act, userRaces) === selectedRaceCategory);
+        if (selectedRaceCategory === "DNF (미완주)") {
+          list = list.filter((act) => getRaceCompletionInfo(act, userRaces).isDnf);
+        } else {
+          list = list.filter((act) => getRaceCompletionInfo(act, userRaces).targetCategory === selectedRaceCategory);
+        }
       }
     }
 
@@ -275,6 +287,7 @@ export default function PerformanceView({
     if (!filteredActivities || filteredActivities.length === 0) {
       return {
         totalFinishes: 0,
+        dnfCount: 0,
         categorySummaryStr: "완주 기록 없음",
         bestTimeFormatted: "-:--:--",
         bestRaceName: "",
@@ -287,50 +300,71 @@ export default function PerformanceView({
       };
     }
 
-    const totalFinishes = filteredActivities.length;
+    // 완주한 대회와 DNF(미완주) 대회 정밀 분리
+    const completedRaces = filteredActivities.filter((act) => {
+      return getRaceCompletionInfo(act, userRaces).isCompleted;
+    });
+    const dnfRaces = filteredActivities.filter((act) => {
+      return getRaceCompletionInfo(act, userRaces).isDnf;
+    });
 
-    // 종목별 완주 횟수 집계 (풀코스, 하프, 10K, 5K 등)
+    const totalFinishes = completedRaces.length;
+    const dnfCount = dnfRaces.length;
+
+    // 종목별 공식 완주 횟수 집계 (풀코스, 하프, 10K, 5K 등)
     const catMap = {};
-    filteredActivities.forEach((act) => {
+    completedRaces.forEach((act) => {
       const cat = getRaceCategory(act, userRaces);
       catMap[cat] = (catMap[cat] || 0) + 1;
     });
 
-    const categorySummaryStr = Object.entries(catMap)
+    let categorySummaryStr = Object.entries(catMap)
       .map(([cat, count]) => `${cat} ${count}회`)
       .join(" · ");
 
-    // 1. 최고 페이스 대회
-    const sortedByPace = [...filteredActivities]
+    if (dnfCount > 0) {
+      categorySummaryStr = categorySummaryStr
+        ? `${categorySummaryStr} (DNF ${dnfCount}건 제외)`
+        : `DNF ${dnfCount}건 (공식 완주 없음)`;
+    }
+
+    // 1. 최고 페이스 대회 (공식 완주 대회 대상, 완주 기록이 없으면 전체 중 선별)
+    const paceCandidates = completedRaces.length > 0 ? completedRaces : filteredActivities;
+    const sortedByPace = [...paceCandidates]
       .filter((a) => a.avg_pace_seconds > 0)
       .sort((a, b) => a.avg_pace_seconds - b.avg_pace_seconds);
-    const bestPaceAct = sortedByPace[0] || filteredActivities[0];
+    const bestPaceAct = sortedByPace[0] || paceCandidates[0];
 
-    // 2. 최장 거리 대회
-    const sortedByDist = [...filteredActivities].sort(
+    // 2. 최장 거리 대회 (공식 완주 대회 기준)
+    const sortedByDist = [...completedRaces].sort(
       (a, b) => (b.distance_meters || 0) - (a.distance_meters || 0)
     );
     const longestAct = sortedByDist[0];
-    const longestCategory = longestAct ? getRaceCategory(longestAct, userRaces) : "-";
+    const longestCategory = longestAct ? getRaceCategory(longestAct, userRaces) : (dnfCount > 0 ? "DNF (미완주)" : "-");
     const longestDistanceKm = longestAct ? (longestAct.distance_meters / 1000).toFixed(1) : "0.0";
 
-    // 3. 대표 최고 기록 (PB): 최장 코스 중 가장 빠른 기록 (또는 전체 중 가장 대표적인 대회 완주 기록)
-    const sameCategoryRaces = filteredActivities.filter(
-      (a) => getRaceCategory(a, userRaces) === longestCategory && a.duration_seconds > 0
-    );
-    const bestRaceInLongest = sameCategoryRaces.sort((a, b) => a.duration_seconds - b.duration_seconds)[0] || bestPaceAct;
+    // 3. 대표 최고 기록 (PB): 완주한 최장 코스 중 가장 빠른 기록!
+    // (DNF인 12km 강남국제하프마라톤 같은 미완주 활동은 PB에 절대 등록되지 않음)
+    let bestRaceInLongest = null;
+    if (longestAct) {
+      const sameCategoryRaces = completedRaces.filter(
+        (a) => getRaceCategory(a, userRaces) === longestCategory && a.duration_seconds > 0
+      );
+      bestRaceInLongest = sameCategoryRaces.sort((a, b) => a.duration_seconds - b.duration_seconds)[0] || longestAct;
+    }
 
     const hrList = filteredActivities.filter((a) => a.avg_heart_rate);
     const avgHr = hrList.length > 0 ? Math.round(hrList.reduce((s, a) => s + a.avg_heart_rate, 0) / hrList.length) : 0;
 
     return {
       totalFinishes,
-      categorySummaryStr: categorySummaryStr || `${totalFinishes}회 완주`,
-      bestTimeFormatted: formatDuration(bestRaceInLongest.duration_seconds),
-      bestRaceName: getActivityDisplayName(bestRaceInLongest, userRaces),
-      bestRaceCategory: getRaceCategory(bestRaceInLongest, userRaces),
-      bestPaceFormatted: formatPace(bestPaceAct.avg_pace_seconds).replace("/km", ""),
-      bestPaceRaceName: getActivityDisplayName(bestPaceAct, userRaces),
+      dnfCount,
+      categorySummaryStr: categorySummaryStr || (totalFinishes > 0 ? `${totalFinishes}회 완주` : "완주 기록 없음"),
+      bestTimeFormatted: bestRaceInLongest ? formatDuration(bestRaceInLongest.duration_seconds) : "-:--:--",
+      bestRaceName: bestRaceInLongest ? getActivityDisplayName(bestRaceInLongest, userRaces) : (dnfCount > 0 ? "공식 완주 기록 없음 (DNF)" : "기록 대기 중"),
+      bestRaceCategory: bestRaceInLongest ? getRaceCategory(bestRaceInLongest, userRaces) : "-",
+      bestPaceFormatted: bestPaceAct ? formatPace(bestPaceAct.avg_pace_seconds).replace("/km", "") : "-:--",
+      bestPaceRaceName: bestPaceAct ? getActivityDisplayName(bestPaceAct, userRaces) : "",
       longestCategory,
       longestDistanceKm,
       avgHr
@@ -479,13 +513,19 @@ export default function PerformanceView({
                   className="w-full appearance-none rounded-xl bg-zinc-950 border border-amber-400/50 px-2.5 py-1.5 pr-7 text-xs font-semibold text-amber-300 hover:border-amber-400 focus:border-amber-400 focus:outline-none focus:ring-1 focus:ring-amber-400 transition cursor-pointer shadow-inner truncate"
                 >
                   <option value="all">
-                    🏁 전체 종목 ({totalRaceCount}건 완주)
+                    🏁 전체 종목 ({allRaceActivities.filter((a) => getRaceCompletionInfo(a, userRaces).isCompleted).length}건 완주{allRaceActivities.some((a) => getRaceCompletionInfo(a, userRaces).isDnf) ? ` · DNF ${allRaceActivities.filter((a) => getRaceCompletionInfo(a, userRaces).isDnf).length}건` : ""})
                   </option>
                   {raceCategoryList.map((cat) => {
-                    const count = allRaceActivities.filter((a) => getRaceCategory(a, userRaces) === cat).length;
+                    const isDnfCat = cat === "DNF (미완주)";
+                    const count = isDnfCat
+                      ? allRaceActivities.filter((a) => getRaceCompletionInfo(a, userRaces).isDnf).length
+                      : allRaceActivities.filter((a) => {
+                          const info = getRaceCompletionInfo(a, userRaces);
+                          return info.targetCategory === cat && info.isCompleted;
+                        }).length;
                     return (
                       <option key={cat} value={cat}>
-                        {cat} 코스 ({count}건)
+                        {isDnfCat ? `⚠️ ${cat} (${count}건)` : `${cat} 코스 (${count}건 완주)`}
                       </option>
                     );
                   })}
@@ -579,11 +619,16 @@ export default function PerformanceView({
               </p>
               <span className="text-sm">🏆</span>
             </div>
-            <div className="flex items-baseline">
+            <div className="flex items-baseline flex-wrap gap-1">
               <span className="text-2xl sm:text-3xl font-black text-amber-400 tracking-tight font-mono">
                 {raceStats.totalFinishes}
               </span>
-              <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-1">회 완주</span>
+              <span className="text-xs sm:text-sm font-bold text-zinc-400 ml-0.5">회 완주</span>
+              {raceStats.dnfCount > 0 && (
+                <span className="ml-1 text-[10px] font-bold text-rose-300 bg-rose-500/20 border border-rose-500/35 px-1.5 py-0.5 rounded">
+                  DNF {raceStats.dnfCount}건
+                </span>
+              )}
             </div>
             <p className="text-[10px] text-zinc-400 line-clamp-2 break-words leading-tight" title={raceStats.categorySummaryStr}>
               {raceStats.categorySummaryStr}
@@ -798,13 +843,15 @@ export default function PerformanceView({
                   >
                     {filteredActivities.map((act) => {
                       const isRace = isRaceActivity(act, userRaces);
+                      const compInfo = isRace ? getRaceCompletionInfo(act, userRaces) : null;
+                      const isDnf = compInfo?.isDnf;
                       const displayName = getActivityDisplayName(act, userRaces);
                       const d = act.start_time ? new Date(act.start_time) : null;
                       const dateStr = d ? `${d.getMonth() + 1}.${d.getDate()}` : "";
                       const distKm = (act.distance_meters / 1000).toFixed(1);
                       return (
                         <option key={act.activity_id} value={act.activity_id}>
-                          {isRace ? "🏆 " : ""}{dateStr} · {displayName} ({distKm}km · {formatPace(act.avg_pace_seconds)})
+                          {isRace ? (isDnf ? "⚠️ [DNF] " : "🏆 ") : ""}{dateStr} · {displayName} ({distKm}km · {formatPace(act.avg_pace_seconds)})
                         </option>
                       );
                     })}
@@ -847,7 +894,9 @@ export default function PerformanceView({
               {displayedActivities.map((act) => {
                 const isSelected = act.activity_id === selectedActivityId;
                 const isRace = isRaceActivity(act, userRaces);
-                const raceTag = isRace ? getRaceCategory(act, userRaces) : null;
+                const compInfo = isRace ? getRaceCompletionInfo(act, userRaces) : null;
+                const isDnf = compInfo?.isDnf;
+                const raceTag = isRace ? compInfo.targetCategory : null;
                 const displayName = getActivityDisplayName(act, userRaces);
                 const d = act.start_time ? new Date(act.start_time) : null;
                 const dateText = d ? d.toLocaleDateString("ko-KR", { month: "numeric", day: "numeric", weekday: "short" }) : "";
@@ -860,7 +909,9 @@ export default function PerformanceView({
                       isSelected
                         ? "border-amber-400/90 bg-amber-400/10 text-zinc-100 shadow-md ring-1 ring-amber-400/30"
                         : isRace
-                        ? "border-amber-500/30 bg-zinc-900/70 text-zinc-300 hover:border-amber-400/60 hover:bg-zinc-900"
+                        ? isDnf
+                          ? "border-rose-500/40 bg-zinc-900/80 text-zinc-300 hover:border-rose-400 hover:bg-zinc-900"
+                          : "border-amber-500/30 bg-zinc-900/70 text-zinc-300 hover:border-amber-400/60 hover:bg-zinc-900"
                         : "border-zinc-800/80 bg-zinc-900/40 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
                     }`}
                   >
@@ -872,9 +923,17 @@ export default function PerformanceView({
                         </span>
 
                         {isRace && (
-                          <span className="text-[10px] font-extrabold text-amber-300 bg-amber-400/20 px-1.5 py-0.5 rounded border border-amber-400/40 shrink-0">
-                            🏆 {raceTag}
-                          </span>
+                          isDnf ? (
+                            <span className="text-[10px] font-extrabold text-rose-300 bg-rose-500/20 px-1.5 py-0.5 rounded border border-rose-500/40 shrink-0 flex items-center gap-1">
+                              <span>⚠️</span>
+                              <span>{raceTag} DNF</span>
+                              <span className="text-[9px] font-mono text-rose-400">({compInfo.ranKm}km)</span>
+                            </span>
+                          ) : (
+                            <span className="text-[10px] font-extrabold text-amber-300 bg-amber-400/20 px-1.5 py-0.5 rounded border border-amber-400/40 shrink-0">
+                              🏆 {raceTag}
+                            </span>
+                          )
                         )}
 
                         <span className={`text-xs sm:text-sm font-bold break-words leading-snug ${isSelected ? "text-amber-300 font-extrabold" : "text-zinc-100"}`}>
@@ -889,8 +948,12 @@ export default function PerformanceView({
 
                     {/* 2행: 핵심 수치 뱃지 (거리, 시간, 평균 페이스, 심박수) */}
                     <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap text-xs font-mono pt-0.5">
-                      {/* 총 거리 강조 (앰버 골드 뱃지) */}
-                      <span className="font-black text-xs text-amber-400 bg-amber-400/15 border border-amber-400/30 px-2 py-0.5 rounded-md tracking-tight shrink-0 shadow-sm">
+                      {/* 총 거리 강조 (DNF면 로즈 뱃지, 완주면 앰버 골드 뱃지) */}
+                      <span className={`font-black text-xs px-2 py-0.5 rounded-md tracking-tight shrink-0 shadow-sm ${
+                        isDnf
+                          ? "text-rose-400 bg-rose-500/15 border border-rose-500/35"
+                          : "text-amber-400 bg-amber-400/15 border border-amber-400/30"
+                      }`}>
                         {(act.distance_meters / 1000).toFixed(2)} km
                       </span>
 
@@ -939,7 +1002,9 @@ export default function PerformanceView({
         <div className="card-panel p-4 space-y-4">
           {(() => {
             const isCurrentSelectedRace = isRaceActivity(selectedActivity, userRaces);
-            const currentRaceCategory = isCurrentSelectedRace ? getRaceCategory(selectedActivity, userRaces) : null;
+            const currentCompInfo = isCurrentSelectedRace ? getRaceCompletionInfo(selectedActivity, userRaces) : null;
+            const isCurrentSelectedDnf = currentCompInfo?.isDnf;
+            const currentRaceCategory = currentCompInfo?.targetCategory || getRaceCategory(selectedActivity, userRaces);
             const currentDisplayName = getActivityDisplayName(selectedActivity, userRaces);
             const matchedUserRace = findMatchedUserRace(selectedActivity, userRaces);
 
@@ -950,10 +1015,17 @@ export default function PerformanceView({
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-lg font-black text-zinc-100 break-words leading-snug">{currentDisplayName}</h3>
                       {isCurrentSelectedRace ? (
-                        <span className="rounded-full bg-amber-400/20 border border-amber-400/40 px-2.5 py-0.5 text-[11px] font-extrabold text-amber-300 flex items-center gap-1 shrink-0">
-                          <span>🏆</span>
-                          <span>{currentRaceCategory}</span>
-                        </span>
+                        isCurrentSelectedDnf ? (
+                          <span className="rounded-full bg-rose-500/20 border border-rose-500/40 px-2.5 py-0.5 text-[11px] font-extrabold text-rose-300 flex items-center gap-1 shrink-0">
+                            <span>⚠️</span>
+                            <span>{currentRaceCategory} DNF (미완주)</span>
+                          </span>
+                        ) : (
+                          <span className="rounded-full bg-amber-400/20 border border-amber-400/40 px-2.5 py-0.5 text-[11px] font-extrabold text-amber-300 flex items-center gap-1 shrink-0">
+                            <span>🏆</span>
+                            <span>{currentRaceCategory} 완주</span>
+                          </span>
+                        )
                       ) : (
                         <span className="rounded-full bg-zinc-800 border border-zinc-700 px-2 py-0.5 text-[10px] font-semibold text-zinc-400 shrink-0">
                           🏃 일반 러닝
@@ -986,17 +1058,27 @@ export default function PerformanceView({
                                 setIsRaceAssignModalOpen(true);
                                 return;
                               }
+                              if (isCurrentSelectedDnf) {
+                                const confirmSync = window.confirm(
+                                  `이 활동은 목표 코스 미완주(DNF) 기록(${(selectedActivity.distance_meters / 1000).toFixed(1)}km)입니다.\n그래도 '${targetRace.name}'에 기록을 동기화하시겠습니까?`
+                                );
+                                if (!confirmSync) return;
+                              }
                               const res = await onSyncResultToUserRace(targetRace.entryId || targetRace.id, selectedActivity);
                               if (res?.success) {
-                                setSyncFeedback(`'${targetRace.name}'에 완주 기록(${formatDuration(selectedActivity.duration_seconds)})이 성공적으로 동기화되었습니다!`);
+                                setSyncFeedback(`'${targetRace.name}'에 기록(${formatDuration(selectedActivity.duration_seconds)})이 성공적으로 동기화되었습니다!`);
                                 setTimeout(() => setSyncFeedback(""), 4000);
                               }
                             }}
-                            className="rounded-xl border border-emerald-500/40 bg-emerald-500/15 hover:bg-emerald-500/25 px-2.5 py-1.5 text-xs font-bold text-emerald-300 flex items-center gap-1 transition shadow-sm active:scale-95"
+                            className={`rounded-xl border px-2.5 py-1.5 text-xs font-bold flex items-center gap-1 transition shadow-sm active:scale-95 ${
+                              isCurrentSelectedDnf
+                                ? "border-rose-500/40 bg-rose-500/15 hover:bg-rose-500/25 text-rose-300"
+                                : "border-emerald-500/40 bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300"
+                            }`}
                             title="나의 마라톤 탭에 완주 기록과 시간을 자동으로 반영합니다"
                           >
-                            <span>🏅</span>
-                            <span>완주 기록 동기화</span>
+                            <span>{isCurrentSelectedDnf ? "⚠️" : "🏅"}</span>
+                            <span>{isCurrentSelectedDnf ? "DNF 기록 동기화" : "완주 기록 동기화"}</span>
                           </button>
                         )}
 
@@ -1037,6 +1119,22 @@ export default function PerformanceView({
                     )}
                   </div>
                 </div>
+
+                {/* DNF(미완주) 감지 시 명확한 스포츠 알림 배너 */}
+                {isCurrentSelectedRace && isCurrentSelectedDnf && (
+                  <div className="rounded-xl border border-rose-500/40 bg-rose-500/10 p-3 text-xs text-rose-300 flex items-start gap-2.5">
+                    <span className="text-base shrink-0">⚠️</span>
+                    <div className="space-y-0.5">
+                      <p className="font-bold text-rose-200">
+                        {currentCompInfo.targetCategory} 코스 미완주 (DNF - Did Not Finish)
+                      </p>
+                      <p className="text-[11px] text-zinc-400 leading-relaxed">
+                        신청/목표 종목({currentCompInfo.targetCategory} {currentCompInfo.targetKm}km) 대비 실제 주행 거리({currentCompInfo.ranKm}km)가 부족하여 DNF로 자동 판정되었습니다.
+                        마라톤 공식 규정에 따라 대회 완주 횟수 및 최고 기록(PB) 집계에서 자동으로 제외되었습니다.
+                      </p>
+                    </div>
+                  </div>
+                )}
 
                 {/* 동기화 성공 알림 피드백 */}
                 {syncFeedback && (
