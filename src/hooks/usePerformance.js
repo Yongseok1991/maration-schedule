@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { supabase } from "../services/supabase";
+import { getKstIsoString } from "../utils/dateUtils";
 
 // 회원별 고유 스토리지 키 생성기 (회원 간 데이터 공유/오염 100% 원천 차단)
 const getAuthKey = (uid) => (uid ? `racebook_garmin_auth_${uid}` : null);
@@ -247,7 +248,7 @@ export function usePerformance(user) {
       const fetchedLaps = result.laps || {};
 
       // 2. 가민 연동 인증 정보 갱신
-      const now = new Date().toISOString();
+      const now = getKstIsoString();
       const authPayload = {
         user_id: userId,
         garmin_email: email.trim(),
@@ -481,7 +482,7 @@ export function usePerformance(user) {
         await loadLapsForActivity(selectedActivityId);
       }
 
-      const now = new Date().toISOString();
+      const now = getKstIsoString();
       const authPayload = {
         user_id: userId,
         garmin_email: email.trim(),

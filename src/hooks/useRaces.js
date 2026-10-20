@@ -1,7 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
+import { getCurrentKstMonth } from "../utils/dateUtils";
 
 const MIN_FILTER_MONTH = "2025-09";
-const currentMonthKey = () => new Date().toISOString().slice(0, 7);
+const currentMonthKey = () => getCurrentKstMonth();
 const clampMonthFromMin = (monthKey) => {
   const normalized = /^\d{4}-\d{2}$/.test(monthKey || "") ? monthKey : currentMonthKey();
   return normalized < MIN_FILTER_MONTH ? MIN_FILTER_MONTH : normalized;

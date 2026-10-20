@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { dataService } from "../services/dataService";
 import { optimizeImageFile, isSupportedImageFile, dataUrlBytes } from "../utils/imageOptimizer";
+import { getKstIsoString } from "../utils/dateUtils";
 
 const LOCAL_STORAGE_KEY = "maraton.my_entries.v1";
 
@@ -33,7 +34,7 @@ const makeEntry = (race, initialStatus = "registered") => ({
   resultNote: "",
   certificateDataUrl: "",
   racePhotoDataUrls: [],
-  updatedAt: new Date().toISOString()
+  updatedAt: getKstIsoString()
 });
 
 const saveToLocalStorage = (data) => {
@@ -192,7 +193,7 @@ export function useEntries(user, authLoading) {
     const target = entries.find((e) => e.entryId === entryId);
     if (!target) return;
 
-    const updated = { ...target, ...patch, updatedAt: new Date().toISOString() };
+    const updated = { ...target, ...patch, updatedAt: getKstIsoString() };
     const next = entries.map((e) => (e.entryId === entryId ? updated : e));
     setEntries(next);
     saveToLocalStorage(next);
@@ -252,7 +253,7 @@ export function useEntries(user, authLoading) {
       const optimized = await optimizeImageFile(file, { maxSide: 2200, maxBytes: 1400 * 1024 });
       const target = entries.find((e) => e.entryId === entryId);
       if (!target) return;
-      const updated = { ...target, certificateDataUrl: optimized, updatedAt: new Date().toISOString() };
+      const updated = { ...target, certificateDataUrl: optimized, updatedAt: getKstIsoString() };
       const next = entries.map((e) => (e.entryId === entryId ? updated : e));
       setEntries(next);
       saveToLocalStorage(next);
@@ -276,7 +277,7 @@ export function useEntries(user, authLoading) {
         files.map((file) => optimizeImageFile(file, { maxSide: 1800, maxBytes: 900 * 1024 }))
       );
       const nextPhotos = [...(current?.racePhotoDataUrls || []), ...urls].slice(0, 6);
-      const updated = { ...current, racePhotoDataUrls: nextPhotos, updatedAt: new Date().toISOString() };
+      const updated = { ...current, racePhotoDataUrls: nextPhotos, updatedAt: getKstIsoString() };
       const next = entries.map((e) => (e.entryId === entryId ? updated : e));
       setEntries(next);
       saveToLocalStorage(next);
@@ -292,7 +293,7 @@ export function useEntries(user, authLoading) {
     const target = entries.find((e) => e.entryId === entryId);
     if (!target) return;
     const nextPhotos = (target.racePhotoDataUrls || []).filter((_, i) => i !== index);
-    const updated = { ...target, racePhotoDataUrls: nextPhotos, updatedAt: new Date().toISOString() };
+    const updated = { ...target, racePhotoDataUrls: nextPhotos, updatedAt: getKstIsoString() };
     const next = entries.map((e) => (e.entryId === entryId ? updated : e));
     setEntries(next);
     saveToLocalStorage(next);

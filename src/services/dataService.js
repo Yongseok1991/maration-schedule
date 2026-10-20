@@ -1,5 +1,6 @@
 import { supabase } from "./supabase";
 import { storageService } from "./storageService";
+import { getKstIsoString, getTodayKstDate } from "../utils/dateUtils";
 
 export const dataService = {
   /**
@@ -65,7 +66,7 @@ export const dataService = {
       user_id: userId,
       race_id: entry.raceId || null,
       name: entry.name,
-      date_iso: entry.dateIso || new Date().toISOString().slice(0, 10),
+      date_iso: entry.dateIso || getTodayKstDate(),
       date_display: entry.dateDisplay || "",
       place: entry.place || "",
       distances: entry.distances || "",
@@ -79,7 +80,7 @@ export const dataService = {
       memo: entry.memo || "",
       result_note: entry.resultNote || "",
       certificate_url: certUrl,
-      updated_at: new Date().toISOString()
+      updated_at: getKstIsoString()
     };
 
     const { error } = await supabase.from("user_races").upsert(payload, { onConflict: "id" });
@@ -153,7 +154,7 @@ export const dataService = {
       purchase_date: shoe.purchaseDate || null,
       distance_km: Number.parseFloat(shoe.distanceKm) || 0,
       memo: shoe.memo || "",
-      updated_at: new Date().toISOString()
+      updated_at: getKstIsoString()
     });
     if (error) throw error;
   },

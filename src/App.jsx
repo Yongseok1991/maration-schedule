@@ -11,6 +11,7 @@ import TimeInput from "./components/common/TimeInput";
 import PaceInput from "./components/common/PaceInput";
 import PerformanceView from "./components/performance/PerformanceView";
 import IosPwaGuideModal from "./components/common/IosPwaGuideModal";
+import { getKstIsoString, getTodayKstDate, getCurrentKstMonth } from "./utils/dateUtils";
 
 const TEXT = {
   tabs: {
@@ -389,12 +390,12 @@ const makeEntry = (race) => ({
   resultNote: "",
   certificateDataUrl: "",
   racePhotoDataUrls: [],
-  updatedAt: new Date().toISOString()
+  updatedAt: getKstIsoString()
 });
 
 const monthKeyOf = (dateIso) => (dateIso ? dateIso.slice(0, 7) : "");
 const MIN_FILTER_MONTH = "2025-09";
-const currentMonthKey = () => new Date().toISOString().slice(0, 7);
+const currentMonthKey = () => getCurrentKstMonth();
 const clampMonthFromMin = (monthKey) => {
   const normalized = /^\d{4}-\d{2}$/.test(monthKey || "") ? monthKey : currentMonthKey();
   return normalized < MIN_FILTER_MONTH ? MIN_FILTER_MONTH : normalized;
@@ -926,7 +927,7 @@ export default function App() {
     }
     if (!entry.dateIso) return { label: "일정 미정", color: "border-zinc-700 bg-zinc-800 text-zinc-400 font-medium" };
 
-    const todayStr = new Date().toISOString().slice(0, 10);
+    const todayStr = getTodayKstDate();
     const diffDays = Math.ceil((new Date(entry.dateIso) - new Date(todayStr)) / (1000 * 60 * 60 * 24));
     if (diffDays > 0) {
       return { label: `D-${diffDays}`, color: "border-amber-400/40 bg-amber-400/15 text-amber-300 font-extrabold", isUpcoming: true };

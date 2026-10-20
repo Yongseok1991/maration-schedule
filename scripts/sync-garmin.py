@@ -288,7 +288,8 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
             existing_ids.add(act_id)
 
         # 동기화 상태 성공 및 최신 가민 토큰 갱신 시도
-        now_iso = datetime.now(timezone.utc).isoformat()
+        kst = timezone(timedelta(hours=9))
+        now_iso = datetime.now(kst).isoformat()
         try:
             import base64
             auth_update_payload = {

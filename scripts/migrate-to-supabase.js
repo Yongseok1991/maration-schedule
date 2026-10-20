@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
+import { getKstIsoString, getTodayKstDate } from "../src/utils/dateUtils.js";
 
 // .env.local 로드
 dotenv.config({ path: path.resolve(".env.local") });
@@ -94,7 +95,7 @@ async function main() {
       user_id: userId,
       race_id: entry.raceId || null,
       name: entry.name,
-      date_iso: entry.dateIso || new Date().toISOString().slice(0, 10),
+      date_iso: entry.dateIso || getTodayKstDate(),
       date_display: entry.dateDisplay || "",
       place: entry.place || "",
       distances: entry.distances || "",
@@ -108,7 +109,7 @@ async function main() {
       memo: entry.memo || "",
       result_note: entry.resultNote || "",
       certificate_url: certUrl,
-      updated_at: new Date().toISOString()
+      updated_at: getKstIsoString()
     };
 
     const { error: raceErr } = await supabase.from("user_races").upsert(payload, { onConflict: "id" });
@@ -149,7 +150,7 @@ async function main() {
       purchase_date: shoe.purchaseDate || null,
       distance_km: Number.parseFloat(shoe.distanceKm) || 0,
       memo: shoe.memo || "",
-      updated_at: new Date().toISOString()
+      updated_at: getKstIsoString()
     });
     if (shoeErr) {
       console.error(`      ❌ Error saving shoe (${shoe.name}):`, shoeErr.message);

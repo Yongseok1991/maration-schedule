@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "../services/supabase";
 import { VAPID_PUBLIC_KEY, urlB64ToUint8Array } from "../utils/webPushConstants";
+import { getKstIsoString } from "../utils/dateUtils";
 
 export function useWebPush(user) {
   const [isSupported, setIsSupported] = useState(false);
@@ -79,7 +80,7 @@ export function useWebPush(user) {
                 p256dh: subJson.keys.p256dh,
                 auth: subJson.keys.auth,
                 user_agent: navigator.userAgent,
-                updated_at: new Date().toISOString()
+                updated_at: getKstIsoString()
               },
               { onConflict: "endpoint" }
             );
@@ -164,7 +165,7 @@ export function useWebPush(user) {
             p256dh: subJson.keys.p256dh,
             auth: subJson.keys.auth,
             user_agent: navigator.userAgent,
-            updated_at: new Date().toISOString()
+            updated_at: getKstIsoString()
           },
           { onConflict: "endpoint" }
         );
