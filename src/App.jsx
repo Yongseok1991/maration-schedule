@@ -10,6 +10,7 @@ import AuthModal from "./components/auth/AuthModal";
 import TimeInput from "./components/common/TimeInput";
 import PaceInput from "./components/common/PaceInput";
 import PerformanceView from "./components/performance/PerformanceView";
+import IosPwaGuideModal from "./components/common/IosPwaGuideModal";
 
 const TEXT = {
   tabs: {
@@ -782,6 +783,25 @@ export default function App() {
               : "스마트 알림 켜기 🔔"}
           </button>
         </div>
+
+        {/* 아이폰 Safari PWA 미설치 사용자 전용 친절 안내 배너 */}
+        {webPushState.isIosNeedInstall && !webPushState.isSubscribed && (
+          <div className="mt-3 p-3 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2 text-xs text-amber-200">
+              <span className="text-base shrink-0">📱</span>
+              <p className="leading-snug">
+                아이폰은 <strong>홈 화면에 추가</strong> 후 앱으로 실행해야 알림을 받을 수 있습니다.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => webPushState.setShowIosGuide(true)}
+              className="px-2.5 py-1 rounded-lg bg-amber-400 text-zinc-950 text-[11px] font-black hover:bg-amber-300 transition shrink-0 shadow-sm"
+            >
+              방법 보기 ➔
+            </button>
+          </div>
+        )}
 
         {webPushState.isSubscribed && (
           <div className="mt-3 pt-3 border-t border-zinc-800/80 flex items-center justify-between gap-2">
@@ -1873,6 +1893,11 @@ export default function App() {
       )}
 
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
+      <IosPwaGuideModal
+        isOpen={webPushState.showIosGuide}
+        onClose={() => webPushState.setShowIosGuide(false)}
+        isInAppBrowser={webPushState.isInAppBrowser}
+      />
     </main>
   );
 }

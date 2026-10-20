@@ -7,6 +7,18 @@ export function useWebPush(user) {
   const [permission, setPermission] = useState("default");
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showIosGuide, setShowIosGuide] = useState(false);
+
+  // iOS 환경 및 PWA 설치(standalone) 상태 감지
+  const isIos = typeof navigator !== "undefined" && /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const isStandalone = typeof window !== "undefined" && (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true
+  );
+  const isInAppBrowser = typeof navigator !== "undefined" && (
+    /KAKAOTALK|NAVER|Instagram|FB_IAB|FB4A|FBAN/i.test(navigator.userAgent)
+  );
+  const isIosNeedInstall = isIos && !isStandalone;
 
   // 1. 브라우저 지원 여부 및 현재 권한 확인
   useEffect(() => {
@@ -86,8 +98,18 @@ export function useWebPush(user) {
 
   // 3. 푸시 알림 켜기 (구독)
   const subscribe = useCallback(async () => {
+    // iOS 사파리 브라우저 상태 (PWA 미설치)인 경우 홈 화면 추가 안내 모달 오픈
+    if (isIosNeedInstall) {
+      setShowIosGuide(true);
+      return false;
+    }
+
     if (!isSupported) {
-      alert("현재 브라우저는 웹푸시 알림을 지원하지 않습니다.");
+      if (isIos) {
+        alert("아이폰에서 웹푸시 알림을 이용하시려면 iOS 16.4 이상으로 업데이트가 필요합니다.");
+      } else {
+        alert("현재 브라우저는 웹푸시 알림을 지원하지 않습니다.");
+      }
       return false;
     }
 
@@ -226,6 +248,12 @@ export function useWebPush(user) {
     loading,
     subscribe,
     unsubscribe,
-    sendTestNotification
+    sendTestNotification,
+    isIos,
+    isStandalone,
+    isIosNeedInstall,
+    isInAppBrowser,
+    showIosGuide,
+    setShowIosGuide
   };
 }
