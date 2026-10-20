@@ -421,6 +421,9 @@ export default function App() {
   const [saveFeedback, setSaveFeedback] = useState({});
   const [manualForm, setManualForm] = useState({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false); // 관심(찜) 대회만 보기 필터
+  const [isManualAddOpen, setIsManualAddOpen] = useState(false); // 직접 추가 인라인 폼 토글
+  const [mineFilter, setMineFilter] = useState("all"); // 내 일정 필터: all | upcoming | completed | interested
+  const [expandedEntryId, setExpandedEntryId] = useState(null); // 카드 상세 편집 펼침 토글
 
   const visibleTabs = useMemo(() => {
     if (!user) {
@@ -583,6 +586,7 @@ export default function App() {
       return;
     }
     setManualForm({ name: "", dateIso: "", raceType: "", place: "", distances: "", homepage: "", entryFee: "" });
+    setIsManualAddOpen(false);
   };
 
   const onCertificateChange = (entryId, file) => entriesState.onCertificateChange(entryId, file);
@@ -892,163 +896,584 @@ export default function App() {
     </section>
   );
 
-  const renderMine = () => (
-    <section className="mt-3 grid grid-cols-1 gap-3">
-      <article className="card-panel p-4">
-        <p className="text-sm font-bold text-zinc-100 tracking-tight">{TEXT.manualAdd}</p>
-        <div className="mt-3 grid grid-cols-2 gap-2.5 text-[13px] text-zinc-300">
-          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualName}</span><input className="dark-input h-9 px-3 text-xs" value={manualForm.name} onChange={(e) => setManualForm((p) => ({ ...p, name: e.target.value }))} placeholder={TEXT.manualNamePlaceholder} /></label>
-          <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualDate}</span><input className="dark-input h-9 px-3 text-xs" type="date" value={manualForm.dateIso} onChange={(e) => setManualForm((p) => ({ ...p, dateIso: e.target.value }))} /></label>
-          <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualRaceType}</span><select className="dark-input h-9 px-2 text-xs" value={manualForm.raceType} onChange={(e) => setManualForm((p) => ({ ...p, raceType: e.target.value }))}>{RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}</select></label>
-          <label className="flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualDistances}</span><input className="dark-input h-9 px-3 text-xs" value={manualForm.distances} onChange={(e) => setManualForm((p) => ({ ...p, distances: e.target.value }))} placeholder="Half, 10K" /></label>
-          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualFee}</span><input className="dark-input h-9 px-3 text-xs" inputMode="numeric" value={manualForm.entryFee} onChange={(e) => setManualForm((p) => ({ ...p, entryFee: e.target.value }))} placeholder="50000" /></label>
-          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualPlace}</span><input className="dark-input h-9 px-3 text-xs" value={manualForm.place} onChange={(e) => setManualForm((p) => ({ ...p, place: e.target.value }))} placeholder={TEXT.manualPlacePlaceholder} /></label>
-          <label className="col-span-2 flex flex-col gap-1"><span className="text-zinc-400 text-xs font-medium">{TEXT.manualHomepage}</span><input className="dark-input h-9 px-3 text-xs" value={manualForm.homepage} onChange={(e) => setManualForm((p) => ({ ...p, homepage: e.target.value }))} placeholder="https://..." /></label>
-        </div>
-        <div className="mt-3 flex justify-end">
-          <button className="h-9 rounded-xl border border-amber-400/40 bg-amber-400/15 px-4 text-xs font-semibold text-amber-200 hover:bg-amber-400/25 transition" onClick={addManualEntry}>
-            {TEXT.saveEntry}
-          </button>
-        </div>
-      </article>
+    // 내 일정 D-Day 및 상태 뱃지 판정 헬퍼
+  const getEntryDDayInfo = (entry) => {
+    if (entry.resultTime || entry.status === "completed") {
+      return { label: "완주 🏅", color: "border-emerald-500/40 bg-emerald-500/15 text-emerald-300 font-extrabold", isFinished: true };
+    }
+    if (entry.status === "interested") {
+      return { label: "관심 ⭐️", color: "border-sky-500/40 bg-sky-500/15 text-sky-300 font-medium", isInterested: true };
+    }
+    if (!entry.dateIso) return { label: "일정 미정", color: "border-zinc-700 bg-zinc-800 text-zinc-400 font-medium" };
 
-      {myEntries.map((entry) => {
-        const missingFromSource = entry.raceId && !raceIdSet.has(entry.raceId);
-        const fallbackHomepage = entry.homepage || (entry.raceId ? raceById.get(entry.raceId)?.homepage || "" : "");
-        return (
-          <article key={entry.entryId} className="card-panel p-4">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-xs font-semibold text-amber-400/90 tracking-wide">
-                {entry.dateDisplay || formatDate(entry.dateIso)}
-              </span>
-              <button className="text-xs text-zinc-500 hover:text-rose-400 transition" onClick={() => removeEntry(entry.entryId)}>
-                {TEXT.remove}
-              </button>
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const diffDays = Math.ceil((new Date(entry.dateIso) - new Date(todayStr)) / (1000 * 60 * 60 * 24));
+    if (diffDays > 0) {
+      return { label: `D-${diffDays}`, color: "border-amber-400/40 bg-amber-400/15 text-amber-300 font-extrabold", isUpcoming: true };
+    } else if (diffDays === 0) {
+      return { label: "D-Day 🔥", color: "border-rose-500/50 bg-rose-500/20 text-rose-300 font-black animate-pulse", isUpcoming: true };
+    }
+    return { label: "대회 종료", color: "border-zinc-700 bg-zinc-800 text-zinc-400 font-medium", isEnded: true };
+  };
+
+  // 내 일정 필터링 및 카테고리별 집계
+  const { filteredMyEntries, mineCounts } = useMemo(() => {
+    let upcomingCount = 0;
+    let completedCount = 0;
+    let interestedCount = 0;
+
+    myEntries.forEach((e) => {
+      const info = getEntryDDayInfo(e);
+      if (info.isFinished) completedCount++;
+      else if (info.isInterested) interestedCount++;
+      else if (info.isUpcoming) upcomingCount++;
+    });
+
+    let list = myEntries;
+    if (mineFilter === "upcoming") {
+      list = myEntries.filter((e) => getEntryDDayInfo(e).isUpcoming);
+    } else if (mineFilter === "completed") {
+      list = myEntries.filter((e) => getEntryDDayInfo(e).isFinished);
+    } else if (mineFilter === "interested") {
+      list = myEntries.filter((e) => e.status === "interested");
+    }
+
+    return {
+      filteredMyEntries: list,
+      mineCounts: {
+        all: myEntries.length,
+        upcoming: upcomingCount,
+        completed: completedCount,
+        interested: interestedCount
+      }
+    };
+  }, [myEntries, mineFilter]);
+
+  const renderMine = () => (
+    <section className="mt-3 space-y-3">
+      {/* 1. 상단 내 일정 요약 바 및 [새 대회 직접 등록] 토글 */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 shadow-sm backdrop-blur-md">
+        <div className="flex items-center gap-2.5 flex-wrap">
+          <span className="text-sm font-black text-zinc-100 flex items-center gap-1.5">
+            <span>나의 마라톤</span>
+            <span className="text-xs font-bold text-amber-400 bg-amber-400/10 border border-amber-400/25 px-2 py-0.5 rounded-full">
+              {myEntries.length}건
+            </span>
+          </span>
+          <span className="text-xs text-zinc-500 hidden sm:inline">·</span>
+          <span className="text-xs text-zinc-400">
+            다가오는 대회 <span className="text-amber-300 font-bold">{mineCounts.upcoming}</span>건 / 완주 <span className="text-emerald-300 font-bold">{mineCounts.completed}</span>건
+          </span>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setIsManualAddOpen(!isManualAddOpen)}
+          className={`h-9 px-3.5 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 shadow-sm active:scale-95 ${
+            isManualAddOpen
+              ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700"
+              : "bg-amber-400/15 hover:bg-amber-400/25 text-amber-300 border border-amber-400/40"
+          }`}
+        >
+          <span>{isManualAddOpen ? "✕ 직접 등록 접기" : "+ 새 대회 직접 등록하기"}</span>
+          <span className="text-[10px]">{isManualAddOpen ? "▲" : "▾"}</span>
+        </button>
+      </div>
+
+      {/* 2. '직접 추가' 인라인 아코디언 서랍 (펼쳐질 때만 표시) */}
+      {isManualAddOpen && (
+        <article className="card-panel p-4 border border-amber-400/30 bg-amber-500/5 animate-fadeIn space-y-3">
+          <div className="flex items-center justify-between pb-2 border-b border-zinc-800/80">
+            <div className="space-y-0.5">
+              <p className="text-sm font-bold text-amber-300 flex items-center gap-1.5">
+                <span>➕</span>
+                <span>새 마라톤 대회 직접 등록</span>
+              </p>
+              <p className="text-[11px] text-zinc-400">
+                탐색 목록에 없는 비공식 대회나 개인 일정을 직접 등록해 관리하세요.
+              </p>
             </div>
-            <div className="mt-1.5 flex items-center gap-2">
-              <h2 className="text-[16px] font-bold leading-snug text-zinc-100 tracking-tight">{entry.name}</h2>
-              {missingFromSource && <span className="rounded-full border border-rose-400/35 bg-rose-400/15 px-2 py-0.5 text-[11px] font-semibold text-rose-200">{TEXT.sourceMissing}</span>}
-            </div>
-            <div className="mt-3 grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
-              <label className="flex flex-col gap-1">
-                <span className="text-zinc-400 text-xs font-medium">{TEXT.status}</span>
-                <select className="dark-input h-9 px-2 text-xs" value={entry.status} onChange={(e) => updateEntry(entry.entryId, { status: e.target.value })}>
-                  {STATUS_OPTIONS.map((s) => <option key={s} value={s}>{STATUS_LABEL[s] || s}</option>)}
-                </select>
-              </label>
-              <label className="flex flex-col gap-1">
-                <span className="text-zinc-400 text-xs font-medium">{TEXT.raceType}</span>
-                <select className="dark-input h-9 px-2 text-xs" value={entry.raceType || ""} onChange={(e) => updateEntry(entry.entryId, { raceType: e.target.value })}>
-                  {RACE_TYPE_OPTIONS.map((type) => <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>)}
-                </select>
-              </label>
-              <label className="col-span-2 flex flex-col gap-1">
-                <span className="text-zinc-400 text-xs font-medium">{TEXT.entryFee} (원)</span>
-                <input className="dark-input h-9 px-2.5 text-xs" inputMode="numeric" value={entry.entryFee || ""} onChange={(e) => updateEntry(entry.entryId, { entryFee: e.target.value })} placeholder="50000" />
-              </label>
-              <div className="col-span-2 sm:col-span-1 min-w-0">
-                <TimeInput
-                  label={TEXT.goalTime}
-                  value={entry.goalTime}
-                  onChange={(val) => updateEntry(entry.entryId, { goalTime: val })}
-                />
-              </div>
-              <div className="col-span-2 sm:col-span-1 min-w-0">
-                <PaceInput
-                  label={TEXT.goalPace}
-                  value={entry.goalPace}
-                  onChange={(val) => updateEntry(entry.entryId, { goalPace: val })}
-                />
-              </div>
-              <div className="col-span-2">
-                <TimeInput
-                  label={TEXT.resultTime}
-                  value={entry.resultTime}
-                  highlightResult
-                  onChange={(val) => updateEntry(entry.entryId, { resultTime: val })}
-                />
-              </div>
-            </div>
-            <label className="mt-2.5 flex flex-col gap-1 text-[13px] text-zinc-300">
-              <span className="text-zinc-400 text-xs font-medium">{TEXT.memo}</span>
-              <textarea className="dark-input min-h-[72px] p-2.5 text-xs" value={entry.memo} onChange={(e) => updateEntry(entry.entryId, { memo: e.target.value })} placeholder={TEXT.memoPlaceholder} />
+            <button
+              type="button"
+              onClick={() => setIsManualAddOpen(false)}
+              className="text-xs text-zinc-400 hover:text-zinc-200 transition"
+            >
+              닫기 ✕
+            </button>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2.5 text-[13px] text-zinc-300">
+            <label className="col-span-2 flex flex-col gap-1">
+              <span className="text-zinc-400 text-xs font-medium">{TEXT.manualName} *</span>
+              <input
+                className="dark-input h-9 px-3 text-xs"
+                value={manualForm.name}
+                onChange={(e) => setManualForm((p) => ({ ...p, name: e.target.value }))}
+                placeholder={TEXT.manualNamePlaceholder}
+              />
             </label>
-            <label className="mt-2 flex flex-col gap-1 text-[13px] text-zinc-300">
-              <span className="text-zinc-400 text-xs font-medium">{TEXT.resultNote}</span>
-              <textarea className="dark-input min-h-[64px] p-2.5 text-xs" value={entry.resultNote} onChange={(e) => updateEntry(entry.entryId, { resultNote: e.target.value })} placeholder={TEXT.resultPlaceholder} />
+            <label className="flex flex-col gap-1">
+              <span className="text-zinc-400 text-xs font-medium">{TEXT.manualDate} *</span>
+              <input
+                className="dark-input h-9 px-3 text-xs"
+                type="date"
+                value={manualForm.dateIso}
+                onChange={(e) => setManualForm((p) => ({ ...p, dateIso: e.target.value }))}
+              />
             </label>
-            {fallbackHomepage && (
-              <div className="mt-3 flex items-center gap-2">
-                <a className="h-8 rounded-lg border border-zinc-700/80 bg-zinc-800/50 hover:bg-zinc-800 px-3 text-xs font-semibold text-zinc-200 inline-flex items-center gap-1.5 transition" href={fallbackHomepage} target="_blank" rel="noreferrer">
-                  <span>{TEXT.homepage}</span>
-                  <span className="text-[10px] text-zinc-400">↗</span>
-                </a>
+            <label className="flex flex-col gap-1">
+              <span className="text-zinc-400 text-xs font-medium">{TEXT.manualRaceType}</span>
+              <select
+                className="dark-input h-9 px-2 text-xs"
+                value={manualForm.raceType}
+                onChange={(e) => setManualForm((p) => ({ ...p, raceType: e.target.value }))}
+              >
+                {RACE_TYPE_OPTIONS.map((type) => (
+                  <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>
+                ))}
+              </select>
+            </label>
+            <label className="flex flex-col gap-1">
+              <span className="text-zinc-400 text-xs font-medium">{TEXT.manualDistances}</span>
+              <input
+                className="dark-input h-9 px-3 text-xs"
+                value={manualForm.distances}
+                onChange={(e) => setManualForm((p) => ({ ...p, distances: e.target.value }))}
+                placeholder="예: 풀, 하프, 10K"
+              />
+            </label>
+            <label className="flex flex-col gap-1">
+              <span className="text-zinc-400 text-xs font-medium">{TEXT.manualFee} (원)</span>
+              <input
+                className="dark-input h-9 px-3 text-xs"
+                inputMode="numeric"
+                value={manualForm.entryFee}
+                onChange={(e) => setManualForm((p) => ({ ...p, entryFee: e.target.value }))}
+                placeholder="50000"
+              />
+            </label>
+            <label className="col-span-2 flex flex-col gap-1">
+              <span className="text-zinc-400 text-xs font-medium">{TEXT.manualPlace}</span>
+              <input
+                className="dark-input h-9 px-3 text-xs"
+                value={manualForm.place}
+                onChange={(e) => setManualForm((p) => ({ ...p, place: e.target.value }))}
+                placeholder={TEXT.manualPlacePlaceholder}
+              />
+            </label>
+            <label className="col-span-2 flex flex-col gap-1">
+              <span className="text-zinc-400 text-xs font-medium">{TEXT.manualHomepage}</span>
+              <input
+                className="dark-input h-9 px-3 text-xs"
+                value={manualForm.homepage}
+                onChange={(e) => setManualForm((p) => ({ ...p, homepage: e.target.value }))}
+                placeholder="https://..."
+              />
+            </label>
+          </div>
+
+          <div className="mt-3 flex items-center justify-end gap-2 pt-2 border-t border-zinc-800">
+            <button
+              type="button"
+              className="h-9 rounded-xl border border-zinc-700 bg-zinc-800 px-4 text-xs font-semibold text-zinc-300 hover:bg-zinc-700 transition"
+              onClick={() => setIsManualAddOpen(false)}
+            >
+              취소
+            </button>
+            <button
+              type="button"
+              className="h-9 rounded-xl border border-amber-400/40 bg-amber-400 hover:bg-amber-300 px-4 text-xs font-bold text-zinc-950 transition shadow-sm active:scale-95"
+              onClick={addManualEntry}
+            >
+              대회 저장
+            </button>
+          </div>
+        </article>
+      )}
+
+      {/* 3. 상태 필터 탭 바 */}
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
+        {[
+          { id: "all", label: "전체", count: mineCounts.all },
+          { id: "upcoming", label: "🏃 다가오는 대회", count: mineCounts.upcoming },
+          { id: "completed", label: "🏅 완주 기록", count: mineCounts.completed },
+          { id: "interested", label: "⭐️ 관심 대회", count: mineCounts.interested }
+        ].map((f) => (
+          <button
+            key={f.id}
+            type="button"
+            onClick={() => setMineFilter(f.id)}
+            className={`h-8 px-3 rounded-xl text-xs font-semibold transition shrink-0 flex items-center gap-1.5 ${
+              mineFilter === f.id
+                ? "bg-amber-400 text-zinc-950 shadow-sm font-bold"
+                : "bg-zinc-900/80 hover:bg-zinc-800 text-zinc-300 border border-zinc-800"
+            }`}
+          >
+            <span>{f.label}</span>
+            <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+              mineFilter === f.id ? "bg-zinc-950/20 text-zinc-950 font-black" : "bg-zinc-800 text-zinc-400"
+            }`}>
+              {f.count}
+            </span>
+          </button>
+        ))}
+      </div>
+
+      {/* 4. 내 대회 목록 (컴팩트 카드 ↔ 클릭 시 상세 펼침) */}
+      <div className="grid grid-cols-1 gap-2.5">
+        {filteredMyEntries.map((entry) => {
+          const isExpanded = expandedEntryId === entry.entryId;
+          const ddayInfo = getEntryDDayInfo(entry);
+          const hasResult = Boolean(entry.resultTime);
+          const photoCount = (entry.racePhotoDataUrls || []).length;
+          const hasCert = Boolean(entry.certificateDataUrl);
+          const missingFromSource = entry.raceId && !raceIdSet.has(entry.raceId);
+          const fallbackHomepage = entry.homepage || (entry.raceId ? raceById.get(entry.raceId)?.homepage || "" : "");
+
+          return (
+            <article
+              key={entry.entryId}
+              className={`card-panel transition duration-200 ${
+                isExpanded
+                  ? "border-amber-400/40 bg-zinc-900/90 shadow-lg p-4 sm:p-5"
+                  : "hover:border-zinc-700 bg-zinc-900/60 p-3.5 sm:p-4"
+              }`}
+            >
+              {/* 카드 요약 헤더 (클릭 시 토글) */}
+              <div
+                className="cursor-pointer select-none"
+                onClick={() => setExpandedEntryId(isExpanded ? null : entry.entryId)}
+              >
+                {/* 상단 메타 바: 날짜, D-Day, 상태 뱃지 */}
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                    {ddayInfo && (
+                      <span className={`px-2 py-0.5 rounded-full text-[11px] border shrink-0 ${ddayInfo.color}`}>
+                        {ddayInfo.label}
+                      </span>
+                    )}
+                    <span className="text-xs font-semibold text-zinc-400">
+                      {entry.dateDisplay || formatDate(entry.dateIso)}
+                    </span>
+                    {entry.raceType && (
+                      <span className="rounded-md bg-zinc-800 border border-zinc-700/80 px-2 py-0.5 text-[10px] font-bold text-amber-300">
+                        {RACE_TYPE_LABEL[entry.raceType] || entry.raceType}
+                      </span>
+                    )}
+                    {missingFromSource && (
+                      <span className="rounded-full border border-rose-400/35 bg-rose-400/15 px-2 py-0.5 text-[10px] font-semibold text-rose-200">
+                        {TEXT.sourceMissing}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-md border ${
+                      entry.status === "completed"
+                        ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
+                        : entry.status === "interested"
+                        ? "border-sky-500/30 bg-sky-500/10 text-sky-300"
+                        : "border-zinc-700 bg-zinc-800/80 text-zinc-300"
+                    }`}>
+                      {STATUS_LABEL[entry.status] || entry.status}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpandedEntryId(isExpanded ? null : entry.entryId);
+                      }}
+                      className={`h-7 px-2.5 rounded-lg text-xs font-bold transition flex items-center gap-1 ${
+                        isExpanded
+                          ? "bg-amber-400 text-zinc-950 shadow-sm"
+                          : "bg-zinc-800 hover:bg-zinc-700 text-zinc-300"
+                      }`}
+                    >
+                      <span>{isExpanded ? "접기" : "기록 / 상세"}</span>
+                      <span className="text-[10px]">{isExpanded ? "▲" : "▾"}</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* 대회명 및 서브 정보 */}
+                <div className="mt-2 flex items-start justify-between gap-3">
+                  <div className="space-y-1 min-w-0 flex-1">
+                    <h2 className="text-base sm:text-lg font-black text-zinc-100 tracking-tight leading-snug break-words">
+                      {entry.name}
+                    </h2>
+                    <div className="flex items-center gap-2 text-xs text-zinc-400 flex-wrap">
+                      {entry.place && <span>📍 {entry.place}</span>}
+                      {entry.distances && <span>· 코스: {entry.distances}</span>}
+                      {entry.entryFee && <span>· 참가비 {Number(entry.entryFee).toLocaleString()}원</span>}
+                    </div>
+                  </div>
+
+                  {/* 완주 기록 칩 (기록이 있을 때 요약 뷰에서도 크게 노출) */}
+                  {hasResult && (
+                    <div className="shrink-0 text-right">
+                      <span className="text-[10px] text-zinc-400 block font-medium">완주 기록</span>
+                      <span className="text-sm sm:text-base font-black text-emerald-400 font-mono tracking-tight">
+                        {entry.resultTime}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* 요약 바텀 인디케이터 (메모 미리보기 / 사진 개수 / 완주증 여부) */}
+                <div className="mt-2.5 pt-2 border-t border-zinc-800/60 flex items-center justify-between text-[11px] text-zinc-400 flex-wrap gap-2">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {photoCount > 0 && (
+                      <span className="flex items-center gap-1 text-zinc-300 bg-zinc-800/60 px-2 py-0.5 rounded-md">
+                        <span>📷</span>
+                        <span>사진 {photoCount}장</span>
+                      </span>
+                    )}
+                    {hasCert && (
+                      <span className="flex items-center gap-1 text-emerald-300 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
+                        <span>📜</span>
+                        <span>완주증</span>
+                      </span>
+                    )}
+                    {entry.memo && (
+                      <span className="truncate max-w-[200px] sm:max-w-xs text-zinc-500">
+                        💬 {entry.memo}
+                      </span>
+                    )}
+                  </div>
+
+                  <span className="text-[10px] text-zinc-500 font-medium">
+                    {isExpanded ? "클릭하여 상세 접기 ▲" : "클릭하여 기록 작성 / 수정 ▾"}
+                  </span>
+                </div>
               </div>
-            )}
-            <div className="mt-3 border-t border-zinc-800/70 pt-3 text-[13px] text-zinc-300">
-              <p className="font-semibold text-zinc-200 text-xs">{TEXT.racePhotos}</p>
-              <p className="mt-0.5 text-xs text-zinc-500">{TEXT.racePhotosTip}</p>
-              <input className="mt-2 block w-full text-xs text-zinc-400 file:mr-2 file:rounded-lg file:border-0 file:bg-zinc-800 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 hover:file:bg-zinc-700 cursor-pointer" type="file" accept="image/*" multiple onChange={(e) => onRacePhotosChange(entry.entryId, e.target.files)} />
-              {(entry.racePhotoDataUrls || []).length > 0 && (
-                <div className="mt-2.5 grid grid-cols-3 gap-2">
-                  {(entry.racePhotoDataUrls || []).map((photo, idx) => (
-                    <div key={idx} className="relative rounded-xl overflow-hidden border border-zinc-800 group">
-                      <img alt="race-photo" src={photo} className="h-24 w-full cursor-zoom-in object-cover bg-zinc-950 transition hover:scale-105" onClick={() => setPhotoViewer(photo)} />
-                      <button type="button" className="absolute right-1 top-1 rounded-md bg-black/70 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-200 hover:text-white" onClick={() => removeRacePhoto(entry.entryId, idx)}>
-                        {TEXT.removePhoto}
+
+              {/* 상세 편집 드로어 (isExpanded일 때만 펼쳐짐) */}
+              {isExpanded && (
+                <div className="mt-4 pt-4 border-t border-zinc-800/90 space-y-4 animate-fadeIn">
+                  <div className="grid grid-cols-2 gap-2 text-[13px] text-zinc-300">
+                    <label className="flex flex-col gap-1">
+                      <span className="text-zinc-400 text-xs font-medium">{TEXT.status}</span>
+                      <select
+                        className="dark-input h-9 px-2 text-xs"
+                        value={entry.status}
+                        onChange={(e) => updateEntry(entry.entryId, { status: e.target.value })}
+                      >
+                        {STATUS_OPTIONS.map((s) => (
+                          <option key={s} value={s}>{STATUS_LABEL[s] || s}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="flex flex-col gap-1">
+                      <span className="text-zinc-400 text-xs font-medium">{TEXT.raceType}</span>
+                      <select
+                        className="dark-input h-9 px-2 text-xs"
+                        value={entry.raceType || ""}
+                        onChange={(e) => updateEntry(entry.entryId, { raceType: e.target.value })}
+                      >
+                        {RACE_TYPE_OPTIONS.map((type) => (
+                          <option key={type || "empty"} value={type}>{RACE_TYPE_LABEL[type]}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="col-span-2 flex flex-col gap-1">
+                      <span className="text-zinc-400 text-xs font-medium">{TEXT.entryFee} (원)</span>
+                      <input
+                        className="dark-input h-9 px-2.5 text-xs"
+                        inputMode="numeric"
+                        value={entry.entryFee || ""}
+                        onChange={(e) => updateEntry(entry.entryId, { entryFee: e.target.value })}
+                        placeholder="50000"
+                      />
+                    </label>
+                    <div className="col-span-2 sm:col-span-1 min-w-0">
+                      <TimeInput
+                        label={TEXT.goalTime}
+                        value={entry.goalTime}
+                        onChange={(val) => updateEntry(entry.entryId, { goalTime: val })}
+                      />
+                    </div>
+                    <div className="col-span-2 sm:col-span-1 min-w-0">
+                      <PaceInput
+                        label={TEXT.goalPace}
+                        value={entry.goalPace}
+                        onChange={(val) => updateEntry(entry.entryId, { goalPace: val })}
+                      />
+                    </div>
+                    <div className="col-span-2">
+                      <TimeInput
+                        label={TEXT.resultTime}
+                        value={entry.resultTime}
+                        highlightResult
+                        onChange={(val) => updateEntry(entry.entryId, { resultTime: val })}
+                      />
+                    </div>
+                  </div>
+
+                  <label className="flex flex-col gap-1 text-[13px] text-zinc-300">
+                    <span className="text-zinc-400 text-xs font-medium">{TEXT.memo}</span>
+                    <textarea
+                      className="dark-input min-h-[72px] p-2.5 text-xs"
+                      value={entry.memo}
+                      onChange={(e) => updateEntry(entry.entryId, { memo: e.target.value })}
+                      placeholder={TEXT.memoPlaceholder}
+                    />
+                  </label>
+
+                  <label className="flex flex-col gap-1 text-[13px] text-zinc-300">
+                    <span className="text-zinc-400 text-xs font-medium">{TEXT.resultNote}</span>
+                    <textarea
+                      className="dark-input min-h-[64px] p-2.5 text-xs"
+                      value={entry.resultNote}
+                      onChange={(e) => updateEntry(entry.entryId, { resultNote: e.target.value })}
+                      placeholder={TEXT.resultPlaceholder}
+                    />
+                  </label>
+
+                  {fallbackHomepage && (
+                    <div className="flex items-center gap-2">
+                      <a
+                        className="h-8 rounded-lg border border-zinc-700/80 bg-zinc-800/50 hover:bg-zinc-800 px-3 text-xs font-semibold text-zinc-200 inline-flex items-center gap-1.5 transition"
+                        href={fallbackHomepage}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span>{TEXT.homepage}</span>
+                        <span className="text-[10px] text-zinc-400">↗</span>
+                      </a>
+                    </div>
+                  )}
+
+                  {/* 대회 사진 업로드 & 갤러리 */}
+                  <div className="border-t border-zinc-800/70 pt-3 text-[13px] text-zinc-300">
+                    <p className="font-semibold text-zinc-200 text-xs">{TEXT.racePhotos}</p>
+                    <p className="mt-0.5 text-xs text-zinc-500">{TEXT.racePhotosTip}</p>
+                    <input
+                      className="mt-2 block w-full text-xs text-zinc-400 file:mr-2 file:rounded-lg file:border-0 file:bg-zinc-800 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 hover:file:bg-zinc-700 cursor-pointer"
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      onChange={(e) => onRacePhotosChange(entry.entryId, e.target.files)}
+                    />
+                    {(entry.racePhotoDataUrls || []).length > 0 && (
+                      <div className="mt-2.5 grid grid-cols-3 gap-2">
+                        {(entry.racePhotoDataUrls || []).map((photo, idx) => (
+                          <div key={idx} className="relative rounded-xl overflow-hidden border border-zinc-800 group">
+                            <img
+                              alt="race-photo"
+                              src={photo}
+                              className="h-24 w-full cursor-zoom-in object-cover bg-zinc-950 transition hover:scale-105"
+                              onClick={() => setPhotoViewer(photo)}
+                            />
+                            <button
+                              type="button"
+                              className="absolute right-1 top-1 rounded-md bg-black/70 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-200 hover:text-white"
+                              onClick={() => removeRacePhoto(entry.entryId, idx)}
+                            >
+                              {TEXT.removePhoto}
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* 완주증 업로드 */}
+                  <div className="border-t border-zinc-800/70 pt-3 text-[13px] text-zinc-300">
+                    <p className="font-semibold text-zinc-200 text-xs">{TEXT.cert}</p>
+                    <input
+                      className="mt-2 block w-full text-xs text-zinc-400 file:mr-2 file:rounded-lg file:border-0 file:bg-zinc-800 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 hover:file:bg-zinc-700 cursor-pointer"
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => onCertificateChange(entry.entryId, e.target.files?.[0])}
+                    />
+                    {entry.certificateDataUrl && (
+                      <div className="mt-2.5 rounded-xl overflow-hidden border border-zinc-800">
+                        <img
+                          alt="certificate"
+                          src={entry.certificateDataUrl}
+                          className="max-h-48 w-full cursor-zoom-in object-contain bg-zinc-950"
+                          onClick={() => setPhotoViewer(entry.certificateDataUrl)}
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* 하단 저장 & 삭제 & 접기 액션 바 */}
+                  <div className="flex items-center justify-between border-t border-zinc-800/80 pt-3.5 flex-wrap gap-2">
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        className="text-xs text-zinc-500 hover:text-rose-400 transition flex items-center gap-1"
+                        onClick={() => {
+                          if (window.confirm(`'${entry.name}' 대회를 내 일정에서 삭제하시겠습니까?`)) {
+                            removeEntry(entry.entryId);
+                          }
+                        }}
+                      >
+                        <span>🗑️</span>
+                        <span>{TEXT.remove}</span>
+                      </button>
+
+                      {saveFeedback[entry.entryId] === "saving" && (
+                        <span className="text-amber-400 font-medium text-xs flex items-center gap-1.5 animate-pulse">
+                          <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                          DB 저장 중...
+                        </span>
+                      )}
+                      {saveFeedback[entry.entryId] === "saved" && (
+                        <span className="text-emerald-400 font-semibold text-xs flex items-center gap-1">
+                          ✓ 저장되었습니다!
+                        </span>
+                      )}
+                      {saveFeedback[entry.entryId] === "error" && (
+                        <span className="text-rose-400 font-medium text-xs">
+                          저장 실패 (다시 시도해주세요)
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setExpandedEntryId(null)}
+                        className="h-8.5 rounded-xl border border-zinc-700 bg-zinc-800 hover:bg-zinc-700 px-3 text-xs font-semibold text-zinc-300 transition"
+                      >
+                        상세 접기 ▲
+                      </button>
+                      <button
+                        type="button"
+                        className="h-8.5 rounded-xl border border-amber-400/40 bg-amber-400 hover:bg-amber-300 px-4 text-xs font-bold text-zinc-950 transition flex items-center gap-1.5 shadow-sm active:scale-95"
+                        onClick={() => handleSaveEntry(entry.entryId)}
+                      >
+                        <span>기록 저장</span>
+                        <span className="text-[11px]">💾</span>
                       </button>
                     </div>
-                  ))}
+                  </div>
                 </div>
               )}
-            </div>
-            <div className="mt-3 border-t border-zinc-800/70 pt-3 text-[13px] text-zinc-300">
-              <p className="font-semibold text-zinc-200 text-xs">{TEXT.cert}</p>
-              <input className="mt-2 block w-full text-xs text-zinc-400 file:mr-2 file:rounded-lg file:border-0 file:bg-zinc-800 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 hover:file:bg-zinc-700 cursor-pointer" type="file" accept="image/*" onChange={(e) => onCertificateChange(entry.entryId, e.target.files?.[0])} />
-              {entry.certificateDataUrl && (
-                <div className="mt-2.5 rounded-xl overflow-hidden border border-zinc-800">
-                  <img alt="certificate" src={entry.certificateDataUrl} className="max-h-48 w-full cursor-zoom-in object-contain bg-zinc-950" onClick={() => setPhotoViewer(entry.certificateDataUrl)} />
-                </div>
-              )}
-            </div>
-            {/* 저장 액션 바 */}
-            <div className="mt-4 flex items-center justify-between border-t border-zinc-800/80 pt-3">
-              <div className="flex items-center gap-1.5 text-xs">
-                {saveFeedback[entry.entryId] === "saving" && (
-                  <span className="text-amber-400 font-medium flex items-center gap-1.5 animate-pulse">
-                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-                    DB 저장 중...
-                  </span>
-                )}
-                {saveFeedback[entry.entryId] === "saved" && (
-                  <span className="text-emerald-400 font-semibold flex items-center gap-1">
-                    ✓ 저장되었습니다!
-                  </span>
-                )}
-                {saveFeedback[entry.entryId] === "error" && (
-                  <span className="text-rose-400 font-medium">
-                    저장 실패 (다시 시도해주세요)
-                  </span>
-                )}
-                {!saveFeedback[entry.entryId] && (
-                  <span className="text-[11px] text-zinc-500">
-                    작성 후 저장을 누르면 DB에 안전하게 동기화됩니다
-                  </span>
-                )}
-              </div>
-              <button
-                type="button"
-                className="h-8.5 rounded-xl border border-amber-400/40 bg-amber-400/15 hover:bg-amber-400/25 px-4 text-xs font-bold text-amber-200 transition flex items-center gap-1.5 shadow-sm active:scale-95"
-                onClick={() => handleSaveEntry(entry.entryId)}
-              >
-                <span>기록 저장</span>
-                <span className="text-[11px]">💾</span>
-              </button>
-            </div>
-          </article>
-        );
-      })}
-      {myEntries.length === 0 && <p className="card-panel p-6 text-center text-sm text-zinc-400">{TEXT.noEntries}</p>}
+            </article>
+          );
+        })}
+      </div>
+
+      {filteredMyEntries.length === 0 && (
+        <div className="card-panel p-8 text-center text-sm text-zinc-400 space-y-2">
+          <p className="text-2xl">🏃</p>
+          <p className="font-semibold text-zinc-300">
+            {mineFilter === "upcoming"
+              ? "다가오는 대회가 없습니다."
+              : mineFilter === "completed"
+              ? "완주한 대회 기록이 없습니다."
+              : mineFilter === "interested"
+              ? "관심(찜) 등록된 대회가 없습니다."
+              : TEXT.noEntries}
+          </p>
+          <p className="text-xs text-zinc-500">
+            '탐색' 탭에서 참가할 대회를 추가하거나, 상단 [+ 새 대회 직접 등록하기]로 일정을 등록해 보세요.
+          </p>
+        </div>
+      )}
     </section>
   );
 
