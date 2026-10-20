@@ -1051,7 +1051,7 @@ export default function PerformanceView({
                           <button
                             type="button"
                             onClick={async () => {
-                              const targetRace = matchedUserRace || (userRaces.length === 1 ? userRaces[0] : null);
+                              const targetRace = matchedUserRace;
                               if (!targetRace) {
                                 setSelectedRaceEntryId(selectedActivity.user_race_id || "");
                                 setCustomRaceNameInput(selectedActivity.race_name || selectedActivity.activity_name || "");
