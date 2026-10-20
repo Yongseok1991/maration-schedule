@@ -200,6 +200,36 @@ export function getActivityKstDate(startTime) {
   }).format(d);
 }
 
+// 8-1. KST 기준 시(0~23 hour) 추출 헬퍼 (오전 대회 vs 저녁 일반 조깅 구분용)
+export function getActivityKstHour(startTime) {
+  if (!startTime) return null;
+  try {
+    if (typeof startTime === "string") {
+      const trimmed = startTime.trim();
+      if (!trimmed.endsWith("Z") && !trimmed.includes("+") && !trimmed.includes("GMT")) {
+        const timePart = trimmed.split(/[ T]/)[1];
+        if (timePart) {
+          const hour = parseInt(timePart.split(":")[0], 10);
+          if (!Number.isNaN(hour)) return hour;
+        }
+      }
+    }
+    const d = new Date(startTime);
+    if (!Number.isNaN(d.getTime())) {
+      const hourStr = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Seoul",
+        hour: "numeric",
+        hourCycle: "h23"
+      }).format(d);
+      const h = parseInt(hourStr, 10);
+      return Number.isNaN(h) ? null : h;
+    }
+  } catch (e) {
+    return null;
+  }
+  return null;
+}
+
 // 9. 러닝 거리와 대회 종목 거리 매칭 판별기 (엄격한 코스 규격 적용)
 export function isDistanceMatchingRace(distMeters, raceDistancesStr = "") {
   const km = (Number(distMeters) || 0) / 1000;
@@ -214,8 +244,8 @@ export function isDistanceMatchingRace(distMeters, raceDistancesStr = "") {
   if (km >= 8.8 && km <= 11.5) {
     if (dStr.includes("10k") || dStr.includes("10km") || dStr.includes("10")) return true;
   }
-  // 풀코스 (40.5km ~ 44.0km)
-  if (km >= 40.5 && km <= 44.0) {
+  // 풀코스 (40.0km ~ 44.0km)
+  if (km >= 40.0 && km <= 44.0) {
     if (dStr.includes("풀") || dStr.includes("full") || dStr.includes("42")) return true;
   }
   // 5K 코스 (4.5km ~ 5.8km)
@@ -229,7 +259,7 @@ export function isDistanceMatchingRace(distMeters, raceDistancesStr = "") {
 
   // 대회 종목 텍스트가 비어 있는 경우에도 마라톤 표준 거리(하프/풀/10K)에 부합할 때만 허용
   if (!dStr) {
-    return (km >= 40.5 && km <= 44.0) || (km >= 19.5 && km <= 23.5) || (km >= 8.8 && km <= 11.5);
+    return (km >= 40.0 && km <= 44.0) || (km >= 19.5 && km <= 23.5) || (km >= 8.8 && km <= 11.5);
   }
 
   return false;
@@ -240,6 +270,7 @@ export function findMatchedUserRace(activity, userRaces = []) {
   if (!activity || !Array.isArray(userRaces) || userRaces.length === 0) return null;
 
   const actDate = getActivityKstDate(activity.start_time);
+  const actHour = getActivityKstHour(activity.start_time);
   const km = (Number(activity.distance_meters) || 0) / 1000;
 
   // 1. 이미 user_race_id로 연결된 대회가 있는 경우
@@ -265,8 +296,8 @@ export function findMatchedUserRace(activity, userRaces = []) {
   const exactMatches = userRaces.filter((r) => r.dateIso === actDate);
 
   if (exactMatches.length > 0) {
-    // 1순위: 사용자가 '나의 마라톤'에서 직접 신청/선택한 종목(raceType)과 활동 거리가 정확히 부합하는 대회
-    // (예: 키움런 10k 신청 유저가 저녁에 뛴 5km 조깅은 10k raceType과 불일치하므로 오인 매칭 원천 차단!)
+    // 1순위: 사용자가 '나의 마라톤'에서 직접 신청/선택한 종목(raceType)과 활동 거리가 정확히 부합하는 대회 (완주)
+    // (예: 키움런 10k 신청 유저가 저녁에 뛴 5km 조깅은 10k raceType과 불일치하므로 오인 완주 매칭 차단)
     const raceTypeMatch = exactMatches.find((r) => {
       if (!r.raceType) return false;
       const rt = r.raceType.toLowerCase();
@@ -278,16 +309,51 @@ export function findMatchedUserRace(activity, userRaces = []) {
     });
     if (raceTypeMatch) return raceTypeMatch;
 
-    // 2순위: raceType이 미지정된 대회에 한해 코스 거리(distances)와 엄격히 일치하는 활동
+    // 2순위: raceType이 미지정된 대회에 한해 코스 거리(distances)와 엄격히 일치하는 활동 (완주)
     const distMatch = exactMatches.find((r) => !r.raceType && isDistanceMatchingRace(activity.distance_meters, r.distances));
     if (distMatch) return distMatch;
 
-    // 당일 대회가 있더라도, 러닝 거리가 신청 코스나 표준 대회 거리에 맞지 않으면(워밍업, 조깅) 매칭하지 않음
+    // 3순위: 당일 대회 참가 중 미완주(DNF) 매칭
+    // - 마라톤 대회는 보통 오전 시간대(05:00 ~ 13:59)에 진행됩니다.
+    // - 저녁 조깅(예: 18:00, 19:22 등)이나 1~2km 수준의 단순 웜업은 DNF로 오인하지 않도록 방어합니다.
+    const isMorningRaceTime = actHour === null || (actHour >= 5 && actHour < 14);
+
+    if (isMorningRaceTime) {
+      // 3-1: 신청 종목(raceType) 기준 DNF (목표 거리의 일정 수준 이상 달렸으나 완주선에 못 미친 경우)
+      // - 풀코스(42.195km): 10km 이상 40km 미만 (예: 경주마라톤 풀코스 신청 후 21.21km 지점 DNF)
+      // - 하프(21.0975km): 5km 이상 19.5km 미만 (예: 강남국제평화마라톤 하프 신청 후 12.52km 지점 DNF)
+      // - 10K(10km): 3.5km 이상 8.8km 미만
+      // - 5K(5km): 2.0km 이상 4.5km 미만
+      const dnfRaceTypeMatch = exactMatches.find((r) => {
+        if (!r.raceType) return false;
+        const rt = r.raceType.toLowerCase();
+        if ((rt === "full" || rt.includes("풀")) && km >= 10.0 && km < 40.0) return true;
+        if ((rt === "half" || rt.includes("하프")) && km >= 5.0 && km < 19.5) return true;
+        if ((rt === "10k" || rt.includes("10")) && km >= 3.5 && km < 8.8) return true;
+        if ((rt === "5k" || rt.includes("5")) && km >= 2.0 && km < 4.5) return true;
+        return false;
+      });
+      if (dnfRaceTypeMatch) return dnfRaceTypeMatch;
+
+      // 3-2: raceType 미지정 대회 중 코스 텍스트(distances)에 코스가 명시되어 있고 DNF 거리인 경우
+      const dnfDistMatch = exactMatches.find((r) => {
+        if (r.raceType) return false;
+        const dStr = (r.distances || "").toLowerCase();
+        if ((dStr.includes("풀") || dStr.includes("full")) && km >= 10.0 && km < 40.0) return true;
+        if ((dStr.includes("하프") || dStr.includes("half")) && km >= 5.0 && km < 19.5) return true;
+        if ((dStr.includes("10k") || dStr.includes("10km")) && km >= 3.5 && km < 8.8) return true;
+        if ((dStr.includes("5k") || dStr.includes("5km")) && km >= 2.0 && km < 4.5) return true;
+        return false;
+      });
+      if (dnfDistMatch) return dnfDistMatch;
+    }
+
+    // 당일 대회가 있더라도, 러닝 거리가 신청 코스나 표준 대회 거리/DNF 조건에 맞지 않으면(워밍업, 조깅) 매칭하지 않음
     return null;
   }
 
   // 3. 당일 일치는 없지만, 대회 등록일과 토/일 주말 오차(±1일) 범위인 경우
-  // (예: 실제 대회는 12-06 토요일에 10km를 완주했으나, 등록 데이터는 12-07 일요일로 되어 있는 경우)
+  // (주의: 날짜가 다를 때는 가민 활동명이 단순 '러닝'인 경우 오매칭을 원천 차단하고, 대회 고유명이 부합할 때만 매칭)
   const actDateObj = new Date(actDate);
   if (!Number.isNaN(actDateObj.getTime())) {
     const nearbyMatches = userRaces.filter((r) => {
@@ -299,28 +365,31 @@ export function findMatchedUserRace(activity, userRaces = []) {
     });
 
     if (nearbyMatches.length > 0) {
-      const nearbyMatch = nearbyMatches.find((r) => {
-        const rt = (r.raceType || "").toLowerCase();
-        const distOk =
-          (rt === "10k" && km >= 8.8 && km <= 11.5) ||
-          (rt === "half" && km >= 19.5 && km <= 23.5) ||
-          (rt === "full" && km >= 40.0) ||
-          (!rt && isDistanceMatchingRace(activity.distance_meters, r.distances));
+      const actName = (activity.activity_name || "").toLowerCase().replace(/\s+/g, "");
+      const isGenericActName = !actName || actName === "러닝" || actName === "running" || actName === "달리기";
 
-        if (!distOk) return false;
+      // 날짜가 다를 때는 가민 활동명이 단순 '러닝'인 경우 오매칭 원천 차단!
+      if (!isGenericActName || activity.is_race === true || activity.event_type === "race") {
+        const nearbyMatch = nearbyMatches.find((r) => {
+          const rt = (r.raceType || "").toLowerCase();
+          const distOk =
+            (rt === "10k" && km >= 8.8 && km <= 11.5) ||
+            (rt === "half" && km >= 19.5 && km <= 23.5) ||
+            (rt === "full" && km >= 40.0) ||
+            (!rt && isDistanceMatchingRace(activity.distance_meters, r.distances));
 
-        const actName = (activity.activity_name || "").toLowerCase().replace(/\s+/g, "");
-        const rName = (r.name || "").toLowerCase().replace(/\s+/g, "");
-        const nameMatch =
-          rName.includes(actName) ||
-          actName.includes(rName) ||
-          (rName.includes("겨울왕국") && actName.includes("겨울왕국")) ||
-          (rName.includes("키움") && actName.includes("키움"));
+          const rName = (r.name || "").toLowerCase().replace(/\s+/g, "");
+          const nameMatch =
+            (actName && rName.includes(actName)) ||
+            (actName && actName.includes(rName)) ||
+            (rName.includes("겨울왕국") && actName.includes("겨울왕국")) ||
+            (rName.includes("키움") && actName.includes("키움"));
 
-        return nameMatch || distOk;
-      });
+          return nameMatch && distOk;
+        });
 
-      if (nearbyMatch) return nearbyMatch;
+        if (nearbyMatch) return nearbyMatch;
+      }
     }
   }
 
@@ -401,7 +470,6 @@ export function getRaceCompletionInfo(activity, userRaces = []) {
   const km = (Number(activity?.distance_meters) || 0) / 1000;
   const rawName = (activity?.activity_name || "").toLowerCase();
   const raceName = (activity?.race_name || "").toLowerCase();
-  const combinedName = `${rawName} ${raceName}`;
 
   let targetCategory = null;
   let targetKm = 0;
@@ -414,25 +482,27 @@ export function getRaceCompletionInfo(activity, userRaces = []) {
     if (matched?.raceType) {
       const rt = matched.raceType.toLowerCase();
       if (rt === "full" || rt.includes("풀")) {
-        targetCategory = "풀코스"; targetKm = 42.195; minKm = 41.0;
+        targetCategory = "풀코스"; targetKm = 42.195; minKm = 40.0;
       } else if (rt === "half" || rt.includes("하프")) {
-        targetCategory = "하프"; targetKm = 21.0975; minKm = 20.0;
+        targetCategory = "하프"; targetKm = 21.0975; minKm = 19.5;
       } else if (rt === "10k" || rt.includes("10")) {
-        targetCategory = "10K"; targetKm = 10.0; minKm = 9.0;
+        targetCategory = "10K"; targetKm = 10.0; minKm = 8.8;
       } else if (rt === "5k" || rt.includes("5")) {
         targetCategory = "5K"; targetKm = 5.0; minKm = 4.5;
       }
     }
   }
 
+  const combinedName = `${rawName} ${raceName} ${matched?.name || ""}`.toLowerCase();
+
   // 2순위: 활동명 또는 대회명에 명시된 종목 키워드 (예: '강남국제하프마라톤', '서울마라톤 풀코스')
   if (!targetCategory) {
     if (combinedName.includes("풀코스") || combinedName.includes("풀 마라톤") || combinedName.includes("full")) {
-      targetCategory = "풀코스"; targetKm = 42.195; minKm = 41.0;
+      targetCategory = "풀코스"; targetKm = 42.195; minKm = 40.0;
     } else if (combinedName.includes("하프") || combinedName.includes("half") || combinedName.includes("21k")) {
-      targetCategory = "하프"; targetKm = 21.0975; minKm = 20.0;
+      targetCategory = "하프"; targetKm = 21.0975; minKm = 19.5;
     } else if (combinedName.includes("10k") || combinedName.includes("10km")) {
-      targetCategory = "10K"; targetKm = 10.0; minKm = 9.0;
+      targetCategory = "10K"; targetKm = 10.0; minKm = 8.8;
     } else if (combinedName.includes("5k") || combinedName.includes("5km")) {
       targetCategory = "5K"; targetKm = 5.0; minKm = 4.5;
     }
@@ -443,11 +513,11 @@ export function getRaceCompletionInfo(activity, userRaces = []) {
     const d = matched.distances.toLowerCase();
     if (!d.includes(",") && !d.includes("/") && !d.includes("·") && !d.includes(" 및 ")) {
       if (d.includes("풀") || d.includes("full")) {
-        targetCategory = "풀코스"; targetKm = 42.195; minKm = 41.0;
+        targetCategory = "풀코스"; targetKm = 42.195; minKm = 40.0;
       } else if (d.includes("하프") || d.includes("half")) {
-        targetCategory = "하프"; targetKm = 21.0975; minKm = 20.0;
+        targetCategory = "하프"; targetKm = 21.0975; minKm = 19.5;
       } else if (d.includes("10k") || d.includes("10km")) {
-        targetCategory = "10K"; targetKm = 10.0; minKm = 9.0;
+        targetCategory = "10K"; targetKm = 10.0; minKm = 8.8;
       } else if (d.includes("5k") || d.includes("5km")) {
         targetCategory = "5K"; targetKm = 5.0; minKm = 4.5;
       }
@@ -457,11 +527,11 @@ export function getRaceCompletionInfo(activity, userRaces = []) {
   // 4순위: 목표 종목이 명시되지 않은 경우, 실제 주행 거리 기반으로 판정
   if (!targetCategory) {
     if (km >= 40.0) {
-      targetCategory = "풀코스"; targetKm = 42.195; minKm = 41.0;
+      targetCategory = "풀코스"; targetKm = 42.195; minKm = 40.0;
     } else if (km >= 19.5 && km <= 23.5) {
-      targetCategory = "하프"; targetKm = 21.0975; minKm = 20.0;
-    } else if (km >= 9.0 && km <= 11.5) {
-      targetCategory = "10K"; targetKm = 10.0; minKm = 9.0;
+      targetCategory = "하프"; targetKm = 21.0975; minKm = 19.5;
+    } else if (km >= 8.8 && km <= 11.5) {
+      targetCategory = "10K"; targetKm = 10.0; minKm = 8.8;
     } else if (km >= 4.5 && km <= 5.8) {
       targetCategory = "5K"; targetKm = 5.0; minKm = 4.5;
     } else {
