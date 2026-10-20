@@ -41,6 +41,7 @@ export const dataService = {
       racePhotoDataUrls: (row.race_photos || [])
         .sort((a, b) => a.display_order - b.display_order)
         .map((p) => p.photo_url),
+      createdAt: row.created_at,
       updatedAt: row.updated_at
     }));
   },
@@ -80,6 +81,7 @@ export const dataService = {
       memo: entry.memo || "",
       result_note: entry.resultNote || "",
       certificate_url: certUrl,
+      created_at: entry.createdAt || getKstIsoString(),
       updated_at: getKstIsoString()
     };
 
@@ -101,7 +103,8 @@ export const dataService = {
           user_id: userId,
           user_race_id: entry.entryId,
           photo_url: photoUrl,
-          display_order: i
+          display_order: i,
+          created_at: getKstIsoString()
         });
       }
     }
@@ -137,7 +140,9 @@ export const dataService = {
       price: row.price ? String(row.price) : "",
       purchaseDate: row.purchase_date || "",
       distanceKm: row.distance_km ? String(row.distance_km) : "",
-      memo: row.memo || ""
+      memo: row.memo || "",
+      createdAt: row.created_at,
+      updatedAt: row.updated_at
     }));
   },
 
@@ -154,6 +159,7 @@ export const dataService = {
       purchase_date: shoe.purchaseDate || null,
       distance_km: Number.parseFloat(shoe.distanceKm) || 0,
       memo: shoe.memo || "",
+      created_at: shoe.createdAt || getKstIsoString(),
       updated_at: getKstIsoString()
     });
     if (error) throw error;

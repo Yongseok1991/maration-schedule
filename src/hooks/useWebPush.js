@@ -165,6 +165,7 @@ export function useWebPush(user) {
             p256dh: subJson.keys.p256dh,
             auth: subJson.keys.auth,
             user_agent: navigator.userAgent,
+            created_at: getKstIsoString(),
             updated_at: getKstIsoString()
           },
           { onConflict: "endpoint" }

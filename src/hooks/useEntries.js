@@ -34,6 +34,7 @@ const makeEntry = (race, initialStatus = "registered") => ({
   resultNote: "",
   certificateDataUrl: "",
   racePhotoDataUrls: [],
+  createdAt: getKstIsoString(),
   updatedAt: getKstIsoString()
 });
 

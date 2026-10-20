@@ -109,6 +109,7 @@ async function main() {
       memo: entry.memo || "",
       result_note: entry.resultNote || "",
       certificate_url: certUrl,
+      created_at: entry.createdAt || getKstIsoString(),
       updated_at: getKstIsoString()
     };
 
@@ -150,6 +151,7 @@ async function main() {
       purchase_date: shoe.purchaseDate || null,
       distance_km: Number.parseFloat(shoe.distanceKm) || 0,
       memo: shoe.memo || "",
+      created_at: shoe.createdAt || getKstIsoString(),
       updated_at: getKstIsoString()
     });
     if (shoeErr) {

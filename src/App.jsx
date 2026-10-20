@@ -390,6 +390,7 @@ const makeEntry = (race) => ({
   resultNote: "",
   certificateDataUrl: "",
   racePhotoDataUrls: [],
+  createdAt: getKstIsoString(),
   updatedAt: getKstIsoString()
 });
 
