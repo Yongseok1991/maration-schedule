@@ -319,18 +319,31 @@ export function findMatchedUserRace(activity, userRaces = []) {
     const isMorningRaceTime = actHour === null || (actHour >= 5 && actHour < 14);
 
     if (isMorningRaceTime) {
+      const actName = (activity.activity_name || "").toLowerCase().replace(/\s+/g, "");
+      const isGenericActName =
+        !actName ||
+        actName === "러닝" ||
+        actName === "running" ||
+        actName === "달리기" ||
+        actName === "조깅" ||
+        actName === "jogging" ||
+        actName === "모닝러닝" ||
+        actName === "아침러닝";
+
       // 3-1: 신청 종목(raceType) 기준 DNF (목표 거리의 일정 수준 이상 달렸으나 완주선에 못 미친 경우)
-      // - 풀코스(42.195km): 10km 이상 40km 미만 (예: 경주마라톤 풀코스 신청 후 21.21km 지점 DNF)
-      // - 하프(21.0975km): 5km 이상 19.5km 미만 (예: 강남국제평화마라톤 하프 신청 후 12.52km 지점 DNF)
-      // - 10K(10km): 3.5km 이상 8.8km 미만
-      // - 5K(5km): 2.0km 이상 4.5km 미만
+      // - 풀코스(42.195km): 12km 이상 40km 미만 (예: 경주마라톤 풀코스 신청 후 21.21km 지점 DNF)
+      // - 하프(21.0975km): 8km 이상 19.5km 미만 (예: 강남국제평화마라톤 하프 신청 후 12.52km 지점 DNF)
+      // - 10K / 5K: 단순 '러닝'이나 조깅 활동은 절대 10K/5K DNF로 매칭하지 않음!
+      //   (단순 3~5km 아침 조깅/회복주가 10K DNF로 오탐되는 것을 원천 차단. 활동명에 대회 키워드가 있거나 사용자가 명시적으로 대회로 지정한 경우에만 매칭)
       const dnfRaceTypeMatch = exactMatches.find((r) => {
         if (!r.raceType) return false;
         const rt = r.raceType.toLowerCase();
-        if ((rt === "full" || rt.includes("풀")) && km >= 10.0 && km < 40.0) return true;
-        if ((rt === "half" || rt.includes("하프")) && km >= 5.0 && km < 19.5) return true;
-        if ((rt === "10k" || rt.includes("10")) && km >= 3.5 && km < 8.8) return true;
-        if ((rt === "5k" || rt.includes("5")) && km >= 2.0 && km < 4.5) return true;
+        if ((rt === "full" || rt.includes("풀")) && km >= 12.0 && km < 40.0) return true;
+        if ((rt === "half" || rt.includes("하프")) && km >= 8.0 && km < 19.5) return true;
+        if (!isGenericActName || activity.is_race === true || activity.event_type === "race") {
+          if ((rt === "10k" || rt.includes("10")) && km >= 5.0 && km < 8.8) return true;
+          if ((rt === "5k" || rt.includes("5")) && km >= 2.5 && km < 4.5) return true;
+        }
         return false;
       });
       if (dnfRaceTypeMatch) return dnfRaceTypeMatch;
@@ -339,10 +352,12 @@ export function findMatchedUserRace(activity, userRaces = []) {
       const dnfDistMatch = exactMatches.find((r) => {
         if (r.raceType) return false;
         const dStr = (r.distances || "").toLowerCase();
-        if ((dStr.includes("풀") || dStr.includes("full")) && km >= 10.0 && km < 40.0) return true;
-        if ((dStr.includes("하프") || dStr.includes("half")) && km >= 5.0 && km < 19.5) return true;
-        if ((dStr.includes("10k") || dStr.includes("10km")) && km >= 3.5 && km < 8.8) return true;
-        if ((dStr.includes("5k") || dStr.includes("5km")) && km >= 2.0 && km < 4.5) return true;
+        if ((dStr.includes("풀") || dStr.includes("full")) && km >= 12.0 && km < 40.0) return true;
+        if ((dStr.includes("하프") || dStr.includes("half")) && km >= 8.0 && km < 19.5) return true;
+        if (!isGenericActName || activity.is_race === true || activity.event_type === "race") {
+          if ((dStr.includes("10k") || dStr.includes("10km")) && km >= 5.0 && km < 8.8) return true;
+          if ((dStr.includes("5k") || dStr.includes("5km")) && km >= 2.5 && km < 4.5) return true;
+        }
         return false;
       });
       if (dnfDistMatch) return dnfDistMatch;
@@ -366,7 +381,15 @@ export function findMatchedUserRace(activity, userRaces = []) {
 
     if (nearbyMatches.length > 0) {
       const actName = (activity.activity_name || "").toLowerCase().replace(/\s+/g, "");
-      const isGenericActName = !actName || actName === "러닝" || actName === "running" || actName === "달리기";
+      const isGenericActName =
+        !actName ||
+        actName === "러닝" ||
+        actName === "running" ||
+        actName === "달리기" ||
+        actName === "조깅" ||
+        actName === "jogging" ||
+        actName === "모닝러닝" ||
+        actName === "아침러닝";
 
       // 날짜가 다를 때는 가민 활동명이 단순 '러닝'인 경우 오매칭 원천 차단!
       if (!isGenericActName || activity.is_race === true || activity.event_type === "race") {
