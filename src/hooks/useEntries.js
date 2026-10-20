@@ -212,7 +212,12 @@ export function useEntries(user, authLoading) {
     }
 
     try {
-      await dataService.saveEntry(target, user.id);
+      const saved = await dataService.saveEntry(target, user.id);
+      if (saved) {
+        const next = entries.map((e) => (e.entryId === entryId ? { ...e, ...saved } : e));
+        setEntries(next);
+        saveToLocalStorage(next);
+      }
       setSyncState({ kind: "success", message: "클라우드 DB에 저장되었습니다." });
       return { success: true };
     } catch (err) {
@@ -259,7 +264,12 @@ export function useEntries(user, authLoading) {
       setEntries(next);
       saveToLocalStorage(next);
       if (user) {
-        await dataService.saveEntry(updated, user.id);
+        const saved = await dataService.saveEntry(updated, user.id);
+        if (saved) {
+          const nextWithSaved = next.map((e) => (e.entryId === entryId ? { ...e, ...saved } : e));
+          setEntries(nextWithSaved);
+          saveToLocalStorage(nextWithSaved);
+        }
       }
     } catch {
       setSyncState({ kind: "error", message: "이미지 처리 실패" });
@@ -277,13 +287,18 @@ export function useEntries(user, authLoading) {
       const urls = await Promise.all(
         files.map((file) => optimizeImageFile(file, { maxSide: 1800, maxBytes: 900 * 1024 }))
       );
-      const nextPhotos = [...(current?.racePhotoDataUrls || []), ...urls].slice(0, 6);
-      const updated = { ...current, racePhotoDataUrls: nextPhotos, updatedAt: getKstIsoString() };
+      const merged = Array.from(new Set([...(current?.racePhotoDataUrls || []), ...urls])).slice(0, 6);
+      const updated = { ...current, racePhotoDataUrls: merged, updatedAt: getKstIsoString() };
       const next = entries.map((e) => (e.entryId === entryId ? updated : e));
       setEntries(next);
       saveToLocalStorage(next);
       if (user) {
-        await dataService.saveEntry(updated, user.id);
+        const saved = await dataService.saveEntry(updated, user.id);
+        if (saved) {
+          const nextWithSaved = next.map((e) => (e.entryId === entryId ? { ...e, ...saved } : e));
+          setEntries(nextWithSaved);
+          saveToLocalStorage(nextWithSaved);
+        }
       }
     } catch {
       setSyncState({ kind: "error", message: "사진 처리 중 오류가 발생했습니다." });
@@ -299,7 +314,12 @@ export function useEntries(user, authLoading) {
     setEntries(next);
     saveToLocalStorage(next);
     if (user) {
-      await dataService.saveEntry(updated, user.id);
+      const saved = await dataService.saveEntry(updated, user.id);
+      if (saved) {
+        const nextWithSaved = next.map((e) => (e.entryId === entryId ? { ...e, ...saved } : e));
+        setEntries(nextWithSaved);
+        saveToLocalStorage(nextWithSaved);
+      }
     }
   };
 

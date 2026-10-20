@@ -1,4 +1,4 @@
-import { supabase } from "./supabase";
+import { supabase } from "./supabase.js";
 
 /**
  * Base64 Data URL 또는 Blob을 Supabase Storage에 업로드

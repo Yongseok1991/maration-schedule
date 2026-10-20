@@ -1,16 +1,18 @@
-import { createClient } from "@supabase/supabase-js";
+﻿import { createClient } from "@supabase/supabase-js";
 
 const DEFAULT_SUPABASE_URL = "https://ayvxlbnovvsdupxsotec.supabase.co";
 const DEFAULT_SUPABASE_ANON_KEY = "sb_publishable_1lcq2IVZvi71rgHJrZMvVg_sUse0Vzp";
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || DEFAULT_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || DEFAULT_SUPABASE_ANON_KEY;
+const supabaseUrl = (typeof import.meta !== "undefined" && import.meta.env?.VITE_SUPABASE_URL) || DEFAULT_SUPABASE_URL;
+const supabaseAnonKey = (typeof import.meta !== "undefined" && import.meta.env?.VITE_SUPABASE_ANON_KEY) || DEFAULT_SUPABASE_ANON_KEY;
 
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
 
+const memStorage = new Map();
+
 const authStorage = {
   getItem: (key) => {
-    if (typeof window === "undefined") return null;
+    if (typeof window === "undefined") return memStorage.get(key) || null;
     try {
       return window.sessionStorage.getItem(key) || window.localStorage.getItem(key);
     } catch {
@@ -18,7 +20,10 @@ const authStorage = {
     }
   },
   setItem: (key, value) => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined") {
+      memStorage.set(key, value);
+      return;
+    }
     try {
       const keepLoggedIn = window.localStorage.getItem("racebook_keep_logged_in") !== "false";
       if (keepLoggedIn) {
@@ -33,7 +38,10 @@ const authStorage = {
     }
   },
   removeItem: (key) => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined") {
+      memStorage.delete(key);
+      return;
+    }
     try {
       window.sessionStorage.removeItem(key);
       window.localStorage.removeItem(key);
@@ -48,8 +56,7 @@ export const supabase = isSupabaseConfigured
       auth: {
         storage: authStorage,
         persistSession: true,
-        autoRefreshToken: true,
-        detectSessionInUrl: true
+        autoRefreshToken: true
       }
     })
   : null;

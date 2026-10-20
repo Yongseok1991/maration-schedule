@@ -1,6 +1,6 @@
-import { supabase } from "./supabase";
-import { storageService } from "./storageService";
-import { getKstIsoString, getTodayKstDate } from "../utils/dateUtils";
+import { supabase } from "./supabase.js";
+import { storageService } from "./storageService.js";
+import { getKstIsoString, getTodayKstDate } from "../utils/dateUtils.js";
 
 export const dataService = {
   /**
@@ -38,9 +38,14 @@ export const dataService = {
       memo: row.memo || "",
       resultNote: row.result_note || "",
       certificateDataUrl: row.certificate_url || "",
-      racePhotoDataUrls: (row.race_photos || [])
-        .sort((a, b) => a.display_order - b.display_order)
-        .map((p) => p.photo_url),
+      racePhotoDataUrls: Array.from(
+        new Set(
+          (row.race_photos || [])
+            .sort((a, b) => a.display_order - b.display_order)
+            .map((p) => p.photo_url)
+            .filter(Boolean)
+        )
+      ),
       createdAt: row.created_at,
       updatedAt: row.updated_at
     }));
@@ -88,10 +93,15 @@ export const dataService = {
     const { error } = await supabase.from("user_races").upsert(payload, { onConflict: "id" });
     if (error) throw error;
 
-    // 갤러리 사진 처리
+    // 갤러리 사진 처리 (기존 사진 삭제 후 현재 목록으로 안전하게 갱신하여 중복 저장 원천 차단)
+    await supabase.from("race_photos").delete().eq("user_race_id", entry.entryId).eq("user_id", userId);
+
+    const savedPhotoUrls = [];
     if (Array.isArray(entry.racePhotoDataUrls)) {
-      for (let i = 0; i < entry.racePhotoDataUrls.length; i++) {
-        let photoUrl = entry.racePhotoDataUrls[i];
+      const uniquePhotoUrls = Array.from(new Set(entry.racePhotoDataUrls.filter(Boolean))).slice(0, 6);
+
+      for (let i = 0; i < uniquePhotoUrls.length; i++) {
+        let photoUrl = uniquePhotoUrls[i];
         if (photoUrl.startsWith("data:")) {
           try {
             photoUrl = await storageService.uploadRacePhoto(userId, entry.entryId, i, photoUrl);
@@ -99,7 +109,9 @@ export const dataService = {
             console.error("Photo upload error:", err);
           }
         }
-        await supabase.from("race_photos").upsert({
+        savedPhotoUrls.push(photoUrl);
+
+        await supabase.from("race_photos").insert({
           user_id: userId,
           user_race_id: entry.entryId,
           photo_url: photoUrl,
@@ -109,7 +121,7 @@ export const dataService = {
       }
     }
 
-    return { ...entry, certificateDataUrl: certUrl };
+    return { ...entry, certificateDataUrl: certUrl, racePhotoDataUrls: savedPhotoUrls };
   },
 
   /**
