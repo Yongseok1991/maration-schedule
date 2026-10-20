@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20T13:22:05.933Z",
+  "updatedAt": "2026-10-20T19:51:21.330Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 928,
   "races": [
@@ -11460,7 +11460,7 @@
       "contact": "010-6518-1559",
       "registration_period": "2026년9월18일~2026년10월20일",
       "homepage": "http://fwr.libertyinnorthkorea.or.kr/2026/#join",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41883"
     },
     {
@@ -11700,7 +11700,7 @@
       "contact": "070-4098-1114",
       "registration_period": "2026년9월1일~2026년10월20일",
       "homepage": "http://icnr.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41882"
     },
     {
@@ -12000,7 +12000,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년9월2일~2026년10월20일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41849"
     },
     {
@@ -12075,7 +12075,7 @@
       "contact": "062-951-2060",
       "registration_period": "2026년9월20일~2026년10월20일",
       "homepage": "http://www.metarun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41886"
     },
     {
@@ -12540,7 +12540,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년5월6일~2026년10월20일",
       "homepage": "http://www.mara1080.com/event/c8dc2c22-a83a-4743-9e34-c884e9809dbb",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41563"
     },
     {
@@ -12750,7 +12750,7 @@
       "contact": "02-364-1936",
       "registration_period": "2026년8월9일~2026년10월20일",
       "homepage": "http://sonkeechungrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41845"
     },
     {
@@ -13500,7 +13500,7 @@
       "contact": "051-867-0517",
       "registration_period": "2026년10월1일~2026년10월20일",
       "homepage": "http://ysmarathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41851"
     },
     {
