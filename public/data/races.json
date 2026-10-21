@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-21T03:25:28.293Z",
+  "updatedAt": "2026-10-21T13:28:10.686Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 928,
+  "count": 930,
   "races": [
     {
       "id": "40976",
@@ -12298,9 +12298,9 @@
       "place": "경북도청 천년숲 앞",
       "organizer": "경상북도, 경상북도체육회",
       "contact": "070-7707-2808",
-      "registration_period": "2026년9월1일~2026년10월16일",
+      "registration_period": "2026년9월1일~2026년10월25일",
       "homepage": "http://1004.tbc.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41844"
     },
     {
@@ -12748,9 +12748,9 @@
       "place": "파주 임진각",
       "organizer": "손기정기념재단",
       "contact": "02-364-1936",
-      "registration_period": "2026년8월9일~2026년10월20일",
+      "registration_period": "2026년8월9일~2026년10월27일",
       "homepage": "http://sonkeechungrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41845"
     },
     {
@@ -13624,6 +13624,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41905"
     },
     {
+      "id": "41936",
+      "name": "2026 성남 헤리티지 런",
+      "date_display": "2026년12월12일",
+      "date_iso": "2026-12-12",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "탄천종합운동장",
+      "organizer": "채널A",
+      "contact": "031-821-9940",
+      "registration_period": "2026년10월21일~2026년11월20일",
+      "homepage": "http://charun.co.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41936"
+    },
+    {
       "id": "41745",
       "name": "제36회 진주마라톤",
       "date_display": "2026년12월13일",
@@ -13667,6 +13682,21 @@
       "homepage": "http://koreatrail.net",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41914"
+    },
+    {
+      "id": "41935",
+      "name": "2026 시즌마감마라톤대회",
+      "date_display": "2026년12월13일",
+      "date_iso": "2026-12-13",
+      "distances": "하프,10km,5km",
+      "region": "인천",
+      "place": "인천아사이드 경기장 북측 광장",
+      "organizer": "기호일보, 로드스포츠",
+      "contact": "1600-3962",
+      "registration_period": "2026년10월20일~2026년11월23일",
+      "homepage": "http://42195race.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41935"
     },
     {
       "id": "41801",
@@ -13715,7 +13745,7 @@
     },
     {
       "id": "41806",
-      "name": "2026 한강런 준비중",
+      "name": "2026 한강런 (대회취소)",
       "date_display": "2026년12월28일",
       "date_iso": "2026-12-28",
       "distances": "10km,5km",
@@ -13723,9 +13753,9 @@
       "place": "안양천다목적광장",
       "organizer": "한강런(주)",
       "contact": "02-888-8805",
-      "registration_period": "2026년9월20일~2026년12월12일",
+      "registration_period": "2026년9월20일~2026년10월15일",
       "homepage": "http://hgrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41806"
     },
     {
