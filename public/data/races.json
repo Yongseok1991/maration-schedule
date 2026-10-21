@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21T13:28:10.686Z",
+  "updatedAt": "2026-10-21T19:56:46.744Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 930,
   "races": [
@@ -11835,7 +11835,7 @@
       "contact": "010-9573-7669",
       "registration_period": "2026년9월21일~2026년10월21일",
       "homepage": "http://justicerun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41871"
     },
     {
@@ -12825,7 +12825,7 @@
       "contact": "070-4350-5663",
       "registration_period": "2026년10월6일~2026년10월21일",
       "homepage": "http://bithumbnanumrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41902"
     },
     {
@@ -12945,7 +12945,7 @@
       "contact": "02-785-1915",
       "registration_period": "2026년9월1일~2026년10월21일",
       "homepage": "http://gofree.seoul.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41865"
     },
     {
