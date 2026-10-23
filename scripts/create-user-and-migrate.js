@@ -66,15 +66,21 @@ async function main() {
     auth: { persistSession: false, autoRefreshToken: false }
   });
 
-  const email = process.argv[2] || "dobest0998@gmail.com";
-  let password = process.argv[3] || "123456";
+  const email = process.argv[2] || process.env.MIGRATION_USER_EMAIL;
+  let password = process.argv[3] || process.env.MIGRATION_USER_PASSWORD;
+
+  if (!email || !password) {
+    console.error("❌ 이메일과 비밀번호를 인자 또는 환경변수로 입력해주세요.");
+    console.error("   사용법: node scripts/create-user-and-migrate.js <email> <password>");
+    process.exit(1);
+  }
   if (password.length < 6) password = password.padEnd(6, "0");
 
   console.log("==================================================");
   console.log("🏃 계정 생성 및 데이터 이관 (Admin Migration)");
   console.log("==================================================");
   console.log(`• 계정 이메일: ${email}`);
-  console.log(`• 비밀번호: ${password}\n`);
+  console.log(`• 비밀번호: [보안 숨김 처리]\n`);
 
   console.log("[1/4] Supabase 유저 계정 확인 및 생성 중...");
   let user = null;
@@ -94,7 +100,7 @@ async function main() {
       email,
       password,
       email_confirm: true,
-      user_metadata: { nickname: "dobest0998" }
+      user_metadata: { nickname: email.split("@")[0] }
     });
 
     if (createError) {
@@ -109,7 +115,7 @@ async function main() {
   await supabaseAdmin.from("profiles").upsert({
     id: user.id,
     email: user.email,
-    nickname: "dobest0998",
+    nickname: email.split("@")[0],
     updated_at: new Date().toISOString()
   });
 

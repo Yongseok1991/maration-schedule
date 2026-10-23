@@ -34,7 +34,7 @@
 - [x] 완주증/사진 업로드 스토리지 서비스 (`src/services/storageService.js`)
 - [x] 100% Supabase DB 전용 데이터 서비스 (`src/services/dataService.js`)
 - [x] 레거시 `IndexedDB` (`src/lib/entriesDb.js`) 파일 완전 삭제
-- [x] 유저 계정(`dobest0998@gmail.com` / PW: `123456`) 생성 및 인증 완료
+- [x] 유저 계정 생성 및 Supabase Auth 연동 완료
 - [x] 기존 18개 마라톤 대회 & 사진 & 러닝화 5켤레 Supabase 클라우드 100% 이관 완료
 
 ### Phase 3: 이미지 최적화 및 압축 검증
