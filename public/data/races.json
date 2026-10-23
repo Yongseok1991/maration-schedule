@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-22T19:45:39.981Z",
+  "updatedAt": "2026-10-23T03:29:26.016Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 930,
   "races": [
@@ -11698,9 +11698,9 @@
       "place": "인천 영정구 중산동 하늘구름광",
       "organizer": "인천광역시걷기협",
       "contact": "070-4098-1114",
-      "registration_period": "2026년9월1일~2026년10월20일",
+      "registration_period": "2026년9월1일~2026년10월30일",
       "homepage": "http://icnr.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41882"
     },
     {
@@ -13663,7 +13663,7 @@
       "place": "상암월드컵공원 평화광장",
       "organizer": "(사)대한생활체육연맹",
       "contact": "02-569-5551",
-      "registration_period": "2026년8월7일~2026년11월22일",
+      "registration_period": "2026년8월7일~2026년12월6일",
       "homepage": "http://bamseom.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41784"
