@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-23T03:29:26.016Z",
+  "updatedAt": "2026-10-23T13:06:28.693Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 930,
   "races": [
@@ -11998,9 +11998,9 @@
       "place": "엑스포다리 인근",
       "organizer": "(주)러닝브레이커,전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년9월2일~2026년10월20일",
+      "registration_period": "2026년9월2일~2026년10월25일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41849"
     },
     {
@@ -12928,7 +12928,7 @@
       "place": "금호강 러닝성지",
       "organizer": "(주)러닝브레이커,전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년9월11일~2026년10월30일",
+      "registration_period": "2026년9월11일~2026년11월8일",
       "homepage": "http://runten.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41868"
