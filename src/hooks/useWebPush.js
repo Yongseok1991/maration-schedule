@@ -1,12 +1,19 @@
 import { useState, useEffect, useCallback } from "react";
-import { supabase } from "../services/supabase";
-import { VAPID_PUBLIC_KEY, urlB64ToUint8Array } from "../utils/webPushConstants";
-import { getKstIsoString } from "../utils/dateUtils";
+import { supabase } from "../services/supabase.js";
+import { VAPID_PUBLIC_KEY, urlB64ToUint8Array } from "../utils/webPushConstants.js";
+import { getKstIsoString } from "../utils/dateUtils.js";
+
+const LOCAL_STORAGE_PUSH_KEY = "racebook_push_subscribed";
 
 export function useWebPush(user) {
   const [isSupported, setIsSupported] = useState(false);
   const [permission, setPermission] = useState("default");
-  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const perm = "Notification" in window ? Notification.permission : "default";
+    if (perm === "denied") return false;
+    return localStorage.getItem(LOCAL_STORAGE_PUSH_KEY) === "true";
+  });
   const [loading, setLoading] = useState(false);
   const [showIosGuide, setShowIosGuide] = useState(false);
 
@@ -39,37 +46,61 @@ export function useWebPush(user) {
     }
   }, [user?.id]);
 
-  // 안전하게 서비스 워커 등록 객체를 가져오는 헬퍼 (무한 대기 방지)
-  const getSafeRegistration = async (timeoutMs = 1500) => {
-    if (!("serviceWorker" in navigator)) return null;
+  // 안전하게 활성화된 서비스 워커 등록 객체를 가져오는 헬퍼 (충분한 타임아웃 부여)
+  const getSafeRegistration = async (timeoutMs = 8000) => {
+    if (typeof navigator === "undefined" || !("serviceWorker" in navigator)) return null;
 
+    // 1순위: navigator.serviceWorker.ready 대기 (active 상태 워커 보장)
     try {
-      // 1순위: getRegistration()으로 이미 활성화된 SW 즉시 확인
-      const existing = await navigator.serviceWorker.getRegistration();
-      if (existing) return existing;
-
-      // 2순위: ready 대기 (timeoutMs 초과 시 포기)
       const timeoutPromise = new Promise((resolve) => setTimeout(() => resolve(null), timeoutMs));
       const readyPromise = navigator.serviceWorker.ready;
-      return await Promise.race([readyPromise, timeoutPromise]);
-    } catch {
-      return null;
+      const readyReg = await Promise.race([readyPromise, timeoutPromise]);
+      if (readyReg && readyReg.pushManager) return readyReg;
+    } catch (e) {
+      console.warn("SW ready wait error:", e);
     }
+
+    // 2순위: 복수 등록 목록에서 active 워커 검색
+    try {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      const activeReg = registrations.find((r) => r.active && r.pushManager) || registrations.find((r) => r.pushManager);
+      if (activeReg) return activeReg;
+    } catch {}
+
+    // 3순위: 단일 getRegistration()
+    try {
+      const reg = await navigator.serviceWorker.getRegistration();
+      if (reg && reg.pushManager) return reg;
+    } catch {}
+
+    return null;
   };
 
-  // 2. 현재 기기 푸시 구독 상태 확인
-  const checkExistingSubscription = async () => {
+  // 2. 현재 기기 푸시 구독 상태 확인 (새로고침/재방문 시 풀림 방지)
+  const checkExistingSubscription = async (retryCount = 0) => {
     try {
-      const reg = await getSafeRegistration(1500);
-      if (!reg || !reg.pushManager) {
+      // 사용자가 브라우저 설정에서 명시적으로 차단한 경우
+      if (typeof Notification !== "undefined" && Notification.permission === "denied") {
         setIsSubscribed(false);
+        localStorage.removeItem(LOCAL_STORAGE_PUSH_KEY);
+        return;
+      }
+
+      const reg = await getSafeRegistration(8000);
+      if (!reg || !reg.pushManager) {
+        // 서비스 워커 초기화가 지연되는 경우, 기존 켜짐 상태를 임의로 false로 덮어쓰지 않고 재시도
+        if (retryCount < 2) {
+          setTimeout(() => checkExistingSubscription(retryCount + 1), 2500);
+        }
         return;
       }
 
       const sub = await reg.pushManager.getSubscription();
       if (sub) {
         setIsSubscribed(true);
-        // 만약 로그인된 유저인데 DB에 저장이 안 되어있을 수 있으므로 upsert 동기화
+        localStorage.setItem(LOCAL_STORAGE_PUSH_KEY, "true");
+
+        // 로그인된 유저인데 DB에 저장이 안 되어있을 수 있으므로 upsert 동기화
         if (user?.id && supabase) {
           const subJson = sub.toJSON();
           if (subJson.endpoint && subJson.keys) {
@@ -87,11 +118,46 @@ export function useWebPush(user) {
           }
         }
       } else {
+        // sub가 없지만 권한이 이미 허용(granted)되어 있고 로컬에 켜짐 기록이 있는 경우 자동 복구
+        const hasSavedFlag = localStorage.getItem(LOCAL_STORAGE_PUSH_KEY) === "true";
+        if (hasSavedFlag && typeof Notification !== "undefined" && Notification.permission === "granted") {
+          try {
+            const newSub = await reg.pushManager.subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: urlB64ToUint8Array(VAPID_PUBLIC_KEY)
+            });
+            if (newSub) {
+              setIsSubscribed(true);
+              localStorage.setItem(LOCAL_STORAGE_PUSH_KEY, "true");
+              if (user?.id && supabase) {
+                const subJson = newSub.toJSON();
+                if (subJson.endpoint && subJson.keys) {
+                  await supabase.from("push_subscriptions").upsert(
+                    {
+                      user_id: user.id,
+                      endpoint: subJson.endpoint,
+                      p256dh: subJson.keys.p256dh,
+                      auth: subJson.keys.auth,
+                      user_agent: navigator.userAgent,
+                      updated_at: getKstIsoString()
+                    },
+                    { onConflict: "endpoint" }
+                  );
+                }
+              }
+              return;
+            }
+          } catch (autoSubErr) {
+            console.warn("구독 자동 복원 실패:", autoSubErr);
+          }
+        }
+
+        // 실제로 구독하지 않은 경우
         setIsSubscribed(false);
+        localStorage.removeItem(LOCAL_STORAGE_PUSH_KEY);
       }
     } catch (err) {
       console.warn("푸시 구독 상태 확인 실패:", err);
-      setIsSubscribed(false);
     } finally {
       setLoading(false);
     }
@@ -117,7 +183,7 @@ export function useWebPush(user) {
     try {
       setLoading(true);
 
-      // 브라우저 권한 요청
+      // 1. 브라우저 권한 요청
       const perm = await Notification.requestPermission();
       setPermission(perm);
 
@@ -128,22 +194,23 @@ export function useWebPush(user) {
         return false;
       }
 
-      let reg = await getSafeRegistration(3000);
-      if (!reg) {
-        // 서비스 워커 명시적 등록 시도
+      // 2. 서비스 워커 등록 확보
+      let reg = await getSafeRegistration(8000);
+      if (!reg || !reg.pushManager) {
         try {
-          reg = await navigator.serviceWorker.register("./sw.js");
+          await navigator.serviceWorker.register("./sw.js");
+          reg = await getSafeRegistration(8000);
         } catch (e) {
           console.warn("SW register fallback failed:", e);
         }
       }
 
       if (!reg || !reg.pushManager) {
-        throw new Error("서비스 워커가 아직 활성화되지 않았습니다. 페이지를 새로고침(F5) 후 다시 시도해주세요.");
+        throw new Error("서비스 워커가 아직 활성화되지 않았습니다. 잠시 후 다시 시도해주세요.");
       }
 
+      // 3. 푸시 매니저 구독 생성
       let sub = await reg.pushManager.getSubscription();
-
       if (!sub) {
         sub = await reg.pushManager.subscribe({
           userVisibleOnly: true,
@@ -156,35 +223,44 @@ export function useWebPush(user) {
         throw new Error("푸시 구독 키 정보를 가져올 수 없습니다.");
       }
 
-      // Supabase DB에 저장
-      if (user?.id && supabase) {
-        const { error } = await supabase.from("push_subscriptions").upsert(
-          {
-            user_id: user.id,
-            endpoint: subJson.endpoint,
-            p256dh: subJson.keys.p256dh,
-            auth: subJson.keys.auth,
-            user_agent: navigator.userAgent,
-            created_at: getKstIsoString(),
-            updated_at: getKstIsoString()
-          },
-          { onConflict: "endpoint" }
-        );
+      // 4. 로컬 스토리지 및 UI 상태 즉시 영구 저장 (새로고침 시 풀림 방지)
+      setIsSubscribed(true);
+      localStorage.setItem(LOCAL_STORAGE_PUSH_KEY, "true");
 
-        if (error) {
-          console.error("Supabase push_subscriptions 저장 실패:", error);
-          throw error;
+      // 5. Supabase DB에 저장
+      if (user?.id && supabase) {
+        try {
+          const { error } = await supabase.from("push_subscriptions").upsert(
+            {
+              user_id: user.id,
+              endpoint: subJson.endpoint,
+              p256dh: subJson.keys.p256dh,
+              auth: subJson.keys.auth,
+              user_agent: navigator.userAgent,
+              created_at: getKstIsoString(),
+              updated_at: getKstIsoString()
+            },
+            { onConflict: "endpoint" }
+          );
+
+          if (error) {
+            console.error("Supabase push_subscriptions 저장 실패:", error);
+          }
+        } catch (dbErr) {
+          console.warn("Supabase push 저장 경고:", dbErr);
         }
       }
 
-      setIsSubscribed(true);
-
-      // 즉시 확인용 웰컴 알림 띄우기
-      reg.showNotification("🔔 RACEBOOK 마라톤 스마트 알림 설정 완료", {
-        body: "⭐ 찜한 대회의 접수 시작일과 🏃 출전 대회의 D-Day 일정을 오전 9시에 챙겨드립니다!",
-        icon: "./icons/icon-192.png",
-        badge: "./icons/icon-192.png"
-      });
+      // 6. 즉시 확인용 웰컴 알림 띄우기 (실패해도 구독 상태 유지)
+      try {
+        reg.showNotification("🔔 RACEBOOK 마라톤 스마트 알림 설정 완료", {
+          body: "⭐ 찜한 대회의 접수 시작일과 🏃 출전 대회의 D-Day 일정을 오전 9시에 챙겨드립니다!",
+          icon: "./icons/icon-192.png",
+          badge: "./icons/icon-192.png"
+        });
+      } catch (notiErr) {
+        console.warn("웰컴 알림 팝업 생략:", notiErr);
+      }
 
       return true;
     } catch (err) {
@@ -194,13 +270,18 @@ export function useWebPush(user) {
     } finally {
       setLoading(false);
     }
-  }, [isSupported, user?.id]);
+  }, [isSupported, isIosNeedInstall, isIos, user?.id]);
 
   // 4. 푸시 알림 끄기 (구독 해제)
   const unsubscribe = useCallback(async () => {
     try {
       setLoading(true);
-      const reg = await getSafeRegistration(2000);
+
+      // 1. 상태 및 로컬 스토리지 즉시 해제
+      setIsSubscribed(false);
+      localStorage.removeItem(LOCAL_STORAGE_PUSH_KEY);
+
+      const reg = await getSafeRegistration(4000);
       const sub = reg?.pushManager ? await reg.pushManager.getSubscription() : null;
 
       if (sub) {
@@ -209,11 +290,14 @@ export function useWebPush(user) {
 
         // Supabase DB에서도 제거
         if (supabase && endpoint) {
-          await supabase.from("push_subscriptions").delete().eq("endpoint", endpoint);
+          try {
+            await supabase.from("push_subscriptions").delete().eq("endpoint", endpoint);
+          } catch (delErr) {
+            console.warn("Supabase push_subscriptions 삭제 오류:", delErr);
+          }
         }
       }
 
-      setIsSubscribed(false);
       return true;
     } catch (err) {
       console.error("푸시 구독 해제 실패:", err);
@@ -230,17 +314,21 @@ export function useWebPush(user) {
       alert("먼저 푸시 알림을 켜주세요.");
       return;
     }
-    const reg = await getSafeRegistration(2000);
+    const reg = await getSafeRegistration(4000);
     if (!reg) {
       alert("서비스 워커가 준비되지 않았습니다. 새로고침 후 다시 시도해주세요.");
       return;
     }
-    reg.showNotification("🏃 [테스트] 2027 전마협 새해 동계 마라톤 D-7", {
-      body: "대회가 일주일 남았습니다! 마지막 주말 가벼운 조깅으로 컨디션을 조절하세요 🏃",
-      icon: "./icons/icon-192.png",
-      badge: "./icons/icon-192.png",
-      vibrate: [200, 100, 200]
-    });
+    try {
+      reg.showNotification("🏃 [테스트] 2027 전마협 새해 동계 마라톤 D-7", {
+        body: "대회가 일주일 남았습니다! 마지막 주말 가벼운 조깅으로 컨디션을 조절하세요 🏃",
+        icon: "./icons/icon-192.png",
+        badge: "./icons/icon-192.png",
+        vibrate: [200, 100, 200]
+      });
+    } catch (e) {
+      alert("알림 띄우기 오류: " + e.message);
+    }
   }, [isSubscribed]);
 
   return {
