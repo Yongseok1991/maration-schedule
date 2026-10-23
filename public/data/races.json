@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-23T13:06:28.693Z",
+  "updatedAt": "2026-10-23T19:48:36.468Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 930,
   "races": [
@@ -12210,7 +12210,7 @@
       "contact": "1551-3934",
       "registration_period": "2026년8월7일~2026년10월23일",
       "homepage": "http://kw-marathon.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41755"
     },
     {
@@ -12330,7 +12330,7 @@
       "contact": "010-6364-4749",
       "registration_period": "2026년9월3일~2026년10월23일",
       "homepage": "http://comport11.oopy.io/gangnamhalfmarathon",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41853"
     },
     {
@@ -12480,7 +12480,7 @@
       "contact": "070-8656-9035",
       "registration_period": "2026년9월14일~2026년10월23일",
       "homepage": "http://tongkeun-run.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41831"
     },
     {
@@ -12780,7 +12780,7 @@
       "contact": "055-285-6158",
       "registration_period": "2026년9월14일~2026년10월23일",
       "homepage": "http://www.tongilmarathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41842"
     },
     {
