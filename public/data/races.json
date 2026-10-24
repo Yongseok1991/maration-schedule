@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-24T12:28:40.302Z",
+  "updatedAt": "2026-10-24T18:36:57.131Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 930,
   "races": [
@@ -11415,7 +11415,7 @@
       "contact": "070-5088-1180",
       "registration_period": "2026년8월27일~2026년10월24일",
       "homepage": "http://projectruntrip.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41829"
     },
     {
@@ -12375,7 +12375,7 @@
       "contact": "031-339-6338",
       "registration_period": "2026년10월14일~2026년10월24일",
       "homepage": "http://aaaf.koreashout.com/bbs/board.php?bo_table=cp_list&wr_id=60",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41926"
     },
     {
@@ -13200,7 +13200,7 @@
       "contact": "1566-1936",
       "registration_period": "2026년8월4일~2026년10월24일",
       "homepage": "http://www.peacerun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41766"
     },
     {
