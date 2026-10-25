@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T12:59:06.145Z",
+  "updatedAt": "2026-10-25T18:44:58.986Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 930,
   "races": [
@@ -11970,7 +11970,7 @@
       "contact": "02-1566-1936",
       "registration_period": "2026년9월1일~2026년10월25일",
       "homepage": "http://www.saverace.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41819"
     },
     {
@@ -12000,7 +12000,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년9월2일~2026년10월25일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41849"
     },
     {
@@ -12240,7 +12240,7 @@
       "contact": "041-543-4592",
       "registration_period": "2026년8월20일~2026년10월25일",
       "homepage": "http://asanmarathon.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41780"
     },
     {
@@ -12285,7 +12285,7 @@
       "contact": "010-4401-2829",
       "registration_period": "2026년9월2일~2026년10월25일",
       "homepage": "http://cymarathon.imweb.me/index?preview_mode=1",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41846"
     },
     {
@@ -12300,7 +12300,7 @@
       "contact": "070-7707-2808",
       "registration_period": "2026년9월1일~2026년10월25일",
       "homepage": "http://1004.tbc.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41844"
     },
     {
@@ -12495,7 +12495,7 @@
       "contact": "010-7708-4382",
       "registration_period": "2026년9월15일~2026년10월25일",
       "homepage": "http://n-runplus.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41872"
     },
     {
@@ -13170,7 +13170,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년7월7일~2026년10월25일",
       "homepage": "http://mara1080.com/event/c2cec79b-c38a-4832-bf4f-7ecb499cdcd5/guide/overview",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41675"
     },
     {
@@ -13275,7 +13275,7 @@
       "contact": "010-5397-8890",
       "registration_period": "2026년8월13일~2026년10월25일",
       "homepage": "http://gimhaemarathon.imweb.me/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41804"
     },
     {
