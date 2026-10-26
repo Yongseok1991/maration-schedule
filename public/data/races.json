@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-26T03:20:00.264Z",
+  "updatedAt": "2026-10-26T14:52:48.108Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 930,
+  "count": 934,
   "races": [
     {
       "id": "40976",
@@ -12185,7 +12185,7 @@
     },
     {
       "id": "41729",
-      "name": "제20회 자원봉사 사랑 굿펀 마라톤",
+      "name": "제20회 자원봉사 사랑 굿펀 마라톤(취소)",
       "date_display": "2026년11월8일",
       "date_iso": "2026-11-08",
       "distances": "10km,5km",
@@ -12994,6 +12994,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41899"
     },
     {
+      "id": "41938",
+      "name": "천안시장배 대한독립천안트레일런산악등반대회",
+      "date_display": "2026년11월21일",
+      "date_iso": "2026-11-21",
+      "distances": "트레일런 14KM",
+      "region": "충남",
+      "place": "천안 독립기념관 태극기광장",
+      "organizer": "천안시, 천안시체육회",
+      "contact": "010-3669-9632",
+      "registration_period": "2026년10월22일~2026년11월10일",
+      "homepage": "http://cafe.naver.com/daehanindependence",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41938"
+    },
+    {
       "id": "41763",
       "name": "2026 평화의숲 마라톤",
       "date_display": "2026년11월22일",
@@ -13444,6 +13459,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41911"
     },
     {
+      "id": "41941",
+      "name": "2026 모악트레일런",
+      "date_display": "2026년12월5일",
+      "date_iso": "2026-12-05",
+      "distances": "23K",
+      "region": "전북",
+      "place": "대한민국술테마박물관",
+      "organizer": "완주군/완주군체육회",
+      "contact": "010-2116-0148",
+      "registration_period": "2026년10월26일~2026년11월20일",
+      "homepage": "http://samsam3315.imweb.me/75",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41941"
+    },
+    {
       "id": "41642",
       "name": "대전보문산트레일런",
       "date_display": "2026년12월6일",
@@ -13483,7 +13513,7 @@
       "place": "정서진 아라타워",
       "organizer": "인천광역시육상연맹",
       "contact": "1866-1718",
-      "registration_period": "2026년8월14일~2026년10월30일",
+      "registration_period": "2026년8월14일~2026년11월20일",
       "homepage": "http://roadracing.co.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41802"
@@ -13520,7 +13550,7 @@
     },
     {
       "id": "41860",
-      "name": "2026 청춘런",
+      "name": "제6회 2026 청춘런",
       "date_display": "2026년12월6일",
       "date_iso": "2026-12-06",
       "distances": "10km,5km",
@@ -13637,6 +13667,21 @@
       "homepage": "http://charun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41936"
+    },
+    {
+      "id": "41939",
+      "name": "2026 평창 스노우런",
+      "date_display": "2026년12월12일",
+      "date_iso": "2026-12-12",
+      "distances": "15km",
+      "region": "강원",
+      "place": "알펜시아 스키점프센터",
+      "organizer": "평창관광문화재단",
+      "contact": "033-832-7001",
+      "registration_period": "2026년10월24일~2026년11월20일",
+      "homepage": "http://order.doortoout.com/12/8/78",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41939"
     },
     {
       "id": "41745",
@@ -13757,6 +13802,21 @@
       "homepage": "http://hgrun.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41806"
+    },
+    {
+      "id": "41940",
+      "name": "제19회 전국새해알몸마라톤",
+      "date_display": "2027년1월3일",
+      "date_iso": "2027-01-03",
+      "distances": "10km,5km",
+      "region": "대구",
+      "place": "대구 수성구 미술관로 88",
+      "organizer": "대구광역시육상연맹",
+      "contact": "010-3503-4558",
+      "registration_period": "2026년10월28일~2026년12월10일",
+      "homepage": "http://r.dgrunner.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41940"
     },
     {
       "id": "41919",
