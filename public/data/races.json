@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25T18:44:58.986Z",
+  "updatedAt": "2026-10-26T03:20:00.264Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 930,
   "races": [
@@ -13093,7 +13093,7 @@
       "place": "무주 등나무운동장",
       "organizer": "무주마라톤협회/평화마라톤조직위",
       "contact": "010-0000-0000",
-      "registration_period": "2026년9월1일~2026년10월28일",
+      "registration_period": "2026년9월1일~2026년10월31일",
       "homepage": "http://mujumarathon.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41841"
