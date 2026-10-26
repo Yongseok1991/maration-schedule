@@ -73,6 +73,44 @@ def detect_split_type(laps):
     return "even"
 
 
+def parse_garmin_start_time(act: dict) -> str:
+    """
+    가민 활동의 start_time을 KST(Asia/Seoul, +09:00) 기준의 ISO-8601 문자열로 변환합니다.
+    Garmin API의 startTimeLocal('2026-10-24 07:39:47')과 startTimeGMT('2026-10-23 22:39:47')를
+    정확히 분석하여 9시간 밀림/당겨짐 없는 완벽한 KST 타임스탬프를 보장합니다.
+    """
+    local_str = act.get("startTimeLocal")
+    gmt_str = act.get("startTimeGMT")
+
+    if local_str and gmt_str:
+        try:
+            dt_local = datetime.fromisoformat(local_str.replace(" ", "T"))
+            dt_gmt = datetime.fromisoformat(gmt_str.replace(" ", "T"))
+            diff_seconds = round((dt_local - dt_gmt).total_seconds())
+            offset = timedelta(seconds=diff_seconds)
+            tz = timezone(offset)
+            return dt_local.replace(tzinfo=tz).isoformat()
+        except Exception:
+            pass
+
+    if local_str:
+        try:
+            kst = timezone(timedelta(hours=9))
+            return datetime.fromisoformat(local_str.replace(" ", "T")).replace(tzinfo=kst).isoformat()
+        except Exception:
+            pass
+
+    if gmt_str:
+        try:
+            dt_utc = datetime.fromisoformat(gmt_str.replace(" ", "T")).replace(tzinfo=timezone.utc)
+            kst = timezone(timedelta(hours=9))
+            return dt_utc.astimezone(kst).isoformat()
+        except Exception:
+            pass
+
+    return act.get("startTimeLocal") or act.get("startTimeGMT")
+
+
 def get_existing_activity_ids(supabase_client: Client, user_id: str) -> set:
     """DB에 이미 저장되어 있는 사용자의 activity_id 목록을 조회하여 중복 수집을 방지합니다."""
     try:
@@ -179,7 +217,7 @@ def sync_user_garmin(supabase_client: Client, user_id: str, email: str, password
                 continue
 
             act_name = act.get("activityName") or "러닝"
-            start_time = act.get("startTimeGMT") or act.get("startTimeLocal")
+            start_time = parse_garmin_start_time(act)
             dist_m = round(float(act.get("distance", 0.0) or 0.0), 2)
             duration_s = int(round(float(act.get("duration", 0) or 0)))
             avg_pace_s = int(round(duration_s / (dist_m / 1000.0))) if dist_m > 0 else 0
