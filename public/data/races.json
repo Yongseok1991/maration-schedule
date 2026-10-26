@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-26T14:52:48.108Z",
+  "updatedAt": "2026-10-26T20:55:22.928Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -11685,7 +11685,7 @@
       "contact": "02-338-0344",
       "registration_period": "2026년9월22일~2026년10월26일",
       "homepage": "http://marvelrunkorea2026.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41861"
     },
     {
@@ -12660,7 +12660,7 @@
       "contact": "010-3408-8150",
       "registration_period": "2026년7월8일~2026년10월26일",
       "homepage": "http://seoultongilrun.org",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41686"
     },
     {
