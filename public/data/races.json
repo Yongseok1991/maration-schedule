@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-27T14:00:18.707Z",
+  "updatedAt": "2026-10-27T20:27:38.225Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -12750,7 +12750,7 @@
       "contact": "02-364-1936",
       "registration_period": "2026년8월9일~2026년10월27일",
       "homepage": "http://sonkeechungrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41845"
     },
     {
@@ -12825,7 +12825,7 @@
       "contact": "070-4350-5663",
       "registration_period": "2026년10월6일~2026년10월27일",
       "homepage": "http://bithumbnanumrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41902"
     },
     {
@@ -13815,7 +13815,7 @@
       "contact": "010-3503-4558",
       "registration_period": "2026년10월28일~2026년12월10일",
       "homepage": "http://r.dgrunner.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41940"
     },
     {
