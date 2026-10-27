@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-27T03:49:08.149Z",
+  "updatedAt": "2026-10-27T14:00:18.707Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -12583,7 +12583,7 @@
       "place": "청계산수변공원",
       "organizer": "{사}소아암환우돕기 조직위",
       "contact": "02-2647-4488",
-      "registration_period": "2026년7월19일~2026년10월30일",
+      "registration_period": "2026년7월19일~2026년11월2일",
       "homepage": "http://happytrailrun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41585"
@@ -12898,9 +12898,9 @@
       "place": "부산 대저생태공원",
       "organizer": "굿피플",
       "contact": "1600-3949",
-      "registration_period": "2026년9월16일~2026년10월16일",
+      "registration_period": "2026년9월16일~2026년11월8일",
       "homepage": "http://giverun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41789"
     },
     {
@@ -12983,9 +12983,9 @@
       "name": "K-거상 트레일 러닝 대회",
       "date_display": "2026년11월21일",
       "date_iso": "2026-11-21",
-      "distances": "5km,15km,20km",
+      "distances": "5km,19km,27km",
       "region": "경남",
-      "place": "가례초등학교(경남 의령)",
+      "place": "의령여자중학교(경남 의령)",
       "organizer": "경남관광재단",
       "contact": "070-4443-4392",
       "registration_period": "2026년9월28일~2026년11월21일",
@@ -13048,7 +13048,7 @@
       "place": "(영등포) 영롱이 억새구장",
       "organizer": "세계일보, (사)한국마라톤연맹",
       "contact": "02-2647-4488",
-      "registration_period": "2026년8월20일~2026년10월30일",
+      "registration_period": "2026년8월20일~2026년11월2일",
       "homepage": "http://ssrun.kr/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41774"
@@ -13333,9 +13333,9 @@
       "place": "원주종합운동장",
       "organizer": "강원도민일보, 원주시육상연맹",
       "contact": "031-821-9951",
-      "registration_period": "2026년9월17일~2026년10월30일",
+      "registration_period": "2026년9월17일~2026년10월26일",
       "homepage": "http://wonju.raceplan.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41879"
     },
     {
@@ -13790,16 +13790,16 @@
     },
     {
       "id": "41806",
-      "name": "2026 한강런 (대회취소)",
+      "name": "대회취소",
       "date_display": "2026년12월28일",
       "date_iso": "2026-12-28",
       "distances": "10km,5km",
       "region": "서울",
-      "place": "안양천다목적광장",
-      "organizer": "한강런(주)",
-      "contact": "02-888-8805",
+      "place": "대회취소",
+      "organizer": "대회취소",
+      "contact": "02-0000-0000",
       "registration_period": "2026년9월20일~2026년10월15일",
-      "homepage": "http://hgrun.kr",
+      "homepage": "http://hgru",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41806"
     },
