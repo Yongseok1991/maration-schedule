@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28T14:53:19.808Z",
+  "updatedAt": "2026-10-28T20:47:58.212Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -12720,7 +12720,7 @@
       "contact": "042-543-5210",
       "registration_period": "2026년8월28일~2026년10월28일",
       "homepage": "http://JGMRUN.COM",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41830"
     },
     {
