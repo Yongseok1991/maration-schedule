@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28T04:06:46.766Z",
+  "updatedAt": "2026-10-28T14:53:19.808Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -12403,7 +12403,7 @@
       "place": "영일대해상누각",
       "organizer": "kthcn",
       "contact": "054-1600-4525",
-      "registration_period": "2026년4월13일~2026년10월31일",
+      "registration_period": "2026년4월13일~2026년11월3일",
       "homepage": "http://pohangmarathon.com/",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41528"
@@ -12748,9 +12748,9 @@
       "place": "파주 임진각",
       "organizer": "손기정기념재단",
       "contact": "02-364-1936",
-      "registration_period": "2026년8월9일~2026년10월27일",
+      "registration_period": "2026년8월9일~2026년11월2일",
       "homepage": "http://sonkeechungrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41845"
     },
     {
@@ -13348,7 +13348,7 @@
       "place": "서울 성북구 석관동",
       "organizer": "서울육상연맹",
       "contact": "1600-4525",
-      "registration_period": "2026년9월22일~2026년10월31일",
+      "registration_period": "2026년9월22일~2026년11월15일",
       "homepage": "http://seoulloverun.com",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41891"
