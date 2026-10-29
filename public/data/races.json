@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28T20:47:58.212Z",
+  "updatedAt": "2026-10-29T04:29:25.587Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -12823,9 +12823,9 @@
       "place": "여의도한강공원 물빛무대앞광장",
       "organizer": "빗썸나눔 & 이투데이",
       "contact": "070-4350-5663",
-      "registration_period": "2026년10월6일~2026년10월27일",
+      "registration_period": "2026년10월6일~2026년11월9일",
       "homepage": "http://bithumbnanumrun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41902"
     },
     {
