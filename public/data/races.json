@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T14:51:03.698Z",
+  "updatedAt": "2026-10-30T20:26:06.034Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -11700,7 +11700,7 @@
       "contact": "070-4098-1114",
       "registration_period": "2026년9월1일~2026년10월30일",
       "homepage": "http://icnr.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41882"
     },
     {
@@ -12525,7 +12525,7 @@
       "contact": "02-424-2195",
       "registration_period": "2026년4월1일~2026년10월30일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20241014202801&csno=20200702232740#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41522"
     },
     {
@@ -12810,7 +12810,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년10월2일~2026년10월30일",
       "homepage": "http://inno.ynmarathon.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41903"
     },
     {
@@ -12960,7 +12960,7 @@
       "contact": "010-7152-1910",
       "registration_period": "2026년9월11일~2026년10월30일",
       "homepage": "http://naver.me/59lo1fB8",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41885"
     },
     {
@@ -13965,7 +13965,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년9월17일~2026년10월30일",
       "homepage": "http://mara1080.com/event/92394e8e-a27c-4c3a-b286-7233340a9e7a",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41875"
     },
     {
