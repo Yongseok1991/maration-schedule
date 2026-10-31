@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T14:19:17.572Z",
+  "updatedAt": "2026-10-31T19:44:34.935Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -4815,7 +4815,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년11월1일~2026년11월10일",
       "homepage": "http://rocknrun.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41609"
     },
     {
@@ -11655,7 +11655,7 @@
       "contact": "051-867-0516",
       "registration_period": "2026년8월20일~2026년10월31일",
       "homepage": "http://taejongdaezombie.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41809"
     },
     {
@@ -12390,7 +12390,7 @@
       "contact": "070-7549-8112",
       "registration_period": "2026년10월19일~2026년10월31일",
       "homepage": "http://eworld83toweruphillrun.lovable.app/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41933"
     },
     {
@@ -12555,7 +12555,7 @@
       "contact": "1899-8610",
       "registration_period": "2026년5월4일~2026년10월31일",
       "homepage": "http://www.cuk-sports.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41558"
     },
     {
@@ -13110,7 +13110,7 @@
       "contact": "010-0000-0000",
       "registration_period": "2026년9월1일~2026년10월31일",
       "homepage": "http://mujumarathon.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41841"
     },
     {
@@ -13980,7 +13980,7 @@
       "contact": "051-723-6686",
       "registration_period": "2026년11월1일~2026년12월31일",
       "homepage": "http://www.badarun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41627"
     },
     {
