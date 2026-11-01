@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T14:46:10.195Z",
+  "updatedAt": "2026-11-01T20:12:44.386Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -13860,7 +13860,7 @@
       "contact": "055-359-5965",
       "registration_period": "2026년11월2일~2027년1월10일",
       "homepage": "http://www.miryangmarathon.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41900"
     },
     {
