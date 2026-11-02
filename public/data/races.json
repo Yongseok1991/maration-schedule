@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-01T20:12:44.386Z",
+  "updatedAt": "2026-11-02T04:33:37.558Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -12433,7 +12433,7 @@
       "place": "신정교 하부 영롱이 억새구장",
       "organizer": "(사)대한생활체육연맹",
       "contact": "02-888-8805",
-      "registration_period": "2026년7월31일~2026년11월5일",
+      "registration_period": "2026년7월31일~2026년11월8일",
       "homepage": "http://maplerun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41760"
@@ -12523,9 +12523,9 @@
       "place": "수서역 7번출구광장",
       "organizer": "(사)한국산악마라톤연맹",
       "contact": "02-424-2195",
-      "registration_period": "2026년4월1일~2026년10월30일",
+      "registration_period": "2026년4월1일~2026년11월11일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20241014202801&csno=20200702232740#baseline",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41522"
     },
     {
