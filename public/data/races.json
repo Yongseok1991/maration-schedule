@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T05:27:25.925Z",
+  "updatedAt": "2026-11-03T15:50:38.045Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 934,
   "races": [
@@ -12405,7 +12405,7 @@
       "contact": "054-1600-4525",
       "registration_period": "2026년4월13일~2026년11월3일",
       "homepage": "http://pohangmarathon.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41528"
     },
     {
@@ -13048,9 +13048,9 @@
       "place": "(영등포) 영롱이 억새구장",
       "organizer": "세계일보, (사)한국마라톤연맹",
       "contact": "02-2647-4488",
-      "registration_period": "2026년8월20일~2026년11월2일",
+      "registration_period": "2026년8월20일~2026년11월16일",
       "homepage": "http://ssrun.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41774"
     },
     {
@@ -13335,7 +13335,7 @@
       "contact": "031-821-9951",
       "registration_period": "2026년9월17일~2026년11월3일",
       "homepage": "http://wonju.raceplan.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41879"
     },
     {
