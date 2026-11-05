@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05T05:14:21.633Z",
+  "updatedAt": "2026-11-05T16:10:19.682Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 947,
   "races": [
@@ -11850,7 +11850,7 @@
       "contact": "010-6711-2215",
       "registration_period": "2026년9월10일~2026년11월5일",
       "homepage": "http://cafe.daum.net/seobongmarathon",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41862"
     },
     {
@@ -13155,7 +13155,7 @@
       "contact": "010-3503-4558",
       "registration_period": "2026년10월15일~2026년11월5일",
       "homepage": "http://www.daegutf.co.kr/front/board/view.php?code=game&tab=%EB%8C%80%EA%B5%AC&mid=0003%2C0014&no=722",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41925"
     },
     {
@@ -14050,11 +14050,11 @@
       "date_iso": "2027-03-07",
       "distances": "하프,10km,5km",
       "region": "전북",
-      "place": "금산인삼엑스포주차장",
+      "place": "무주 등나무운동장",
       "organizer": "전국마라톤협회",
       "contact": "042- 638-1080",
       "registration_period": "2026년11월4일~2027년2월31일",
-      "homepage": "http://mara1080.com/event/f3c362bc-532f-4f3c-bc21-76d3023bfb3a",
+      "homepage": "http://mara1080.com/event/6b68a627-24cf-4844-ac1d-9358b2a54227",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41959"
     },
@@ -14084,7 +14084,7 @@
       "organizer": "전국마라톤협회",
       "contact": "042- 638-1080",
       "registration_period": "2026년10월29일~2027년12월31일",
-      "homepage": "http://mara1080.com/event/f3c362bc-532f-4f3c-bc21-76d3023bfb3a",
+      "homepage": "http://mara1080.com/event/6397382b-be8d-4aee-b724-68f9fad03f29",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41949"
     },
