@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-04T21:47:11.880Z",
+  "updatedAt": "2026-11-05T05:14:21.633Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 947,
   "races": [
@@ -13588,7 +13588,7 @@
       "place": "상암동 평화의공원 평화광장",
       "organizer": "런앤런",
       "contact": "02-2632-0912",
-      "registration_period": "2026년9월9일~2026년11월8일",
+      "registration_period": "2026년9월9일~2026년11월22일",
       "homepage": "http://www.youthrun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41860"
@@ -14008,7 +14008,7 @@
       "place": "여의도 한강 물빛광장",
       "organizer": "(사)한국마라톤연맹",
       "contact": "02-2647-4488",
-      "registration_period": "2026년11월12일~2027년1월10일",
+      "registration_period": "2026년11월23일~2027년1월10일",
       "homepage": "http://dkrun.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41631"
@@ -14033,7 +14033,7 @@
       "name": "2027 머니투데이방송 삼일절 마라톤",
       "date_display": "2027년3월1일",
       "date_iso": "2027-03-01",
-      "distances": "풀,하프,10km,5km",
+      "distances": "하프,10km,5km",
       "region": "서울",
       "place": "뚝섬한강공원 수변무대",
       "organizer": "(주)머니투데이",
@@ -14068,8 +14068,8 @@
       "place": "부천시청 차없는거리",
       "organizer": "부천시육상연맹",
       "contact": "032-613-7524",
-      "registration_period": "2026년11월10일~2027년1월8일",
-      "homepage": "http://cafe.naver.com/bskrun?iframe_url_utf8=%2FArticleRead.nhn%253Fclubid%3D31146576%2526articleid%3D15%2526menuid%3D1%2526boardtype%3DL",
+      "registration_period": "2026년11월10일~2027년1월6일",
+      "homepage": "http://bskrun.co.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41958"
     },
