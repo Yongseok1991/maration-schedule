@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T05:13:55.766Z",
+  "updatedAt": "2026-11-06T15:41:30.478Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 947,
   "races": [
@@ -11854,21 +11854,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41862"
     },
     {
-      "id": "41787",
-      "name": "남한산성트레일",
-      "date_display": "2026년11월7일",
-      "date_iso": "2026-11-07",
-      "distances": "13km",
-      "region": "경기",
-      "place": "산성로타리",
-      "organizer": "명품트레일런",
-      "contact": "010-3526-9120",
-      "registration_period": "2026년8월29일~2026년11월6일",
-      "homepage": "http://www.mtrailrun.kr/",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41787"
-    },
-    {
       "id": "41539",
       "name": "2026 영천댐 마라톤",
       "date_display": "2026년11월7일",
@@ -13264,21 +13249,6 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41952"
     },
     {
-      "id": "41744",
-      "name": "2026 대전보문산트레일",
-      "date_display": "2026년11월29일",
-      "date_iso": "2026-11-29",
-      "distances": "15km",
-      "region": "전남",
-      "place": "오월드 주차장",
-      "organizer": "명품 파브코리아",
-      "contact": "010-3526-9120",
-      "registration_period": "2026년8월28일~2026년11월28일",
-      "homepage": "http://www.mtrailrun.kr/",
-      "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41744"
-    },
-    {
       "id": "41741",
       "name": "2026 천안 희망나눔 마라톤",
       "date_display": "2026년11월29일",
@@ -13504,19 +13474,19 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41941"
     },
     {
-      "id": "41642",
-      "name": "대전보문산트레일런",
+      "id": "41744",
+      "name": "2026 대전보문산트레일",
       "date_display": "2026년12월6일",
       "date_iso": "2026-12-06",
       "distances": "15km",
       "region": "대전",
-      "place": "수서역6번출구",
-      "organizer": "파브코리아/명품트레일",
+      "place": "오월드 주차장",
+      "organizer": "명품/파브코리아",
       "contact": "010-3526-9120",
-      "registration_period": "2026년8월15일~2026년12월5일",
+      "registration_period": "2026년8월28일~2026년12월5일",
       "homepage": "http://www.mtrailrun.kr/",
       "status": "접수중",
-      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41642"
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41744"
     },
     {
       "id": "41710",
@@ -13635,7 +13605,7 @@
       "contact": "02-556-8879",
       "registration_period": "2026년8월18일~2026년11월6일",
       "homepage": "http://gibukidsrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41812"
     },
     {
@@ -13712,6 +13682,21 @@
       "homepage": "http://order.doortoout.com/12/8/78",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41939"
+    },
+    {
+      "id": "41642",
+      "name": "부산금정산성트레일",
+      "date_display": "2026년12월13일",
+      "date_iso": "2026-12-13",
+      "distances": "18km",
+      "region": "부산",
+      "place": "금정산성공원",
+      "organizer": "파브코리아/명품트레일",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년8월15일~2026년12월12일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41642"
     },
     {
       "id": "41745",
@@ -13832,6 +13817,21 @@
       "homepage": "http://k-run.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41824"
+    },
+    {
+      "id": "41787",
+      "name": "경주 통포트레일",
+      "date_display": "2026년12월27일",
+      "date_iso": "2026-12-27",
+      "distances": "18km",
+      "region": "경기",
+      "place": "경주남산 통일전주차장",
+      "organizer": "명품트레일런",
+      "contact": "010-3526-9120",
+      "registration_period": "2026년8월29일~2026년12월26일",
+      "homepage": "http://www.mtrailrun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41787"
     },
     {
       "id": "41806",
