@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T14:42:36.686Z",
+  "updatedAt": "2026-11-07T19:53:57.300Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 947,
   "races": [
@@ -12855,7 +12855,7 @@
       "contact": "010-8017-1833",
       "registration_period": "2026년7월8일~2026년11월7일",
       "homepage": "http://urfesta.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41673"
     },
     {
