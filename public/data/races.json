@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-08T14:48:03.954Z",
+  "updatedAt": "2026-11-08T20:13:38.748Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 947,
   "races": [
@@ -12210,7 +12210,7 @@
       "contact": "051-310-4128",
       "registration_period": "2026년8월24일~2026년11월8일",
       "homepage": "http://ssecorun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41752"
     },
     {
@@ -12420,7 +12420,7 @@
       "contact": "02-888-8805",
       "registration_period": "2026년7월31일~2026년11월8일",
       "homepage": "http://maplerun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41760"
     },
     {
@@ -12540,7 +12540,7 @@
       "contact": "1899-8610",
       "registration_period": "2026년5월4일~2026년11월8일",
       "homepage": "http://www.cuk-sports.com/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41558"
     },
     {
@@ -12780,7 +12780,7 @@
       "contact": "02-556-3012",
       "registration_period": "2026년10월1일~2026년11월8일",
       "homepage": "http://econow.campaignus.me/econow_run",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41906"
     },
     {
@@ -12825,7 +12825,7 @@
       "contact": "02-877-3335",
       "registration_period": "2026년10월8일~2026년11월8일",
       "homepage": "http://youngrace.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41909"
     },
     {
@@ -12885,7 +12885,7 @@
       "contact": "1600-3949",
       "registration_period": "2026년9월16일~2026년11월8일",
       "homepage": "http://giverun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41789"
     },
     {
@@ -12915,7 +12915,7 @@
       "contact": "042-710-2058",
       "registration_period": "2026년9월11일~2026년11월8일",
       "homepage": "http://runten.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41868"
     },
     {
@@ -13455,7 +13455,7 @@
       "contact": "02-332-3997",
       "registration_period": "2026년10월6일~2026년11월8일",
       "homepage": "http://hugrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41911"
     },
     {
@@ -13905,7 +13905,7 @@
       "contact": "061-921-5500",
       "registration_period": "2026년11월9일~2026년12월18일",
       "homepage": "http://ysmarathon.co.kr/info/summary",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41944"
     },
     {
