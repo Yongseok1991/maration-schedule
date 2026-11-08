@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-07T19:53:57.300Z",
+  "updatedAt": "2026-11-08T04:34:44.356Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 947,
   "races": [
@@ -12838,7 +12838,7 @@
       "place": "송도달빛공원",
       "organizer": "인천광역시연수구걷기협회",
       "contact": "070-4098-1114",
-      "registration_period": "2026년10월9일~2026년11월8일",
+      "registration_period": "2026년10월9일~2026년11월15일",
       "homepage": "http://walknrun.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41910"
