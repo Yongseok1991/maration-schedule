@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-08T20:13:38.748Z",
+  "updatedAt": "2026-11-09T04:46:04.593Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 947,
+  "count": 950,
   "races": [
     {
       "id": "40976",
@@ -13684,6 +13684,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41939"
     },
     {
+      "id": "41966",
+      "name": "화성레이스",
+      "date_display": "2026년12월12일",
+      "date_iso": "2026-12-12",
+      "distances": "10km,5km",
+      "region": "경기",
+      "place": "봉담2생태체육공원",
+      "organizer": "화성시러닝크루연맹",
+      "contact": "010-9805-4983",
+      "registration_period": "2026년11월4일~2026년11월14일",
+      "homepage": "http://hwaseongrace.com",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41966"
+    },
+    {
       "id": "41642",
       "name": "부산금정산성트레일",
       "date_display": "2026년12월13일",
@@ -14162,6 +14177,36 @@
       "homepage": "http://soaam.runningdr.co.kr",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41907"
+    },
+    {
+      "id": "41967",
+      "name": "소아암환우돕기 제24회 서울시민마라톤",
+      "date_display": "2027년5월16일",
+      "date_iso": "2027-05-16",
+      "distances": "하프,10km,5km,3km걷기",
+      "region": "서울",
+      "place": "여의도 한강 물빛광장",
+      "organizer": "(사)소아암환우돕기 마라조직위",
+      "contact": "02-2647-4488",
+      "registration_period": "2027년1월18일~2027년2월22일",
+      "homepage": "http://soaam.runningdr.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41967"
+    },
+    {
+      "id": "41968",
+      "name": "희망드림 제24회 새벽강변 국제마라톤",
+      "date_display": "2027년5월23일",
+      "date_iso": "2027-05-23",
+      "distances": "하프,10km,5km,3km가족런",
+      "region": "서울",
+      "place": "여의도 한강 물빛광장",
+      "organizer": "세계일보, (사)한국마라톤협회",
+      "contact": "02-2647-4488",
+      "registration_period": "2027년1월25일~2027년2월26일",
+      "homepage": "http://amarunsb.com/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41968"
     },
     {
       "id": "41950",
