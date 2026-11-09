@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T04:46:04.593Z",
+  "updatedAt": "2026-11-09T18:21:49.884Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 950,
   "races": [
@@ -12810,7 +12810,7 @@
       "contact": "070-4350-5663",
       "registration_period": "2026년10월6일~2026년11월9일",
       "homepage": "http://bithumbnanumrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41902"
     },
     {
@@ -13230,7 +13230,7 @@
       "contact": "02-111-1111",
       "registration_period": "2026년10월28일~2026년11월9일",
       "homepage": "http://mokyokrun.shop",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41947"
     },
     {
@@ -14085,7 +14085,7 @@
       "contact": "032-613-7524",
       "registration_period": "2026년11월10일~2027년1월6일",
       "homepage": "http://bskrun.co.kr/",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41958"
     },
     {
