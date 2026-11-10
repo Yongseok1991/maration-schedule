@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T06:00:48.029Z",
+  "updatedAt": "2026-11-10T16:07:45.940Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 952,
   "races": [
@@ -4815,7 +4815,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년11월1일~2026년11월10일",
       "homepage": "http://rocknrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41609"
     },
     {
@@ -13590,7 +13590,7 @@
       "contact": "061-375-1201",
       "registration_period": "2026년10월20일~2026년11월10일",
       "homepage": "http://xn--299a84k68cg1cr8pi6h5qsd0i.kr/index.asp",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41923"
     },
     {
