@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-09T18:21:49.884Z",
+  "updatedAt": "2026-11-10T06:00:48.029Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 950,
+  "count": 952,
   "races": [
     {
       "id": "40976",
@@ -13123,9 +13123,9 @@
       "place": "부산시내 중앙로구덕운동장~초읍",
       "organizer": "(사)부산항일학생의거기념사업회",
       "contact": "070-4406-1123",
-      "registration_period": "2026년10월13일~2026년11월10일",
+      "registration_period": "2026년10월13일~2026년11월9일",
       "homepage": "http://i1123.org",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41908"
     },
     {
@@ -14134,6 +14134,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41875"
     },
     {
+      "id": "41970",
+      "name": "2027 인천k-마라톤",
+      "date_display": "2027년4월11일",
+      "date_iso": "2027-04-11",
+      "distances": "풀,10km,5km",
+      "region": "인천",
+      "place": "인천아시아드주경기장(예정)",
+      "organizer": "인천k-마라톤조직위",
+      "contact": "070-7766-1238",
+      "registration_period": "2026년11월10일~2026년11월30일",
+      "homepage": "http://k-player.or.kr/incheon2027",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41970"
+    },
+    {
       "id": "41627",
       "name": "제9회 오션뷰 기장바다마라톤",
       "date_display": "2027년4월18일",
@@ -14162,6 +14177,21 @@
       "homepage": "http://www.강릉헌화로11k.com",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41946"
+    },
+    {
+      "id": "41971",
+      "name": "2027 통일기원포항마라톤",
+      "date_display": "2027년4월25일",
+      "date_iso": "2027-04-25",
+      "distances": "하프,10km,5km,장애인5km",
+      "region": "경북",
+      "place": "포항종합운동장",
+      "organizer": "민주평통포항시협의회",
+      "contact": "054-241-0855",
+      "registration_period": "2026년12월1일~2027년1월31일",
+      "homepage": "http://www.phrun.co.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41971"
     },
     {
       "id": "41907",
