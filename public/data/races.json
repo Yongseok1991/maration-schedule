@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10T16:07:45.940Z",
+  "updatedAt": "2026-11-11T04:49:24.132Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 952,
   "races": [
@@ -13633,9 +13633,9 @@
       "place": "영종구 씨사이드파크 일원",
       "organizer": "새마펄스",
       "contact": "1811-7978",
-      "registration_period": "2026년9월14일~2026년11월20일",
+      "registration_period": "2026년9월14일~2026년11월10일",
       "homepage": "http://www.omrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41866"
     },
     {
