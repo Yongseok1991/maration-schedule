@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-11T04:49:24.132Z",
+  "updatedAt": "2026-11-11T15:53:47.301Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 952,
   "races": [
@@ -12510,7 +12510,7 @@
       "contact": "02-424-2195",
       "registration_period": "2026년4월1일~2026년11월11일",
       "homepage": "http://www.koreatrail.net/home/main.php?link=event&einc=eapp&opp=20241014202801&csno=20200702232740#baseline",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41522"
     },
     {
@@ -13365,7 +13365,7 @@
       "contact": "02-457-0121",
       "registration_period": "2026년9월28일~2026년11월11일",
       "homepage": "http://ksgaaf.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41898"
     },
     {
