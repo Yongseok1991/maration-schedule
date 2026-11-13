@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T05:11:47.668Z",
+  "updatedAt": "2026-11-13T15:56:22.312Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 952,
   "races": [
@@ -12435,7 +12435,7 @@
       "contact": "010-3526-9120",
       "registration_period": "2026년8월21일~2026년11월13일",
       "homepage": "http://www.mtrailrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41821"
     },
     {
@@ -12495,7 +12495,7 @@
       "contact": "02-364-1986",
       "registration_period": "2026년9월21일~2026년11월13일",
       "homepage": "http://seoul.bbangrun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41895"
     },
     {
