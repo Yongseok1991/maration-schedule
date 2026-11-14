@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T14:47:47.911Z",
+  "updatedAt": "2026-11-14T20:27:17.930Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 952,
   "races": [
@@ -12645,7 +12645,7 @@
       "contact": "010-3408-8150",
       "registration_period": "2026년7월8일~2026년11월14일",
       "homepage": "http://seoultongilrun.org",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41686"
     },
     {
@@ -13695,7 +13695,7 @@
       "contact": "010-9805-4983",
       "registration_period": "2026년11월4일~2026년11월14일",
       "homepage": "http://hwaseongrace.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41966"
     },
     {
