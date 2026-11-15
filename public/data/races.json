@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T04:55:23.657Z",
+  "updatedAt": "2026-11-15T15:23:28.814Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 952,
   "races": [
@@ -12840,7 +12840,7 @@
       "contact": "070-4098-1114",
       "registration_period": "2026년10월9일~2026년11월15일",
       "homepage": "http://walknrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41910"
     },
     {
@@ -12870,7 +12870,7 @@
       "contact": "063-353-2025",
       "registration_period": "2026년8월10일~2026년11월15일",
       "homepage": "http://rocknrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41748"
     },
     {
@@ -12990,7 +12990,7 @@
       "contact": "010-3669-9632",
       "registration_period": "2026년10월22일~2026년11월15일",
       "homepage": "http://cafe.naver.com/daehanindependence",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41938"
     },
     {
@@ -13005,7 +13005,7 @@
       "contact": "02-2606-8187",
       "registration_period": "2026년8월3일~2026년11월15일",
       "homepage": "http://peace-run.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41763"
     },
     {
@@ -13245,7 +13245,7 @@
       "contact": "031-821-9949",
       "registration_period": "2026년11월1일~2026년11월15일",
       "homepage": "http://spotvrun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41952"
     },
     {
@@ -13320,7 +13320,7 @@
       "contact": "010-4654-0495",
       "registration_period": "2026년8월18일~2026년11월15일",
       "homepage": "http://www.xn--ob0bs4k27c8xc9da633vynbkyur2ft5hckl.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41810"
     },
     {
@@ -13350,7 +13350,7 @@
       "contact": "1600-4525",
       "registration_period": "2026년9월22일~2026년11월15일",
       "homepage": "http://seoulloverun.com",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41891"
     },
     {
