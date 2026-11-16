@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-15T20:51:20.283Z",
+  "updatedAt": "2026-11-16T04:52:04.707Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 952,
   "races": [
@@ -14168,7 +14168,7 @@
       "name": "2027 강릉 옥계헌화로11k RUN",
       "date_display": "2027년4월24일",
       "date_iso": "2027-04-24",
-      "distances": "10km,11k-개인,11k-커플런(2인-남,여)",
+      "distances": "11k-개인",
       "region": "강원",
       "place": "강릉시 옥계면",
       "organizer": "(주)강원도민일보",
