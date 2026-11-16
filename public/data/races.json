@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-16T04:52:04.707Z",
+  "updatedAt": "2026-11-16T17:58:27.745Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 952,
+  "count": 953,
   "races": [
     {
       "id": "40976",
@@ -13033,9 +13033,9 @@
       "place": "(영등포) 영롱이 억새구장",
       "organizer": "세계일보, (사)한국마라톤연맹",
       "contact": "02-2647-4488",
-      "registration_period": "2026년8월20일~2026년11월16일",
+      "registration_period": "2026년8월20일~2026년11월15일",
       "homepage": "http://ssrun.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41774"
     },
     {
@@ -13305,7 +13305,7 @@
       "contact": "02-0000-0000",
       "registration_period": "2026년8월17일~2026년11월16일",
       "homepage": "http://sh-run.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41807"
     },
     {
@@ -13395,7 +13395,7 @@
       "contact": "1644-4219",
       "registration_period": "2026년8월1일~2026년11월16일",
       "homepage": "http://www.hangangmarathon.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41720"
     },
     {
@@ -13440,7 +13440,7 @@
       "contact": "02-3210-1666",
       "registration_period": "2026년9월10일~2026년11월16일",
       "homepage": "http://www.irunman.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41867"
     },
     {
@@ -14132,6 +14132,21 @@
       "homepage": "http://mara1080.com/event/92394e8e-a27c-4c3a-b286-7233340a9e7a",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41875"
+    },
+    {
+      "id": "41977",
+      "name": "제16회 양천마라톤대회",
+      "date_display": "2027년4월10일",
+      "date_iso": "2027-04-10",
+      "distances": "하프,10km,5km",
+      "region": "서울",
+      "place": "(목동) 안양천 해마루축구장",
+      "organizer": "양천구",
+      "contact": "02-2647-4488",
+      "registration_period": "2027년1월16일~2027년2월1일",
+      "homepage": "http://ycrun.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41977"
     },
     {
       "id": "41970",
