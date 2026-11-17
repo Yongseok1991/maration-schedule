@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-16T17:58:27.745Z",
+  "updatedAt": "2026-11-17T06:39:59.246Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 953,
+  "count": 956,
   "races": [
     {
       "id": "40976",
@@ -13924,6 +13924,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41944"
     },
     {
+      "id": "41975",
+      "name": "제19회 제천의림지삼한초록길 알몸마라톤",
+      "date_display": "2027년1월10일",
+      "date_iso": "2027-01-10",
+      "distances": "7km",
+      "region": "충북",
+      "place": "제천 의림지박물관 광장",
+      "organizer": "제천시육상연맹",
+      "contact": "010-6204-4573",
+      "registration_period": "2026년11월14일~2026년12월31일",
+      "homepage": "http://jcaaf.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41975"
+    },
+    {
       "id": "41957",
       "name": "2027 북극곰 마라톤",
       "date_display": "2027년1월23일",
@@ -14044,6 +14059,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41918"
     },
     {
+      "id": "41976",
+      "name": "2027 정읍동학마라톤",
+      "date_display": "2027년2월28일",
+      "date_iso": "2027-02-28",
+      "distances": "풀,10km,5km,30km",
+      "region": "전북",
+      "place": "정읍 체육트레이닝센터(운동장)",
+      "organizer": "정읍시육상연맹",
+      "contact": "063-535-0495",
+      "registration_period": "2026년11월17일~2027년1월20일",
+      "homepage": "http://jp.myrunup.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41976"
+    },
+    {
       "id": "41901",
       "name": "2027 머니투데이방송 삼일절 마라톤",
       "date_display": "2027년3월1일",
@@ -14132,6 +14162,21 @@
       "homepage": "http://mara1080.com/event/92394e8e-a27c-4c3a-b286-7233340a9e7a",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41875"
+    },
+    {
+      "id": "41974",
+      "name": "제34회 315마라톤",
+      "date_display": "2027년3월28일",
+      "date_iso": "2027-03-28",
+      "distances": "10km,5km",
+      "region": "경남",
+      "place": "3.15해양누리공원",
+      "organizer": "315의거기념사업회",
+      "contact": "070-7703-3150",
+      "registration_period": "2026년12월21일~2027년2월28일",
+      "homepage": "http://www.masanmarathon.or.kr/",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41974"
     },
     {
       "id": "41977",
