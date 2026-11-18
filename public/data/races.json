@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T17:24:38.939Z",
+  "updatedAt": "2026-11-18T05:59:16.793Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 956,
   "races": [
@@ -13348,9 +13348,9 @@
       "place": "서울 성북구 석관동",
       "organizer": "서울육상연맹",
       "contact": "1600-4525",
-      "registration_period": "2026년9월22일~2026년11월15일",
+      "registration_period": "2026년9월22일~2026년11월29일",
       "homepage": "http://seoulloverun.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41891"
     },
     {
