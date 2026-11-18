@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-18T05:59:16.793Z",
+  "updatedAt": "2026-11-18T16:58:32.273Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 956,
+  "count": 961,
   "races": [
     {
       "id": "40976",
@@ -13144,6 +13144,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41925"
     },
     {
+      "id": "41972",
+      "name": "마르 백야드울트라6",
+      "date_display": "2026년11월22일",
+      "date_iso": "2026-11-22",
+      "distances": "풀,하프,10km,5km,6.704km 루프",
+      "region": "제주",
+      "place": "제주시 월각로 783",
+      "organizer": "(주)마르어드벤처",
+      "contact": "010-8691-2251",
+      "registration_period": "2026년11월1일~2026년11월20일",
+      "homepage": "http://events.maar-adv.com/backyardultra",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41972"
+    },
+    {
       "id": "41749",
       "name": "2026 무진장트레일레이스",
       "date_display": "2026년11월23일",
@@ -13472,6 +13487,21 @@
       "homepage": "http://samsam3315.imweb.me/75",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41941"
+    },
+    {
+      "id": "41982",
+      "name": "2026 유관순 평화 마라톤",
+      "date_display": "2026년12월5일",
+      "date_iso": "2026-12-05",
+      "distances": "10km,5km",
+      "region": "충남",
+      "place": "천안 독립기념관 겨레의 큰 마",
+      "organizer": "천안시체육회, 대전일보사",
+      "contact": "042-335-2543",
+      "registration_period": "2026년11월17일~2026년11월23일",
+      "homepage": "http://ryugwansun.co.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41982"
     },
     {
       "id": "41744",
@@ -14074,6 +14104,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41976"
     },
     {
+      "id": "41983",
+      "name": "2027 경기수원국제하프마라톤",
+      "date_display": "2027년2월28일",
+      "date_iso": "2027-02-28",
+      "distances": "하프,10km,5km",
+      "region": "경기",
+      "place": "수원종합운동장",
+      "organizer": "경기신문",
+      "contact": "031-575-7243",
+      "registration_period": "2026년11월20일~2026년11월30일",
+      "homepage": "http://ggimarathon.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41983"
+    },
+    {
       "id": "41901",
       "name": "2027 머니투데이방송 삼일절 마라톤",
       "date_display": "2027년3월1일",
@@ -14134,6 +14179,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41949"
     },
     {
+      "id": "41981",
+      "name": "2027 부산다대포마라톤",
+      "date_display": "2027년3월14일",
+      "date_iso": "2027-03-14",
+      "distances": "하프,10km,5km",
+      "region": "부산",
+      "place": "부산 다대포해변공원 도로 앞",
+      "organizer": "부산다대포마라톤조직위",
+      "contact": "051-710-2030",
+      "registration_period": "2026년11월17일~2026년12월5일",
+      "homepage": "http://dadaeporun.kr",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41981"
+    },
+    {
       "id": "41626",
       "name": "2027 서울마라톤",
       "date_display": "2027년3월21일",
@@ -14177,6 +14237,21 @@
       "homepage": "http://www.masanmarathon.or.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41974"
+    },
+    {
+      "id": "41980",
+      "name": "제26회 합천벚꽃마라톤",
+      "date_display": "2027년3월28일",
+      "date_iso": "2027-03-28",
+      "distances": "풀,하프,10km,5km",
+      "region": "경남",
+      "place": "합천공설운동장",
+      "organizer": "합천군체육회",
+      "contact": "055-930-4923",
+      "registration_period": "2026년12월1일~2026년12월31일",
+      "homepage": "http://www.hcmrt.or.kr/ko/index.html",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41980"
     },
     {
       "id": "41977",
