@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-19T05:59:51.521Z",
+  "updatedAt": "2026-11-19T17:04:49.026Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 961,
   "races": [
@@ -13300,7 +13300,7 @@
       "date_iso": "2026-11-29",
       "distances": "하프,10km,5km",
       "region": "경남",
-      "place": "가동교차로 (경남 김해시 한림면 가동리)",
+      "place": "가동교차로 (김해시 한림면 가동리)",
       "organizer": "김해시장애인육상연맹",
       "contact": "010-5397-8890",
       "registration_period": "2026년8월13일~2026년10월25일",
@@ -14115,7 +14115,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년11월20일~2026년11월30일",
       "homepage": "http://ggimarathon.com",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41983"
     },
     {
@@ -14247,7 +14247,7 @@
       "region": "경남",
       "place": "합천공설운동장",
       "organizer": "합천군체육회",
-      "contact": "055-930-4923",
+      "contact": "055-931-9625",
       "registration_period": "2026년12월1일~2026년12월31일",
       "homepage": "http://www.hcmrt.or.kr/ko/index.html",
       "status": "",
