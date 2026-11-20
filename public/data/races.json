@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-19T17:04:49.026Z",
+  "updatedAt": "2026-11-20T05:48:58.990Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 961,
+  "count": 967,
   "races": [
     {
       "id": "40976",
@@ -13984,6 +13984,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41957"
     },
     {
+      "id": "41985",
+      "name": "2027 평창 대관령 알몸마라톤",
+      "date_display": "2027년1월31일",
+      "date_iso": "2027-01-31",
+      "distances": "10km,5km",
+      "region": "강원",
+      "place": "대관령눈꽃축제장",
+      "organizer": "전국마라톤협회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년11월19일~2027년1월31일",
+      "homepage": "http://mara1080.com/event/d243ad5f-f193-4e72-9c7e-c46969437cf8",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41985"
+    },
+    {
       "id": "41931",
       "name": "2027 전마협 고흥 누리호 마라톤대회",
       "date_display": "2027년2월13일",
@@ -14119,6 +14134,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41983"
     },
     {
+      "id": "41963",
+      "name": "제11회 산불조심한국 서울마라톤",
+      "date_display": "2027년2월28일",
+      "date_iso": "2027-02-28",
+      "distances": "풀,하프,10km,6km",
+      "region": "서울",
+      "place": "수서 광평교",
+      "organizer": "한국트레일러너연맹",
+      "contact": "02-424-2195",
+      "registration_period": "2026년11월8일~2027년1월31일",
+      "homepage": "http://www.nobulrun.com/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41963"
+    },
+    {
       "id": "41901",
       "name": "2027 머니투데이방송 삼일절 마라톤",
       "date_display": "2027년3월1일",
@@ -14194,6 +14224,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41981"
     },
     {
+      "id": "41986",
+      "name": "제28회 이천 도자기 마라톤",
+      "date_display": "2027년3월14일",
+      "date_iso": "2027-03-14",
+      "distances": "하프,10km",
+      "region": "경기",
+      "place": "이천종합운동장",
+      "organizer": "이천시체육회",
+      "contact": "042-638-1080",
+      "registration_period": "2026년11월23일~2027년3월14일",
+      "homepage": "http://mara1080.com/event/2b3a03c4-4fc6-4d34-8a33-2449fafcaa23",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41986"
+    },
+    {
       "id": "41626",
       "name": "2027 서울마라톤",
       "date_display": "2027년3월21일",
@@ -14254,6 +14299,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41980"
     },
     {
+      "id": "41984",
+      "name": "2027 영주소백산마라톤",
+      "date_display": "2027년4월4일",
+      "date_iso": "2027-04-04",
+      "distances": "풀,하프,10km,5km",
+      "region": "경북",
+      "place": "영주시민운동장",
+      "organizer": "영주시, 매일신문사",
+      "contact": "031-575-7243",
+      "registration_period": "2026년11월23일~2026년12월31일",
+      "homepage": "http://www.sobaekmarathon.go.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41984"
+    },
+    {
       "id": "41977",
       "name": "제16회 양천마라톤대회",
       "date_display": "2027년4월10일",
@@ -14282,6 +14342,21 @@
       "homepage": "http://k-player.or.kr/incheon2027",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41970"
+    },
+    {
+      "id": "41930",
+      "name": "제6회 산악울트라 UTMB,ITRA",
+      "date_display": "2027년4월11일",
+      "date_iso": "2027-04-11",
+      "distances": "90km",
+      "region": "서울",
+      "place": "수서역7번출구",
+      "organizer": "(사)한국산악마라톤연맹",
+      "contact": "02-424-2195",
+      "registration_period": "2026년10월15일~2026년12월15일",
+      "homepage": "http://koreatrail.net",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41930"
     },
     {
       "id": "41627",
@@ -14357,6 +14432,21 @@
       "homepage": "http://soaam.runningdr.co.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41967"
+    },
+    {
+      "id": "41964",
+      "name": "제39회지리산UTMB INDEX 및 ITRA",
+      "date_display": "2027년5월16일",
+      "date_iso": "2027-05-16",
+      "distances": "48km,40km",
+      "region": "전남",
+      "place": "화엄사주차징",
+      "organizer": "(사)한국산악마라톤전남광주연맹",
+      "contact": "010-3631-1413",
+      "registration_period": "2026년11월8일~2027년4월31일",
+      "homepage": "http://koreatrail.net",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41964"
     },
     {
       "id": "41968",
