@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20T05:48:58.990Z",
+  "updatedAt": "2026-11-20T16:44:24.070Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 967,
   "races": [
@@ -12960,7 +12960,7 @@
       "contact": "02-364-1986",
       "registration_period": "2026년8월10일~2026년11월20일",
       "homepage": "http://seoul.lifemarathon.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41894"
     },
     {
@@ -13155,7 +13155,7 @@
       "contact": "010-8691-2251",
       "registration_period": "2026년11월1일~2026년11월20일",
       "homepage": "http://events.maar-adv.com/backyardultra",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41972"
     },
     {
@@ -13285,7 +13285,7 @@
       "date_iso": "2026-11-29",
       "distances": "하프,10km,5km",
       "region": "서울",
-      "place": "여의도공원 문화의마당",
+      "place": "신정교하부 육상트랙구장",
       "organizer": "안중근평화재단청년아카데미",
       "contact": "02-336-1588",
       "registration_period": "2026년7월31일~2026년11월22일",
@@ -13485,7 +13485,7 @@
       "contact": "010-2116-0148",
       "registration_period": "2026년10월26일~2026년11월20일",
       "homepage": "http://samsam3315.imweb.me/75",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41941"
     },
     {
@@ -13545,7 +13545,7 @@
       "contact": "1866-1718",
       "registration_period": "2026년8월14일~2026년11월20일",
       "homepage": "http://roadracing.co.kr/",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41802"
     },
     {
@@ -13588,7 +13588,7 @@
       "place": "상암동 평화의공원 평화광장",
       "organizer": "런앤런",
       "contact": "02-2632-0912",
-      "registration_period": "2026년9월9일~2026년11월22일",
+      "registration_period": "2026년9월9일~2026년12월1일",
       "homepage": "http://www.youthrun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41860"
@@ -13695,7 +13695,7 @@
       "contact": "031-821-9940",
       "registration_period": "2026년10월21일~2026년11월20일",
       "homepage": "http://charun.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41936"
     },
     {
@@ -13708,7 +13708,7 @@
       "place": "알펜시아 스키점프센터",
       "organizer": "평창관광문화재단",
       "contact": "033-832-7001",
-      "registration_period": "2026년10월24일~2026년11월20일",
+      "registration_period": "2026년10월24일~2026년12월4일",
       "homepage": "http://order.doortoout.com/12/8/78",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41939"
@@ -14009,7 +14009,7 @@
       "organizer": "전국마라톤협회",
       "contact": "042- 638-1080",
       "registration_period": "2026년10월16일~2027년12월1일",
-      "homepage": "http://mara1080.com/event/f3c362bc-532f-4f3c-bc21-76d3023bfb3a",
+      "homepage": "http://mara1080.com/event/c0c0a4a4-eb54-4f93-a0b8-f21d9b2bd168",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41931"
     },
@@ -14158,9 +14158,9 @@
       "place": "뚝섬한강공원 수변무대",
       "organizer": "(주)머니투데이",
       "contact": "042- 638-1080",
-      "registration_period": "2026년10월6일~2026년10월12일",
+      "registration_period": "2026년10월6일~2027년3월1일",
       "homepage": "http://mara1080.com/event/83acaaf1-1e30-411a-ac71-5e909ba1f7d9",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41901"
     },
     {
