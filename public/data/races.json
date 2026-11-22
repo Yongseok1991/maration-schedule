@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-22T05:12:57.557Z",
+  "updatedAt": "2026-11-22T15:57:28.895Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 967,
   "races": [
@@ -13290,7 +13290,7 @@
       "contact": "02-336-1588",
       "registration_period": "2026년7월31일~2026년11월22일",
       "homepage": "http://ajgrun.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41759"
     },
     {
@@ -13605,7 +13605,7 @@
       "contact": "010-4654-0495",
       "registration_period": "2026년9월22일~2026년11월22일",
       "homepage": "http://love.myrunup.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41888"
     },
     {
@@ -14235,7 +14235,7 @@
       "contact": "042-638-1080",
       "registration_period": "2026년11월23일~2027년3월14일",
       "homepage": "http://mara1080.com/event/2b3a03c4-4fc6-4d34-8a33-2449fafcaa23",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41986"
     },
     {
@@ -14310,7 +14310,7 @@
       "contact": "031-575-7243",
       "registration_period": "2026년11월23일~2026년12월31일",
       "homepage": "http://www.sobaekmarathon.go.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41984"
     },
     {
