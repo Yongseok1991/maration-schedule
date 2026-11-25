@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-25T00:23:02.470Z",
+  "updatedAt": "2026-11-25T18:27:27.934Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 967,
   "races": [
@@ -4528,7 +4528,7 @@
       "place": "화성시 궁평항 일원",
       "organizer": "기호일보",
       "contact": "1600-3962",
-      "registration_period": "2025년12월17일~2026년1월8일",
+      "registration_period": "2027년11월24일~2027년1월8일",
       "homepage": "http://kihogprun.co.kr/",
       "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41250"
@@ -13440,7 +13440,7 @@
       "contact": "042- 638-1080",
       "registration_period": "2026년8월31일~2026년11월25일",
       "homepage": "http://mara1080.com/event/df4b4e7d-4fbc-4843-858c-f15c032e92cb",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41833"
     },
     {
@@ -13693,9 +13693,9 @@
       "place": "탄천종합운동장",
       "organizer": "채널A",
       "contact": "031-821-9940",
-      "registration_period": "2026년10월21일~2026년11월20일",
+      "registration_period": "2026년10월21일~2026년12월1일",
       "homepage": "http://charun.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41936"
     },
     {
@@ -14048,7 +14048,7 @@
       "name": "2027 희망 청춘 런",
       "date_display": "2027년2월20일",
       "date_iso": "2027-02-20",
-      "distances": "하프,10km,5km",
+      "distances": "하프,10km,5km,32 km",
       "region": "서울",
       "place": "신정교 하부 영롱이 억새구장",
       "organizer": "(사)중소자영업총연합회",
