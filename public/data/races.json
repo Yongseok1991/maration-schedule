@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-25T18:27:27.934Z",
+  "updatedAt": "2026-11-26T06:57:41.782Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 967,
+  "count": 975,
   "races": [
     {
       "id": "40976",
@@ -13834,6 +13834,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41801"
     },
     {
+      "id": "41994",
+      "name": "2026금산 송년 무료 초청 마라톤 축제",
+      "date_display": "2026년12월19일",
+      "date_iso": "2026-12-19",
+      "distances": "풀,10km,4km,20km",
+      "region": "충남",
+      "place": "금산세계인삼엑스포주차장",
+      "organizer": "전국마라톤협회",
+      "contact": "042- 638-1080",
+      "registration_period": "2026년11월24일~2026년12월11일",
+      "homepage": "http://mara1080.com/event/6397382b-be8d-4aee-b724-68f9fad03f29",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41994"
+    },
+    {
       "id": "41887",
       "name": "2026 슬로우런마라톤(a.k.a. 동계훈련)",
       "date_display": "2026년12월20일",
@@ -13984,6 +13999,36 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41957"
     },
     {
+      "id": "41993",
+      "name": "대관령시리즈 겨울편 트레일런&트레킹",
+      "date_display": "2027년1월30일",
+      "date_iso": "2027-01-30",
+      "distances": "10km,5km,600m,1.2km",
+      "region": "강원",
+      "place": "대관령 하늘목장",
+      "organizer": "국대레포츠, 도어투아웃",
+      "contact": "010-8389-2074",
+      "registration_period": "2026년11월23일~2027년1월8일",
+      "homepage": "http://daegwallyeongrun.com/ko",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41993"
+    },
+    {
+      "id": "41987",
+      "name": "2027 동계훈련마라톤대회",
+      "date_display": "2027년1월30일",
+      "date_iso": "2027-01-30",
+      "distances": "하프,10km,32km",
+      "region": "경기",
+      "place": "화성궁평항일원",
+      "organizer": "기호일보, 로드스포츠",
+      "contact": "1600-3962",
+      "registration_period": "2026년11월23일~2026년11월20일",
+      "homepage": "http://kihogprun.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41987"
+    },
+    {
       "id": "41985",
       "name": "2027 평창 대관령 알몸마라톤",
       "date_display": "2027년1월31일",
@@ -14012,6 +14057,21 @@
       "homepage": "http://mara1080.com/event/c0c0a4a4-eb54-4f93-a0b8-f21d9b2bd168",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41931"
+    },
+    {
+      "id": "41989",
+      "name": "2027 초코런",
+      "date_display": "2027년2월14일",
+      "date_iso": "2027-02-14",
+      "distances": "10km,5km",
+      "region": "서울",
+      "place": "신정교하부육상트랙구장",
+      "organizer": "(사)대한생활체육마라톤협회",
+      "contact": "1644-4219",
+      "registration_period": "2026년11월25일~2027년1월27일",
+      "homepage": "http://www.chocorun.kr/",
+      "status": "접수중",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41989"
     },
     {
       "id": "41900",
@@ -14059,6 +14119,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41960"
     },
     {
+      "id": "41988",
+      "name": "2027 전마협 청주 무심천 노을 마라톤",
+      "date_display": "2027년2월20일",
+      "date_iso": "2027-02-20",
+      "distances": "10km,5km",
+      "region": "충북",
+      "place": "청주 무심천 롤러스케이트장",
+      "organizer": "전국마라톤협회",
+      "contact": "042- 638-1080",
+      "registration_period": "2026년11월20일~2026년2월20일",
+      "homepage": "http://mara1080.com/event/b8949d3b-ed3e-4cc5-86d1-49f7e1b02546",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41988"
+    },
+    {
       "id": "41878",
       "name": "2027 전마협 청주 무심천 투데이 마라톤",
       "date_display": "2027년2월21일",
@@ -14087,6 +14162,21 @@
       "homepage": "http://dkrun.co.kr",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41631"
+    },
+    {
+      "id": "41991",
+      "name": "런텐 세종 전국 10K 대회",
+      "date_display": "2027년2월27일",
+      "date_iso": "2027-02-27",
+      "distances": "10km,5km",
+      "region": "세종",
+      "place": "금강 러닝성지",
+      "organizer": "(주)러닝브레이커,전국러닝협회",
+      "contact": "042-710-2058",
+      "registration_period": "2026년11월24일~2026년1월31일",
+      "homepage": "http://runten.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41991"
     },
     {
       "id": "41918",
@@ -14209,6 +14299,21 @@
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41949"
     },
     {
+      "id": "41990",
+      "name": "제21회 창녕부곡온천마라톤",
+      "date_display": "2027년3월13일",
+      "date_iso": "2027-03-13",
+      "distances": "하프,10km,5km",
+      "region": "경남",
+      "place": "창녕스포츠파크 5구장",
+      "organizer": "창녕군체육회, (주)경남신문사",
+      "contact": "055-210-6104",
+      "registration_period": "2026년12월7일~2027년1월8일",
+      "homepage": "http://www.cngmarathon.co.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41990"
+    },
+    {
       "id": "41981",
       "name": "2027 부산다대포마라톤",
       "date_display": "2027년3월14일",
@@ -14318,7 +14423,7 @@
       "name": "제16회 양천마라톤대회",
       "date_display": "2027년4월10일",
       "date_iso": "2027-04-10",
-      "distances": "하프,10km,5km",
+      "distances": "하프,10km,5km,패밀리런",
       "region": "서울",
       "place": "(목동) 안양천 해마루축구장",
       "organizer": "양천구",
@@ -14447,6 +14552,21 @@
       "homepage": "http://koreatrail.net",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41964"
+    },
+    {
+      "id": "41992",
+      "name": "2027 금강울트라마라톤",
+      "date_display": "2027년5월22일",
+      "date_iso": "2027-05-22",
+      "distances": "100km,50km",
+      "region": "세종",
+      "place": "금강보행교 남단 수변광장",
+      "organizer": "금강울트라마라톤 운영본부",
+      "contact": "042-544-3809",
+      "registration_period": "2026년12월1일~2027년4월30일",
+      "homepage": "http://gultra100k.kr",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41992"
     },
     {
       "id": "41968",
