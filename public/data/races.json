@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-11-26T06:57:41.782Z",
+  "updatedAt": "2026-11-26T18:09:27.345Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
-  "count": 975,
+  "count": 976,
   "races": [
     {
       "id": "40976",
@@ -13680,7 +13680,7 @@
       "contact": "033-264-1365",
       "registration_period": "2026년10월8일~2026년11월26일",
       "homepage": "http://yhitf.co.kr",
-      "status": "접수중",
+      "status": "",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41905"
     },
     {
@@ -14342,6 +14342,21 @@
       "homepage": "http://mara1080.com/event/2b3a03c4-4fc6-4d34-8a33-2449fafcaa23",
       "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41986"
+    },
+    {
+      "id": "41995",
+      "name": "2027 제11회 포항철강마라톤",
+      "date_display": "2027년3월20일",
+      "date_iso": "2027-03-20",
+      "distances": "10km,5km,5km 학생",
+      "region": "경북",
+      "place": "송도해수욕장 일원",
+      "organizer": "경북매일신문",
+      "contact": "1600-3949",
+      "registration_period": "2027년1월4일~2027년1월31일",
+      "homepage": "http://phsteelrun.com",
+      "status": "",
+      "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41995"
     },
     {
       "id": "41626",
