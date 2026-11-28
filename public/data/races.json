@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-27T17:52:35.876Z",
+  "updatedAt": "2026-11-28T06:24:39.967Z",
   "source": "http://www.roadrun.co.kr/schedule/list.php,http://www.roadrun.co.kr/schedule/list.php#year=2026&month=all,http://www.roadrun.co.kr/schedule/list.php#year=2027&month=all",
   "count": 976,
   "races": [
@@ -14173,9 +14173,9 @@
       "place": "금강 러닝성지",
       "organizer": "(주)러닝브레이커,전국러닝협회",
       "contact": "042-710-2058",
-      "registration_period": "2026년11월24일~2026년1월31일",
+      "registration_period": "2026년11월24일~2027년1월31일",
       "homepage": "http://runten.co.kr",
-      "status": "",
+      "status": "접수중",
       "detail_url": "http://www.roadrun.co.kr/schedule/view.php?no=41991"
     },
     {
